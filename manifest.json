@@ -1,10 +1,10 @@
 {
-	"name" : "secimg",
-	"short_name" : "secimg",
+	"name" : "Travel",
+	"short_name" : "Travel",
 	"description" : "",
 	"theme_color" : "#f9f9f9",
 	"background_color" : "#f9f9f9",
-	"start_url" : "https://dmoritz10.github.io/secimg/",
+	"start_url" : "https://dmoritz10.github.io/travel/",
 	"display" : "standalone",
 	"splash_pages": null,
     "icons": [
