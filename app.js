@@ -203,17 +203,11 @@ jQuery(function ($) {
          
             // Home tab
 
-            // $('#hmSelectDropDown').on('show.bs.dropdown', function () {
-            //     btnHMMoreVertHtml()
-            // })
-
-            $('#btnHMChangePwd')   .click(btnHMChangePwdHtml);
-            $('#btnSignout')                .button().click(btnSignoutHtml);
-            $('#btnNewSheet')                .button().click(btnNewSheetHtml);
-
+            $('#btnSignout')           .button().click(btnSignoutHtml);
+            $('#btnImportPlaces')      .button().click(btnImportPlacesHtml);
+            $('#btnPlaces')            .button().click(btnPlacesHtml);
+            $('#btnTrips')             .button().click(btnTripsHtml);
             
-
-          
             // Sheets
             $('#btnShtSelect')            .click(btnShtSelectHtml);
             
