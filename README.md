@@ -1,26 +1,59 @@
-# sceimg
-
-Todo;  
-    include display support for .pdf
-    <!-- use PromiseAll to enc -->
 
 
-Add New Document:
+Import place visits from Google Locations
 
-    Create new ss in img folder
-    Change name of ss to its sheetId
-    Make sheetId part of Doc entry
+Places We've Been
 
-Edit Doc
+    sort:
+        place name
+        country
+    
+    filter:
+        place name
+        date range
+        country
 
-    If Front or Back changes
-    Chunk, Enc and update SS:
-        Row 1 for Front
-        Row 2 for Back
+    format:
+        one entry per place
+        address, nbr times visited, country
+        > goes to listing like secimg
 
-        Can't support arbitrary nbr of images per doc because ss will fail at ~> 15Mb
+Trip We've Taken
 
-Delete Doc
+    sort:
+        trip name
+        trip type
 
-    Remove corresponding img file
+    filter:
+        trip name
+        trip type
+        country
 
+    format:
+        one entry per trip
+        > goes to destinations within trip
+
+
+{trip:
+  name: "Aspen - Jan 2022",
+  type: 'Domestic, Ski, International',
+  nbrDays: 12,
+  img: pointer to image,
+  destinations: [
+    {
+      name: "Aspen",
+      startDate: 1/29/2022,
+      endDate: 2/5/2022,
+    },
+    {
+      name: "Aspen",
+      startDate: 1/29/2022,
+      endDate: 2/5/2022,
+    },{
+      name: "Aspen",
+      startDate: 1/29/2022,
+      endDate: 2/5/2022,
+    }
+  ]
+  
+}
