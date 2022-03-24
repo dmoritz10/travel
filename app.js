@@ -40,7 +40,7 @@ jQuery(function ($) {
 	// 'use strict';
 
 
-    signin =  {
+    var signin =  {
 
         currUser : {},
 
@@ -48,9 +48,10 @@ jQuery(function ($) {
 
         CLIENT_ID : '764306262696-esbdj8daoee741d44fdhrh5fehjtjjm5.apps.googleusercontent.com',  // TODO: Update placeholder with desired client ID.
 
-        SCOPES : "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly",
+        SCOPES : "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly",
 
         DISCOVERY_DOCS : ["https://sheets.googleapis.com/$discovery/rest?version=v4", 
+                           "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
                            "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"],
 
         /**
@@ -70,8 +71,8 @@ jQuery(function ($) {
 
             console.log('initClient start')
 
-           
-
+            1 == 1
+        
             await gapi.client.init({
                 apiKey:                 signin.API_KEY,
                 clientId:               signin.CLIENT_ID,
@@ -117,18 +118,23 @@ jQuery(function ($) {
                 signin.currUser['emailName'] = signin.currUser['email'].split('@')[0]
 
                 if (signin.currUser.firstName) {
-                    $('#authSigninStatus').html('Hi ' + signin.currUser.firstName + '.<br>You are Authorized.')
+                    $('#authSigninStatus').html('Hi ' + signin.currUser.firstName + '.<br>You are signed in.')
                 } else {
-                    $('#authSigninStatus').html('Hi ' + signin.currUser.emailName + '.<br>You are Authorized.')
+                    $('#authSigninStatus').html('Hi ' + signin.currUser.emailName + '.<br>You are signed in.')
                 }
 
-                console.log('showLogin')
+                var rtn = await getSSId(signin.currUser);
 
-                await showLogin()
+                if (rtn.fileId) {spreadsheetId = rtn.fileId}
+                else {$('#authSigninStatus').html(rtn.msg);return}
+                
+                await initialUI();
+
+                goHome()
 
             } else {
 
-                console.log('NOT Authorized')
+                console.log('NOT signed in')
 
                 $('#authSigninStatus').html('You are signed out.  Authorization is required.')
 
@@ -155,6 +161,7 @@ jQuery(function ($) {
         }
 
     }
+
 
 
 	var App = {
