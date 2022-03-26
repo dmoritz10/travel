@@ -50,6 +50,7 @@ async function updateAppendSht(arr) {
       { title: 'Location History Detail', type: "all" }
     ])
 
+    console.log("objLHD['Location History Detail']", objLHD['Location History Detail'])
   var arrLHD = objLHD['Location History Detail'].vals
 
   const hdrs = objLHD['Location History Detail'].hdrs
