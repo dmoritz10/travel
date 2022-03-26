@@ -158,7 +158,7 @@ for (var i in b) {
 }
 
 console.log('cntr', cntr)
-console.log('arr', arr)
+// console.log('arr', arr)
 
 return arr
 
