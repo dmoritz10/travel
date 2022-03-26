@@ -131,12 +131,10 @@ for (var i in b) {
 
         var addr = x.location.address ? x.location.address.replace(/\n/g, ", ") : ''
 
-        var cntry = clearCntry(addr)
-        var cntry = addr ? addr.split(', ').pop() : ''
+        var cntry = cleanCntry(addr)
 
         var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
         var dateTimeFormatted = startDateTime.toISODate()
-        var endDateTime = DateTime.fromISO(x.duration.endTimestamp)
 
         var duration = DateTime.fromISO(x.duration.endTimestamp).diff(DateTime.fromISO(x.duration.startTimestamp))
         var DDHH = duration.toFormat("hh':'mm");
@@ -166,6 +164,42 @@ console.log('cntr', cntr)
 // console.log('arr', arr)
 
 return arr
+
+
+}
+
+function cleanCntry(addr) {
+
+  var cntry = addr ? addr.split(', ').pop() : ''
+
+  const clnCntry = function(mask, val, cntry) {return (mask.indexOf(cntry) == -1 ? cntry : val)}
+
+  var syn = ['United States']
+  var val = 'USA'
+  cntry = clnCntry(syn, val, cntry)
+
+  var syn = ['España', 'Espanha', 'Espanya']
+  var val = 'Spain'
+  cntry = clnCntry(syn, val, cntry)
+  
+  var syn = ['Italia', 'Italië']
+  var val = 'Italy'
+  cntry = clnCntry(syn, val, cntry)
+
+  var syn = ['Österreich']
+  var val = 'Austria'
+  cntry = clnCntry(syn, val, cntry)
+
+  var syn = ['Perú']
+  var val = 'Peru'
+  cntry = clnCntry(syn, val, cntry)
+  
+  var syn = ['Schweiz']
+  var val = 'Switzerland'
+  cntry = clnCntry(syn, val, cntry)
+
+  return cntry
+
 
 
 }
