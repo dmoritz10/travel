@@ -50,7 +50,7 @@ async function updateAppendSht(arr) {
       { title: 'Location History Detail', type: "all" }
     ])
 
-  var arrLHD = objLHD.vals
+  var arrLHD = objLHD['Location History Detail'].vals
 
   console.log('objLHD',objLHD )
   console.log('arrLHD',arrLHD )
