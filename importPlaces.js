@@ -53,7 +53,7 @@ async function updateAppendSht(arr) {
   var arrLHD = objLHD.vals
 
   const UTCDateCol = hdrs.indexOf('UTC Date')
-  const arrUTCDate =  (arrLHD, UTCDateCol) => arr.map(x => x[n]);
+  const arrUTCDate = arrLHD.map(x => x[UTCDateCol]);
 
   console.log('LHD', UTCDateCol)
   console.log('LHD', arrUTCDate)
