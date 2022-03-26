@@ -132,8 +132,13 @@ for (var i in b) {
 
         var ele = []
 
-        var addr = x.location.address ? x.location.address : ''
-        var cntry = addr ? addr.replace(/\n/g, ",").split(', ').pop() : ''
+        var addr = x.location.address ? x.location.address.replace(/\n/g, ",") : ''
+        var cntry = addr ? addr.split(', ').pop() : ''
+
+        console.log('lcn', x.location.address)
+        console.log('addr', addr)
+        console.log('cntry', cntry)
+
        
         var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
         var dateTimeFormatted = startDateTime.toISODate()
