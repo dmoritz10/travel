@@ -18,11 +18,8 @@ async function fetchPlaces(input) {
       var fileContents = await readFile(files[i])
       var arr = formatPlace(fileContents)
       arr.forEach( ele => placesArr.push(ele))
-      console.log('file', i)
     }
   } 
-
-  console.log('places', placesArr)
 
   updateAppendSht(placesArr)
 
@@ -50,7 +47,6 @@ async function updateAppendSht(arr) {
       { title: 'Location History Detail', type: "all" }
     ])
 
-    console.log("objLHD['Location History Detail']", objLHD['Location History Detail'])
   var arrLHD = objLHD['Location History Detail'].vals
 
   const hdrs = objLHD['Location History Detail'].colHdrs
@@ -64,8 +60,6 @@ async function updateAppendSht(arr) {
   for (var i = 0;i<arr.length;i++) {
 
     var ele = arr[i]
-
-    console.log('ele', ele)
 
     let row = arrUTCDate.indexOf(ele[UTCDateCol])
     if (row > -1)   {arrLHD[row] = ele;updateCntr++}
@@ -135,11 +129,6 @@ for (var i in b) {
         var addr = x.location.address ? x.location.address.replace(/\n/g, ", ") : ''
         var cntry = addr ? addr.split(', ').pop() : ''
 
-        console.log('lcn', x.location.address)
-        console.log('addr', addr)
-        console.log('cntry', cntry)
-
-       
         var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
         var dateTimeFormatted = startDateTime.toISODate()
         var endDateTime = DateTime.fromISO(x.duration.endTimestamp)
