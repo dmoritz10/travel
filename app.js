@@ -23,7 +23,7 @@
 
     var signin
 
-    var newShtHdrs = ['Document','Expiry','Favorite','Notes','Img Front','Img Back', 'File Id', 'Last Change']
+    var hdrs = ['Name','Date','UTC Date','Duration','Place Id','Place Confidence','Address','Country','Lat','Lng','Id','Info']
 
     var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     var invalidPwdMsg = 
@@ -73,7 +73,7 @@ jQuery(function ($) {
 
             goHome()
 
-            return
+            // return
         
             await gapi.client.init({
                 apiKey:                 signin.API_KEY,
