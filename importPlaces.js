@@ -83,7 +83,6 @@ async function updateAppendSht(arr) {
 
   await updateSheet('Location History Detail', shtArr)
 
-
 }
 
 async function fetchLHD() {
