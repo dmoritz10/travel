@@ -52,9 +52,9 @@ async function updateAppendSht(arr) {
 
   var arrLHD = objLHD['Location History Detail'].vals
 
-  console.log('arr',[...arr] )
-  console.log('arr l',[...arr].length )
-  console.log('arr 0l',[...arr][0].length )
+  console.log('arr',arr )
+  console.log('arr l',arr.length )
+  console.log('arr 0l',arr[0].length )
 
 
   console.log('objLHD',[...objLHD] )
