@@ -149,7 +149,8 @@ for (var i in b) {
         ele[hdrs.indexOf('Lat')]                = x.centerLatE7
         ele[hdrs.indexOf('Lng')]                = x.centerLngE7
         ele[hdrs.indexOf('Id')]                 = x.location.placeId + x.duration.startTimestamp
-        ele[hdrs.indexOf('Info')]               = x
+        ele[hdrs.indexOf('Info')]               = 'Info'
+        // ele[hdrs.indexOf('Info')]               = x
 
         arr.push(ele)
 
