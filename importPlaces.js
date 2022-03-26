@@ -52,8 +52,13 @@ async function updateAppendSht(arr) {
 
   var arrLHD = objLHD['Location History Detail'].vals
 
-  console.log('objLHD',objLHD )
-  console.log('arrLHD',arrLHD )
+  console.log('arr',[...arr] )
+  console.log('arr l',[...arr].length )
+  console.log('arr 0l',[...arr][0].length )
+
+
+  console.log('objLHD',[...objLHD] )
+  console.log('arrLHD',[...arrLHD] )
 
   const UTCDateCol = hdrs.indexOf('UTC Date')
   const arrUTCDate = arrLHD.map(x => x[UTCDateCol]);
