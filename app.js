@@ -71,7 +71,7 @@ jQuery(function ($) {
 
             console.log('initClient start')
 
-            goHome()
+            // goHome()
 
             // return
         
