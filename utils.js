@@ -116,7 +116,7 @@ var openShts = async function (shts) {
           break;
 
         case "all"  :
-          shtRngs.push("'" + sheet.title + "'!A1:ZZ10000")
+          shtRngs.push("'" + sheet.title + "'!A1:ZZ100000")
           break;
 
       }
