@@ -125,7 +125,7 @@ jQuery(function ($) {
                     $('#authSigninStatus').html('Hi ' + signin.currUser.emailName + '.<br>You are signed in.')
                 }
 
-                var rtn = await getSSId('Travel');
+                var rtn = await getSSId('Travel Journal');
 
                 if (rtn.fileId) {spreadsheetId = rtn.fileId}
                 else {$('#authSigninStatus').html(rtn.msg);return}
