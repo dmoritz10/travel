@@ -126,7 +126,12 @@ for (var i in b) {
 
         var ele = []
 
+        if (!x.location.address)  continue;
+        if (!x.location.name)     continue;
+
         var addr = x.location.address ? x.location.address.replace(/\n/g, ", ") : ''
+
+        var cntry = clearCntry(addr)
         var cntry = addr ? addr.split(', ').pop() : ''
 
         var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
