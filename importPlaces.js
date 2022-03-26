@@ -65,9 +65,11 @@ async function updateAppendSht(arr) {
   var updateCntr = 0
   var appendCntr = 0
 
-  arr.forEach( ele => {
+  for (var i = 0;i<arr.length;i++) {
 
-   
+    var ele = arr[i]
+
+    console.log('ele', ele)
 
     let row = arrUTCDate.indexOf(ele[UTCDateCol])
     if (row > -1)   {arrLHD[row] = ele;updateCntr++}
@@ -78,7 +80,7 @@ async function updateAppendSht(arr) {
     console.log('arrLHD', [...arrLHD])
 
 
-  })
+  }
 
   console.log('updateAppendSht')
   console.log('arr', arr.length)
