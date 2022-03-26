@@ -81,7 +81,7 @@ async function updateAppendSht(arr) {
 
   var shtArr = [hdrs].concat(arrLHD)
 
-  await updateSheet('Location History Detail', arrLHD)
+  await updateSheet('Location History Detail', shtArr)
 
 
 }
