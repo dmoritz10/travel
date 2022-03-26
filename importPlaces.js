@@ -52,20 +52,8 @@ async function updateAppendSht(arr) {
 
   var arrLHD = objLHD['Location History Detail'].vals
 
-  console.log('arr',arr )
-  console.log('arr l',arr.length )
-  console.log('arr 0l',arr[0].length )
-
-
-  console.log('objLHD',[...objLHD] )
-  console.log('arrLHD',[...arrLHD] )
-
   const UTCDateCol = hdrs.indexOf('UTC Date')
   const arrUTCDate = arrLHD.map(x => x[UTCDateCol]);
-
-  console.log('LHD', UTCDateCol)
-  console.log('LHD', arrUTCDate)
-  console.log('LHD', [...arrLHD])
 
   var updateCntr = 0
   var appendCntr = 0
@@ -80,11 +68,6 @@ async function updateAppendSht(arr) {
     if (row > -1)   {arrLHD[row] = ele;updateCntr++}
     else            {arrLHD.push(ele);appendCntr++}
 
-    console.log('ele[UTCDateCol]', ele[UTCDateCol])
-    console.log('row', row)
-    console.log('arrLHD', [...arrLHD])
-
-
   }
 
   console.log('updateAppendSht')
@@ -93,6 +76,8 @@ async function updateAppendSht(arr) {
   console.log('updateCntr', updateCntr)
   console.log('appendCntr', appendCntr)
   console.log('total', appendCntr + updateCntr)
+
+  await updateSheet('Location History Detail', arrLHD)
 
 
 }
