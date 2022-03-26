@@ -17,10 +17,7 @@ async function fetchPlaces(input) {
     for (var i=0;i<files.length;i++) {  
       var fileContents = await readFile(files[i])
       var arr = formatPlace(fileContents)
-      // placesArr.push(arr)
       arr.forEach( ele => placesArr.push(ele))
-
-      placesArr.concat(arr);
       console.log('file', i)
     }
   } 
