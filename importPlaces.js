@@ -172,7 +172,7 @@ function cleanCntry(addr) {
 
   var cntry = addr ? addr.split(', ').pop() : ''
 
-  const clnCntry = function(mask, val, cntry) {return (mask.indexOf(cntry) == -1 ? cntry : val)}
+  const clnCntry = (mask, val, cntry) => (mask.indexOf(cntry) == -1 ? cntry : val)
 
   var syn = ['United States']
   var val = 'USA'
@@ -198,14 +198,20 @@ function cleanCntry(addr) {
   var val = 'Peru'
   cntry = clnCntry(syn, val, cntry)
   
-  var syn = ['Schweiz']
+  var syn = ['Schweiz', 'Svizzera']
   var val = 'Switzerland'
   cntry = clnCntry(syn, val, cntry)
 
-  return cntry
+  var syn = ['México']
+  var val = 'Mexico'
+  cntry = clnCntry(syn, val, cntry)
+  
+  var syn = ['Nederland']
+  var val = 'Netherlands'
+  cntry = clnCntry(syn, val, cntry)
 
-
-
+    return cntry
+  
 }
 
 function btnPlacesHtml() {
