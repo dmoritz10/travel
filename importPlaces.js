@@ -139,10 +139,10 @@ for (var i in b) {
         var addr = x.location.address ? x.location.address.replace(/\n/g, ", ") : ''
 
         var addrArr = addr.split(', ')
-        var city = addrArr > 3 ? addrArr[1] : addrArr[0]
-        var state = addrArr > 3 ? addrArr[2] : addrArr[1]
+        var city    = addrArr.length > 3 ? addrArr[1] : addrArr[0]
+        var state   = addrArr.length > 3 ? addrArr[2] : addrArr[1]
 
-        var cntry = cleanCntry(addrArr)
+        var cntry   = cleanCntry(addrArr)
 
         var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
         var dateTimeFormatted = startDateTime.toISODate()
