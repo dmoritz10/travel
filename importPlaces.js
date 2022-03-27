@@ -182,7 +182,7 @@ return arr
 
 }
 
-function clearState(addrArr) {
+function cleanState(addrArr) {
 
   console.log('addrArr', addrArr, addrArr.length)
   
