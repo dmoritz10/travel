@@ -69,6 +69,8 @@ async function updateAppendSht(arr, objLHD) {
 
   }
 
+  buildTrips(arrLHD, hdrs)
+
   console.log('updateAppendSht')
   console.log('arr', arr.length)
   console.log('arrLHD', arrLHD)
@@ -82,12 +84,39 @@ async function updateAppendSht(arr, objLHD) {
 
 }
 
-async function fetchLHD() {
+async function buildTrips(shtArr, hdrs) {
 
-  var objSht = await openShts(
-    [
-      { title: title, type: "all" }
-    ])
+  // Sort by Date
+  // If Distance > 50
+
+  var dateCol = hdrs.indexOf('Date')
+  var tripCol = hdrs.indexOf('Trip')
+  var distCol = hdrs.indexOf('Distance')
+  var stateCol = hdrs.indexOf('State')
+  var cntryCol = hdrs.indexOf('Country')
+
+  arr.sort(function(a,b) {return a[dateCol]-b[dateCol]});
+
+  var trip = null
+
+  for (i=i;i<arr.length;i++) {
+
+    var ele = arr[i]
+
+    if (ele[distCol] > 50) {
+
+      if (!trip) trip = ele[cntryCol] + ele[dateCol].substring(0,7)
+
+      arr[i][tripCol] = trip
+
+    } else {
+
+      trip = null
+
+    }
+
+
+  }
 
 
 }
@@ -205,6 +234,10 @@ function cleanState(arr) {
 
   switch (addrArr.length) {
 
+    case 6:
+      var wrk = addrArr[4]
+      break;
+    
     case 5:
       var wrk = addrArr[3]
       break;
