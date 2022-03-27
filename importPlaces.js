@@ -182,9 +182,12 @@ return arr
 
 }
 
-function cleanState(addrArr) {
+function cleanState(arr) {
 
-  console.log('addrArr', addrArr, addrArr.length)
+  console.log('addrArr', arr, arr.length)
+
+  var letters = /^[A-Za-z]+$/;
+  var addrArr = arr.map( ele => { if (ele.match(letters)) return ele})
 
   if (addrArr.length < 2) return ''
 
