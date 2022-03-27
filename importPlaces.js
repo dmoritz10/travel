@@ -109,7 +109,7 @@ async function buildTrips(arr, hdrs) {
 
       if (!trip) {
 
-        var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][ele[dateCol].substring(6,7)-1]
+        var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][ele[dateCol].substring(6,7)*1-1]
 
         if (ele[cntryCol] == "USA") {
 
@@ -185,11 +185,9 @@ for (var i in b) {
         var addr = x.location.address ? x.location.address.replace(/\n/g, ", ") : ''
 
         var addrArr = addr.split(', ')
-        // var state   = addrArr.length > 3 ? addrArr[2].replace(/[0-9]/g, '').replace(/-/g, '').trim() : addrArr[1].replace(/[0-9]/g, '').replace(/-/g, '').trim();
         
-        var city = cleanCity(addrArr)
+        var city    = cleanCity(addrArr)
         var state   = cleanState(addrArr)
-
         var cntry   = cleanCntry(addrArr)
 
         var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
@@ -222,7 +220,6 @@ for (var i in b) {
 }
 
 console.log('cntr', cntr)
-// console.log('arr', arr)
 
 return arr
 
