@@ -115,6 +115,8 @@ var b = a.timelineObjects
 var homeLat = readOption('Home Lat')
 var homeLng = readOption('Home Lng')
 
+var hdrs = objLHD['Location History Detail'].colHdrs
+
 var arr = []
 
 var cntr = 0
