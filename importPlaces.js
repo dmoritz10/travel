@@ -197,7 +197,7 @@ function cleanState(addrArr) {
   wrk = wrk.replace(/-/g, '')
   wrk = wrk.trim()
 
-  return state
+  return wrk
 
 }
 
