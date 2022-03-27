@@ -84,7 +84,7 @@ async function updateAppendSht(arr, objLHD) {
 
 }
 
-async function buildTrips(shtArr, hdrs) {
+async function buildTrips(arr, hdrs) {
 
   // Sort by Date
   // If Distance > 50
