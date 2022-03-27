@@ -22,16 +22,16 @@ async function fetchPlaces(input) {
 
     for (var i=0;i<files.length;i++) {  
       var fileContents = await readFile(files[i])
-      var arr = formatPlace(fileContents)
+      var arr = formatPlace(fileContents, objLHD)
       arr.forEach( ele => placesArr.push(ele))
     }
   } 
 
-  updateAppendSht(placesArr)
+  updateAppendSht(placesArr, objLHD)
 
 }
 
-async function updateAppendSht(arr) {
+async function updateAppendSht(arr, objLHD) {
 
 /*
   1. Read 'Location History Detail' including header row - LHD
@@ -105,7 +105,7 @@ function readFile(file) {
   })
 }
 
-function formatPlace(json) {
+function formatPlace(json, objLHD) {
 
 var a = JSON.parse(json)
 
