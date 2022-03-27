@@ -90,12 +90,13 @@ async function buildTrips(arr, hdrs) {
   // If Distance > 50
 
   var dateCol = hdrs.indexOf('Date')
+  var dateUTCCol = hdrs.indexOf('UTC Date')
   var tripCol = hdrs.indexOf('Trip')
   var distCol = hdrs.indexOf('Distance')
   var stateCol = hdrs.indexOf('State')
   var cntryCol = hdrs.indexOf('Country')
 
-  arr.sort(function(a,b) {return a[dateCol]-b[dateCol]});
+  arr.sort(function(a,b) {return a[dateUTCCol]-b[dateUTCCol]});
 
   var trip = null
 
@@ -111,11 +112,11 @@ async function buildTrips(arr, hdrs) {
 
         if (ele[cntryCol] == "USA") {
 
-          trip = ele[stateCol] + ' - ' + mo + ' ' + ele[dateCol].substring(0,3)
+          trip = ele[stateCol] + ' - ' + mo + ' ' + ele[dateCol].substring(0,4)
 
         } else {
 
-          trip = ele[cntryCol] + ' - ' + mo + ' ' + ele[dateCol].substring(0,3)
+          trip = ele[cntryCol] + ' - ' + mo + ' ' + ele[dateCol].substring(0,4)
         
         }
 
