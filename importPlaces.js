@@ -49,7 +49,7 @@ async function updateAppendSht(arr) {
 
   var arrLHD = objLHD['Location History Detail'].vals
 
-  var hdrs = objLHD['Location History Detail'].colHdrs
+  var hdrsLHD = objLHD['Location History Detail'].colHdrs
 
   const UTCDateCol = hdrs.indexOf('UTC Date')
   const arrUTCDate = arrLHD.map(x => x[UTCDateCol]);
@@ -115,7 +115,7 @@ var b = a.timelineObjects
 var homeLat = readOption('Home Lat')
 var homeLng = readOption('Home Lng')
 
-var hdrs = objLHD['Location History Detail'].colHdrs
+var hdrs = hdrsLHD
 
 var arr = []
 

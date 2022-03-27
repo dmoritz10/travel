@@ -23,6 +23,8 @@
 
     var signin
 
+    var hdrsLHD
+
     var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     var invalidPwdMsg = 
     `Passwords must contain at least<br>
