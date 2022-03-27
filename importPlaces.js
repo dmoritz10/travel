@@ -140,7 +140,7 @@ for (var i in b) {
 
         var addrArr = addr.split(', ')
         var city    = addrArr.length > 3 ? addrArr[1] : addrArr[0]
-        var state   = addrArr.length > 3 ? addrArr[2].replace(/[0-9]/g, '') : addrArr[1].replace(/[0-9]/g, '');
+        var state   = addrArr.length > 3 ? addrArr[2].replace(/[0-9]/g, '').replace(/-/g, '').trim() : addrArr[1].replace(/[0-9]/g, '').replace(/-/g, '').trim();
 
         var cntry   = cleanCntry(addrArr)
 
