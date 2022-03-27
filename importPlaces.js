@@ -9,6 +9,12 @@ async function fetchPlaces(input) {
 
   console.log('fetchplaces',input.files)
 
+  var objLHD = await openShts(
+    [
+      { title: 'Location History Detail', type: "all" }
+    ])
+
+
   var files = input.files
   var placesArr = []
 
@@ -42,14 +48,8 @@ async function updateAppendSht(arr) {
           
 */
 
-  var objLHD = await openShts(
-    [
-      { title: 'Location History Detail', type: "all" }
-    ])
-
+ 
   var arrLHD = objLHD['Location History Detail'].vals
-
-  var hdrsLHD = objLHD['Location History Detail'].colHdrs
 
   const UTCDateCol = hdrs.indexOf('UTC Date')
   const arrUTCDate = arrLHD.map(x => x[UTCDateCol]);
@@ -115,7 +115,7 @@ var b = a.timelineObjects
 var homeLat = readOption('Home Lat')
 var homeLng = readOption('Home Lng')
 
-var hdrs = hdrsLHD
+var hdrs = objLHD['Location History Detail'].colHdrs
 
 var arr = []
 
