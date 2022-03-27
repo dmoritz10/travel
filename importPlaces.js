@@ -185,8 +185,9 @@ return arr
 function cleanState(addrArr) {
 
   console.log('addrArr', addrArr, addrArr.length)
-  
 
+  if (addrArr.length < 2) return ''
+  
   if (addrArr.length > 3) {
     var wrk = addrArr[2]
   } else {
