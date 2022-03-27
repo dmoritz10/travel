@@ -109,7 +109,7 @@ async function buildTrips(arr, hdrs) {
 
       if (!trip) {
 
-        var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Jan', 'Jan', ][ele[dateCol].substring(6,7)]
+        var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Jan', 'Jan', ][ele[dateCol].substring(6,7)-1]
 
         if (ele[cntryCol] == "USA") {
 
@@ -185,8 +185,9 @@ for (var i in b) {
         var addr = x.location.address ? x.location.address.replace(/\n/g, ", ") : ''
 
         var addrArr = addr.split(', ')
-        var city    = addrArr.length > 3 ? addrArr[1] : addrArr[0]
         // var state   = addrArr.length > 3 ? addrArr[2].replace(/[0-9]/g, '').replace(/-/g, '').trim() : addrArr[1].replace(/[0-9]/g, '').replace(/-/g, '').trim();
+        
+        var city = cleanCity(addrArr)
         var state   = cleanState(addrArr)
 
         var cntry   = cleanCntry(addrArr)
@@ -227,6 +228,60 @@ return arr
 
 
 }
+
+function cleanCity(arr) {
+
+  console.log('addrArr', arr, arr.length)
+
+  var addrArr = []
+
+  for (i=0;i<arr.length;i++) {
+
+    let wrk = arr[i]
+    wrk = wrk.replace(/[0-9]/g, '')
+    wrk = wrk.replace(/-/g, '')
+    wrk = wrk.trim()
+
+    if (wrk) addrArr.push(wrk)
+
+  }
+
+  console.log('addrArr', addrArr, addrArr.length)
+
+  if (addrArr.length < 2) return ''
+
+  switch (addrArr.length) {
+
+    case 6:
+      var wrk = addrArr[3]
+      break;
+    
+    case 5:
+      var wrk = addrArr[2]
+      break;
+    
+    case 4:
+      var wrk = addrArr[2]
+      break;
+
+    case 3:
+      var wrk = addrArr[1]
+      break;
+    
+    default  :
+      var wrk = addrArr[0]
+      break;
+
+  }
+
+  // wrk = wrk.replace(/[0-9]/g, '')
+  // wrk = wrk.replace(/-/g, '')
+  // wrk = wrk.trim()
+
+  return wrk
+
+}
+
 
 function cleanState(arr) {
 
