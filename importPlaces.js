@@ -140,7 +140,8 @@ for (var i in b) {
 
         var addrArr = addr.split(', ')
         var city    = addrArr.length > 3 ? addrArr[1] : addrArr[0]
-        var state   = addrArr.length > 3 ? addrArr[2].replace(/[0-9]/g, '').replace(/-/g, '').trim() : addrArr[1].replace(/[0-9]/g, '').replace(/-/g, '').trim();
+        // var state   = addrArr.length > 3 ? addrArr[2].replace(/[0-9]/g, '').replace(/-/g, '').trim() : addrArr[1].replace(/[0-9]/g, '').replace(/-/g, '').trim();
+        var state   = cleanState(addrArr)
 
         var cntry   = cleanCntry(addrArr)
 
@@ -178,6 +179,25 @@ console.log('cntr', cntr)
 
 return arr
 
+
+}
+
+function clearState(addrArr) {
+
+  console.log('addrArr', addrArr, addrArr.length)
+  
+
+  if (addrArr.length > 3) {
+    var wrk = addrArr[2]
+  } else {
+    var wrk = addrArr[1]
+  }
+
+  wrk = wrk.replace(/[0-9]/g, '')
+  wrk = wrk.replace(/-/g, '')
+  wrk = wrk.trim()
+
+  return state
 
 }
 
