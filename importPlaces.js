@@ -109,7 +109,7 @@ async function buildTrips(arr, hdrs) {
 
       if (!trip) {
 
-        var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][ele[dateCol].substring(6,7)*1-1]
+        var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][ele[dateCol].substr(5,2)*1-1]
 
         if (ele[cntryCol] == "USA") {
 
