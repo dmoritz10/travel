@@ -231,8 +231,6 @@ return arr
 
 function cleanCity(arr) {
 
-  console.log('addrArr', arr, arr.length)
-
   var addrArr = []
 
   for (i=0;i<arr.length;i++) {
@@ -282,8 +280,6 @@ function cleanCity(arr) {
 
 
 function cleanState(arr) {
-
-  console.log('addrArr', arr, arr.length)
 
   var addrArr = []
 
