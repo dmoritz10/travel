@@ -97,7 +97,7 @@ async function buildTrips(arr, hdrs) {
   var stateCol = hdrs.indexOf('State')
   var cntryCol = hdrs.indexOf('Country')
 
-  arr.sort(function(a,b) {return a[dateUTCCol]-b[dateUTCCol]});
+  arr.sort(function(a,b) {return a[dateUTCCol] < b[dateUTCCol] ? -1 : 1});
 
   var trip = null
 
