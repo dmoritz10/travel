@@ -178,6 +178,10 @@ function cleanCntry(addr) {
   var val = 'USA'
   cntry = clnCntry(syn, val, cntry)
 
+  var syn = ['United Kingdom']
+  var val = 'UK'
+  cntry = clnCntry(syn, val, cntry)
+  
   var syn = ['España', 'Espanha', 'Espanya']
   var val = 'Spain'
   cntry = clnCntry(syn, val, cntry)
