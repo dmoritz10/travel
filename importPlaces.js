@@ -186,8 +186,19 @@ function cleanState(arr) {
 
   console.log('addrArr', arr, arr.length)
 
-  var letters = /^[A-Za-z]+$/;
-  var addrArr = arr.map( ele => { if (ele.match(letters)) return ele})
+  var addrArr = []
+
+  for (i=0;i<arr.length;i++) {
+
+    let wrk = arr[i]
+    wrk = wrk.replace(/[0-9]/g, '')
+    wrk = wrk.replace(/-/g, '')
+    wrk = wrk.trim()
+
+    if (wrk) addrArr.push(wrk)
+
+  }
+
   console.log('addrArr', addrArr, addrArr.length)
 
   if (addrArr.length < 2) return ''
@@ -212,9 +223,9 @@ function cleanState(arr) {
 
   }
 
-  wrk = wrk.replace(/[0-9]/g, '')
-  wrk = wrk.replace(/-/g, '')
-  wrk = wrk.trim()
+  // wrk = wrk.replace(/[0-9]/g, '')
+  // wrk = wrk.replace(/-/g, '')
+  // wrk = wrk.trim()
 
   return wrk
 
