@@ -105,7 +105,22 @@ async function buildTrips(arr, hdrs) {
 
     if (ele[distCol] > 50) {
 
-      if (!trip) trip = ele[cntryCol] + ele[dateCol].substring(0,7)
+      if (!trip) {
+
+        var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Jan', 'Jan', ][ele[dateCol].substring(6,7)]
+
+        if (ele[cntryCol] == "USA") {
+
+          trip = ele[stateCol] + ' - ' + mo + ' ' + ele[dateCol].substring(0,3)
+
+        } else {
+
+          trip = ele[cntryCol] + ' - ' + mo + ' ' + ele[dateCol].substring(0,3)
+        
+        }
+
+      }
+
 
       arr[i][tripCol] = trip
 
