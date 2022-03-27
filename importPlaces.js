@@ -112,6 +112,9 @@ var a = JSON.parse(json)
 var DateTime = luxon.DateTime;
 var b = a.timelineObjects
 
+var homeLat = readOption('Home Lat')
+var homeLng = readOption('Home Lng')
+
 var arr = []
 
 var cntr = 0
@@ -131,7 +134,11 @@ for (var i in b) {
 
         var addr = x.location.address ? x.location.address.replace(/\n/g, ", ") : ''
 
-        var cntry = cleanCntry(addr)
+        var addrArr = addr.split(', ')
+        var city = addrArr > 3 ? addrArr[2] : addrArr[1]
+        var state = addrArr > 3 ? addrArr[3] : addrArr[2]
+
+        var cntry = cleanCntry(addrArr)
 
         var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
         var dateTimeFormatted = startDateTime.toISODate()
@@ -146,10 +153,12 @@ for (var i in b) {
         ele[hdrs.indexOf('Place Id')]           = x.location.placeId
         ele[hdrs.indexOf('Place Confidence')]   = x.placeConfidence
         ele[hdrs.indexOf('Address')]            = addr
+        ele[hdrs.indexOf('City')]               = city
+        ele[hdrs.indexOf('State')]              = state
         ele[hdrs.indexOf('Country')]            = cntry
         ele[hdrs.indexOf('Lat')]                = x.centerLatE7
         ele[hdrs.indexOf('Lng')]                = x.centerLngE7
-        ele[hdrs.indexOf('Id')]                 = x.location.placeId + x.duration.startTimestamp
+        ele[hdrs.indexOf('Distance')]           = Math.round(distance(homeLat, homeLng, x.centerLatE7/10**7, x.centerLngE7/10**7, 'M'))
         // ele[hdrs.indexOf('Info')]               = 'Info'
         ele[hdrs.indexOf('Info')]               = JSON.stringify(x)
 
@@ -168,9 +177,9 @@ return arr
 
 }
 
-function cleanCntry(addr) {
+function cleanCntry(addrArr) {
 
-  var cntry = addr ? addr.split(', ').pop() : ''
+  var cntry =addrArr.pop()
 
   const clnCntry = (mask, val, cntry) => (mask.indexOf(cntry) == -1 ? cntry : val)
 
