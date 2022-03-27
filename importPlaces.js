@@ -109,7 +109,7 @@ async function buildTrips(arr, hdrs) {
 
       if (!trip) {
 
-        var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Jan', 'Jan', ][ele[dateCol].substring(6,7)-1]
+        var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][ele[dateCol].substring(6,7)-1]
 
         if (ele[cntryCol] == "USA") {
 
@@ -246,8 +246,6 @@ function cleanCity(arr) {
 
   }
 
-  console.log('addrArr', addrArr, addrArr.length)
-
   if (addrArr.length < 2) return ''
 
   switch (addrArr.length) {
@@ -299,8 +297,6 @@ function cleanState(arr) {
     if (wrk) addrArr.push(wrk)
 
   }
-
-  console.log('addrArr', addrArr, addrArr.length)
 
   if (addrArr.length < 2) return ''
 
@@ -378,7 +374,7 @@ function cleanCntry(addrArr) {
   var val = 'Netherlands'
   cntry = clnCntry(syn, val, cntry)
 
-    return cntry
+  return cntry
   
 }
 
