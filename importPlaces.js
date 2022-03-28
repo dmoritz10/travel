@@ -225,7 +225,6 @@ console.log('cntr', cntr)
 
 return arr
 
-
 }
 
 function prepAddr(addr) {
