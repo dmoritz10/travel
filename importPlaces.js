@@ -199,6 +199,9 @@ for (var i in b) {
         var duration = DateTime.fromISO(x.duration.endTimestamp).diff(DateTime.fromISO(x.duration.startTimestamp))
         var DDHH = duration.toFormat("hh':'mm");
 
+        var lat = x.location.latitudeE7 ? x.location.latitudeE7 : x.otherCandidateLocations[0].latitudeE7
+        var lng = x.location.longitudeE7 ? x.location.longitudeE7 : x.otherCandidateLocations[0].longitudeE7
+
         ele[hdrs.indexOf('Name')]               = x.location.name ? x.location.name : x.location.placeId
         ele[hdrs.indexOf('Date')]               = dateTimeFormatted
         ele[hdrs.indexOf('UTC Date')]           = x.duration.startTimestamp
@@ -209,9 +212,9 @@ for (var i in b) {
         ele[hdrs.indexOf('City')]               = cityState.city
         ele[hdrs.indexOf('State')]              = cityState.state
         ele[hdrs.indexOf('Country')]            = cntry
-        ele[hdrs.indexOf('Lat')]                = x.location.latitudeE7
-        ele[hdrs.indexOf('Lng')]                = x.location.longitudeE7
-        ele[hdrs.indexOf('Distance')]           = Math.round(distance(homeLat, homeLng, x.location.latitudeE7/10**7, x.location.longitudeE7/10**7, 'M'))
+        ele[hdrs.indexOf('Lat')]                = lat
+        ele[hdrs.indexOf('Lng')]                = lng
+        ele[hdrs.indexOf('Distance')]           = Math.round(distance(homeLat, homeLng, lat/10**7, lng/10**7, 'M'))
         ele[hdrs.indexOf('Info')]               = JSON.stringify(x)
 
         ele[hdrs.indexOf('Cntr')]               = addrArr.length
