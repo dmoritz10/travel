@@ -211,7 +211,7 @@ for (var i in b) {
         ele[hdrs.indexOf('Country')]            = cntry
         ele[hdrs.indexOf('Lat')]                = x.location.latitudeE7
         ele[hdrs.indexOf('Lng')]                = x.location.longitudeE7
-        ele[hdrs.indexOf('Distance')]           = Math.round(distance(homeLat, homeLng, x.centerLatE7/10**7, x.centerLngE7/10**7, 'M'))
+        ele[hdrs.indexOf('Distance')]           = Math.round(distance(homeLat, homeLng, x.location.latitudeE7/10**7, x.location.longitudeE7/10**7, 'M'))
         ele[hdrs.indexOf('Info')]               = JSON.stringify(x)
 
         ele[hdrs.indexOf('Cntr')]               = addrArr.length
