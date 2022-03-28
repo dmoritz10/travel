@@ -187,11 +187,11 @@ for (var i in b) {
         var addrArr = prepAddr(addr)
         
         var cntry   = cleanCntry(addrArr)
-        var noStateCntry = ['Deutschland','France','Austria','Switzerland'].indexOf(cntry) > -1
+        var noStateCntry = ['Switzerland','Deutschland','France','Austria','Switzerland'].indexOf(cntry) > -1
 
-        var city    = cleanCity(addrArr, noStateCntry)
-        var state   = cleanState(addrArr, noStateCntry)
-
+        // var city    = cleanCity(addrArr, noStateCntry)
+        // var state   = cleanState(addrArr, noStateCntry)
+        var cityState = cleanCityState(addrArr, noStateCntry)
         var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
         var dateTimeFormatted = startDateTime.toISODate()
 
@@ -204,12 +204,12 @@ for (var i in b) {
         ele[hdrs.indexOf('Duration')]           = DDHH
         ele[hdrs.indexOf('Place Id')]           = x.location.placeId
         ele[hdrs.indexOf('Place Confidence')]   = x.placeConfidence
-        ele[hdrs.indexOf('Address')]            = addr
-        ele[hdrs.indexOf('City')]               = city
-        ele[hdrs.indexOf('State')]              = state
+        ele[hdrs.indexOf('Address')]            = prepAddr(addr)
+        ele[hdrs.indexOf('City')]               = cityState.city
+        ele[hdrs.indexOf('State')]              = cityState.state
         ele[hdrs.indexOf('Country')]            = cntry
-        ele[hdrs.indexOf('Lat')]                = x.centerLatE7
-        ele[hdrs.indexOf('Lng')]                = x.centerLngE7
+        ele[hdrs.indexOf('Lat')]                = x.location.latitudeE7
+        ele[hdrs.indexOf('Lng')]                = x.location.longitudeE7
         ele[hdrs.indexOf('Distance')]           = Math.round(distance(homeLat, homeLng, x.centerLatE7/10**7, x.centerLngE7/10**7, 'M'))
         ele[hdrs.indexOf('Info')]               = JSON.stringify(x)
 
@@ -249,35 +249,53 @@ function prepAddr(addr) {
 
 }
 
-function cleanCity(addrArr, noStateCntry) {
-
-  if (addrArr.length < 2) return ''
+function cleanCityState(addrArr, noStateCntry) {
 
   switch (addrArr.length) {
 
+    case 7:
+      var city  = noStateCntry ? addrArr[1] : addrArr[1]
+      var state = noStateCntry ? addrArr[2] : ''
+      break;
+    
     case 6:
-      var wrk = noStateCntry ? addrArr[4] : addrArr[3]
+      var city  = noStateCntry ? addrArr[4] : addrArr[3]
+      var state = noStateCntry ? addrArr[4] : ''
       break;
     
     case 5:
-      var wrk = noStateCntry ? addrArr[3] : addrArr[2]
-      break;
+      var city  = noStateCntry ? addrArr[4] : addrArr[3]
+      var state = noStateCntry ? addrArr[4] : ''
+       break;
     
     case 4:
-      var wrk = noStateCntry ? addrArr[2] : addrArr[1]
-      break;
+      var city  = noStateCntry ? addrArr[4] : addrArr[3]
+      var state = noStateCntry ? addrArr[4] : ''
+       break;
 
     case 3:
-      var wrk = noStateCntry ? addrArr[1] : addrArr[0]
-     break;
-    
-    default  :
-      var wrk = addrArr[0]
+      var city  = noStateCntry ? addrArr[4] : addrArr[3]
+      var state = noStateCntry ? addrArr[4] : ''
       break;
+    
+    case 2:
+      var city  = noStateCntry ? addrArr[4] : addrArr[3]
+      var state = noStateCntry ? addrArr[4] : ''
+      break;
+    
+    case 1:
+      var city  = noStateCntry ? addrArr[0] : addrArr[0]
+      var state = noStateCntry ? ''         : ''
+      break;
+
+    default  :
+    var city  = ''
+    var state = ''
+     break;
 
   }
 
-  return wrk
+  return {city:city, state:state}
 
 }
 
