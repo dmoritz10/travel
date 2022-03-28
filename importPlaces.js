@@ -188,7 +188,7 @@ for (var i in b) {
         
         var cntry   = cleanCntry(addrArr)
         var city    = cleanCity(addrArr)
-        var state   = cleanState(addrArr)
+        var state   = cleanState(addrArr, cntry)
 
         var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
         var dateTimeFormatted = startDateTime.toISODate()
@@ -280,7 +280,9 @@ function cleanCity(addrArr) {
 
 }
 
-function cleanState(addrArr) {
+function cleanState(addrArr, country) {
+
+  if (['Deutschland','France','Austria'].indexOf(country) > -1) return ''
 
   if (addrArr.length < 2) return ''
 
