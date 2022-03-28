@@ -239,7 +239,7 @@ function prepAddr(addr) {
 
     let wrk = arr[i]
     wrk = wrk.replace(/[0-9]/g, '')
-    wrk = wrk.replace(/-/g, '')
+    // wrk = wrk.replace(/-/g, '')
     wrk = wrk.trim()
 
     // if (wrk) addrArr.push(wrk)
@@ -254,10 +254,10 @@ function prepAddr(addr) {
 function cleanCityState(addrArr, cntry) {
 
 
-  if (cntry == "USA" || cntry == "Canada") {
+  if (cntry == "USA" || cntry == "Canada" || cntry == "Italy") {
 
-    var state = addrArr[addrArr.length - 1]
-    var city  = addrArr[addrArr.length - 2]
+    var state = addrArr.length > 1 ? addrArr[addrArr.length - 1] : ''
+    var city  = addrArr.length > 1 ? addrArr[addrArr.length - 2] : addrArr[addrArr.length - 1]
 
   } else {
 
