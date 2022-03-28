@@ -204,7 +204,7 @@ for (var i in b) {
         ele[hdrs.indexOf('Duration')]           = DDHH
         ele[hdrs.indexOf('Place Id')]           = x.location.placeId
         ele[hdrs.indexOf('Place Confidence')]   = x.placeConfidence
-        ele[hdrs.indexOf('Address')]            = prepAddr(addr).join()
+        ele[hdrs.indexOf('Address')]            = prepAddr(addr).join(' | ')
         ele[hdrs.indexOf('City')]               = cityState.city
         ele[hdrs.indexOf('State')]              = cityState.state
         ele[hdrs.indexOf('Country')]            = cntry
@@ -255,37 +255,37 @@ function cleanCityState(addrArr, noStateCntry) {
 
     case 7:
       var city  = noStateCntry ? addrArr[1] : addrArr[1]
-      var state = noStateCntry ? addrArr[2] : ''
+      var state = noStateCntry ? ''         : addrArr[2]
       break;
     
     case 6:
-      var city  = noStateCntry ? addrArr[4] : addrArr[3]
-      var state = noStateCntry ? addrArr[4] : ''
+      var city  = noStateCntry ? addrArr[5] : addrArr[4]
+      var state = noStateCntry ? ''         : addrArr[5]
       break;
     
     case 5:
       var city  = noStateCntry ? addrArr[4] : addrArr[3]
-      var state = noStateCntry ? addrArr[4] : ''
+      var state = noStateCntry ? ''         : addrArr[4]
        break;
     
     case 4:
-      var city  = noStateCntry ? addrArr[4] : addrArr[3]
-      var state = noStateCntry ? addrArr[4] : ''
+      var city  = noStateCntry ? addrArr[3] : addrArr[2]
+      var state = noStateCntry ? ''         : addrArr[3]
        break;
 
     case 3:
-      var city  = noStateCntry ? addrArr[4] : addrArr[3]
-      var state = noStateCntry ? addrArr[4] : ''
+      var city  = noStateCntry ? addrArr[2] : addrArr[1]
+      var state = noStateCntry ? ''         : addrArr[2]
       break;
     
     case 2:
-      var city  = noStateCntry ? addrArr[4] : addrArr[3]
-      var state = noStateCntry ? addrArr[4] : ''
+      var city  = noStateCntry ? addrArr[1] : addrArr[0]
+      var state = noStateCntry ? ''         : addrArr[1]
       break;
     
     case 1:
       var city  = noStateCntry ? addrArr[0] : addrArr[0]
-      var state = noStateCntry ? ''         : ''
+      var state = noStateCntry ? ''         : addrArr[0]
       break;
 
     default  :
