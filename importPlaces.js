@@ -241,7 +241,8 @@ function prepAddr(addr) {
     wrk = wrk.replace(/-/g, '')
     wrk = wrk.trim()
 
-    if (wrk) addrArr.push(wrk)
+    // if (wrk) addrArr.push(wrk)
+    addrArr.push(wrk)
 
   }
 
@@ -285,7 +286,7 @@ function cleanCityState(addrArr, noStateCntry) {
     
     case 1:
       var city  = noStateCntry ? addrArr[0] : addrArr[0]
-      var state = noStateCntry ? ''         : addrArr[0]
+      var state = noStateCntry ? ''         : ''        
       break;
 
     default  :
