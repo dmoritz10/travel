@@ -184,11 +184,11 @@ for (var i in b) {
 
         var addr = x.location.address ? x.location.address.replace(/\n/g, ", ") : ''
 
-        var addrArr = addr.split(', ')
+        var addrArr = prepAddr(addr)
         
+        var cntry   = cleanCntry(addrArr)
         var city    = cleanCity(addrArr)
         var state   = cleanState(addrArr)
-        var cntry   = cleanCntry(addrArr)
 
         var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
         var dateTimeFormatted = startDateTime.toISODate()
@@ -212,6 +212,8 @@ for (var i in b) {
         // ele[hdrs.indexOf('Info')]               = 'Info'
         ele[hdrs.indexOf('Info')]               = JSON.stringify(x)
 
+        ele[hdrs.indexOf('Cntr')]               = addrArr.length
+
         arr.push(ele)
 
         cntr++
@@ -226,7 +228,9 @@ return arr
 
 }
 
-function cleanCity(arr) {
+function prepAddr(addr) {
+
+  var arr = addr.split(', ')
 
   var addrArr = []
 
@@ -240,6 +244,14 @@ function cleanCity(arr) {
     if (wrk) addrArr.push(wrk)
 
   }
+
+  return addrArr
+
+}
+
+function cleanCity(addrArr) {
+
+  
 
   if (addrArr.length < 2) return ''
 
@@ -267,29 +279,12 @@ function cleanCity(arr) {
 
   }
 
-  // wrk = wrk.replace(/[0-9]/g, '')
-  // wrk = wrk.replace(/-/g, '')
-  // wrk = wrk.trim()
-
   return wrk
 
 }
 
 
-function cleanState(arr) {
-
-  var addrArr = []
-
-  for (i=0;i<arr.length;i++) {
-
-    let wrk = arr[i]
-    wrk = wrk.replace(/[0-9]/g, '')
-    wrk = wrk.replace(/-/g, '')
-    wrk = wrk.trim()
-
-    if (wrk) addrArr.push(wrk)
-
-  }
+function cleanState(addrArr) {
 
   if (addrArr.length < 2) return ''
 
@@ -316,10 +311,6 @@ function cleanState(arr) {
       break;
 
   }
-
-  // wrk = wrk.replace(/[0-9]/g, '')
-  // wrk = wrk.replace(/-/g, '')
-  // wrk = wrk.trim()
 
   return wrk
 
