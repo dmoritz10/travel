@@ -250,8 +250,6 @@ function prepAddr(addr) {
 
 function cleanCity(addrArr) {
 
-  
-
   if (addrArr.length < 2) return ''
 
   switch (addrArr.length) {
