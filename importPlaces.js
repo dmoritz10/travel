@@ -191,7 +191,8 @@ for (var i in b) {
 
         // var city    = cleanCity(addrArr, noStateCntry)
         // var state   = cleanState(addrArr, noStateCntry)
-        var cityState = cleanCityState(addrArr, noStateCntry)
+        // var cityState = cleanCityState(addrArr, noStateCntry)
+        var cityState = cleanCityState(addrArr, cntry)
         var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
         var dateTimeFormatted = startDateTime.toISODate()
 
@@ -250,51 +251,65 @@ function prepAddr(addr) {
 
 }
 
-function cleanCityState(addrArr, noStateCntry) {
+function cleanCityState(addrArr, cntry) {
 
-  switch (addrArr.length) {
 
-    case 7:
-      var city  = noStateCntry ? addrArr[1] : addrArr[1]
-      var state = noStateCntry ? ''         : addrArr[2]
-      break;
-    
-    case 6:
-      var city  = noStateCntry ? addrArr[5] : addrArr[4]
-      var state = noStateCntry ? ''         : addrArr[5]
-      break;
-    
-    case 5:
-      var city  = noStateCntry ? addrArr[4] : addrArr[3]
-      var state = noStateCntry ? ''         : addrArr[4]
-       break;
-    
-    case 4:
-      var city  = noStateCntry ? addrArr[3] : addrArr[2]
-      var state = noStateCntry ? ''         : addrArr[3]
-       break;
+  if (cntry == "USA" || cntry == "Canada") {
 
-    case 3:
-      var city  = noStateCntry ? addrArr[2] : addrArr[1]
-      var state = noStateCntry ? ''         : addrArr[2]
-      break;
-    
-    case 2:
-      var city  = noStateCntry ? addrArr[1] : addrArr[0]
-      var state = noStateCntry ? ''         : addrArr[1]
-      break;
-    
-    case 1:
-      var city  = noStateCntry ? addrArr[0] : addrArr[0]
-      var state = noStateCntry ? ''         : ''        
-      break;
+    var state = addrArr[addrArr.length - 1]
+    var city  = addrArr[addrArr.length - 2]
 
-    default  :
-    var city  = ''
+  } else {
+
     var state = ''
-     break;
+    var city  = addrArr[addrArr.length - 1]
+
 
   }
+
+  // switch (addrArr.length) {
+
+  //   case 7:
+  //     var city  = noStateCntry ? addrArr[1] : addrArr[1]
+  //     var state = noStateCntry ? ''         : addrArr[2]
+  //     break;
+    
+  //   case 6:
+  //     var city  = noStateCntry ? addrArr[5] : addrArr[4]
+  //     var state = noStateCntry ? ''         : addrArr[5]
+  //     break;
+    
+  //   case 5:
+  //     var city  = noStateCntry ? addrArr[4] : addrArr[3]
+  //     var state = noStateCntry ? ''         : addrArr[4]
+  //      break;
+    
+  //   case 4:
+  //     var city  = noStateCntry ? addrArr[3] : addrArr[2]
+  //     var state = noStateCntry ? ''         : addrArr[3]
+  //      break;
+
+  //   case 3:
+  //     var city  = noStateCntry ? addrArr[2] : addrArr[1]
+  //     var state = noStateCntry ? ''         : addrArr[2]
+  //     break;
+    
+  //   case 2:
+  //     var city  = noStateCntry ? addrArr[1] : addrArr[0]
+  //     var state = noStateCntry ? ''         : addrArr[1]
+  //     break;
+    
+  //   case 1:
+  //     var city  = noStateCntry ? addrArr[0] : addrArr[0]
+  //     var state = noStateCntry ? ''         : ''        
+  //     break;
+
+  //   default  :
+  //   var city  = ''
+  //   var state = ''
+  //    break;
+
+  // }
 
   return {city:city, state:state}
 
