@@ -281,7 +281,6 @@ function cleanCity(addrArr) {
 
 }
 
-
 function cleanState(addrArr, country) {
 
   if (['Deutschland','France','Austria','Switzerland'].indexOf(country) > -1) return ''
