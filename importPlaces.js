@@ -242,8 +242,8 @@ function prepAddr(addr) {
     // wrk = wrk.replace(/-/g, '')
     wrk = wrk.trim()
 
-    // if (wrk) addrArr.push(wrk)
-    addrArr.push(wrk)
+    if (wrk) addrArr.push(wrk)
+    // addrArr.push(wrk)
 
   }
 
@@ -254,7 +254,7 @@ function prepAddr(addr) {
 function cleanCityState(addrArr, cntry) {
 
 
-  if (cntry == "USA" || cntry == "Canada" || cntry == "Italy") {
+  if (cntry == "USA" || cntry == "Canada") {
 
     var state = addrArr.length > 1 ? addrArr[addrArr.length - 1] : ''
     var city  = addrArr.length > 1 ? addrArr[addrArr.length - 2] : addrArr[addrArr.length - 1]
