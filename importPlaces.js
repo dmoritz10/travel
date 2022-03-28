@@ -187,8 +187,10 @@ for (var i in b) {
         var addrArr = prepAddr(addr)
         
         var cntry   = cleanCntry(addrArr)
-        var city    = cleanCity(addrArr)
-        var state   = cleanState(addrArr, cntry)
+        var noStateCntry = ['Deutschland','France','Austria','Switzerland'].indexOf(cntry) > -1
+
+        var city    = cleanCity(addrArr, noStateCntry)
+        var state   = cleanState(addrArr, noStateCntry)
 
         var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
         var dateTimeFormatted = startDateTime.toISODate()
@@ -249,7 +251,7 @@ function prepAddr(addr) {
 
 }
 
-function cleanCity(addrArr) {
+function cleanCity(addrArr, noStateCntry) {
 
   if (addrArr.length < 2) return ''
 
@@ -281,9 +283,9 @@ function cleanCity(addrArr) {
 
 }
 
-function cleanState(addrArr, country) {
+function cleanState(addrArr, noStateCntry) {
 
-  if (['Deutschland','France','Austria','Switzerland'].indexOf(country) > -1) return ''
+  if (noStateCnty) return ''
 
   if (addrArr.length < 2) return ''
 
