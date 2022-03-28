@@ -246,21 +246,17 @@ function cleanCity(arr) {
   switch (addrArr.length) {
 
     case 6:
-      var wrk = addrArr[3]
+      var wrk = addrArr[2]
       break;
     
     case 5:
-      var wrk = addrArr[2]
-      break;
-    
-    case 4:
-      var wrk = addrArr[2]
-      break;
-
-    case 3:
       var wrk = addrArr[1]
       break;
     
+    case 4:
+      var wrk = addrArr[0]
+      break;
+
     default  :
       var wrk = addrArr[0]
       break;
