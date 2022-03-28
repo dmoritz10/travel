@@ -280,7 +280,6 @@ function cleanCity(addrArr) {
 
 }
 
-
 function cleanState(addrArr) {
 
   if (addrArr.length < 2) return ''
