@@ -258,7 +258,7 @@ function cleanCity(arr) {
       break;
 
     case 3:
-      var wrk = addrArr[1]
+      var wrk = addrArr[0]
       break;
     
     default  :
