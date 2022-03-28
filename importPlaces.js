@@ -204,7 +204,7 @@ for (var i in b) {
         ele[hdrs.indexOf('Duration')]           = DDHH
         ele[hdrs.indexOf('Place Id')]           = x.location.placeId
         ele[hdrs.indexOf('Place Confidence')]   = x.placeConfidence
-        ele[hdrs.indexOf('Address')]            = prepAddr(addr)
+        ele[hdrs.indexOf('Address')]            = prepAddr(addr).join()
         ele[hdrs.indexOf('City')]               = cityState.city
         ele[hdrs.indexOf('State')]              = cityState.state
         ele[hdrs.indexOf('Country')]            = cntry
