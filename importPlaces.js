@@ -211,7 +211,6 @@ for (var i in b) {
         ele[hdrs.indexOf('Lat')]                = x.centerLatE7
         ele[hdrs.indexOf('Lng')]                = x.centerLngE7
         ele[hdrs.indexOf('Distance')]           = Math.round(distance(homeLat, homeLng, x.centerLatE7/10**7, x.centerLngE7/10**7, 'M'))
-        // ele[hdrs.indexOf('Info')]               = 'Info'
         ele[hdrs.indexOf('Info')]               = JSON.stringify(x)
 
         ele[hdrs.indexOf('Cntr')]               = addrArr.length
@@ -257,20 +256,20 @@ function cleanCity(addrArr, noStateCntry) {
   switch (addrArr.length) {
 
     case 6:
-      var wrk = addrArr[3]
+      var wrk = noStateCntry ? addrArr[4] : addrArr[3]
       break;
     
     case 5:
-      var wrk = addrArr[2]
+      var wrk = noStateCntry ? addrArr[3] : addrArr[2]
       break;
     
     case 4:
-      var wrk = addrArr[1]
+      var wrk = noStateCntry ? addrArr[2] : addrArr[1]
       break;
 
     case 3:
-      var wrk = addrArr[0]
-      break;
+      var wrk = noStateCntry ? addrArr[1] : addrArr[0]
+     break;
     
     default  :
       var wrk = addrArr[0]
@@ -284,7 +283,7 @@ function cleanCity(addrArr, noStateCntry) {
 
 function cleanState(addrArr, noStateCntry) {
 
-  if (noStateCnty) return ''
+  if (noStateCntry) return ''
 
   if (addrArr.length < 2) return ''
 
