@@ -150,7 +150,7 @@ function calcTripName(arr, hdrs, strIdx) {
     newDate = ele[dateCol]
 
     if (ele[cntryCol] == "USA") {
-      tripArr.push(ele[cityCol])
+      tripArr.push(ele[cityCol] + ' ' + convertStateToAbbr(ele[stateCol]))
     } else {
       tripArr.push(ele[cntryCol])
     }
@@ -309,7 +309,7 @@ function prepAddr(addr) {
 function cleanCityState(addrArr, cntry) {
 
 
-  if (cntry == "USA" || cntry == "Canada") {
+  if (cntry == "USA" || cntry == "Canada" || cntry == "Mexico") {
 
     var s = addrArr.length > 1 ? addrArr[addrArr.length - 1].replace(/-/g, '').trim() : ''
     var state = convertStateToFullName(s)
