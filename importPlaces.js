@@ -309,7 +309,7 @@ function prepAddr(addr) {
 function cleanCityState(addrArr, cntry) {
 
 
-  if (cntry == "USA" || cntry == "Canada" || cntry == "Mexico") {
+  if (cntry == "USA" || cntry == "Canada" || cntry == "Mexico" || cntry == "Spain") {
 
     var s = addrArr.length > 1 ? addrArr[addrArr.length - 1].replace(/-/g, '').trim() : ''
     var state = convertStateToFullName(s)
