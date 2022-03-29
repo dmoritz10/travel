@@ -163,23 +163,23 @@ function calcTripName(arr, hdrs, strIdx) {
 
   console.log('counts', counts)
   
-  // const tripSorted = Object.keys(tripArr)
-  // .sort((key1, key2) => tripArr[key1] - tripArr[key2])
-  // .reduce((obj, key) => ({
-  //   ...obj,
-  //   [key]: tripArr[key]
-  // }), {})
+  const tripSorted = Object.keys(counts)
+  .sort((key1, key2) => counts[key1] - counts[key2])
+  .reduce((obj, key) => ({
+    ...obj,
+    [key]: counts[key]
+  }), {})
 
-  // console.log(tripSorted)
+  console.log(tripSorted)
 
   var tripName = ''
-  for (let [key, value] of Object.entries(counts)) {
+  for (let [key, value] of Object.entries(tripSorted)) {
     if (value > 5) tripName += key + ' - '
   }
 
   console.log('tripName', tripName)
 
-  if (tripName == '') tripName = Object.keys(counts)[0] + ' - '
+  if (tripName == '') tripName = Object.keys(tripSorted)[0] + ' - '
 
   var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][ele[dateCol].substr(5,2)*1-1]
 
