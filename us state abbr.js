@@ -8,7 +8,7 @@ function convertStateToAbbr(input) {
   if(strInput.length === 2) {
     // already abbr, check if it's valid
     var upStrInput = strInput.toUpperCase();
-    return _MapAbbrFullName[upStrInput]?upStrInput :undefined;
+    return input;
   }
   var strStateToFind = strInput.toLowerCase().replace(/\ /g, '');
   var foundAbbr = _MapFullNameAbbr[strStateToFind];
@@ -20,7 +20,7 @@ function convertStateToFullName(input) {
   var strInput = input.trim();
   if(strInput.length !== 2) {
     // already full name, return formatted fullname
-    return _MapAbbrFullName[convertStateToAbbr(strInput)];
+    return input;
   }
   var strStateToFind = strInput.toLowerCase().replace(/\ /g, '');
   var foundFullName = _MapAbbrFullName[strStateToFind];
