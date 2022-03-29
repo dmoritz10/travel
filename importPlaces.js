@@ -101,7 +101,7 @@ async function buildTrips(arr, hdrs) {
 
   var trip = null
 
-  for (i=i;i<arr.length;i++) {
+  for (i=0;i<arr.length;i++) {
 
     var ele = arr[i]
 
@@ -109,22 +109,13 @@ async function buildTrips(arr, hdrs) {
 
       if (!trip) {
 
-        var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][ele[dateCol].substr(5,2)*1-1]
+        var tripName = calcTripName(arr, hdrs, i)
 
-        if (ele[cntryCol] == "USA") {
-
-          trip = ele[cityCol] + ' - ' + mo + ' ' + ele[dateCol].substring(0,4)
-
-        } else {
-
-          trip = ele[cntryCol] + ' - ' + mo + ' ' + ele[dateCol].substring(0,4)
         
-        }
 
       }
 
-
-      arr[i][tripCol] = trip
+      arr[i][tripCol] = tripName
 
     } else {
 
@@ -132,9 +123,72 @@ async function buildTrips(arr, hdrs) {
 
     }
 
-
   }
 
+
+}
+
+function calcTripName(arr, hdrs, strIdx) {
+
+  var dateCol = hdrs.indexOf('Date')
+  var dateUTCCol = hdrs.indexOf('UTC Date')
+  var tripCol = hdrs.indexOf('Trip')
+  var distCol = hdrs.indexOf('Distance')
+  var cityCol = hdrs.indexOf('City')
+  var stateCol = hdrs.indexOf('State')
+  var cntryCol = hdrs.indexOf('Country')
+
+  var tripArr = []
+  var newDate = null
+
+  for (var i=strIdx;i<arr.length;i++) {
+
+    var ele = arr[i]
+
+    if (ele[distCol] <= 50) break
+
+    if (ele[dateCol] == newDate) continue
+
+    newDate = ele[dateCol]
+
+    if (ele[cntryCol] == "USA") {
+      tripArr.push(ele[cityCol])
+    } else {
+      tripArr.push(ele[cntryCol])
+    }
+  }
+
+  console.log('tripArr', tripArr)
+
+  var counts = {}
+  tripArr.forEach(el => counts[el] = 1  + (counts[el] || 0))
+
+  console.log('counts', counts)
+  
+  // const tripSorted = Object.keys(tripArr)
+  // .sort((key1, key2) => tripArr[key1] - tripArr[key2])
+  // .reduce((obj, key) => ({
+  //   ...obj,
+  //   [key]: tripArr[key]
+  // }), {})
+
+  // console.log(tripSorted)
+
+  var tripName = ''
+  for (let [key, value] of Object.entries(counts)) {
+    if (value > 5) tripName += key + ' - '
+  }
+
+  console.log('tripName', tripName)
+
+  if (tripName = '') tripName = Object.keys(counts)[0]
+
+  var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][ele[dateCol].substr(5,2)*1-1]
+
+  tripName += mo + ' ' + ele[dateCol].substring(0,4)
+  console.log('tripName1', tripName)
+
+  return tripName
 
 }
 
@@ -365,6 +419,10 @@ function cleanCntry(addrArr) {
 
   var syn = ['United Kingdom']
   var val = 'UK'
+  cntry = clnCntry(syn, val, cntry)
+  
+  var syn = ['Deutschland']
+  var val = 'Germany'
   cntry = clnCntry(syn, val, cntry)
   
   var syn = ['España', 'Espanha', 'Espanya']
