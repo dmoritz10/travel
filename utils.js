@@ -462,6 +462,8 @@ async function updateSheet(title, vals) {
   var strtRow = 0
   var currRow = 0
 
+  var promiseArr = []
+
   while (vals.length > 0) {
 
     strtRow = currRow
@@ -490,15 +492,20 @@ async function updateSheet(title, vals) {
     };
 
 
-    await gapi.client.sheets.spreadsheets.values.update(params, resource)
+    promiseArr.push(
+       gapi.client.sheets.spreadsheets.values.update(params, resource)
         .then(function (response) {
             console.log('Sheet update successful')
             console.log(response)
         }, function (reason) {
             console.error('error updating sheet "' + title + '": ' + reason.result.error.message);
             alert('error updating sheet "' + title + '": ' + reason.result.error.message);
-      });
+      })
+    )
   }
+
+  await Promise.all(promiseArr)
+  
 } 
 
 async function updateSheetRow(vals, shtIdx) {
