@@ -252,8 +252,8 @@ for (var i in b) {
         var duration = DateTime.fromISO(x.duration.endTimestamp).diff(DateTime.fromISO(x.duration.startTimestamp))
         var DDHH = duration.toFormat("hh':'mm");
 
-        var lat = x.location.latitudeE7 ? x.location.latitudeE7 : x.otherCandidateLocations[0].latitudeE7
-        var lng = x.location.longitudeE7 ? x.location.longitudeE7 : x.otherCandidateLocations[0].longitudeE7
+        var lat = x.location.latitudeE7 ? x.location.latitudeE7/10**7 : x.otherCandidateLocations[0].latitudeE7/10**7
+        var lng = x.location.longitudeE7 ? x.location.longitudeE7/10**7 : x.otherCandidateLocations[0].longitudeE7/10**7
 
         var timeZone = await fetchTimeZone(lat, lng)
 
@@ -269,7 +269,7 @@ for (var i in b) {
         ele[hdrs.indexOf('Country')]            = cntry
         ele[hdrs.indexOf('Lat')]                = lat
         ele[hdrs.indexOf('Lng')]                = lng
-        ele[hdrs.indexOf('Distance')]           = Math.round(distance(homeLat, homeLng, lat/10**7, lng/10**7, 'M'))
+        ele[hdrs.indexOf('Distance')]           = Math.round(distance(homeLat, homeLng, lat, lng, 'M'))
         ele[hdrs.indexOf('Info')]               = JSON.stringify(x)
 
         ele[hdrs.indexOf('Cntr')]               = addrArr.length
