@@ -22,7 +22,7 @@ async function fetchPlaces(input) {
 
     for (var i=0;i<files.length;i++) {  
       var fileContents = await readFile(files[i])
-      var arr = formatPlace(fileContents, objLHD)
+      var arr = await formatPlace(fileContents, objLHD)
       arr.forEach( ele => placesArr.push(ele))
     }
   } 
@@ -211,7 +211,7 @@ function readFile(file) {
   })
 }
 
-function formatPlace(json, objLHD) {
+async function formatPlace(json, objLHD) {
 
 var a = JSON.parse(json)
 
@@ -255,7 +255,7 @@ for (var i in b) {
         var lat = x.location.latitudeE7 ? x.location.latitudeE7 : x.otherCandidateLocations[0].latitudeE7
         var lng = x.location.longitudeE7 ? x.location.longitudeE7 : x.otherCandidateLocations[0].longitudeE7
 
-        var timeZone = fetchTimeZone(lat, lng)
+        var timeZone = await fetchTimeZone(lat, lng)
 
         ele[hdrs.indexOf('Name')]               = x.location.name ? x.location.name : x.location.placeId
         ele[hdrs.indexOf('Date')]               = dateTimeFormatted
@@ -287,8 +287,8 @@ return arr
 
 }
 
-async function timeZone(lat, lng) {
-  
+async function fetchTimeZone(lat, lng) {
+
   var geonames = `http://api.geonames.org/timezone?lat=${lat}&lng=${lng}&username=demo`
 
   await xhr('https://cors.bridged.cc/' + geonames)
