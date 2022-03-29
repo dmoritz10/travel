@@ -245,11 +245,6 @@ for (var i in b) {
         var addrArr = prepAddr(addr)
         
         var cntry   = cleanCntry(addrArr)
-        var noStateCntry = ['Switzerland','Deutschland','France','Austria','Switzerland'].indexOf(cntry) > -1
-
-        // var city    = cleanCity(addrArr, noStateCntry)
-        // var state   = cleanState(addrArr, noStateCntry)
-        // var cityState = cleanCityState(addrArr, noStateCntry)
         var cityState = cleanCityState(addrArr, cntry)
         var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
         var dateTimeFormatted = startDateTime.toISODate()
@@ -259,6 +254,8 @@ for (var i in b) {
 
         var lat = x.location.latitudeE7 ? x.location.latitudeE7 : x.otherCandidateLocations[0].latitudeE7
         var lng = x.location.longitudeE7 ? x.location.longitudeE7 : x.otherCandidateLocations[0].longitudeE7
+
+        var timeZone = fetchTimeZone(lat, lng)
 
         ele[hdrs.indexOf('Name')]               = x.location.name ? x.location.name : x.location.placeId
         ele[hdrs.indexOf('Date')]               = dateTimeFormatted
@@ -287,6 +284,32 @@ for (var i in b) {
 console.log('cntr', cntr)
 
 return arr
+
+}
+
+async function timeZone(lat, lng) {
+  
+  var geonames = `http://api.geonames.org/timezone?lat=${lat}&lng=${lng}&username=demo`
+
+  await xhr('https://cors.bridged.cc/' + geonames)
+    
+  .then( response => {
+    
+    console.log(response.xhr);  // full response
+
+    console.log(response.data)
+
+
+  })
+
+  .catch( error => {
+    console.log(error.status); // xhr.status
+    console.log(error.statusText); // xhr.statusText
+  });
+
+}
+
+
 
 }
 
