@@ -164,7 +164,7 @@ function calcTripName(arr, hdrs, strIdx) {
   console.log('counts', counts)
   
   const tripSorted = Object.keys(counts)
-  .sort((key1, key2) => counts[key1] - counts[key2])
+  .sort((key1, key2) => counts[key2] - counts[key1])
   .reduce((obj, key) => ({
     ...obj,
     [key]: counts[key]
