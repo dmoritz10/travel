@@ -455,30 +455,50 @@ async function updateSheet(title, vals) {
 
   await checkAuth()
 
-  var resource = {
-    "majorDimension": "ROWS",
-    "values": vals   
-  }
+  
+
+  var nbrRows = vals.length
+  var maxRows = 100
+  var strtRow = 0
+  var currRow = 0
+
+  while (vals.length > 0) {
+
+    strtRow = currRow
+
+    var chunk = vals.splice(0, maxRows)
+
+    currRow += chunk.length
+
+    console.log('strtRow', strtRow)
+    console.log('currRow', currRow)
+    console.log('chunk', chunk)
+    console.log('vals.length', vals.length)
 
 
-  var rng = calcRngA1(1, 1, vals.length, vals[0].length)
+    var resource = {
+      "majorDimension": "ROWS",
+      "values": chunk   
+    }
 
-  var params = {
-  spreadsheetId: spreadsheetId,
-  range: "'" + title + "'!" + rng,
-  valueInputOption: 'RAW'
-  };
+    var rng = calcRngA1(strtRow, 1, chunk.length, chunk[0].length)
+
+    var params = {
+    spreadsheetId: spreadsheetId,
+    range: "'" + title + "'!" + rng,
+    valueInputOption: 'RAW'
+    };
 
 
-  await gapi.client.sheets.spreadsheets.values.update(params, resource)
-      .then(function (response) {
-          console.log('Sheet update successful')
-          console.log(response)
-      }, function (reason) {
-          console.error('error updating sheet "' + title + '": ' + reason.result.error.message);
-          alert('error updating sheet "' + title + '": ' + reason.result.error.message);
+    await gapi.client.sheets.spreadsheets.values.update(params, resource)
+        .then(function (response) {
+            console.log('Sheet update successful')
+            console.log(response)
+        }, function (reason) {
+            console.error('error updating sheet "' + title + '": ' + reason.result.error.message);
+            alert('error updating sheet "' + title + '": ' + reason.result.error.message);
       });
-
+  }
 } 
 
 async function updateSheetRow(vals, shtIdx) {

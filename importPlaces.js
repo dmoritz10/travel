@@ -174,7 +174,7 @@ function calcTripName(arr, hdrs, strIdx) {
 
   var tripName = ''
   for (let [key, value] of Object.entries(tripSorted)) {
-    if (value > 2) tripName += key + ' - '
+    if (value >= 2) tripName += key + ' - '
   }
 
   console.log('tripName', tripName)
