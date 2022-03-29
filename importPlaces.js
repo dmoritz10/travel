@@ -109,13 +109,11 @@ async function buildTrips(arr, hdrs) {
 
       if (!trip) {
 
-        var tripName = calcTripName(arr, hdrs, i)
-
-        
+        var trip = calcTripName(arr, hdrs, i)
 
       }
 
-      arr[i][tripCol] = tripName
+      arr[i][tripCol] = trip
 
     } else {
 
@@ -181,7 +179,7 @@ function calcTripName(arr, hdrs, strIdx) {
 
   console.log('tripName', tripName)
 
-  if (tripName == '') tripName = Object.keys(counts)[0]
+  if (tripName == '') tripName = Object.keys(counts)[0] + ' - '
 
   var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][ele[dateCol].substr(5,2)*1-1]
 
