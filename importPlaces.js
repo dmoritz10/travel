@@ -80,7 +80,13 @@ async function updateAppendSht(arr, objLHD) {
 
   var shtArr = [hdrs].concat(arrLHD)
 
+  console.time('updateSheet')
+
   await updateSheet('Location History Detail', shtArr)
+
+  console.timeEnd('updateSheet')
+
+  console.log('Update complete')
 
 }
 
