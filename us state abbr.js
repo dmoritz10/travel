@@ -22,7 +22,7 @@ function convertStateToFullName(input) {
     // already full name, return formatted fullname
     return input;
   }
-  var strStateToFind = strInput.toLowerCase().replace(/\ /g, '');
+  var strStateToFind = strInput.toUpperCase().replace(/\ /g, '');
   var foundFullName = _MapAbbrFullName[strStateToFind];
   return foundFullName ;
 }
