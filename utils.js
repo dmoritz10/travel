@@ -458,7 +458,7 @@ async function updateSheet(title, vals) {
   
 
   var nbrRows = vals.length
-  var maxRows = 100
+  var maxRows = 10000
   var strtRow = 0
   var currRow = 0
 
@@ -481,7 +481,7 @@ async function updateSheet(title, vals) {
       "values": chunk   
     }
 
-    var rng = calcRngA1(strtRow, 1, chunk.length, chunk[0].length)
+    var rng = calcRngA1(strtRow + 1, 1, chunk.length, chunk[0].length)
 
     var params = {
     spreadsheetId: spreadsheetId,
