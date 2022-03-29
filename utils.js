@@ -458,7 +458,7 @@ async function updateSheet(title, vals) {
   
 
   var nbrRows = vals.length
-  var maxRows = 10000
+  var maxRows = 1000
   var strtRow = 0
   var currRow = 0
 
@@ -505,7 +505,7 @@ async function updateSheet(title, vals) {
   }
 
   await Promise.all(promiseArr)
-  
+
 } 
 
 async function updateSheetRow(vals, shtIdx) {
