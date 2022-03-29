@@ -259,7 +259,8 @@ function cleanCityState(addrArr, cntry) {
 
   if (cntry == "USA" || cntry == "Canada") {
 
-    var state = addrArr.length > 1 ? addrArr[addrArr.length - 1].replace(/-/g, '').trim() : ''
+    var s = addrArr.length > 1 ? addrArr[addrArr.length - 1].replace(/-/g, '').trim() : ''
+    var state = convertStateToFullName(s)
     var city  = addrArr.length > 1 ? addrArr[addrArr.length - 2] : addrArr[addrArr.length - 1]
 
   } else {
