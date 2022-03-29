@@ -289,7 +289,7 @@ return arr
 
 async function fetchTimeZone(lat, lng) {
 
-  var geonames = `http://api.geonames.org/timezoneJSON?lat=${lat}&lng=${lng}&username=demo`
+  var geonames = `http://api.geonames.org/timezoneJSON?lat=${lat}&lng=${lng}&username=dmoritz10`
 
   await xhr('https://cors.bridged.cc/' + geonames)
     
