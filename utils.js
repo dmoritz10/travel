@@ -458,7 +458,7 @@ async function updateSheet(title, vals) {
   
 
   var nbrRows = vals.length
-  var maxRows = 1000
+  var maxRows = 5000
   var strtRow = 0
   var currRow = 0
 
