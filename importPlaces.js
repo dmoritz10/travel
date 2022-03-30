@@ -135,7 +135,6 @@ async function buildTrips(arr, hdrs) {
 
   }
 
-
 }
 
 function calcTripName(arr, hdrs, strIdx) {
@@ -182,8 +181,6 @@ function calcTripName(arr, hdrs, strIdx) {
     [key]: counts[key]
   }), {})
 
-  console.log(tripSorted)
-
   var tripName = ''
   for (let [key, value] of Object.entries(tripSorted)) {
     if (value >= 2) tripName += key + ' - '
@@ -192,8 +189,6 @@ function calcTripName(arr, hdrs, strIdx) {
   console.log('tripName', tripName)
 
   if (tripName == '') tripName = Object.keys(tripSorted)[0] + ' - '
-
-  console.log('newDate', newDate)
 
   var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][newDate.substr(5,2)*1-1]
 
@@ -284,7 +279,7 @@ for (var i in b) {
 
         ele[hdrs.indexOf('Cntr')]               = addrArr.length
 
-        arr.push(ele)
+        if (cityState.city) arr.push(ele)    // ignor entries that can't be assigned to a city
 
         cntr++
     }
@@ -304,19 +299,10 @@ async function calcLocalTime(city, startTimestamp, lat, lng, cityXref, DateTime)
 
   var idx = cityXref.findIndex(arr => arr.includes(city));
 
-  console.log('cityXref', [...cityXref])
-  console.log('idx', idx)
-
   if (idx == -1) var timezoneId = await buildCityXref(city, lat, lng, cityXref)
   else           var timezoneId = cityXref[idx][1]
-  console.log('timezoneId', timezoneId)
-  console.log('startTimestamp', startTimestamp)
-
-  // var st = startTimestamp.substr(0,19) 
-  var st = startTimestamp
-  console.log('st', st)
   
-  var localTime = DateTime.fromISO(`${st}`, { zone: `${timezoneId}` });
+  var localTime = DateTime.fromISO(`${startTimestamp}`, { zone: `${timezoneId}` });
 
   console.log('localTime', localTime)
 
