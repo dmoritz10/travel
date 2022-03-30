@@ -258,7 +258,7 @@ for (var i in b) {
         var lat = x.location.latitudeE7 ? x.location.latitudeE7/10**7 : x.otherCandidateLocations[0].latitudeE7/10**7
         var lng = x.location.longitudeE7 ? x.location.longitudeE7/10**7 : x.otherCandidateLocations[0].longitudeE7/10**7
 
-        var localTime = await calcLocalTime(cityState.city, x.duration.startTimestamp, lat, lng, objLHD['Location History Detail'], DateTime)
+        var localTime = await calcLocalTime(cityState.city, x.duration.startTimestamp, lat, lng, objLHD['City Timezone Xref'], DateTime)
         // var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
         // var dateTimeFormatted = startDateTime.toISODate()
 
