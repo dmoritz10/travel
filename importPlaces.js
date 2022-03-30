@@ -263,8 +263,8 @@ for (var i in b) {
 
  
         ele[hdrs.indexOf('Name')]               = x.location.name ? x.location.name : x.location.placeId
-        // ele[hdrs.indexOf('Date')]               = dateTimeFormatted
-        ele[hdrs.indexOf('Date')]               = localTime
+        ele[hdrs.indexOf('Date')]               = dateTimeFormatted
+        // ele[hdrs.indexOf('Date')]               = localTime
         ele[hdrs.indexOf('UTC Date')]           = x.duration.startTimestamp
         ele[hdrs.indexOf('Duration')]           = DDHH
         ele[hdrs.indexOf('Place Id')]           = x.location.placeId
