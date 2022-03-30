@@ -11,7 +11,7 @@ async function fetchPlaces(input) {
 
   var objLHD = await openShts(
     [
-      { title: 'Location History Detail', type: "all" }
+      { title: 'Location History Detail', type: "all" },
       { title: 'City Timezone Xref', type: all}
     ])
 
