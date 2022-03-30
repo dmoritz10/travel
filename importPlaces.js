@@ -314,6 +314,9 @@ async function calcLocalTime(city, startTimestamp, lat, lng, cityXref, DateTime)
 
   var st = startTimestamp.substr(0,19) 
   console.log('st', st)
+
+  var overrideZone = DateTime.fromISO("2017-05-15T09:10:23", { zone: "Europe/Paris" });
+  console.log('overrideZone', overrideZone)
   
   var localTime = DateTime.fromISO(`${st}, { zone: ${timezoneId} }`);
 
