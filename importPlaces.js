@@ -254,8 +254,9 @@ for (var i in b) {
         var lng = x.location.longitudeE7 ? x.location.longitudeE7/10**7 : x.otherCandidateLocations[0].longitudeE7/10**7
 
         var localTime = await calcLocalTime(cityState.city, x.duration.startTimestamp, lat, lng, objLHD['City Timezone Xref'], DateTime)
-        // var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
-        // var dateTimeFormatted = startDateTime.toISODate()
+        var dateTimeFormatted = localTime.toLocaleString(DateTime.DATETIME_SHORT)
+
+        
 
         var duration = DateTime.fromISO(x.duration.endTimestamp).diff(DateTime.fromISO(x.duration.startTimestamp))
         var DDHH = duration.toFormat("hh':'mm");
@@ -306,7 +307,8 @@ async function calcLocalTime(city, startTimestamp, lat, lng, cityXref, DateTime)
 
   console.log('localTime', localTime)
 
-  return localTime.toString()
+  // return localTime.toString()
+  return localTime
 
 }
 
@@ -329,8 +331,6 @@ async function buildCityXref(city, lat, lng, cityXref) {
     console.log(error.status); // xhr.status
     console.log(error.statusText); // xhr.statusText
   });
-
-  // var newCity = await updateSheetRow([city, geoTimezoneId], -1) // this will apend
 
   cityXref.push([city, geoTimezoneId])
 
@@ -423,40 +423,6 @@ function cleanCityState(addrArr, cntry) {
   // }
 
   return {city:city, state:state}
-
-}
-
-function cleanState(addrArr, noStateCntry) {
-
-  if (noStateCntry) return ''
-
-  if (addrArr.length < 2) return ''
-
-  switch (addrArr.length) {
-
-    case 6:
-      var wrk = addrArr[4]
-      break;
-    
-    case 5:
-      var wrk = addrArr[3]
-      break;
-    
-    case 4:
-      var wrk = addrArr[2]
-      break;
-
-    case 3:
-      var wrk = addrArr[1]
-      break;
-    
-    default  :
-      var wrk = addrArr[0]
-      break;
-
-  }
-
-  return wrk
 
 }
 
