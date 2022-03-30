@@ -12,6 +12,7 @@ async function fetchPlaces(input) {
   var objLHD = await openShts(
     [
       { title: 'Location History Detail', type: "all" }
+      { title: 'City Timezone Xref', type: all}
     ])
 
 
@@ -27,9 +28,13 @@ async function fetchPlaces(input) {
     }
   } 
 
-  updateAppendSht(placesArr, objLHD)
+  await updateSheet('City Timezone Xref', objLHD['City Timezone Xref'].vals)
+
+  await updateAppendSht(placesArr, objLHD)
 
 }
+
+
 
 async function updateAppendSht(arr, objLHD) {
 
@@ -246,19 +251,23 @@ for (var i in b) {
         
         var cntry   = cleanCntry(addrArr)
         var cityState = cleanCityState(addrArr, cntry)
-        var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
-        var dateTimeFormatted = startDateTime.toISODate()
+        
+        var lat = x.location.latitudeE7 ? x.location.latitudeE7/10**7 : x.otherCandidateLocations[0].latitudeE7/10**7
+        var lng = x.location.longitudeE7 ? x.location.longitudeE7/10**7 : x.otherCandidateLocations[0].longitudeE7/10**7
+
+        var localTime = await calcLocalTime(cityState.city, x.duration.startTimestamp, lat, lng, objLHD['Location History Detail'], DateTime)
+        // var startDateTime = DateTime.fromISO(x.duration.startTimestamp)
+        // var dateTimeFormatted = startDateTime.toISODate()
 
         var duration = DateTime.fromISO(x.duration.endTimestamp).diff(DateTime.fromISO(x.duration.startTimestamp))
         var DDHH = duration.toFormat("hh':'mm");
 
-        var lat = x.location.latitudeE7 ? x.location.latitudeE7/10**7 : x.otherCandidateLocations[0].latitudeE7/10**7
-        var lng = x.location.longitudeE7 ? x.location.longitudeE7/10**7 : x.otherCandidateLocations[0].longitudeE7/10**7
-
+ 
         var timeZone = await fetchTimeZone(lat, lng)
 
         ele[hdrs.indexOf('Name')]               = x.location.name ? x.location.name : x.location.placeId
-        ele[hdrs.indexOf('Date')]               = dateTimeFormatted
+        // ele[hdrs.indexOf('Date')]               = dateTimeFormatted
+        ele[hdrs.indexOf('Date')]               = localTime
         ele[hdrs.indexOf('UTC Date')]           = x.duration.startTimestamp
         ele[hdrs.indexOf('Duration')]           = DDHH
         ele[hdrs.indexOf('Place Id')]           = x.location.placeId
@@ -287,18 +296,34 @@ return arr
 
 }
 
-async function fetchTimeZone(lat, lng) {
+async function calcLocalTime(city, startTimestamp, lat, lng, cityXref, DateTime) {
+
+  var hdrs      = cityXref.colHdrs
+  var cityXref  = cityXref.vals
+
+  var idx = cityXref.findIndex(arr => arr.includes(city));
+  if (idx = -1) var idx = buildCityXref(city, lat, lng, cityXref)
+
+  var timezoneId = cityXref[idx][hdrs.indexOf('timezoneId')]
+
+  var localTime = DateTime.fromISO(`${startTimestamp}, { zone: ${timezoneId} }`);
+
+  return localTime
+
+}
+
+async function buildCityXref(city, lat, lng, cityXref) {
 
   var geonames = `http://api.geonames.org/timezoneJSON?lat=${lat}&lng=${lng}&username=dmoritz10`
 
-  await xhr('https://cors.bridged.cc/' + geonames)
+  var geoTimezoneId = await xhr('https://cors.bridged.cc/' + geonames)
     
   .then( response => {
     
     console.log(response.xhr);  // full response
-
     console.log(response.data)
 
+    return response.data.timezoneId
 
   })
 
@@ -306,6 +331,12 @@ async function fetchTimeZone(lat, lng) {
     console.log(error.status); // xhr.status
     console.log(error.statusText); // xhr.statusText
   });
+
+  // var newCity = await updateSheetRow([city, geoTimezoneId], -1) // this will apend
+
+  cityXref.push(city, geoTimezoneId)
+
+  return geoTimezoneId
 
 }
 
