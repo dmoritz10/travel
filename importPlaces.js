@@ -182,18 +182,21 @@ function calcTripName(arr, hdrs, strIdx) {
     if (value >= 2) tripName += key + ' - '
   }
 
-  console.log('tripName', tripName)
-
   if (tripName == '') tripName = Object.keys(tripSorted)[0] + ' - '
 
-  var dtArr = newDate.split("/")
-
-  var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][dtArr[0]*1-1]
-
-  tripName += mo + ' ' + dtArr[2].substring(0,4)
+  tripName += tripMonth(newDate)
+  
   console.log('tripName1', tripName)
 
   return tripName
+
+}
+
+function tripMonth(dt) {
+
+  const moAbbr = (moNbr)  => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][moNbr*1-1]
+  var dtArr = dt.split("/")
+  return moAbbr(dt[0]*1-1) + ' ' + dt[2].substring(0,4)
 
 }
 
