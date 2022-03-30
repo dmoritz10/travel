@@ -304,11 +304,11 @@ async function calcLocalTime(city, startTimestamp, lat, lng, cityXref, DateTime)
 
   var idx = cityXref.findIndex(arr => arr.includes(city));
 
-  console.log('cityXref', cityXref)
+  console.log('cityXref', [...cityXref])
   console.log('idx', idx)
 
   if (idx == -1) var timezoneId = await buildCityXref(city, lat, lng, cityXref)
-  else           var timezoneId = cityXref[idx][hdrs.indexOf('timezoneId')]
+  else           var timezoneId = cityXref[idx][1]
   console.log('timezoneId', timezoneId)
   
 
