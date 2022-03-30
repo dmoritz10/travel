@@ -312,17 +312,15 @@ async function calcLocalTime(city, startTimestamp, lat, lng, cityXref, DateTime)
   console.log('timezoneId', timezoneId)
   console.log('startTimestamp', startTimestamp)
 
-  var st = startTimestamp.substr(0,19) 
+  // var st = startTimestamp.substr(0,19) 
+  var st = startTimestamp
   console.log('st', st)
-var zone = "Europe/Paris"
-  var overrideZone = DateTime.fromISO("2017-05-15T09:10:23", { zone: `${zone}` });
-  console.log('overrideZone', overrideZone)
   
   var localTime = DateTime.fromISO(`${st}`, { zone: `${timezoneId}` });
 
   console.log('localTime', localTime)
 
-  return localTime
+  return localTime.toString()
 
 }
 
