@@ -196,7 +196,7 @@ function tripMonth(dt) {
 
   const moAbbr = (moNbr)  => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][moNbr*1-1]
   var dtArr = dt.split("/")
-  return moAbbr(dt[0]*1-1) + ' ' + dt[2].substring(0,4)
+  return moAbbr(dtArr[0]*1-1) + ' ' + dtArr[2].substring(0,4)
 
 }
 
