@@ -278,8 +278,7 @@ for (var i in b) {
         ele[hdrs.indexOf('Lng')]                = lng
         ele[hdrs.indexOf('Distance')]           = Math.round(distance(homeLat, homeLng, lat, lng, 'M'))
         ele[hdrs.indexOf('Info')]               = JSON.stringify(x)
-
-        ele[hdrs.indexOf('Cntr')]               = addrArr.length
+        ele[hdrs.indexOf('Month')]               = tripMonth(dateTimeFormatted)
 
         if (cityState.city) arr.push(ele)    // ignor entries that can't be assigned to a city
 
