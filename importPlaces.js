@@ -311,8 +311,11 @@ async function calcLocalTime(city, startTimestamp, lat, lng, cityXref, DateTime)
   else           var timezoneId = cityXref[idx][1]
   console.log('timezoneId', timezoneId)
   console.log('startTimestamp', startTimestamp)
+
+  var st = startTimestamp.substr(0,19) + 'Z'
+  console.log('st', st)
   
-  var localTime = DateTime.fromISO(`${startTimestamp}, { zone: '${timezoneId}' }`);
+  var localTime = DateTime.fromISO(`${st}, { zone: '${timezoneId}' }`);
 
   console.log('localTime', localTime)
 
