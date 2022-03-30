@@ -192,12 +192,11 @@ function calcTripName(arr, hdrs, strIdx) {
 
   if (tripName == '') tripName = Object.keys(tripSorted)[0] + ' - '
 
-  console.log('ele', ele)
-  console.log('ele[dateCol', ele[dateCol])
+  console.log('newDate', newDate)
 
-  var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][ele[dateCol].substr(5,2)*1-1]
+  var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][newDate.substr(5,2)*1-1]
 
-  tripName += mo + ' ' + ele[dateCol].substring(0,4)
+  tripName += mo + ' ' + newDate.substring(0,4)
   console.log('tripName1', tripName)
 
   return tripName
