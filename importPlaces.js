@@ -263,8 +263,6 @@ for (var i in b) {
         var DDHH = duration.toFormat("hh':'mm");
 
  
-        var timeZone = await fetchTimeZone(lat, lng)
-
         ele[hdrs.indexOf('Name')]               = x.location.name ? x.location.name : x.location.placeId
         // ele[hdrs.indexOf('Date')]               = dateTimeFormatted
         ele[hdrs.indexOf('Date')]               = localTime
