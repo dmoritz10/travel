@@ -340,7 +340,7 @@ async function buildCityXref(city, lat, lng, cityXref) {
 
   // var newCity = await updateSheetRow([city, geoTimezoneId], -1) // this will apend
 
-  cityXref.push(city, geoTimezoneId)
+  cityXref.push([city, geoTimezoneId])
 
   return geoTimezoneId
 
