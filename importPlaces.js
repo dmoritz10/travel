@@ -302,9 +302,9 @@ async function calcLocalTime(city, startTimestamp, lat, lng, cityXref, DateTime)
   var cityXref  = cityXref.vals
 
   var idx = cityXref.findIndex(arr => arr.includes(city));
-  if (idx = -1) var idx = buildCityXref(city, lat, lng, cityXref)
-
-  var timezoneId = cityXref[idx][hdrs.indexOf('timezoneId')]
+  if (idx == -1) var timezoneId = buildCityXref(city, lat, lng, cityXref)
+  else           var timezoneId = cityXref[idx][hdrs.indexOf('timezoneId')]
+  
 
   var localTime = DateTime.fromISO(`${startTimestamp}, { zone: ${timezoneId} }`);
 
