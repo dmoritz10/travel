@@ -190,7 +190,7 @@ function calcTripName(arr, hdrs, strIdx) {
 
   if (tripName == '') tripName = Object.keys(tripSorted)[0] + ' - '
 
-  var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][newDate.substr(5,2)*1-1]
+  var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][newDate.split("/")[0]*1-1]
 
   tripName += mo + ' ' + newDate.substring(0,4)
   console.log('tripName1', tripName)
@@ -304,8 +304,6 @@ async function calcLocalTime(city, startTimestamp, lat, lng, cityXref, DateTime)
   else           var timezoneId = cityXref[idx][1]
   
   var localTime = DateTime.fromISO(`${startTimestamp}`, { zone: `${timezoneId}` });
-
-  console.log('localTime', localTime)
 
   // return localTime.toString()
   return localTime
