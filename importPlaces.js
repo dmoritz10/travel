@@ -190,7 +190,7 @@ function calcTripName(arr, hdrs, strIdx) {
 
   var mo = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][dtArr[0]*1-1]
 
-  tripName += mo + ' ' + dtArr[2]
+  tripName += mo + ' ' + dtArr[2].substring(0,4)
   console.log('tripName1', tripName)
 
   return tripName
