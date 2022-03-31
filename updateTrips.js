@@ -73,13 +73,13 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
   var dateUTCCol  = hdrsLHD.indexOf('UTC Date')
 
   var trp = []
-  var ele = vals[strIdx]
+  var ele = valsLHD[strIdx]
 
-  trp[hdrsTRP.indexOf('Trip')]           = ele[hdrsTRP.indexOf('Trip')]
-  trp[hdrsTRP.indexOf('Month')]          = ele[hdrsTRP.indexOf('Month')]
-  trp[hdrsTRP.indexOf('Destinations')]   = ele[hdrsTRP.indexOf('Trip')].split(' - ')[0]
+  trp[hdrsTRP.indexOf('Trip')]           = ele[hdrsLHD.indexOf('Trip')]
+  trp[hdrsTRP.indexOf('Month')]          = ele[hdrsLHD.indexOf('Month')]
+  trp[hdrsTRP.indexOf('Destinations')]   = ele[hdrsLHD.indexOf('Trip')].split(' - ')[0]
   trp[hdrsTRP.indexOf('Type')]           = ''
-  trp[hdrsTRP.indexOf('Start Date')]     = ele[hdrsTRP.indexOf('Date')].split(',')[0]
+  trp[hdrsTRP.indexOf('Start Date')]     = ele[hdrsLHD.indexOf('Date')].split(',')[0]
   trp[hdrsTRP.indexOf('Source')]         = 'LHD'
 
   var destArr = []
@@ -88,14 +88,14 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
     var dest = valsLHD[i]
 
-    if (ele[hdrsTRP.indexOf('Trip')]) {
+    if (dest[hdrsLHD.indexOf('Trip')]) {
 
       destArr.push({
 
-        name:   ele[hdrsTRP.indexOf('Name')],
-        date:   ele[hdrsTRP.indexOf('Date')].split(',')[0],
-        city:   ele[hdrsTRP.indexOf('City')],
-        state:  ele[hdrsTRP.indexOf('Country')] == "USA" ? ele[hdrsTRP.indexOf('State')] : ele[hdrsTRP.indexOf('Country')]
+        name:   dest[hdrsLHD.indexOf('Name')],
+        date:   dest[hdrsLHD.indexOf('Date')].split(',')[0],
+        city:   dest[hdrsLHD.indexOf('City')],
+        state:  dest[hdrsLHD.indexOf('Country')] == "USA" ? dest[hdrsLHD.indexOf('State')] : dest[hdrsLHD.indexOf('Country')]
 
       })
 
