@@ -123,7 +123,6 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
 function calcNbrDays(str, end) {
 
-  var DateTime = luxon.DateTime;
 
   var strDate = DateTime.fromJSDate(new Date(str))
   var endDate = DateTime.fromJSDate(new Date(end))
