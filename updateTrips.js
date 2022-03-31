@@ -27,11 +27,13 @@ async function updateTrips() {
           var ele = valsLHD[i]
 
           if (ele[LHDTripCol])
-            var trip = buildTrip(i, valsLHD, hdrsLHD, valsTRP, hdrsTRP)
+            {var trip = buildTrip(i, valsLHD, hdrsLHD, valsTRP, hdrsTRP)
+            i = trip.endRow + 1
+            console.log('trip', i, trip)}
           else
             continue
 
-          i = trip.endRow + 1
+          console.log('i', i)
       
           let row = colTRPTrips.indexOf(ele[LHDTripCol])
           
