@@ -1,4 +1,4 @@
-function updateTripsHtml() {
+function updateTrips() {
 
     var objShts = await openShts(
         [
@@ -21,7 +21,7 @@ function updateTripsHtml() {
         var updateCntr = 0
         var appendCntr = 0
       
-        
+
         for (var i = 0;i<valsLHD.length;i++) {
       
           var ele = valsLHD[i]
