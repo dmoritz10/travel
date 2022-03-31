@@ -129,6 +129,6 @@ function calcNbrDays(str, end) {
 
   const diff = strDate.diff(endDate, ["days"])
 
-  return diff
+  return diff.toString()*1 + 1
 
 }
