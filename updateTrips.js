@@ -97,14 +97,20 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
       })
 
+    } else {
+
+      trp[hdrsTRP.indexOf('End Date')]              = dest[hdrsLHD.indexOf('Date')].split(',')[0]
+      trp[hdrsTRP.indexOf('Destination Detail')]    = JSON.stringify(destArr)
+      
+      return {val: trp, endIdx: i-1}
+
     }
 
   }
 
   trp[hdrsTRP.indexOf('End Date')]              = dest[hdrsLHD.indexOf('Date')].split(',')[0]
   trp[hdrsTRP.indexOf('Destination Detail')]    = JSON.stringify(destArr)
-  
-
+      
   return {val: trp, endIdx: i-1}
 
 }
