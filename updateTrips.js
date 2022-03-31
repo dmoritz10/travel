@@ -28,7 +28,7 @@ async function updateTrips() {
 
           if (ele[LHDTripCol])
             {var trip = buildTrip(i, valsLHD, hdrsLHD, valsTRP, hdrsTRP)
-            i = trip.endRow + 1
+            i = trip.endRow*1 + 1
             console.log('trip', i, trip)}
           else
             continue
@@ -103,7 +103,7 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
       trp[hdrsTRP.indexOf('End Date')]              = dest[hdrsLHD.indexOf('Date')].split(',')[0]
       trp[hdrsTRP.indexOf('Destination Detail')]    = JSON.stringify(destArr)
-      
+      console.log('inside', i)
       return {val: trp, endIdx: i-1}
 
     }
@@ -112,6 +112,7 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
   trp[hdrsTRP.indexOf('End Date')]              = dest[hdrsLHD.indexOf('Date')].split(',')[0]
   trp[hdrsTRP.indexOf('Destination Detail')]    = JSON.stringify(destArr)
+  console.log('outside', i)
       
   return {val: trp, endIdx: i-1}
 
