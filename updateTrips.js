@@ -1,7 +1,5 @@
 async function updateTrips() {
 
-    var DateTime = luxon.DateTime;
-
     var objShts = await openShts(
         [
           { title: 'Location History Detail', type: 'all' },
@@ -124,6 +122,8 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
 
 function calcNbrDays(str, end) {
+
+  var DateTime = luxon.DateTime;
 
   var strDate = DateTime.fromJSDate(new Date(str))
   var endDate = DateTime.fromJSDate(new Date(end))
