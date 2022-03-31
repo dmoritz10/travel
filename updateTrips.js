@@ -127,8 +127,10 @@ function calcNbrDays(str, end) {
   var strDate = DateTime.fromJSDate(new Date(str))
   var endDate = DateTime.fromJSDate(new Date(end))
 
-  const diff = strDate.diff(endDate, ["days"])
+  const diff = strDate.diff(endDate, ["days"]).days
 
-  return diff.toString()*1 + 1
+  console.log('diff', diff)
+
+  return diff*1 + 1
 
 }
