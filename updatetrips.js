@@ -1,4 +1,4 @@
-function updateTrips() {
+function updateTripsHtml() {
 
     var objShts = await openShts(
         [
