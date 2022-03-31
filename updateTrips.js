@@ -103,7 +103,7 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
   }
 
-  trp[hdrsTRP.indexOf('End Date')]              = trpDtl[hdrsTRP.indexOf('Date')].split(',')[0]
+  trp[hdrsTRP.indexOf('End Date')]              = dest[hdrsLHD.indexOf('Date')].split(',')[0]
   trp[hdrsTRP.indexOf('Destination Detail')]    = JSON.stringify(destArr)
   
 
