@@ -28,7 +28,7 @@ async function updateTrips() {
 
           if (ele[LHDTripCol])
             {var trip = buildTrip(i, valsLHD, hdrsLHD, valsTRP, hdrsTRP)
-            i = trip.endRow*1 + 1
+            i = trip.endIdx*1 + 1
             console.log('trip', i, trip)}
           else
             continue
