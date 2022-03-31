@@ -265,7 +265,6 @@ for (var i in b) {
  
         ele[hdrs.indexOf('Name')]               = x.location.name ? x.location.name : x.location.placeId
         ele[hdrs.indexOf('Date')]               = dateTimeFormatted
-        // ele[hdrs.indexOf('Date')]               = localTime
         ele[hdrs.indexOf('UTC Date')]           = x.duration.startTimestamp
         ele[hdrs.indexOf('Duration')]           = DDHH
         ele[hdrs.indexOf('Place Id')]           = x.location.placeId
@@ -278,9 +277,9 @@ for (var i in b) {
         ele[hdrs.indexOf('Lng')]                = lng
         ele[hdrs.indexOf('Distance')]           = Math.round(distance(homeLat, homeLng, lat, lng, 'M'))
         ele[hdrs.indexOf('Info')]               = JSON.stringify(x)
-        ele[hdrs.indexOf('Month')]               = tripMonth(dateTimeFormatted)
+        ele[hdrs.indexOf('Month')]              = tripMonth(dateTimeFormatted)
 
-        if (cityState.city) arr.push(ele)    // ignor entries that can't be assigned to a city
+        arr.push(ele)   
 
         cntr++
     }
