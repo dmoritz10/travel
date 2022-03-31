@@ -1,4 +1,4 @@
-function updateTrips() {
+async function updateTrips() {
 
     var objShts = await openShts(
         [
