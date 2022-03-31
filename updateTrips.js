@@ -101,8 +101,13 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
     } else {
 
+
+
+      DateTime.fromJSDate
+
       trp[hdrsTRP.indexOf('End Date')]              = dest[hdrsLHD.indexOf('Date')].split(',')[0]
       trp[hdrsTRP.indexOf('Destination Detail')]    = JSON.stringify(destArr)
+      trp[hdrsTRP.indexOf('Nbr Days')]              = calcNbrDays(trp[hdrsTRP.indexOf('Start Date')], trp[hdrsTRP.indexOf('End Date')])
       console.log('inside', i)
       return {val: trp, endIdx: i-1}
 
@@ -112,8 +117,21 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
   trp[hdrsTRP.indexOf('End Date')]              = dest[hdrsLHD.indexOf('Date')].split(',')[0]
   trp[hdrsTRP.indexOf('Destination Detail')]    = JSON.stringify(destArr)
+  trp[hdrsTRP.indexOf('Nbr Days')]              = calcNbrDays(trp[hdrsTRP.indexOf('Start Date')], trp[hdrsTRP.indexOf('End Date')])
   console.log('outside', i)
       
   return {val: trp, endIdx: i-1}
+
+}
+
+
+function calcNbrDays(str, end) {
+
+  var strDate = DateTime.fromJSDate(new Date(str))
+  var endDate = DateTime.fromJSDate(new Date(end))
+
+  const diff = strDate.diff(endDate, ["days"])
+
+  return diff
 
 }
