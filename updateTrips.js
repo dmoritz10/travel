@@ -4,7 +4,7 @@ async function updateTrips() {
         [
           { title: 'Location History Detail', type: 'all' },
           { title: 'Trips', type: 'all'}
-          
+
         ])
     
         var valsLHD    = objShts['Location History Detail'].vals
@@ -74,7 +74,7 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
   trp[hdrsTRP.indexOf('Trip')]           = ele[hdrsLHD.indexOf('Trip')]
   trp[hdrsTRP.indexOf('Month')]          = ele[hdrsLHD.indexOf('Month')]
-  trp[hdrsTRP.indexOf('Destinations')]   = ele[hdrsLHD.indexOf('Trip')].split(' - ')[0]
+  trp[hdrsTRP.indexOf('Destinations')]   = ele[hdrsLHD.indexOf('Trip')].substring(0, ele[hdrsLHD.indexOf('Trip')].length - 11)
   trp[hdrsTRP.indexOf('Type')]           = ''
   trp[hdrsTRP.indexOf('Start Date')]     = ele[hdrsLHD.indexOf('Date')].split(',')[0]
   trp[hdrsTRP.indexOf('Source')]         = 'LHD'
