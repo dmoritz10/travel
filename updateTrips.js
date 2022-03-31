@@ -3,8 +3,8 @@ async function updateTrips() {
     var objShts = await openShts(
         [
           { title: 'Location History Detail', type: 'all' },
-          { title: 'Trips', type: 'all'},
-          { title: 'Settings', type: 'all'}
+          { title: 'Trips', type: 'all'}
+          
         ])
     
         var valsLHD    = objShts['Location History Detail'].vals
@@ -27,14 +27,14 @@ async function updateTrips() {
           var ele = valsLHD[i]
 
           if (ele[LHDTripCol])
-            {var trip = buildTrip(i, valsLHD, hdrsLHD, valsTRP, hdrsTRP)
-            i = trip.endIdx*1 + 1
-            console.log('trip', i, trip)}
-          else
-            continue
+            {
+              var trip = buildTrip(i, valsLHD, hdrsLHD, valsTRP, hdrsTRP)
+              i = trip.endIdx*1 + 1
 
-          console.log('i', i)
-      
+            } else continue
+          
+            
+
           let row = colTRPTrips.indexOf(ele[LHDTripCol])
           
           if (row == -1)   {
@@ -69,9 +69,6 @@ async function updateTrips() {
 
 function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
-  var dateCol     = hdrsLHD.indexOf('Date')
-  var dateUTCCol  = hdrsLHD.indexOf('UTC Date')
-
   var trp = []
   var ele = valsLHD[strIdx]
 
@@ -104,7 +101,6 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
       trp[hdrsTRP.indexOf('End Date')]              = dest[hdrsLHD.indexOf('Date')].split(',')[0]
       trp[hdrsTRP.indexOf('Destination Detail')]    = JSON.stringify(destArr)
       trp[hdrsTRP.indexOf('Nbr Days')]              = calcNbrDays(trp[hdrsTRP.indexOf('Start Date')], trp[hdrsTRP.indexOf('End Date')])
-      console.log('inside', i)
       return {val: trp, endIdx: i-1}
 
     }
@@ -114,7 +110,6 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
   trp[hdrsTRP.indexOf('End Date')]              = dest[hdrsLHD.indexOf('Date')].split(',')[0]
   trp[hdrsTRP.indexOf('Destination Detail')]    = JSON.stringify(destArr)
   trp[hdrsTRP.indexOf('Nbr Days')]              = calcNbrDays(trp[hdrsTRP.indexOf('Start Date')], trp[hdrsTRP.indexOf('End Date')])
-  console.log('outside', i)
       
   return {val: trp, endIdx: i-1}
 
@@ -123,13 +118,10 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
 function calcNbrDays(str, end) {
 
-
   var strDate = DateTime.fromJSDate(new Date(str))
   var endDate = DateTime.fromJSDate(new Date(end))
 
-  const diff = strDate.diff(endDate, ["days"]).days
-
-  console.log('diff', diff)
+  const diff = endDate.diff(strDate, ["days"]).days
 
   return diff*1 + 1
 
