@@ -37,11 +37,11 @@ async function updateTrips() {
           
           if (row == -1)   {
 
-            arrLHD.push(trip.val);
+            valsTRP.push(trip.val);
             appendCntr++
           } else {
             // if (trp[hdrsTRP.indexOf('Source')] != 'Manual') {
-              arrLHD[row] = trip.val;
+              valsTRP[row] = trip.val;
               updateCntr++
             // }
           }
@@ -49,8 +49,6 @@ async function updateTrips() {
         }
       
         console.log('updateAppendSht')
-        console.log('arr', arr.length)
-        console.log('arrLHD', arrLHD)
         console.log('updateCntr', updateCntr)
         console.log('appendCntr', appendCntr)
         console.log('total', appendCntr + updateCntr)
