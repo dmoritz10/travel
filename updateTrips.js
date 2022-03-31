@@ -1,5 +1,7 @@
 async function updateTrips() {
 
+    var DateTime = luxon.DateTime;
+
     var objShts = await openShts(
         [
           { title: 'Location History Detail', type: 'all' },
@@ -100,10 +102,6 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
       })
 
     } else {
-
-
-
-      DateTime.fromJSDate
 
       trp[hdrsTRP.indexOf('End Date')]              = dest[hdrsLHD.indexOf('Date')].split(',')[0]
       trp[hdrsTRP.indexOf('Destination Detail')]    = JSON.stringify(destArr)
