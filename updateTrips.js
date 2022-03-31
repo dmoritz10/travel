@@ -7,11 +7,11 @@ async function updateTrips() {
           { title: 'Settings', type: 'all'}
         ])
     
-        var valsLHD    = objLHD['Location History Detail'].vals
-        var hdrsLHD   = objLHD['Location History Detail'].colHdrs
+        var valsLHD    = objShts['Location History Detail'].vals
+        var hdrsLHD   = objShts['Location History Detail'].colHdrs
       
-        var valsTRP  = objLHD['Trips'].vals
-        var hdrsTRP = objLHD['Trips'].colHdrs
+        var valsTRP  = objShts['Trips'].vals
+        var hdrsTRP = objShts['Trips'].colHdrs
      
         const LHDTripCol = hdrsLHD.indexOf('Trip')
 
