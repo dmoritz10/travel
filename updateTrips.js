@@ -84,7 +84,7 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
   var destArr = []
   
-  for (var i=strIdx;i<valsLDH.length;i++) {
+  for (var i=strIdx;i<valsLHD.length;i++) {
 
     var dest = valsLHD[i]
 
