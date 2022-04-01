@@ -6,12 +6,12 @@
         <div class="label  text-center h1 mt-0 cursor-pointer" onclick="goHome()"><i class="material-icons">arrow_back_ios</i></div>
       </div>
       <div class="col mt-1">
-        <div id="shtTitle" class="label  text-center h1 divfullscreen">&nbsp;</div>
-        <div id="shtNbrDocuments" class="text-success text-center h2 hpElem">&nbsp</div>
+        <div id="trpTitle" class="label  text-center h1 divfullscreen">&nbsp;</div>
+        <div id="trpNbr" class="text-success text-center h2 hpElem">&nbsp</div>
       </div>
       <div class="col-2"> 
   
-        <div id="shtSelectDropDown" class="dropdown">
+        <div id="trpSelectDropDown" class="dropdown">
           <button class="btn dropdown-toggle pl-0" type="button" data-bs-toggle="dropdown">
             <i class="material-icons md-36" style="width:12px">more_vert</i>
           </button>
@@ -19,55 +19,51 @@
           <div class="dropdown-menu more-vert-menu">
             <form class="px-4 py-3">
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="shtSelectFav">
-                <label class="form-check-label" for="shtSelectFav">
+                <input type="checkbox" class="form-check-input" id="trpSelectFav">
+                <label class="form-check-label" for="trpSelectFav">
                   Select favorite Documents
                 </label>
               </div>
 
-              <button type="button" class="btn btn-primary float-end mt-2" id="btnShtSelect">Go</button>
+              <button type="button" class="btn btn-primary float-end mt-2" id="btnTrpSelect">Go</button>
             </form>
             
           </div>
-
         </div>
       </div>
-  
     </div>
-
-    
   </div>
 
   <div class=clearfix></div>
 
   <div class="row m-0 px-2 py-3">
     <div class="col px-1 mt-2">
-      <input class="form-control" id="shtSearch" type="search"
-        placeholder="Search Documents">
+      <input class="form-control" id="trpSearch" type="search"
+        placeholder="Search Trips">
     </div>
   </div>
 
-  <div id="shtContainer" class=" mt-0 pt-3 pb-4 px-2" style="background-color:lightblue;">
+  <div id="trpContainer" class=" mt-0 pt-3 pb-4 px-2" style="background-color:lightblue;">
     <div class="my-2 border d-none" style="border-radius: 25px; background:lightgoldenrodyellow;">
 
-      <div id="shtSrchDocument"  class="row m-2 p-0 my-3  align-items-center">
+      <div id="trpSrchDocument"  class="row m-2 p-0 my-3  align-items-center">
         
         <div class="col px-1">
-          <div id="shtDocument" class=" shtDocument label  text-start h5 pb-0 align-middle fw-bold"></div>
+          <div id="trpDocument" class=" trpDocument label  text-start h5 pb-0 align-middle fw-bold"></div>
         </div>
 
         <div class="col-1 px-0 align-right">
-          <div class="align-center cursor-pointer" id="btnShtEdit" data-toggle="tooltip" title="Add / Change Course">
+          <div class="align-center cursor-pointer" id="btnTrpEdit" data-toggle="tooltip" title="Add / Change Course">
               <i class="material-icons" style="color:purple;">edit</i></div>
         </div>
 
         <div class="col-1 px-2 align-right">
-            <div class="align-center cursor-pointer" id="btnShtFavorite" data-toggle="tooltip" title="Favorite">
+            <div class="align-center cursor-pointer" id="btnTrpFavorite" data-toggle="tooltip" title="Favorite">
               <i id = "ScFavIcon" class="material-icons" style="color:black;">star</i></div>        
         </div>
 
         <div class="col-1 px-2">
-          <button id="btnShtShowSheet" class="border-0 bg-transparent"><i
+          <button id="btnTrpShowSheet" class="border-0 bg-transparent"><i
               class="material-icons">arrow_forward_ios</i></button>
         </div>
 
@@ -81,7 +77,7 @@
   <div class="fixed-bottom pb-3">
     <div class="text-center">
       <div class="btn-group" role="group">
-        <button class="btn btn-blue btn-lg btn-raised py-2" id="btnShtAddDocument">Add New</button>
+        <button class="btn btn-blue btn-lg btn-raised py-2" id="btnTrpAddDocument">Add New</button>
       </div>
     </div>
   </div>
@@ -98,7 +94,7 @@
         <div class="modal-header">
           <div class="modal-title">
             <div class="h5">Document Maintenance</div>
-            <div  id="shtmSheetName"></div>
+            <div  id="trpmSheetName"></div>
           </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true"></span>
@@ -110,70 +106,70 @@
             <fieldset>
               <div class="row d-none">
                 <div class="col">
-                  <input type="text" class="form-control" id="shtmArrIdx" name="shtmArrIdx">
-                  <input type="text" class="form-control" id="shtmFavorite" name="shtmFavorite">
-                  <input type="text" class="form-control" id="shtmFileId" name="shtmFileId">
-                  <img id="shtmSaveImgFront" name="shtmSaveImgFront">
-                  <img id="shtmSaveImgBack" name="shtmSaveImgBack">
+                  <input type="text" class="form-control" id="trpmArrIdx" name="trpmArrIdx">
+                  <input type="text" class="form-control" id="trpmFavorite" name="trpmFavorite">
+                  <input type="text" class="form-control" id="trpmFileId" name="trpmFileId">
+                  <img id="trpmSaveImgFront" name="trpmSaveImgFront">
+                  <img id="trpmSaveImgBack" name="trpmSaveImgBack">
 
                 </div>
               </div>
 
               <div class="row my-0">
                 <div class="col">
-                  <label for="shtmDocument" class="col-form-label">Document Name</label>
-                  <input type="text" class="form-control text-success h4" id="shtmDocument" autofocus name="shtmDocument" required>
+                  <label for="trpmDocument" class="col-form-label">Document Name</label>
+                  <input type="text" class="form-control text-success h4" id="trpmDocument" autofocus name="trpmDocument" required>
                 </div>
               </div>
 
               <div class="row my-0">
                 <div class="col">
-                  <label for="shtmExpiry" class="col-form-label">Expiry</label>
-                <input type="date" class="form-control text-success"  style="font-size:1.25rem" id="shtmExpiry" name="shtmExpiry">
+                  <label for="trpmExpiry" class="col-form-label">Expiry</label>
+                <input type="date" class="form-control text-success"  style="font-size:1.25rem" id="trpmExpiry" name="trpmExpiry">
                 </div>
               </div>
 
               <div class="row my-0">
                 <div class="col">
-                  <label for="shtmNotes" class="col-form-label">Notes</label>
-                  <textarea class="form-control text-success h4" id="shtmNotes" rows=4 name="shtmNotes"></textarea>
+                  <label for="trpmNotes" class="col-form-label">Notes</label>
+                  <textarea class="form-control text-success h4" id="trpmNotes" rows=4 name="trpmNotes"></textarea>
                 </div>
               </div>
          
               <div class="row my-3">
                 <div class="col">
-                  <button type="button" class="btn btn-primary" onclick="document.getElementById('shtmInputFront').click()">Choose File</button>
-                  <input id="shtmInputFront" class="form-control d-none" onchange="showFile(this)" type="file"  name="shtmInputFront">
+                  <button type="button" class="btn btn-primary" onclick="document.getElementById('trpmInputFront').click()">Choose File</button>
+                  <input id="trpmInputFront" class="form-control d-none" onchange="showFile(this)" type="file"  name="trpmInputFront">
                 </div>
                 <div class="col text-end">
-                  <button  type="button" class="btn btn-secondary" onclick="$('#shtmImgFront').attr('src', '#').addClass('d-none')">Remove File</button>
+                  <button  type="button" class="btn btn-secondary" onclick="$('#trpmImgFront').attr('src', '#').addClass('d-none')">Remove File</button>
               </div>
               <div class="row my-3">
                 </div><div class="col text-center">
-                  <img  id="shtmImgFront" name="shtmImgFront" width="300">
+                  <img  id="trpmImgFront" name="trpmImgFront" width="300">
                 </div>
               </div>
 
               <div class="row my-3">
                 <div class="col">
-                  <button type="button" class="btn btn-primary" onclick="document.getElementById('shtmInputBack').click()">Choose File</button>
-                  <input id="shtmInputBack" class="form-control d-none" onchange="showFile(this)" type="file"  name="shtmInputBack">
+                  <button type="button" class="btn btn-primary" onclick="document.getElementById('trpmInputBack').click()">Choose File</button>
+                  <input id="trpmInputBack" class="form-control d-none" onchange="showFile(this)" type="file"  name="trpmInputBack">
                 </div>
                 <div class="col text-end">
-                  <button  type="button" class="btn btn-secondary" onclick="$('#shtmImgBack').attr('src', '#').addClass('d-none')">Remove File</button>
+                  <button  type="button" class="btn btn-secondary" onclick="$('#trpmImgBack').attr('src', '#').addClass('d-none')">Remove File</button>
               </div>
               <div class="row my-3">
                 </div><div class="col text-center">
-                  <img  id="shtmImgBack" name="shtmImgBack" width="300">
+                  <img  id="trpmImgBack" name="trpmImgBack" width="300">
                 </div>
               </div>
 
               <!-- <div class="row my-0">
                 <div class="col-3">
-                  <input id="shtmInputBack" class="form-control" onchange="showFile(this)" type="file"  name="shtmInputFront">
+                  <input id="trpmInputBack" class="form-control" onchange="showFile(this)" type="file"  name="trpmInputFront">
                 </div>
                 <div class="col">
-                  <img  id="shtmImgBack" name="shtmInputBack" width="300">
+                  <img  id="trpmImgBack" name="trpmInputBack" width="300">
                 </div>
               </div> -->
 
@@ -183,8 +179,8 @@
         </div>
 
         <div class="modal-footer">
-          <button id="btnShtmSubmit" class="btn btn-primary" type="submit">Submit</button>
-          <button id="btnShtmDelete" type="button" class="btn btn-primary">Delete</button>
+          <button id="btnTrpmSubmit" class="btn btn-primary" type="submit">Submit</button>
+          <button id="btnTrpmDelete" type="button" class="btn btn-primary">Delete</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
 
