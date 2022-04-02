@@ -14,11 +14,6 @@ async function listTrips(title = "Trips") {
   console.log('objSht', objSht)
 
   trpTitle = title
-  trpId   = secSht[trpTitle].id
-  trpCols = secSht[trpTitle].cols
-  trpRows = secSht[trpTitle].rows
-  trpEnc  = secSht[trpTitle].enc
-
   
   var trpHdrs = objSht[trpTitle].colHdrs
   var vals = objSht[trpTitle].vals
@@ -27,7 +22,7 @@ async function listTrips(title = "Trips") {
 
     vals[i].push(i)                    // idx xref
     
-    vals[i].push(new Date(vals[i][trpCols.indexOf('Start Date')]))
+    vals[i].push(new Date(vals[i][trpHdrs.indexOf('Start Date')]))
   
   }
 
