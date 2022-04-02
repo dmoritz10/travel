@@ -13,7 +13,7 @@ async function listTrips(title = "Trips") {
 
   console.log('objSht', objSht)
 
-  trpTitle = title
+  trpTitle = "Trips"
   
   var trpHdrs = objSht[trpTitle].colHdrs
   var vals = objSht[trpTitle].vals
