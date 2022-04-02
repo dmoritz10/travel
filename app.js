@@ -225,7 +225,7 @@ jQuery(function ($) {
                 btnShtMoreVertHtml()
             })
 
-            $('#btnShtAddDocument')   .click(btnAddSheetHtml);
+            $('#btnTrpAddTrip')   .click(btnAddSheetHtml);
             // $('#btnShtAddPDocument
 
             $('#btnTrpmSubmit')       .button().click(btnTrpmSubmitSheetHtml);

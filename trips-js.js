@@ -8,7 +8,7 @@ async function listTrips(title = "Trips") {
 
   var objSht = await openShts(
     [
-      { title: title, type: "all" }
+      { title: "Trips", type: "all" }
     ])
 
   console.log('objSht', objSht)
