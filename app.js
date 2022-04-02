@@ -228,8 +228,8 @@ jQuery(function ($) {
             $('#btnShtAddDocument')   .click(btnAddSheetHtml);
             // $('#btnShtAddPDocument
 
-            $('#btnShtmSubmit')       .button().click(btnShtmSubmitSheetHtml);
-            $('#btnShtmDelete')       .click(btnDeleteSheetHtml);
+            $('#btnTrpmSubmit')       .button().click(btnTrpmSubmitSheetHtml);
+            $('#btnTrpmDelete')       .click(btnDeleteSheetHtml);
             // $('#btnShtmDelete')       .click(enc);
             // $('#btnShtmSubmit')       .click(dec);
         
