@@ -218,8 +218,8 @@ jQuery(function ($) {
             $('#btnPlaces')            .button().click(btnPlacesHtml);
             $('#btnTrips')             .button().click(listTrips);
             
-            // Sheets
-            $('#btnShtSelect')            .click(btnShtSelectHtml);
+            // Trips
+            $('#btnTrpSelect')            .click(btnTrpSelectHtml);
             
             $('#shtSelectDropDown')        .on('show.bs.dropdown', function () {
                 btnShtMoreVertHtml()
