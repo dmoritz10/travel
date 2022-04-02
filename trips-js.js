@@ -71,19 +71,19 @@ async function listTrips(title = "Trips") {
     ele.find('#btnTrpShowSheet')[0].setAttribute("onclick", "showSheet(" + j + ")");
 
 
-    var boolFav = fav.toLowerCase() === 'true'
+    // var boolFav = fav.toLowerCase() === 'true'
 
-    if (boolFav) {
-      ele.find('#ScFavIcon')[0].innerHTML = "star"
-      ele.find('#ScFavIcon').addClass('text-primary')
-    } else {
-      ele.find('#ScFavIcon')[0].innerHTML = "star_outline"
-      ele.find('#ScFavIcon').removeClass('text-primary')
-    }
+    // if (boolFav) {
+    //   ele.find('#ScFavIcon')[0].innerHTML = "star"
+    //   ele.find('#ScFavIcon').addClass('text-primary')
+    // } else {
+    //   ele.find('#ScFavIcon')[0].innerHTML = "star_outline"
+    //   ele.find('#ScFavIcon').removeClass('text-primary')
+    // }
 
-    if ( (trpSelectFav && !(fav.toLowerCase() === 'true')) ) {}
-    else
-      ele.removeClass('d-none');
+    // if ( (trpSelectFav && !(fav.toLowerCase() === 'true')) ) {}
+    // else
+    //   ele.removeClass('d-none');
 
 
     ele.appendTo("#trpContainer");
