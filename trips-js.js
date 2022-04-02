@@ -1,85 +1,79 @@
 
-async function listSheet(title) {
+async function listTrips(title = "Trips") {
 
   modal(true)
 
-  var shtOptions = readOption('shtFilter')
-  var shtSelectFav = shtOptions.shtSelectFav
+  var trpOptions = readOption('trpFilter')
+  var trpSelectFav = trpOptions.trpSelectFav
 
   var objSht = await openShts(
     [
       { title: title, type: "all" }
     ])
 
-    console.log('objSht', objSht)
+  console.log('objSht', objSht)
 
-  shtTitle = title
-  shtId   = secSht[shtTitle].id
-  shtCols = secSht[shtTitle].cols
-  shtRows = secSht[shtTitle].rows
-  shtEnc  = secSht[shtTitle].enc
+  trpTitle = title
+  trpId   = secSht[trpTitle].id
+  trpCols = secSht[trpTitle].cols
+  trpRows = secSht[trpTitle].rows
+  trpEnc  = secSht[trpTitle].enc
 
-  if (shtEnc) {
-    shtHdrs = await decryptArr(objSht[shtTitle].colHdrs)
-  } else {
-    shtHdrs = objSht[shtTitle].colHdrs
-  }
   
-  var vals = objSht[shtTitle].vals
+  var trpHdrs = objSht[trpTitle].colHdrs
+  var vals = objSht[trpTitle].vals
 
   for (var i=0;i<vals.length;i++) {
 
-    vals[i].push(i)
+    vals[i].push(i)                    // idx xref
     
-    if (shtEnc) vals[i].push(await decryptMessage(vals[i][0])) // sort won't take a promise
-    else        vals[i].push(vals[i][0])
+    vals[i].push(new Date(vals[i][trpCols.indexOf('Start Date')]))
   
   }
 
   var sortCol = vals[0] ? vals[0].length - 1 : 0    // in case of empty sheet.  ie. hdrs only
 
-  shtVals = vals.sort(function(a,b){return a[sortCol].toLowerCase() > b[sortCol].toLowerCase() ? 1 : -1; });
+  trpVals = vals.sort(function(a,b){return a[sortCol] > b[sortCol] ? 1 : -1; });
   
-  shtVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
+  trpVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
   
 
-  $("#shtTitle").html(shtTitle)
-  $("#shtNbrDocuments").html(vals.length)
+  $("#trpTitle").html(trpTitle)
+  $("#trpNbrDocuments").html(vals.length)
 
-  var $tblSheets = $("#shtContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
+  var $tblSheets = $("#trpContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
 
   var x = $tblSheets.clone();
-  $("#shtContainer").empty();
-  x.appendTo("#shtContainer");
+  $("#trpContainer").empty();
+  x.appendTo("#trpContainer");
 
-  shtIdxArr = []
+  trpIdxArr = []
   var arrIdx = 0
 
-  for (var j = 0; j < shtVals.length; j++) {
+  for (var j = 0; j < trpVals.length; j++) {
 
-    var shtObj = makeObj(shtVals[j], shtHdrs)
+    var trpObj = makeObj(trpVals[j], trpHdrs)
 
-    var x = shtVals[j].pop()                    // remove idx shtVals after sort
-    shtIdxArr.push(x)                           // create parallel xref of idxs to sheet
+    var x = trpVals[j].pop()                    // remove idx trpVals after sort
+    trpIdxArr.push(x)                           // create parallel xref of idxs to sheet
 
-    if (shtEnc) {
-      var fav = await decryptMessage(shtObj['Favorite'])
-      var Document = await decryptMessage(shtObj['Document'])
-    } else {
-      var fav = shtObj['Favorite']
-      var Document = shtObj['Document']
-    }
+   
+    var fav = trpObj['Favorite']
+    var Document = trpObj['Trip']
 
 
     var ele = $tblSheets.clone();
 
-    ele.find('#shtDocument')[0].innerHTML = Document
+    ele.find('#trpDocument')[0].innerHTML = trpObj['Trip']
+    ele.find('#trpStartDate')[0].innerHTML = trpObj['Start Date']
+    ele.find('#trpEndDate')[0].innerHTML = trpObj['End Date']
+    ele.find('#trpDestinations')[0].innerHTML = trpObj['Destinations']
 
-    ele.find('#btnShtEdit')[0].setAttribute("onclick", "editSheet(" + j + ")");
+    ele.find('#btnTrpEdit')[0].setAttribute("onclick", "editSheet(" + j + ")");
 
-    ele.find('#btnShtFavorite')[0].setAttribute("onclick", "setFavorite(" + j + ")");
+    ele.find('#btnTrpFavorite')[0].setAttribute("onclick", "setFavorite(" + j + ")");
 
-    ele.find('#btnShtShowSheet')[0].setAttribute("onclick", "showSheet(" + j + ")");
+    ele.find('#btnTrpShowSheet')[0].setAttribute("onclick", "showSheet(" + j + ")");
 
 
     var boolFav = fav.toLowerCase() === 'true'
@@ -92,12 +86,12 @@ async function listSheet(title) {
       ele.find('#ScFavIcon').removeClass('text-primary')
     }
 
-    if ( (shtSelectFav && !(fav.toLowerCase() === 'true')) ) {}
+    if ( (trpSelectFav && !(fav.toLowerCase() === 'true')) ) {}
     else
       ele.removeClass('d-none');
 
 
-    ele.appendTo("#shtContainer");
+    ele.appendTo("#trpContainer");
 
     arrIdx++
 
@@ -105,19 +99,19 @@ async function listSheet(title) {
 
   gotoTab('Sheets')
 
-  var srchVal = $("#shtSearch").val()
+  var srchVal = $("#trpSearch").val()
 
   if (srchVal) {
 
-      $("#shtContainer #shtDocument").filter(function() {
+      $("#trpContainer #trpDocument").filter(function() {
         $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(srchVal.toLowerCase()) > -1)
       });
    
   }
 
-  $('#shtContainer > div').click(function(e){         // highlight clicked row
+  $('#trpContainer > div').click(function(e){         // highlight clicked row
     
-    $('#shtContainer > div').removeClass('sheets-focus');
+    $('#trpContainer > div').removeClass('sheets-focus');
     $(e.currentTarget).addClass('sheets-focus')
     
   });
@@ -127,56 +121,56 @@ async function listSheet(title) {
 }
 
 
-async function btnShtMoreVertHtml() {
+async function btnTrpMoreVertHtml() {
 
-  var shtOptions = readOption('shtFilter')
-  var shtSelectFav = shtOptions.shtSelectFav
+  var trpOptions = readOption('trpFilter')
+  var trpSelectFav = trpOptions.trpSelectFav
 
-  $('#shtSelectFav').prop("checked", shtSelectFav);
+  $('#trpSelectFav').prop("checked", trpSelectFav);
 
 }
 
-async function btnShtSelectHtml(e) {
+async function btnTrpSelectHtml(e) {
 
-  var shtSelectFavVal = $('#shtSelectFav').prop('checked')
+  var trpSelectFavVal = $('#trpSelectFav').prop('checked')
 
-  await updateOption('shtFilter', {
-    'shtSelectFav': shtSelectFavVal
+  await updateOption('trpFilter', {
+    'trpSelectFav': trpSelectFavVal
   })
 
-  listSheet(shtTitle)
+  listTrips(trpTitle)
 
 }
 
 async function setFavorite(arrIdx) {
 
-  var favCurr = shtVals[arrIdx][shtHdrs.indexOf("Favorite")]
+  var favCurr = trpVals[arrIdx][trpHdrs.indexOf("Favorite")]
 
-  if (shtEnc) {
+  if (trpEnc) {
     var x = await decryptMessage(favCurr)
     var fav = x.toLowerCase() === 'true'
 
     if (fav) {
-      shtVals[arrIdx][shtHdrs.indexOf("Favorite")] = await encryptMessage("FALSE")
+      trpVals[arrIdx][trpHdrs.indexOf("Favorite")] = await encryptMessage("FALSE")
     } else {
-      shtVals[arrIdx][shtHdrs.indexOf("Favorite")] = await encryptMessage("TRUE")
+      trpVals[arrIdx][trpHdrs.indexOf("Favorite")] = await encryptMessage("TRUE")
     }
 
   } else {
     var fav = favCurr.toLowerCase() === 'true'
 
     if (fav) {
-      shtVals[arrIdx][shtHdrs.indexOf("Favorite")] = "FALSE"
+      trpVals[arrIdx][trpHdrs.indexOf("Favorite")] = "FALSE"
     } else {
-      shtVals[arrIdx][shtHdrs.indexOf("Favorite")] = "TRUE"
+      trpVals[arrIdx][trpHdrs.indexOf("Favorite")] = "TRUE"
     }
   }
 
-  var shtIdx = shtIdxArr[arrIdx]
+  var trpIdx = trpIdxArr[arrIdx]
 
-  await updateSheetRow(shtVals[arrIdx], shtIdx)
+  await updateSheetRow(trpVals[arrIdx], trpIdx)
 
-  updateUI(shtVals[arrIdx], arrIdx)
+  updateUI(trpVals[arrIdx], arrIdx)
 
 }
 
@@ -187,76 +181,76 @@ async function editSheet(arrIdx) {
 
   $("#sheet-form")[0].reset();
 
-  $('#shtmImgFront').removeAttr('src').addClass('d-none')
-  $('#shtmImgBack').removeAttr('src').addClass('d-none')
+  $('#trpmImgFront').removeAttr('src').addClass('d-none')
+  $('#trpmImgBack').removeAttr('src').addClass('d-none')
 
-  $('#shtmSheetName').html(shtTitle)
+  $('#trpmSheetName').html(trpTitle)
 
   $("#sheet-modal").modal('show');
 
 
-  $('#shtmArrIdx').val(arrIdx)
+  $('#trpmArrIdx').val(arrIdx)
 
-  var vals = shtEnc ? await decryptArr(shtVals[arrIdx]) : shtVals[arrIdx]
+  var vals = trpEnc ? await decryptArr(trpVals[arrIdx]) : trpVals[arrIdx]
 
 
-  var shtObj = makeObj(vals, shtHdrs)
+  var trpObj = makeObj(vals, trpHdrs)
 
-  var imgs = await fetchImages(shtEnc, shtObj['File Id'])
+  var imgs = await fetchImages(trpEnc, trpObj['File Id'])
 
   console.log('imgs', imgs.length)
 
-  $('#shtmDocument').val(shtObj['Document'])
-  $('#shtmExpiry').val(shtObj['Expiry'])
-  $('#shtmImgBack').val(shtObj['Account Nbr'])
-  $('#shtmNotes').val(shtObj['Notes'])
-  $('#shtmFavorite').val(shtObj['Favorite'])
-  $('#shtmFileId').val(shtObj['File Id'])
-  $('#shtmImgFront').attr('src', imgs[0])
-  $('#shtmImgBack').attr('src', imgs[1])
-  $('#shtmSaveImgFront').attr('src', imgs[0])
-  $('#shtmSaveImgBack').attr('src', imgs[1])
+  $('#trpmDocument').val(trpObj['Document'])
+  $('#trpmExpiry').val(trpObj['Expiry'])
+  $('#trpmImgBack').val(trpObj['Account Nbr'])
+  $('#trpmNotes').val(trpObj['Notes'])
+  $('#trpmFavorite').val(trpObj['Favorite'])
+  $('#trpmFileId').val(trpObj['File Id'])
+  $('#trpmImgFront').attr('src', imgs[0])
+  $('#trpmImgBack').attr('src', imgs[1])
+  $('#trpmSaveImgFront').attr('src', imgs[0])
+  $('#trpmSaveImgBack').attr('src', imgs[1])
 
-  if (imgs[0])  $('#shtmImgFront').removeClass('d-none')
-  else          $('#shtmImgFront').addClass('d-none');
-  if (imgs[1])  $('#shtmImgBack').removeClass('d-none')
-  else          $('#shtmImgBack').addClass('d-none');
-  // document.getElementById("shtmImgFront").src = imgs[0];
-  // document.getElementById("shtmImgBack").src = imgs[1];
-  // document.getElementById("shtmSaveImgFront").src = imgs[0];
-  // document.getElementById("shtmSaveImgBack").src = imgs[1];
+  if (imgs[0])  $('#trpmImgFront').removeClass('d-none')
+  else          $('#trpmImgFront').addClass('d-none');
+  if (imgs[1])  $('#trpmImgBack').removeClass('d-none')
+  else          $('#trpmImgBack').addClass('d-none');
+  // document.getElementById("trpmImgFront").src = imgs[0];
+  // document.getElementById("trpmImgBack").src = imgs[1];
+  // document.getElementById("trpmSaveImgFront").src = imgs[0];
+  // document.getElementById("trpmSaveImgBack").src = imgs[1];
 
-  $('#btnShtmDelete').removeClass('d-none')
+  $('#btnTrpmDelete').removeClass('d-none')
 
   modal(false)
 
 }
 
-async function btnShtmSubmitSheetHtml() {
+async function btnTrpmSubmitSheetHtml() {
 
   if (!$('#sheet-form').valid()) return
 
-  var arrIdx = $('#shtmArrIdx').val() ? $('#shtmArrIdx').val()*1 : -1
+  var arrIdx = $('#trpmArrIdx').val() ? $('#trpmArrIdx').val()*1 : -1
 
   if (arrIdx > -1) {                                                       // update existing course
 
-    var vals = [...shtVals[arrIdx]]
+    var vals = [...trpVals[arrIdx]]
 
-    vals[shtHdrs.indexOf("Document")] = $('#shtmDocument').val()
-    vals[shtHdrs.indexOf("Expiry")] = $('#shtmExpiry').val()
-    vals[shtHdrs.indexOf("Img Front")] = $('#shtmImgFront').val()
-    vals[shtHdrs.indexOf("Img Back")] = $('#shtmImgBack').val()
-    vals[shtHdrs.indexOf("Notes")] = $('#shtmNotes').val()
-    vals[shtHdrs.indexOf("Last Change")] = formatDate(new Date())
-    vals[shtHdrs.indexOf("Favorite")] = $('#shtmFavorite').val()
-    vals[shtHdrs.indexOf("File Id")] = $('#shtmFileId').val()
+    vals[trpHdrs.indexOf("Document")] = $('#trpmDocument').val()
+    vals[trpHdrs.indexOf("Expiry")] = $('#trpmExpiry').val()
+    vals[trpHdrs.indexOf("Img Front")] = $('#trpmImgFront').val()
+    vals[trpHdrs.indexOf("Img Back")] = $('#trpmImgBack').val()
+    vals[trpHdrs.indexOf("Notes")] = $('#trpmNotes').val()
+    vals[trpHdrs.indexOf("Last Change")] = formatDate(new Date())
+    vals[trpHdrs.indexOf("Favorite")] = $('#trpmFavorite').val()
+    vals[trpHdrs.indexOf("File Id")] = $('#trpmFileId').val()
 
-    var fileId = $('#shtmFileId').val()
+    var fileId = $('#trpmFileId').val()
 
 
   } else {
 
-    if (dupDocument($('#shtmDocument').val())) {
+    if (dupDocument($('#trpmDocument').val())) {
       toast("Document already exists")
       return
     }
@@ -265,42 +259,42 @@ async function btnShtmSubmitSheetHtml() {
 
     var vals = []
 
-    vals[shtHdrs.indexOf("Document")] = $('#shtmDocument').val()
-    vals[shtHdrs.indexOf("Expiry")] = $('#shtmExpiry').val()
-    vals[shtHdrs.indexOf("Img Front")] = $('#shtmImgFront').val()
-    vals[shtHdrs.indexOf("Img Back")] = $('#shtmImgBack').val()
-    vals[shtHdrs.indexOf("Notes")] = $('#shtmNotes').val()
-    vals[shtHdrs.indexOf("Last Change")] = formatDate(new Date())
-    vals[shtHdrs.indexOf("Favorite")] = $('#shtmFavorite').val()
-    vals[shtHdrs.indexOf("File Id")] = fileId
+    vals[trpHdrs.indexOf("Document")] = $('#trpmDocument').val()
+    vals[trpHdrs.indexOf("Expiry")] = $('#trpmExpiry').val()
+    vals[trpHdrs.indexOf("Img Front")] = $('#trpmImgFront').val()
+    vals[trpHdrs.indexOf("Img Back")] = $('#trpmImgBack').val()
+    vals[trpHdrs.indexOf("Notes")] = $('#trpmNotes').val()
+    vals[trpHdrs.indexOf("Last Change")] = formatDate(new Date())
+    vals[trpHdrs.indexOf("Favorite")] = $('#trpmFavorite').val()
+    vals[trpHdrs.indexOf("File Id")] = fileId
 
   }
 
   modal(true)
 
-  var shtIdx = arrIdx == -1 ? -1 : shtIdxArr[arrIdx]  // get the row nbr on the sheet from shtIdxArr
+  var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
 
-  var valsEnc = shtEnc ? await encryptArr(vals) : vals
+  var valsEnc = trpEnc ? await encryptArr(vals) : vals
 
-  await updateSheetRow(valsEnc, shtIdx)
+  await updateSheetRow(valsEnc, trpIdx)
 
   var imgs = []
   var savImgs = []
 
-  imgs[0] = document.getElementById("shtmImgFront").src
-  imgs[1] = document.getElementById("shtmImgBack").src
-  savImgs[0] = document.getElementById("shtmSaveImgFront").src;
-  savImgs[1] = document.getElementById("shtmSaveImgBack").src;
+  imgs[0] = document.getElementById("trpmImgFront").src
+  imgs[1] = document.getElementById("trpmImgBack").src
+  savImgs[0] = document.getElementById("trpmSaveImgFront").src;
+  savImgs[1] = document.getElementById("trpmSaveImgBack").src;
 
   // console.log('submit', [...imgs])
   // console.log('submit', [...savImgs])
 
   console.log('fileId', fileId)
 
-  await postImages(shtEnc, fileId, imgs, savImgs)
+  await postImages(trpEnc, fileId, imgs, savImgs)
 
-  $('#shtmImgFront').removeAttr('src').addClass('d-none')
-  $('#shtmImgBack').removeAttr('src').addClass('d-none')
+  $('#trpmImgFront').removeAttr('src').addClass('d-none')
+  $('#trpmImgBack').removeAttr('src').addClass('d-none')
 
   $("#sheet-modal").modal('hide');
   // $("#sheet-modal").modal('dispose');
@@ -369,42 +363,42 @@ await gapi.client.sheets.spreadsheets.batchUpdate({
 
 async function updateUI (valsEnc, arrIdx) {
 
-// update shtVals conditionally encrypting
-// secSht[shtTitle].Rows
-// update / append shtContainer ? sort ???
+// update trpVals conditionally encrypting
+// secSht[trpTitle].Rows
+// update / append trpContainer ? sort ???
 // update / append
 
   var arrIdx = arrIdx*1
 
   console.log("arrIdx", arrIdx)
 
-  if (arrIdx == -1) {                               // add.  In this case, still use listSheet 
+  if (arrIdx == -1) {                               // add.  In this case, still use listTrips 
 
-    // shtVals.push(valsEnc)
-    // arrIdx = shtVals.length-1
-    secSht[shtTitle].rows++
+    // trpVals.push(valsEnc)
+    // arrIdx = trpVals.length-1
+    secSht[trpTitle].rows++
 
-    listSheet(shtTitle)
+    listTrips(trpTitle)
     return
   
   }
 
-  // update. Update ui directly w/o listSheet
-  shtVals[arrIdx] = valsEnc
+  // update. Update ui directly w/o listTrips
+  trpVals[arrIdx] = valsEnc
 
-  var DocumentDec = shtEnc ? await decryptMessage(valsEnc[0]) : valsEnc[0]
-  var $Document = $('#shtContainer > div').find('#shtDocument').eq(arrIdx+1) // first ele is template d-none
+  var DocumentDec = trpEnc ? await decryptMessage(valsEnc[0]) : valsEnc[0]
+  var $Document = $('#trpContainer > div').find('#trpDocument').eq(arrIdx+1) // first ele is template d-none
   $Document.html(DocumentDec)
 
-  var fav = valsEnc[shtHdrs.indexOf('Favorite')]
+  var fav = valsEnc[trpHdrs.indexOf('Favorite')]
 
-  if (shtEnc) {
+  if (trpEnc) {
     var favDec = await decryptMessage(fav)
   } else {
     var favDec = fav
   }
 
-  var $fav = $('#shtContainer > div').find('#ScFavIcon').eq(arrIdx+1) 
+  var $fav = $('#trpContainer > div').find('#ScFavIcon').eq(arrIdx+1) 
 
   var boolFav = favDec.toLowerCase() === 'true'
   console.log('boolFav', boolFav)
@@ -430,14 +424,14 @@ function fixUrl(url) {
 
 async function btnAddSheetHtml() {
 
-  $('#shtmImgFront').removeAttr('src').addClass('d-none')
-  $('#shtmImgBack').removeAttr('src').addClass('d-none')
+  $('#trpmImgFront').removeAttr('src').addClass('d-none')
+  $('#trpmImgBack').removeAttr('src').addClass('d-none')
 
   $("#sheet-form")[0].reset();
-  $('#shtmModalTitle').html('')
+  $('#trpmModalTitle').html('')
   $("#sheet-modal").modal('show');
 
-   $('#btnShtmDelete').addClass('d-none')
+   $('#btnTrpmDelete').addClass('d-none')
 
 }
 
@@ -450,9 +444,9 @@ async function btnDeleteSheetHtml() {
   modal(true)
 
 
-  var idx = shtIdxArr[$('#shtmArrIdx').val() * 1]
+  var idx = trpIdxArr[$('#trpmArrIdx').val() * 1]
 
-  console.log('btnShtmDelete',idx,$('#shtmArrIdx').val(), shtIdxArr)
+  console.log('btnTrpmDelete',idx,$('#trpmArrIdx').val(), trpIdxArr)
 
   var request = {
     "requests":
@@ -460,7 +454,7 @@ async function btnDeleteSheetHtml() {
         {
           "deleteDimension": {
             "range": {
-              "sheetId": shtId,
+              "sheetId": trpId,
               "dimension": "ROWS",
               "startIndex": idx + 1,
               "endIndex": idx + 2
@@ -477,17 +471,17 @@ async function btnDeleteSheetHtml() {
 
   }).then(response => {
 
-    secSht[shtTitle].rows--
+    secSht[trpTitle].rows--
 
     console.log('delete complete - ', idx)
     console.log(response)
 
   })
-console.log('delete file id', $('#shtmFileId').val())
+console.log('delete file id', $('#trpmFileId').val())
 
   await gapi.client.drive.files.delete({
                 
-        fileId : $('#shtmFileId').val()
+        fileId : $('#trpmFileId').val()
 
 }).then(function(response) {
     console.log(response);
@@ -500,13 +494,13 @@ console.log('delete file id', $('#shtmFileId').val())
 
   modal(false)
 
-  listSheet(shtTitle)
+  listTrips(trpTitle)
 
 }
 
 function dupDocument(Document) {
 
-  let arrDocuments = shtVals.map(a => a[shtHdrs.indexOf('Document')]);
+  let arrDocuments = trpVals.map(a => a[trpHdrs.indexOf('Document')]);
 
   if (arrDocuments.indexOf(Document) > -1) {
     return true
@@ -524,12 +518,12 @@ async function showFile(input) {
 
     reader.onload = function (e) {
 
-      if (input.id == "shtmInputFront")   {
-        $('#shtmImgFront').attr('src', e.target.result);
-        $('#shtmImgFront').removeClass('d-none');
+      if (input.id == "trpmInputFront")   {
+        $('#trpmImgFront').attr('src', e.target.result);
+        $('#trpmImgFront').removeClass('d-none');
       } else {
-        $('#shtmImgBack').attr('src', e.target.result);
-        $('#shtmImgBack').removeClass('d-none');
+        $('#trpmImgBack').attr('src', e.target.result);
+        $('#trpmImgBack').removeClass('d-none');
       }
                                       
     }
@@ -539,7 +533,7 @@ async function showFile(input) {
 
 }
 
-async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
+async function postImages(trpEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
   for (var i=0;i<2;i++) {             // 0 = front image, 1 = back image
 
@@ -554,14 +548,14 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
       while (idx < img.length) {
 
-        if (shtEnc) encPromiseArr.push(encryptMessage(img.substring(idx, idx + 35000), pwd))
+        if (trpEnc) encPromiseArr.push(encryptMessage(img.substring(idx, idx + 35000), pwd))
         else        encPromiseArr.push(img.substring(idx, idx + 35000))
 
         idx = idx+35000
 
       }
 
-      if (shtEnc) var encArr = await Promise.all(encPromiseArr)
+      if (trpEnc) var encArr = await Promise.all(encPromiseArr)
       else        var encArr = encPromiseArr
 
       console.log('postImage encArr', i, img.length, encArr[0].length, encArr.length)
@@ -579,12 +573,12 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
   console.log("updateImages")
 
 
-  var shtTitle = fileId
+  var trpTitle = fileId
   var row = imgIdx
 
   console.log('updateImages vals', vals)
 
-  await clearImage(shtTitle, row)         // always clear existing image
+  await clearImage(trpTitle, row)         // always clear existing image
 
 
   if (!removeImage) {               // user has elected to add an image
@@ -608,8 +602,8 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
       },
 
         function (reason) {
-          console.error('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
-          bootbox.alert('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
+          console.error('error updating sheet "' + trpTitle + '": ' + reason.result.error.message);
+          bootbox.alert('error updating sheet "' + trpTitle + '": ' + reason.result.error.message);
         });
 
   }
@@ -617,14 +611,14 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
 }
 
 
-async function fetchImages(shtEnc, shtTitle, pwd = currUser.pwd) {
+async function fetchImages(trpEnc, trpTitle, pwd = currUser.pwd) {
   console.time("fetchImages")
   console.log("fetchImages")
 
   var rng = calcRngA1(1, 1, 2, 1000)
 
   var params = {
-    spreadsheetId: shtTitle,
+    spreadsheetId: trpTitle,
     range: "'" + "Sheet1" + "'!" + rng
   };
 
@@ -639,7 +633,7 @@ async function fetchImages(shtEnc, shtTitle, pwd = currUser.pwd) {
       console.error('error: ' + reason.result.error.message);
     });
 
-    console.log("fetchImages pre return", shtTitle, "'" + "Sheet1" + "'!" + rng, vals);
+    console.log("fetchImages pre return", trpTitle, "'" + "Sheet1" + "'!" + rng, vals);
 
 
     if (!vals) return [null, null]
@@ -654,7 +648,7 @@ async function fetchImages(shtEnc, shtTitle, pwd = currUser.pwd) {
       if (val.length == 0 ) rtn.push(null)
       else {
 
-        if (shtEnc) {
+        if (trpEnc) {
           var decVals = val.map( ele => decryptMessage(ele, pwd))
 
           var decArr = await Promise.all(decVals)
@@ -687,7 +681,7 @@ async function pasteImage() {
 
       var reader = new FileReader();
       reader.onload = function(event) {
-          document.getElementById("shtmImgFront").src = event.target.result;
+          document.getElementById("trpmImgFront").src = event.target.result;
       };
 
       reader.readAsDataURL(blob);
@@ -695,12 +689,12 @@ async function pasteImage() {
 
 }
 
-async function clearImage(shtTitle, row) {        // recall that the sheet title is the same as the sheet id for image files
+async function clearImage(trpTitle, row) {        // recall that the sheet title is the same as the sheet id for image files
 
   var rng = calcRngA1(row, 1, 1, 500)
 
   var params = {
-    spreadsheetId: shtTitle,
+    spreadsheetId: trpTitle,
     range: "'" + "Sheet1" + "'!" + rng
   };
 
@@ -710,8 +704,8 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
     },
 
       function (reason) {
-        console.error('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
-        bootbox.alert('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
+        console.error('error updating sheet "' + trpTitle + '": ' + reason.result.error.message);
+        bootbox.alert('error updating sheet "' + trpTitle + '": ' + reason.result.error.message);
       });
 
 }

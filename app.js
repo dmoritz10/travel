@@ -216,7 +216,7 @@ jQuery(function ($) {
             $('#btnSignout')           .button().click(btnSignoutHtml);
             $('#btnImportPlaces')      .button().click(btnImportPlacesHtml);
             $('#btnPlaces')            .button().click(btnPlacesHtml);
-            $('#btnTrips')             .button().click(btnTripsHtml);
+            $('#btnTrips')             .button().click(listTrips);
             
             // Sheets
             $('#btnShtSelect')            .click(btnShtSelectHtml);
