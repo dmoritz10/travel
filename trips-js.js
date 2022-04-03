@@ -92,7 +92,7 @@ async function listTrips(title = "Trips") {
 
   }
 
-  gotoTab('Sheets')
+  gotoTab('Trips')
 
   var srchVal = $("#trpSearch").val()
 
