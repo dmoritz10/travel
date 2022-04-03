@@ -83,7 +83,7 @@ async function listTrips(title = "Trips") {
 
     // if ( (trpSelectFav && !(fav.toLowerCase() === 'true')) ) {}
     // else
-    //   ele.removeClass('d-none');
+      ele.removeClass('d-none');
 
 
     ele.appendTo("#trpContainer");
