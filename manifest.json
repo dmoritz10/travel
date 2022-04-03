@@ -9,12 +9,12 @@
 	"splash_pages": null,
     "icons": [
 		{
-		"src": "images/icons/secure 144x144.png",
+		"src": "images/icons/travel 144x144.png",
 		"sizes": "144x144",
 		"type": "image/png"
 		},
 		{
-		"src": "images/icons/secure 512x512.png",
+		"src": "images/icons/travel 512x512.png",
 		"sizes": "512x512",
 		"type": "image/png"
 	}]
