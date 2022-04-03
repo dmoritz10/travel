@@ -4,7 +4,7 @@
 	"description" : "",
 	"theme_color" : "#ffc107",
 	"background_color" : "#198754",
-	"start_url" : "https://dmoritz10.github.io/travel/?standalone=true",
+	"start_url" : "https://dmoritz10.github.io/travel/?fullscreen=true",
 	"display" : "fullscreen",
 	"splash_pages": null,
     "icons": [
