@@ -1,11 +1,11 @@
 {
-	"name" : "Travel",
+	"name" : "Travel Journal",
 	"short_name" : "Travel",
 	"description" : "",
-	"theme_color" : "#ffc107",
-	"background_color" : "#198754",
+	"theme_color" : "#eeefef",
+	"background_color" : "#eeefef",
 	"start_url" : "https://dmoritz10.github.io/travel/",
-	"display" : "fullscreen",
+	"display" : "standalone",
 	"splash_pages": null,
     "icons": [
 		{
