@@ -59,7 +59,8 @@ async function listTrips(title = "Trips") {
 
     var ele = $tblSheets.clone();
 
-    ele.find('#trpDocument')[0].innerHTML = trpObj['Trip']
+    ele.find('#trpDocument')[0].innerHTML = trpObj['Trip'].slice(0, -11)
+    ele.find('#trpMoYr')[0].innerHTML = trpObj['Month']
     ele.find('#trpStartDate')[0].innerHTML = trpObj['Start Date']
     ele.find('#trpEndDate')[0].innerHTML = trpObj['End Date']
     ele.find('#trpDestinations')[0].innerHTML = trpObj['Destinations']
