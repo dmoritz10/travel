@@ -239,9 +239,11 @@ jQuery(function ($) {
                 var value = $(this).val().toLowerCase();
 
                 console.log('value', value)
-                console.log('this', $(this))
 
                 $("#shtContainer #shtDocument").filter(function() {
+
+                    console.log('this', $(this))
+
                   $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
                 
