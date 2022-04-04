@@ -200,7 +200,7 @@ function calcTripName(arr, hdrs, strIdx) {
     tripDest.push(key) 
   }
 
-  var tripName = destinations[0]
+  var tripName = tripDest[0]
 
   var tripMoYr = tripMonth(newDate)
   
