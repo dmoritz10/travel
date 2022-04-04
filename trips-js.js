@@ -34,7 +34,7 @@ async function listTrips(title = "Trips") {
   
 
   $("#trpTitle").html(trpTitle)
-  $("#trpNbrDocuments").html(vals.length)
+  $("#trpNbr").html(vals.length)
 
   var $tblSheets = $("#trpContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
 
