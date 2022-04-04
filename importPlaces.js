@@ -104,6 +104,8 @@ async function buildTrips(arr, hdrs) {
   var dateUTCCol = hdrs.indexOf('UTC Date')
   var tripCol = hdrs.indexOf('Trip')
   var distCol = hdrs.indexOf('Distance')
+  var moYrCol = hdrs.indexOf('Month')
+  var destCol = hdrs.indexOf('Destinations')
 
   arr.sort(function(a,b) {return a[dateUTCCol] < b[dateUTCCol] ? -1 : 1});
 
@@ -121,7 +123,10 @@ async function buildTrips(arr, hdrs) {
 
       }
 
-      arr[i][tripCol] = trip
+      arr[i][tripCol] = trip.name
+      arr[i][moYrCol] = trip.moYr
+      arr[i][destCol] = trip.dest
+
 
     } else {
 
@@ -177,19 +182,36 @@ function calcTripName(arr, hdrs, strIdx) {
     [key]: counts[key]
   }), {})
 
-  var tripName = ''
+  // var tripName = ''
+  // for (let [key, value] of Object.entries(tripSorted)) {
+  //   if (value >= 2) tripName += key + ' - '
+  // }
+
+  // if (tripName == '') tripName = Object.keys(tripSorted)[0] + ' - '
+
+  // tripName += tripMonth(newDate)
+  
+  // console.log('tripName1', tripName)
+
+  // return tripName
+
+ var tripDest = []]
   for (let [key, value] of Object.entries(tripSorted)) {
-    if (value >= 2) tripName += key + ' - '
+    tripDest.push(key) 
   }
 
-  if (tripName == '') tripName = Object.keys(tripSorted)[0] + ' - '
+  var tripName = destinations[0]
 
-  tripName += tripMonth(newDate)
+  var tripMoYr = tripMonth(newDate)
   
   console.log('tripName1', tripName)
 
-  return tripName
-
+  return {
+    
+    name: tripName,
+    moYr: tripMoYr,
+    dest: tripDest
+  }
 }
 
 function tripMonth(dt) {
