@@ -195,7 +195,7 @@ function calcTripName(arr, hdrs, strIdx) {
 
   // return tripName
 
- var tripDest = []]
+ var tripDest = []
   for (let [key, value] of Object.entries(tripSorted)) {
     tripDest.push(key) 
   }
