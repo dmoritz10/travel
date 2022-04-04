@@ -238,9 +238,7 @@ jQuery(function ($) {
             $("#trpSearch").on("input", function() {
                 var value = $(this).val().toLowerCase();
 
-                $("#trpContainer #trpDocument").filter(function() {
-
-                    console.log('this', $(this))
+                $("#trpContainer #trpCompositeForSearch").filter(function() {
 
                   $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
