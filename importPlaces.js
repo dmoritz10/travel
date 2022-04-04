@@ -125,7 +125,7 @@ async function buildTrips(arr, hdrs) {
 
       arr[i][tripCol] = trip.name
       arr[i][moYrCol] = trip.moYr
-      arr[i][destCol] = trip.dest.join(' - ')
+      arr[i][destCol] = JSON.stringify(trip.dest)
 
 
     } else {
