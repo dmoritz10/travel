@@ -106,7 +106,6 @@ async function listTrips(title = "Trips") {
 
       $("#trpContainer #trpDocument").filter(function() {
 
-        console.log('search', $(this))
         $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(srchVal.toLowerCase()) > -1)
       });
    
