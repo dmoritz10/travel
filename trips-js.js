@@ -59,10 +59,10 @@ async function listTrips(title = "Trips") {
 
     var ele = $tblSheets.clone();
 
-    console.log('ele', ele)
-
     // ele.find('#trpDocument')[0].innerHTML = trpObj['Trip'].slice(0, -11)
     ele.find('#trpDocument')[0].innerHTML = trpObj['Trip'].split(' - ')[0]
+    ele.find('#trpCompositeForSearch')[0].innerHTML = trpObj['Destinations'] + ' ' + trpObj['Month']
+
     ele.find('#trpMoYr')[0].innerHTML = trpObj['Month']
     ele.find('#trpStartDate')[0].innerHTML = trpObj['Start Date']
     ele.find('#trpEndDate')[0].innerHTML = trpObj['End Date']
