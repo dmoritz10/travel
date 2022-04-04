@@ -239,6 +239,7 @@ jQuery(function ($) {
                 var value = $(this).val().toLowerCase();
 
                 console.log('value', value)
+                console.log('$("#shtContainer #shtDocument")', $("#shtContainer #shtDocument"))
 
                 $("#shtContainer #shtDocument").filter(function() {
 
