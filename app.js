@@ -235,7 +235,7 @@ jQuery(function ($) {
         
 
 
-            $("#shtSearch").on("input", function() {
+            $("#trpSearch").on("input", function() {
                 var value = $(this).val().toLowerCase();
 
                 $("#shtContainer #shtDocument").filter(function() {
