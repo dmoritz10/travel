@@ -208,7 +208,7 @@ function calcTripName(arr, hdrs, strIdx) {
 
   return {
     
-    name: tripName,
+    name: tripName + ' - ' + tripMoYr,
     moYr: tripMoYr,
     dest: tripDest
   }
