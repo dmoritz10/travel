@@ -212,8 +212,8 @@ function countDisplayed($container) {
 
   var tot = $eleArr.length
   // var dnone = $eleArr.hasClass('d-none').length || 0
-  var dispNone = $eleArr.filter( () => $(this).hasClass('d-none')).length;
-  var dispNone = $eleArr.filter( () => $(this).css('display') == 'none').length;
+  var dnone       = $eleArr.filter( x => $(this).hasClass('d-none')).length;
+  var dispNone    = $eleArr.filter( x => $(this).css('display') == 'none').length;
 
   console.log('cnts',tot ,dnone ,dispNone )
 
