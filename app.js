@@ -240,7 +240,7 @@ jQuery(function ($) {
 
                 });
 
-                $("#trpNbr").html(countDisplayed($("#trpContainer")))
+                $("#trpNbr").html(countDisplayed("trpContainer"))
 
 
             });

@@ -107,6 +107,8 @@ async function listTrips(title = "Trips") {
 
         $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(srchVal.toLowerCase()) > -1)
       });
+      
+      $("#trpNbr").html(countDisplayed("trpContainer"))
    
   }
 
