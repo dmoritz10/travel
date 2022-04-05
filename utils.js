@@ -212,7 +212,7 @@ function countSelected($container) {
 
   var totDisp = tot - dnone - dispNone
 
-  return totDisp == tot ? tot ? totDisp + ' of ' + tot 
+  return totDisp == tot ? tot : totDisp + ' of ' + tot 
 
 }
 
