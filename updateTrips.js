@@ -19,6 +19,8 @@ async function updateTrips() {
 
     const TRPKeyCol  = hdrsTRP.indexOf('Composite Key')
     const colTRPKeys = valsTRP.map(x => x[TRPKeyCol]);
+
+    console.log('colTRPKeys', colTRPKeys)
   
     var updateCntr = 0
     var appendCntr = 0
@@ -35,10 +37,6 @@ async function updateTrips() {
 
         } else continue
       
-        let x = JSON.parse(ele[LHDDestCol])
-console.log('x', x)
-console.log('xs', x.join(' - '))
-
       let key = JSON.parse(ele[LHDDestCol]).join(' - ') + ' - ' + ele[LHDMonthCol]
 
 console.log('key', key)
@@ -46,7 +44,7 @@ console.log('key', key)
 
       let row = colTRPKeys.indexOf(key)
 
-console.log('row', key)
+console.log('row', row)
 
       if (row == -1)   {
 
