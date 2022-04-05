@@ -39,7 +39,7 @@ async function updateTrips() {
 console.log('x', x)
 console.log('xs', x.join(' - '))
 
-      let key = x.join(' - ') + ' - ' + ele[LHDMonthCol]
+      let key = JSON.parse(ele[LHDDestCol]).join(' - ') + ' - ' + ele[LHDMonthCol]
 
 console.log('key', key)
 
