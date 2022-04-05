@@ -204,7 +204,7 @@ function calcRngA1(r, col, nbrRows, nbrCols) {
 
 function countDisplayed(container) {
 
-  var $eleArr = `$('#${container} > div').slice(1)`        // remove template
+  var $eleArr = $('#' + container + ' > div').slice(1)       // remove template
 
   console.log('$eleArr', $eleArr)
 
