@@ -37,8 +37,14 @@ async function updateTrips() {
       
         
       let key = ele[LHDDestCol].split(' - ') + ' - ' + ele[LHDMonthCol]
+
+console.log('key', key)
+
+
       let row = colTRPKeys.indexOf(key)
-      
+
+console.log('row', key)
+
       if (row == -1)   {
 
         valsTRP.push(trip.val);
