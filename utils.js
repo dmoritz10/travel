@@ -214,6 +214,8 @@ function countDisplayed($container) {
     return $(this).css('display') == 'none';
   }).length;
 
+  console.log('cnts',tot ,dnone ,dispNone )
+
   
 
   var totDisp = tot - dnone - dispNone
