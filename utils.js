@@ -204,14 +204,13 @@ function calcRngA1(r, col, nbrRows, nbrCols) {
 
 function countDisplayed($container) {
 
-  var $eleArr = $('#trpContainer > div')
+  var $eleArr = $('#trpContainer > div').slice(1)
 
   console.log('$eleArr', $eleArr)
 
-  var tot = $eleArr.length
-  // var dnone = $eleArr.hasClass('d-none').length || 0
-  var dnone       = $eleArr.filter( function() {return $(this).hasClass('d-none')}).length;
-  var dispNone    = $eleArr.filter( function() {return $(this).css('display') == 'none'}).length;
+  var tot = $eleArr.length - 1
+  var dnone    = $eleArr.filter( function() {return $(this).hasClass('d-none')}).length - 1
+  var dispNone = $eleArr.filter( function() {return $(this).css('display') == 'none'}).length;
 
   console.log('cnts',tot ,dnone ,dispNone )
 
