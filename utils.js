@@ -202,6 +202,19 @@ function calcRngA1(r, col, nbrRows, nbrCols) {
 
 }
 
+function countSelected($container) {
+
+  var eleArr = [...$('#shtContainer > div')].slice(1)
+
+  var tot = eleArr.length
+  var dnone = $(eleArr.hasClass('d-none')).length
+  var dispNone = $(eleArr).css('display', 'none').length
+
+  var totDisp = tot - dnone - dispNone
+
+  return totDisp == tot ? tot ? totDisp + ' of ' + tot 
+
+}
 
 function toObject(arr) {
   var rv = { };

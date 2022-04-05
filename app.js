@@ -230,10 +230,6 @@ jQuery(function ($) {
 
             $('#btnTrpmSubmit')       .button().click(btnTrpmSubmitSheetHtml);
             $('#btnTrpmDelete')       .click(btnDeleteSheetHtml);
-            // $('#btnShtmDelete')       .click(enc);
-            // $('#btnShtmSubmit')       .click(dec);
-        
-
 
             $("#trpSearch").on("input", function() {
                 var value = $(this).val().toLowerCase();
@@ -241,6 +237,9 @@ jQuery(function ($) {
                 $("#trpContainer #trpCompositeKey").filter(function() {
 
                   $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
+
+                  $("#trpNbr").html(countSelected($("#trpContainer")))
+
                 });
                 
             });
