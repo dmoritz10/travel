@@ -204,12 +204,12 @@ function calcRngA1(r, col, nbrRows, nbrCols) {
 
 function countDisplayed($container) {
 
-  var $eleArr = $('#trpContainer > div').slice(1)
+  var $eleArr = $('#trpContainer > div').slice(1)        // remove template
 
   console.log('$eleArr', $eleArr)
 
-  var tot = $eleArr.length - 1
-  var dnone    = $eleArr.filter( function() {return $(this).hasClass('d-none')}).length - 1
+  var tot = $eleArr.length
+  var dnone    = $eleArr.filter( function() {return $(this).hasClass('d-none')}).length
   var dispNone = $eleArr.filter( function() {return $(this).css('display') == 'none'}).length;
 
   console.log('cnts',tot ,dnone ,dispNone )
