@@ -61,7 +61,7 @@ async function listTrips(title = "Trips") {
 
     // ele.find('#trpDocument')[0].innerHTML = trpObj['Trip'].slice(0, -11)
     ele.find('#trpDocument')[0].innerHTML = trpObj['Trip'].split(' - ')[0]
-    ele.find('#trpCompositeForSearch')[0].innerHTML = trpObj['Destinations'] + ' ' + trpObj['Month']
+    ele.find('#trpCompositeKey')[0].innerHTML = trpObj['Composite Key']
 
     ele.find('#trpMoYr')[0].innerHTML = trpObj['Month']
     ele.find('#trpStartEndDate')[0].innerHTML = trpObj['Start Date'] + ' - ' + trpObj['End Date']
@@ -103,7 +103,7 @@ async function listTrips(title = "Trips") {
 
   if (srchVal) {
 
-      $("#trpContainer #trpCompositeForSearch").filter(function() {
+      $("#trpContainer #trpCompositeKey").filter(function() {
 
         $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(srchVal.toLowerCase()) > -1)
       });

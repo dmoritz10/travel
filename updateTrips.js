@@ -14,9 +14,11 @@ async function updateTrips() {
     var hdrsTRP = objShts['Trips'].colHdrs
   
     const LHDTripCol = hdrsLHD.indexOf('Trip')
+    const LHDDestCol = hdrsLHD.indexOf('Destinations')
+    const LHDMonthCol = hdrsLHD.indexOf('Month')
 
-    const TRPTripCol = hdrsTRP.indexOf('Trip')
-    const colTRPTrips = valsTRP.map(x => x[TRPTripCol]);
+    const TRPKeyCol  = hdrsTRP.indexOf('Composite Key')
+    const colTRPKeys = valsTRP.map(x => x[TRPKeyCol]);
   
     var updateCntr = 0
     var appendCntr = 0
@@ -34,8 +36,8 @@ async function updateTrips() {
         } else continue
       
         
-
-      let row = colTRPTrips.indexOf(ele[LHDTripCol])
+      let key = ele[LHDDestCol].split(' - ') + ' ' + ele[LHDMonthCol]
+      let row = colTRPKeys.indexOf(key)
       
       if (row == -1)   {
 
@@ -75,8 +77,8 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
   console.log('ele', ele)
 
   // console.log('destginations', ele[hdrsLHD.indexOf('Destinations')])
-
-
+  
+  trp[hdrsTRP.indexOf('Composite Key')]  = JSON.parse(trpObj['Destinations']).join(' - ') + ' - ' + ele[hdrsLHD.indexOf('Trip')]
   trp[hdrsTRP.indexOf('Trip')]           = ele[hdrsLHD.indexOf('Trip')]
   trp[hdrsTRP.indexOf('Month')]          = ele[hdrsLHD.indexOf('Month')]
   trp[hdrsTRP.indexOf('Destinations')]   = ele[hdrsLHD.indexOf('Destinations')]
