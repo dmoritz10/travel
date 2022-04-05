@@ -64,7 +64,7 @@ async function listTrips(title = "Trips") {
     ele.find('#trpCompositeKey')[0].innerHTML = trpObj['Composite Key']
 
     ele.find('#trpMoYr')[0].innerHTML = trpObj['Month']
-    ele.find('#trpStartEndDate')[0].innerHTML = trpObj['Start Date'] + ' - ' + trpObj['End Date']
+    ele.find('#trpStartEndDate')[0].innerHTML = trpObj['Start Date'].slice(0,-5) + ' - ' + trpObj['End Date']
     ele.find('#trpDestinations')[0].innerHTML = JSON.parse(trpObj['Destinations']).join(' - ')
 
     ele.find('#btnTrpEdit')[0].setAttribute("onclick", "editSheet(" + j + ")");
