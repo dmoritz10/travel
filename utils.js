@@ -204,7 +204,7 @@ function calcRngA1(r, col, nbrRows, nbrCols) {
 
 function countDisplayed($container) {
 
-  var $eleArr = $('#shtContainer > div')
+  var $eleArr = $('#trpContainer > div')
 
   console.log('$eleArr', $eleArr)
 
