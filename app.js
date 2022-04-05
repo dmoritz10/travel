@@ -242,6 +242,7 @@ jQuery(function ($) {
 
                 // $("#trpNbr").html(countDisplayed($("#trpContainer")))
 
+                
             });
 
             // clear form of unencrypted data after closing
