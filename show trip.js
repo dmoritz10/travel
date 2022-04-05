@@ -1,4 +1,4 @@
-async function showSheet(idx) {
+async function showTrip(idx) {
 
 
   if (idx === null) return                  // null is from browseDocument
@@ -49,7 +49,7 @@ async function showSheet(idx) {
   var val
   var icon
 
-  console.log('showSheet', imgs)
+  console.log('showTrip', imgs)
         
   imgs[0] ? val = '<span><img class="showImg" src=' + imgs[0] + "></embed></span>" : val=''
   icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
@@ -72,7 +72,7 @@ async function showSheet(idx) {
     .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
     .build('#tblSheet');
 
-  gotoTab('ShowSheet')
+  gotoTab('showTrip')
 
   $('#shtContainer > div').eq(idx+1).trigger( "click" )
 
@@ -106,7 +106,7 @@ function browseDocument(dir) {
         break;
       }
     }
-    showSheet(prevIdx)
+    showTrip(prevIdx)
   } else {
     var nextIdx = (idx+1 <  shtRows) ? idx+1 : null
     while (nextIdx) {
@@ -116,7 +116,7 @@ function browseDocument(dir) {
         break;
       }
     }
-     showSheet(nextIdx)
+     showTrip(nextIdx)
   }
 
 }
@@ -142,12 +142,12 @@ function clearAndGotoTab(sht) {
 
 }
 
-function editFromShowSheet() {
+function editFromTripSheet() {
 
-  clearAndGotoTab("Sheets")
+  clearAndGotoTab("Trips")
 
   var arrIdx = $("#ssArrIdx").val()
 
-  editSheet(arrIdx)
+  editTrip(arrIdx)
 
 }

@@ -67,11 +67,11 @@ async function listTrips(title = "Trips") {
     ele.find('#trpStartEndDate')[0].innerHTML = trpObj['Start Date'].slice(0,-5) + ' - ' + trpObj['End Date'].slice(0,-5)
     ele.find('#trpDestinations')[0].innerHTML = JSON.parse(trpObj['Destinations']).join(' - ')
 
-    ele.find('#btnTrpEdit')[0].setAttribute("onclick", "editSheet(" + j + ")");
+    ele.find('#btnTrpEdit')[0].setAttribute("onclick", "editTrip(" + j + ")");
 
     ele.find('#btnTrpFavorite')[0].setAttribute("onclick", "setFavorite(" + j + ")");
 
-    ele.find('#btnTrpShowSheet')[0].setAttribute("onclick", "showSheet(" + j + ")");
+    ele.find('#btnTrpShowDetail')[0].setAttribute("onclick", "showTripDEtail(" + j + ")");
 
 
     // var boolFav = fav.toLowerCase() === 'true'
@@ -176,7 +176,7 @@ async function setFavorite(arrIdx) {
 }
 
 
-async function editSheet(arrIdx) {
+async function editTrip(arrIdx) {
 
   modal(true)
 
