@@ -28,7 +28,7 @@ async function listTrips(title = "Trips") {
 
   var sortCol = vals[0] ? vals[0].length - 1 : 0    // in case of empty sheet.  ie. hdrs only
 
-  trpVals = vals.sort(function(a,b){return a[sortCol] > b[sortCol] ? 1 : -1; });
+  trpVals = vals.sort(function(a,b){return a[sortCol] < b[sortCol] ? 1 : -1; });
   
   trpVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
   

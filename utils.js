@@ -206,15 +206,9 @@ function countDisplayed(container) {
 
   var $eleArr = $('#' + container + ' > div').slice(1)       // remove template
 
-  console.log('$eleArr', $eleArr)
-
   var tot = $eleArr.length
   var dnone    = $eleArr.filter( function() {return $(this).hasClass('d-none')}).length
   var dispNone = $eleArr.filter( function() {return $(this).css('display') == 'none'}).length;
-
-  console.log('cnts',tot ,dnone ,dispNone )
-
-  
 
   var totDisp = tot - dnone - dispNone
 
