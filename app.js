@@ -238,10 +238,10 @@ jQuery(function ($) {
 
                   $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
 
-                  $("#trpNbr").html(countDisplayed($("#trpContainer")))
-
                 });
-                
+
+                $("#trpNbr").html(countDisplayed($("#trpContainer")))
+
             });
 
             // clear form of unencrypted data after closing
