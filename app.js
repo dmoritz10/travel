@@ -238,7 +238,7 @@ jQuery(function ($) {
 
                   $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
 
-                  $("#trpNbr").html(countSelected($("#trpContainer")))
+                  $("#trpNbr").html(countDisplayed($("#trpContainer")))
 
                 });
                 
