@@ -53,7 +53,7 @@ async function showTrip(idx) {
     .setTrClass('d-flex')
     .setTcClass(['text-end col-4 h5 text-success align-items-center', 'text-start col h4'])
     .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
-    .build('#tblSheet');
+    .build('#tblTrips');
 
   gotoTab('ShowTrip')
 
@@ -117,7 +117,7 @@ function copyToClpbrd(txt) {
 
 function clearAndGotoTab(sht) {
 
-  $("#tblSheet").html('')
+  $("#tblTrips").html('')
   $("#ssSheet").html('')
   
   gotoTab(sht)
