@@ -16,11 +16,28 @@ async function showTrip(idx) {
 
   var trpDtl = JSON.parse(vals[trpHdrs.indexOf('Destination Detail')])
 
+  var brkDate
+
   for (var i=1; i<trpDtl.length;i++) {
 
     var val = trpDtl[i]
 
-    trp.push([val.name, val.date, val.city, val.state])
+    if (val.date != brkDate) {
+
+      trp.push(val.date.replace(", ", "<br>"))
+
+      brkDate = val.date
+
+    }
+
+    var place = val.name + "<br>" +
+                val.city + "<br>" +
+                val.state
+    
+    
+    
+
+    trp.push(['', place])
 
   }
   
@@ -32,7 +49,7 @@ async function showTrip(idx) {
     .setData(trp)
     .setTableClass('table table-borderless')
     .setTrClass('d-flex')
-    .setTcClass(['text-end col-4 h5 text-success', 'text-start col h4', 'col-1'])
+    .setTcClass(['text-end col-4 h5 text-success', 'text-start col h4'])
     .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
     .build('#tblSheet');
 
