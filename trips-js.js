@@ -15,8 +15,10 @@ async function listTrips(title = "Trips") {
 
   trpTitle = "Trips"
   
-  var trpHdrs = objSht[trpTitle].colHdrs
-  var vals = objSht[trpTitle].vals
+  trpHdrs = objSht[trpTitle].colHdrs
+  trpVals = objSht[trpTitle].vals
+  
+  var vals = trpVals
 
   for (var i=0;i<vals.length;i++) {
 
@@ -71,7 +73,7 @@ async function listTrips(title = "Trips") {
 
     ele.find('#btnTrpFavorite')[0].setAttribute("onclick", "setFavorite(" + j + ")");
 
-    ele.find('#btnTrpShowDetail')[0].setAttribute("onclick", "showTripDEtail(" + j + ")");
+    ele.find('#btnTrpShowDetail')[0].setAttribute("onclick", "showTrip(" + j + ")");
 
 
     // var boolFav = fav.toLowerCase() === 'true'

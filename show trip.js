@@ -5,67 +5,31 @@ async function showTrip(idx) {
 
   modal(true)
   
-  var sht = []
+  var trp = []
 
-  var vals = shtEnc ? await decryptArr(shtVals[idx]) : shtVals[idx]
+  var vals = trpVals[idx]
   
-  $("#ssSheet")[0].innerHTML = vals[shtHdrs.indexOf('Document')]
-  $("#ssArrIdx").val(idx)
+  $("#trpdTrip")[0].innerHTML = vals[trpHdrs.indexOf('Trip')]
+  $("#trpdMoYr")[0].innerHTML = vals[trpHdrs.indexOf('Month')]
+  $("#trpdStartEndDate")[0].innerHTML = vals['Start Date'].slice(0,-5) + ' - ' + vals['End Date'].slice(0,-5)
+  $("#trpArrIdx").val(idx)
 
-  for (var i=1; i<shtHdrs.length;i++) {
+  var trpDtl = JSON.parse(vals[trpHdrs.indexOf('Destination Detail')])
 
-    var val = vals[i].replace(/\n|\r\n|\r/g, '<br/>');
+  for (var i=1; i<trpDtl.length;i++) {
 
-    console.log(shtHdrs[i], val)
+    var val = JSON.parse(trpDtl[i])
 
-    if (shtHdrs[i] == 'Favorite') {
-      var boolFav = val.toLowerCase() === 'true'
-      if (boolFav) val = "Yes"
-      var boolFav = val.toLowerCase() === 'false' || val.length == 0
-      if (boolFav) val = "No"
-      console.log(shtHdrs[i], val)
-    }
-    var icon = ''
-
-    if (val) {
-
-      icon = '<div class="label cursor-pointer" onClick="copyToClpbrd(' + "'" + val + "'" + ')"><span class="material-icons">content_copy</span></div>'
-    
-    }
-
-    if (shtHdrs[i] == "File Id") {
-      val = val.length < 17 ? val : val.substring(0,14) + "..."
-    }
-
-   if (['Img Front', 'Img Back'].indexOf(shtHdrs[i]) == -1) {
-      sht.push([shtHdrs[i], val, icon])
-    }
+    trp.push([val.name, val.date, val.city, val.state])
 
   }
-
-
-  var imgs = await fetchImages(shtEnc, vals[shtHdrs.indexOf('File Id')])
-
-  var val
-  var icon
-
-  console.log('showTrip', imgs)
-        
-  imgs[0] ? val = '<span><img class="showImg" src=' + imgs[0] + "></embed></span>" : val=''
-  icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
-  sht.push(['Front', val, icon])
-
-  imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></embed></span>" : val=''
-  icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[1] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
-
-  sht.push(['Back', val, icon])
   
   var tbl = new Table();
   
   tbl
     .setHeader()
     .setTableHeaderClass()
-    .setData(sht)
+    .setData(trp)
     .setTableClass('table table-borderless')
     .setTrClass('d-flex')
     .setTcClass(['text-end col-4 h5 text-success', 'text-start col h4', 'col-1'])

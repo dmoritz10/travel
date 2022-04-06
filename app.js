@@ -9,12 +9,11 @@
 
     var currUser = {}
 
-    var shtHdrs
-    var shtVals
-    var shtTitle
-    var shtId
-    var shtEnc 
-    var shtIdxArr
+    var trpHdrs
+    var trpVals
+    var trpTitle
+    var trpId
+    var trpIdxArr
     
     var arrOptions
     var optionsIdx
