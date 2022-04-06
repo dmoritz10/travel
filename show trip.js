@@ -11,7 +11,7 @@ async function showTrip(idx) {
   
   $("#trpdTrip")[0].innerHTML = vals[trpHdrs.indexOf('Trip')]
   $("#trpdMoYr")[0].innerHTML = vals[trpHdrs.indexOf('Month')]
-  $("#trpdStartEndDate")[0].innerHTML = vals['Start Date'].slice(0,-5) + ' - ' + vals['End Date'].slice(0,-5)
+  $("#trpdStartEndDate")[0].innerHTML = vals[trpHdrs.indexOf('Start Date')].slice(0,-5) + ' - ' + vals[trpHdrs.indexOf('End Date')].slice(0,-5)
   $("#trpArrIdx").val(idx)
 
   var trpDtl = JSON.parse(vals[trpHdrs.indexOf('Destination Detail')])
