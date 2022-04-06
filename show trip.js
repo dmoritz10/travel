@@ -38,10 +38,9 @@ async function showTrip(idx) {
 
   gotoTab('showTrip')
 
-  $('#shtContainer > div').eq(idx+1).trigger( "click" )
+  // $('#trpContainer > div').eq(idx+1).trigger( "click" )
 
   modal(false)
-
 
 } 
 
