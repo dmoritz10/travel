@@ -40,6 +40,7 @@ async function showTrip(idx) {
     
     trp.push([time, place])
 
+    
   }
   
   var tbl = new Table();
