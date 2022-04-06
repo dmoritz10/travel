@@ -18,7 +18,7 @@ async function showTrip(idx) {
 
   for (var i=1; i<trpDtl.length;i++) {
 
-    var val = JSON.parse(trpDtl[i])
+    var val = trpDtl[i]
 
     trp.push([val.name, val.date, val.city, val.state])
 
