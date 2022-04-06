@@ -72,12 +72,12 @@ function openImg(img) {
 
 function browseDocument(dir) {
 
-  var idx   = $("#ssArrIdx").val()*1       
+  var idx   = $("#trpArrIdx").val()*1       
   var title = $('#shtTitle').text()
 
-  var shtRows = secSht[title].rows*1 - 1                   // rows includes hdrs
+  var shtRows = trpVals.length                   
 
-  var eleArr = [...$('#shtContainer > div')].slice(1)      // remove the templace
+  var eleArr = [...$('#trpContainer > div')].slice(1)      // remove the template
 
   if (dir=="prev")  {
     var prevIdx = (idx-1 >= 0) ? idx-1 : null
