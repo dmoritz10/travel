@@ -24,7 +24,7 @@ async function showTrip(idx) {
 
     if (val.date != brkDate) {
 
-      trp.push(val.date.replace(", ", "<br>"))
+      trp.push([val.date.replace(", ", "<br>"), ''])
 
       brkDate = val.date
 
