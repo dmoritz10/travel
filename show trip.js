@@ -12,7 +12,7 @@ async function showTrip(idx) {
   $("#trpdTrip")[0].innerHTML = vals[trpHdrs.indexOf('Trip')]
   $("#trpdMoYr")[0].innerHTML = vals[trpHdrs.indexOf('Month')]
   $("#trpdStartEndDate")[0].innerHTML = vals[trpHdrs.indexOf('Start Date')].slice(0,-5) + ' - ' + vals[trpHdrs.indexOf('End Date')].slice(0,-5)
-  $("#trpArrIdx").val(idx)
+  $("#trpdArrIdx").val(idx)
 
   var trpDtl = JSON.parse(vals[trpHdrs.indexOf('Destination Detail')])
 
@@ -72,7 +72,7 @@ function openImg(img) {
 
 function browseDocument(dir) {
 
-  var idx   = $("#trpArrIdx").val()*1       
+  var idx   = $("#trpdArrIdx").val()*1       
   var title = $('#shtTitle').text()
 
   var shtRows = trpVals.length                   
@@ -118,7 +118,7 @@ function copyToClpbrd(txt) {
 function clearAndGotoTab(sht) {
 
   $("#tblTrips").html('')
-  $("#ssSheet").html('')
+  // $("#ssSheet").html('')
   
   gotoTab(sht)
 
@@ -128,7 +128,7 @@ function editFromTripSheet() {
 
   clearAndGotoTab("Trips")
 
-  var arrIdx = $("#ssArrIdx").val()
+  var arrIdx = $("#trpdArrIdx").val()
 
   editTrip(arrIdx)
 
