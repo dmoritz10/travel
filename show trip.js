@@ -28,13 +28,13 @@ async function showTrip(idx) {
 
     if (date != brkDate) {
 
-      trp.push([val.date, ''])
+      trp.push([date, ''])
 
       brkDate = date
 
     }
 
-    var place = val.name + "<br>" +
+    var place = val.name + "<br><h5>" +
                 val.city + "<br>" +
                 val.state
     
