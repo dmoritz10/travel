@@ -35,7 +35,7 @@ async function showTrip(idx) {
     }
 
     var place = val.name + "<br><h6>" +
-                val.city + ", " +
+                val.city + (val.state ? ", " : "") +
                 val.state
     
     trp.push([time, place])
