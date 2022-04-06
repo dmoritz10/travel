@@ -28,7 +28,7 @@ async function showTrip(idx) {
 
     if (date != brkDate) {
 
-      trp.push(["<div class='bg-light.bg-gradient h4'>" + date, '<div class="bg-info.bg-gradient">&nbsp;</div>'])
+      trp.push(["<div class='bg-light.bg-gradient h4'>" + date, '<div class="bg-light border">&nbsp;</div>'])
 
       brkDate = date
 
@@ -40,7 +40,7 @@ async function showTrip(idx) {
     
     trp.push([time, place])
 
-    
+
   }
   
   var tbl = new Table();
