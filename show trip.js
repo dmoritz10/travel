@@ -22,11 +22,15 @@ async function showTrip(idx) {
 
     var val = trpDtl[i]
 
-    if (val.date != brkDate) {
+    var parseDate = val.date.split(", ")
+    var date = parseDate[0]
+    var time = parseDate[1]
 
-      trp.push([val.date.replace(", ", "<br>"), ''])
+    if (date != brkDate) {
 
-      brkDate = val.date
+      trp.push([val.date, ''])
+
+      brkDate = date
 
     }
 
@@ -34,10 +38,7 @@ async function showTrip(idx) {
                 val.city + "<br>" +
                 val.state
     
-    
-    
-
-    trp.push(['', place])
+    trp.push([time, place])
 
   }
   
