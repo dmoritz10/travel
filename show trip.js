@@ -24,7 +24,7 @@ async function showTrip(idx) {
 
     var parseDate = val.date.split(", ")
     var date = parseDate[0]
-    var time = parseDate[1]
+    var time = parseDate[1] != "12:00 PM" ? parseDate[1] : ''
 
     if (date != brkDate) {
 
