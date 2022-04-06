@@ -28,7 +28,7 @@ async function showTrip(idx) {
 
     if (date != brkDate) {
 
-      trp.push(["<div class='bg-light.bg-gradient h4'>" + date, '<div class="bg-light border">&nbsp;</div>'])
+      trp.push(["<div class='text-primary h4'>" + date, '<div class="">&nbsp;</div>'])
 
       brkDate = date
 
