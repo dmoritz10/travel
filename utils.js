@@ -303,6 +303,8 @@ function gotoTab(tabName) {
 
   var $tab = $('#' + tabName )
 
+  console.log('gotoTab', tabName, $tab)
+
   $( '.tab-content > div.active' ).removeClass( 'active show' );
   
   $tab.addClass( 'active show' );
