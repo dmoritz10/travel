@@ -28,7 +28,7 @@ async function showTrip(idx) {
 
     if (date != brkDate) {
 
-      trp.push([date, ''])
+      trp.push(["<h4>" + date, ''])
 
       brkDate = date
 
@@ -38,7 +38,7 @@ async function showTrip(idx) {
                 val.city + ", " +
                 val.state
     
-    trp.push(["<h4>" + time, place])
+    trp.push([time, place])
 
   }
   
