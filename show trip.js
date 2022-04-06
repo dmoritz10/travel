@@ -36,7 +36,7 @@ async function showTrip(idx) {
     .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
     .build('#tblSheet');
 
-  gotoTab('showTrip')
+  gotoTab('ShowTrip')
 
   // $('#trpContainer > div').eq(idx+1).trigger( "click" )
 
