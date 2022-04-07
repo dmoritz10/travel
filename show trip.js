@@ -140,8 +140,8 @@ async function editTripDtl(arrIdx, destIdx) {
   var time = parseDate[1] ? parseDate[1] : ''
 
   $('#trpmdtlTrip').val(trpDtl.name)
-  $('#trpmdtDate').val(date)
-  $('#trpmdtTime').val(time)
+  $('#trpmdtlDate').val(date)
+  $('#trpmdtlTime').val(time)
   $('#trpmdtlCity').val(trpDtl.city)
   $('#trpmdtlState').val(trpDtl.state)
 
