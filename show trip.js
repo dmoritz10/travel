@@ -147,5 +147,7 @@ async function editTripDtl(arrIdx, destIdx) {
 
   $('#btntrpmdtlDelete').removeClass('d-none')
 
+
+  
 }
 
