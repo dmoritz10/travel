@@ -129,13 +129,21 @@ async function editTripDtl(arrIdx, destIdx) {
 
 
   var trpObj = makeObj(vals, trpHdrs)
+
   console.log('trpObj', arrIdx, destIdx, trpObj)
 
-  $('#trpmdtlTrip').val(trpObj['Document'])
-  $('#trpmdtDate').val(trpObj['Expiry'])
-  $('#trpmdtTime').val(trpObj['Account Nbr'])
-  $('#trpmdtlCity').val(trpObj['Notes'])
-  $('#trpmdtlState').val(trpObj['Favorite'])
+  var trpDtl = JSON.parse(val(trpObj['Destination Detail']))
+  console.log('trpDtl', trpDtl)
+
+  var parseDate = trpDtl.date.split(", ")
+  var date = parseDate[0]
+  var time = parseDate[1] ? parseDate[1] : ''
+
+  $('#trpmdtlTrip').trpDtl.name
+  $('#trpmdtDate').trpDtl.date
+  $('#trpmdtTime').trpDtl.time
+  $('#trpmdtlCity').trpDtl.city
+  $('#trpmdtlState').trpDtl.state
 
   $('#btntrpmdtlDelete').removeClass('d-none')
 
