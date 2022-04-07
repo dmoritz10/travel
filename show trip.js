@@ -135,19 +135,20 @@ async function editTripDtl(arrIdx, destIdx) {
   var trpDtl = JSON.parse(trpObj['Destination Detail'])[destIdx]
   console.log('trpDtl', trpDtl)
 
-  var parseDate = trpDtl.date.split(", ")
-  var date = parseDate[0]
-  var time = parseDate[1] ? parseDate[1] : ''
+  // var parseDate = trpDtl.date.split(", ")
+  // var date = parseDate[0]
+  // var time = parseDate[1] ? parseDate[1] : ''
 
-  console.log('date', new Date(date).toISOString().substring(0, 10))
-  console.log('time', new Date(time))
-  console.log('dt', new Date(parseDate).toISOString().substring(0, 10))
-  console.log('tm', new Date(date + ' ' + time).toISOString().substring(11, 18))
+  var date = new Date(parseDate).toISOString().substring(0, 10) 
+  var time = new Date(parseDate).toISOString().substring(1, 19) 
+
+  console.log('date', date)
+  console.log('time', time)
 
 
 
   $('#trpmdtlTrip').val(trpDtl.name)
-  $('#trpmdtlDate').val(new Date(date).toISOString().substring(0, 10))
+  $('#trpmdtlDate').val(date)
   $('#trpmdtlTime').val(time)
   $('#trpmdtlCity').val(trpDtl.city)
   $('#trpmdtlState').val(trpDtl.state)
