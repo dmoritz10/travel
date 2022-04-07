@@ -140,7 +140,10 @@ async function editTripDtl(arrIdx, destIdx) {
   var time = parseDate[1] ? parseDate[1] : ''
 
   console.log('date', new Date(date).toISOString().substring(0, 10))
-  console.log('time', time)
+  console.log('time', new Date(time))
+  console.log('dt', new Date(date + ' ' + time))
+  console.log('dt1', new Date(trpDtl.date))
+
 
   $('#trpmdtlTrip').val(trpDtl.name)
   $('#trpmdtlDate').val(new Date(date).toISOString().substring(0, 10))
