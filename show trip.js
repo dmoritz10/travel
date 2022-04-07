@@ -34,15 +34,14 @@ async function showTrip(idx) {
 
     }
 
+    var icon = '<div class="label cursor-pointer" onClick="editTripDtl(' + idx + ", " + i + ')"><span class="material-icons">expand_more</span></div>'
+
     var place = val.name + "<br><h6>" +
                 val.city + (val.state ? ", " : "") +
-                val.state
+                val.state + "<br>" +
+                icon
     
     trp.push([time, place])
-
-    var icon = '<div class="label cursor-pointer" onClick="editTripDtl(' + idx + ", " + i + ')"><span class="material-icons">expand_more</span></div>'
-    
-    trp.push(['', icon])
 
   }
   
