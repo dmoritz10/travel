@@ -40,6 +40,9 @@ async function showTrip(idx) {
     
     trp.push([time, place])
 
+    var icon = '<div class="label cursor-pointer" onClick="editTripDtl(' + idx + ", " + i + ')"><span class="material-icons">expand_more</span></div>'
+    
+    trp.push(['', icon])
 
   }
   
