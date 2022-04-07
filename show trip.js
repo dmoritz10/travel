@@ -132,7 +132,7 @@ async function editTripDtl(arrIdx, destIdx) {
 
   console.log('trpObj', arrIdx, destIdx, trpObj)
 
-  var trpDtl = JSON.parse(val(trpObj['Destination Detail']))
+  var trpDtl = JSON.parse(trpObj['Destination Detail'])
   console.log('trpDtl', trpDtl)
 
   var parseDate = trpDtl.date.split(", ")
