@@ -140,7 +140,7 @@ async function editTripDtl(arrIdx, destIdx) {
   // var time = parseDate[1] ? parseDate[1] : ''
 
   var date = new Date(trpDtl.date).toISOString().substring(0, 10) 
-  var time = new Date(trpDtl.date).toISOString().substring(1, 19) 
+  var time = new Date(trpDtl.date).toISOString().substring(11, 19) 
 
   console.log('date', date)
   console.log('time', time)
