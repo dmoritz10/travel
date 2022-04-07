@@ -54,7 +54,7 @@ async function showTrip(idx) {
     .setTableClass('table table-borderless')
     .setTrClass('d-flex')
     .setTcClass(['text-end col-4 h5 text-success align-items-center', 'text-start col h4'])
-    .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
+    .setTdClass('py-1 pb-0 mb-0 border-0 align-bottom border-bottom')
     .build('#tblTrips');
 
   gotoTab('ShowTrip')
