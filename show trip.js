@@ -16,7 +16,7 @@ async function showTrip(idx) {
 
   var brkDate
 
-  for (var i=1; i<trpDtl.length;i++) {
+  for (var i=0; i<trpDtl.length;i++) {
 
     var val = trpDtl[i]
 
