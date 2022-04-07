@@ -63,13 +63,6 @@ async function showTrip(idx) {
 
 } 
 
-function openImg(img) {
-
-  var newTab = window.open("", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
-  newTab.document.body.innerHTML = '<img src=' + img + '>'
-
-}
-
 function browseDocument(dir) {
 
   var idx   = $("#trpdArrIdx").val()*1       
@@ -104,17 +97,6 @@ function browseDocument(dir) {
 }
 
 
-function copyToClpbrd(txt) {
-
-  navigator.clipboard.writeText(txt).then(function() {
-    console.log('Async: Copying to clipboard was successful!');
-    toast('Copied to clipboard', 1000)
-  }, function(err) {
-    console.error('Async: Could not copy text: ', err);
-  });
-
-}
-
 function clearAndGotoTab(sht) {
 
   $("#tblTrips").html('')
@@ -133,3 +115,27 @@ function editFromTripSheet() {
   editTrip(arrIdx)
 
 }
+
+
+async function editTripDtl(arrIdx, destIdx) {
+
+  $("#trpdtl-form")[0].reset();
+
+  $("#trpdtl-modal").modal('show');
+
+  $('#trpmdtlArrIdx').val(arrIdx)
+
+  var vals = trpVals[arrIdx]
+
+  var trpObj = makeObj(vals, trpHdrs)
+
+  $('#trpmdtlTrip').val(trpObj['Document'])
+  $('#trpmdtDate').val(trpObj['Expiry'])
+  $('#trpmdtTime').val(trpObj['Account Nbr'])
+  $('#trpmdtlCity').val(trpObj['Notes'])
+  $('#trpmdtlState').val(trpObj['Favorite'])
+
+  $('#btntrpmdtlDelete').removeClass('d-none')
+
+}
+
