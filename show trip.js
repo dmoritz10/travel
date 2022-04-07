@@ -141,8 +141,8 @@ async function editTripDtl(arrIdx, destIdx) {
 
   console.log('date', new Date(date).toISOString().substring(0, 10))
   console.log('time', new Date(time))
-  console.log('dt', new Date(date + ' ' + time).toISOString().substring(0, 10))
-  console.log('tm', new Date(date + ' ' + time).toISOString().substring(10, 17))
+  console.log('dt', new Date(parseDate).toISOString().substring(0, 10))
+  console.log('tm', new Date(date + ' ' + time).toISOString().substring(11, 18))
 
 
 
