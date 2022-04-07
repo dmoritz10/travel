@@ -24,6 +24,7 @@ async function updateTrips() {
   
     var updateCntr = 0
     var appendCntr = 0
+    var skipCntr = 0
   
 
     for (var i = 0;i<valsLHD.length;i++) {
@@ -51,10 +52,12 @@ console.log('row', row)
         valsTRP.push(trip.val);
         appendCntr++
       } else {
-        // if (trp[hdrsTRP.indexOf('Source')] != 'Manual') {
+         if (valsTRP[row][hdrsTRP.indexOf('Source')] == 'LHD') {
           valsTRP[row] = trip.val;
           updateCntr++
-        // }
+        } else {
+          skipCntr++
+        }
       }
   
     }
@@ -62,7 +65,8 @@ console.log('row', row)
     console.log('updateAppendSht')
     console.log('updateCntr', updateCntr)
     console.log('appendCntr', appendCntr)
-    console.log('total', appendCntr + updateCntr)
+    console.log('skipCntr', skipCntr)
+    console.log('total', appendCntr + updateCntr + skipCntr)
   
     var shtArr = [hdrsTRP].concat(valsTRP)
   
