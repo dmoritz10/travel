@@ -127,7 +127,9 @@ async function editTripDtl(arrIdx, destIdx) {
 
   var vals = trpVals[arrIdx]
 
+
   var trpObj = makeObj(vals, trpHdrs)
+  console.log('trpObj', arrIdx, destIdx, trpObj)
 
   $('#trpmdtlTrip').val(trpObj['Document'])
   $('#trpmdtDate').val(trpObj['Expiry'])
