@@ -139,6 +139,9 @@ async function editTripDtl(arrIdx, destIdx) {
   var date = parseDate[0]
   var time = parseDate[1] ? parseDate[1] : ''
 
+  console.log('date', new Date(date))
+  console.log('time', new Date(time))
+
   $('#trpmdtlTrip').val(trpDtl.name)
   $('#trpmdtlDate').val(new Date(date))
   $('#trpmdtlTime').val(new Date(time))
@@ -148,6 +151,6 @@ async function editTripDtl(arrIdx, destIdx) {
   $('#btntrpmdtlDelete').removeClass('d-none')
 
 
-  
+
 }
 
