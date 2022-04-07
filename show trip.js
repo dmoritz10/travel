@@ -3,8 +3,6 @@ async function showTrip(idx) {
 
   if (idx === null) return                  // null is from browseDocument
 
-  modal(true)
-  
   var trp = []
 
   var vals = trpVals[idx]
@@ -28,7 +26,9 @@ async function showTrip(idx) {
 
     if (date != brkDate) {
 
-      trp.push(["<div class='text-primary h4'>" + date, '<div class="">&nbsp;</div>'])
+      var dispDate = DateTime.fromJSDate(new Date(date)).toFormat('ccc d/L');
+
+      trp.push(["<div class='text-primary h4'>" + dispDate, '<div class="">&nbsp;</div>'])
 
       brkDate = date
 
@@ -58,8 +58,6 @@ async function showTrip(idx) {
   gotoTab('ShowTrip')
 
   // $('#trpContainer > div').eq(idx+1).trigger( "click" )
-
-  modal(false)
 
 } 
 

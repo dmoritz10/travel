@@ -241,7 +241,6 @@ async function formatPlace(json, objLHD) {
 
 var a = JSON.parse(json)
 
-var DateTime = luxon.DateTime;
 var b = a.timelineObjects
 
 var homeLat = readOption('Home Lat')
@@ -278,7 +277,7 @@ for (var i in b) {
         var lat = x.location.latitudeE7 ? x.location.latitudeE7/10**7 : x.otherCandidateLocations[0].latitudeE7/10**7
         var lng = x.location.longitudeE7 ? x.location.longitudeE7/10**7 : x.otherCandidateLocations[0].longitudeE7/10**7
 
-        var localTime = await calcLocalTime(cityState.city, x.duration.startTimestamp, lat, lng, objLHD['City Timezone Xref'], DateTime)
+        var localTime = await calcLocalTime(cityState.city, x.duration.startTimestamp, lat, lng, objLHD['City Timezone Xref'])
         var dateTimeFormatted = localTime.toLocaleString(DateTime.DATETIME_SHORT)
 
         var duration = DateTime.fromISO(x.duration.endTimestamp).diff(DateTime.fromISO(x.duration.startTimestamp))
@@ -314,7 +313,7 @@ return arr
 
 }
 
-async function calcLocalTime(city, startTimestamp, lat, lng, cityXref, DateTime) {
+async function calcLocalTime(city, startTimestamp, lat, lng, cityXref) {
 
   var hdrs      = cityXref.colHdrs
   var cityXref  = cityXref.vals
