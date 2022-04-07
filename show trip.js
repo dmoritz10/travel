@@ -26,7 +26,7 @@ async function showTrip(idx) {
 
     if (date != brkDate) {
 
-      var dispDate = DateTime.fromJSDate(new Date(date)).toFormat('ccc :/d');
+      var dispDate = DateTime.fromJSDate(new Date(date)).toFormat('ccc L/d');
 
       trp.push(["<div class='text-primary h4'>" + dispDate, '<div class="">&nbsp;</div>'])
 
