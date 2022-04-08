@@ -621,3 +621,55 @@ function modal(state) {
     $("#overlay").fadeOut("slow");;
   }
 }
+
+function parseDateTime(d) {
+
+  //  Parse date in mm/dd/yyyy, hh:mm AM/PM format into
+  //  yyyy-mm-dd and hh:mm in 24 hr format.
+  //
+  //  This format is required by the type=date and type=time input tags
+
+  var x = d.split(', ')
+
+  var date = x[0]
+  var time = x[1]
+
+  var wrk = date.split('/')
+  var dateyymmdd = wrk[2] + '-' + wrk[0] + '-' + wrk[1]
+
+  var wrk = time.split(':')
+  var ampm = wrk[1].substr(3,2)
+  var hh = wrk[0]*1
+  var hr = ampm == "PM" && hh < 12 ? hh + 12 : hh
+  var mm = ('0' + hr).slice(-2).substr(0,2)
+
+  return {
+
+      date: dateyymmdd,
+      time: hr + ':' + mm
+
+  }
+
+}
+
+function formatDateTime(d, t) {
+
+  //  Accepts date and time in yyyy-mm-dd and hh:mm as from type=date and type=time input tags 
+  //  Return mm/dd/yyyy, hh:mm AM/PM format 
+  //
+
+  var wrk = d.split('-')
+
+  var date = wrk[1] + '/' + wrk[2] + '/' + wrk[0]
+
+  var wrk = t.split(':')
+  var hr = wrk[0]*1
+  var mm = wrk[1].substr(0,2)
+  var ampm = hr > 11 ? "PM" : "AM"
+  var hh = hr > 12 ? hr - 12 : hr
+
+  var time = hh + ':' + mm + ' ' + ampm
+
+  return date + ', ' + time
+
+}

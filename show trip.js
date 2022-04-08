@@ -139,23 +139,16 @@ async function editTripDtl(arrIdx, destIdx) {
   // var date = parseDate[0]
   // var time = parseDate[1] ? parseDate[1] : ''
 
-  var date = new Date(trpDtl.date).toISOString().substring(0, 10) 
-  var time = new Date(trpDtl.date).toISOString().substring(11, 19) 
+  var dt = parseDateTime(trpDtl.date)
 
-  console.log('date', date)
-  console.log('time', time)
-
-
-
+  console.log('dt', dt, trpDtl.date)
   $('#trpmdtlTrip').val(trpDtl.name)
-  $('#trpmdtlDate').val(date)
-  $('#trpmdtlTime').val(time)
+  $('#trpmdtlDate').val(dt.date)
+  $('#trpmdtlTime').val(dt.time)
   $('#trpmdtlCity').val(trpDtl.city)
   $('#trpmdtlState').val(trpDtl.state)
 
   $('#btntrpmdtlDelete').removeClass('d-none')
-
-
 
 }
 
