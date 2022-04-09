@@ -142,6 +142,7 @@ async function editTripDtl(arrIdx, destIdx) {
   var dt = parseDateTime(trpDtl.date)
 
   console.log('dt', dt, trpDtl.date)
+  
   $('#trpmdtlTrip').val(trpDtl.name)
   $('#trpmdtlDate').val(dt.date)
   $('#trpmdtlTime').val(dt.time)

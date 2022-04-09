@@ -636,7 +636,8 @@ function parseDateTime(d) {
 
   var wrk = date.split('/')
 
-  const pad = x => ('0' + x).substr(0,2)
+  const pad = x => ('0' + x).slice(-2)
+
 
   var dateyymmdd = wrk[2] + '-' + pad(wrk[0]) + '-' + pad(wrk[1])
 
