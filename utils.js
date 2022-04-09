@@ -629,8 +629,6 @@ function parseDateTime(d) {
   var date = x[0]
   var time = x[1]
 
-  console.log('time', time)
-
   var wrk = date.split('/')
 
   const pad = x => ('0' + x).slice(-2)
@@ -656,7 +654,7 @@ function parseDateTime(d) {
   return {
 
       date: dateyymmdd,
-      time: hr + ':' + min
+      time: time
 
   }
 
