@@ -127,22 +127,14 @@ async function editTripDtl(arrIdx, destIdx) {
 
   var vals = trpVals[arrIdx]
 
-
   var trpObj = makeObj(vals, trpHdrs)
 
-  console.log('trpObj', arrIdx, destIdx, trpObj)
-
   var trpDtl = JSON.parse(trpObj['Destination Detail'])[destIdx]
-  console.log('trpDtl', trpDtl)
 
-  // var parseDate = trpDtl.date.split(", ")
-  // var date = parseDate[0]
-  // var time = parseDate[1] ? parseDate[1] : ''
-
-  var dt = parseDateTime(trpDtl.date)
+  var dt = trpDtl.date ? parseDateTime(trpDtl.date) : {date: '', time: ''}
 
   console.log('dt', dt, trpDtl.date)
-  
+
   $('#trpmdtlTrip').val(trpDtl.name)
   $('#trpmdtlDate').val(dt.date)
   $('#trpmdtlTime').val(dt.time)
@@ -153,3 +145,88 @@ async function editTripDtl(arrIdx, destIdx) {
 
 }
 
+
+async function btntrpmdtlSubmitHtml() {
+
+  /*
+   update trpVals[arrIdx][trpHdrs.indexOf("Destination Detail")]
+   add will be more difficult because have to insert based on date/time
+  
+   somehow update screen.  If update, need idx nbr of screen element
+  
+  */
+  if (!$('#trpdtl-form').valid()) return
+
+  var arrIdx = $('#trpmdtlArrIdx').val() ? $('#trpmdtlArrIdx').val()*1 : -1
+
+  if (arrIdx > -1) {                                                       // update existing course
+
+    var vals = [...trpVals[arrIdx]]
+
+    vals[trpHdrs.indexOf("Document")] = $('#trpmDocument').val()
+    vals[trpHdrs.indexOf("Expiry")] = $('#trpmExpiry').val()
+    vals[trpHdrs.indexOf("Img Front")] = $('#trpmImgFront').val()
+    vals[trpHdrs.indexOf("Img Back")] = $('#trpmImgBack').val()
+    vals[trpHdrs.indexOf("Notes")] = $('#trpmNotes').val()
+    vals[trpHdrs.indexOf("Last Change")] = formatDate(new Date())
+    vals[trpHdrs.indexOf("Favorite")] = $('#trpmFavorite').val()
+    vals[trpHdrs.indexOf("File Id")] = $('#trpmFileId').val()
+
+    var fileId = $('#trpmFileId').val()
+
+
+  } else {
+
+    if (dupDocument($('#trpmDocument').val())) {
+      toast("Document already exists")
+      return
+    }
+
+    var fileId = await buildImageFile()
+
+    var vals = []
+
+    vals[trpHdrs.indexOf("Document")] = $('#trpmDocument').val()
+    vals[trpHdrs.indexOf("Expiry")] = $('#trpmExpiry').val()
+    vals[trpHdrs.indexOf("Img Front")] = $('#trpmImgFront').val()
+    vals[trpHdrs.indexOf("Img Back")] = $('#trpmImgBack').val()
+    vals[trpHdrs.indexOf("Notes")] = $('#trpmNotes').val()
+    vals[trpHdrs.indexOf("Last Change")] = formatDate(new Date())
+    vals[trpHdrs.indexOf("Favorite")] = $('#trpmFavorite').val()
+    vals[trpHdrs.indexOf("File Id")] = fileId
+
+  }
+
+  modal(true)
+
+  var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
+
+  var valsEnc = trpEnc ? await encryptArr(vals) : vals
+
+  await updateSheetRow(valsEnc, trpIdx)
+
+  var imgs = []
+  var savImgs = []
+
+  imgs[0] = document.getElementById("trpmImgFront").src
+  imgs[1] = document.getElementById("trpmImgBack").src
+  savImgs[0] = document.getElementById("trpmSaveImgFront").src;
+  savImgs[1] = document.getElementById("trpmSaveImgBack").src;
+
+  // console.log('submit', [...imgs])
+  // console.log('submit', [...savImgs])
+
+  console.log('fileId', fileId)
+
+  await postImages(trpEnc, fileId, imgs, savImgs)
+
+  $('#trpmImgFront').removeAttr('src').addClass('d-none')
+  $('#trpmImgBack').removeAttr('src').addClass('d-none')
+
+  $("#sheet-modal").modal('hide');
+  // $("#sheet-modal").modal('dispose');
+
+  updateUI(valsEnc, arrIdx)
+
+  modal(false)
+}
