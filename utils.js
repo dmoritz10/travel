@@ -624,11 +624,6 @@ function modal(state) {
 
 function parseDateTime(d) {
 
-  //  Parse date in mm/dd/yyyy, hh:mm AM/PM format into
-  //  yyyy-mm-dd and hh:mm in 24 hr format.
-  //
-  //  This format is required by the type=date and type=time input tags
-
   var x = d.split(', ')
 
   var date = x[0]
@@ -638,29 +633,25 @@ function parseDateTime(d) {
 
   const pad = x => ('0' + x).slice(-2)
 
-
   var dateyymmdd = wrk[2] + '-' + pad(wrk[0]) + '-' + pad(wrk[1])
 
   var wrk = time.split(':')
-  var ampm = wrk[1].substr(3,2)
   var hh = wrk[0]*1
+  var mm = wrk[1]
+  var ampm = mm.substr(3,2)
   var hr = ampm == "PM" && hh < 12 ? hh + 12 : hh
-  var mm = ('0' + hr).slice(-2).substr(0,2)
+  var min = pad(mm.split(' ')[0])
 
   return {
 
       date: dateyymmdd,
-      time: hr + ':' + mm
+      time: hr + ':' + min
 
   }
 
 }
 
 function formatDateTime(d, t) {
-
-  //  Accepts date and time in yyyy-mm-dd and hh:mm as from type=date and type=time input tags 
-  //  Return mm/dd/yyyy, hh:mm AM/PM format 
-  //
 
   var wrk = d.split('-')
 
