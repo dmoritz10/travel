@@ -629,6 +629,8 @@ function parseDateTime(d) {
   var date = x[0]
   var time = x[1]
 
+  console.log('time', time)
+
   var wrk = date.split('/')
 
   const pad = x => ('0' + x).slice(-2)
@@ -644,7 +646,7 @@ function parseDateTime(d) {
     var hr = ampm == "PM" && hh < 12 ? hh + 12 : hh
     var min = pad(mm.split(' ')[0])
     var time = hr + ':' + min
-    
+
   } else {
 
     var time = ''
