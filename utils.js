@@ -635,12 +635,21 @@ function parseDateTime(d) {
 
   var dateyymmdd = wrk[2] + '-' + pad(wrk[0]) + '-' + pad(wrk[1])
 
-  var wrk = time.split(':')
-  var hh = wrk[0]*1
-  var mm = wrk[1]
-  var ampm = mm.substr(3,2)
-  var hr = ampm == "PM" && hh < 12 ? hh + 12 : hh
-  var min = pad(mm.split(' ')[0])
+  if (time) {
+
+    var wrk = time.split(':')
+    var hh = wrk[0]*1
+    var mm = wrk[1]
+    var ampm = mm.substr(3,2)
+    var hr = ampm == "PM" && hh < 12 ? hh + 12 : hh
+    var min = pad(mm.split(' ')[0])
+    var time = hr + ':' + min
+    
+  } else {
+
+    var time = ''
+
+  }
 
   return {
 
