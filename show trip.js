@@ -130,6 +130,7 @@ async function editTripDtl(arrIdx, destIdx) {
   var trpObj = makeObj(vals, trpHdrs)
 
   var trpDtl = JSON.parse(trpObj['Destination Detail'])[destIdx]
+  console.log('trpDtl.date', trpDtl.date)
 
   var dt = trpDtl.date ? parseDateTime(trpDtl.date) : {date: '', time: ''}
 
