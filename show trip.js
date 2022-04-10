@@ -168,7 +168,7 @@ async function btntrpmdtlSubmitHtml() {
 
   if (arrIdx > -1) {                                                       // update existing course
 
-    var vals = [...trpVals[arrIdx]]
+    var vals = trpVals[arrIdx]
 
     var destDtl = JSON.parse(vals[trpHdrs.indexOf("Destination Detail")])
 
@@ -180,6 +180,8 @@ async function btntrpmdtlSubmitHtml() {
     destObj.state = $('#trpmdtlState').val()
 
     vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify(destDtl)
+
+
 
   } else {
 
@@ -204,6 +206,7 @@ async function btntrpmdtlSubmitHtml() {
   modal(true)
 
   var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
+
 
   await updateSheetRow(vals, trpIdx)
 
