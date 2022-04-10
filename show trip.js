@@ -230,14 +230,15 @@ function sortDest(vals) {
 
     console.log('vals', vals[i])
 
-    vals[i].push(new Date(vals[i]['date']))
+    vals[i]['sort'] = new Date(vals[i]['date'])
   
   }
 
   var sortCol = vals[0] ? vals[0].length - 1 : 0    // in case of empty sheet.  ie. hdrs only
 
-  vals.sort(function(a,b){return a[sortCol] < b[sortCol] ? 1 : -1; });
+  vals.sort((a,b) =>  a.sort < b.sort ? 1 : -1);
+
+  vals.forEach((val, idx, arr)=> delete val['sort']) // remove sort element from end of array
   
-  vals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
-  
+  console.log('sorted', vals)
 }
