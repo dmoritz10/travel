@@ -176,13 +176,11 @@ async function btntrpmdtlSubmitHtml() {
   var arrIdx = $('#trpmdtlArrIdx').val()
   var destIdx = $('#trpmdtlDestIdx').val() ? $('#trpmdtlDestIdx').val()*1 : -1
 
-  if (arrIdx > -1) {                                                       // update existing course
-
     var vals = trpVals[arrIdx]
 
     var destDtl = JSON.parse(vals[trpHdrs.indexOf("Destination Detail")])
 
-    var destObj = destDtl[destIdx]
+    var destObj = destIdx > -1 ? destDtl[destIdx] : destDtl.push({})
 
     destObj.name = $('#trpmdtlTrip').val()
     destObj.date = formatDateTime($('#trpmdtlDate').val(), $('#trpmdtlTime').val())
@@ -195,26 +193,7 @@ async function btntrpmdtlSubmitHtml() {
 
 
 
-  } else {
-
-    // if (dupDocument($('#trpmDocument').val())) {
-    //   toast("Document already exists")
-    //   return
-    // }
-
-    var vals = []
-
-    vals[trpHdrs.indexOf("Document")] = $('#trpmDocument').val()
-    vals[trpHdrs.indexOf("Expiry")] = $('#trpmExpiry').val()
-    vals[trpHdrs.indexOf("Img Front")] = $('#trpmImgFront').val()
-    vals[trpHdrs.indexOf("Img Back")] = $('#trpmImgBack').val()
-    vals[trpHdrs.indexOf("Notes")] = $('#trpmNotes').val()
-    vals[trpHdrs.indexOf("Last Change")] = formatDate(new Date())
-    vals[trpHdrs.indexOf("Favorite")] = $('#trpmFavorite').val()
-    vals[trpHdrs.indexOf("File Id")] = fileId
-
-  }
-
+  
   modal(true)
 
   var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
