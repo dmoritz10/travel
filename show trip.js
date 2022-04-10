@@ -59,9 +59,11 @@ async function showTrip(idx) {
 
   gotoTab('ShowTrip')
 
-  $('#tblTrips td').click(function(e){         // highlight clicked row
+  $('#tblTrips tr').click(function(e){         // highlight clicked row
+
+    console.log('sel', $('#tblTrips tr'), e.currentTarget)
     
-    $('#tblTrips td').removeClass('ele-selected');
+    $('#tblTrips tr').removeClass('ele-selected');
     $(e.currentTarget).addClass('ele-selected')
     
   });
