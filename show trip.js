@@ -125,8 +125,9 @@ async function addNewDest() {
 
   $("#trpdtl-form")[0].reset();
   $("#trpdtl-modal").modal('show');
+  $('#trpmdtlArrIdx').val($("#trpdArrIdx").val())
 
-   $('#btntrpmdtlDelete').addClass('d-none')
+  $('#btntrpmdtlDelete').addClass('d-none')
 
 }
 
@@ -172,8 +173,8 @@ async function btntrpmdtlSubmitHtml() {
 
   if (!$('#trpdtl-form').valid()) return
 
-  var arrIdx = $('#trpmdtlArrIdx').val() ? $('#trpmdtlArrIdx').val()*1 : -1
-  var destIdx = $('#trpmdtlDestIdx').val()
+  var arrIdx = $('#trpmdtlArrIdx').val()
+  var destIdx = $('#trpmdtlDestIdx').val() ? $('#trpmdtlDestIdx').val()*1 : -1
 
   if (arrIdx > -1) {                                                       // update existing course
 
