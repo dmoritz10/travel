@@ -236,7 +236,7 @@ function sortDest(vals) {
 
   var sortCol = vals[0] ? vals[0].length - 1 : 0    // in case of empty sheet.  ie. hdrs only
 
-  vals.sort((a,b) =>  a.sort < b.sort ? 1 : -1);
+  vals.sort((a,b) =>  a.sort < b.sort ? -1 : 1);
 
   vals.forEach((val, idx, arr)=> delete val['sort']) // remove sort element from end of array
   
