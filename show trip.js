@@ -216,7 +216,6 @@ async function btntrpmdtlDeleteHtml() {
   if (!destIdx) return
 
   var arrIdx = $('#trpmdtlArrIdx').val()
-  var destIdx = $('#trpmdtlDestIdx').val()
 
   var vals = trpVals[arrIdx]
 
@@ -226,7 +225,7 @@ async function btntrpmdtlDeleteHtml() {
 
   vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify(destDtl)
 
-  var trpIdx = trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
+  var trpIdx = trpIdxArr[arrIdx]                  // get the row nbr on the sheet from trpIdxArr
 
   await updateSheetRow(vals, trpIdx)
 
