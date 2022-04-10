@@ -209,8 +209,6 @@ async function btntrpmdtlSubmitHtml() {
 
 async function btntrpmdtlDeleteHtml() {
 
-  if (!$('#trpdtl-form').valid()) return
-
   var destIdx = $('#trpmdtlDestIdx').val()
 
   if (!destIdx) return
