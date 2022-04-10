@@ -111,15 +111,15 @@ function clearAndGotoTab(sht) {
 
 }
 
-function addNewDest() {
+// function addNewDest() {
 
-  clearAndGotoTab("Trips")
+//   clearAndGotoTab("Trips")
 
-  var arrIdx = $("#trpdArrIdx").val()
+//   var arrIdx = $("#trpdArrIdx").val()
 
-  editTrip(arrIdx)
+//   editTrip(arrIdx)
 
-}
+// }
 
 async function addNewDest() {
 
