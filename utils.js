@@ -538,7 +538,7 @@ async function updateSheetRow(vals, shtIdx) {
     console.log('update', shtIdx)
 
     var row = shtIdx * 1 + 2
-    var rng = calcRngA1(row, 1, 1, shtHdrs.length)
+    var rng = calcRngA1(row, 1, 1, vals.length)
 
     var params = {
       spreadsheetId: spreadsheetId,
