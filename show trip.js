@@ -230,7 +230,6 @@ async function btntrpmdtlDeleteHtml() {
 
   await updateSheetRow(vals, trpIdx)
 
-
   $("#trpdtl-modal").modal('hide');
 
   modal(true)
@@ -238,7 +237,10 @@ async function btntrpmdtlDeleteHtml() {
   showTrip(arrIdx)
 
   modal(false)
+
 }
+
+
 function sortDest(vals) {
 
   for (var i=0;i<vals.length;i++) {
