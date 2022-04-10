@@ -28,7 +28,7 @@ async function showTrip(idx) {
 
       var dispDate = DateTime.fromJSDate(new Date(date)).toFormat('ccc L/d');
 
-      trp.push(["<div class='text-primary h4'>" + dispDate, '<div class="">&nbsp;</div>'])
+      trp.push(["<div class='text-start text-primary h4'>" + dispDate, '<div class="">&nbsp;</div>'])
 
       brkDate = date
 
@@ -111,7 +111,7 @@ function clearAndGotoTab(sht) {
 
 }
 
-function editFromTripSheet() {
+function addNewDest() {
 
   clearAndGotoTab("Trips")
 
@@ -224,8 +224,6 @@ async function btntrpmdtlSubmitHtml() {
 
 function sortDest(vals) {
 
-  console.log(vals)
-
   for (var i=0;i<vals.length;i++) {
 
     console.log('vals', vals[i])
@@ -240,5 +238,4 @@ function sortDest(vals) {
 
   vals.forEach((val, idx, arr)=> delete val['sort']) // remove sort element from end of array
   
-  console.log('sorted', vals)
 }
