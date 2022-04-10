@@ -186,7 +186,14 @@ async function btntrpmdtlSubmitHtml() {
     console.log('destIdx', destIdx)
     console.log(destIdx > -1)
 
-    var destObj = destIdx > -1 ? destDtl[destIdx] : destDtl.push({})
+    if (destIdx == -1) {
+      
+      destDtl.push({})
+      destIdx = destDtl.length - 1
+
+    }
+
+    var destObj = destDtl[destIdx]
 
     console.log('destObj', destObj)
 
