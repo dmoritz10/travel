@@ -179,6 +179,8 @@ async function btntrpmdtlSubmitHtml() {
     destObj.city = $('#trpmdtlCity').val()
     destObj.state = $('#trpmdtlState').val()
 
+    sortDest(destDtl)
+
     vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify(destDtl)
 
 
@@ -207,7 +209,6 @@ async function btntrpmdtlSubmitHtml() {
 
   var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
 
-
   await updateSheetRow(vals, trpIdx)
 
 
@@ -219,4 +220,20 @@ async function btntrpmdtlSubmitHtml() {
   showTrip(arrIdx)
 
   modal(false)
+}
+
+function sortDest(vals) {
+
+  for (var i=0;i<vals.length;i++) {
+
+    vals[i].push(new Date(vals[i]['date']))
+  
+  }
+
+  var sortCol = vals[0] ? vals[0].length - 1 : 0    // in case of empty sheet.  ie. hdrs only
+
+  vals.sort(function(a,b){return a[sortCol] < b[sortCol] ? 1 : -1; });
+  
+  vals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
+  
 }
