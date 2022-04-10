@@ -121,6 +121,15 @@ function addNewDest() {
 
 }
 
+async function addNewDest() {
+
+  $("#trpdtl-form")[0].reset();
+  $("#trpdtl-modal").modal('show');
+
+   $('#btntrpmdtlDelete').addClass('d-none')
+
+}
+
 
 async function editTripDtl(arrIdx, destIdx) {
 
