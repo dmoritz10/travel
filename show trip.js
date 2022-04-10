@@ -185,12 +185,19 @@ async function btntrpmdtlSubmitHtml() {
 
     var destObj = destIdx > -1 ? destDtl[destIdx] : destDtl.push({})
 
+    console.log('destObj', destObj)
+
     destObj.name = $('#trpmdtlTrip').val()
     destObj.date = formatDateTime($('#trpmdtlDate').val(), $('#trpmdtlTime').val())
     destObj.city = $('#trpmdtlCity').val()
     destObj.state = $('#trpmdtlState').val()
 
+    console.log('destObj1', destObj)
+
+    console.log('destDtl', destDtl)
+
     sortDest(destDtl)
+    console.log('destDtl1', destDtl)
 
     vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify(destDtl)
 
