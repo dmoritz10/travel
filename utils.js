@@ -664,16 +664,25 @@ function formatDateTime(d, t) {
 
   var wrk = d.split('-')
 
-  var date = wrk[1] + '/' + wrk[2] + '/' + wrk[0]
+  var date = wrk[1]*1 + '/' + wrk[2]*1 + '/' + wrk[0]*1
 
-  var wrk = t.split(':')
-  var hr = wrk[0]*1
-  var mm = wrk[1].substr(0,2)
-  var ampm = hr > 11 ? "PM" : "AM"
-  var hh = hr > 12 ? hr - 12 : hr
+  if (t) {
+    // 
+    var wrk = t.split(':')
+    var hr = wrk[0]*1
+    var mm = wrk[1].substr(0,2)
+    var ampm = hr > 11 ? "PM" : "AM"
+    var hh = hr > 12 ? hr - 12 : hr
 
-  var time = hh + ':' + mm + ' ' + ampm
+    var time = hh + ':' + mm + ' ' + ampm
 
-  return date + ', ' + time
+  } else {
+
+    var time = ''
+
+  }
+
+  return date + (time ? ', ' : '')  + time
 
 }
+

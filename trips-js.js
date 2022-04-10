@@ -116,8 +116,8 @@ async function listTrips(title = "Trips") {
 
   $('#trpContainer > div').click(function(e){         // highlight clicked row
     
-    $('#trpContainer > div').removeClass('sheets-focus');
-    $(e.currentTarget).addClass('sheets-focus')
+    $('#trpContainer > div').removeClass('ele-selected');
+    $(e.currentTarget).addClass('ele-selected')
     
   });
 

@@ -59,7 +59,13 @@ async function showTrip(idx) {
 
   gotoTab('ShowTrip')
 
-  // $('#trpContainer > div').eq(idx+1).trigger( "click" )
+  $('#tblTrips td').click(function(e){         // highlight clicked row
+    
+    $('#tblTrips td').removeClass('ele-selected');
+    $(e.currentTarget).addClass('ele-selected')
+    
+  });
+
 
 } 
 

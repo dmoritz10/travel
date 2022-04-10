@@ -34,26 +34,32 @@ Trip We've Taken
         > goes to destinations within trip
 
 
-{trip:
-  name: "Aspen - Jan 2022",
-  type: 'Domestic, Ski, International',
-  nbrDays: 12,
-  img: pointer to image,
-  destinations: [
-    {
-      name: "Aspen",
-      startDate: 1/29/2022,
-      endDate: 2/5/2022,
-    },
-    {
-      name: "Aspen",
-      startDate: 1/29/2022,
-      endDate: 2/5/2022,
-    },{
-      name: "Aspen",
-      startDate: 1/29/2022,
-      endDate: 2/5/2022,
-    }
-  ]
-  
-}
+
+Global vars
+
+  trpHdrs         = objSht[trpTitle].colHdrs
+  trpVals         = objSht[trpTitle].vals
+
+  trpIdx       = which trip is selected = index in trpVals by showTrips
+
+    use to update Trips sheet by f/m in show trip.js and trips-js.js
+
+  var destDtl = trpVals[trpArrIdx][trpHdrs.indexOf("Destination Detail")]
+
+  trpdtlIdx   = which Destination is selected = index in destDtl by showTrip
+
+
+Classes
+
+  trpSelected     = which element of trpContainer is selected by >
+
+    when > is clicked, 
+      remove all classes and set class on this
+      update trpArrIdx
+
+  trpDestSelected = which element of trpdtlmContainer is selected by >
+
+    when > is clicked, 
+      remove all classes and set class on this
+      update trpDestDtlIdx
+    
