@@ -180,6 +180,9 @@ async function btntrpmdtlSubmitHtml() {
 
     var destDtl = JSON.parse(vals[trpHdrs.indexOf("Destination Detail")])
 
+    console.log('destIdx', destIdx)
+    console.log(destIdx > -1)
+
     var destObj = destIdx > -1 ? destDtl[destIdx] : destDtl.push({})
 
     destObj.name = $('#trpmdtlTrip').val()
