@@ -224,7 +224,11 @@ async function btntrpmdtlSubmitHtml() {
 
 function sortDest(vals) {
 
+  console.log(vals)
+
   for (var i=0;i<vals.length;i++) {
+
+    console.log('vals', vals[i])
 
     vals[i].push(new Date(vals[i]['date']))
   
