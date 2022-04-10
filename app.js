@@ -222,8 +222,9 @@ jQuery(function ($) {
             $('#shtSelectDropDown')        .on('show.bs.dropdown', function () {
                 btnShtMoreVertHtml()
             })
-
+            
             $('#btnTrpAddTrip')   .click(btnAddSheetHtml);
+            $('#btntrpmdtlDelete')   .click(btntrpmdtlDeleteHtml);
             // $('#btnShtAddPDocument
 
             $('#btnTrpmSubmit')       .button().click(btnTrpmSubmitSheetHtml);

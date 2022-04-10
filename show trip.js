@@ -163,57 +163,33 @@ async function editTripDtl(arrIdx, destIdx) {
 
 async function btntrpmdtlSubmitHtml() {
 
-  /*
-   update trpVals[arrIdx][trpHdrs.indexOf("Destination Detail")]
-   add will be more difficult because have to insert based on date/time
-  
-   somehow update screen.  If update, need idx nbr of screen element
-  
-  */
-
   if (!$('#trpdtl-form').valid()) return
 
   var arrIdx = $('#trpmdtlArrIdx').val()
   var destIdx = $('#trpmdtlDestIdx').val() ? $('#trpmdtlDestIdx').val()*1 : -1
 
-    var vals = trpVals[arrIdx]
+  var vals = trpVals[arrIdx]
 
-    var destDtl = JSON.parse(vals[trpHdrs.indexOf("Destination Detail")])
+  var destDtl = JSON.parse(vals[trpHdrs.indexOf("Destination Detail")])
 
-    console.log('destDtl', destDtl)
+  if (destIdx == -1) {
+    
+    destDtl.push({})
+    destIdx = destDtl.length - 1
 
+  }
 
-    console.log('destIdx', destIdx)
-    console.log(destIdx > -1)
+  var destObj = destDtl[destIdx]
 
-    if (destIdx == -1) {
-      
-      destDtl.push({})
-      destIdx = destDtl.length - 1
+  destObj.name = $('#trpmdtlTrip').val()
+  destObj.date = formatDateTime($('#trpmdtlDate').val(), $('#trpmdtlTime').val())
+  destObj.city = $('#trpmdtlCity').val()
+  destObj.state = $('#trpmdtlState').val()
 
-    }
+  sortDest(destDtl)
 
-    var destObj = destDtl[destIdx]
+  vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify(destDtl)
 
-    console.log('destObj', destObj)
-
-    destObj.name = $('#trpmdtlTrip').val()
-    destObj.date = formatDateTime($('#trpmdtlDate').val(), $('#trpmdtlTime').val())
-    destObj.city = $('#trpmdtlCity').val()
-    destObj.state = $('#trpmdtlState').val()
-
-    console.log('destObj1', destObj)
-
-    console.log('destDtl', destDtl)
-
-    sortDest(destDtl)
-    console.log('destDtl1', destDtl)
-
-    vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify(destDtl)
-
-
-
-  
   modal(true)
 
   var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
@@ -230,6 +206,37 @@ async function btntrpmdtlSubmitHtml() {
 
   modal(false)
 }
+
+async function btntrpmdtlDeleteHtml() {
+
+  if (!$('#trpdtl-form').valid()) return
+
+  var destIdx = $('#trpmdtlDestIdx').val()
+
+  if (!destIdx) return
+
+  var arrIdx = $('#trpmdtlArrIdx').val()
+  var destIdx = $('#trpmdtlDestIdx').val()
+
+  var vals = trpVals[arrIdx]
+
+  var destDtl = JSON.parse(vals[trpHdrs.indexOf("Destination Detail")])
+
+  destDtl.splice(destIdx, 1)
+
+  vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify(destDtl)
+
+  await updateSheetRow(vals, arrIdx)
+
+  $("#trpdtl-modal").modal('hide');
+
+  modal(true)
+
+  showTrip(arrIdx)
+
+  modal(false)
+}
+
 
 function sortDest(vals) {
 
