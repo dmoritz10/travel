@@ -226,7 +226,10 @@ async function btntrpmdtlDeleteHtml() {
 
   vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify(destDtl)
 
-  await updateSheetRow(vals, arrIdx)
+  var trpIdx = trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
+
+  await updateSheetRow(vals, trpIdx)
+
 
   $("#trpdtl-modal").modal('hide');
 
@@ -236,8 +239,6 @@ async function btntrpmdtlDeleteHtml() {
 
   modal(false)
 }
-
-
 function sortDest(vals) {
 
   for (var i=0;i<vals.length;i++) {
