@@ -180,6 +180,9 @@ async function btntrpmdtlSubmitHtml() {
 
     var destDtl = JSON.parse(vals[trpHdrs.indexOf("Destination Detail")])
 
+    console.log('destDtl', destDtl)
+
+
     console.log('destIdx', destIdx)
     console.log(destIdx > -1)
 
