@@ -72,7 +72,6 @@ async function showTrip(idx) {
 function browseDocument(dir) {
 
   var idx   = $("#trpdArrIdx").val()*1       
-  var title = $('#shtTitle').text()
 
   var shtRows = trpVals.length                   
 

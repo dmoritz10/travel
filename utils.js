@@ -542,7 +542,7 @@ async function updateSheetRow(vals, shtIdx) {
 
     var params = {
       spreadsheetId: spreadsheetId,
-      range: "'" + shtTitle + "'!" + rng,
+      range: "'" + trpTitle + "'!" + rng,
       valueInputOption: 'RAW'
     };
 
@@ -563,7 +563,7 @@ async function updateSheetRow(vals, shtIdx) {
 
     var params = {
       spreadsheetId: spreadsheetId,
-      range: "'" + shtTitle + "'!" + rng,
+      range: "'" + trpTitle + "'!" + rng,
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS'
     };
@@ -602,8 +602,8 @@ async function updateSheetRow(vals, shtIdx) {
 
         function (reason) {
 
-          console.error('error appending sheet "' + shtTitle + '": ' + reason.result.error.message);
-          bootbox.alert('error appending sheet "' + shtTitle + '": ' + reason.result.error.message);
+          console.error('error appending sheet "' + trpTitle + '": ' + reason.result.error.message);
+          bootbox.alert('error appending sheet "' + trpTitle + '": ' + reason.result.error.message);
 
         });
 
