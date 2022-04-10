@@ -572,7 +572,6 @@ async function updateSheetRow(vals, shtIdx) {
       .then(async function (response) {
 
         console.log('sheetId', shtId)
-        console.log(secSht)
 
         // var request = { "requests": 
         //   [{ "sortRange": 

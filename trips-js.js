@@ -61,7 +61,6 @@ async function listTrips(title = "Trips") {
 
     var ele = $tblSheets.clone();
 
-    // ele.find('#trpDocument')[0].innerHTML = trpObj['Trip'].slice(0, -11)
     ele.find('#trpDocument')[0].innerHTML = trpObj['Trip'].split(' - ')[0]
     ele.find('#trpCompositeKey')[0].innerHTML = trpObj['Composite Key']
 
@@ -260,8 +259,6 @@ async function btnTrpmSubmitSheetHtml() {
       return
     }
 
-    var fileId = await buildImageFile()
-
     var vals = []
 
     vals[trpHdrs.indexOf("Document")] = $('#trpmDocument').val()
@@ -286,21 +283,6 @@ async function btnTrpmSubmitSheetHtml() {
   var imgs = []
   var savImgs = []
 
-  imgs[0] = document.getElementById("trpmImgFront").src
-  imgs[1] = document.getElementById("trpmImgBack").src
-  savImgs[0] = document.getElementById("trpmSaveImgFront").src;
-  savImgs[1] = document.getElementById("trpmSaveImgBack").src;
-
-  // console.log('submit', [...imgs])
-  // console.log('submit', [...savImgs])
-
-  console.log('fileId', fileId)
-
-  await postImages(trpEnc, fileId, imgs, savImgs)
-
-  $('#trpmImgFront').removeAttr('src').addClass('d-none')
-  $('#trpmImgBack').removeAttr('src').addClass('d-none')
-
   $("#sheet-modal").modal('hide');
   // $("#sheet-modal").modal('dispose');
 
@@ -309,67 +291,10 @@ async function btnTrpmSubmitSheetHtml() {
   modal(false)
 }
 
-async function buildImageFile() {
-
-  // Create file in enc/img folder
-  // Rename title = sheetId
-  // Return sheetId
-
-  var fileIdx = await gapi.client.drive.files.create({
-
-    resource : {                  
-                  name : 'Sheet',
-                  mimeType: 'application/vnd.google-apps.spreadsheet',
-                  parents: ['1eAwbR_yzsEaEpBEpFA0Pqp8KGP2XszDY']
-
-                }
-
-}).then(function(response) {
-    console.log(response);
-    return response
-    
-});
-
-console.log(fileIdx)
-
-var fileId = fileIdx.result.id
-
-// rename sheet to that provided by user
-
-const rq = {"requests" : [
-  {
-    updateSpreadsheetProperties: {
-    properties: {
-     title: fileId,
-    },
-    fields: 'title'
-    }
-   }]}
- ;
- 
-await gapi.client.sheets.spreadsheets.batchUpdate({
-  spreadsheetId: fileId,
-  resource: rq})
-
-  .then(response => {
-
-    console.log('rename complete')
-    console.log(response)
-
-  }, function (reason) {
-    console.error('error updating sheet "' + "title" + '": ' + reason.result.error.message);
-    alert('error updating sheet "' + 'title' + '": ' + reason.result.error.message);
-  });
-
-
-  return fileId
-
-}
 
 async function updateUI (valsEnc, arrIdx) {
 
 // update trpVals conditionally encrypting
-// secSht[trpTitle].Rows
 // update / append trpContainer ? sort ???
 // update / append
 
@@ -381,7 +306,6 @@ async function updateUI (valsEnc, arrIdx) {
 
     // trpVals.push(valsEnc)
     // arrIdx = trpVals.length-1
-    secSht[trpTitle].rows++
 
     listTrips(trpTitle)
     return
@@ -418,15 +342,6 @@ async function updateUI (valsEnc, arrIdx) {
 
 }
 
-function fixUrl(url) {
-
-  if (url.substring(0, 8) !== 'https://' && url.substring(0, 7) !== 'http://') return 'https://' + url
-
-  return url
-
-}
-
-
 async function btnAddSheetHtml() {
 
   $('#trpmImgFront').removeAttr('src').addClass('d-none')
@@ -459,7 +374,7 @@ async function btnDeleteSheetHtml() {
         {
           "deleteDimension": {
             "range": {
-              "sheetId": trpId,
+              "sheetId": trpShtId,
               "dimension": "ROWS",
               "startIndex": idx + 1,
               "endIndex": idx + 2
@@ -475,8 +390,6 @@ async function btnDeleteSheetHtml() {
     resource: request
 
   }).then(response => {
-
-    secSht[trpTitle].rows--
 
     console.log('delete complete - ', idx)
     console.log(response)
@@ -515,202 +428,3 @@ function dupDocument(Document) {
 
 }
 
-
-async function showFile(input) {
-
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-
-      if (input.id == "trpmInputFront")   {
-        $('#trpmImgFront').attr('src', e.target.result);
-        $('#trpmImgFront').removeClass('d-none');
-      } else {
-        $('#trpmImgBack').attr('src', e.target.result);
-        $('#trpmImgBack').removeClass('d-none');
-      }
-                                      
-    }
-
-    reader.readAsDataURL(input.files[0]);
-  }
-
-}
-
-async function postImages(trpEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
-
-  for (var i=0;i<2;i++) {             // 0 = front image, 1 = back image
-
-    var img = imgs[i]
-    
-    if (img && img != savImgs[i]) {
-
-      var idx = 0
-      var encPromiseArr = []
-
-      var removeImage = img.slice(-1) == '#'
-
-      while (idx < img.length) {
-
-        if (trpEnc) encPromiseArr.push(encryptMessage(img.substring(idx, idx + 35000), pwd))
-        else        encPromiseArr.push(img.substring(idx, idx + 35000))
-
-        idx = idx+35000
-
-      }
-
-      if (trpEnc) var encArr = await Promise.all(encPromiseArr)
-      else        var encArr = encPromiseArr
-
-      console.log('postImage encArr', i, img.length, encArr[0].length, encArr.length)
-
-      await updateImages(fileId, i*1+1, encArr, removeImage)
-
-    }
-
-  }
-
-}
-
-async function updateImages(fileId, imgIdx, vals, removeImage) {
-
-  console.log("updateImages")
-
-
-  var trpTitle = fileId
-  var row = imgIdx
-
-  console.log('updateImages vals', vals)
-
-  await clearImage(trpTitle, row)         // always clear existing image
-
-
-  if (!removeImage) {               // user has elected to add an image
-
-    var rng = calcRngA1(row, 1, 1, vals.length)
-
-    var params = {
-      spreadsheetId: fileId,
-      range: "'" + "Sheet1" + "'!" + rng,
-      valueInputOption: 'RAW'
-    };
-
-    var resource = {
-      "majorDimension": "ROWS",
-      "values": [vals]    
-    }
-
-    await gapi.client.sheets.spreadsheets.values.update(params, resource)
-      .then(async function (response) {
-        console.log('update successful')
-      },
-
-        function (reason) {
-          console.error('error updating sheet "' + trpTitle + '": ' + reason.result.error.message);
-          bootbox.alert('error updating sheet "' + trpTitle + '": ' + reason.result.error.message);
-        });
-
-  }
-
-}
-
-
-async function fetchImages(trpEnc, trpTitle, pwd = currUser.pwd) {
-  console.time("fetchImages")
-  console.log("fetchImages")
-
-  var rng = calcRngA1(1, 1, 2, 1000)
-
-  var params = {
-    spreadsheetId: trpTitle,
-    range: "'" + "Sheet1" + "'!" + rng
-  };
-
-  var vals = await gapi.client.sheets.spreadsheets.values.get(params)
-    .then(function(response) {
-      
-      console.timeLog("fetchImages")
-      console.log("fetchImages", response);
-      return response.result.values
-
-    }, function(reason) {
-      console.error('error: ' + reason.result.error.message);
-    });
-
-    console.log("fetchImages pre return", trpTitle, "'" + "Sheet1" + "'!" + rng, vals);
-
-
-    if (!vals) return [null, null]
-    console.log("fetchImages post return", vals);
-
-    rtn = []
-
-    for (let i in vals) {
-
-      var val = vals[i]
-
-      if (val.length == 0 ) rtn.push(null)
-      else {
-
-        if (trpEnc) {
-          var decVals = val.map( ele => decryptMessage(ele, pwd))
-
-          var decArr = await Promise.all(decVals)
-        } else
-          var decArr = val
-
-        rtn.push(decArr.join(''))
-      }
-  }
-  
-
-  console.timeEnd("fetchImages")
-
-  return rtn
-
-}
-
-async function pasteImage() {
-
-  
-
-  var item = pasteEvent.clipboardData.items[0];
-
-  console.log(item)
-
- 
-  if (item.type.indexOf("image") === 0)
-  {
-      var blob = item.getAsFile();
-
-      var reader = new FileReader();
-      reader.onload = function(event) {
-          document.getElementById("trpmImgFront").src = event.target.result;
-      };
-
-      reader.readAsDataURL(blob);
-  }
-
-}
-
-async function clearImage(trpTitle, row) {        // recall that the sheet title is the same as the sheet id for image files
-
-  var rng = calcRngA1(row, 1, 1, 500)
-
-  var params = {
-    spreadsheetId: trpTitle,
-    range: "'" + "Sheet1" + "'!" + rng
-  };
-
-  await gapi.client.sheets.spreadsheets.values.clear(params)
-    .then(async function (response) {
-      console.log('update successful')
-    },
-
-      function (reason) {
-        console.error('error updating sheet "' + trpTitle + '": ' + reason.result.error.message);
-        bootbox.alert('error updating sheet "' + trpTitle + '": ' + reason.result.error.message);
-      });
-
-}

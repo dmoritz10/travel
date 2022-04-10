@@ -5,16 +5,15 @@
 
     var spreadsheetId
 
-    var secSht = {}
-
     var currUser = {}
 
     var trpHdrs
     var trpVals
     var trpTitle
-    var trpId
+    var trpShtId
     var trpIdxArr
-    
+
+   
     var arrOptions
     var optionsIdx
   

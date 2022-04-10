@@ -61,8 +61,6 @@ async function showTrip(idx) {
 
   $('#tblTrips tr').click(function(e){         // highlight clicked row
 
-    console.log('sel', $('#tblTrips tr'), e.currentTarget)
-    
     $('#tblTrips tr').removeClass('ele-selected');
     $(e.currentTarget).addClass('ele-selected')
     
@@ -132,17 +130,16 @@ async function editTripDtl(arrIdx, destIdx) {
   $("#trpdtl-modal").modal('show');
 
   $('#trpmdtlArrIdx').val(arrIdx)
-
+  $('#trpmdtlDestIdx').val(destIdx)
+                  
+  
   var vals = trpVals[arrIdx]
 
   var trpObj = makeObj(vals, trpHdrs)
 
   var trpDtl = JSON.parse(trpObj['Destination Detail'])[destIdx]
-  console.log('trpDtl.date', trpDtl.date)
 
   var dt = trpDtl.date ? parseDateTime(trpDtl.date) : {date: '', time: ''}
-
-  console.log('dt', dt, trpDtl.date)
 
   $('#trpmdtlTrip').val(trpDtl.name)
   $('#trpmdtlDate').val(dt.date)
@@ -164,34 +161,33 @@ async function btntrpmdtlSubmitHtml() {
    somehow update screen.  If update, need idx nbr of screen element
   
   */
+
   if (!$('#trpdtl-form').valid()) return
 
   var arrIdx = $('#trpmdtlArrIdx').val() ? $('#trpmdtlArrIdx').val()*1 : -1
+  var destIdx = $('#trpmdtlDestIdx').val()
 
   if (arrIdx > -1) {                                                       // update existing course
 
     var vals = [...trpVals[arrIdx]]
 
-    vals[trpHdrs.indexOf("Document")] = $('#trpmDocument').val()
-    vals[trpHdrs.indexOf("Expiry")] = $('#trpmExpiry').val()
-    vals[trpHdrs.indexOf("Img Front")] = $('#trpmImgFront').val()
-    vals[trpHdrs.indexOf("Img Back")] = $('#trpmImgBack').val()
-    vals[trpHdrs.indexOf("Notes")] = $('#trpmNotes').val()
-    vals[trpHdrs.indexOf("Last Change")] = formatDate(new Date())
-    vals[trpHdrs.indexOf("Favorite")] = $('#trpmFavorite').val()
-    vals[trpHdrs.indexOf("File Id")] = $('#trpmFileId').val()
+    var destDtl = JSON.parse(vals[trpHdrs.indexOf("Destination Detail")])
 
-    var fileId = $('#trpmFileId').val()
+    var destObj = destDtl[destIdx]
 
+    destObj.name = $('#trpmdtlTrip').val()
+    destObj.date = formatDateTime($('#trpmdtlDate').val(), $('#trpmdtlTime').val())
+    destObj.city = $('#trpmdtlCity').val()
+    destObj.state = $('#trpmdtlState').val()
+
+    vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify(destDtl)
 
   } else {
 
-    if (dupDocument($('#trpmDocument').val())) {
-      toast("Document already exists")
-      return
-    }
-
-    var fileId = await buildImageFile()
+    // if (dupDocument($('#trpmDocument').val())) {
+    //   toast("Document already exists")
+    //   return
+    // }
 
     var vals = []
 
@@ -210,32 +206,15 @@ async function btntrpmdtlSubmitHtml() {
 
   var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
 
-  var valsEnc = trpEnc ? await encryptArr(vals) : vals
+  await updateSheetRow(vals, trpIdx)
 
-  await updateSheetRow(valsEnc, trpIdx)
 
-  var imgs = []
-  var savImgs = []
-
-  imgs[0] = document.getElementById("trpmImgFront").src
-  imgs[1] = document.getElementById("trpmImgBack").src
-  savImgs[0] = document.getElementById("trpmSaveImgFront").src;
-  savImgs[1] = document.getElementById("trpmSaveImgBack").src;
-
-  // console.log('submit', [...imgs])
-  // console.log('submit', [...savImgs])
-
-  console.log('fileId', fileId)
-
-  await postImages(trpEnc, fileId, imgs, savImgs)
-
-  $('#trpmImgFront').removeAttr('src').addClass('d-none')
-  $('#trpmImgBack').removeAttr('src').addClass('d-none')
-
-  $("#sheet-modal").modal('hide');
+  $("#trpdtl-modal").modal('hide');
   // $("#sheet-modal").modal('dispose');
 
-  updateUI(valsEnc, arrIdx)
+  // updateDestUI(vals, arrIdx)
+
+  showTrip(arrIdx)
 
   modal(false)
 }
