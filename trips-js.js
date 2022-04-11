@@ -287,13 +287,10 @@ async function updateUI (vals, arrIdx) {
   // update. Update ui directly w/o listTrips
   trpVals[arrIdx] = vals
 
-  var ele = $('#trpContainer #trpDocument')
-
-  console.log('ele', ele)
-  console.log(ele.eq(arrIdx+1))
-  console.log(ele.eq(arrIdx+1).html())
-
-  ele.eq(arrIdx+1).html(vals[trpHdrs.indexOf("Trip")])        
+  $('#trpContainer #trpDocument').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Trip")])        
+  $('#trpContainer #trpMoYr').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Month")])        
+  $('#trpContainer #trpStartEndDate').eq(arrIdx+1).html(trpObj.indexOf('Start Date').slice(0,-5) + ' - ' + trpObj.indexOf('End Date').slice(0,-5))        
+  $('#trpContainer #trpDestinations').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Destinations")])        
   
 }
 
