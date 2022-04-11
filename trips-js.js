@@ -323,13 +323,15 @@ async function btnTrpmDeleteSheetHtml() {
 
   console.log('btnTrpmDelete',idx,$('#trpmArrIdx').val(), trpIdxArr)
 
+  var shtId = await getSheetId('Trips')
+
   var request = {
     "requests":
       [
         {
           "deleteDimension": {
             "range": {
-              "sheetId": trpShtId,
+              "sheetId": shtId,
               "dimension": "ROWS",
               "startIndex": idx + 1,
               "endIndex": idx + 2
@@ -358,6 +360,34 @@ async function btnTrpmDeleteSheetHtml() {
 
   listTrips(trpTitle)
 
+}
+
+async function getSheetId(shtTitle) {
+
+  var sheets = await gapi.client.sheets.spreadsheets.get({
+        
+    spreadsheetId: spreadsheetId
+  
+  }).then(function(response) {
+    
+    return response.result.sheets
+  
+  }, function(response) {
+    console.log('Error: ' + response.result.error.message);
+    return null
+
+  });
+
+
+  for (var j = 0; j < sheets.length; j++) {
+
+    var sht = sheets[j].properties
+
+    if (sht.title == shtTitle) return sht.sheetId
+
+  }
+
+  return null
 }
 
 function dupDocument(Document) {
