@@ -287,8 +287,8 @@ async function updateUI (vals, arrIdx) {
   // update. Update ui directly w/o listTrips
   // trpVals[arrIdx] = vals
 
-  var ele = $('#trpContainer > div').find('#trpDocument')
-  ele.eq(arrIdx+1).html(vals[trpHdrs.indexOf("Trip")])        
+  var ele = $('#trpContainer > div')
+  ele.find('#trpTrip').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Trip")])        
   
 }
 
