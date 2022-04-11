@@ -224,8 +224,8 @@ async function btnTrpmSubmitSheetHtml() {
     vals[trpHdrs.indexOf("Trip")] = $('#trpmTrip').val()
     vals[trpHdrs.indexOf("Month")] = $('#trpmMonth').val()
     vals[trpHdrs.indexOf("Type")] = $('#trpmType').val()
-    vals[trpHdrs.indexOf("Start Date")] = formatDate($('#trpmStartDate').val())
-    vals[trpHdrs.indexOf("End Date")] = formatDate($('#trpmEndDate').val())
+    vals[trpHdrs.indexOf("Start Date")] = formatDateTime($('#trpmStartDate').val())
+    vals[trpHdrs.indexOf("End Date")] = formatDateTime($('#trpmEndDate').val())
     vals[trpHdrs.indexOf("Destinations")] = JSON.stringify($('#trpmDestinations').val().split(' | '))
 
   } else {
