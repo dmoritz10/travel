@@ -23,17 +23,7 @@
 
     var DateTime = luxon.DateTime;
 
-
-    var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-    var invalidPwdMsg = 
-    `Passwords must contain at least<br>
-    1 lowercase alphabetical character<br>
-    1 uppercase alphabetical character<br>
-    1 numeric character<br>
-    1 special character<br>
-    8 characters
-    `
-
+   
 /*global jQuery */
 jQuery(function ($) {
 	// 'use strict';
