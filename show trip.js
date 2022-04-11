@@ -196,15 +196,12 @@ async function btntrpmdtlSubmitHtml() {
 
   await updateSheetRow(vals, trpIdx)
 
-
   $("#trpdtl-modal").modal('hide');
-  // $("#sheet-modal").modal('dispose');
-
-  // updateDestUI(vals, arrIdx)
 
   showTrip(arrIdx)
 
   modal(false)
+  
 }
 
 async function btntrpmdtlDeleteHtml() {
@@ -228,8 +225,6 @@ async function btntrpmdtlDeleteHtml() {
   await updateSheetRow(vals, trpIdx)
 
   $("#trpdtl-modal").modal('hide');
-
-  modal(true)
 
   showTrip(arrIdx)
 

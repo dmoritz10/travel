@@ -207,8 +207,10 @@ function calcTripName(arr, hdrs, strIdx) {
   console.log('tripName1', tripName)
 
   return {
+
+    // name: tripName + ' - ' + tripMoYr,
     
-    name: tripName + ' - ' + tripMoYr,
+    name: tripName,
     moYr: tripMoYr,
     dest: tripDest
   }
