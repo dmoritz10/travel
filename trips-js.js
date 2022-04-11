@@ -196,13 +196,13 @@ async function editTrip(arrIdx) {
 
   console.log('hi dan')
   console.log(parseMonth(trpObj['Month']))
-  console.log(parseDateTime(trpObj['Start Date']))
+  console.log(parseDateTime(trpObj['Start Date']).date)
 
   $('#trpmTrip').val(trpObj['Trip'])
   $('#trpmMonth').val(parseMonth(trpObj['Month']))
   $('#trpmType').val(trpObj['Type'])
-  $('#trpmStartDate').val(parseDateTime(trpObj['Start Date']))
-  $('#trpmEndDate').val(parseDateTime(trpObj['End Date']))
+  $('#trpmStartDate').val(parseDateTime(trpObj['Start Date']).date)
+  $('#trpmEndDate').val(parseDateTime(trpObj['End Date']).date)
   $('#trpmDestinations').val(trpObj['Destinations'])
   
   $('#btnTrpmDelete').removeClass('d-none')
