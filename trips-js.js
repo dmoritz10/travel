@@ -184,7 +184,7 @@ async function editTrip(arrIdx) {
 
   modal(true)
 
-  // $("#trip-form")[0].reset();
+  $("#trip-form")[0].reset();
 
   $("#trip-modal").modal('show');
 
@@ -296,9 +296,9 @@ async function updateUI (vals, arrIdx) {
 
 async function btnAddTripHtml() {
 
-  console.log($("#trip-form"))
+  console.log('tripform', $("#trip-form"))
 
-  $("#trip-form")[0].reset();
+  // $("#trip-form")[0].reset();
   $("#trip-modal").modal('show');
 
    $('#btnTrpmDelete').addClass('d-none')
