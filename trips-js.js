@@ -350,17 +350,6 @@ async function btnTrpmDeleteSheetHtml() {
     console.log(response)
 
   })
-console.log('delete file id', $('#trpmFileId').val())
-
-  await gapi.client.drive.files.delete({
-                
-        fileId : $('#trpmFileId').val()
-
-}).then(function(response) {
-    console.log(response);
-    return response
-    
-});
 
   $("#trip-modal").modal('hide');
   // $("#trip-modal").modal('dispose');
