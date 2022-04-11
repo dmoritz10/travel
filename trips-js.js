@@ -298,7 +298,7 @@ async function btnAddTripHtml() {
 
   console.log($("#trip-form"))
 
-  $("#trip-form").reset();
+  $("#trip-form")[0].reset();
   $("#trip-modal").modal('show');
 
    $('#btnTrpmDelete').addClass('d-none')
