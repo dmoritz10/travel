@@ -559,7 +559,7 @@ async function updateSheetRow(vals, shtIdx) {
   } else {
 
     var row = 2
-    var rng = calcRngA1(row, 1, 1, shtHdrs.length)
+    var rng = calcRngA1(row, 1, 1, vals.length)
 
     var params = {
       spreadsheetId: spreadsheetId,
