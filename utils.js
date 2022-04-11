@@ -133,6 +133,8 @@ var openShts = async function (shts) {
     
     var allShts = response.result.valueRanges
 
+    console.log('openShts', response)
+
     var arr = []
 
     for (s in allShts) {
