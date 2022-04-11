@@ -203,7 +203,7 @@ async function editTrip(arrIdx) {
   $('#trpmType').val(trpObj['Type'])
   $('#trpmStartDate').val(parseDateTime(trpObj['Start Date']).date)
   $('#trpmEndDate').val(parseDateTime(trpObj['End Date']).date)
-  $('#trpmDestinations').val(JSON.parse(trpObj['Destinations']).join(' | '))
+  $('#trpmDestinations').val(JSON.parse(trpObj['Destinations']).join(' - '))
   
   $('#btnTrpmDelete').removeClass('d-none')
 
@@ -290,7 +290,7 @@ async function updateUI (vals, arrIdx) {
   $('#trpContainer #trpDocument').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Trip")])        
   $('#trpContainer #trpMoYr').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Month")])        
   $('#trpContainer #trpStartEndDate').eq(arrIdx+1).html(vals[trpHdrs.indexOf('Start Date')].slice(0,-5) + ' - ' + vals[trpHdrs.indexOf('End Date')].slice(0,-5))        
-  $('#trpContainer #trpDestinations').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Destinations")])        
+  $('#trpContainer #trpDestinations').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Destinations")].join(' - '))        
   
 }
 
