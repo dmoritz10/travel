@@ -213,7 +213,7 @@ jQuery(function ($) {
                 btnShtMoreVertHtml()
             })
             
-            $('#btnTrpAddTrip')   .click(btnAddSheetHtml);
+            $('#btnTrpAddTrip')   .click(btnAddTripHtml);
             $('#btntrpmdtlDelete')   .click(btntrpmdtlDeleteHtml);
             // $('#btnShtAddPDocument
 

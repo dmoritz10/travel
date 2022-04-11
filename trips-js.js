@@ -294,7 +294,7 @@ async function updateUI (vals, arrIdx) {
   
 }
 
-async function btnAddSheetHtml() {
+async function btnAddTripHtml() {
 
   $("#trip-form")[0].reset();
   $("#trip-modal").modal('show');
