@@ -245,6 +245,7 @@ async function btnTrpmSubmitSheetHtml() {
     vals[trpHdrs.indexOf("End Date")] = formatDateTime($('#trpmEndDate').val())
     vals[trpHdrs.indexOf("Destinations")] = JSON.stringify($('#trpmDestinations').val().split(' - '))
     vals[trpHdrs.indexOf("Source")] = 'Manual'
+    vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify([])
 
   }
 
