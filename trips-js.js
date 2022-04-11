@@ -296,7 +296,9 @@ async function updateUI (vals, arrIdx) {
 
 async function btnAddTripHtml() {
 
-  $("#trip-form")[0].reset();
+  console.log($("#trip-form"))
+
+  $("#trip-form").reset();
   $("#trip-modal").modal('show');
 
    $('#btnTrpmDelete').addClass('d-none')
