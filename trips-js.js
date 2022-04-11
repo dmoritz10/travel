@@ -222,7 +222,7 @@ async function btnTrpmSubmitSheetHtml() {
     var vals = [...trpVals[arrIdx]]
 
     vals[trpHdrs.indexOf("Trip")] = $('#trpmTrip').val()
-    vals[trpHdrs.indexOf("Month")] = $('#trpmMonth').val()
+    vals[trpHdrs.indexOf("Month")] = formatMonth($('#trpmMonth').val())
     vals[trpHdrs.indexOf("Type")] = $('#trpmType').val()
     vals[trpHdrs.indexOf("Start Date")] = formatDateTime($('#trpmStartDate').val())
     vals[trpHdrs.indexOf("End Date")] = formatDateTime($('#trpmEndDate').val())
@@ -239,7 +239,7 @@ async function btnTrpmSubmitSheetHtml() {
     var vals = []
 
     vals[trpHdrs.indexOf("Trip")] = $('#trpmTrip').val()
-    vals[trpHdrs.indexOf("Month")] = $('#trpmMonth').val()
+    vals[trpHdrs.indexOf("Month")] = formatMonth($('#trpmMonth').val())
     vals[trpHdrs.indexOf("Type")] = $('#trpmType').val()
     vals[trpHdrs.indexOf("Start Date")] = formatDate($('#trpmStartDate').val())
     vals[trpHdrs.indexOf("End Date")] = formatDate($('#trpmEndDate').val())
@@ -265,6 +265,9 @@ async function btnTrpmSubmitSheetHtml() {
 
 
 async function updateUI (vals, arrIdx) {
+
+  listTrips(trpTitle)
+  return
 
 // update trpVals conditionally encrypting
 // update / append trpContainer ? sort ???
