@@ -571,7 +571,7 @@ async function updateSheetRow(vals, shtIdx) {
     await gapi.client.sheets.spreadsheets.values.append(params, resource)
       .then(async function (response) {
 
-        console.log('sheetId', shtId)
+        // console.log('sheetId', shtId)
 
         // var request = { "requests": 
         //   [{ "sortRange": 
