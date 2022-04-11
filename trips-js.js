@@ -289,7 +289,7 @@ async function updateUI (vals, arrIdx) {
 
   $('#trpContainer #trpDocument').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Trip")])        
   $('#trpContainer #trpMoYr').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Month")])        
-  $('#trpContainer #trpStartEndDate').eq(arrIdx+1).html(trpObj.indexOf('Start Date').slice(0,-5) + ' - ' + trpObj.indexOf('End Date').slice(0,-5))        
+  $('#trpContainer #trpStartEndDate').eq(arrIdx+1).html(vals[trpHdrs.indexOf('Start Date')].slice(0,-5) + ' - ' + vals[trpHdrs.indexOf('End Date')].slice(0,-5))        
   $('#trpContainer #trpDestinations').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Destinations")])        
   
 }
