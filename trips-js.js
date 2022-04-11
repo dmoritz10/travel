@@ -197,8 +197,8 @@ async function editTrip(arrIdx) {
   $('#trpmTrip').val(trpObj['Trip'])
   $('#trpmMonth').val(trpObj['Month'])
   $('#trpmType').val(trpObj['Type'])
-  $('#trpmStartDate').val(trpObj['Start Date'])
-  $('#trpmEndDate').val(trpObj['End Date'])
+  $('#trpmStartDate').val(parseDateTime(trpObj['Start Date']))
+  $('#trpmEndDate').val(parseDateTime(trpObj['End Date']))
   $('#trpmDestinations').val(trpObj['Destinations'])
   
   $('#btnTrpmDelete').removeClass('d-none')
@@ -209,7 +209,7 @@ async function editTrip(arrIdx) {
 
 async function btnTrpmSubmitSheetHtml() {
 
-  if (!$('#trip-form').valid()) return
+  // if (!$('#trip-form').valid()) return
 
   var arrIdx = $('#trpmArrIdx').val() ? $('#trpmArrIdx').val()*1 : -1
 
@@ -220,8 +220,8 @@ async function btnTrpmSubmitSheetHtml() {
     vals[trpHdrs.indexOf("Trip")] = $('#trpmTrip').val()
     vals[trpHdrs.indexOf("Month")] = $('#trpmMonth').val()
     vals[trpHdrs.indexOf("Type")] = $('#trpmType').val()
-    vals[trpHdrs.indexOf("Start Date")] = parseDateTime($('#trpmStartDate').val())
-    vals[trpHdrs.indexOf("End Date")] = parseDateTime($('#trpmEndDate').val())
+    vals[trpHdrs.indexOf("Start Date")] = formatDate($('#trpmStartDate').val())
+    vals[trpHdrs.indexOf("End Date")] = formatDate($('#trpmEndDate').val())
     vals[trpHdrs.indexOf("Destinations")] = JSON.parse($('#trpmDestinations').val()).join(' | ')
 
   } else {
@@ -236,8 +236,8 @@ async function btnTrpmSubmitSheetHtml() {
     vals[trpHdrs.indexOf("Trip")] = $('#trpmTrip').val()
     vals[trpHdrs.indexOf("Month")] = $('#trpmMonth').val()
     vals[trpHdrs.indexOf("Type")] = $('#trpmType').val()
-    vals[trpHdrs.indexOf("Start Date")] = $('#trpmStartDate').val()
-    vals[trpHdrs.indexOf("End Date")] = $('#trpmEndDate').val()
+    vals[trpHdrs.indexOf("Start Date")] = formatDate($('#trpmStartDate').val())
+    vals[trpHdrs.indexOf("End Date")] = formatDate($('#trpmEndDate').val())
     vals[trpHdrs.indexOf("Destinations")] = $('#trpmDestinations').val()
 
   }
