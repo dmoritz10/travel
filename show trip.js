@@ -111,16 +111,6 @@ function clearAndGotoTab(sht) {
 
 }
 
-// function addNewDest() {
-
-//   clearAndGotoTab("Trips")
-
-//   var arrIdx = $("#trpdArrIdx").val()
-
-//   editTrip(arrIdx)
-
-// }
-
 async function addNewDest() {
 
   $("#trpdtl-form")[0].reset();
@@ -189,10 +179,12 @@ async function btntrpmdtlSubmitHtml() {
   sortDest(destDtl)
 
   vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify(destDtl)
+  vals[trpHdrs.indexOf("Source")] = 'Manual'
 
   modal(true)
 
   var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
+
 
   await updateSheetRow(vals, trpIdx)
 
@@ -201,7 +193,7 @@ async function btntrpmdtlSubmitHtml() {
   showTrip(arrIdx)
 
   modal(false)
-  
+
 }
 
 async function btntrpmdtlDeleteHtml() {
@@ -219,6 +211,7 @@ async function btntrpmdtlDeleteHtml() {
   destDtl.splice(destIdx, 1)
 
   vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify(destDtl)
+  vals[trpHdrs.indexOf("Source")] = 'Manual'
 
   var trpIdx = trpIdxArr[arrIdx]                  // get the row nbr on the sheet from trpIdxArr
 
