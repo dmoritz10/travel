@@ -228,6 +228,7 @@ async function btnTrpmSubmitSheetHtml() {
     vals[trpHdrs.indexOf("End Date")] = formatDateTime($('#trpmEndDate').val())
     vals[trpHdrs.indexOf("Destinations")] = JSON.stringify($('#trpmDestinations').val().split(' - '))
     vals[trpHdrs.indexOf("Source")] = 'Manual'
+    vals[trpHdrs.indexOf("Nbr Days")] = calcNbrDays(vals[trpHdrs.indexOf("Start Date")], vals[trpHdrs.indexOf("End Date")])
 
   } else {
 
@@ -246,6 +247,9 @@ async function btnTrpmSubmitSheetHtml() {
     vals[trpHdrs.indexOf("Destinations")] = JSON.stringify($('#trpmDestinations').val().split(' - '))
     vals[trpHdrs.indexOf("Source")] = 'Manual'
     vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify([])
+    vals[trpHdrs.indexOf("Composite Key")] = $('#trpmTrip').val() + ' - ' + formatMonth($('#trpmMonth').val())
+    vals[trpHdrs.indexOf("Nbr Days")] = calcNbrDays(vals[trpHdrs.indexOf("Start Date")], vals[trpHdrs.indexOf("End Date")])
+
 
   }
 
