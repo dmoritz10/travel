@@ -203,7 +203,7 @@ async function editTrip(arrIdx) {
   $('#trpmType').val(trpObj['Type'])
   $('#trpmStartDate').val(parseDateTime(trpObj['Start Date']).date)
   $('#trpmEndDate').val(parseDateTime(trpObj['End Date']).date)
-  $('#trpmDestinations').val(JSON.parse($('#trpmDestinations').val()).join(' | '))
+  $('#trpmDestinations').val(JSON.parse(trpObj['Destinations']).join(' | '))
   
   $('#btnTrpmDelete').removeClass('d-none')
 
