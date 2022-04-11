@@ -184,7 +184,7 @@ async function editTrip(arrIdx) {
 
   modal(true)
 
-  $("#trip-form")[0].reset();
+  // $("#trip-form")[0].reset();
 
   $("#trip-modal").modal('show');
 
