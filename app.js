@@ -235,9 +235,9 @@ jQuery(function ($) {
             });
 
             // clear form of unencrypted data after closing
-            $('#editTrip').on('hidden.bs.modal', function(e) {
-                $(this).find('#trip-form')[0].reset();
-            });
+            // $('#editTrip').on('hidden.bs.modal', function(e) {
+            //     $(this).find('#trip-form')[0].reset();
+            // });
 
             
             // Show Sheet

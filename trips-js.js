@@ -266,9 +266,6 @@ async function btnTrpmSubmitSheetHtml() {
 
 async function updateUI (vals, arrIdx) {
 
-  listTrips(trpTitle)
-  return
-
 // update trpVals conditionally encrypting
 // update / append trpContainer ? sort ???
 // update / append
@@ -288,12 +285,11 @@ async function updateUI (vals, arrIdx) {
   }
 
   // update. Update ui directly w/o listTrips
-  trpVals[arrIdx] = vals
+  // trpVals[arrIdx] = vals
 
-  var DocumentDec = vals[0]
-  var $Document = $('#trpContainer > div').find('#trpDocument').eq(arrIdx+1) // first ele is template d-none
-  $Document.html(DocumentDec)
-
+  var ele = $('#trpContainer > div').find('#trpDocument')
+  ele.eq(arrIdx+1).html(vals[trpHdrs.indexOf("Trip")])        
+  
 }
 
 async function btnAddSheetHtml() {
