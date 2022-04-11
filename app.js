@@ -227,8 +227,8 @@ jQuery(function ($) {
             $('#btntrpmdtlDelete')   .click(btntrpmdtlDeleteHtml);
             // $('#btnShtAddPDocument
 
-            $('#btnTrpmSubmit')       .button().click(btnTrpmSubmitSheetHtml);
-            $('#btnTrpmDelete')       .click(btnDeleteSheetHtml);
+            $('#btnTrpmSubmit')       .click(btnTrpmSubmitSheetHtml);
+            $('#btnTrpmDelete')       .click(btnTrpmDeleteSheetHtml);
 
             $("#trpSearch").on("input", function() {
                 var value = $(this).val().toLowerCase();
@@ -245,8 +245,8 @@ jQuery(function ($) {
             });
 
             // clear form of unencrypted data after closing
-            $('#editDocument').on('hidden.bs.modal', function(e) {
-                $(this).find('#sheet-form')[0].reset();
+            $('#editTrip').on('hidden.bs.modal', function(e) {
+                $(this).find('#trip-form')[0].reset();
             });
 
             

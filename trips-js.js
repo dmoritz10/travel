@@ -184,47 +184,23 @@ async function editTrip(arrIdx) {
 
   modal(true)
 
-  $("#sheet-form")[0].reset();
+  $("#trp-form")[0].reset();
 
-  $('#trpmImgFront').removeAttr('src').addClass('d-none')
-  $('#trpmImgBack').removeAttr('src').addClass('d-none')
-
-  $('#trpmSheetName').html(trpTitle)
-
-  $("#sheet-modal").modal('show');
-
+  $("#trip-modal").modal('show');
 
   $('#trpmArrIdx').val(arrIdx)
 
-  var vals = trpEnc ? await decryptArr(trpVals[arrIdx]) : trpVals[arrIdx]
-
+  var vals = trpVals[arrIdx]
 
   var trpObj = makeObj(vals, trpHdrs)
 
-  var imgs = await fetchImages(trpEnc, trpObj['File Id'])
-
-  console.log('imgs', imgs.length)
-
-  $('#trpmDocument').val(trpObj['Document'])
-  $('#trpmExpiry').val(trpObj['Expiry'])
-  $('#trpmImgBack').val(trpObj['Account Nbr'])
-  $('#trpmNotes').val(trpObj['Notes'])
-  $('#trpmFavorite').val(trpObj['Favorite'])
-  $('#trpmFileId').val(trpObj['File Id'])
-  $('#trpmImgFront').attr('src', imgs[0])
-  $('#trpmImgBack').attr('src', imgs[1])
-  $('#trpmSaveImgFront').attr('src', imgs[0])
-  $('#trpmSaveImgBack').attr('src', imgs[1])
-
-  if (imgs[0])  $('#trpmImgFront').removeClass('d-none')
-  else          $('#trpmImgFront').addClass('d-none');
-  if (imgs[1])  $('#trpmImgBack').removeClass('d-none')
-  else          $('#trpmImgBack').addClass('d-none');
-  // document.getElementById("trpmImgFront").src = imgs[0];
-  // document.getElementById("trpmImgBack").src = imgs[1];
-  // document.getElementById("trpmSaveImgFront").src = imgs[0];
-  // document.getElementById("trpmSaveImgBack").src = imgs[1];
-
+  $('#trpmTrip').val(trpObj['Trip'])
+  $('#trpmMonth').val(trpObj['Month'])
+  $('#trpmType').val(trpObj['Type'])
+  $('#trpmStartDate').val(trpObj['Start Date'])
+  $('#trpmEndDate').val(trpObj['End Date'])
+  $('#trpmDestinations').val(trpObj['Destinations'])
+  
   $('#btnTrpmDelete').removeClass('d-none')
 
   modal(false)
@@ -233,7 +209,7 @@ async function editTrip(arrIdx) {
 
 async function btnTrpmSubmitSheetHtml() {
 
-  if (!$('#sheet-form').valid()) return
+  if (!$('#trip-form').valid()) return
 
   var arrIdx = $('#trpmArrIdx').val() ? $('#trpmArrIdx').val()*1 : -1
 
@@ -241,35 +217,28 @@ async function btnTrpmSubmitSheetHtml() {
 
     var vals = [...trpVals[arrIdx]]
 
-    vals[trpHdrs.indexOf("Document")] = $('#trpmDocument').val()
-    vals[trpHdrs.indexOf("Expiry")] = $('#trpmExpiry').val()
-    vals[trpHdrs.indexOf("Img Front")] = $('#trpmImgFront').val()
-    vals[trpHdrs.indexOf("Img Back")] = $('#trpmImgBack').val()
-    vals[trpHdrs.indexOf("Notes")] = $('#trpmNotes').val()
-    vals[trpHdrs.indexOf("Last Change")] = formatDate(new Date())
-    vals[trpHdrs.indexOf("Favorite")] = $('#trpmFavorite').val()
-    vals[trpHdrs.indexOf("File Id")] = $('#trpmFileId').val()
-
-    var fileId = $('#trpmFileId').val()
-
+    vals[trpHdrs.indexOf("Trip")] = $('#trpmTrip').val()
+    vals[trpHdrs.indexOf("Month")] = $('#trpmMonth').val()
+    vals[trpHdrs.indexOf("Type")] = $('#trpmType').val()
+    vals[trpHdrs.indexOf("Start Date")] = $('#trpmStartDate').val()
+    vals[trpHdrs.indexOf("End Date")] = $('#trpmEndDate').val()
+    vals[trpHdrs.indexOf("Destinations")] = $('#trpmDestinations').val()
 
   } else {
 
-    if (dupDocument($('#trpmDocument').val())) {
-      toast("Document already exists")
-      return
-    }
+    // if (dupDocument($('#trpmDocument').val())) {
+    //   toast("Document already exists")
+    //   return
+    // }
 
     var vals = []
 
-    vals[trpHdrs.indexOf("Document")] = $('#trpmDocument').val()
-    vals[trpHdrs.indexOf("Expiry")] = $('#trpmExpiry').val()
-    vals[trpHdrs.indexOf("Img Front")] = $('#trpmImgFront').val()
-    vals[trpHdrs.indexOf("Img Back")] = $('#trpmImgBack').val()
-    vals[trpHdrs.indexOf("Notes")] = $('#trpmNotes').val()
-    vals[trpHdrs.indexOf("Last Change")] = formatDate(new Date())
-    vals[trpHdrs.indexOf("Favorite")] = $('#trpmFavorite').val()
-    vals[trpHdrs.indexOf("File Id")] = fileId
+    vals[trpHdrs.indexOf("Trip")] = $('#trpmTrip').val()
+    vals[trpHdrs.indexOf("Month")] = $('#trpmMonth').val()
+    vals[trpHdrs.indexOf("Type")] = $('#trpmType').val()
+    vals[trpHdrs.indexOf("Start Date")] = $('#trpmStartDate').val()
+    vals[trpHdrs.indexOf("End Date")] = $('#trpmEndDate').val()
+    vals[trpHdrs.indexOf("Destinations")] = $('#trpmDestinations').val()
 
   }
 
@@ -277,23 +246,19 @@ async function btnTrpmSubmitSheetHtml() {
 
   var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
 
-  var valsEnc = trpEnc ? await encryptArr(vals) : vals
 
-  await updateSheetRow(valsEnc, trpIdx)
+  await updateSheetRow(vals, trpIdx)
 
-  var imgs = []
-  var savImgs = []
 
-  $("#sheet-modal").modal('hide');
-  // $("#sheet-modal").modal('dispose');
+  $("#trip-modal").modal('hide');
 
-  updateUI(valsEnc, arrIdx)
+  updateUI(vals, arrIdx)
 
   modal(false)
 }
 
 
-async function updateUI (valsEnc, arrIdx) {
+async function updateUI (vals, arrIdx) {
 
 // update trpVals conditionally encrypting
 // update / append trpContainer ? sort ???
@@ -314,51 +279,26 @@ async function updateUI (valsEnc, arrIdx) {
   }
 
   // update. Update ui directly w/o listTrips
-  trpVals[arrIdx] = valsEnc
+  trpVals[arrIdx] = vals
 
-  var DocumentDec = trpEnc ? await decryptMessage(valsEnc[0]) : valsEnc[0]
+  var DocumentDec = vals[0]
   var $Document = $('#trpContainer > div').find('#trpDocument').eq(arrIdx+1) // first ele is template d-none
   $Document.html(DocumentDec)
-
-  var fav = valsEnc[trpHdrs.indexOf('Favorite')]
-
-  if (trpEnc) {
-    var favDec = await decryptMessage(fav)
-  } else {
-    var favDec = fav
-  }
-
-  var $fav = $('#trpContainer > div').find('#ScFavIcon').eq(arrIdx+1) 
-
-  var boolFav = favDec.toLowerCase() === 'true'
-  console.log('boolFav', boolFav)
-
-  if (boolFav) {
-    $fav[0].innerHTML = "star"
-    $fav.addClass('text-primary')
-  } else {
-    $fav[0].innerHTML = "star_outline"
-    $fav.removeClass('text-primary')
-  }
 
 }
 
 async function btnAddSheetHtml() {
 
-  $('#trpmImgFront').removeAttr('src').addClass('d-none')
-  $('#trpmImgBack').removeAttr('src').addClass('d-none')
-
-  $("#sheet-form")[0].reset();
-  $('#trpmModalTitle').html('')
-  $("#sheet-modal").modal('show');
+  $("#trip-form")[0].reset();
+  $("#trip-modal").modal('show');
 
    $('#btnTrpmDelete').addClass('d-none')
 
 }
 
-async function btnDeleteSheetHtml() {
+async function btnTrpmDeleteSheetHtml() {
 
-  var confirmOK = await confirm("Are you sure you want to delete this Document ?")
+  var confirmOK = await confirm("Are you sure you want to delete this Trip ?")
 
   if (!confirmOK) return
 
@@ -408,8 +348,8 @@ console.log('delete file id', $('#trpmFileId').val())
     
 });
 
-  $("#sheet-modal").modal('hide');
-  // $("#sheet-modal").modal('dispose');
+  $("#trip-modal").modal('hide');
+  // $("#trip-modal").modal('dispose');
 
   modal(false)
 

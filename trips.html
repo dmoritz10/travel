@@ -108,93 +108,67 @@
 
 </div>
 
-<div id="editDocument">
-  <div class="modal fade" id="sheet-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="editTrip">
+  <div class="modal fade" id="trip-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl " role="document">
       <div class="modal-content">
         <div class="modal-header">
           <div class="modal-title">
-            <div class="h5">Document Maintenance</div>
-            <div  id="trpmSheetName"></div>
+            <div class="h5">Trip Maintenance</div>
           </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true"></span>
           </button>
         </div>
         <div class="modal-body" style="background-color:lightskyblue;">
-          <form id="sheet-form" method="get" action=""  >
+          <form id="trp-form" method="get" action=""  >
 
             <fieldset>
               <div class="row d-none">
                 <div class="col">
                   <input type="text" class="form-control" id="trpmArrIdx" name="trpmArrIdx">
-                  <input type="text" class="form-control" id="trpmFavorite" name="trpmFavorite">
-                  <input type="text" class="form-control" id="trpmFileId" name="trpmFileId">
-                  <img id="trpmSaveImgFront" name="trpmSaveImgFront">
-                  <img id="trpmSaveImgBack" name="trpmSaveImgBack">
-
                 </div>
               </div>
 
               <div class="row my-0">
                 <div class="col">
-                  <label for="trpmDocument" class="col-form-label">Document Name</label>
-                  <input type="text" class="form-control text-success h4" id="trpmDocument" autofocus name="trpmDocument" required>
+                  <label for="trpmTrip" class="col-form-label">Trip Name</label>
+                  <input type="text" class="form-control text-success h4" id="trpmTrip" autofocus name="trpmTrip" required>
                 </div>
               </div>
 
               <div class="row my-0">
                 <div class="col">
-                  <label for="trpmExpiry" class="col-form-label">Expiry</label>
-                <input type="date" class="form-control text-success"  style="font-size:1.25rem" id="trpmExpiry" name="trpmExpiry">
+                  <label for="trpmMonth" class="col-form-label">Month</label>
+                <input type="date" class="form-control text-success"  style="font-size:1.25rem" id="trpmMonth" name="trpmMonth" required>
                 </div>
               </div>
 
               <div class="row my-0">
                 <div class="col">
-                  <label for="trpmNotes" class="col-form-label">Notes</label>
-                  <textarea class="form-control text-success h4" id="trpmNotes" rows=4 name="trpmNotes"></textarea>
+                  <label for="trpmDestinations" class="col-form-label">Destinations</label>
+                  <textarea class="form-control text-success h4" id="trpmDestinations" rows=2 name="trpmDestinations"></textarea>
                 </div>
               </div>
          
-              <div class="row my-3">
+              <div class="row my-0">
                 <div class="col">
-                  <button type="button" class="btn btn-primary" onclick="document.getElementById('trpmInputFront').click()">Choose File</button>
-                  <input id="trpmInputFront" class="form-control d-none" onchange="showFile(this)" type="file"  name="trpmInputFront">
-                </div>
-                <div class="col text-end">
-                  <button  type="button" class="btn btn-secondary" onclick="$('#trpmImgFront').attr('src', '#').addClass('d-none')">Remove File</button>
-              </div>
-              <div class="row my-3">
-                </div><div class="col text-center">
-                  <img  id="trpmImgFront" name="trpmImgFront" width="300">
+                  <label for="trpmType" class="col-form-label">Type</label>
+                  <input type="text" class="form-control text-success h4" id="trpmType" autofocus name="trpmType">
                 </div>
               </div>
-
-              <div class="row my-3">
+         
+              <div class="row my-0">
                 <div class="col">
-                  <button type="button" class="btn btn-primary" onclick="document.getElementById('trpmInputBack').click()">Choose File</button>
-                  <input id="trpmInputBack" class="form-control d-none" onchange="showFile(this)" type="file"  name="trpmInputBack">
-                </div>
-                <div class="col text-end">
-                  <button  type="button" class="btn btn-secondary" onclick="$('#trpmImgBack').attr('src', '#').addClass('d-none')">Remove File</button>
-              </div>
-              <div class="row my-3">
-                </div><div class="col text-center">
-                  <img  id="trpmImgBack" name="trpmImgBack" width="300">
-                </div>
-              </div>
-
-              <!-- <div class="row my-0">
-                <div class="col-3">
-                  <input id="trpmInputBack" class="form-control" onchange="showFile(this)" type="file"  name="trpmInputFront">
+                  <label for="trpmStartDate" class="col-form-label">Date</label>
+                  <input type="date" class="form-control text-success"  style="font-size:1.25rem" id="trpmStartDate" name="trpmStartDate">
                 </div>
                 <div class="col">
-                  <img  id="trpmImgBack" name="trpmInputBack" width="300">
+                  <label for="trpmEndDate" class="col-form-label">Date</label>
+                  <input type="date" class="form-control text-success"  style="font-size:1.25rem" id="trpmEndDate" name="trpmEndDate">
                 </div>
-              </div> -->
-
-              
+              </div>
+          
             </fieldset>
           </form>
         </div>

@@ -342,7 +342,7 @@ function setupFormValidation() {
     });
 
  
-  $("#sheet-form").validate();
+  $("#trip-form").validate();
  
 }
 
