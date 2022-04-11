@@ -285,7 +285,7 @@ async function updateUI (vals, arrIdx) {
   }
 
   // update. Update ui directly w/o listTrips
-  // trpVals[arrIdx] = vals
+  trpVals[arrIdx] = vals
 
   var ele = $('#trpContainer #trpDocument')
 
