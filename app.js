@@ -207,8 +207,6 @@ jQuery(function ($) {
             $('#btnTrips')             .button().click(listTrips);
             $('#btnReservations')      .click(importFromCalendar);
 
-            
-            
             // Trips
             $('#btnTrpSelect')            .click(btnTrpSelectHtml);
             
