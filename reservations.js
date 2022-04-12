@@ -192,6 +192,7 @@ async function editReservation(arrIdx) {
   var resObj = makeObj(vals, resHdrs)
 
   console.log('hi dan')
+  console.log()
 
   $('#resmReservation').val(resObj['Reservation'])
   $('#resmTrip').val(parseMonth(resObj['Trip']))
@@ -199,7 +200,7 @@ async function editReservation(arrIdx) {
   $('#resmLocation').val(resObj['Location'])
   $('#resmStartDateTime').val(parseDateTime(resObj['Start Date']).date)
   $('#resmEndDateTime').val(parseDateTime(resObj['End Date']).date)
-  $('#resmDescription').val(JSON.parse(resObj['Description']).join(' - '))
+  $('#resmDescription').val(resObj['Description'])
   
   $('#btnResmDelete').removeClass('d-none')
 
