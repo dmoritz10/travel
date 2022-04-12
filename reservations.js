@@ -177,7 +177,7 @@ async function setFavorite(arrIdx) {
 }
 
 
-async function editReservations(arrIdx) {
+async function editReservation(arrIdx) {
 
   modal(true)
 
