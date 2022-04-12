@@ -16,7 +16,7 @@ async function importFromCalendar() {
           
         'calendarId': 'primary',
         'maxResults': 1000,
-        'orderBy': 'startTime',
+        // 'orderBy': 'startTime',
         'timeMin': '2021-11-01T10:00:00-07:00',
         'timeMax': '2022-02-01T10:00:00-07:00'
         
