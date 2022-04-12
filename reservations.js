@@ -14,9 +14,10 @@ async function importFromCalendar() {
       await checkAuth()
       var request = await gapi.client.calendar.events.list({
           
-        'calendarId': 'primary',
+        'calendarId': 'christinamoritz@gmail.com',
         'maxResults': 1000,
-        // 'orderBy': 'startTime',
+        'singleEvents': true,
+        'orderBy': 'startTime',
         'timeMin': '2022-05-19T10:00:00-07:00',
         'timeMax': '2022-05-30T10:00:00-07:00'
         
