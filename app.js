@@ -248,7 +248,7 @@ jQuery(function ($) {
                 btnShtMoreVertHtml()
             })
             
-            $('#btnResAddTrip')   .click(btnAddReservationHtml);
+            $('#btnResAddReservation')   .click(btnAddReservationHtml);
 
             $('#btnResmSubmit')       .click(btnResmSubmitSheetHtml);
             $('#btnResmDelete')       .click(btnResmDeleteSheetHtml);

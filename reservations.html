@@ -51,7 +51,7 @@
 
         <div class="row">
           <div class="col px-1">
-            <div id="resDocument" class="text-success label  text-start h3 pb-0 align-middle "></div>
+            <div id="resReservation" class="text-success label  text-start h3 pb-0 align-middle "></div>
             <div id="resCompositeKey" class="d-none"></div>
           </div>
 
@@ -114,7 +114,7 @@
   <div class="fixed-bottom pb-3">
     <div class="text-center">
       <div class="btn-group" role="group">
-        <button class="btn btn-blue btn-lg btn-raised py-2" id="btnResAddRes">Add New</button>
+        <button class="btn btn-blue btn-lg btn-raised py-2" id="btnResAddReservation">Add New</button>
       </div>
     </div>
   </div>
@@ -125,7 +125,7 @@
 </div>
 
 <div id="editRes">
-  <div class="modal fade" id="trip-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal fade" id="reservation-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl " role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -137,7 +137,7 @@
           </button> -->
         </div>
         <div class="modal-body" style="background-color:lightskyblue;">
-          <form id="trip-form" method="get" action=""  >
+          <form id="reservation-form" method="get" action=""  >
 
             <fieldset>
               <div class="row d-none">
@@ -155,33 +155,40 @@
 
               <div class="row my-0">
                 <div class="col">
-                  <label for="resmMonth" class="col-form-label">Month</label>
-                <input type="month" class="form-control text-success"  style="font-size:1.25rem" id="resmMonth" name="resmMonth" required>
+                  <label for="resmTrip" class="col-form-label">Month</label>
+                <input type="month" class="form-control text-success"  style="font-size:1.25rem" id="resmTrip" name="resmTrip" required>
                 </div>
               </div>
 
               <div class="row my-0">
                 <div class="col">
-                  <label for="resmDestinations" class="col-form-label">Destinations</label>
-                  <textarea class="form-control text-success h4" id="resmDestinations" rows=2 name="resmDestinations"></textarea>
+                  <label for="resmStatus" class="col-form-label">Destinations</label>
+                  <textarea class="form-control text-success h4" id="resmStatus" rows=2 name="resmStatus"></textarea>
                 </div>
               </div>
          
               <div class="row my-0">
                 <div class="col">
-                  <label for="resmType" class="col-form-label">Type</label>
+                  <label for="resmLocation" class="col-form-label">Type</label>
+                  <input type="text" class="form-control text-success h4" id="resmLocation" autofocus name="resmLocation">
+                </div>
+              </div>
+         
+              <div class="row my-0">
+                <div class="col">
+                  <label for="resmDescription" class="col-form-label">Type</label>
                   <input type="text" class="form-control text-success h4" id="resmType" autofocus name="resmType">
                 </div>
               </div>
-         
+        
               <div class="row my-0">
                 <div class="col">
-                  <label for="resmStartDate" class="col-form-label">Start Date</label>
-                  <input type="date" class="form-control text-success"  style="font-size:1.25rem" id="resmStartDate" name="resmStartDate">
+                  <label for="resmStartDateTime" class="col-form-label">Start Date</label>
+                  <input type="datetime" class="form-control text-success"  style="font-size:1.25rem" id="resmStartDateTime" name="resmStartDateTime">
                 </div>
                 <div class="col">
-                  <label for="resmEndDate" class="col-form-label">End Date</label>
-                  <input type="date" class="form-control text-success"  style="font-size:1.25rem" id="resmEndDate" name="resmEndDate">
+                  <label for="resmEndDateTime" class="col-form-label">End Date</label>
+                  <input type="datetime" class="form-control text-success"  style="font-size:1.25rem" id="resmEndDateTime" name="resmEndDateTime">
                 </div>
               </div>
           

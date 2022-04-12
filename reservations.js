@@ -60,7 +60,7 @@ async function listReservations(title = "Reservations") {
 
     var ele = $tblSheets.clone();
 
-    ele.find('#resDocument')[0].innerHTML = resObj['Reservation']
+    ele.find('#resReservation')[0].innerHTML = resObj['Reservation']
     ele.find('#resCompositeKey')[0].innerHTML = resObj['Composite Key']
 
     ele.find('#resTrip')[0].innerHTML = resObj['Trip']
@@ -298,10 +298,8 @@ async function updateUI (vals, arrIdx) {
 
 async function btnAddReservationHtml() {
 
-  console.log('tripform', $("#trip-form"))
-
-  $("#trip-form")[0].reset();
-  $("#trip-modal").modal('show');
+  $("#reservation-form")[0].reset();
+  $("#reservation-modal").modal('show');
 
    $('#btnResmDelete').addClass('d-none')
 
