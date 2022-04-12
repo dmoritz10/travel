@@ -181,9 +181,9 @@ async function editReservation(arrIdx) {
 
   modal(true)
 
-  $("#trip-form")[0].reset();
+  $("#reservation-form")[0].reset();
 
-  $("#trip-modal").modal('show');
+  $("#reservation-modal").modal('show');
 
   $('#resmArrIdx').val(arrIdx)
 
