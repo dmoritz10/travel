@@ -200,7 +200,7 @@ async function editReservation(arrIdx) {
   $('#resmSource').val(resObj['Source'])
   $('#resmLocation').val(resObj['Location'])
   $('#resmStartDateTime').val(resObj['Start Date'])
-  $('#resmEndDateTime').val(parseDateTime(resObj['End Date']).date)
+  $('#resmEndDateTime').val(resObj['End Date'])
   $('#resmDescription').val(resObj['Description'])
   
   $('#btnResmDelete').removeClass('d-none')
@@ -220,13 +220,14 @@ async function btnResmSubmitSheetHtml() {
     var vals = [...resVals[arrIdx]]
 
     vals[resHdrs.indexOf("Reservation")] = $('#resmReservation').val()
-    vals[resHdrs.indexOf("Month")] = formatMonth($('#resmMonth').val())
-    vals[resHdrs.indexOf("Type")] = $('#resmType').val()
-    vals[resHdrs.indexOf("Start Date")] = formatDateTime($('#resmStartDate').val())
-    vals[resHdrs.indexOf("End Date")] = formatDateTime($('#resmEndDate').val())
-    vals[resHdrs.indexOf("Destinations")] = JSON.stringify($('#resmDestinations').val().split(' - '))
-    vals[resHdrs.indexOf("Source")] = 'Manual'
-    vals[resHdrs.indexOf("Nbr Days")] = calcNbrDays(vals[resHdrs.indexOf("Start Date")], vals[resHdrs.indexOf("End Date")])
+    vals[resHdrs.indexOf("Trip")] = $('#resmTrip').val()
+    vals[resHdrs.indexOf("Status")] = $('#resmStatus').val()
+    vals[resHdrs.indexOf("Source")] = $('#resmSource').val()
+    vals[resHdrs.indexOf("Location>")] = $('#resmLocation').val()
+    vals[resHdrs.indexOf("Start Date")] = $('#resmStartDateTime').val()
+    vals[resHdrs.indexOf("End Date")] = $('#resmEndDateTime').val()
+    vals[resHdrs.indexOf("Description")] = $('#resmDescription').val()
+    vals[resHdrs.indexOf("Composite Key")] = $('#resmReservation').val() + ' - ' + $('#resmTrip').val() + ' - ' + $('#resmLocation').val()
 
   } else {
 
@@ -238,16 +239,14 @@ async function btnResmSubmitSheetHtml() {
     var vals = []
 
     vals[resHdrs.indexOf("Reservation")] = $('#resmReservation').val()
-    vals[resHdrs.indexOf("Month")] = formatMonth($('#resmMonth').val())
-    vals[resHdrs.indexOf("Type")] = $('#resmType').val()
-    vals[resHdrs.indexOf("Start Date")] = formatDateTime($('#resmStartDate').val())
-    vals[resHdrs.indexOf("End Date")] = formatDateTime($('#resmEndDate').val())
-    vals[resHdrs.indexOf("Destinations")] = JSON.stringify($('#resmDestinations').val().split(' - '))
-    vals[resHdrs.indexOf("Source")] = 'Manual'
-    vals[resHdrs.indexOf("Destination Detail")] = JSON.stringify([])
-    vals[resHdrs.indexOf("Composite Key")] = $('#resmReservation').val() + ' - ' + formatMonth($('#resmMonth').val())
-    vals[resHdrs.indexOf("Nbr Days")] = calcNbrDays(vals[resHdrs.indexOf("Start Date")], vals[resHdrs.indexOf("End Date")])
-
+    vals[resHdrs.indexOf("Trip")] = $('#resmTrip').val()
+    vals[resHdrs.indexOf("Status")] = $('#resmStatus').val()
+    vals[resHdrs.indexOf("Source")] = $('#resmSource').val()
+    vals[resHdrs.indexOf("Location>")] = $('#resmLocation').val()
+    vals[resHdrs.indexOf("Start Date")] = $('#resmStartDateTime').val()
+    vals[resHdrs.indexOf("End Date")] = $('#resmEndDateTime').val()
+    vals[resHdrs.indexOf("Description")] = $('#resmDescription').val()
+    vals[resHdrs.indexOf("Composite Key")] = $('#resmReservation').val() + ' - ' + $('#resmTrip').val() + ' - ' + $('#resmLocation').val()
 
   }
 
@@ -259,7 +258,7 @@ async function btnResmSubmitSheetHtml() {
   await updateSheetRow(vals, resIdx)
 
 
-  $("#trip-modal").modal('hide');
+  $("#reservation-modal").modal('hide');
 
   updateUI(vals, arrIdx)
 
@@ -277,7 +276,7 @@ async function updateUI (vals, arrIdx) {
 
   console.log("arrIdx", arrIdx)
 
-  if (arrIdx == -1) {                               // add.  In this case, still use listReservations 
+  // if (arrIdx == -1) {                               // add.  In this case, still use listReservations 
 
     // resVals.push(valsEnc)
     // arrIdx = resVals.length-1
@@ -285,7 +284,7 @@ async function updateUI (vals, arrIdx) {
     listReservations(resTitle)
     return
   
-  }
+  // }
 
   // update. Update ui directly w/o listReservations
   resVals[arrIdx] = vals
