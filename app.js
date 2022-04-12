@@ -13,7 +13,13 @@
     var trpShtId
     var trpIdxArr
 
-   
+    var resHdrs
+    var resVals
+    var resTitle
+    var resShtId
+    var resIdxArr
+
+  
     var arrOptions
     var optionsIdx
   
@@ -205,7 +211,7 @@ jQuery(function ($) {
             $('#btnImportPlaces')      .button().click(btnImportPlacesHtml);
             $('#btnPlaces')            .button().click(btnPlacesHtml);
             $('#btnTrips')             .button().click(listTrips);
-            $('#btnReservations')      .click(importFromCalendar);
+            $('#btnReservations')      .click(listReservations);
 
             // Trips
             $('#btnTrpSelect')            .click(btnTrpSelectHtml);
@@ -235,17 +241,31 @@ jQuery(function ($) {
 
             });
 
-            // clear form of unencrypted data after closing
-            // $('#editTrip').on('hidden.bs.modal', function(e) {
-            //     $(this).find('#trip-form')[0].reset();
-            // });
-
+            // Reservations
+            $('#btnResSelect')            .click(btnResSelectHtml);
             
-            // Show Sheet
-            // $('#btnSSNext')       .click({dir: "Next"}, btnSSBrowseSheetHtml);
-            // $('#btnSSPrev')       .click({dir: "Prev"}, btnSSBrowseSheetHtml);
+            $('#shtSelectDropDown')        .on('show.bs.dropdown', function () {
+                btnShtMoreVertHtml()
+            })
+            
+            $('#btnResAddTrip')   .click(btnAddReservationHtml);
+
+            $('#btnResmSubmit')       .click(btnResmSubmitSheetHtml);
+            $('#btnResmDelete')       .click(btnResmDeleteSheetHtml);
+
+            $("#resSearch").on("input", function() {
+                var value = $(this).val().toLowerCase();
+
+                $("#resContainer #resCompositeKey").filter(function() {
+
+                  $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
+
+                });
+
+                $("#resNbr").html(countDisplayed("resContainer"))
 
 
+            });
 
             // All tabs
             $('.divfullscreen').click(function(){

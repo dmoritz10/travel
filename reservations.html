@@ -1,30 +1,202 @@
 
-<div class="">
-    <div class="  sticky-top border-bottom px-1" style="background-color: #f9f9f9;">
-      <div class="row m-1 pt-4 pb-3">
-        <div class="col-1 px-1 mt-2">
-          <div class="label  text-center h1 cursor-pointer" onclick="goHome()"><i
-              class="material-icons">arrow_back_ios</i></div>
-        </div>
-        <div class="col px-1">
-          <div id="ipSheet" class="label text-success text-center h2"></div>
-          Reservations
-        </div>
-        <div class="col-1 px-1 mt-3">
-          &nbsp;
-        </div>
+<<div class="">
+  <div class="  sticky-top px-1 pt-2" style="background-color: #FF747B;">
+    <div class="row m-0 px-2 py-4">
+      <div class="col-2 mt-3">
+        <div class="label  text-center h1 mt-0 cursor-pointer" onclick="goHome()"><i class="material-icons">arrow_back_ios</i></div>
+      </div>
+      <div class="col mt-1">
+        <div id="resTitle" class="label  text-center h1 divfullscreen">&nbsp;</div>
+        <div id="resNbr" class="text-center h4 hpElem">&nbsp</div>
+        <input type="text" class="form-control d-none" id="resArrIdx" >
+
+      </div>
+      <div class="col-2"> 
   
+        <div id="resSelectDropDown" class="dropdown">
+          <button class="btn dropdown-toggle pl-0" type="button" data-bs-toggle="dropdown">
+            <i class="material-icons md-36" style="width:12px">more_vert</i>
+          </button>
+
+          <div class="dropdown-menu more-vert-menu">
+            <form class="px-4 py-3">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="resSelectFav">
+                <label class="form-check-label" for="resSelectFav">
+                  Select favorite Documents
+                </label>
+              </div>
+
+              <button type="button" class="btn btn-primary float-end mt-2" id="btnResSelect">Go</button>
+            </form>
+            
+          </div>
+        </div>
       </div>
     </div>
-  
-    <div class=clearfix></div>
-  
-    <div class="row my-3">
-      <div class="col">
-        <button type="button" class="btn btn-primary" onclick="importFromCalendar()">Import from Calendar</button>
-      </div>
   </div>
 
-    <div class=clearfix></div>
-  
+  <div class=clearfix></div>
+
+  <div class="row m-0 px-2 py-3"  style="background-color:#15BDB0">
+    <div class="col">
+      <input class="form-control" id="resSearch" type="search"
+        placeholder="Search Reservations">
+    </div>
   </div>
+
+
+  <div id="resContainer" class=" mt-0 pt-3 pb-4 px-2" style="background-color:#eeefef">
+    <div class="m-0 p-3 pb-0 mb-3 align-items-center border rounded d-none" style="background:white;">
+
+        <div class="row">
+          <div class="col px-1">
+            <div id="resDocument" class="text-success label  text-start h3 pb-0 align-middle "></div>
+            <div id="resCompositeKey" class="d-none"></div>
+          </div>
+
+          <div class="col-1 px-0 align-right">
+            <div class="align-center cursor-pointer" id="btnResEdit" data-toggle="tooltip" title="Add / Change Course">
+                <i class="material-icons" style="color:purple;">edit</i></div>
+          </div>
+
+          <div class="col-1 mx-0 align-right d-none">
+              <div class="align-center cursor-pointer" id="btnResFavorite" data-toggle="tooltip" title="Favorite">
+                <i id = "ScFavIcon" class="material-icons" style="color:black;">star</i></div>        
+          </div>
+
+          <div class="col-1 me-2">
+            <button id="btnResShowDetail" class="border-0 bg-transparent"><i
+                class="material-icons">arrow_forward_ios</i></button>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-5 px-1">
+            <div id="resTrip" class="text-success h4 pt-1"></div>
+          </div>
+
+          <div class="col px-1 ">
+            <div id="resStartEndDateTime" class="h6 pt-2 me-5 float-end"></div>
+          </div>
+          
+        </div>
+
+        <div class="row pt-1">
+
+          <div class="col px-1">
+            <div id="resStatus" class=" label  text-start h6 pb-0 aligns-items-center"></div>
+          </div>
+
+        </div>
+
+        <div class="row pt-1">
+
+          <div class="col px-1">
+            <div id="resLocation" class=" label  text-start h6 pb-0 aligns-items-center"></div>
+          </div>
+
+        </div>
+
+        <div class="row pt-1">
+
+          <div class="col px-1">
+            <div id="resDescription" class=" label  text-start h6 pb-0 aligns-items-center"></div>
+          </div>
+
+        </div>
+
+   </div>
+
+  </div>
+
+  <div class="fixed-bottom pb-3">
+    <div class="text-center">
+      <div class="btn-group" role="group">
+        <button class="btn btn-blue btn-lg btn-raised py-2" id="btnResAddRes">Add New</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="clearfix"></div>
+
+</div>
+
+<div id="editRes">
+  <div class="modal fade" id="trip-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            <div class="h5">Reservation Maintenance</div>
+          </div>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button> -->
+        </div>
+        <div class="modal-body" style="background-color:lightskyblue;">
+          <form id="trip-form" method="get" action=""  >
+
+            <fieldset>
+              <div class="row d-none">
+                <div class="col">
+                  <input type="text" class="form-control" id="resmArrIdx" name="resmArrIdx">
+                </div>
+              </div>
+
+              <div class="row my-0">
+                <div class="col">
+                  <label for="resmRes" class="col-form-label">Res Name</label>
+                  <input type="text" class="form-control text-success h4" id="resmRes" autofocus name="resmRes" required>
+                </div>
+              </div>
+
+              <div class="row my-0">
+                <div class="col">
+                  <label for="resmMonth" class="col-form-label">Month</label>
+                <input type="month" class="form-control text-success"  style="font-size:1.25rem" id="resmMonth" name="resmMonth" required>
+                </div>
+              </div>
+
+              <div class="row my-0">
+                <div class="col">
+                  <label for="resmDestinations" class="col-form-label">Destinations</label>
+                  <textarea class="form-control text-success h4" id="resmDestinations" rows=2 name="resmDestinations"></textarea>
+                </div>
+              </div>
+         
+              <div class="row my-0">
+                <div class="col">
+                  <label for="resmType" class="col-form-label">Type</label>
+                  <input type="text" class="form-control text-success h4" id="resmType" autofocus name="resmType">
+                </div>
+              </div>
+         
+              <div class="row my-0">
+                <div class="col">
+                  <label for="resmStartDate" class="col-form-label">Start Date</label>
+                  <input type="date" class="form-control text-success"  style="font-size:1.25rem" id="resmStartDate" name="resmStartDate">
+                </div>
+                <div class="col">
+                  <label for="resmEndDate" class="col-form-label">End Date</label>
+                  <input type="date" class="form-control text-success"  style="font-size:1.25rem" id="resmEndDate" name="resmEndDate">
+                </div>
+              </div>
+          
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button id="btnResmSubmit" class="btn btn-primary" type="submit">Submit</button>
+          <button id="btnResmDelete" type="button" class="btn btn-primary">Delete</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+  
