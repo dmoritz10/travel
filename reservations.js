@@ -64,7 +64,7 @@ async function listReservations(title = "Reservations") {
     ele.find('#resCompositeKey')[0].innerHTML = resObj['Composite Key']
 
     ele.find('#resTrip')[0].innerHTML = resObj['Trip']
-    ele.find('#resStartEndDateTime')[0].innerHTML = resObj['Start Date'].slice(0,-5) + ' - ' + resObj['End Date'].slice(0,-5)
+    ele.find('#resStartEndDateTime')[0].innerHTML = DateTime.fromISO(resObj['Start Date']) + ' - ' + DateTime.fromISO(resObj['End Date'])
     ele.find('#resStatus')[0].innerHTML = resObj['Status']
     ele.find('#resLocation')[0].innerHTML = resObj['Location']
     ele.find('#resDescription')[0].innerHTML = resObj['Description'].replace(/\n/g, "<br>")
