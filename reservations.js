@@ -65,9 +65,9 @@ async function listReservations(title = "Reservations") {
 
     ele.find('#resTrip')[0].innerHTML = resObj['Trip']
     ele.find('#resStartEndDateTime')[0].innerHTML = resObj['Start Date'].slice(0,-5) + ' - ' + resObj['End Date'].slice(0,-5)
-    ele.find('#resStatus')[0].innerHTML = JSON.parse(resObj['Status']).join(' - ')
-    ele.find('#resLocation')[0].innerHTML = JSON.parse(resObj['Location']).join(' - ')
-    ele.find('#resDescription')[0].innerHTML = JSON.parse(resObj['Description']).join(' - ')
+    ele.find('#resStatus')[0].innerHTML = resObj['Status']
+    ele.find('#resLocation')[0].innerHTML = resObj['Location']
+    ele.find('#resDescription')[0].innerHTML = resObj['Description']
 
     ele.find('#btnResEdit')[0].setAttribute("onclick", "editReservation(" + j + ")");
 
