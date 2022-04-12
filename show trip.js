@@ -185,7 +185,7 @@ async function btntrpmdtlSubmitHtml() {
 
   var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
 
-  await updateSheetRow(vals, trpIdx)
+  await updateSheetRow(vals, trpIdx, "Trips")
 
   $("#trpdtl-modal").modal('hide');
 
@@ -214,7 +214,7 @@ async function btntrpmdtlDeleteHtml() {
 
   var trpIdx = trpIdxArr[arrIdx]                  // get the row nbr on the sheet from trpIdxArr
 
-  await updateSheetRow(vals, trpIdx)
+  await updateSheetRow(vals, trpIdx, "Trips")
 
   $("#trpdtl-modal").modal('hide');
 

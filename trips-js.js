@@ -173,7 +173,7 @@ async function setFavorite(arrIdx) {
 
   var trpIdx = trpIdxArr[arrIdx]
 
-  await updateSheetRow(trpVals[arrIdx], trpIdx)
+  await updateSheetRow(trpVals[arrIdx], trpIdx, "Trips")
 
   updateUI(trpVals[arrIdx], arrIdx)
 
@@ -258,7 +258,7 @@ async function btnTrpmSubmitSheetHtml() {
   var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
 
 
-  await updateSheetRow(vals, trpIdx)
+  await updateSheetRow(vals, trpIdx, "Trips")
 
 
   $("#trip-modal").modal('hide');

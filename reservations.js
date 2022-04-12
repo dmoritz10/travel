@@ -170,7 +170,7 @@ async function setFavorite(arrIdx) {
 
   var resIdx = resIdxArr[arrIdx]
 
-  await updateSheetRow(resVals[arrIdx], resIdx)
+  await updateSheetRow(resVals[arrIdx], resIdx, "Reservations")
 
   updateUI(resVals[arrIdx], arrIdx)
 
@@ -255,7 +255,7 @@ async function btnResmSubmitSheetHtml() {
   var resIdx = arrIdx == -1 ? -1 : resIdxArr[arrIdx]  // get the row nbr on the sheet from resIdxArr
 
 
-  await updateSheetRow(vals, resIdx)
+  await updateSheetRow(vals, resIdx, "Reservations")
 
 
   $("#reservation-modal").modal('hide');

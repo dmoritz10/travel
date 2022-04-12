@@ -525,7 +525,7 @@ async function updateSheet(title, vals) {
 
 } 
 
-async function updateSheetRow(vals, shtIdx) {
+async function updateSheetRow(vals, shtIdx, shtTitle) {
 
 
   await checkAuth()
@@ -544,7 +544,7 @@ async function updateSheetRow(vals, shtIdx) {
 
     var params = {
       spreadsheetId: spreadsheetId,
-      range: "'" + trpTitle + "'!" + rng,
+      range: "'" + shtTitle + "'!" + rng,
       valueInputOption: 'RAW'
     };
 
@@ -565,7 +565,7 @@ async function updateSheetRow(vals, shtIdx) {
 
     var params = {
       spreadsheetId: spreadsheetId,
-      range: "'" + trpTitle + "'!" + rng,
+      range: "'" + shtTitle + "'!" + rng,
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS'
     };
