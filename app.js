@@ -205,6 +205,9 @@ jQuery(function ($) {
             $('#btnImportPlaces')      .button().click(btnImportPlacesHtml);
             $('#btnPlaces')            .button().click(btnPlacesHtml);
             $('#btnTrips')             .button().click(listTrips);
+            $('#btnReservations')      .click(reservationsHtml);
+
+            
             
             // Trips
             $('#btnTrpSelect')            .click(btnTrpSelectHtml);
