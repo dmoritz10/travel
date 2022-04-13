@@ -467,10 +467,17 @@ async function addToReservations(vals, ceHdrs, resHdrs) {
   var resVals = []
 
   resVals[resHdrs.indexOf('Reservation')] = vals[ceHdrs.indexOf('summary')]
+  resVals[resHdrs.indexOf('Start Date')] = vals[ceHdrs.indexOf('start')]
+  resVals[resHdrs.indexOf('End Date')] = vals[ceHdrs.indexOf('end')]
+  resVals[resHdrs.indexOf('Source')] = 'Calendar'
+  resVals[resHdrs.indexOf('location')] = vals[ceHdrs.indexOf('location')]
+  resVals[resHdrs.indexOf('Description')] = vals[ceHdrs.indexOf('description')]
+  resVals[resHdrs.indexOf('Status')] = vals[ceHdrs.indexOf('status')]
+  resVals[resHdrs.indexOf('Composite Key')] = vals[ceHdrs.indexOf('summary')]
 
   //Reservation	Trip	Start Date	End Date	Source	Status	Location	Description	Composite Key
 
-  await updateSheetRow(resVals, -1, "Trips")
+  await updateSheetRow(resVals, -1, "Reservations")
 
 }
 
