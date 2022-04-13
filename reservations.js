@@ -429,7 +429,7 @@ async function makeReservationsFromCalendarEvents() {
 
     var trip = await promptTrip(msg)
 
-    console.log(trip)
+    console.log('trip', trip)
 
     if (!trip) {
 
@@ -451,16 +451,23 @@ async function makeReservationsFromCalendarEvents() {
 
 }
 
-async function promptTrip(msg) {
+function promptTrip(msg) {
 
-  var rtn = await bootbox.dialog({
+  return new Promise(resolve => {
+ 
+    bootbox.dialog({
     
     title: "Reservations from Calendar",
     message: msg,
     buttons: {
       cancel: {
           label: "cancel",
-          className: 'btn-light'
+          className: 'btn-light',
+          callback: async function(result){
+  
+            resolve ( 'cancel' )
+  
+          }
       },
 
       ok: {
@@ -468,7 +475,7 @@ async function promptTrip(msg) {
         className: 'btn-primary',
         callback: async function(result){
 
-          return result
+          resolve ( result )
 
         }
       },
@@ -478,7 +485,7 @@ async function promptTrip(msg) {
         className: 'btn-primary',
         callback: async function(result){
 
-          return 'skip'
+          resolve ( 'skip' )
 
         }
       }
@@ -486,8 +493,8 @@ async function promptTrip(msg) {
     }
     
   });
-
-  return rtn
+})
+  
 
 }
 
