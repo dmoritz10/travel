@@ -475,7 +475,7 @@ async function addToReservations(vals, trip, ceHdrs, resHdrs) {
   resVals[resHdrs.indexOf('Location')] = vals[ceHdrs.indexOf('location')]
   resVals[resHdrs.indexOf('Description')] = vals[ceHdrs.indexOf('description')]
   resVals[resHdrs.indexOf('Status')] = vals[ceHdrs.indexOf('status')]
-  resVals[resHdrs.indexOf('Composite Key')] = vals[ceHdrs.indexOf('summary')]
+  resVals[resHdrs.indexOf('Composite Key')] = vals[ceHdrs.indexOf('summary')] + ' - ' + trip
 
   //Reservation	Trip	Start Date	End Date	Source	Status	Location	Description	Composite Key
 
