@@ -439,10 +439,7 @@ async function makeReservationsFromCalendarEvents() {
     } else {
 
       nbrAccepted++
-      vals[ceHdrs.indexOf('Trip')] = trip
-
-console.log(ceHdrs.indexOf('Trip'), vals, trip )
-
+      vals[resHdrs.indexOf('Trip')] = trip
       await addToReservations(vals[i], ceHdrs, resHdrs)
       await markEvent('accepted', i, vals[i], ceHdrs)
 
