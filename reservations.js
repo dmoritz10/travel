@@ -475,6 +475,8 @@ function promptTrip(msg) {
         className: 'btn-primary',
         callback:  function(result){
 
+          console.log('ok', result)
+
           resolve ( result )
 
         }
