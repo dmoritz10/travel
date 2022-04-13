@@ -431,7 +431,9 @@ async function makeReservationsFromCalendarEvents() {
 
     console.log('trip', trip)
 
-    if (!trip) {
+    if (trip == 'cancel') return
+
+    if (trip == 'reject') {
 
       nbrRejected++
       await markEvent('rejected', i, vals[i], ceHdrs)
@@ -455,7 +457,7 @@ function promptTrip(msg) {
 
   return new Promise(resolve => {
  
-    bootbox.dialog({
+    bootbox.prompt({
     
     title: "Reservations from Calendar",
     message: msg,
@@ -482,12 +484,12 @@ function promptTrip(msg) {
         }
       },
 
-      skip: {
-        label: "skip",
+      reject: {
+        label: "reject",
         className: 'btn-primary',
         callback:  function(result){
 
-          resolve ( 'skip' )
+          resolve ( 'reject' )
 
         }
       }
