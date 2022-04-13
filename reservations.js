@@ -463,7 +463,7 @@ function promptTrip(msg) {
       cancel: {
           label: "cancel",
           className: 'btn-light',
-          callback: async function(result){
+          callback: function(result){
   
             resolve ( 'cancel' )
   
@@ -473,7 +473,7 @@ function promptTrip(msg) {
       ok: {
         label: "ok",
         className: 'btn-primary',
-        callback: async function(result){
+        callback:  function(result){
 
           resolve ( result )
 
@@ -483,7 +483,7 @@ function promptTrip(msg) {
       skip: {
         label: "skip",
         className: 'btn-primary',
-        callback: async function(result){
+        callback:  function(result){
 
           resolve ( 'skip' )
 
