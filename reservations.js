@@ -438,6 +438,7 @@ async function makeReservationsFromCalendarEvents() {
     
     } else {
       nbrAccepted++
+      await addToReservations(vals[i], ceHdrs, resHdrs)
       await markEvent('accepted', i, vals[i], ceHdrs)
 
     }
@@ -458,6 +459,18 @@ async function markEvent(status, i, vals, ceHdrs) {
 console.log('vals', vals, ceHdrs.indexOf('reviewed'))
 
   await updateSheetRow(vals, i, "Calendar Events")
+
+}
+
+async function addToReservations(vals, ceHdrs, resHdrs) {
+
+  var resVals = []
+
+  resVals[resHdrs.indexOf('Reservation')] = vals[ceHdrs.indexOf('summary')]
+
+  //Reservation	Trip	Start Date	End Date	Source	Status	Location	Description	Composite Key
+
+  await updateSheetRow(resVals, -1, "Trips")
 
 }
 
