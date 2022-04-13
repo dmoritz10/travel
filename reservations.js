@@ -427,7 +427,7 @@ async function makeReservationsFromCalendarEvents() {
     var msg = "Add this event to your Reservations ?<br><br>" +
               ceObj.summary + '<br>' + DateTime.fromISO(ceObj.start)
 
-    var trip = await prompt(msg)
+    var trip = await promptTrip(msg)
 
     console.log(trip)
 
@@ -448,6 +448,46 @@ async function makeReservationsFromCalendarEvents() {
 
   console.log('nbrAccepted', nbrAccepted)
   console.log('nbrRejected', nbrRejected)
+
+}
+
+async function promptTrip(msg) {
+
+  var rtn = await bootbox.dialog({
+    
+    title: "Reservations from Calendar",
+    message: msg,
+    buttons: {
+      cancel: {
+          label: "cancel",
+          className: 'btn-light'
+      },
+
+      ok: {
+        label: "ok",
+        className: 'btn-primary',
+        callback: async function(result){
+
+          return result
+
+        }
+      },
+
+      skip: {
+        label: "skip",
+        className: 'btn-primary',
+        callback: async function(result){
+
+          return 'skip'
+
+        }
+      }
+
+    }
+    
+  });
+
+  return rtn
 
 }
 
