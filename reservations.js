@@ -347,7 +347,7 @@ async function btnResmDeleteSheetHtml() {
 
   })
 
-  $("#trip-modal").modal('hide');
+  $("#reservation-modal").modal('hide');
   // $("#trip-modal").modal('dispose');
 
   modal(false)
