@@ -54,9 +54,6 @@ async function listReservations(title = "Reservations") {
     resIdxArr.push(x)                           // create parallel xref of idxs to sheet
 
    
-    var fav = resObj['Favorite']
-    var Document = resObj['Reservations']
-
     var ele = $tblSheets.clone();
 
     ele.find('#resReservation')[0].innerHTML = resObj['Reservation']
@@ -430,16 +427,19 @@ async function makeReservationsFromCalendarEvents() {
     var msg = "Add this event to your Reservations ?<br><br>" +
               ceObj.summary + ' - ' + ceObj.start
 
-    var confirmOK = await prompt(msg)
+    var trip = await prompt(msg)
 
-    console.log(confirmOK)
+    console.log(trip)
 
-    if (!confirmOK) {
+    if (!trip) {
+      
       nbrRejected++
       await markEvent('rejected', i, vals[i], ceHdrs)
     
     } else {
+
       nbrAccepted++
+      vals[ceHdrs.indexOf('Trip')] = trip
       await addToReservations(vals[i], ceHdrs, resHdrs)
       await markEvent('accepted', i, vals[i], ceHdrs)
 
