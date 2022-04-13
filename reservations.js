@@ -451,8 +451,11 @@ async function makeReservationsFromCalendarEvents() {
 
 async function markEvent(status, i, vals, ceHdrs) {
 
+
+
   vals[ceHdrs.indexOf('reviewed')] = status
 
+console.log('vals', vals, ceHdrs.indexOf('reviewed'))
 
   await updateSheetRow(vals, i, "Trips")
 
