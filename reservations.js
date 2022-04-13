@@ -457,7 +457,7 @@ async function markEvent(status, i, vals, ceHdrs) {
 
 console.log('vals', vals, ceHdrs.indexOf('reviewed'))
 
-  await updateSheetRow(vals, i, "Trips")
+  await updateSheetRow(vals, i, "Calendar Events")
 
 }
 
