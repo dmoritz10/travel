@@ -428,7 +428,7 @@ async function makeReservationsFromCalendarEvents() {
     if (ceObj.reviewed) continue              // has already been accepted or rejected
 
     var msg = "Add this event to your Reservations ?<br><br>" +
-              ceObj.summary + ' - ' + ceObjstart
+              ceObj.summary + ' - ' + ceObj.start
 
     var confirmOK = await confirm(msg)
 
