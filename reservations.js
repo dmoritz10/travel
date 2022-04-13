@@ -30,7 +30,7 @@ async function listReservations(title = "Reservations") {
 
   var sortCol = vals[0] ? vals[0].length - 1 : 0    // in case of empty sheet.  ie. hdrs only
 
-  resVals = vals.sort(function(a,b){return a[sortCol] < b[sortCol] ? 1 : -1; });
+  resVals = vals.sort(function(a,b){return a[sortCol] > b[sortCol] ? 1 : -1; });
   
   resVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
   
@@ -430,7 +430,9 @@ async function makeReservationsFromCalendarEvents() {
     var msg = "Add this event to your Reservations ?<br><br>" +
               ceObj.summary + ' - ' + ceObj.start
 
-    var confirmOK = await confirm(msg)
+    var confirmOK = await prompt(msg)
+
+    console.log(confirmOK)
 
     if (!confirmOK) {
       nbrRejected++
@@ -470,7 +472,7 @@ async function addToReservations(vals, ceHdrs, resHdrs) {
   resVals[resHdrs.indexOf('Start Date')] = vals[ceHdrs.indexOf('start')]
   resVals[resHdrs.indexOf('End Date')] = vals[ceHdrs.indexOf('end')]
   resVals[resHdrs.indexOf('Source')] = 'Calendar'
-  resVals[resHdrs.indexOf('location')] = vals[ceHdrs.indexOf('location')]
+  resVals[resHdrs.indexOf('Location')] = vals[ceHdrs.indexOf('location')]
   resVals[resHdrs.indexOf('Description')] = vals[ceHdrs.indexOf('description')]
   resVals[resHdrs.indexOf('Status')] = vals[ceHdrs.indexOf('status')]
   resVals[resHdrs.indexOf('Composite Key')] = vals[ceHdrs.indexOf('summary')]
