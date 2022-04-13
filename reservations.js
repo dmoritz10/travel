@@ -439,8 +439,7 @@ async function makeReservationsFromCalendarEvents() {
     } else {
 
       nbrAccepted++
-      vals[i][resHdrs.indexOf('Trip')] = trip
-      await addToReservations(vals[i], ceHdrs, resHdrs)
+      await addToReservations(vals[i], trip, ceHdrs, resHdrs)
       await markEvent('accepted', i, vals[i], ceHdrs)
 
     }
@@ -464,10 +463,11 @@ console.log('vals', vals, ceHdrs.indexOf('reviewed'))
 
 }
 
-async function addToReservations(vals, ceHdrs, resHdrs) {
+async function addToReservations(vals, trip, ceHdrs, resHdrs) {
 
   var resVals = []
-
+  
+  resVals[resHdrs.indexOf('Trip')] = trip
   resVals[resHdrs.indexOf('Reservation')] = vals[ceHdrs.indexOf('summary')]
   resVals[resHdrs.indexOf('Start Date')] = vals[ceHdrs.indexOf('start')]
   resVals[resHdrs.indexOf('End Date')] = vals[ceHdrs.indexOf('end')]
