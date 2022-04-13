@@ -57,7 +57,6 @@ async function listReservations(title = "Reservations") {
     var fav = resObj['Favorite']
     var Document = resObj['Reservations']
 
-
     var ele = $tblSheets.clone();
 
     ele.find('#resReservation')[0].innerHTML = resObj['Reservation']
