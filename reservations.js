@@ -396,54 +396,66 @@ function dupDocument(Document) {
 
 }
 
+async function makeReservationsFromCalendarEvents() {
+
+  var objSht = await openShts(
+    [
+      { title: "Reservations", type: "all" },
+      { title: "Calendar Events", type: "all" }
+
+    ])
+
+  console.log('objSht', objSht)
+
+  var resTitle = "Reservations"
+  var resHdrs = objSht[resTitle].colHdrs
+  var resVals = objSht[resTitle].vals
+  
+  var ceTitle = "Calendar Events"
+  var ceHdrs = objSht[ceTitle].colHdrs
+  var ceVals = objSht[ceTitle].vals
+  
+  var vals = ceVals
+
+  var nbrRejected = 0
+  var nbrAccepted = 0
 
 
+  for (var i=0;i<vals.length;i++) {
 
+    var ceObj = makeObj(vals[i], ceHdrs)
 
+    if (ceObj.reviewed) continue              // has already been accepted or rejected
 
-async function importFromCalendar() {
+    var msg = "Add this event to your Reservations ?<br><br>" +
+              ceObj.summary + ' - ' + ceObjstart
 
+    var confirmOK = await confirm(msg)
 
+    if (!confirmOK) {
+      nbrRejected++
+      await markEvent('rejected', i, vals[i], ceHdrs)
     
-        var timeMin = '2022-05-05T10:00:00-07:00'
-        var timeMax = '2022-05-25T10:00:00-07:00'
-   
-      await checkAuth()
-      var request = await gapi.client.calendar.events.list({
-          
-        'calendarId': 'christinamoritz@gmail.com',
-        'maxResults': 1000,
-        'singleEvents': true,
-        'orderBy': 'startTime',
-        'timeMin': timeMin,
-        'timeMax': timeMax
-        
-      });
-  
-      var eventId = request.result.id
+    } else {
+      nbrAccepted++
+      await markEvent('accepted', i, vals[i], ceHdrs)
 
-      console.log(request.result)
-  
-      var timeMin = '2022-04-04T10:00:00-07:00'
-      var timeMax = '2022-04-08T10:00:00-07:00'
+    }
+    
+  }
 
-      await checkAuth()
-      var request = await gapi.client.calendar.events.list({
-          
-        'calendarId': 'dmoritz10@gmail.com',
-        'maxResults': 1000,
-        'singleEvents': true,
-        'orderBy': 'startTime',
-        'timeMin': timeMin,
-        'timeMax': timeMax
-        
-      });
-  
-      var eventId = request.result.id
-
-      console.log(request.result)
-  
-
-
+  console.log('nbrAccepted', nbrAccepted)
+  console.log('nbrRejected', nbrRejected)
 
 }
+
+async function markEvent(status, i, vals, ceHdrs) {
+
+  vals[ceHdrs.indexOf('reviewed')] = status
+
+
+  await updateSheetRow(vals, i, "Trips")
+
+}
+
+
