@@ -470,8 +470,8 @@ function promptTrip(msg) {
           }
       },
 
-      ok: {
-        confirm: "yes",
+      confirm: {
+        label: "yes",
         className: 'btn-primary',
         callback:  function(result){
 
