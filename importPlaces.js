@@ -7,7 +7,7 @@ function btnImportPlacesHtml() {
 
 async function updateTripsFromLocationHistory(input) {
 
-  await fetchplaces(input)  
+  await fetchPlaces(input)  
 
   await updateTrips()
 
