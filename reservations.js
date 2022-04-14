@@ -192,16 +192,13 @@ async function editReservation(arrIdx) {
   console.log('hi dan')
   console.log(resObj)
 
-  var startDate = vals[resHdrs.indexOf('Start Date')].length == 10 ? vals[resHdrs.indexOf('Start Date')] : vals[resHdrs.indexOf('Start Date')].slice(0,-6)
-  var endDate = vals[resHdrs.indexOf('End Date')].length == 10 ? vals[resHdrs.indexOf('End Date')] : vals[resHdrs.indexOf('End Date')].slice(0,-6)
-  
   $('#resmReservation').val(resObj['Reservation'])
   $('#resmTrip').val(resObj['Trip'])
   $('#resmStatus').val(resObj['Status'])
   $('#resmSource').val(resObj['Source'])
   $('#resmLocation').val(resObj['Location'])
-  $('#resmStartDateTime').val(startDate)
-  $('#resmEndDateTime').val(endDate)
+  $('#resmStartDateTime').val(resObj['Start Date'])
+  $('#resmEndDateTime').val(resObj['End Date'])
   $('#resmDescription').val(resObj['Description'])
   
   $('#btnResmDelete').removeClass('d-none')
@@ -502,8 +499,8 @@ async function addToReservations(vals, trip, ceHdrs, resHdrs) {
 
   var resVals = []
 
-  var startDate = vals[ceHdrs.indexOf('start')].length == 10 ? vals[ceHdrs.indexOf('start')] : vals[ceHdrs.indexOf('start')].slice(0,-6)
-  var endDate = vals[ceHdrs.indexOf('end')].length == 10 ? vals[ceHdrs.indexOf('end')] : vals[ceHdrs.indexOf('end')].slice(0,-6)
+  var startDate = vals[ceHdrs.indexOf('start')].length == 10 ? vals[ceHdrs.indexOf('start')] + 'T00:00:00' : vals[ceHdrs.indexOf('start')].slice(0,-6)
+  var endDate = vals[ceHdrs.indexOf('end')].length == 10 ? vals[ceHdrs.indexOf('end')] + 'T00:00:00' : vals[ceHdrs.indexOf('end')].slice(0,-6)
   
   resVals[resHdrs.indexOf('Trip')] = trip
   resVals[resHdrs.indexOf('Reservation')] = vals[ceHdrs.indexOf('summary')]
