@@ -457,8 +457,8 @@ function promptTrip(msg) {
  
     bootbox.prompt({
     
-    title: "Reservations from Calendar",
-    message: msg,
+    title: msg,
+    // message: msg,
     buttons: {
       cancel: {
           label: "no",
