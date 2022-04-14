@@ -24,15 +24,17 @@ async function listReservations(title = "Reservations") {
 
     vals[i].push(i)                    // idx xref
     
-    vals[i].push(new Date(vals[i][resHdrs.indexOf('Start Date')]))
+    // vals[i].push(new Date(vals[i][resHdrs.indexOf('Start Date')]))
   
   }
 
-  var sortCol = vals[0] ? vals[0].length - 1 : 0    // in case of empty sheet.  ie. hdrs only
+  // var sortCol = vals[0] ? vals[0].length - 1 : 0    // in case of empty sheet.  ie. hdrs only
+
+  var sortCol = resHdrs.indexOf('Start Date')
 
   resVals = vals.sort(function(a,b){return a[sortCol] > b[sortCol] ? 1 : -1; });
   
-  resVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
+  // resVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
   
 
   $("#resTitle").html(resTitle)
