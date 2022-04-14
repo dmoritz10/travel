@@ -106,8 +106,7 @@ async function listReservations(title = "Reservations") {
   gotoTab('Reservations')
 
   var srchVal = $("#resSearch").val()
-
-  console.log('srchVal', srchVal)
+  var exc = srchVal.substr(0,1) == '-'
 
   if (srchVal) {
 
