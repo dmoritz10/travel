@@ -215,7 +215,7 @@ async function btnResmSubmitSheetHtml() {
 
   if (arrIdx > -1) {                                                       // update existing course
 
-    var vals = [...resVals[arrIdx]]
+    var vals = resVals[arrIdx]
 
     vals[resHdrs.indexOf("Reservation")] = $('#resmReservation').val()
     vals[resHdrs.indexOf("Trip")] = $('#resmTrip').val()
