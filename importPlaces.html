@@ -21,16 +21,16 @@
   
     <div class="row my-3">
         <div class="col">
-          <button type="button" class="btn btn-primary" onclick="document.getElementById('ipImportFiles').click()">Choose File</button>
-          <input id="ipImportFiles" class="form-control d-none" onchange="fetchPlaces(this)" type="file" multiple="multiple" name="ipImportFiles">
+          <button type="button" class="btn btn-primary" onclick="document.getElementById('ipImportFiles').click()">Choose Loction History Files</button>
+          <input id="ipImportFiles" class="form-control d-none" onchange="updateTripsFromLocationHistory(this)" type="file" multiple="multiple" name="ipImportFiles">
         </div>
     </div>
-
+<!-- 
     <div class="row my-3">
       <div class="col">
-        <button type="button" class="btn btn-primary" onclick="updateTrips()">Update Trips</button>
+        <button type="button" class="btn btn-primary" onclick="updateTripsFromLocationHistory()">Update Trips</button>
       </div>
-    </div>
+    </div> -->
 
     <div class="row my-3">
       <div class="col">
