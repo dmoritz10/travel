@@ -417,6 +417,7 @@ async function makeReservationsFromCalendarEvents() {
   var nbrRejected = 0
   var nbrAccepted = 0
 
+  var defaultTrip = ''
 
   for (var i=0;i<vals.length;i++) {
 
@@ -427,11 +428,11 @@ async function makeReservationsFromCalendarEvents() {
     var msg = "Add this event to your Reservations ?<br><br>" +
               ceObj.summary + '<br>' + DateTime.fromISO(ceObj.start).toLocaleString(DateTime.DATETIME_SHORT);
 
-    var trip = await promptTrip(msg)
+    var trip = await promptTrip(msg, defaultTrip)
 
     console.log('trip', trip)
 
-    if (trip == 'no') {
+    if (trip == null) {
 
       nbrRejected++
       await markEvent('rejected', i, vals[i], ceHdrs)
@@ -441,6 +442,7 @@ async function makeReservationsFromCalendarEvents() {
       nbrAccepted++
       await addToReservations(vals[i], trip, ceHdrs, resHdrs)
       await markEvent('accepted', i, vals[i], ceHdrs)
+      defaultTrip = trip
 
     }
     
@@ -451,13 +453,16 @@ async function makeReservationsFromCalendarEvents() {
 
 }
 
-function promptTrip(msg) {
+function promptTrip(msg, defaultVal) {
 
   return new Promise(resolve => {
  
     bootbox.prompt({
     
       title: msg,
+      onEscape: false,
+      closeButton: false,
+      value: defaultVal ? defaultVal : '',
       callback: function(result){ resolve(result)},
       buttons: {
         cancel: {
