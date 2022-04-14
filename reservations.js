@@ -498,10 +498,12 @@ console.log('vals', vals, ceHdrs.indexOf('reviewed'))
 async function addToReservations(vals, trip, ceHdrs, resHdrs) {
 
   var resVals = []
+
+  var startDate = vals[ceHdrs.indexOf('start')].length == 10 ? vals[ceHdrs.indexOf('start')] : vals[ceHdrs.indexOf('start')].slice(0,-6)
   
   resVals[resHdrs.indexOf('Trip')] = trip
   resVals[resHdrs.indexOf('Reservation')] = vals[ceHdrs.indexOf('summary')]
-  resVals[resHdrs.indexOf('Start Date')] = vals[ceHdrs.indexOf('start')]
+  resVals[resHdrs.indexOf('Start Date')] = startDate
   resVals[resHdrs.indexOf('End Date')] = vals[ceHdrs.indexOf('end')]
   resVals[resHdrs.indexOf('Source')] = 'Calendar'
   resVals[resHdrs.indexOf('Location')] = vals[ceHdrs.indexOf('location')]
