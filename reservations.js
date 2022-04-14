@@ -459,24 +459,16 @@ function promptTrip(msg) {
     
     title: msg,
     // message: msg,
+    callback: function(result){ resolve(result)},
     buttons: {
       cancel: {
           label: "no",
-          className: 'btn-primary',
-          callback: function(result){
-  
-            resolve ( 'no' )
-  
-          }
+          className: 'btn-primary'
       },
 
       confirm: {
         label: "yes",
-        className: 'btn-primary',
-        callback:  function(result){
-
-          resolve ( result )
-
+        className: 'btn-primary'
         }
       }
     }
