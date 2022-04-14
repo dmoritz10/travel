@@ -61,8 +61,17 @@ async function listReservations(title = "Reservations") {
     ele.find('#resReservation')[0].innerHTML = resObj['Reservation']
     ele.find('#resCompositeKey')[0].innerHTML = resObj['Composite Key']
 
+    var st = DateTime.fromISO(resObj['Start Date']).toLocaleString(DateTime.DATETIME_SHORT)
+    var stArr = st.split(', ')
+    var start = stArr[1] == '12:00 AM' ? stArr[0] : st
+
+    var et = DateTime.fromISO(resObj['End Date']).toLocaleString(DateTime.DATETIME_SHORT)
+    var etArr = et.split(', ')
+    var end = etArr[1] == '12:00 AM' ? etArr[0] : et
+  
+
     ele.find('#resTrip')[0].innerHTML = resObj['Trip']
-    ele.find('#resStartEndDateTime')[0].innerHTML = DateTime.fromISO(resObj['Start Date']).toLocaleString(DateTime.DATETIME_SHORT) + ' - ' + DateTime.fromISO(resObj['End Date']).toLocaleString(DateTime.DATETIME_SHORT)
+    ele.find('#resStartEndDateTime')[0].innerHTML = start + ' - ' + end
     ele.find('#resStatus')[0].innerHTML = resObj['Status']
     ele.find('#resLocation')[0].innerHTML = resObj['Location']
     ele.find('#resDescription')[0].innerHTML = resObj['Description'] ? resObj['Description'].replace(/\n/g, "<br>") : ''
@@ -192,6 +201,7 @@ async function editReservation(arrIdx) {
   console.log('hi dan')
   console.log(resObj)
 
+ 
   $('#resmReservation').val(resObj['Reservation'])
   $('#resmTrip').val(resObj['Trip'])
   $('#resmStatus').val(resObj['Status'])
