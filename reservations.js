@@ -192,13 +192,16 @@ async function editReservation(arrIdx) {
   console.log('hi dan')
   console.log(resObj)
 
+  var startDate = vals[resHdrs.indexOf('start')].length == 10 ? vals[resHdrs.indexOf('start')] : vals[resHdrs.indexOf('start')].slice(0,-6)
+  var endDate = vals[resHdrs.indexOf('end')].length == 10 ? vals[resHdrs.indexOf('end')] : vals[resHdrs.indexOf('end')].slice(0,-6)
+  
   $('#resmReservation').val(resObj['Reservation'])
   $('#resmTrip').val(resObj['Trip'])
   $('#resmStatus').val(resObj['Status'])
   $('#resmSource').val(resObj['Source'])
   $('#resmLocation').val(resObj['Location'])
-  $('#resmStartDateTime').val(resObj['Start Date'])
-  $('#resmEndDateTime').val(resObj['End Date'])
+  $('#resmStartDateTime').val(startDate)
+  $('#resmEndDateTime').val(endDate)
   $('#resmDescription').val(resObj['Description'])
   
   $('#btnResmDelete').removeClass('d-none')
