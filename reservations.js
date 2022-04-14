@@ -425,7 +425,7 @@ async function makeReservationsFromCalendarEvents() {
     if (ceObj.reviewed) continue              // has already been accepted or rejected
 
     var msg = "Add this event to your Reservations ?<br><br>" +
-              ceObj.summary + '<br>' + DateTime.fromISO(ceObj.start)
+              ceObj.summary + '<br>' + DateTime.fromISO(ceObj.start).toLocaleString(DateTime.DATETIME_SHORT);
 
     var trip = await prompt(msg)
 
