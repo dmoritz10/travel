@@ -258,7 +258,13 @@ jQuery(function ($) {
 
                 $("#resContainer #resCompositeKey").filter(function() {
 
-                  $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    var txt = $(this).text().toLowerCase()
+                    var exc = txt.substr(0,1) == '-'
+
+                    if (exc)    var toggle = txt.indexOf(value) == -1
+                    else        var toggle = txt.indexOf(value) > -1
+
+                  $(this).parent().parent().parent().toggle(toggle)
 
                 });
 
