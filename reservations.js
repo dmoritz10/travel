@@ -113,12 +113,17 @@ async function listReservations(title = "Reservations") {
 
       $("#resContainer #resCompositeKey").filter(function() {
 
-        $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(srchVal.toLowerCase()) > -1)
-      });
-      
+        var txt = $(this).text().toLowerCase()
+
+        if (exc)    var toggle = txt.indexOf(srchVal.substring(1)) == -1
+        else        var toggle = txt.indexOf(srchVal) > -1
+
+      $(this).parent().parent().parent().toggle(toggle)     
       $("#resNbr").html(countDisplayed("resContainer"))
    
-  }
+      })
+
+    }
 
   $('#resContainer > div').click(function(e){         // highlight clicked row
     

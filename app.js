@@ -270,7 +270,6 @@ jQuery(function ($) {
 
                 $("#resNbr").html(countDisplayed("resContainer"))
 
-
             });
 
             // All tabs
