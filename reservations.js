@@ -457,22 +457,22 @@ function promptTrip(msg) {
  
     bootbox.prompt({
     
-    title: msg,
-    callback: function(result){ resolve(result)},
-    buttons: {
-      cancel: {
-          label: "no",
+      title: msg,
+      callback: function(result){ resolve(result)},
+      buttons: {
+        cancel: {
+            label: "no",
+            className: 'btn-primary'
+        },
+
+        confirm: {
+          label: "yes",
           className: 'btn-primary'
-      },
-
-      confirm: {
-        label: "yes",
-        className: 'btn-primary'
+          }
         }
-      }
-    });
+      });
 
-  
+  })
 
 }
 
