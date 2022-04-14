@@ -458,7 +458,6 @@ function promptTrip(msg) {
     bootbox.prompt({
     
     title: msg,
-    // message: msg,
     callback: function(result){ resolve(result)},
     buttons: {
       cancel: {
@@ -471,11 +470,8 @@ function promptTrip(msg) {
         className: 'btn-primary'
         }
       }
-    }
-    
-  });
+    });
 
-})
   
 
 }
