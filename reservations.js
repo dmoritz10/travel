@@ -482,6 +482,7 @@ function promptTrip(msg) {
     }
     
   });
+  
 })
   
 
