@@ -261,7 +261,7 @@ jQuery(function ($) {
                     var txt = $(this).text().toLowerCase()
                     var exc = txt.substr(0,1) == '-'
 
-                    if (exc)    var toggle = txt.indexOf(value) == -1
+                    if (exc)    var toggle = txt.indexOf(value.substr(1)) == -1
                     else        var toggle = txt.indexOf(value) > -1
 
                   $(this).parent().parent().parent().toggle(toggle)
