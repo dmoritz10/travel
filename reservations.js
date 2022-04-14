@@ -462,7 +462,7 @@ function promptTrip(msg) {
     buttons: {
       cancel: {
           label: "no",
-          className: 'btn-light',
+          className: 'btn-primary',
           callback: function(result){
   
             resolve ( 'no' )
