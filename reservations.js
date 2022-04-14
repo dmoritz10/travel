@@ -427,7 +427,7 @@ async function makeReservationsFromCalendarEvents() {
     var msg = "Add this event to your Reservations ?<br><br>" +
               ceObj.summary + '<br>' + DateTime.fromISO(ceObj.start).toLocaleString(DateTime.DATETIME_SHORT);
 
-    var trip = await prompt(msg)
+    var trip = await promptTrip(msg)
 
     console.log('trip', trip)
 
