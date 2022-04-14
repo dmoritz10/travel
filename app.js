@@ -255,11 +255,11 @@ jQuery(function ($) {
 
             $("#resSearch").on("input", function() {
                 var value = $(this).val().toLowerCase();
+                var exc = value.substr(0,1) == '-'
 
                 $("#resContainer #resCompositeKey").filter(function() {
 
                     var txt = $(this).text().toLowerCase()
-                    var exc = txt.substr(0,1) == '-'
 
                     if (exc)    var toggle = txt.indexOf(value.substring(1)) == -1
                     else        var toggle = txt.indexOf(value) > -1
