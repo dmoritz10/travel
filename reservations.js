@@ -258,7 +258,9 @@ async function btnResmSubmitSheetHtml() {
 
   $("#reservation-modal").modal('hide');
 
-  updateUI(vals, arrIdx)
+  listReservations(resTitle)
+
+  // updateUI(vals, arrIdx)
 
   modal(false)
 }
