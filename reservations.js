@@ -427,7 +427,7 @@ async function makeReservationsFromCalendarEvents() {
     var msg = "Add this event to your Reservations ?<br><br>" +
               ceObj.summary + '<br>' + DateTime.fromISO(ceObj.start)
 
-    var trip = await promptTrip(msg)
+    var trip = await prompt(msg)
 
     console.log('trip', trip)
 
@@ -482,7 +482,7 @@ function promptTrip(msg) {
     }
     
   });
-  
+
 })
   
 
