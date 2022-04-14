@@ -117,8 +117,9 @@ async function listReservations(title = "Reservations") {
         if (exc)    var toggle = txt.indexOf(srchVal.substring(1)) == -1
         else        var toggle = txt.indexOf(srchVal) > -1
 
-      $(this).parent().parent().parent().toggle(toggle)     
-      $("#resNbr").html(countDisplayed("resContainer"))
+        $(this).parent().parent().parent().toggle(toggle)     
+      
+        $("#resNbr").html(countDisplayed("resContainer"))
    
       })
 

@@ -100,14 +100,19 @@ async function listTrips(title = "Trips") {
   gotoTab('Trips')
 
   var srchVal = $("#trpSearch").val()
-
-  console.log('srchVal', srchVal)
+  var exc = srchVal.substr(0,1) == '-'
 
   if (srchVal) {
 
       $("#trpContainer #trpCompositeKey").filter(function() {
 
-        $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(srchVal.toLowerCase()) > -1)
+        var txt = $(this).text().toLowerCase()
+
+        if (exc)    var toggle = txt.indexOf(srchVal.substring(1)) == -1
+        else        var toggle = txt.indexOf(srchVal) > -1
+
+        $(this).parent().parent().parent().toggle(toggle)     
+
       });
       
       $("#trpNbr").html(countDisplayed("trpContainer"))
