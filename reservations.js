@@ -106,6 +106,9 @@ async function listReservations(title = "Reservations") {
   gotoTab('Reservations')
 
   var srchVal = $("#resSearch").val()
+
+alert(srchVal)
+
   var exc = srchVal.substr(0,1) == '-'
 
   if (srchVal) {
@@ -114,8 +117,12 @@ async function listReservations(title = "Reservations") {
 
         var txt = $(this).text().toLowerCase()
 
+        alert(txt)
+
         if (exc)    var toggle = txt.indexOf(srchVal.substring(1)) == -1
         else        var toggle = txt.indexOf(srchVal) > -1
+
+        alert(toggle)
 
         $(this).parent().parent().parent().toggle(toggle)     
       
