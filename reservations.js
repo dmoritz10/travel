@@ -116,13 +116,6 @@ alert(srchVal)
       $("#resContainer #resCompositeKey").filter(function() {
 
         var txt = $(this).text().toLowerCase()
-        
-        alert(srchVal)
-        alert(exc)
-        alert(txt)
-        alert(txt.indexOf(srchVal))
-        alert(txt.indexOf(srchVal) > -1)
-       
 
         if (exc)    var toggle = txt.indexOf(srchVal.substring(1)) == -1
         else        var toggle = txt.indexOf(srchVal) > -1

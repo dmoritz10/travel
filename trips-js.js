@@ -99,7 +99,7 @@ async function listTrips(title = "Trips") {
 
   gotoTab('Trips')
 
-  var srchVal = $("#trpSearch").val()
+  var srchVal = $("#trpSearch").val().toLowerCase()
   var exc = srchVal.substr(0,1) == '-'
 
   if (srchVal) {
