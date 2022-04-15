@@ -105,7 +105,7 @@ async function listReservations(title = "Reservations") {
 
   gotoTab('Reservations')
 
-  var srchVal = $("#resSearch").val()
+  var srchVal = $("#resSearch").val().toLowerCase()
 
 alert(srchVal)
 
