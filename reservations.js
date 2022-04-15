@@ -120,6 +120,8 @@ alert(srchVal)
         alert(srchVal)
         alert(exc)
         alert(txt)
+        alert(txt.indexOf(srchVal))
+        alert(txt.indexOf(srchVal) > -1)
        
 
         if (exc)    var toggle = txt.indexOf(srchVal.substring(1)) == -1
