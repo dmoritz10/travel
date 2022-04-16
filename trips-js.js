@@ -334,7 +334,7 @@ function btnTrpmBuildDestHtml() {
 
   })
 
-  $('#trpmDestinations').val(uniqueDests.join(' - ')
+  $('#trpmDestinations').val(uniqueDests.join(' - '))
 
 }
 
