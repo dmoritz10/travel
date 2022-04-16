@@ -222,10 +222,14 @@ jQuery(function ($) {
             
             $('#btnTrpAddTrip')   .click(btnAddTripHtml);
             $('#btntrpmdtlDelete')   .click(btntrpmdtlDeleteHtml);
+            
             // $('#btnShtAddPDocument
 
             $('#btnTrpmSubmit')       .click(btnTrpmSubmitSheetHtml);
             $('#btnTrpmDelete')       .click(btnTrpmDeleteSheetHtml);
+            $('#btnTrpmBuildDest')    .click(btnTrpmBuildDestHtml);
+
+            
 
             $("#trpSearch").on("input", function() {
                 var value = $(this).val().toLowerCase();

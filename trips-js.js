@@ -152,6 +152,7 @@ async function btnTrpSelectHtml(e) {
 
 }
 
+
 async function setFavorite(arrIdx) {
 
   var favCurr = trpVals[arrIdx][trpHdrs.indexOf("Favorite")]
@@ -314,6 +315,29 @@ async function btnAddTripHtml() {
    $('#btnTrpmDelete').addClass('d-none')
 
 }
+
+function btnTrpmBuildDestHtml() {
+
+  var idx = $('#trpmArrIdx').val() * 1
+
+  var vals = [...trpVals[arrIdx]]
+
+  var dests = JSON.parse(vals[trpHdrs.indexOf("Destination Detail")])
+
+  var uniqueDests = []
+
+  dests.forEach( ele => {
+
+    var city = ele.city
+
+    if (uniqueDests.indexOf(city) == -1) uniqueDests.push(city)
+
+  })
+
+  $('#trpmDestinations').val(uniqueDests.join(' - ')
+
+}
+
 
 async function btnTrpmDeleteSheetHtml() {
 
