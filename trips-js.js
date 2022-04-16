@@ -325,16 +325,20 @@ function btnTrpmBuildDestHtml() {
   var dests = JSON.parse(vals[trpHdrs.indexOf("Destination Detail")])
 
   var uniqueDests = []
+  var uniqueCntrys = []
 
   dests.forEach( ele => {
 
     var city = ele.city
+    var state = ele.state
 
     if (uniqueDests.indexOf(city) == -1) uniqueDests.push(city)
+    if (uniqueCntrys.indexOf(state) == -1) uniqueCntrys.push(state)
 
   })
 
-  $('#trpmDestinations').val(uniqueDests.join(' - '))
+  if (uniqueDests.length > 0) $('#trpmDestinations').val(uniqueDests.join(' - '))
+  if (uniqueCntrys.length > 0) $('#trpmDestinations').val( ' - ' + uniqueCntrys.join(' - '))
 
 }
 
