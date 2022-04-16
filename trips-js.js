@@ -320,7 +320,7 @@ function btnTrpmBuildDestHtml() {
 
   var idx = $('#trpmArrIdx').val() * 1
 
-  var vals = [...trpVals[arrIdx]]
+  var vals = [...trpVals[idx]]
 
   var dests = JSON.parse(vals[trpHdrs.indexOf("Destination Detail")])
 
