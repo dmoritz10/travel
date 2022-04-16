@@ -107,8 +107,6 @@ async function listReservations(title = "Reservations") {
 
   var srchVal = $("#resSearch").val().toLowerCase()
 
-alert(srchVal)
-
   var exc = srchVal.substr(0,1) == '-'
 
   if (srchVal) {
