@@ -335,12 +335,14 @@ function btnTrpmBuildDestHtml() {
     if (uniqueDests.indexOf(city) == -1) uniqueDests.push(city)
     if (uniqueCntrys.indexOf(state) == -1) uniqueCntrys.push(state)
 
+    console.log(uniqueCntrys)
+
   })
 
   var txt = ''
 
   if (uniqueDests.length > 0) txt = uniqueDests.join(' - ')
-  if (uniqueCntrys.length > 0) txt += txt ? ' - ' : '' + uniqueCntrys.join(' - ')
+  if (uniqueCntrys.length > 0) txt += (txt ? ' - ' : '') + uniqueCntrys.join(' - ')
 
   $('#trpmDestinations').val(txt)
 
