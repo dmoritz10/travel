@@ -337,8 +337,12 @@ function btnTrpmBuildDestHtml() {
 
   })
 
-  if (uniqueDests.length > 0) $('#trpmDestinations').val(uniqueDests.join(' - '))
-  if (uniqueCntrys.length > 0) $('#trpmDestinations').val( ' - ' + uniqueCntrys.join(' - '))
+  var txt = ''
+
+  if (uniqueDests.length > 0) txt = uniqueDests.join(' - ')
+  if (uniqueCntrys.length > 0) txt += txt ? ' - ' : '' + uniqueCntrys.join(' - ')
+
+  $('#trpmDestinations').val(txt)
 
 }
 
