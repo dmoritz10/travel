@@ -83,7 +83,7 @@ async function btnPlacesHtml() {
         cntryObj.nodes.push({
 
             text:   month + ' - ' + trip,
-            class:  "h5"
+            class:  "h6"
             // icon:   "fa"
 
         })
