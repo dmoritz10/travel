@@ -49,8 +49,6 @@ async function btnPlacesHtml() {
         var trip = ele[1]
         var month = ele[2]
 
-        if (!brkcntry) 
-
         if (brkcntry != cntry) {
 
 
