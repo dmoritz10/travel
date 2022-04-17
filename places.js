@@ -31,7 +31,7 @@ async function btnPlacesHtml() {
         if (wrk.length < 2) continue
 
         var countries = wrk[1].split(' - ')
-        var x = key.split(month)
+        var x = key.split(' - ' + month)
     
         var trip = x[0]
 
@@ -39,7 +39,7 @@ async function btnPlacesHtml() {
     
         countries.forEach(ele => {
     
-            arr.push([ele, trip, month])
+        arr.push([ele, trip, month])
     
         })
       
@@ -85,12 +85,13 @@ async function btnPlacesHtml() {
 
     }
     
-    modal(false)
+    
     
     console.log(treeData)
 
     $('#plContainer').bstreeview({ 
         data: treeData
       });
-
+      modal(false)
+      gotoTab("Places")
 }
