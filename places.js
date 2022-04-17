@@ -38,14 +38,16 @@ async function btnPlacesHtml() {
         console.log(countries, trip, month)
     
         countries.forEach(ele => {
+
+            var sortkey = ele + parseMonth(month)
     
-        arr.push([ele, trip, month])
+            arr.push([ele, trip, month, sortkey])
     
         })
       
     }
   
-    arr.sort(function(a,b){return a[0] > b[0] ? 1 : -1; });
+    arr.sort(function(a,b){return a[3] > b[3] ? 1 : -1; });
 
     console.log('arr', arr)
     
