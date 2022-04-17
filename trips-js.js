@@ -200,10 +200,6 @@ async function editTrip(arrIdx) {
 
   var trpObj = makeObj(vals, trpHdrs)
 
-  console.log('hi dan')
-  console.log(parseMonth(trpObj['Month']))
-  console.log(parseDateTime(trpObj['Start Date']).date)
-
   $('#trpmTrip').val(trpObj['Trip'])
   $('#trpmMonth').val(parseMonth(trpObj['Month']))
   $('#trpmType').val(trpObj['Type'])
@@ -303,6 +299,7 @@ async function updateUI (vals, arrIdx) {
   $('#trpContainer #trpMoYr').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Month")])        
   $('#trpContainer #trpStartEndDate').eq(arrIdx+1).html(vals[trpHdrs.indexOf('Start Date')].slice(0,-5) + ' - ' + vals[trpHdrs.indexOf('End Date')].slice(0,-5))        
   $('#trpContainer #trpDestinations').eq(arrIdx+1).html(JSON.parse(vals[trpHdrs.indexOf("Destinations")]).join(' - '))        
+  $('#trpContainer #trpCompositeKey').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Composite Key")])        
   
 }
 
