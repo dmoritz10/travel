@@ -1,5 +1,4 @@
 async function btnPlacesHtml() {
-    alert('hi dan')
 
     modal(true)
   
@@ -19,15 +18,13 @@ async function btnPlacesHtml() {
     
     var vals = resVals
 
-      alert('2')
-
     var arr = []
   
     for (var i=0;i<vals.length;i++) {
   
         var key = vals[i][keyCol]
 
-        var countries = key.split(' | ')
+        var countries = key.split(' | ')[1].split(" - ")
         var x = key.split(' - ')
     
         var trip = x[1]
