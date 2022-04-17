@@ -47,7 +47,8 @@ async function btnPlacesHtml() {
       
     }
   
-    arr.sort(function(a,b){return a[3] < b[3]  || a[0] > b[0] });
+    // arr.sort(function(a,b){return a[3] < b[3]  || a[0] > b[0] });
+    arr.sort(countrySorter(3, 0));
 
     console.log('arr', arr)
     
@@ -101,4 +102,23 @@ async function btnPlacesHtml() {
 
       modal(false)
       gotoTab("Places")
+}
+
+function countrySorter(firstKey, secondKey) {
+    return function(a, b) {  
+        if (a[firstKey] > b[firstKey]) {  
+            return -1;  
+        } else if (a[firstKey] < b[firstKey]) {  
+            return 1;  
+        }  
+        else {
+            if (a[secondKey] > b[secondKey]) {  
+                return 1;  
+            } else if (a[secondKey] < b[secondKey]) {  
+                return -1;  
+            } else {
+                return 0;
+            }
+        } 
+    }  
 }
