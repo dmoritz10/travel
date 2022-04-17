@@ -95,7 +95,7 @@ async function btnPlacesHtml() {
     nbrDom = 0
     nbrIntl = 0
 
-    treeDate.forEach( ele => {
+    treeData.forEach( ele => {
 
         var cntry = ele[0]
 
