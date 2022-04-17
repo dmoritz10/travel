@@ -76,7 +76,7 @@ async function btnPlacesHtml() {
 
         }
 
-        console.log(ele, idx, cntryObj)
+        console.log(ele, i, cntryObj)
 
         cntryObj.nodes.push({
 
