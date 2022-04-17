@@ -85,10 +85,12 @@ async function btnPlacesHtml() {
         })
 
     }
+    
+    modal(false)
+    
+    console.log(treeData)
 
-    console.log(cntryObj)
-
-    $('#plContainer').bstreeview({ 
+    $('#plContainer').bstreeView({ 
         data: treeData
       });
 
