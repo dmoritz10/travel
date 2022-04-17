@@ -225,7 +225,7 @@ async function btnTrpmSubmitSheetHtml() {
 
   if (arrIdx > -1) {                                                       // update existing course
 
-    var vals = [...trpVals[arrIdx]]
+    var vals = trpVals[arrIdx]
 
     vals[trpHdrs.indexOf("Trip")] = $('#trpmTrip').val()
     vals[trpHdrs.indexOf("Month")] = formatMonth($('#trpmMonth').val())
