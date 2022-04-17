@@ -25,7 +25,9 @@ async function btnPlacesHtml() {
         var key = vals[i][keyCol]
 
         var wrk = key.split(' | ')
-        var countries = wrk[1].split(" - ")
+
+        console.log(key, wrk)
+        var countries = wrk[1].split(' - ')
         var x = key.split(' - ')
     
         var trip = x[0]
