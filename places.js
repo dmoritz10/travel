@@ -70,10 +70,10 @@ async function btnPlacesHtml() {
 
             var cntryObj = {
 
-                text: cntry,
-                class: "text-success h4",
-                icon: "fa",
-                nodes: []
+                text:   cntry,
+                class:  "text-success h4",
+                // icon:   "fa",
+                nodes:  []
 
             }
 
@@ -81,9 +81,9 @@ async function btnPlacesHtml() {
 
         cntryObj.nodes.push({
 
-            text: month + ' - ' + trip,
-            class: "text-success h5",
-            icon: "fa"
+            text:   month + ' - ' + trip,
+            class:  "h5"
+            // icon:   "fa"
 
         })
 
@@ -92,10 +92,12 @@ async function btnPlacesHtml() {
     console.log(treeData)
 
     $('#plContainer').bstreeview({ 
-        expandIcon: 'fa fa-angle-down',
-        collapseIcon: 'fa fa-angle-up',
+
+        // expandIcon: 'fa fa-angle-down',
+        // collapseIcon: 'fa fa-angle-up',
         data: treeData
-      });
+      
+    });
 
       modal(false)
       gotoTab("Places")
