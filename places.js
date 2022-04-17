@@ -108,7 +108,7 @@ function countrySorter(firstKey, secondKey) {
     return function(a, b) {  
         if (a[firstKey] > b[firstKey]) {  
             return -1;  
-        } else if (a[firstKey] < b[firstKey]) {  
+        } else if (a[firstKey] > b[firstKey]) {  
             return 1;  
         }  
         else {
