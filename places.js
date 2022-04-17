@@ -15,6 +15,7 @@ async function btnPlacesHtml() {
     resVals = objSht[resTitle].vals
     
     var keyCol = resHdrs.indexOf('Composite Key')
+    var monthCol = resHdrs.indexOf('Month')
     
     var vals = resVals
 
@@ -23,16 +24,16 @@ async function btnPlacesHtml() {
     for (var i=0;i<vals.length;i++) {
   
         var key = vals[i][keyCol]
+        var month = vals[i][monthCol]
 
         var wrk = key.split(' | ')
 
         if (wrk.length < 2) continue
 
         var countries = wrk[1].split(' - ')
-        var x = key.split(' - ')
+        var x = key.split(month)
     
         var trip = x[0]
-        var month = x[1]
 
         console.log(countries, trip, month)
     
