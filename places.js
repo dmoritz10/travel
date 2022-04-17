@@ -85,13 +85,12 @@ async function btnPlacesHtml() {
 
     }
     
-    
-    
     console.log(treeData)
 
     $('#plContainer').bstreeview({ 
         data: treeData
       });
+
       modal(false)
       gotoTab("Places")
 }

@@ -186,7 +186,7 @@ async function setFavorite(arrIdx) {
 
   await updateSheetRow(resVals[arrIdx], resIdx, "Reservations")
 
-  updateUI(resVals[arrIdx], arrIdx)
+  // updateUI(resVals[arrIdx], arrIdx)
 
 }
 
@@ -283,35 +283,35 @@ async function btnResmSubmitSheetHtml() {
 }
 
 
-async function updateUI (vals, arrIdx) {
+// async function updateUI (vals, arrIdx) {
 
-// update resVals conditionally encrypting
-// update / append resContainer ? sort ???
-// update / append
+// // update resVals conditionally encrypting
+// // update / append resContainer ? sort ???
+// // update / append
 
-  var arrIdx = arrIdx*1
+//   var arrIdx = arrIdx*1
 
-  console.log("arrIdx", arrIdx)
+//   console.log("arrIdx", arrIdx)
 
-  // if (arrIdx == -1) {                               // add.  In this case, still use listReservations 
+//   // if (arrIdx == -1) {                               // add.  In this case, still use listReservations 
 
-    // resVals.push(valsEnc)
-    // arrIdx = resVals.length-1
+//     // resVals.push(valsEnc)
+//     // arrIdx = resVals.length-1
 
-    listReservations(resTitle)
-    return
+//     listReservations(resTitle)
+//     return
   
-  // }
+//   // }
 
-  // update. Update ui directly w/o listReservations
-  resVals[arrIdx] = vals
+//   // update. Update ui directly w/o listReservations
+//   resVals[arrIdx] = vals
 
-  $('#resContainer #resDocument').eq(arrIdx+1).html(vals[resHdrs.indexOf("Reservation")])        
-  $('#resContainer #resMoYr').eq(arrIdx+1).html(vals[resHdrs.indexOf("Month")])        
-  $('#resContainer #resStartEndDate').eq(arrIdx+1).html(vals[resHdrs.indexOf('Start Date')].slice(0,-5) + ' - ' + vals[resHdrs.indexOf('End Date')].slice(0,-5))        
-  $('#resContainer #resDestinations').eq(arrIdx+1).html(JSON.parse(vals[resHdrs.indexOf("Destinations")]).join(' - '))        
+//   $('#resContainer #resDocument').eq(arrIdx+1).html(vals[resHdrs.indexOf("Reservation")])        
+//   $('#resContainer #resMoYr').eq(arrIdx+1).html(vals[resHdrs.indexOf("Month")])        
+//   $('#resContainer #resStartEndDate').eq(arrIdx+1).html(vals[resHdrs.indexOf('Start Date')].slice(0,-5) + ' - ' + vals[resHdrs.indexOf('End Date')].slice(0,-5))        
+//   $('#resContainer #resDestinations').eq(arrIdx+1).html(JSON.parse(vals[resHdrs.indexOf("Destinations")]).join(' - '))        
   
-}
+// }
 
 async function btnAddReservationHtml() {
 
