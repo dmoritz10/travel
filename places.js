@@ -4,12 +4,12 @@ async function btnPlacesHtml() {
   
     var objSht = await openShts(
       [
-        { title: "Reservations", type: "all" }
+        { title: "Trips", type: "all" }
       ])
   
     console.log('objSht', objSht)
   
-    resTitle = "Reservations"
+    resTitle = "Trips"
     
     resHdrs = objSht[resTitle].colHdrs
     resVals = objSht[resTitle].vals
