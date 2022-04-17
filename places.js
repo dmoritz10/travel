@@ -18,6 +18,8 @@ async function btnPlacesHtml() {
   
   var vals = resVals
 
+  console.log('vals', vals)
+
     var arr = []
   
     for (var i=0;i<vals.length;i++) {
@@ -43,7 +45,7 @@ async function btnPlacesHtml() {
     var treeData = []
     var brkcntry
 
-    arr.forEach( ele => {
+    arr.forEach( (ele, idx) => {
 
         var cntry = ele[0]
         var trip = ele[1]
@@ -64,6 +66,8 @@ async function btnPlacesHtml() {
             }
 
         }
+
+        console.log(ele, idx, cntryObj)
 
         cntryObj.nodes.push({
 
