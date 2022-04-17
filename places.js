@@ -113,9 +113,9 @@ function countrySorter(firstKey, secondKey) {
         }  
         else {
             if (a[secondKey] > b[secondKey]) {  
-                return 1;  
-            } else if (a[secondKey] < b[secondKey]) {  
                 return -1;  
+            } else if (a[secondKey] < b[secondKey]) {  
+                return 1;  
             } else {
                 return 0;
             }
