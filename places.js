@@ -92,6 +92,22 @@ async function btnPlacesHtml() {
     
     console.log(treeData)
 
+    nbrDom = 0
+    nbrIntl = 0
+
+    treeDate.forEach( ele => {
+
+        var cntry = ele[0]
+
+        if (convertStateToAbbr(cntry) == cntry)     nbrIntl++
+        else                                        nbrDom++
+
+    })
+
+    $("#plNbrDom").html(nbrDom)
+    $("#plNbrIntl").html(nbrIntl)
+    
+
     $('#plContainer').bstreeview({ 
 
         // expandIcon: 'fa fa-angle-down',
