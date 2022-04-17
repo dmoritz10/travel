@@ -1,4 +1,5 @@
 async function btnPlacesHtml() {
+    alert('hi dan')
 
     modal(true)
   
@@ -14,11 +15,11 @@ async function btnPlacesHtml() {
     resHdrs = objSht[resTitle].colHdrs
     resVals = objSht[resTitle].vals
     
-  var keyCol = resHdrs.indexOf('Composite Key')
-  
-  var vals = resVals
+    var keyCol = resHdrs.indexOf('Composite Key')
+    
+    var vals = resVals
 
-  console.log('vals', vals)
+      alert('2')
 
     var arr = []
   
@@ -29,8 +30,8 @@ async function btnPlacesHtml() {
         var countries = key.split(' | ')
         var x = key.split(' - ')
     
-        var trip = x[0]
-        var month = x[1]
+        var trip = x[1]
+        var month = x[2]
     
         countries.forEach(ele => {
     
@@ -41,6 +42,8 @@ async function btnPlacesHtml() {
     }
   
     arr.sort(function(a,b){return a[0] > b[0] ? 1 : -1; });
+
+    console.log('arr', arr)
     
     var treeData = []
     var brkcntry
