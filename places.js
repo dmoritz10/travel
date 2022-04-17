@@ -47,7 +47,7 @@ async function btnPlacesHtml() {
       
     }
   
-    arr.sort(function(a,b){return a[3] > b[3] ? 1 : -1; });
+    arr.sort(function(a,b){return a[3] < b[3] ? 1 : -1; });
 
     console.log('arr', arr)
     
