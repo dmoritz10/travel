@@ -90,7 +90,7 @@ async function btnPlacesHtml() {
     
     console.log(treeData)
 
-    $('#plContainer').bstreeView({ 
+    $('#plContainer').bstreeview({ 
         data: treeData
       });
 
