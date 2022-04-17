@@ -28,7 +28,6 @@ async function btnPlacesHtml() {
 
         if (wrk.length < 2) continue
 
-        console.log(key, wrk)
         var countries = wrk[1].split(' - ')
         var x = key.split(' - ')
     
@@ -62,7 +61,6 @@ async function btnPlacesHtml() {
 
         if (brkcntry != cntry) {
 
-
             if (brkcntry) treeData.push(cntryObj)
 
             brkcntry = cntry
@@ -70,17 +68,17 @@ async function btnPlacesHtml() {
             var cntryObj = {
 
                 text: cntry,
+                icon: "fa",
                 nodes: []
 
             }
 
         }
 
-        console.log(ele, i, cntryObj)
-
         cntryObj.nodes.push({
 
-            text: month + ' - ' + trip
+            text: month + ' - ' + trip,
+            icon: "fa"
 
         })
 
