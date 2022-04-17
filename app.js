@@ -282,6 +282,10 @@ jQuery(function ($) {
 
             });
 
+            // Places
+
+        
+
             // All tabs
             $('.divfullscreen').click(function(){
               document.documentElement.requestFullscreen();
