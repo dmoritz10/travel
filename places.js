@@ -1,9 +1,6 @@
 async function btnPlacesHtml() {
 
     modal(true)
-
-    var plOptions = readOption('resFilter')
-    var plSelectFav = resOptions.resSelectFav
   
     var objSht = await openShts(
       [
