@@ -24,11 +24,12 @@ async function btnPlacesHtml() {
   
         var key = vals[i][keyCol]
 
-        var countries = key.split(' | ')[1].split(" - ")
+        var wrk = key.split(' | ')
+        var countries = wrk[1].split(" - ")
         var x = key.split(' - ')
     
-        var trip = x[1]
-        var month = x[2]
+        var trip = x[0]
+        var month = x[1]
     
         countries.forEach(ele => {
     
