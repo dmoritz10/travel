@@ -26,7 +26,7 @@ async function btnPlacesHtml() {
 
         var wrk = key.split(' | ')
 
-        if (wrk.length = 0) continue
+        if (wrk.length < 2) continue
 
         console.log(key, wrk)
         var countries = wrk[1].split(' - ')
