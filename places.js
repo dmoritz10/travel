@@ -32,6 +32,8 @@ async function btnPlacesHtml() {
     
         var trip = x[0]
         var month = x[1]
+
+        console.log(countries, trip, month)
     
         countries.forEach(ele => {
     
