@@ -52,7 +52,9 @@ async function btnPlacesHtml() {
     var treeData = []
     var brkcntry
 
-    arr.forEach( (ele, idx) => {
+    for (var i=0;i<arr.length;i++) {
+
+        var ele = arr[i]
 
         var cntry = ele[0]
         var trip = ele[1]
@@ -82,7 +84,7 @@ async function btnPlacesHtml() {
 
         })
 
-    })
+    }
 
     console.log(cntryObj)
 
