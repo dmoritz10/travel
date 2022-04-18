@@ -5,11 +5,11 @@ const _MapFullNameAbbr = {"arizona":"AZ","alabama":"AL","alaska":"AK","arkansas"
 function convertStateToAbbr(input) {
   if(input === undefined) return input;
   var strInput = input.trim();
-  if(strInput.length === 2) {
-    // already abbr, check if it's valid
-    var upStrInput = strInput.toUpperCase();
-    return input;
-  }
+  // if(strInput.length === 2) {
+  //   // already abbr, check if it's valid
+  //   var upStrInput = strInput.toUpperCase();
+  //   return input;
+  // }
   var strStateToFind = strInput.toLowerCase().replace(/\ /g, '');
   var foundAbbr = _MapFullNameAbbr[strStateToFind];
   return foundAbbr;
