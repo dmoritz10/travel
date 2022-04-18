@@ -103,8 +103,8 @@ async function btnPlacesHtml() {
         console.log('cntry', cntry)
         console.log('convertStateToAbbr(cntry)', convertStateToAbbr(cntry))
 
-        if (convertStateToAbbr(cntry) == cntry)     nbrIntl++
-        else                                        nbrDom++
+        if (convertStateToAbbr(cntry))     nbrDom++
+        else                               nbrIntl++
 
     })
 
