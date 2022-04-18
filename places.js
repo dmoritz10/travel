@@ -99,6 +99,9 @@ async function btnPlacesHtml() {
 
         var cntry = ele[0]
 
+        console.log('cntry', cntry)
+        console.log('convertStateToAbbr(cntry)', convertStateToAbbr(cntry))
+
         if (convertStateToAbbr(cntry) == cntry)     nbrIntl++
         else                                        nbrDom++
 
