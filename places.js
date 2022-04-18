@@ -72,7 +72,7 @@ async function btnPlacesHtml() {
             var cntryObj = {
 
                 text:   cntry,
-                class:  "text-success h4",
+                class:  (convertStateToAbbr(cntry) ? "text-success h4" : "text-success h4"),
                 // icon:   "fa",
                 nodes:  []
 
@@ -98,10 +98,6 @@ async function btnPlacesHtml() {
     treeData.forEach( ele => {
 
         var cntry = ele.text
-        console.log('ele', ele.text)
-
-        console.log('cntry', cntry)
-        console.log('convertStateToAbbr(cntry)', convertStateToAbbr(cntry))
 
         if (convertStateToAbbr(cntry))     nbrDom++
         else                               nbrIntl++
