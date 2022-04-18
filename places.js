@@ -97,8 +97,8 @@ async function btnPlacesHtml() {
 
     treeData.forEach( ele => {
 
-        var cntry = ele[0]
-        console.log('ele', ele)
+        var cntry = ele[0].text
+        console.log('ele', ele[0].text)
 
         console.log('cntry', cntry)
         console.log('convertStateToAbbr(cntry)', convertStateToAbbr(cntry))
