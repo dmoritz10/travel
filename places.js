@@ -102,7 +102,7 @@ async function btnPlacesHtml() {
         if (convertStateToAbbr(cntry))     nbrDom++
         else                               nbrIntl++
 
-        ele.text = ele.text + '<span class="text-warning text-end">' + ele.nodes.length + '</span>'
+        ele.text = ele.text + '<span class="text-warning float-end">' + ele.nodes.length + '</span>'
 
     })
 
