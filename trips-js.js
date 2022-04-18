@@ -67,7 +67,8 @@ async function listTrips(title = "Trips") {
 
     ele.find('#trpMoYr')[0].innerHTML = trpObj['Month']
     ele.find('#trpStartEndDate')[0].innerHTML = trpObj['Start Date'].slice(0,-5) + ' - ' + trpObj['End Date'].slice(0,-5)
-    ele.find('#trpDestinations')[0].innerHTML = JSON.parse(trpObj['Destinations']).join(' - ').replace(' | ', '<br>')
+    ele.find('#trpDestinations')[0].innerHTML = JSON.parse(trpObj['Destinations']).join(' - ')
+    ele.find('#trpCountries')[0].innerHTML = JSON.parse(trpObj['Countries']).join(' - ')
 
     ele.find('#btnTrpEdit')[0].setAttribute("onclick", "editTrip(" + j + ")");
 
@@ -206,6 +207,7 @@ async function editTrip(arrIdx) {
   $('#trpmStartDate').val(parseDateTime(trpObj['Start Date']).date)
   $('#trpmEndDate').val(parseDateTime(trpObj['End Date']).date)
   $('#trpmDestinations').val(JSON.parse(trpObj['Destinations']).join(' - '))
+  $('#trpmCountries').val(JSON.parse(trpObj['Countries']).join(' - '))
   
   $('#btnTrpmDelete').removeClass('d-none')
 
@@ -229,6 +231,7 @@ async function btnTrpmSubmitSheetHtml() {
     vals[trpHdrs.indexOf("Start Date")] = formatDateTime($('#trpmStartDate').val())
     vals[trpHdrs.indexOf("End Date")] = formatDateTime($('#trpmEndDate').val())
     vals[trpHdrs.indexOf("Destinations")] = JSON.stringify($('#trpmDestinations').val().split(' - '))
+    vals[trpHdrs.indexOf("Countries")] = JSON.stringify($('#trpmCountries').val().split(' - '))
     vals[trpHdrs.indexOf("Source")] = 'Manual'
     vals[trpHdrs.indexOf("Nbr Days")] = calcNbrDays(vals[trpHdrs.indexOf("Start Date")], vals[trpHdrs.indexOf("End Date")])
     vals[trpHdrs.indexOf("Composite Key")] = $('#trpmTrip').val() + ' - ' + formatMonth($('#trpmMonth').val()) + ' - ' + $('#trpmDestinations').val()
@@ -248,9 +251,10 @@ async function btnTrpmSubmitSheetHtml() {
     vals[trpHdrs.indexOf("Start Date")] = formatDateTime($('#trpmStartDate').val())
     vals[trpHdrs.indexOf("End Date")] = formatDateTime($('#trpmEndDate').val())
     vals[trpHdrs.indexOf("Destinations")] = JSON.stringify($('#trpmDestinations').val().split(' - '))
+    vals[trpHdrs.indexOf("Countries")] = JSON.stringify($('#trpmCountries').val().split(' - '))
     vals[trpHdrs.indexOf("Source")] = 'Manual'
     vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify([])
-    vals[trpHdrs.indexOf("Composite Key")] = $('#trpmTrip').val() + ' - ' + formatMonth($('#trpmMonth').val()) + ' - ' + $('#trpmDestinations').val()
+    vals[trpHdrs.indexOf("Composite Key")] = $('#trpmTrip').val() + ' - ' + formatMonth($('#trpmMonth').val()) + ' - ' + $('#trpmDestinations').val() + ' - ' + $('#trpmCountries').val()
     vals[trpHdrs.indexOf("Nbr Days")] = calcNbrDays(vals[trpHdrs.indexOf("Start Date")], vals[trpHdrs.indexOf("End Date")])
 
 
@@ -299,6 +303,7 @@ async function updateUI (vals, arrIdx) {
   $('#trpContainer #trpMoYr').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Month")])        
   $('#trpContainer #trpStartEndDate').eq(arrIdx+1).html(vals[trpHdrs.indexOf('Start Date')].slice(0,-5) + ' - ' + vals[trpHdrs.indexOf('End Date')].slice(0,-5))        
   $('#trpContainer #trpDestinations').eq(arrIdx+1).html(JSON.parse(vals[trpHdrs.indexOf("Destinations")]).join(' - '))        
+  $('#trpContainer #trpCountries').eq(arrIdx+1).html(JSON.parse(vals[trpHdrs.indexOf("Countries")]).join(' - '))        
   $('#trpContainer #trpCompositeKey').eq(arrIdx+1).html(vals[trpHdrs.indexOf("Composite Key")])        
   
 }
@@ -340,9 +345,9 @@ function btnTrpmBuildDestHtml() {
   var txt = ''
 
   if (uniqueDests.length > 0) txt = uniqueDests.join(' - ')
-  if (uniqueCntrys.length > 0) txt += (txt ? ' | ' : '') + uniqueCntrys.join(' - ')
-
   $('#trpmDestinations').val(txt)
+  if (uniqueCntrys.length > 0) txt = uniqueCntrys.join(' - ')
+  $('#trpmCountries').val(txt)
 
 }
 
