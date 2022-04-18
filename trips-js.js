@@ -189,8 +189,6 @@ async function setFavorite(arrIdx) {
 
 async function editTrip(arrIdx) {
 
-  modal(true)
-
   $("#trip-form")[0].reset();
 
   $("#trip-modal").modal('show');
@@ -210,8 +208,6 @@ async function editTrip(arrIdx) {
   $('#trpmCountries').val(JSON.parse(trpObj['Countries']).join(' - '))
   
   $('#btnTrpmDelete').removeClass('d-none')
-
-  modal(false)
 
 }
 
