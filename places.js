@@ -16,6 +16,9 @@ async function btnPlacesHtml() {
     
     var keyCol = resHdrs.indexOf('Composite Key')
     var monthCol = resHdrs.indexOf('Month')
+    var tripCol = resHdrs.indexOf('Trips')
+    var destCol = resHdrs.indexOf('Destinations')
+    var cntryCol = resHdrs.indexOf('Countries')
     
     var vals = resVals
 
@@ -25,16 +28,16 @@ async function btnPlacesHtml() {
   
         var key = vals[i][keyCol]
         var month = vals[i][monthCol]
+        var cntries = vals[i][cntryCol]
+        var trip = vals[i][tripCol]
+        var dests = vals[i][destCol]
 
         var wrk = key.split(' | ')
 
         if (wrk.length < 2) continue
 
-        var countries = wrk[1].split(' - ')
-        var x = key.split(' - ' + month)
+        var countries = cntries.split(' - ')
     
-        var trip = x[0]
-
         console.log(countries, trip, month)
     
         countries.forEach(ele => {
