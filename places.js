@@ -14,10 +14,8 @@ async function btnPlacesHtml() {
     resHdrs = objSht[resTitle].colHdrs
     resVals = objSht[resTitle].vals
     
-    var keyCol = resHdrs.indexOf('Composite Key')
     var monthCol = resHdrs.indexOf('Month')
-    var tripCol = resHdrs.indexOf('Trips')
-    var destCol = resHdrs.indexOf('Destinations')
+    var tripCol = resHdrs.indexOf('Trip')
     var cntryCol = resHdrs.indexOf('Countries')
     
     var vals = resVals
@@ -26,11 +24,9 @@ async function btnPlacesHtml() {
   
     for (var i=0;i<vals.length;i++) {
   
-        var key = vals[i][keyCol]
         var month = vals[i][monthCol]
         var cntries = vals[i][cntryCol]
         var trip = vals[i][tripCol]
-        var dests = vals[i][destCol]
 
         var countries = JSON.parse(cntries)
     
