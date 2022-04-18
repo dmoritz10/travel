@@ -32,10 +32,6 @@ async function btnPlacesHtml() {
         var trip = vals[i][tripCol]
         var dests = vals[i][destCol]
 
-        var wrk = key.split(' | ')
-
-        if (wrk.length < 2) continue
-
         var countries = cntries.split(' - ')
     
         console.log(countries, trip, month)
