@@ -32,7 +32,7 @@ async function btnPlacesHtml() {
         var trip = vals[i][tripCol]
         var dests = vals[i][destCol]
 
-        var countries = cntries.split(' - ')
+        var countries = JSON.parse(cntries).split(' - ')
     
         console.log(countries, trip, month)
     
