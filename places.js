@@ -71,7 +71,7 @@ async function btnPlacesHtml() {
 
             var cntryObj = {
 
-                text:   cntry + '<span class="text-warning h2">' + '9' + '</span>',
+                text:   cntry,
                 class:  (convertStateToAbbr(cntry) ? "text-success h4" : "text-primary h4"),
                 // icon:   "fa",
                 nodes:  []
@@ -101,6 +101,8 @@ async function btnPlacesHtml() {
 
         if (convertStateToAbbr(cntry))     nbrDom++
         else                               nbrIntl++
+
+        ele.text = ele.text + + '<span class="text-warning text-end">' + ele.nodes.length + '</span>'
 
     })
 
