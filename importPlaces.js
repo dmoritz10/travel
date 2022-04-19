@@ -537,6 +537,8 @@ async function updateTrips() {
 
       row: row,
       trip:trip,
+      tripStr: trip.val[hdrsTRP.indexOf('Start Date')],
+      tripEnd: trip.val[hdrsTRP.indexOf('End Date')],
       strDate:row > -1 ? TRPStrDteArr[row] : row,
       endDate:row > -1 ? TRPEndDteArr[row] : row
 
@@ -654,7 +656,7 @@ function findMatchInTrips(trpStr, trpEnd, strArr, endArr) {
 
     var row = -1
 
-    if ( (str <= trpStr && end >= trpStr) || (str <= trpEnd && end >= trpEnd) ) {
+    if ( (str <= trpStr && trpStr <= end) || (str <= trpEnd && trpEnd <= end) ) {
 
       row = i
       continue
