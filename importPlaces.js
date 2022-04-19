@@ -660,6 +660,8 @@ function findMatchInTrips(strdt, enddt, strArr, endArr) {
     var row = -1
 
     console.log(strArr[i], strdt, str, trpStr, str <= trpStr)
+    console.log(strdt, endArr[i], trpStr, end, trpStr <= end)
+    console.log(str <= trpStr || str <= trpStr)
 
     if ( (str <= trpStr && trpStr <= end) || (str <= trpEnd && trpEnd <= end) ) {
 
