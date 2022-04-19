@@ -7,7 +7,7 @@ function btnImportPlacesHtml() {
 
 async function updateTripsFromLocationHistory(input) {
 
-  await fetchPlaces(input)  
+  // await fetchPlaces(input)  
 
   await updateTrips()
 
@@ -531,7 +531,7 @@ async function updateTrips() {
     
     let key = JSON.parse(ele[LHDDestCol]).join(' - ') + ' - ' + ele[LHDMonthCol]
 
-    let row = findMatchInTrips(trip.trp[hdrsTRP.indexOf('Start Date')], trip.trp[hdrsTRP.indexOf('End Date')], TRPStrDteArr, TRPEndDteArr)
+    let row = findMatchInTrips(trip.val[hdrsTRP.indexOf('Start Date')], trip.val[hdrsTRP.indexOf('End Date')], TRPStrDteArr, TRPEndDteArr)
 
     var cl = {
 
