@@ -536,7 +536,7 @@ async function updateTrips() {
     var cl = {
 
       row: row,
-      trip:trip
+      trip:trip,
       strDate:row > -1 ? TRPStrDteArr[row] : row,
       endDate:row > -1 ? TRPEndDteArr[row] : row
 
