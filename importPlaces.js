@@ -406,50 +406,6 @@ function cleanCityState(addrArr, cntry) {
 
   }
 
-  // switch (addrArr.length) {
-
-  //   case 7:
-  //     var city  = noStateCntry ? addrArr[1] : addrArr[1]
-  //     var state = noStateCntry ? ''         : addrArr[2]
-  //     break;
-    
-  //   case 6:
-  //     var city  = noStateCntry ? addrArr[5] : addrArr[4]
-  //     var state = noStateCntry ? ''         : addrArr[5]
-  //     break;
-    
-  //   case 5:
-  //     var city  = noStateCntry ? addrArr[4] : addrArr[3]
-  //     var state = noStateCntry ? ''         : addrArr[4]
-  //      break;
-    
-  //   case 4:
-  //     var city  = noStateCntry ? addrArr[3] : addrArr[2]
-  //     var state = noStateCntry ? ''         : addrArr[3]
-  //      break;
-
-  //   case 3:
-  //     var city  = noStateCntry ? addrArr[2] : addrArr[1]
-  //     var state = noStateCntry ? ''         : addrArr[2]
-  //     break;
-    
-  //   case 2:
-  //     var city  = noStateCntry ? addrArr[1] : addrArr[0]
-  //     var state = noStateCntry ? ''         : addrArr[1]
-  //     break;
-    
-  //   case 1:
-  //     var city  = noStateCntry ? addrArr[0] : addrArr[0]
-  //     var state = noStateCntry ? ''         : ''        
-  //     break;
-
-  //   default  :
-  //   var city  = ''
-  //   var state = ''
-  //    break;
-
-  // }
-
   return {city:city, state:state}
 
 }
@@ -528,18 +484,6 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 }
 
 
-function btnPlacesHtml() {
-
-    
-}
-
-
-function btnTripsHtml() {
-
-    
-}
-
-
 //
 //
 //
@@ -563,11 +507,12 @@ async function updateTrips() {
   const LHDDestCol = hdrsLHD.indexOf('Destinations')
   const LHDMonthCol = hdrsLHD.indexOf('Month')
 
-  const TRPKeyCol  = hdrsTRP.indexOf('Composite Key')
-  const colTRPKeys = valsTRP.map(x => x[TRPKeyCol]);
-
-  console.log('colTRPKeys', colTRPKeys)
-
+  const TRPStrCol  = hdrsTRP.indexOf('Start Date')
+  const TRPStrDteArr = valsTRP.map(x => x[TRPStrCol]);
+  
+  const TRPEndCol  = hdrsTRP.indexOf('End Date')
+  const TRPEndDteArr = valsTRP.map(x => x[TRPEndCol]);
+  
   var updateCntr = 0
   var appendCntr = 0
   var skipCntr = 0
@@ -586,19 +531,37 @@ async function updateTrips() {
     
     let key = JSON.parse(ele[LHDDestCol]).join(' - ') + ' - ' + ele[LHDMonthCol]
 
-    let row = colTRPKeys.indexOf(key)
+    let row = findMatchInTrips(trip.trp[hdrsTRP.indexOf('Start Date')], trip.trp[hdrsTRP.indexOf('End Date')], TRPStrDteArr, TRPEndDteArr)
+
+    var cl = {
+
+      row: row,
+      trip:trip
+      strDate:row > -1 ? TRPStrDteArr[row] : row,
+      endDate:row > -1 ? TRPEndDteArr[row] : row
+
+    }
+
+    console.log(cl)
 
     if (row == -1)   {
 
       valsTRP.push(trip.val);
       appendCntr++
+
     } else {
+
        if (valsTRP[row][hdrsTRP.indexOf('Source')] == 'LHD') {
+        
         valsTRP[row] = trip.val;
         updateCntr++
+
       } else {
+
         skipCntr++
+
       }
+
     }
 
   }
@@ -613,7 +576,7 @@ async function updateTrips() {
 
   console.time('updateSheet')
 
-  await updateSheet('Trips', shtArr)
+  // await updateSheet('Trips', shtArr)
 
   console.timeEnd('updateSheet')
 
@@ -679,5 +642,27 @@ var endDate = DateTime.fromJSDate(new Date(end))
 const diff = endDate.diff(strDate, ["days"]).days
 
 return diff*1 + 1
+
+}
+
+function findMatchInTrips(trpStr, trpEnd, strArr, endArr) {
+
+  for (var i=0;i<strArr.length;i++) {
+
+    let str = strArr[i]
+    let end = endArr[i]
+
+    var row = -1
+
+    if ( (str <= trpStr && end >= trpStr) || (str <= trpEnd && end >= trpEnd) ) {
+
+      row = i
+      continue
+
+    }
+
+  }
+
+  return row
 
 }
