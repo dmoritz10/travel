@@ -647,19 +647,20 @@ return diff*1 + 1
 
 }
 
-function findMatchInTrips(str, end, strArr, endArr) {
+function findMatchInTrips(strdt, enddt, strArr, endArr) {
 
-  let trpStr = new Date(str)
-  let trpEnd = new Date(end)
+  let trpStr = new Date(strdt)
+  let trpEnd = new Date(enddt)
 
-  for (var i=0;i<strArr.length;i++) {
-
-    console.log(strArr[i],endArr[i])
+  // for (var i=0;i<strArr.length;i++) {
+    for (var i=0;i<5;i++) {
 
     let str = new Date(strArr[i])
     let end = new Date(endArr[i])
 
     var row = -1
+
+    console.log(strArr[i], strdt, str, trpStr, str <= trpStr)
 
     if ( (str <= trpStr && trpStr <= end) || (str <= trpEnd && trpEnd <= end) ) {
 
