@@ -654,10 +654,10 @@ function findMatchInTrips(str, end, strArr, endArr) {
 
   for (var i=0;i<strArr.length;i++) {
 
+    console.log(strArr[i],endArr[i])
+
     let str = new Date(strArr[i])
     let end = new Date(endArr[i])
-
-
 
     var row = -1
 
