@@ -186,6 +186,11 @@ function calcTripName(arr, hdrs, strIdx) {
 
   console.log('tripArr', tripArr)
 
+  var counts = {}
+  tripArr.forEach(el => counts[el] = 1  + (counts[el] || 0))
+
+  console.log('counts', counts)
+
   const tripSorted = Object.keys(counts)
     .sort((key1, key2) => counts[key2] - counts[key1])
     .reduce((obj, key) => ({
@@ -194,11 +199,7 @@ function calcTripName(arr, hdrs, strIdx) {
     }), {})
 
   
-  var counts = {}
-  tripArr.forEach(el => counts[el] = 1  + (counts[el] || 0))
-
-  console.log('counts', counts)
-    
+  
   var tripDest = []
   for (let [key, value] of Object.entries(tripSorted)) {
     tripDest.push(key) 
