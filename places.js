@@ -91,7 +91,6 @@ async function btnPlacesHtml() {
 
         }
 
-        treeData.push(cntryObj)
 
         cntryObj.nodes.push({
 
@@ -102,6 +101,9 @@ async function btnPlacesHtml() {
         })
 
     }
+
+    treeData.push(cntryObj)
+
     
     console.log(treeData)
 
