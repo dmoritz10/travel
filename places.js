@@ -75,6 +75,8 @@ async function btnPlacesHtml() {
 
         }
 
+        treeData.push(cntryObj)
+
         cntryObj.nodes.push({
 
             text:   month + ' - ' + trip,
