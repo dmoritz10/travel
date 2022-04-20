@@ -611,11 +611,11 @@ var ele = valsLHD[strIdx]
 console.log('ele', ele)
 
 
-trp[hdrsTRP.indexOf('Composite Key')]  = ele[hdrsLHD.indexOf('Trip')] + ' - ' + ele[hdrsLHD.indexOf('Month')] + JSON.parse(ele[hdrsLHD.indexOf('Destinations')]).join(' - ')
+trp[hdrsTRP.indexOf('Composite Key')]  = ele[hdrsLHD.indexOf('Trip')] + ' - ' + ele[hdrsLHD.indexOf('Month')] + ' - ' + JSON.parse(ele[hdrsLHD.indexOf('Destinations')]).join(' - ')
 trp[hdrsTRP.indexOf('Trip')]           = ele[hdrsLHD.indexOf('Trip')]
 trp[hdrsTRP.indexOf('Month')]          = ele[hdrsLHD.indexOf('Month')]
 trp[hdrsTRP.indexOf('Destinations')]   = ele[hdrsLHD.indexOf('Destinations')]
-trp[hdrsTRP.indexOf('Country')]        = ele[hdrsLHD.indexOf('Country')]
+trp[hdrsTRP.indexOf('Countries')]      = ele[hdrsLHD.indexOf('Countries')]
 trp[hdrsTRP.indexOf('Type')]           = ele[hdrsLHD.indexOf('Country')].indexOf('USA') > -1 ? "Domestic" : "International"
 trp[hdrsTRP.indexOf('Start Date')]     = ele[hdrsLHD.indexOf('Date')].split(',')[0]
 trp[hdrsTRP.indexOf('Source')]         = 'LHD'
