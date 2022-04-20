@@ -110,12 +110,14 @@ async function btnPlacesHtml() {
 
     for (var i = 0; i < treeData.length;i++){
 
-        var cntry = ele[i].text
+        var ele = treeData[i]
 
-        if (convertStateToAbbr(cntry))     nbrDom++
+        var cntry = ele.text
+
+        if (convertStateToAbbr(ele.text))     nbrDom++
         else                               nbrIntl++
 
-        ele[i].text = ele[i].text + '<span class="text-warning float-end">' + ele[i].nodes.length + '</span>'
+        ele.text = ele.text + '<span class="text-warning float-end">' + ele.nodes.length + '</span>'
 
     }
 
