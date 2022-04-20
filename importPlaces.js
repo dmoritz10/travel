@@ -226,7 +226,7 @@ function calcTripName(arr, hdrs, strIdx) {
     tripCntry.push(key) 
   }
 
-  var tripName = tripDest[0]
+  var tripName = tripCntry[0] == "USA" ? tripDest[0] : tripCntry[0]
 
   var tripMoYr = tripMonth(newDate)
   
