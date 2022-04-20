@@ -7,7 +7,7 @@ function btnImportPlacesHtml() {
 
 async function updateTripsFromLocationHistory(input) {
 
-  // await fetchPlaces(input)  
+  await fetchPlaces(input)  
 
   await updateTrips()
 
@@ -114,6 +114,7 @@ async function buildTrips(arr, hdrs) {
   var distCol = hdrs.indexOf('Distance')
   var moYrCol = hdrs.indexOf('Month')
   var destCol = hdrs.indexOf('Destinations')
+  var cntrysCol = hdrs.indexOf('Countries')
 
   arr.sort(function(a,b) {return a[dateUTCCol] < b[dateUTCCol] ? -1 : 1});
 
@@ -134,6 +135,8 @@ async function buildTrips(arr, hdrs) {
       arr[i][tripCol] = trip.name
       arr[i][moYrCol] = trip.moYr
       arr[i][destCol] = JSON.stringify(trip.dest)
+      arr[i][cntrysCol] = JSON.stringify(trip.cntrys)
+
 
 
     } else {
@@ -149,14 +152,14 @@ async function buildTrips(arr, hdrs) {
 function calcTripName(arr, hdrs, strIdx) {
 
   var dateCol = hdrs.indexOf('Date')
-  var dateUTCCol = hdrs.indexOf('UTC Date')
-  var tripCol = hdrs.indexOf('Trip')
   var distCol = hdrs.indexOf('Distance')
   var cityCol = hdrs.indexOf('City')
   var stateCol = hdrs.indexOf('State')
   var cntryCol = hdrs.indexOf('Country')
+  var cntrysCol = hdrs.indexOf('Countries')
 
   var tripArr = []
+  var cntryArr = []
   var newDate = null
 
   for (var i=strIdx;i<arr.length;i++) {
@@ -169,43 +172,46 @@ function calcTripName(arr, hdrs, strIdx) {
 
     newDate = ele[dateCol]
 
-    if (ele[cntryCol] == "USA") {
-      tripArr.push(ele[cityCol] + ' ' + convertStateToAbbr(ele[stateCol]))
-    } else {
-      tripArr.push(ele[cntryCol])
-    }
+    // if (ele[cntryCol] == "USA") {
+    //   tripArr.push(ele[cityCol])
+    // } else {
+    //   tripArr.push(ele[cntryCol])
+    // }
+
+    tripArr.push(ele[cityCol])
+
+    cntryArr.push(ele[cntryCol])
+
   }
 
   console.log('tripArr', tripArr)
 
+  const tripSorted = Object.keys(counts)
+    .sort((key1, key2) => counts[key2] - counts[key1])
+    .reduce((obj, key) => ({
+      ...obj,
+      [key]: counts[key]
+    }), {})
+
+  
   var counts = {}
   tripArr.forEach(el => counts[el] = 1  + (counts[el] || 0))
 
   console.log('counts', counts)
-  
-  const tripSorted = Object.keys(counts)
-  .sort((key1, key2) => counts[key2] - counts[key1])
-  .reduce((obj, key) => ({
-    ...obj,
-    [key]: counts[key]
-  }), {})
-
-  // var tripName = ''
-  // for (let [key, value] of Object.entries(tripSorted)) {
-  //   if (value >= 2) tripName += key + ' - '
-  // }
-
-  // if (tripName == '') tripName = Object.keys(tripSorted)[0] + ' - '
-
-  // tripName += tripMonth(newDate)
-  
-  // console.log('tripName1', tripName)
-
-  // return tripName
-
- var tripDest = []
+    
+  var tripDest = []
   for (let [key, value] of Object.entries(tripSorted)) {
     tripDest.push(key) 
+  }
+
+  var counts = {}
+  cntryArr.forEach(el => counts[el] = 1  + (counts[el] || 0))
+
+  console.log('counts', counts)
+  
+  var tripCntry = []
+  for (let [key, value] of Object.entries(tripSorted)) {
+    tripCntry.push(key) 
   }
 
   var tripName = tripDest[0]
@@ -216,11 +222,10 @@ function calcTripName(arr, hdrs, strIdx) {
 
   return {
 
-    // name: tripName + ' - ' + tripMoYr,
-    
-    name: tripName,
-    moYr: tripMoYr,
-    dest: tripDest
+    name:   tripName,
+    moYr:   tripMoYr,
+    dest:   tripDest,
+    cntrys: tripCntry
   }
 }
 
@@ -544,7 +549,7 @@ async function updateTrips() {
 
     }
 
-    console.log(cl)
+    // console.log(cl)
 
     if (row == -1)   {
 
@@ -591,11 +596,13 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 var trp = []
 var ele = valsLHD[strIdx]
 
-trp[hdrsTRP.indexOf('Composite Key')]  = JSON.parse(ele[hdrsLHD.indexOf('Destinations')]).join(' - ') + ' - ' + ele[hdrsLHD.indexOf('Month')]
+
+trp[hdrsTRP.indexOf('Composite Key')]  = ele[hdrsLHD.indexOf('Trip')] + ' - ' + ele[hdrsLHD.indexOf('Month')] + JSON.parse(ele[hdrsLHD.indexOf('Destinations')]).join(' - ')
 trp[hdrsTRP.indexOf('Trip')]           = ele[hdrsLHD.indexOf('Trip')]
 trp[hdrsTRP.indexOf('Month')]          = ele[hdrsLHD.indexOf('Month')]
 trp[hdrsTRP.indexOf('Destinations')]   = ele[hdrsLHD.indexOf('Destinations')]
-trp[hdrsTRP.indexOf('Type')]           = ele[hdrsLHD.indexOf('Country')] == "USA" ? "Domestic" : "International"
+trp[hdrsTRP.indexOf('Country')]        = ele[hdrsLHD.indexOf('Country')]
+trp[hdrsTRP.indexOf('Type')]           = ele[hdrsLHD.indexOf('Country')].indexOf('USA') > -1 ? "Domestic" : "International"
 trp[hdrsTRP.indexOf('Start Date')]     = ele[hdrsLHD.indexOf('Date')].split(',')[0]
 trp[hdrsTRP.indexOf('Source')]         = 'LHD'
 
@@ -658,10 +665,6 @@ function findMatchInTrips(strdt, enddt, strArr, endArr) {
     let end = new Date(endArr[i])
 
     var row = -1
-
-    // console.log(strArr[i], strdt, str, trpStr, str <= trpStr)
-    // console.log(strdt, endArr[i], trpStr, end, trpStr <= end)
-    // console.log(str <= trpStr && trpStr <= end)
 
     if ( (str <= trpStr && trpStr <= end) || (str <= trpEnd && trpEnd <= end) ) {
 
