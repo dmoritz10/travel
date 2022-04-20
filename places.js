@@ -15,7 +15,7 @@ async function btnPlacesHtml() {
     resVals = objSht[resTitle].vals
     
     var monthCol = resHdrs.indexOf('Month')
-    var tripCol = resHdrs.indexOf('Trip')
+    var tripCol  = resHdrs.indexOf('Trip')
     var cntryCol = resHdrs.indexOf('Countries')
     var stateCol = resHdrs.indexOf('States')
     
@@ -28,20 +28,34 @@ async function btnPlacesHtml() {
         var month = vals[i][monthCol]
         var cntries = vals[i][cntryCol]
         var trip = vals[i][tripCol]
-        var states = vals[i][stateCol]
+        var st = vals[i][stateCol]
 
         var countries = JSON.parse(cntries)
+        var states = JSON.parse(st)
     
-        console.log(countries, trip, month)
-    
-        countries.forEach(ele => {
+        console.log(countries, states, trip, month)
 
-            var sortkey = parseMonth(month)
+        if (countries[0] == 'USA') {
+
+            states.forEach(ele => {
+
+                var sortkey = parseMonth(month)
+        
+                arr.push([ele, trip, month, sortkey])
+        
+            })
+
+        } else {
     
-            arr.push([ele, trip, month, sortkey])
-    
-        })
+            countries.forEach(ele => {
+
+                var sortkey = parseMonth(month)
+        
+                arr.push([ele, trip, month, sortkey])
+        
+            })
       
+        }
     }
   
     // arr.sort(function(a,b){return a[3] < b[3]  || a[0] > b[0] });
