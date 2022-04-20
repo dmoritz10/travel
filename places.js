@@ -108,16 +108,16 @@ async function btnPlacesHtml() {
     nbrDom = 0
     nbrIntl = 0
 
-    treeData.forEach( ele => {
+    for (var i = 0; i < treeDate.length;i++){
 
-        var cntry = ele.text
+        var cntry = ele[i].text
 
         if (convertStateToAbbr(cntry))     nbrDom++
         else                               nbrIntl++
 
-        ele.text = ele.text + '<span class="text-warning float-end">' + ele.nodes.length + '</span>'
+        ele[i].text = ele[i].text + '<span class="text-warning float-end">' + ele[i].nodes.length + '</span>'
 
-    })
+    }
 
     $("#plNbrDom").html(nbrDom)
     $("#plNbrIntl").html(nbrIntl)
@@ -125,8 +125,6 @@ async function btnPlacesHtml() {
 
     $('#plContainer').bstreeview({ 
 
-        // expandIcon: 'fa fa-angle-down',
-        // collapseIcon: 'fa fa-angle-up',
         data: treeData
       
     });
