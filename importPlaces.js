@@ -608,6 +608,8 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 var trp = []
 var ele = valsLHD[strIdx]
 
+console.log('ele', ele)
+
 
 trp[hdrsTRP.indexOf('Composite Key')]  = ele[hdrsLHD.indexOf('Trip')] + ' - ' + ele[hdrsLHD.indexOf('Month')] + JSON.parse(ele[hdrsLHD.indexOf('Destinations')]).join(' - ')
 trp[hdrsTRP.indexOf('Trip')]           = ele[hdrsLHD.indexOf('Trip')]
