@@ -595,7 +595,7 @@ async function updateTrips() {
 
   console.time('updateSheet')
 
-  // await updateSheet('Trips', shtArr)
+  await updateSheet('Trips', shtArr)
 
   console.timeEnd('updateSheet')
 
