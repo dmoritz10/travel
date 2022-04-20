@@ -188,12 +188,12 @@ function calcTripName(arr, hdrs, strIdx) {
 
   // Rank cities
 
-  var tripSorted = Object.keys(counts)
+  const  tripSorted = counts => {Object.keys(counts)
   .sort((key1, key2) => counts[key2] - counts[key1])
   .reduce((obj, key) => ({
     ...obj,
     [key]: counts[key]
-  }), {})
+  }), {})}
 
 
   var counts = {}
@@ -202,7 +202,7 @@ function calcTripName(arr, hdrs, strIdx) {
   console.log('counts', counts)
 
   var tripDest = []
-  for (let [key, value] of Object.entries(tripSorted)) {
+  for (let [key, value] of Object.entries(tripSorted(counts))) {
     tripDest.push(key) 
   }
 
@@ -215,7 +215,7 @@ function calcTripName(arr, hdrs, strIdx) {
   console.log('counts', counts)
   
   var tripCntry = []
-  for (let [key, value] of Object.entries(tripSorted)) {
+  // for (let [key, value] of Object.entries(tripSorted(counts))) {
     tripCntry.push(key) 
   }
 
