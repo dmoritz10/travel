@@ -114,6 +114,7 @@ async function buildTrips(arr, hdrs) {
   var distCol = hdrs.indexOf('Distance')
   var moYrCol = hdrs.indexOf('Month')
   var destCol = hdrs.indexOf('Destinations')
+  var statesCol = hdrs.indexOf('States')
   var cntrysCol = hdrs.indexOf('Countries')
 
   arr.sort(function(a,b) {return a[dateUTCCol] < b[dateUTCCol] ? -1 : 1});
@@ -136,9 +137,8 @@ async function buildTrips(arr, hdrs) {
       arr[i][moYrCol] = trip.moYr
       arr[i][destCol] = JSON.stringify(trip.dest)
       arr[i][cntrysCol] = JSON.stringify(trip.cntrys)
-
-
-
+      arr[i][statesCol] = JSON.stringify(trip.states)
+      
     } else {
 
       trip = null
@@ -159,6 +159,7 @@ function calcTripName(arr, hdrs, strIdx) {
   var cntrysCol = hdrs.indexOf('Countries')
 
   var tripArr = []
+  var stateArr = []
   var cntryArr = []
   var newDate = null
 
@@ -181,6 +182,8 @@ function calcTripName(arr, hdrs, strIdx) {
     tripArr.push(ele[cityCol])
 
     cntryArr.push(ele[cntryCol])
+
+    stateArr.push(ele[stateCol])
 
   }
 
@@ -206,6 +209,25 @@ function calcTripName(arr, hdrs, strIdx) {
     tripDest.push(key) 
   }
 
+
+  // Rank states
+
+  var counts = {}
+  stateArr.forEach(el => counts[el] = 1  + (counts[el] || 0))
+
+  console.log('counts', counts)
+  
+  const  stateSorted = Object.keys(counts)
+  .sort((key1, key2) => counts[key2] - counts[key1])
+  .reduce((obj, key) => ({
+    ...obj,
+    [key]: counts[key]
+  }), {})
+  
+  var tripState = []
+  for (let [key, value] of Object.entries(stateSorted)) {
+    tripState.push(key) 
+  }
 
   // Rank countries
 
@@ -237,7 +259,8 @@ function calcTripName(arr, hdrs, strIdx) {
     name:   tripName,
     moYr:   tripMoYr,
     dest:   tripDest,
-    cntrys: tripCntry
+    cntrys: tripCntry,
+    states: tripState
   }
 }
 
@@ -615,6 +638,7 @@ trp[hdrsTRP.indexOf('Composite Key')]  = ele[hdrsLHD.indexOf('Trip')] + ' - ' + 
 trp[hdrsTRP.indexOf('Trip')]           = ele[hdrsLHD.indexOf('Trip')]
 trp[hdrsTRP.indexOf('Month')]          = ele[hdrsLHD.indexOf('Month')]
 trp[hdrsTRP.indexOf('Destinations')]   = ele[hdrsLHD.indexOf('Destinations')]
+trp[hdrsTRP.indexOf('States')]         = ele[hdrsLHD.indexOf('States')]
 trp[hdrsTRP.indexOf('Countries')]      = ele[hdrsLHD.indexOf('Countries')]
 trp[hdrsTRP.indexOf('Type')]           = ele[hdrsLHD.indexOf('Country')].indexOf('USA') > -1 ? "Domestic" : "International"
 trp[hdrsTRP.indexOf('Start Date')]     = ele[hdrsLHD.indexOf('Date')].split(',')[0]

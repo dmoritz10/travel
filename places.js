@@ -17,6 +17,7 @@ async function btnPlacesHtml() {
     var monthCol = resHdrs.indexOf('Month')
     var tripCol = resHdrs.indexOf('Trip')
     var cntryCol = resHdrs.indexOf('Countries')
+    var stateCol = resHdrs.indexOf('States')
     
     var vals = resVals
 
@@ -27,6 +28,7 @@ async function btnPlacesHtml() {
         var month = vals[i][monthCol]
         var cntries = vals[i][cntryCol]
         var trip = vals[i][tripCol]
+        var states = vals[i][stateCol]
 
         var countries = JSON.parse(cntries)
     
