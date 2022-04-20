@@ -30,8 +30,6 @@ async function btnPlacesHtml() {
 
         var countries = JSON.parse(cntries)
     
-        console.log(countries, states, trip, month)
-
         // if (countries[0] == 'USA') {
 
         //     states.forEach(ele => {
@@ -81,7 +79,6 @@ async function btnPlacesHtml() {
 
                 text:   cntry,
                 class:  (convertStateToAbbr(cntry) ? "text-success h4" : "text-primary h4"),
-                // icon:   "fa",
                 nodes:  []
 
             }
@@ -93,7 +90,6 @@ async function btnPlacesHtml() {
 
             text:   month + ' - ' + trip,
             class:  "h6"
-            // icon:   "fa"
 
         })
 
