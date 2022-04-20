@@ -673,12 +673,12 @@ function findMatchInTrips(strdt, enddt, strArr, endArr) {
   let trpStr = new Date(strdt)
   let trpEnd = new Date(enddt)
 
+  var row = -1
+
   for (var i=0;i<strArr.length;i++) {
 
     let str = new Date(strArr[i])
     let end = new Date(endArr[i])
-
-    var row = -1
 
     if ( (str <= trpStr && trpStr <= end) || (str <= trpEnd && trpEnd <= end) ) {
 
