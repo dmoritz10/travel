@@ -633,13 +633,17 @@ var ele = valsLHD[strIdx]
 
 console.log('ele', ele)
 
+var states = ele[hdrsLHD.indexOf('States')]
+var cntries = ele[hdrsLHD.indexOf('Countries')]
+
+var cntry = cntries.length == 1 && cntries[0] == "USA" ? states : ele[hdrsLHD.indexOf('Countries')]
+
 
 trp[hdrsTRP.indexOf('Composite Key')]  = ele[hdrsLHD.indexOf('Trip')] + ' - ' + ele[hdrsLHD.indexOf('Month')] + ' - ' + JSON.parse(ele[hdrsLHD.indexOf('Destinations')]).join(' - ')
 trp[hdrsTRP.indexOf('Trip')]           = ele[hdrsLHD.indexOf('Trip')]
 trp[hdrsTRP.indexOf('Month')]          = ele[hdrsLHD.indexOf('Month')]
 trp[hdrsTRP.indexOf('Destinations')]   = ele[hdrsLHD.indexOf('Destinations')]
-trp[hdrsTRP.indexOf('States')]         = ele[hdrsLHD.indexOf('States')]
-trp[hdrsTRP.indexOf('Countries')]      = ele[hdrsLHD.indexOf('Countries')]
+trp[hdrsTRP.indexOf('Countries')]      = cntry
 trp[hdrsTRP.indexOf('Type')]           = ele[hdrsLHD.indexOf('Country')].indexOf('USA') > -1 ? "Domestic" : "International"
 trp[hdrsTRP.indexOf('Start Date')]     = ele[hdrsLHD.indexOf('Date')].split(',')[0]
 trp[hdrsTRP.indexOf('Source')]         = 'LHD'
