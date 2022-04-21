@@ -649,7 +649,7 @@ trp[hdrsTRP.indexOf('Trip')]           = ele[hdrsLHD.indexOf('Trip')]
 trp[hdrsTRP.indexOf('Month')]          = ele[hdrsLHD.indexOf('Month')]
 trp[hdrsTRP.indexOf('Destinations')]   = ele[hdrsLHD.indexOf('Destinations')]
 trp[hdrsTRP.indexOf('Countries')]      = JSON.stringify(cntry)
-trp[hdrsTRP.indexOf('Type')]           = ele[hdrsLHD.indexOf('Country')].indexOf('USA') > -1 ? "Domestic" : "International"
+trp[hdrsTRP.indexOf('Type')]           = cntries.length == 1 && cntries[0] == "USA" ? "Domestic" : "International"
 trp[hdrsTRP.indexOf('Start Date')]     = ele[hdrsLHD.indexOf('Date')].split(',')[0]
 trp[hdrsTRP.indexOf('Source')]         = 'LHD'
 
