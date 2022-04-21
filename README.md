@@ -63,3 +63,11 @@ Classes
       remove all classes and set class on this
       update trpDestDtlIdx
     
+
+On trip maintenance
+
+make Type required with select
+make Rrip Name, Destinations, countries required
+
+on Destination Maintenance
+make all required
