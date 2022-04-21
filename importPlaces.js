@@ -636,7 +636,9 @@ console.log('ele', ele)
 var states = ele[hdrsLHD.indexOf('States')]
 var cntries = ele[hdrsLHD.indexOf('Countries')]
 
-var cntry = cntries.length == 1 && cntries[0] == "USA" ? states : ele[hdrsLHD.indexOf('Countries')]
+var cntry = cntries.length == 1 && cntries[0] == "USA" ? states : cntries
+
+console.log('countiresz', states, cntries)
 
 
 trp[hdrsTRP.indexOf('Composite Key')]  = ele[hdrsLHD.indexOf('Trip')] + ' - ' + ele[hdrsLHD.indexOf('Month')] + ' - ' + JSON.parse(ele[hdrsLHD.indexOf('Destinations')]).join(' - ')
