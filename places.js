@@ -80,7 +80,6 @@ async function btnPlacesHtml() {
 
         }
 
-
         cntryObj.nodes.push({
 
             text:   month + ' - ' + trip,
