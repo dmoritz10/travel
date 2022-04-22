@@ -17,6 +17,9 @@ async function btnPlacesHtml() {
     var monthCol = resHdrs.indexOf('Month')
     var tripCol  = resHdrs.indexOf('Trip')
     var cntryCol = resHdrs.indexOf('Countries')
+    var strDtCol = resHdrs.indexOf('Start Date')
+    var endDtCol = resHdrs.indexOf('End Date')
+    var destCol  = resHdrs.indexOf('Destinations')
     
     var vals = resVals
 
@@ -27,30 +30,19 @@ async function btnPlacesHtml() {
         var month = vals[i][monthCol]
         var cntries = vals[i][cntryCol]
         var trip = vals[i][tripCol]
-
-        var countries = JSON.parse(cntries)
+        var dateRng = vals[i][strDtCol].slice(0,-5) + ' - ' + vals[i][endDtCol].slice(0,-5)
+        var dest = JSON.parse(vals[i][strDtCol])
+        var countries = JSON.parse(destCol)
     
-        // if (countries[0] == 'USA') {
-
-        //     states.forEach(ele => {
-
-        //         var sortkey = parseMonth(month)
         
-        //         arr.push([ele, trip, month, sortkey])
-        
-        //     })
-
-        // } else {
-    
             countries.forEach(ele => {
 
                 var sortkey = parseMonth(month)
         
-                arr.push([ele, trip, month, sortkey])
+                arr.push([ele, trip, month, sortkey, dateRng, dest, countries])
         
             })
       
-        // }
     }
   
     // arr.sort(function(a,b){return a[3] < b[3]  || a[0] > b[0] });
@@ -68,6 +60,9 @@ async function btnPlacesHtml() {
         var cntry = ele[0]
         var trip = ele[1]
         var month = ele[2]
+        var dates = ele[4]
+        var dests = ele[5].join(' - ')
+        var cntys = ele[6].join(' - ')
 
         if (brkcntry != cntry) {
 
@@ -93,17 +88,15 @@ async function btnPlacesHtml() {
             nodes: [
 
                 {
-                    text: '1/21 - 2/2  9 days',
+                    text: dates,
                     class:  "h6"
                 },
                 {
-                    text: 'San Francisco',
+                    text: dests,
                     class:  "h6"
-                },{
-                    text: 'Larkspur',
-                    class:  "h6"
-                },{
-                    text: 'California',
+                },
+                {
+                    text: cntys,
                     class:  "h6"
                 }
 
