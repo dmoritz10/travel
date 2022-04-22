@@ -73,7 +73,7 @@ async function btnPlacesHtml() {
             var cntryObj = {
 
                 text:   cntry,
-                class:  (convertStateToAbbr(cntry) ? "text-success h4 treeItem" : "text-primary h4 treeItem"),
+                class:  (convertStateToAbbr(cntry) ? "treeItem text-success h4" : "treeItem text-primary h4"),
                 nodes:  []
 
             }
@@ -131,6 +131,28 @@ async function btnPlacesHtml() {
     
 
     $('#plContainer').bstreeview({ data: treeData });
+
+    var srchVal = $("#plSearch").val().toLowerCase()
+    var exc = srchVal.substr(0,1) == '-'
+  
+    if (srchVal) {
+        var value = $(this).val().toLowerCase();
+        var exc = value.substr(0,1) == '-'
+
+        $(".treeItem").filter(function() {
+
+            var txt = $(this).text().toLowerCase()
+
+            if (exc)    var toggle = txt.indexOf(value.substring(1)) == -1
+            else        var toggle = txt.indexOf(value) > -1
+
+            $(this).toggle(toggle)
+
+        });
+
+        // $("#resNbr").html(countDisplayed("resContainer"))
+
+    };
 
       modal(false)
       gotoTab("Places")
