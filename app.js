@@ -287,7 +287,7 @@ jQuery(function ($) {
                 var value = $(this).val().toLowerCase();
                 var exc = value.substr(0,1) == '-'
 
-                $("#plContainer > div").filter(function() {
+                $(".treeItem").filter(function() {
 
                     var txt = $(this).text().toLowerCase()
 
