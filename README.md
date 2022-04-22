@@ -71,3 +71,9 @@ make Rrip Name, Destinations, countries required
 
 on Destination Maintenance
 make all required
+
+Disable rebuikd bottom is no dests
+Search
+Move import to drop-down
+
+
