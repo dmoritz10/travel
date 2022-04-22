@@ -283,7 +283,24 @@ jQuery(function ($) {
             });
 
             // Places
+            $("#plSearch").on("input", function() {
+                var value = $(this).val().toLowerCase();
+                var exc = value.substr(0,1) == '-'
 
+                $("#plContainer > div").filter(function() {
+
+                    var txt = $(this).text().toLowerCase()
+
+                    if (exc)    var toggle = txt.indexOf(value.substring(1)) == -1
+                    else        var toggle = txt.indexOf(value) > -1
+
+                    $(this).parent().parent().parent().toggle(toggle)
+
+                });
+
+                // $("#resNbr").html(countDisplayed("resContainer"))
+
+            });
         
 
             // All tabs

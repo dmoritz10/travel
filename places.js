@@ -131,11 +131,7 @@ async function btnPlacesHtml() {
     $("#plNbrIntl").html(nbrIntl)
     
 
-    $('#plContainer').bstreeview({ 
-
-        data: treeData
-      
-    });
+    $('#plContainer').bstreeview({ data: treeData });
 
       modal(false)
       gotoTab("Places")
