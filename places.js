@@ -93,17 +93,17 @@ async function btnPlacesHtml() {
             nodes: [
 
                 {
-                    text: 'hi dan'
+                    text: '1/21 - 2/2  9 days',
                     class:  "h6"
                 },
                 {
-                    text: 'this'
+                    text: 'San Francisco',
                     class:  "h6"
                 },{
-                    text: 'and'
+                    text: 'Larkspur',
                     class:  "h6"
                 },{
-                    text: 'that'
+                    text: 'California',
                     class:  "h6"
                 }
 
