@@ -133,7 +133,8 @@ async function btnPlacesHtml() {
     $('#plContainer').bstreeview({ data: treeData });
 
     var srchVal = $("#plSearch").val().toLowerCase()
-    var exc = srchVal.substr(0,1) == '-'
+    // var exc = srchVal.substr(0,1) == '-'
+    var exc = false
   
     if (srchVal) {
 

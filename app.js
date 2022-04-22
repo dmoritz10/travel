@@ -285,7 +285,8 @@ jQuery(function ($) {
             // Places
             $("#plSearch").on("input", function() {
                 var value = $(this).val().toLowerCase();
-                var exc = value.substr(0,1) == '-'
+                // var exc = value.substr(0,1) == '-'
+                var exc = false
 
                 $(".treeItem").filter(function() {
 

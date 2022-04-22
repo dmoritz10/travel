@@ -69,7 +69,7 @@ On trip maintenance
 make Type required with select
 make Trip Name, Destinations, countries required
 
-on Destination Maintenance
+Destination Maintenance
   make all required
 
 x - Disable rebuikd bottom is no dests
@@ -81,5 +81,15 @@ Move Trips import to drop-down
 Change main menu
 
 Design, develop a timeline
+
+Reservations
+
+  need some sort of copy/paste from email to reservation
+
+  add-update current reservations
+
+  filter on complete vs future reservations
+
+  
 
 
