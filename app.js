@@ -294,7 +294,7 @@ jQuery(function ($) {
                     if (exc)    var toggle = txt.indexOf(value.substring(1)) == -1
                     else        var toggle = txt.indexOf(value) > -1
 
-                    $(this).parent().parent().parent().toggle(toggle)
+                    $(this).parent().parent().toggle(toggle)
 
                 });
 
