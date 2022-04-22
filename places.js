@@ -73,7 +73,7 @@ async function btnPlacesHtml() {
             var cntryObj = {
 
                 text:   cntry,
-                class:  (convertStateToAbbr(cntry) ? "text-success h4" : "text-primary h4") "treeItem",
+                class:  (convertStateToAbbr(cntry) ? "text-success h4 treeItem" : "text-primary h4 treeItem"),
                 nodes:  []
 
             }
