@@ -89,7 +89,25 @@ async function btnPlacesHtml() {
         cntryObj.nodes.push({
 
             text:   month + ' - ' + trip,
-            class:  "h6"
+            class:  "h6",
+            nodes: [
+
+                {
+                    text: 'hi dan'
+                    class:  "h6"
+                },
+                {
+                    text: 'this'
+                    class:  "h6"
+                },{
+                    text: 'and'
+                    class:  "h6"
+                },{
+                    text: 'that'
+                    class:  "h6"
+                }
+
+            ]
 
         })
 
