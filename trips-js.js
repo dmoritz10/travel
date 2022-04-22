@@ -209,7 +209,7 @@ async function editTrip(arrIdx) {
   
   $('#btnTrpmDelete').removeClass('d-none')
 
-  if (JSON.parse(trpObj['Destinations']).length == 0) {
+  if (JSON.parse(trpObj['Destination Detail']).length == 0) {
     $('#btnTrpmBuildDest').prop('disabled', true);
   } else {
     $('#btnTrpmBuildDest').prop('disabled', false);
