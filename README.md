@@ -67,13 +67,19 @@ Classes
 On trip maintenance
 
 make Type required with select
-make Rrip Name, Destinations, countries required
+make Trip Name, Destinations, countries required
 
 on Destination Maintenance
-make all required
+  make all required
 
 x - Disable rebuikd bottom is no dests
-Search
-Move import to drop-down
+x - Search on places
+
+Move reservations import to drop-down
+Move Trips import to drop-down
+
+Change main menu
+
+Design, develop a timeline
 
 
