@@ -31,8 +31,8 @@ async function btnPlacesHtml() {
         var cntries = vals[i][cntryCol]
         var trip = vals[i][tripCol]
         var dateRng = vals[i][strDtCol].slice(0,-5) + ' - ' + vals[i][endDtCol].slice(0,-5)
-        var dest = JSON.parse(vals[i][strDtCol])
-        var countries = JSON.parse(destCol)
+        var dest = JSON.parse(vals[i][destCol])
+        var countries = JSON.parse(cntryCol)
     
         
             countries.forEach(ele => {
