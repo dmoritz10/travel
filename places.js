@@ -136,8 +136,6 @@ async function btnPlacesHtml() {
     var exc = srchVal.substr(0,1) == '-'
   
     if (srchVal) {
-        var value = $(this).val().toLowerCase();
-        var exc = value.substr(0,1) == '-'
 
         $(".treeItem").filter(function() {
 
