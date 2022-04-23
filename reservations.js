@@ -560,7 +560,16 @@ function readFromClpbrd(ele) {
       } catch(e) {console.log('err', e)}
       var z = x.slice(0,-13)
 
-      console.log('luxon', z)
+      console.log('luxon', z)\
+      try{
+        var x = moment(txt)
+        } catch(e) {console.log('err', e)}
+        // var z = x.slice(0,-13)
+  
+        console.log('moment', z)
+  
+
+
       try{
 
       var y = Date.parse(txt)
