@@ -174,6 +174,9 @@ jQuery(function ($) {
 			this.bindEvents();
                 console.log('bindEvents')
 
+            this.permissions();
+                console.log('permissions')
+
 		},
 
         serviceWorker: function () {
@@ -350,7 +353,25 @@ jQuery(function ($) {
                 const utcOffsetString = utcOffsetSign + (utcOffsetHr.toString.length == 1 ? `0${utcOffsetHr}` : `${utcOffsetHr}`) + ':00';
                 return date.toISOString().replace('Z', utcOffsetString);
             };                 
-		}
+		},
+
+        permissions: function () {
+
+            if (signin.currUser['email'] != 'dmoritz10@gmail.com') {
+
+                $('#btnTrpEdit').addClass('d-none')
+                $('#btnTrpAddTrip').addClass('d-none')
+                $('#btnTrpAddNew').addClass('d-none')
+
+                
+
+
+
+            }
+
+
+
+        }
 	};
 
     App.init();
