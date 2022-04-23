@@ -542,14 +542,20 @@ function readFromClpbrd(ele) {
 
   console.log('read', ele)
 
-  var type = $(elementId).attr('type');
+  var type = $(ele).attr('type');
+
+  console.log('type', type)
+
+  if (type == 'datetime-local') {
+
+
+
+
+  }
 
   navigator.clipboard.readText().then(function(txt) {
 
-    console.log('tt', txt)
-    console.log('tele', document.getElementById(ele))
-    console.log('tele', ele)
-    // $('#' + ele).val(txt)
+    
     document.getElementById(ele).value = txt;
   }, function(err) {
     console.error('Async: Could not paste text: ', err);
