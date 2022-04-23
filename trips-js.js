@@ -198,7 +198,7 @@ async function editTrip(arrIdx) {
   var vals = trpVals[arrIdx]
 
   var trpObj = makeObj(vals, trpHdrs)
-  setMSelVals(ele, arr)
+
   $('#trpmTrip').val(trpObj['Trip'])
   $('#trpmMonth').val(parseMonth(trpObj['Month']))
   $('#trpmType').val(setMSelVals(document.getElementById('trpmType'), JSON.parse(trpObj['Type'])))
