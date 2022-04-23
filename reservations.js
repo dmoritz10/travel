@@ -553,12 +553,16 @@ function readFromClpbrd(ele) {
 
       var ampm = lTxt.indexOf("am") || lTxt.indexOf("pm")
 
+      try{
       var x = DateTime.fromISO(txt).toISO()
       var z = x.slice(0,-13)
+      } catch(e) {console.log('err', e)}
 
       console.log('luxon', z)
+      try{
 
       var y = Date.parse(txt)
+    } catch(e) {console.log('err', e)}
 
       console.log('date', y)
 
@@ -570,7 +574,7 @@ function readFromClpbrd(ele) {
   
     }
 
-    $ele.val(txt);
+    $ele.val(z);
 
   }, function(err) {
       console.error('Async: Could not paste text: ', err);
