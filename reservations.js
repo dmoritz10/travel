@@ -540,25 +540,32 @@ async function addToReservations(vals, trip, ceHdrs, resHdrs) {
 
 function readFromClpbrd(ele) {
 
-  console.log('read', ele)
+  var $ele = $('#' + ele)
 
-  var type = $('#' + ele).attr('type');
-
-  console.log('type', type)
-
-  if (type == 'datetime-local') {
-
-
-
-
-  }
 
   navigator.clipboard.readText().then(function(txt) {
-
     
-    document.getElementById(ele).value = txt;
+    var type = $ele.attr('type');
+
+    if (type == 'datetime-local') {
+
+      var lTxt = txt.toLowerCase()
+
+      var ampm = lTxt.indexOf("am") || lTxt.indexOf("pm")
+
+      var txt = DateTime.fromISO(txt)
+
+      console.log('luxon', txt)
+      // var nbrColons = txt.
+
+      // var txt = vals[ceHdrs.indexOf('start')].length == 10 ? vals[ceHdrs.indexOf('start')] + 'T00:00:00' : vals[ceHdrs.indexOf('start')].slice(0,-6)
+  
+    }
+
+    $ele.val(txt);
+
   }, function(err) {
-    console.error('Async: Could not paste text: ', err);
+      console.error('Async: Could not paste text: ', err);
   });
 
 }
