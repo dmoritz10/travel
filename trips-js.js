@@ -201,7 +201,7 @@ async function editTrip(arrIdx) {
 
   $('#trpmTrip').val(trpObj['Trip'])
   $('#trpmMonth').val(parseMonth(trpObj['Month']))
-  $('#trpmType').val(setMSelVals(document.getElementById('trpmType'), JSON.parse(trpObj['Type'])))
+  setMSelVals('trpmType', JSON.parse(trpObj['Type']))
   $('#trpmStartDate').val(parseDateTime(trpObj['Start Date']).date)
   $('#trpmEndDate').val(parseDateTime(trpObj['End Date']).date)
   $('#trpmDestinations').val(JSON.parse(trpObj['Destinations']).join(' - '))
@@ -285,7 +285,9 @@ function getMSelVals(ele) {
 
 }
 
-function setMSelVals(ele, arr) {
+function setMSelVals(element, arr) {
+
+  var ele = document.getElementById(element)
 
   console.log('set', ele.options, arr)
 
@@ -293,7 +295,7 @@ function setMSelVals(ele, arr) {
 
     console.log(ele.options[i].value)
     console.log(arr.indexOf(ele.options[i].value))
-    
+
     ele.options[i].selected = arr.indexOf(ele.options[i].value) >= 0;
     console.log(ele.options[i].selected)
   }

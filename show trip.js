@@ -34,6 +34,7 @@ async function showTrip(idx) {
 
     }
 
+    if ()
     var icon = '<div class="label ps-5 cursor-pointer" onClick="editTripDtl(' + idx + ", " + i + ')"><span class="material-icons">expand_more</span></div>'
 
     var place = val.name + "<br><h6>" +
@@ -123,6 +124,9 @@ async function addNewDest() {
 
 
 async function editTripDtl(arrIdx, destIdx) {
+
+  if (signin.currUser['email'] != 'dmoritz10@gmail.com') return
+
 
   $("#trpdtl-form")[0].reset();
 
