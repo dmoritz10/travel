@@ -287,8 +287,13 @@ function getMSelVals(ele) {
 
 function setMSelVals(ele, arr) {
 
+  console.log('set', ele.options, arr)
+
   for (var i = 0; i < ele.options.length; i++) {
+
+    console.log(ele.options[i])
     ele.options[i].selected = arr.indexOf(ele.options[i].value) >= 0;
+    console.log(ele.options[i].selected)
   }
 
 }
