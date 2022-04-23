@@ -25,7 +25,7 @@
   
     var timerStart
 
-    var signin
+    var user
 
     var DateTime = luxon.DateTime;
 
@@ -108,16 +108,16 @@ jQuery(function ($) {
 
                 var currUserObj = await gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
 
-                signin.currUser['email']     = currUserObj.getEmail()
-                signin.currUser['firstName'] = currUserObj.getGivenName()
-                signin.currUser['lastName']  = currUserObj.getFamilyName()
-                signin.currUser['fullName']  = currUserObj.getName()
-                signin.currUser['emailName'] = signin.currUser['email'].split('@')[0]
+                user['email']     = currUserObj.getEmail()
+                user['firstName'] = currUserObj.getGivenName()
+                user['lastName']  = currUserObj.getFamilyName()
+                user['fullName']  = currUserObj.getName()
+                user['emailName'] = user['email'].split('@')[0]
 
-                if (signin.currUser.firstName) {
-                    $('#authSigninStatus').html('Hi ' + signin.currUser.firstName + '.<br>You are signed in.')
+                if (user.firstName) {
+                    $('#authSigninStatus').html('Hi ' + user.firstName + '.<br>You are signed in.')
                 } else {
-                    $('#authSigninStatus').html('Hi ' + signin.currUser.emailName + '.<br>You are signed in.')
+                    $('#authSigninStatus').html('Hi ' + user.emailName + '.<br>You are signed in.')
                 }
 
                 var rtn = await getSSId('Travel Journal');
@@ -135,7 +135,7 @@ jQuery(function ($) {
 
                 $('#authSigninStatus').html('You are signed out.  Authorization is required.')
 
-                signin.currUser = {}
+                user = {}
 
                 gotoTab('Auth')
             }
@@ -357,7 +357,7 @@ jQuery(function ($) {
 
         permissions: function () {
 
-            if (signin.currUser['email'] != 'dmoritz10@gmail.com') {
+            if (user['email'] != 'dmoritz10@gmail.com') {
 
                 $('#btnTrpEdit').addClass('d-none')
                 $('#btnTrpAddTrip').addClass('d-none')

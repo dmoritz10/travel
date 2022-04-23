@@ -125,7 +125,7 @@ async function addNewDest() {
 
 async function editTripDtl(arrIdx, destIdx) {
 
-  if (signin.currUser['email'] != 'dmoritz10@gmail.com') return
+  if (user['email'] != 'dmoritz10@gmail.com') return
 
 
   $("#trpdtl-form")[0].reset();
