@@ -281,7 +281,7 @@ async function btnTrpmSubmitSheetHtml() {
 
 function getMSelVals(ele) {
   console.log('ele', ele)
-  var selectedItems = Array.from(ele[0].selectedOptions).map(option => option.value)
+  var selectedItems = Array.from(ele.selectedOptions).map(option => option.value)
 
 
 console.log(selectedItems)
