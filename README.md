@@ -78,8 +78,8 @@ x - Search on places
 Trips
   Move Trips import to drop-down
   On import, prompt to add new Trip
-  Make Type select multiple
-  Add types to Composite Key
+  x - Make Type select multiple
+  x - Add types to Composite Key
 
 Change main menu
   Remove Import after movingb to dropdowns
@@ -94,11 +94,12 @@ Reservations
 
   need some sort of copy/paste from email to reservation
   Move reservations import to drop-down
-  add-update current reservations
+  add-update current reservations - how to detect an update ?
+  prompt for add-update
 
   filter on complete vs future reservations
 
-Make Schnucky version
+x - Make Schnucky version
   d-none all edit buttons except on Reservations
 
 
