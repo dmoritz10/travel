@@ -542,6 +542,8 @@ function readFromClpbrd(ele) {
 
   console.log('read', ele)
 
+  var type = $(elementId).attr('type');
+
   navigator.clipboard.readText().then(function(txt) {
 
     console.log('tt', txt)
