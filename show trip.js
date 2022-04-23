@@ -125,7 +125,7 @@ async function addNewDest() {
 
 async function editTripDtl(arrIdx, destIdx) {
 
-  if (user['email'] != 'dmoritz10@gmail.com') return
+  if (user['email'] != 'dmoritz10@gmail.com') return   // only one user allowed to update Trip Detail
 
 
   $("#trpdtl-form")[0].reset();

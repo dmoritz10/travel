@@ -25,7 +25,7 @@
   
     var timerStart
 
-    var user
+    var user = {}
 
     var DateTime = luxon.DateTime;
 
@@ -357,15 +357,13 @@ jQuery(function ($) {
 
         permissions: function () {
 
+            // disable add/change/delete for Trips and Trip Detail
+
             if (user['email'] != 'dmoritz10@gmail.com') {
 
                 $('#btnTrpEdit').addClass('d-none')
                 $('#btnTrpAddTrip').addClass('d-none')
                 $('#btnTrpAddNew').addClass('d-none')
-
-                
-
-
 
             }
 
