@@ -312,17 +312,7 @@ jQuery(function ($) {
             //   document.documentElement.requestFullscreen();
             // });
 
-            // disable add/change/delete for Trips and Trip Detail
-
-            if (user['email'] != 'dmoritz10@gmail.com') {
-
-                $('#btnTrpEdit').addClass('d-none')
-                $('#btnTrpAddTrip').addClass('d-none')
-                $('#btnTrpAddNew').addClass('d-none')
-
-            }
-
-          
+            
             var whiteList = $.fn.tooltip.Constructor.Default.allowList
           
                 whiteList.table = []
