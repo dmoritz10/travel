@@ -308,6 +308,8 @@ jQuery(function ($) {
         
 
             // All tabs
+
+            
             // $('.divfullscreen').click(function(){
             //   document.documentElement.requestFullscreen();
             // });
