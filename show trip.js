@@ -34,7 +34,7 @@ async function showTrip(idx) {
 
     }
 
-    if ()
+  
     var icon = '<div class="label ps-5 cursor-pointer" onClick="editTripDtl(' + idx + ", " + i + ')"><span class="material-icons">expand_more</span></div>'
 
     var place = val.name + "<br><h6>" +
