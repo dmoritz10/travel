@@ -540,7 +540,11 @@ async function addToReservations(vals, trip, ceHdrs, resHdrs) {
 
 function readFromClpbrd(ele) {
 
+  console.log('read', ele)
+
   navigator.clipboard.readText().then(function(txt) {
+
+    console.log('tt', txt)
     document.getElementById(ele).innerText = txt;
   }, function(err) {
     console.error('Async: Could not paste text: ', err);
