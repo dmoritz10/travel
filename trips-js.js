@@ -291,7 +291,9 @@ function setMSelVals(ele, arr) {
 
   for (var i = 0; i < ele.options.length; i++) {
 
-    console.log(ele.options[i])
+    console.log(ele.options[i].value)
+    console.log(arr.indexOf(ele.options[i].value))
+    
     ele.options[i].selected = arr.indexOf(ele.options[i].value) >= 0;
     console.log(ele.options[i].selected)
   }
