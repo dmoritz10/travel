@@ -51,7 +51,8 @@ async function initialUI() {
     $('#btnTrpEdit').addClass('d-none')
     $('#btnTrpAddTrip').addClass('d-none')
     $('#btnTrpAddNew').addClass('d-none')
-
+    $('#btnImportPlaces').addClass('d-none')
+    
   }
 
 };
