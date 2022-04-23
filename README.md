@@ -64,10 +64,10 @@ Classes
       update trpDestDtlIdx
     
 
-On trip maintenance
+Trip maintenance
 
-make Type required with select
-make Trip Name, Destinations, countries required
+  make Type required with select
+  make Trip Name, Destinations, countries required
 
 Destination Maintenance
   make all required
@@ -75,21 +75,32 @@ Destination Maintenance
 x - Disable rebuikd bottom is no dests
 x - Search on places
 
-Move reservations import to drop-down
-Move Trips import to drop-down
+Trips
+  Move Trips import to drop-down
+  On import, prompt to add new Trip
+  Make Type select multiple
+  Add types to Composite Key
 
 Change main menu
+  Remove Import after movingb to dropdowns
+  Change Places to Countries
+  Add Places
 
 Design, develop a timeline
+
+Design, develop Places similar to Google Timeline
 
 Reservations
 
   need some sort of copy/paste from email to reservation
-
+  Move reservations import to drop-down
   add-update current reservations
 
   filter on complete vs future reservations
 
-  
+Make Schnucky version
+  d-none all edit buttons except on Reservations
+
+
 
 
