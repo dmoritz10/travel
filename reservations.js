@@ -562,6 +562,8 @@ function readFromClpbrd(ele) {
 
       console.log('date', y)
 
+      // 
+
       // var nbrColons = txt.
 
       // var txt = vals[ceHdrs.indexOf('start')].length == 10 ? vals[ceHdrs.indexOf('start')] + 'T00:00:00' : vals[ceHdrs.indexOf('start')].slice(0,-6)
