@@ -548,8 +548,7 @@ function readFromClpbrd(ele) {
     console.log('tele', document.getElementById(ele))
     console.log('tele', ele)
     // $('#' + ele).val(txt)
-    document.getElementById(ele).innerText = txt;
-    document.getElementById(ele).innerHtml = txt;
+    document.getElementById(ele).value = txt;
   }, function(err) {
     console.error('Async: Could not paste text: ', err);
   });
