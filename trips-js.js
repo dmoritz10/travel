@@ -238,7 +238,7 @@ async function btnTrpmSubmitSheetHtml() {
     vals[trpHdrs.indexOf("Countries")] = JSON.stringify($('#trpmCountries').val().split(' - '))
     vals[trpHdrs.indexOf("Source")] = 'Manual'
     vals[trpHdrs.indexOf("Nbr Days")] = calcNbrDays(vals[trpHdrs.indexOf("Start Date")], vals[trpHdrs.indexOf("End Date")])
-    vals[trpHdrs.indexOf("Composite Key")] = $('#trpmTrip').val() + ' - ' + formatMonth($('#trpmMonth').val()) + ' - ' + $('#trpmDestinations').val() + ' - ' + $('#trpmCountries').val() + ' - ' + getMSelVals(document.getElementById('trpmType')).split(' - ')
+    vals[trpHdrs.indexOf("Composite Key")] = $('#trpmTrip').val() + ' - ' + formatMonth($('#trpmMonth').val()) + ' - ' + $('#trpmDestinations').val() + ' - ' + $('#trpmCountries').val() + ' - ' + getMSelVals(document.getElementById('trpmType')).join(' - ')
 
   } else {
 
@@ -258,7 +258,7 @@ async function btnTrpmSubmitSheetHtml() {
     vals[trpHdrs.indexOf("Countries")] = JSON.stringify($('#trpmCountries').val().split(' - '))
     vals[trpHdrs.indexOf("Source")] = 'Manual'
     vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify([])
-    vals[trpHdrs.indexOf("Composite Key")] = $('#trpmTrip').val() + ' - ' + formatMonth($('#trpmMonth').val()) + ' - ' + $('#trpmDestinations').val() + ' - ' + $('#trpmCountries').val() + ' - ' + getMSelVals(document.getElementById('trpmType')).split(' - ')
+    vals[trpHdrs.indexOf("Composite Key")] = $('#trpmTrip').val() + ' - ' + formatMonth($('#trpmMonth').val()) + ' - ' + $('#trpmDestinations').val() + ' - ' + $('#trpmCountries').val() + ' - ' + getMSelVals(document.getElementById('trpmType')).join(' - ')
     vals[trpHdrs.indexOf("Nbr Days")] = calcNbrDays(vals[trpHdrs.indexOf("Start Date")], vals[trpHdrs.indexOf("End Date")])
 
 
