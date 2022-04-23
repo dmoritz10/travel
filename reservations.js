@@ -553,11 +553,14 @@ function readFromClpbrd(ele) {
 
       var ampm = lTxt.indexOf("am") || lTxt.indexOf("pm")
 
-      var txt = DateTime.fromISO(txt).slice(0,-13)
+      var x = DateTime.fromISO(txt).slice(0,-13)
+      var txt = x.slice(0,-13)
 
       console.log('luxon', txt)
 
-      console.log('date', Date.parse(txt))
+      var y = Date.parse(txt)
+
+      console.log('date', y)
 
       // var nbrColons = txt.
 
