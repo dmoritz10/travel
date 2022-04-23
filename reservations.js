@@ -545,7 +545,11 @@ function readFromClpbrd(ele) {
   navigator.clipboard.readText().then(function(txt) {
 
     console.log('tt', txt)
+    console.log('tele', document.getElementById(ele))
+    console.log('tele', ele)
+    // $('#' + ele).val(txt)
     document.getElementById(ele).innerText = txt;
+    document.getElementById(ele).innerHtml = txt;
   }, function(err) {
     console.error('Async: Could not paste text: ', err);
   });
