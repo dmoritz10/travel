@@ -556,6 +556,9 @@ function readFromClpbrd(ele) {
       var txt = DateTime.fromISO(txt)
 
       console.log('luxon', txt)
+
+      console.log('date', Date.parse(txt))
+
       // var nbrColons = txt.
 
       // var txt = vals[ceHdrs.indexOf('start')].length == 10 ? vals[ceHdrs.indexOf('start')] + 'T00:00:00' : vals[ceHdrs.indexOf('start')].slice(0,-6)
