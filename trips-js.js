@@ -231,7 +231,7 @@ async function btnTrpmSubmitSheetHtml() {
 
     vals[trpHdrs.indexOf("Trip")] = $('#trpmTrip').val()
     vals[trpHdrs.indexOf("Month")] = formatMonth($('#trpmMonth').val())
-    vals[trpHdrs.indexOf("Type")] = $('#trpmType').val()
+    vals[trpHdrs.indexOf("Type")] = JSON.stringify(getMSelVals($('#trpmType').val()))
     vals[trpHdrs.indexOf("Start Date")] = formatDateTime($('#trpmStartDate').val())
     vals[trpHdrs.indexOf("End Date")] = formatDateTime($('#trpmEndDate').val())
     vals[trpHdrs.indexOf("Destinations")] = JSON.stringify($('#trpmDestinations').val().split(' - '))
@@ -251,7 +251,7 @@ async function btnTrpmSubmitSheetHtml() {
 
     vals[trpHdrs.indexOf("Trip")] = $('#trpmTrip').val()
     vals[trpHdrs.indexOf("Month")] = formatMonth($('#trpmMonth').val())
-    vals[trpHdrs.indexOf("Type")] = $('#trpmType').val()
+    vals[trpHdrs.indexOf("Type")] = JSON.stringify(getMSelVals($('#trpmType').val()))
     vals[trpHdrs.indexOf("Start Date")] = formatDateTime($('#trpmStartDate').val())
     vals[trpHdrs.indexOf("End Date")] = formatDateTime($('#trpmEndDate').val())
     vals[trpHdrs.indexOf("Destinations")] = JSON.stringify($('#trpmDestinations').val().split(' - '))
@@ -279,6 +279,15 @@ async function btnTrpmSubmitSheetHtml() {
   modal(false)
 }
 
+function getMSelVals(ele) {
+
+  var selectedItems = Array.from(ele[0].selectedOptions).map(option => option.value)
+
+console.log('ele', ele)
+console.log(selectedItems)
+
+  return selectedItems
+}
 
 async function updateUI (vals, arrIdx) {
 
