@@ -542,7 +542,7 @@ function readFromClpbrd(ele) {
 
   console.log('read', ele)
 
-  var type = $(ele).attr('type');
+  var type = $('#' + ele).attr('type');
 
   console.log('type', type)
 
