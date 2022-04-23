@@ -556,7 +556,7 @@ function readFromClpbrd(ele) {
 
 
       try{
-      var x = sherlock(txt)
+      var x = Sherlock(txt)
       console.log('sherlock', x)
 
       } catch(e) {console.log('err', e)}
