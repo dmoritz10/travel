@@ -198,10 +198,10 @@ async function editTrip(arrIdx) {
   var vals = trpVals[arrIdx]
 
   var trpObj = makeObj(vals, trpHdrs)
-
+  setMSelVals(ele, arr)
   $('#trpmTrip').val(trpObj['Trip'])
   $('#trpmMonth').val(parseMonth(trpObj['Month']))
-  $('#trpmType').val(trpObj['Type'])
+  $('#trpmType').val(setMSelVals(document.getElementById('trpmType'), JSON.parse(trpObj['Type'])))
   $('#trpmStartDate').val(parseDateTime(trpObj['Start Date']).date)
   $('#trpmEndDate').val(parseDateTime(trpObj['End Date']).date)
   $('#trpmDestinations').val(JSON.parse(trpObj['Destinations']).join(' - '))
@@ -280,13 +280,17 @@ async function btnTrpmSubmitSheetHtml() {
 }
 
 function getMSelVals(ele) {
-  console.log('ele', ele)
-  var selectedItems = Array.from(ele.selectedOptions).map(option => option.value)
 
+  return Array.from(ele.selectedOptions).map(option => option.value)
 
-console.log(selectedItems)
+}
 
-  return selectedItems
+function setMSelVals(ele, arr) {
+
+  for (var i = 0; i < ele.options.length; i++) {
+    ele.options[i].selected = arr.indexOf(ele.options[i].value) >= 0;
+  }
+
 }
 
 async function updateUI (vals, arrIdx) {
