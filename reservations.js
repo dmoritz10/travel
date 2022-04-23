@@ -557,25 +557,28 @@ function readFromClpbrd(ele) {
 
       try{
       var x = DateTime.fromISO(txt).toISO()
+      console.log('luxon', x)
+
       } catch(e) {console.log('err', e)}
       // var z = x.slice(0,-13)
 
-      console.log('luxon', z)
 
       try{
         var x = moment(txt)
+        console.log('moment', x)
+
         } catch(e) {console.log('err', e)}
   
-        console.log('moment', z)
   
 
 
       try{
 
       var y = Date.parse(txt)
+      console.log('date', y)
+
     } catch(e) {console.log('err', e)}
 
-      console.log('date', y)
 
       // 
 
