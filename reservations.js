@@ -231,6 +231,7 @@ async function editReservation(arrIdx) {
   $('#resmDescription').val(resObj['Description'])
   
   $('#btnResmDelete').removeClass('d-none')
+  $('#resmReservation').focus()
 
   modal(false)
 
@@ -331,6 +332,7 @@ async function btnAddReservationHtml() {
   $("#reservation-modal").modal('show');
 
   $('#resmSource').val('Manual')
+  $('#resmReservation').focus()
 
   $('#btnResmDelete').addClass('d-none')
 
