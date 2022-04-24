@@ -66,13 +66,17 @@ async function listReservations(title = "Reservations") {
     stmd = stArr[0].substring(0, st.lastIndexOf('/'))
     var start = stArr[1] == '12:00 AM' ? stmd : stmd + ', ' + stArr[1]
 
-    var et = DateTime.fromISO(resObj['End Date']).toLocaleString(DateTime.DATETIME_SHORT)
-    var etArr = et.split(', ')
-    var end = etArr[1] == '12:00 AM' ? etArr[0] : et
-  
+    if (resObj['End Date']) {
+      var et = DateTime.fromISO(resObj['End Date']).toLocaleString(DateTime.DATETIME_SHORT)
+      var etArr = et.split(', ')
+      var end = etArr[1] == '12:00 AM' ? etArr[0] : et
+    } else {
+      var end = ''
+    }
+
 
     ele.find('#resTrip')[0].innerHTML = resObj['Trip']
-    ele.find('#resStartEndDateTime')[0].innerHTML = start + ' - ' + end
+    ele.find('#resStartEndDateTime')[0].innerHTML = start + end ? ' - ' + end : ''
     ele.find('#resStatus')[0].innerHTML = resObj['Status']
     ele.find('#resLocation')[0].innerHTML = resObj['Location']
     ele.find('#resDescription')[0].innerHTML = resObj['Description'] ? resObj['Description'].replace(/\n/g, "<br>") : ''
