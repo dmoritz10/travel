@@ -330,6 +330,8 @@ async function btnAddReservationHtml() {
   $("#reservation-form")[0].reset();
   $("#reservation-modal").modal('show');
 
+  $('#resmSource').val('Manual')
+
   $('#btnResmDelete').addClass('d-none')
 
 }
