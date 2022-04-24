@@ -83,6 +83,14 @@ async function listReservations(title = "Reservations") {
 
     ele.find('#btnResShowDetail')[0].setAttribute("onclick", "showReservation(" + j + ")");
 
+   setSmsHref ({
+      eventTitle: resObj['Reservation'],
+      startDate:  start,
+      endDate:    end,
+      element:    ele.find('#btnResSms')
+    })
+
+
 
     // var boolFav = fav.toLowerCase() === 'true'
 
@@ -544,18 +552,17 @@ function readFromClpbrd(ele) {
 
 
   navigator.clipboard.readText().then(function(txt) {
-
-    var sh = sherlockToHtml(txt)
     
     var type = $ele.attr('type');
 
     if (type == 'datetime-local') {
-
-     $ele.val(sh.startDate)
+      
+      var sh = sherlockToHtml(txt)
+      $ele.val(sh.startDate)
 
     } else {
 
-     $ele.val(sh.eventTitle)
+     $ele.val(txt)
 
     }
 
@@ -610,5 +617,18 @@ function sherlockToHtml(txt) {
 
   }
 
+}
+
+
+async function setSmsHref(d) {
+
+  
+
+    var txtBody = d.eventTitle + '%0a' + d.startDate + '%0a' + d.endDate
+
+    d.element.prop('disabled', false)
+    d.element.prop('href', 'sms:' + '' + "?body=" + txtBody  )
+          
+  
 
 }
