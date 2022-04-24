@@ -608,10 +608,10 @@ function sherlock(ele) {
 try {
     console.log(new Date(sh.startDate))
     console.log(DateTime.fromJSDate(new Date(sh.startDate)))
-    console.log(DateTime.fromJSDate(new Date(sh.startDate)).toISO())
+    var dt = DateTime.fromJSDate(new Date(sh.startDate)).toISO()
+    console.log(dt.slice(0,-13))
     
-    
-    $('#resmStartDateTime').val(sh.startDate)
+    $('#resmStartDateTime').val(dt.slice(0,-13))
 
 } catch(e) {console.log(e)}
 
