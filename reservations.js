@@ -607,6 +607,7 @@ function sherlock(ele) {
 
 try {
     console.log(new Date(sh.startDate))
+    console.log(DateTime.fromJS(new Date(sh.startDate)))
     console.log(DateTime.fromISO(sh.startDate))
     
     
@@ -618,7 +619,7 @@ try {
 
   if (sh.startDate) {
 
-    $('#resmEndDateTime').val(calcDate(sh.endDate))
+    // $('#resmEndDateTime').val(calcDate(sh.endDate))
 
   }
 
