@@ -653,11 +653,21 @@ function btnPrintResHtml() {
     var val = resVals[i]
     var resObj = makeObj(val, resHdrs)
 
+    var st = DateTime.fromISO(resObj['Start Date']).toLocaleString(DateTime.DATETIME_SHORT)
+    var stArr = st.split(', ')
+    stmd = stArr[0].substring(0, st.lastIndexOf('/'))
+    var start = stArr[1] == '12:00 AM' ? stmd : stmd + ', ' + stArr[1]
+    
+    var st = DateTime.fromISO(resObj['End Date']).toLocaleString(DateTime.DATETIME_SHORT)
+    var stArr = st.split(', ')
+    stmd = stArr[0].substring(0, st.lastIndexOf('/'))
+    var end = stArr[1] == '12:00 AM' ? stmd : stmd + ', ' + stArr[1]
+    
     var obj = {}
 
     obj['Reservation']  = resObj['Reservation']
-    obj['Start Date']   = resObj['Start Date']
-    obj['End Date']     = resObj['End Date']
+    obj['Start Date']   = start
+    obj['End Date']     = end
 
     rpt.push(obj)
 
