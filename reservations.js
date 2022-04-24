@@ -544,42 +544,21 @@ function readFromClpbrd(ele) {
 
 
   navigator.clipboard.readText().then(function(txt) {
+
+    var sh = sherlockToHtml(txt)
     
     var type = $ele.attr('type');
 
     if (type == 'datetime-local') {
 
-      var lTxt = txt.toLowerCase()
+     $ele.val(sh.startDate)
 
-      var ampm = lTxt.indexOf("am") || lTxt.indexOf("pm")
+    } else {
 
+     $ele.val(sh.eventTitle)
 
-
-      try{
-      var x = Sherlock.parse(txt)
-      console.log('sherlock', x)
-
-      } catch(e) {console.log('err', e)}
-      // var z = x.slice(0,-13)
-
-
-      try{
-
-      var y = Date.parse(txt)
-      console.log('date', y)
-
-    } catch(e) {console.log('err', e)}
-
-
-      // 
-
-      // var nbrColons = txt.
-
-      // var txt = vals[ceHdrs.indexOf('start')].length == 10 ? vals[ceHdrs.indexOf('start')] + 'T00:00:00' : vals[ceHdrs.indexOf('start')].slice(0,-6)
-  
     }
 
-    $ele.val(txt);
 
   }, function(err) {
       console.error('Async: Could not paste text: ', err);
@@ -593,7 +572,7 @@ function sherlock(ele) {
 
   console.log('sherlock', txt)
 
-  var sh = Sherlock.parse(txt)
+  var sh = sherlockToHtml(txt)
 
   console.log(sh)
 
@@ -605,24 +584,31 @@ function sherlock(ele) {
 
   if (sh.startDate) {
     
-    var dt = DateTime.fromJSDate(new Date(sh.startDate)).toISO().slice(0,-13)
-    $('#resmStartDateTime').val(dt)
+    $('#resmStartDateTime').val(sh.startDate)
 
   }
 
   if (sh.endDate) {
 
-    var dt = DateTime.fromJSDate(new Date(sh.endDate)).toISO().slice(0,-13)
-    $('#resmEndDateTime').val(dt)
+    $('#resmEndDateTime').val(sh.endDate)
 
   }
 
 }
 
-function calcDate(shDate) {
+function sherlockToHtml(txt) {
 
-  var dt = parseDateTime(shDate)
+  var sh = Sherlock.parse(txt)
+  var endDt = DateTime.fromJSDate(new Date(sh.endDate)).toISO().slice(0,-13)
+  var strDt = DateTime.fromJSDate(new Date(sh.startDate)).toISO().slice(0,-13)
 
-  return dt.date
+  return {
+
+    eventTitle: sh.eventTitle,
+    startDate:  strDt,
+    endDate:    endDt
+
+  }
+
 
 }
