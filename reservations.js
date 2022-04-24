@@ -648,9 +648,9 @@ function btnPrintResHtml() {
 
   var rpt = []
 
-  for (let i=0; i<resvals.length;i++) {
+  for (let i=0; i<resVals.length;i++) {
 
-    var val = resvals[i]
+    var val = resVals[i]
     var resObj = makeObj(resVals, resHdrs)
 
     var obj = {}
