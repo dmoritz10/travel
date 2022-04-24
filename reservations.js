@@ -586,3 +586,11 @@ function readFromClpbrd(ele) {
   });
 
 }
+
+function sherlock(ele) {
+
+
+
+
+  
+}
