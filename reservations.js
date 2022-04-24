@@ -667,8 +667,7 @@ function btnPrintResHtml() {
 
     obj['Reservation']  = '<h4>' + resObj['Reservation'] + '</h4>'
     obj['Trip']         = resObj['Trip']
-    obj['Start Date']   = start
-    obj['End Date']     = end
+    obj['Date']         = start + ' - ' + end
 
     rpt.push(obj)
 
@@ -676,7 +675,7 @@ function btnPrintResHtml() {
 
   printJS({
     printable: rpt,
-    properties: [ 'Reservation', 'Start Date', 'End Date' ],
+    properties: [ 'Reservation', 'Trip', 'Date' ],
     type: 'json'
       })
 
