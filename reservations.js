@@ -666,6 +666,7 @@ function btnPrintResHtml() {
     var obj = {}
 
     obj['Reservation']  = resObj['Reservation']
+    obj['Trip']         = resObj['Trip']
     obj['Start Date']   = start
     obj['End Date']     = end
 
