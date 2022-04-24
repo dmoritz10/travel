@@ -655,9 +655,9 @@ function btnPrintResHtml() {
 
     var obj = {}
 
-    obj('Reservation') = resObj['Reservation']
-    obj('Start Date') = resObj['Start Date']
-    obj('End Date') = resObj['End Date']
+    obj['Reservation']  = resObj['Reservation']
+    obj['Start Date']   = resObj['Start Date']
+    obj['End Date']     = resObj['End Date']
 
     rpt.push(obj)
 
