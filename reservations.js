@@ -643,6 +643,30 @@ async function setSmsHref(d) {
 
 function btnPrintResHtml() {
 
+  // resHdrs 
+  // resVals 
 
-  
+  var rpt = []
+
+  for (let i=0; i<resvals.length;i++) {
+
+    var val = resvals[i]
+    var resObj = makeObj(resVals, resHdrs)
+
+    var obj = {}
+
+    obj('Reservation') = resObj['Reservation']
+    obj('Start Date') = resObj['Start Date']
+    obj('End Date') = resObj['End Date']
+
+    rpt.push(obj)
+
+  }
+
+  printJS({
+    printable: rpt,
+    properties: [ 'Reservation', 'Start Date', 'End Date' ],
+    type: 'json'
+      })
+
 }
