@@ -604,22 +604,16 @@ function sherlock(ele) {
   }
 
   if (sh.startDate) {
-
-try {
-    console.log(new Date(sh.startDate))
-    console.log(DateTime.fromJSDate(new Date(sh.startDate)))
-    var dt = DateTime.fromJSDate(new Date(sh.startDate)).toISO()
-    console.log(dt.slice(0,-19))
     
-    $('#resmStartDateTime').val(dt.slice(0,-19))
-
-} catch(e) {console.log(e)}
+    var dt = DateTime.fromJSDate(new Date(sh.startDate)).toISO().slice(0,-13)
+    $('#resmStartDateTime').val(dt)
 
   }
 
-  if (sh.startDate) {
+  if (sh.endDate) {
 
-    // $('#resmEndDateTime').val(calcDate(sh.endDate))
+    var dt = DateTime.fromJSDate(new Date(sh.endDate)).toISO().slice(0,-13)
+    $('#resmEndDateTime').val(dt)
 
   }
 
