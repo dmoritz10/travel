@@ -81,7 +81,7 @@ async function listReservations(title = "Reservations") {
 
     ele.find('#btnResFavorite')[0].setAttribute("onclick", "setFavorite(" + j + ")");
 
-    ele.find('#btnResShowDetail')[0].setAttribute("onclick", "showReservation(" + j + ")");
+    // ele.find('#btnResShowDetail')[0].setAttribute("onclick", "showReservation(" + j + ")");
 
    setSmsHref ({
       eventTitle: resObj['Reservation'],
@@ -619,16 +619,11 @@ function sherlockToHtml(txt) {
 
 }
 
-
 async function setSmsHref(d) {
-
-  
 
     var txtBody = d.eventTitle + '%0a' + d.startDate + '%0a' + d.endDate
 
     d.element.prop('disabled', false)
     d.element.prop('href', 'sms:' + '' + "?body=" + txtBody  )
           
-  
-
 }
