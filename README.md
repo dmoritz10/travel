@@ -103,5 +103,9 @@ x - Make Schnucky version
   d-none all edit buttons except on Reservations
 
 
-
-
+From Google create calendar events from Gmail:
+Reservation at 
+Stay at 
+Flight to 
+Tee Time Reservation Confirmation
+From 

@@ -621,7 +621,7 @@ function sherlockToHtml(txt) {
 
 async function setSmsHref(d) {
 
-    if (d.eventTitle.substr(0,7).toLowerCase() == "flight") {
+    if (d.eventTitle.substr(0,7).toLowerCase() == "flight ") {
 
       var dt1 = "Dep: " + d.startDate
       var dt2 = "Arr: " + d.endDate
