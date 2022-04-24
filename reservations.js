@@ -621,7 +621,19 @@ function sherlockToHtml(txt) {
 
 async function setSmsHref(d) {
 
-    var txtBody = d.eventTitle + '%0a' + d.startDate + '%0a' + d.endDate
+    if (d.eventTitle.substr(0,7).toLowerCase() == "flight") {
+
+      var dt1 = "Dep: " + d.startDate
+      var dt2 = "Arr: " + d.endDate
+
+    } else {
+
+      var dt1 = d.startDate
+      var dt2 = d.endDate
+
+    }
+
+    var txtBody = d.eventTitle + '%0a' + dt1 + '%0a' + dt2
 
     d.element.prop('disabled', false)
     d.element.prop('href', 'sms:' + '' + "?body=" + txtBody  )
