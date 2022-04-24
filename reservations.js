@@ -589,8 +589,40 @@ function readFromClpbrd(ele) {
 
 function sherlock(ele) {
 
+  var txt = $('#' + ele).val()
+
+  console.log('sherlock', txt)
+
+  var sh = Sherlock.parse(txt)
+
+  console.log(sh)
+
+  if (sh.eventTitle) {
+
+    $('#resmReservation').val(sh.eventTitle)
+
+  }
+
+  if (sh.startDate) {
 
 
+    console.log(calcDate(sh.startDate))
+    $('#resmStartDateTime').val(calcDate(sh.startDate))
 
-  
+  }
+
+  if (sh.startDate) {
+
+    $('#resmEndDateTime').val(calcDate(sh.endDate))
+
+  }
+
+}
+
+function calcDate(shDate) {
+
+  var dt = parseDateTime(shDate)
+
+  return dt.date
+
 }
