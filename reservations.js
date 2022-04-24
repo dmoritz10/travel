@@ -238,7 +238,7 @@ async function editReservation(arrIdx) {
 
 async function btnResmSubmitSheetHtml() {
 
-  // if (!$('#trip-form').valid()) return
+  if (!$('#reservation-form').valid()) return
 
   var arrIdx = $('#resmArrIdx').val() ? $('#resmArrIdx').val()*1 : -1
 
