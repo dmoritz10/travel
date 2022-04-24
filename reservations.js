@@ -145,18 +145,18 @@ async function listReservations(title = "Reservations") {
 async function btnResMoreVertHtml() {
 
   var resOptions = readOption('resFilter')
-  var resSelectFav = resOptions.resSelectFav
+  var resHidePast = resOptions.resHidePast
 
-  $('#resSelectFav').prop("checked", resSelectFav);
+  $('#resHidePast').prop("checked", resHidePast);
 
 }
 
 async function btnResSelectHtml(e) {
 
-  var resSelectFavVal = $('#resSelectFav').prop('checked')
+  var resHidePastVal = $('#resHidePast').prop('checked')
 
   await updateOption('resFilter', {
-    'resSelectFav': resSelectFavVal
+    'resHidePast': resHidePastVal
   })
 
   listReservations(resTitle)
