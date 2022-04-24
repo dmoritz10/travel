@@ -640,3 +640,9 @@ async function setSmsHref(d) {
     d.element.prop('href', 'sms:' + '' + "?body=" + txtBody  )
           
 }
+
+function btnPrintResHtml() {
+
+
+  
+}

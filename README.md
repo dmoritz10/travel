@@ -92,12 +92,12 @@ Design, develop Places similar to Google Timeline
 
 Reservations
 
-  need some sort of copy/paste from email to reservation
+  x - need some sort of copy/paste from email to reservation
   Move reservations import to drop-down
   add-update current reservations - how to detect an update ?
   prompt for add-update
 
-  filter on complete vs future reservations
+  x - filter on complete vs future reservations
 
 x - Make Schnucky version
   d-none all edit buttons except on Reservations
