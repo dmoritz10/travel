@@ -76,7 +76,7 @@ async function listReservations(title = "Reservations") {
 
     var locn = resObj['Location']
     var uriLocn = encodeURIComponent( locn )
-    var locnHtml = locn ? `<a href='http://maps.google.com/maps?q=${uriLocn} + "' target='_blank'>" + ${locn} + "</a>"` : ""
+    var locnHtml = locn ? `<a href='https://maps.google.com/maps?q=${uriLocn}' target=_blank> ${locn} </a>` : ""
 
     ele.find('#resTrip')[0].innerHTML = resObj['Trip']
     ele.find('#resStartEndDateTime')[0].innerHTML = start + (end ? (' - ' + end) : '')
