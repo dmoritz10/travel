@@ -4,7 +4,7 @@ async function listReservations(title = "Reservations") {
   modal(true)
 
   var resOptions = readOption('resFilter')
-  var resSelectFav = resOptions.resSelectFav
+  var resHidePast = resOptions.resHidePast
 
   var objSht = await openShts(
     [
@@ -76,7 +76,7 @@ async function listReservations(title = "Reservations") {
 
     var locn = resObj['Location']
     var uriLocn = encodeURIComponent( locn )
-    var locnHtml = locn ? `<a href='https://maps.google.com/maps?q=${uriLocn}' target='_blank'> ${locn} </a>` : ""
+    var locnHtml = locn ? `<a href='https://maps.google.com/maps?q=${uriLocn}' target='_blank'>${locn}</a>` : ""
 
     ele.find('#resTrip')[0].innerHTML = resObj['Trip']
     ele.find('#resStartEndDateTime')[0].innerHTML = start + (end ? (' - ' + end) : '')
@@ -99,22 +99,11 @@ async function listReservations(title = "Reservations") {
     })
 
 
+    var dt = resObj['End Date'] ? new Date(resObj['End Date']) : new Date(resObj['Start Date'])
 
-    // var boolFav = fav.toLowerCase() === 'true'
-
-    // if (boolFav) {
-    //   ele.find('#ScFavIcon')[0].innerHTML = "star"
-    //   ele.find('#ScFavIcon').addClass('text-primary')
-    // } else {
-    //   ele.find('#ScFavIcon')[0].innerHTML = "star_outline"
-    //   ele.find('#ScFavIcon').removeClass('text-primary')
-    // }
-
-    // if ( (resSelectFav && !(fav.toLowerCase() === 'true')) ) {}
-    // else
-      ele.removeClass('d-none');
-
-
+    if  (resHidePast && dt < new Date() ) {} 
+    else ele.removeClass('d-none');
+      
     ele.appendTo("#resContainer");
 
   }
@@ -255,7 +244,7 @@ async function btnResmSubmitSheetHtml() {
     vals[resHdrs.indexOf("Trip")] = $('#resmTrip').val()
     vals[resHdrs.indexOf("Status")] = $('#resmStatus').val()
     vals[resHdrs.indexOf("Source")] = $('#resmSource').val()
-    vals[resHdrs.indexOf("Location>")] = $('#resmLocation').val()
+    vals[resHdrs.indexOf("Location")] = $('#resmLocation').val()
     vals[resHdrs.indexOf("Start Date")] = $('#resmStartDateTime').val()
     vals[resHdrs.indexOf("End Date")] = $('#resmEndDateTime').val()
     vals[resHdrs.indexOf("Description")] = $('#resmDescription').val()
@@ -274,7 +263,7 @@ async function btnResmSubmitSheetHtml() {
     vals[resHdrs.indexOf("Trip")] = $('#resmTrip').val()
     vals[resHdrs.indexOf("Status")] = $('#resmStatus').val()
     vals[resHdrs.indexOf("Source")] = $('#resmSource').val()
-    vals[resHdrs.indexOf("Location>")] = $('#resmLocation').val()
+    vals[resHdrs.indexOf("Location")] = $('#resmLocation').val()
     vals[resHdrs.indexOf("Start Date")] = $('#resmStartDateTime').val()
     vals[resHdrs.indexOf("End Date")] = $('#resmEndDateTime').val()
     vals[resHdrs.indexOf("Description")] = $('#resmDescription').val()
