@@ -257,8 +257,8 @@ jQuery(function ($) {
             // Reservations
             $('#btnResSelect')            .click(btnResSelectHtml);
             
-            $('#shtSelectDropDown')        .on('show.bs.dropdown', function () {
-                btnShtMoreVertHtml()
+            $('#resSelectDropDown')        .on('show.bs.dropdown', function () {
+                btnResMoreVertHtml()
             })
             
             $('#btnResAddReservation')   .click(btnAddReservationHtml);
