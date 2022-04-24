@@ -605,9 +605,14 @@ function sherlock(ele) {
 
   if (sh.startDate) {
 
+try {
+    console.log(new Date(sh.startDate))
+    console.log(DateTime.fromISO(sh.startDate))
+    
+    
+    $('#resmStartDateTime').val(sh.startDate)
 
-    console.log(calcDate(sh.startDate))
-    $('#resmStartDateTime').val(calcDate(sh.startDate))
+} catch(e) {console.log(e)}
 
   }
 
