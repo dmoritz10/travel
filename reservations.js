@@ -703,14 +703,18 @@ function btnPrintResHtml () {
       console.log(eleChildren[j].innerHTML)
       console.log(eleChildren[j].innerText)
 
-      resRpt.push(eleChildren[j].innerHTML)
+      resRpt.push({
+        
+        'Reservation': eleChildren[j].innerHTML
+
+      })
 
     }
 
   }
 
   printJS({
-    printable: rpt,
+    printable: resRpt,
     properties: [ 'Reservation' ],
     type: 'json'
       })
