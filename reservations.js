@@ -683,35 +683,35 @@ function btnPrintResHtmlaaa() {
 
 function btnPrintResHtml () {
 
-  // var eleArr = [...$('#resContainer > div')].slice(1)      // remove the templace
+  var eleArr = [...$('#resContainer > div')].slice(1)      // remove the templace
 
-  // var resRpt = []
+  var resRpt = []
 
-  // for (let i=0; i<eleArr.length;i++) {
+  for (let i=0; i<eleArr.length;i++) {
 
-  //   var $ele = $(eleArr[i])
+    var $ele = $(eleArr[i])
 
-  //   if ($ele.hasClass('d-none') || $ele.css('display') == 'none') continue
+    if ($ele.hasClass('d-none') || $ele.css('display') == 'none') continue
  
-  //   console.log('$ele', $ele)
-  //   console.log($ele.children()    )
+    console.log('$ele', $ele)
+    console.log($ele.children()    )
 
-  //   var eleChildren = $ele.children()
+    var eleChildren = $ele.children()
 
-  //   for (j=0;j<eleChildren.length;j++) {
+    for (j=0;j<eleChildren.length;j++) {
 
-  //     console.log(eleChildren[j].innerHTML)
+      console.log(eleChildren[j].innerHTML)
 
-  //     resRpt.push(eleChildren[j].innerHTML)
+      resRpt.push(eleChildren[j].innerHTML)
 
-  //   }
+    }
 
-  // }
+  }
 
-  printJS({ 
-    printable: 'resContainer', 
-    type: 'html', 
-    header: 'Reservation Listing' 
-  })
+  printJS({
+    printable: rpt,
+    properties: [ 'Reservation' ],
+    type: 'json'
+      })
 
 }
