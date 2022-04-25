@@ -701,6 +701,7 @@ function btnPrintResHtml () {
     for (j=0;j<eleChildren.length;j++) {
 
       console.log(eleChildren[j].innerHTML)
+      console.log(eleChildren[j].innerText)
 
       resRpt.push(eleChildren[j].innerHTML)
 
