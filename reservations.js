@@ -696,19 +696,15 @@ function btnPrintResHtml () {
     console.log('$ele', $ele)
     console.log($(eleArr[i] + ' #resTrip' ))
 
-    var eleTrip = $(eleArr[i] + ' #resTrip').val()
+    var eleChildren = $ele.children()
 
-    console.log(eleTrip)
-    
-    var place = val.name + "<br><h6>" +
-                val.city + (val.state ? ", " : "") +
-                val.state + "<br>" +
-                icon
+    for (j=0;j<eleChildren.length;j++) {
 
-    
-    
-    resRpt.push([time, place])
-  
+      resRpt.push(eleChildren[j].innerHTML)
+
+    }
+
+    v
 
   }
 
