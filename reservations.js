@@ -641,7 +641,7 @@ async function setSmsHref(d) {
           
 }
 
-function btnPrintResHtml() {
+function btnPrintResHtmlaaa() {
 
   // resHdrs 
   // resVals 
@@ -678,5 +678,44 @@ function btnPrintResHtml() {
     properties: [ 'Reservation', 'Trip', 'Date' ],
     type: 'json'
       })
+
+}
+
+function btnPrintResHtml () {
+
+  var eleArr = [...$('#resContainer > div')].slice(1)      // remove the templace
+
+  var resRpt = []
+
+  for (let i=0; i<eleArr.length;i++) {
+
+    var $ele = $(eleArr[i])
+
+    if ($ele.hasClass('d-none') || $ele.css('display') == 'none') continue
+ 
+    console.log('$ele', $ele)
+    console.log($(eleArr[i] + ' #resTrip' ))
+
+    var eleTrip = $(eleArr[i] + ' #resTrip').val()
+
+    console.log(eleTrip)
+    
+    var place = val.name + "<br><h6>" +
+                val.city + (val.state ? ", " : "") +
+                val.state + "<br>" +
+                icon
+
+    
+    
+    resRpt.push([time, place])
+  
+
+  }
+
+  printJS({ 
+    printable: resRpt, 
+    type: 'html', 
+    header: 'PrintJS - Form Element Selection' 
+  })
 
 }
