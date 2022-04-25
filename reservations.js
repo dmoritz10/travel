@@ -700,11 +700,11 @@ function btnPrintResHtml () {
 
     for (j=0;j<eleChildren.length;j++) {
 
+      console.log(eleChildren[j].innerHTML)
+
       resRpt.push(eleChildren[j].innerHTML)
 
     }
-
-    v
 
   }
 
