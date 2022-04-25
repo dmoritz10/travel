@@ -709,7 +709,7 @@ function btnPrintResHtml () {
   // }
 
   printJS({ 
-    printable: resContainer, 
+    printable: 'resContainer', 
     type: 'html', 
     header: 'Reservation Listing' 
   })
