@@ -694,7 +694,7 @@ function btnPrintResHtml () {
     if ($ele.hasClass('d-none') || $ele.css('display') == 'none') continue
  
     console.log('$ele', $ele)
-    console.log($(eleArr[i] + ' #resTrip' ))
+    console.log($ele.children()    )
 
     var eleChildren = $ele.children()
 
@@ -711,7 +711,7 @@ function btnPrintResHtml () {
   printJS({ 
     printable: resRpt, 
     type: 'html', 
-    header: 'PrintJS - Form Element Selection' 
+    header: 'Reservation Listing' 
   })
 
 }
