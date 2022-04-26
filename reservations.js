@@ -238,6 +238,8 @@ function buildTripList(listId) {
 
   console.log(uniqueTrips)
 
+  $("#" + listId).empty();
+
   $.each(uniqueTrips, function(i, item) {
     $("#" + listId).append($("<option>").text(item));
   });
