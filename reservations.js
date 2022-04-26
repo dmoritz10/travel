@@ -701,7 +701,6 @@ function btnPrintResHtml () {
     var res = '<h3>' + eleC[0].innerText.slice(0,-13) + '</h3><br><br><h4>' + eleC[2].innerText
 
     var dtl = eleC[1].innerText + '<br>' + eleC[3].innerText + '<br>' + eleC[4].innerText + '<br>' + eleC[5].innerText
-
       
     resRpt.push({
         
@@ -716,7 +715,8 @@ function btnPrintResHtml () {
     printable: resRpt,
     properties: [ 'Reservation', 'Detail' ],
     type: 'json',
-    gridHeaderStyle: 'color: blue;  border-bottom: 2px solid #3971A5;',
+    header: '<h3 class="">Reservations</h3>',
+    gridHeaderStyle: 'color: blue;  border-bottom: 2px solid darkgrey;',
     gridStyle: 'border-bottom: 4px solid lightgrey;'
       })
 
