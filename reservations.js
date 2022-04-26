@@ -703,7 +703,7 @@ function btnPrintResHtml () {
       var eleC = eleChildren[j]
 
       if (j == 0) {
-        var res = eleC.innerText 
+        var res = '<h4>' + eleC.innerText 
         var dtl = ''
         continue
       }
@@ -727,8 +727,8 @@ function btnPrintResHtml () {
     printable: resRpt,
     properties: [ 'Reservation', 'Detail' ],
     type: 'json',
-    gridHeaderStyle: 'color: blue;  border: 2px solid #3971A5;',
-    gridStyle: 'border-bottom: 2px solid lightgrey;'
+    gridHeaderStyle: 'color: blue;  border-bottom: 2px solid #3971A5;',
+    gridStyle: 'border-bottom: 4px solid lightgrey;'
       })
 
 }
