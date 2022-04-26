@@ -699,7 +699,7 @@ function btnPrintResHtml () {
 
 function btnShowCalendarHtml() {
 
-  var calendarInstance = calendarJs( "resCalendar"); 
+  var calendarInstance = new calendarJs( "resCalendar"); 
 
   console.log('cevent', calendarInstance)
 
