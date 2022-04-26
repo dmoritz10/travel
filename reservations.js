@@ -711,7 +711,7 @@ function btnPrintResHtml () {
 
     var eleC = $ele.children()
 
-    var res = '<h3>' + eleC[0].innerText.slice(0,-13) + '</h3><br><br><h4>' + eleC[2].innerText
+    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4><br><br><h5>' + eleC[2].innerText
 
     var dtl = eleC[1].innerText + '<br>' + eleC[3].innerText + '<br>' + eleC[4].innerText + '<br>' + eleC[5].innerText
       
@@ -729,7 +729,7 @@ function btnPrintResHtml () {
     printable:        resRpt,
     properties:       [ 'Reservation', 'Detail' ],
     type:             'json',
-    targetStyle:      'font-family',
+    targetStyle:      'font-family:arial',
     style:            'font-family:arial;',
     gridHeaderStyle:  'font-size: 18px; border-bottom: 2px solid darkgrey;',
     gridStyle:        'border-bottom: 4px solid lightgrey;'
