@@ -102,6 +102,8 @@ Reservations
 x - Make Schnucky version
   d-none all edit buttons except on Reservations
 
+Add calendar view
+
 
 From Google create calendar events from Gmail:
 Reservation at 
