@@ -706,12 +706,9 @@ function btnPrintResHtml () {
 
     if ($ele.hasClass('d-none') || $ele.css('display') == 'none') continue
  
-    console.log('$ele', $ele)
-    console.log($ele.children()    )
-
     var eleC = $ele.children()
 
-    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4><br><h5>' + eleC[2].innerText
+    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4><br>' + eleC[2].innerText
 
     var dtl = eleC[1].innerText + '<br>' + eleC[3].innerText + '<br>' + eleC[4].innerText + '<br>' + eleC[5].innerText
       
