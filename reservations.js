@@ -696,3 +696,24 @@ function btnPrintResHtml () {
   })
 
 }
+
+function btnShowCalendarHtml() {
+
+  var calendarInstance = calendarJs( "resCalendar", {
+    manualEditingEnabled: true
+    // All your options can be set here
+  } ); 
+
+  var event = {
+    from: new Date(),
+    to: new Date(),
+    title: "A New Event",
+    description: "A description of the event"
+};
+
+
+calendarInstance.addEvent( event );
+
+
+
+}
