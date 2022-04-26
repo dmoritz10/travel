@@ -260,7 +260,7 @@ async function btnResmSubmitSheetHtml() {
     vals[resHdrs.indexOf("Start Date")] = $('#resmStartDateTime').val()
     vals[resHdrs.indexOf("End Date")] = $('#resmEndDateTime').val()
     vals[resHdrs.indexOf("Description")] = $('#resmDescription').val()
-    vals[resHdrs.indexOf("Composite Key")] = $('#resmReservation').val() + ' - ' + $('#resmTrip').val() + ' - ' + $('#resmLocation').val()
+    vals[resHdrs.indexOf("Composite Key")] = $('#resmReservation').val() + ' - ' + $('#resmTrip').val() + ' - ' + $('#resmLocation').val() + ' - ' + $('#resmStatus').val()
 
   } else {
 
@@ -279,7 +279,7 @@ async function btnResmSubmitSheetHtml() {
     vals[resHdrs.indexOf("Start Date")] = $('#resmStartDateTime').val()
     vals[resHdrs.indexOf("End Date")] = $('#resmEndDateTime').val()
     vals[resHdrs.indexOf("Description")] = $('#resmDescription').val()
-    vals[resHdrs.indexOf("Composite Key")] = $('#resmReservation').val() + ' - ' + $('#resmTrip').val() + ' - ' + $('#resmLocation').val()
+    vals[resHdrs.indexOf("Composite Key")] = $('#resmReservation').val() + ' - ' + $('#resmTrip').val() + ' - ' + $('#resmLocation').val() + ' - ' + $('#resmStatus').val()
 
   }
 
@@ -654,45 +654,6 @@ async function setSmsHref(d) {
           
 }
 
-function btnPrintResHtmlaaa() {
-
-  // resHdrs 
-  // resVals 
-
-  var rpt = []
-
-  for (let i=0; i<resVals.length;i++) {
-
-    var val = resVals[i]
-    var resObj = makeObj(val, resHdrs)
-
-    var st = DateTime.fromISO(resObj['Start Date']).toLocaleString(DateTime.DATETIME_SHORT)
-    var stArr = st.split(', ')
-    stmd = stArr[0].substring(0, st.lastIndexOf('/'))
-    var start = stArr[1] == '12:00 AM' ? stmd : stmd + ', ' + stArr[1]
-    
-    var st = DateTime.fromISO(resObj['End Date']).toLocaleString(DateTime.DATETIME_SHORT)
-    var stArr = st.split(', ')
-    stmd = stArr[0].substring(0, st.lastIndexOf('/'))
-    var end = stArr[1] == '12:00 AM' ? stmd : stmd + ', ' + stArr[1]
-    
-    var obj = {}
-
-    obj['Reservation']  = '<h4>' + resObj['Reservation'] + '</h4>'
-    obj['Trip']         = resObj['Trip']
-    obj['Date']         = start + ' - ' + end
-
-    rpt.push(obj)
-
-  }
-
-  printJS({
-    printable: rpt,
-    properties: [ 'Reservation', 'Trip', 'Date' ],
-    type: 'json'
-      })
-
-}
 
 function btnPrintResHtml () {
 
