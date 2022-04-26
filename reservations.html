@@ -77,15 +77,11 @@
         <div class="row">
 
           <div class="col px-1">
-            <div id="resTrip"  list="trips" class="text-success h5 pt-1"></div>
+            <div id="resTrip" class="text-success h5 pt-1"></div>
           </div>
         </div>
 
-        <datalist id="trips">
-          <option value="May - 2022">
-          <option value="Sep - 2022">
-          <option value="Oct - 2022">
-        </datalist>
+        
 
         <div class="row">
 
@@ -172,13 +168,19 @@
               <div class="row my-0">
                 <div class="col">
                   <label for="resmTrip" class="col-form-label">Trip</label>
-                  <input type="text" class="form-control text-success"  style="font-size:1.25rem" id="resmTrip" name="resmTrip" required>
+                  <input type="text" class="form-control text-success" list="trips" style="font-size:1.25rem" id="resmTrip" name="resmTrip" required>
                 </div>
                 <div class="col-1 ps-1">
                   <label class="col-form-label">&nbsp;</label>
                   <div class="cursor-pointer mt-2" onClick="readFromClpbrd('resmTrip')"><span class="material-icons">content_paste</span></div>
                 </div>
               </div>
+
+              <datalist id="trips">
+                <option value="May - 2022">
+                <option value="Sep - 2022">
+                <option value="Oct - 2022">
+              </datalist>
 
               <div class="row my-0">
                 <div class="col">
