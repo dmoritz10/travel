@@ -210,10 +210,6 @@ async function editReservation(arrIdx) {
 
   var resObj = makeObj(vals, resHdrs)
 
-  console.log('hi dan')
-  console.log(resObj)
-
- 
   $('#resmReservation').val(resObj['Reservation'])
   $('#resmTrip').val(resObj['Trip'])
   $('#resmStatus').val(resObj['Status'])
@@ -222,12 +218,26 @@ async function editReservation(arrIdx) {
   $('#resmStartDateTime').val(resObj['Start Date'])
   $('#resmEndDateTime').val(resObj['End Date'])
   $('#resmDescription').val(resObj['Description'])
+
+  buildTripList('resmTripsList')
   
   $('#btnResmDelete').removeClass('d-none')
   // $('#resmReservation').focus()
 
   modal(false)
 
+}
+
+function buildTripList(listId) {
+
+  var trips = resVals.map(x => x[resHdrs.indexOf('Trip')])
+
+  var uniqueTrips = [...new Set(trips)].sort()
+
+  $.each(uniqueTrips, function(i, item) {
+    $("#" + listId).append($("<option>").text(item));
+  });
+  
 }
 
 async function btnResmSubmitSheetHtml() {
