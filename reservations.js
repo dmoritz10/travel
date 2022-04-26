@@ -716,9 +716,9 @@ function btnPrintResHtml () {
     printable:        resRpt,
     properties:       [ 'Reservation', 'Detail' ],
     type:             'json',
-    gridHeaderStyle:  'font-family:arial; font-size: 18px; border-bottom: 2px solid darkgrey;',
+    gridHeaderStyle:  'font-size: 18px; border-bottom: 2px solid darkgrey;',
     gridStyle:        'border-bottom: 4px solid lightgrey;',
-    style:            "font-family:arial;"
+    style:            'font-family:arial;'
       
   })
 
