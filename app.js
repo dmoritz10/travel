@@ -314,6 +314,12 @@ jQuery(function ($) {
             //   document.documentElement.requestFullscreen();
             // });
 
+            calendarInstance.setOptions( {
+                manualEditingEnabled: false
+                // maximumEventsPerDayDisplay: 0,
+                // visibleDays: [ 0, 1, 2, 3, 4 ]
+            } );
+
             
             var whiteList = $.fn.tooltip.Constructor.Default.allowList
           
