@@ -705,7 +705,7 @@ function btnPrintResHtml () {
 
       resRpt.push({
         
-        'Reservation': eleChildren[j].innerHTML
+        'Reservation': '<h4>' +  eleChildren[j].innerHTML
 
       })
 
