@@ -696,24 +696,13 @@ function btnPrintResHtml () {
     console.log('$ele', $ele)
     console.log($ele.children()    )
 
-    var eleChildren = $ele.children()
+    var eleC = $ele.children()
 
-    for (j=0;j<eleChildren.length;j++) {
+    var res = '<h4>' + eleC[0].innerText + '<br>' + eleC[2].innerText
 
-      var eleC = eleChildren[j]
-
-      if (j == 0) {
-        var res = '<h4>' + eleC.innerText 
-        var dtl = ''
-        continue
-      }
-
-      dtl += '<br>' + eleC.innerText 
+    var dtl = eleC[1].innerText + '<br>' + eleC[3].innerText + '<br>' + eleC[4].innerText + '<br>' + eleC[5].innerText
 
       
-
-    }
-
     resRpt.push({
         
       'Reservation':  res,
