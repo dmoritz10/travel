@@ -729,9 +729,9 @@ function btnPrintResHtml () {
     printable:        resRpt,
     properties:       [ 'Reservation', 'Detail' ],
     type:             'json',
-    targetStyle:      'font-family:arial',
+    targetStyles:     ['font-family'],
     style:            'font-family:arial;',
-    gridHeaderStyle:  'font-size: 18px; border-bottom: 2px solid darkgrey;',
+    gridHeaderStyle:  'font-family:arial;font-size: 18px; border-bottom: 2px solid darkgrey;',
     gridStyle:        'border-bottom: 4px solid lightgrey;'
       
   })
