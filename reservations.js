@@ -712,12 +712,14 @@ function btnPrintResHtml () {
   }
 
   printJS({
+    
     printable: resRpt,
     properties: [ 'Reservation', 'Detail' ],
     type: 'json',
-    header: '<h3 class="">Reservations</h3>',
     gridHeaderStyle: 'color: blue;  border-bottom: 2px solid darkgrey;',
-    gridStyle: 'border-bottom: 4px solid lightgrey;'
-      })
+    gridStyle: 'border-bottom: 4px solid lightgrey;',
+    font: 'Arial'
+      
+  })
 
 }
