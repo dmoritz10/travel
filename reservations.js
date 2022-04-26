@@ -717,8 +717,8 @@ function btnPrintResHtml () {
     properties: [ 'Reservation', 'Detail' ],
     type: 'json',
     gridHeaderStyle: 'color: blue;  border-bottom: 2px solid darkgrey;',
-    gridStyle: 'border-bottom: 4px solid lightgrey;',
-    font: 'Arial'
+    gridStyle:        'border-bottom: 4px solid lightgrey;',
+    style:            "font-family:arial;"
       
   })
 
