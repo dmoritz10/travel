@@ -339,7 +339,8 @@ async function btnAddReservationHtml() {
   $("#reservation-modal").modal('show');
 
   $('#resmSource').val('Manual')
-  // $('#resmReservation').focus()
+
+  buildTripList('resmTripsList')
 
   $('#btnResmDelete').addClass('d-none')
 
