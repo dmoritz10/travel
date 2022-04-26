@@ -713,10 +713,10 @@ function btnPrintResHtml () {
 
   printJS({
     
-    printable: resRpt,
-    properties: [ 'Reservation', 'Detail' ],
-    type: 'json',
-    gridHeaderStyle: 'color: blue;  border-bottom: 2px solid darkgrey;',
+    printable:        resRpt,
+    properties:       [ 'Reservation', 'Detail' ],
+    type:             'json',
+    gridHeaderStyle:  'font-family:arial; font-size: 18px; border-bottom: 2px solid darkgrey;',
     gridStyle:        'border-bottom: 4px solid lightgrey;',
     style:            "font-family:arial;"
       
