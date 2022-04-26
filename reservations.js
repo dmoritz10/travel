@@ -700,26 +700,35 @@ function btnPrintResHtml () {
 
     for (j=0;j<eleChildren.length;j++) {
 
-      console.log(eleChildren[j].innerHTML)
-      console.log(eleChildren[j].innerText)
+      var eleC = eleChildren[j]
 
-      resRpt.push({
-        
-        'Reservation': '<h4>' +  eleChildren[j].innerText + '</h4>',
-        'test':         '<bold>>hi dan</bold><br>' + eleChildren[j].innerText + '<br>'
+      if (j == 0) {
+        var res = eleC.innerText 
+        var dtl = ''
+        continue
+      }
 
-      })
+      dtl += '<br>' + eleC.innerText 
+
+      
 
     }
+
+    resRpt.push({
+        
+      'Reservation':  res,
+      'Detail':       dtl
+
+    })
 
   }
 
   printJS({
     printable: resRpt,
-    properties: [ 'Reservation', 'test' ],
+    properties: [ 'Reservation', 'Detail' ],
     type: 'json',
-    gridHeaderStyle: 'color: red;  border: 2px solid #3971A5;',
-    gridStyle: 'border-bottom: 2px solid #3971A5;'
+    gridHeaderStyle: 'color: blue;  border: 2px solid #3971A5;',
+    gridStyle: 'border-bottom: 2px solid lightgrey;'
       })
 
 }
