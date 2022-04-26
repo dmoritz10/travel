@@ -699,10 +699,9 @@ function btnPrintResHtml () {
 
 function btnShowCalendarHtml() {
 
-  var calendarInstance = calendarJs( "resCalendar", {
-    manualEditingEnabled: true
-    // All your options can be set here
-  } ); 
+  var calendarInstance = calendarJs( "resCalendar"); 
+
+  console.log('cevent', calendarInstance)
 
   var event = {
     from: new Date(),
