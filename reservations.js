@@ -705,8 +705,8 @@ function btnPrintResHtml () {
 
       resRpt.push({
         
-        'Reservation': '<div style="background-color:powderblue;">' +  eleChildren[j].innerText,
-        'test':         'div class="text-success h4  text-center">hi dan</div>'
+        'Reservation': '<div style="background-color:red;">' +  eleChildren[j].innerText,
+        'test':         '<div class="text-success h4  text-center">hi dan</div>'
 
       })
 
@@ -717,7 +717,9 @@ function btnPrintResHtml () {
   printJS({
     printable: resRpt,
     properties: [ 'Reservation', 'test' ],
-    type: 'json'
+    type: 'json',
+    gridHeaderStyle: 'color: red;  border: 2px solid #3971A5;',
+    gridStyle: 'border-bottom: 2px solid #3971A5;'
       })
 
 }
