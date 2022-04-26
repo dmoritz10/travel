@@ -232,12 +232,16 @@ function buildTripList(listId) {
 
   var trips = resVals.map(x => x[resHdrs.indexOf('Trip')])
 
+
+  console.log('trips', trips)
   var uniqueTrips = [...new Set(trips)].sort()
+
+  console.log(uniqueTrips)
 
   $.each(uniqueTrips, function(i, item) {
     $("#" + listId).append($("<option>").text(item));
   });
-  
+
 }
 
 async function btnResmSubmitSheetHtml() {
