@@ -705,8 +705,8 @@ function btnPrintResHtml () {
 
       resRpt.push({
         
-        'Reservation': '<div style="background-color:red;">' +  eleChildren[j].innerText,
-        'test':         '<div class="text-success h4  text-center">hi dan</div>'
+        'Reservation': '<span style="background-color:red;">' +  eleChildren[j].innerText + '</span>',
+        'test':         '<span class="text-success h4  text-center">hi dan</span>'
 
       })
 
