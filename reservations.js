@@ -716,7 +716,7 @@ function btnPrintResHtml () {
 
   printJS({
     printable: resRpt,
-    properties: [ 'Reservation' ],
+    properties: [ 'Reservation', 'test' ],
     type: 'json'
       })
 
