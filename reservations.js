@@ -757,23 +757,5 @@ function btnShowCalendarHtml() {
   // render the calendar
   calendar.render();
 
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-
-    events: [
-      {
-        title: 'All Day Event',
-        start: '2020-02-01'
-      },
-      {
-        title: 'Long Event',
-        start: '2020-02-07',
-        end: '2020-02-10'
-      },
-      {
-        groupId: '999',
-        title: 'Repeating Event',
-        start: '2020-02-09T16:00:00'
-      }
-
 
 }
