@@ -708,6 +708,11 @@ function btnShowCalendarHtml() {
     themeSystem: 'bootstrap5',
     editable: false,
     eventBackgroundColor: green,
+    headerToolbar: {
+      left: 'dayGridMonth,timeGridWeek,timeGridDay',
+      center: 'title',
+      right: 'prevYear,prev,next,nextYear' 
+    },
 
     eventClick: function(info) {
       console.log('info', info)
@@ -725,12 +730,8 @@ function btnShowCalendarHtml() {
   
       // change the border color just for fun
       info.el.style.borderColor = 'red';
-    },
-    headerToolbar: {
-      left: 'dayGridMonth,timeGridWeek,timeGridDay',
-      center: 'title',
-      right: 'prevYear,prev,next,nextYear' 
     }
+    
     
   });
   
@@ -781,7 +782,8 @@ function btnShowCalendarHtml() {
         title: eleC[0].innerText.slice(0,-13),
         start: strDt,
         end: endDt,
-        allDay: true
+        allDay: true,
+        eventBackgroundColor: green
       }
     )
 
