@@ -80,7 +80,7 @@ async function listReservations(title = "Reservations") {
 
     ele.find('#resArrIdx')[0].innerHTML = arrIdx
     ele.find('#resTrip')[0].innerHTML = resObj['Trip']
-    ele.find('#resTrip')[0].innerHTML = resObj['Type']
+    ele.find('#resType')[0].innerHTML = resObj['Type']
     ele.find('#resStartEndDateTime')[0].innerHTML = start + (end ? (' - ' + end) : '')
     ele.find('#resStatus')[0].innerHTML = resObj['Status']
     ele.find('#resLocation')[0].innerHTML = locnHtml
