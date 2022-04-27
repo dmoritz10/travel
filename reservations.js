@@ -704,7 +704,7 @@ function btnShowCalendarHtml() {
   console.log('calendar', calendarEl)
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
+    initialView: 'dayGridWeek',
     themeSystem: 'bootstrap5'
   });
   
