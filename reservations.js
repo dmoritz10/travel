@@ -699,22 +699,81 @@ function btnPrintResHtml () {
 
 function btnShowCalendarHtml() {
 
-  var calendarInstance = new calendarJs( "resCalendar"); 
+  var calendarEl = document.getElementById('calendar');
 
-  calendarInstance.setOptions( {
-    manualEditingEnabled: false,
-    maximumEventsPerDayDisplay: 3,
-    visibleDays: [ 0, 1, 2, 3, 4 ]
-  } );
+  var calendar = new FullCalendar.Calendar(calendarEl, {
 
-  var event = {
-    from: new Date(),
-    to: new Date(),
-    title: "A New Event",
-    description: "A description of the event"
-  };
+      // plugins to load
+      plugins: ['dayGrid', 'timeGrid'], // plugins to load
 
+      // header controls
+      header: {
+        left: 'dayGridMonth,timeGridWeek,timeGridDay custom1',
+        center: 'title',
+        right: 'custom2 prevYear,prev,next,nextYear' 
+      },
 
-  calendarInstance.addEvent( event );
+      // footer controls
+      footer: {
+        left: 'custom1,custom2',
+        center: '',
+        right: 'prev,next' 
+      },
+    
+    // custom toolbar buttons
+    customButtons: {
+      custom1: {
+        text: 'custom 1',
+        click: function () {
+          alert('clicked custom button 1!');
+        } 
+      },
+
+      custom2: {
+        text: 'custom 2',
+        click: function () {
+          alert('clicked custom button 2!');
+        }
+      } 
+    },
+    events: [
+      {
+        title: 'All Day Event',
+        start: '2022-04-27'
+      },
+      {
+        title: 'Long Event',
+        start: '2022-03-27',
+        end: '2022-04-27'
+      },
+      {
+        groupId: '999',
+        title: 'Repeating Event',
+        start: '2022-04-27T16:00:00'
+      }
+    ]
+});
+
+  // render the calendar
+  calendar.render();
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+
+    events: [
+      {
+        title: 'All Day Event',
+        start: '2020-02-01'
+      },
+      {
+        title: 'Long Event',
+        start: '2020-02-07',
+        end: '2020-02-10'
+      },
+      {
+        groupId: '999',
+        title: 'Repeating Event',
+        start: '2020-02-09T16:00:00'
+      }
+
 
 }
