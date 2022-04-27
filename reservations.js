@@ -263,7 +263,7 @@ async function btnResmSubmitSheetHtml() {
     vals[resHdrs.indexOf("Start Date")] = $('#resmStartDateTime').val()
     vals[resHdrs.indexOf("End Date")] = $('#resmEndDateTime').val()
     vals[resHdrs.indexOf("Description")] = $('#resmDescription').val()
-    vals[resHdrs.indexOf("Composite Key")] = $('#resmReservation').val() + ' - ' + $('#resmTrip').val() + ' - ' + $('#resmLocation').val() + ' - ' + $('#resmStatus').val()
+    vals[resHdrs.indexOf("Composite Key")] = $('#resmReservation').val() + ' - ' + $('#resmTrip').val() + ' - ' + $('#resmType').val() + ' - ' + $('#resmLocation').val() + ' - ' + $('#resmStatus').val()
 
   } else {
 
