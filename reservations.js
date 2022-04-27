@@ -52,8 +52,6 @@ async function listReservations(title = "Reservations") {
 
     var resObj = makeObj(resVals[j], resHdrs)
 
-    console.log('resObj', resObj)
-
     var arrIdx = resVals[j].pop()                    // remove idx resVals after sort
     resIdxArr.push(arrIdx)                           // create parallel xref of idxs to sheet
 
@@ -80,7 +78,7 @@ async function listReservations(title = "Reservations") {
     var uriLocn = encodeURIComponent( locn )
     var locnHtml = locn ? `<a href='https://maps.google.com/maps?q=${uriLocn}' target='_blank'>${locn}</a>` : ""
 
-    ele.find('#resArrIdx')[0].innerHTML = resIdxArr[arrIdx]
+    ele.find('#resArrIdx')[0].innerHTML = j
     ele.find('#resTrip')[0].innerHTML = resObj['Trip']
     ele.find('#resType')[0].innerHTML = resObj['Type']
     ele.find('#resStartEndDateTime')[0].innerHTML = start + (end ? (' - ' + end) : '')
@@ -210,6 +208,8 @@ async function editReservation(arrIdx) {
   var vals = resVals[arrIdx]
 
   var resObj = makeObj(vals, resHdrs)
+
+  console.log(resObj)
 
   $('#resmReservation').val(resObj['Reservation'])
   $('#resmTrip').val(resObj['Trip'])
