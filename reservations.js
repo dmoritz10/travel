@@ -736,23 +736,29 @@ function btnShowCalendarHtml() {
       
     var d = eleC[2].innerText.split(' - ')
 
-    console.log('s', d)
-    console.log(new Date(d[1]))
+    var dStr = d[0].slice(0,d[0].indexOf(','))
+    var dEnd = d[1].slice(0,d[1].indexOf(','))
 
-    var dd = d[1].split('/')
+    var yr = dEnd.slice(-4)
+
+    var strDte = dStr + '/' + yr
+    var endDte = dEnd
+
+    console.log('endDt', dEnd)
 
 
-    var strDt = DateTime.fromJSDate(new Date(d[0])).toISO().slice(0,-13)
-    var endDt = DateTime.fromJSDate(new Date(d[1])).toISO().slice(0,-13)
 
-    console.log('endDt', endDt)
+
+    var strDt = DateTime.fromJSDate(new Date(strDte)).toISO().slice(0,-13)
+    var endDt = DateTime.fromJSDate(new Date(endDte)).toISO().slice(0,-13)
+
 
 
     calendar.addEvent (  
       {
         title: eleC[0].innerText.slice(0,-13),
         start: strDt,
-        end: endDr
+        end: endDt
       }
     )
 
