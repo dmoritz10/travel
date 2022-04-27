@@ -704,15 +704,12 @@ function btnShowCalendarHtml() {
   console.log('calendar', calendarEl)
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
-    plugins: ["interaction", "dayGrid", "timeGrid", "resourceTimeline"],
-    header: {
-      left: "prev,next today",
-      center: "title",
-      right: "dayGridMonth,timeGridWeek,timeGridDay"
-    },
-    editable: true,
+    initialView: 'dayGridMonth',
+    themeSystem: 'bootstrap5'
+  });
+  
 
-  events: [
+calendar.events =  [
   {
     title: 'All Day Event',
     start: '2022-04-27'
@@ -723,7 +720,6 @@ function btnShowCalendarHtml() {
     end: '2022-04-29'
   }
       ]  
-    })
 
   // render the calendar
   calendar.render();
@@ -734,7 +730,7 @@ function btnShowCalendarHtml() {
       start: '2022-04-28'
     }
   )
-
+  
   console.log(calendar)
 
 }
