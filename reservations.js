@@ -729,6 +729,7 @@ calendar.events =  [
 
   // render the calendar
   calendar.render();
+  
 
 
 }
