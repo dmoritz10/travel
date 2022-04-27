@@ -704,21 +704,20 @@ function btnShowCalendarHtml() {
   console.log('calendar', calendarEl)
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
-    themeSystem: 'bootstrap5',
-    editable: false,
-    eventBackgroundColor: green,
+    initialView:          'dayGridMonth',
+    themeSystem:          'bootstrap5',
+    editable:             false,
     headerToolbar: {
-      left: 'dayGridMonth,timeGridWeek,timeGridDay',
-      center: 'title',
-      right: 'prevYear,prev,next,nextYear' 
+      left:               'dayGridMonth,timeGridWeek,timeGridDay',
+      center:             'title',
+      right:              'prevYear,prev,next,nextYear' 
     },
 
     eventClick: function(info) {
       
       console.log(info.event._instance.range)
       
-      alert('Event: ' + info.event.title);
+      console.log('Event: ' + info.event.title);
 
       bootbox.alert(info.event.title + '<br>' + 
       info.event._instance.range.startStr + '<br>' + 
