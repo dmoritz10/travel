@@ -708,6 +708,7 @@ function btnShowCalendarHtml() {
     themeSystem: 'bootstrap5',
     eventClick: function(info) {
       console.log('info', info)
+      console.log(info.event.getCurrentData())
       alert('Event: ' + info.event.title);
       alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
       alert('View: ' + info.view.type);
