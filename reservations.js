@@ -705,7 +705,13 @@ function btnShowCalendarHtml() {
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridWeek',
-    themeSystem: 'bootstrap5'
+    themeSystem: 'bootstrap5',
+    header: {
+      left: 'dayGridMonth,timeGridWeek,timeGridDay',
+      center: 'title',
+      right: 'prevYear,prev,next,nextYear' 
+    }
+    
   });
   
 
@@ -729,6 +735,23 @@ calendar.events =  [
       title: 'Hi dan',
       start: '2022-04-28'
     }
+    
+  )
+
+  calendar.addEvent (  
+    {
+      title: 'Yo dan',
+      start: '2022-04-29',
+      end: '2022-04-19'
+    }
+    
+  )
+  calendar.addEvent (  
+    {
+      title: 'event3',
+      start: '2022-04-28'
+    }
+    
   )
   
   console.log(calendar)
