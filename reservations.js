@@ -715,21 +715,15 @@ function btnShowCalendarHtml() {
     },
 
     eventClick: function(info) {
-      console.log('info', info)
       
-      try{
-      // console.log('startStr', startStr)
       console.log(info.event._instance.range)
       
-      } catch(e) {console.log(e)}
       alert('Event: ' + info.event.title);
 
+      bootbox.alert(info.event.title + '<br>' + info.event._instance.range.startStr + '<br>' +info.event._instance.range.endStr );
 
-      alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-      alert('View: ' + info.view.type);
-  
-      // change the border color just for fun
-      info.el.style.borderColor = 'red';
+
+
     }
     
     
