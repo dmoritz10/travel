@@ -213,7 +213,7 @@ async function editReservation(arrIdx) {
 
   $('#resmReservation').val(resObj['Reservation'])
   $('#resmTrip').val(resObj['Trip'])
-  $('#resmType')[0].val = resObj['Type']
+  $('#resmType')[0].val(resObj['Type'])
   $('#resmStatus').val(resObj['Status'])
   $('#resmSource').val(resObj['Source'])
   $('#resmLocation').val(resObj['Location'])
