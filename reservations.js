@@ -701,6 +701,14 @@ function btnShowCalendarHtml() {
 
   var calendarInstance = new calendarJs( "resCalendar"); 
 
+
+
+  calendarInstance.setOptions( {
+    manualEditingEnabled: false,
+    maximumEventsPerDayDisplay: 3,
+    visibleDays: [ 0, 1, 2, 3, 4 ]
+} );
+
   console.log('cevent', calendarInstance)
 
   var event = {
