@@ -52,6 +52,8 @@ async function listReservations(title = "Reservations") {
 
     var resObj = makeObj(resVals[j], resHdrs)
 
+    console.log('resObj', resObj)
+
     var arrIdx = resVals[j].pop()                    // remove idx resVals after sort
     resIdxArr.push(arrIdx)                           // create parallel xref of idxs to sheet
 
