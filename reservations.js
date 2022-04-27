@@ -703,7 +703,7 @@ function btnShowCalendarHtml() {
 
   console.log('calendar', calendarEl)
 
-  var calendar = new FullCalendar.Calendar(calendarEl, {
+  var calendar = new Calendar(calendarEl, {
 
       // plugins to load
       plugins: ['dayGrid', 'timeGrid'], // plugins to load
