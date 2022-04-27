@@ -712,7 +712,7 @@ function btnShowCalendarHtml() {
       console.log('info', info)
       
       try{
-      console.log('startStr', startStr)
+      // console.log('startStr', startStr)
       console.log(info.event._context.getCurrentData())
       
       } catch(e) {console.log(e)}
