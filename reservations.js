@@ -715,18 +715,6 @@ function btnShowCalendarHtml() {
   });
   
 
-calendar.events =  [
-  {
-    title: 'All Day Event',
-    start: '2022-04-27'
-  },
-  {
-    title: 'Long Event',
-    start: '2022-04-17',
-    end: '2022-04-29'
-  }
-      ]  
-
   // render the calendar
   calendar.render();
   
