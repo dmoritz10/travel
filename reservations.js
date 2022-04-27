@@ -766,8 +766,8 @@ function btnShowCalendarHtml() {
 
     console.log('endDt', dEnd)
 
-    var strDt = DateTime.fromJSDate(new Date(d[0])).toISO().slice(0,-13)
-    var endDt = DateTime.fromJSDate(new Date(d[1])).toISO().slice(0,-13)
+    var strDt = DateTime.fromJSDate(new Date(strDte)).toISO().slice(0,-13)
+    var endDt = DateTime.fromJSDate(new Date(endDte)).toISO().slice(0,-13)
 
     console.log('dt', strDt, endDt, DateTime.fromJSDate(new Date(d[0])).toISO())
 
@@ -776,8 +776,8 @@ function btnShowCalendarHtml() {
         title:                eleC[0].innerText,
         start:                strDt,
         end:                  endDt,
-        allDay:               true
-        // eventBackgroundColor: 'red'
+        allDay:               true,
+        eventBackgroundColor: 'red'
         // borderColor:          'blue',
         // textColor:            'green'
       }
