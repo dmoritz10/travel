@@ -701,6 +701,8 @@ function btnShowCalendarHtml() {
 
   var calendarEl = document.getElementById('calendar');
 
+  console.log('calendar', calendarEl)
+
   var calendar = new FullCalendar.Calendar(calendarEl, {
 
       // plugins to load
