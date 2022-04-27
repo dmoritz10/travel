@@ -699,14 +699,14 @@ function btnPrintResHtml () {
 
 function btnShowCalendarHtml() {
 
-  var calendarEl = document.getElementById('calendar');
+  var calendarEl = document.getElementById('resCalendar');
 
   console.log('calendar', calendarEl)
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
 
       // plugins to load
-      // plugins: ['dayGrid', 'timeGrid'], // plugins to load
+      plugins: ['dayGrid', 'timeGrid'], // plugins to load
 
       // header controls
       header: {
