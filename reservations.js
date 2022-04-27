@@ -706,6 +706,15 @@ function btnShowCalendarHtml() {
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
     themeSystem: 'bootstrap5',
+    eventClick: function(info) {
+      console.log('info', info)
+      alert('Event: ' + info.event.title);
+      alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+      alert('View: ' + info.view.type);
+  
+      // change the border color just for fun
+      info.el.style.borderColor = 'red';
+    },
     header: {
       left: 'dayGridMonth,timeGridWeek,timeGridDay',
       center: 'title',
@@ -751,6 +760,8 @@ function btnShowCalendarHtml() {
 
     var strDt = DateTime.fromJSDate(new Date(strDte)).toISO().slice(0,-13)
     var endDt = DateTime.fromJSDate(new Date(endDte)).toISO().slice(0,-13)
+
+    console.log('dt', strDt, endDt, DateTime.fromJSDate(new Date(strDte)).toISO())
 
 
 
