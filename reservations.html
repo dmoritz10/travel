@@ -8,7 +8,6 @@
       <div class="col mt-1">
         <div id="resTitle" class="label  text-center h1 divfullscreen">&nbsp;</div>
         <div id="resNbr" class="text-center h4 hpElem">&nbsp</div>
-        <input type="text" class="form-control d-none" id="resArrIdx" >
 
       </div>
       <div class="col-2"> 
@@ -62,6 +61,7 @@
           <div class="col px-1">
             <div id="resReservation" class="text-success label  text-start h3 pb-0 align-middle "></div>
             <div id="resCompositeKey" class="d-none"></div>
+            <input type="text" class="form-control d-none" id="resArrIdx" >
           </div>
 
           <div class="col-1 px-0 align-right">
@@ -219,9 +219,13 @@
               </div>
 
               <div class="row my-0">
-                <div class="col">
+                <div class="col d-none">
                   <label for="resmSource" class="col-form-label">Source</label>
                   <input type="text" class="form-control text-success"  style="font-size:1.25rem" id="resmSource" name="resmSource">
+                </div>
+                <div class="col">
+                  <label for="resmType" class="col-form-label">Type</label>
+                  <input list="resmTypeList"  class="form-control text-success" style="font-size:1.25rem" id="resmType" name="resmType" required>
                 </div>
                 <div class="col">
                   <label for="resmStatus" class="col-form-label">Status</label>
@@ -231,6 +235,14 @@
                   <label class="col-form-label">&nbsp;</label>
                 </div>
               </div>
+
+              <datalist id="resmTypeList">
+                <option value="Hotel">
+                <option value="Flight">
+                <option value="Car">
+                <option value="Restaurant">
+                <option value="Tour">
+              </datalist>
          
               <div class="row my-0">
                 <div class="col">

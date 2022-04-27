@@ -52,8 +52,8 @@ async function listReservations(title = "Reservations") {
 
     var resObj = makeObj(resVals[j], resHdrs)
 
-    var x = resVals[j].pop()                    // remove idx resVals after sort
-    resIdxArr.push(x)                           // create parallel xref of idxs to sheet
+    var arrIdx = resVals[j].pop()                    // remove idx resVals after sort
+    resIdxArr.push(arrIdx)                           // create parallel xref of idxs to sheet
 
    
     var ele = $tblSheets.clone();
@@ -78,7 +78,9 @@ async function listReservations(title = "Reservations") {
     var uriLocn = encodeURIComponent( locn )
     var locnHtml = locn ? `<a href='https://maps.google.com/maps?q=${uriLocn}' target='_blank'>${locn}</a>` : ""
 
+    ele.find('#resArrIdx')[0].innerHTML = arrIdx
     ele.find('#resTrip')[0].innerHTML = resObj['Trip']
+    ele.find('#resType')[0].innerHTML = resObj['Type']
     ele.find('#resStartEndDateTime')[0].innerHTML = start + (end ? (' - ' + end) : '')
     ele.find('#resStatus')[0].innerHTML = resObj['Status']
     // ele.find('#resLocation')[0].innerHTML = resObj['Location']
@@ -212,6 +214,7 @@ async function editReservation(arrIdx) {
 
   $('#resmReservation').val(resObj['Reservation'])
   $('#resmTrip').val(resObj['Trip'])
+  $('#resType')[0].val = resObj['Type']
   $('#resmStatus').val(resObj['Status'])
   $('#resmSource').val(resObj['Source'])
   $('#resmLocation').val(resObj['Location'])
@@ -254,6 +257,7 @@ async function btnResmSubmitSheetHtml() {
 
     vals[resHdrs.indexOf("Reservation")] = $('#resmReservation').val()
     vals[resHdrs.indexOf("Trip")] = $('#resmTrip').val()
+    vals[resHdrs.indexOf("Type")] = $('#resType').val()
     vals[resHdrs.indexOf("Status")] = $('#resmStatus').val()
     vals[resHdrs.indexOf("Source")] = $('#resmSource').val()
     vals[resHdrs.indexOf("Location")] = $('#resmLocation').val()
@@ -273,13 +277,14 @@ async function btnResmSubmitSheetHtml() {
 
     vals[resHdrs.indexOf("Reservation")] = $('#resmReservation').val()
     vals[resHdrs.indexOf("Trip")] = $('#resmTrip').val()
+    vals[resHdrs.indexOf("Type")] = $('#resType').val()
     vals[resHdrs.indexOf("Status")] = $('#resmStatus').val()
     vals[resHdrs.indexOf("Source")] = $('#resmSource').val()
     vals[resHdrs.indexOf("Location")] = $('#resmLocation').val()
     vals[resHdrs.indexOf("Start Date")] = $('#resmStartDateTime').val()
     vals[resHdrs.indexOf("End Date")] = $('#resmEndDateTime').val()
     vals[resHdrs.indexOf("Description")] = $('#resmDescription').val()
-    vals[resHdrs.indexOf("Composite Key")] = $('#resmReservation').val() + ' - ' + $('#resmTrip').val() + ' - ' + $('#resmLocation').val() + ' - ' + $('#resmStatus').val()
+    vals[resHdrs.indexOf("Composite Key")] = $('#resmReservation').val() + ' - ' + $('#resmTrip').val() + ' - ' + $('#resmType').val() + ' - ' + $('#resmLocation').val() + ' - ' + $('#resmStatus').val()
 
   }
 
