@@ -739,43 +739,26 @@ function btnShowCalendarHtml() {
     console.log('s', d)
     console.log(new Date(d[1]))
 
+    var dd = d[1].split('/')
 
-  var endDt = DateTime.fromJSDate(new Date(d[1])).toISO().slice(0,-13)
+
+    var strDt = DateTime.fromJSDate(new Date(d[0])).toISO().slice(0,-13)
+    var endDt = DateTime.fromJSDate(new Date(d[1])).toISO().slice(0,-13)
+
+    console.log('endDt', endDt)
 
 
     calendar.addEvent (  
       {
         title: eleC[0].innerText.slice(0,-13),
-        start: endDt
+        start: strDt,
+        end: endDr
       }
     )
 
   }
   
-  calendar.addEvent (  
-    {
-      title: 'Hi dan',
-      start: '2022-04-28'
-    }
-    
-  )
 
-  calendar.addEvent (  
-    {
-      title: 'Yo dan',
-      start: '2022-04-19',
-      end: '2022-04-29'
-    }
-    
-  )
-  calendar.addEvent (  
-    {
-      title: 'event3',
-      start: '2022-04-28'
-    }
-    
-  )
-  
   console.log(calendar)
 
 }
