@@ -83,15 +83,12 @@ async function listReservations(title = "Reservations") {
     ele.find('#resType')[0].innerHTML = resObj['Type']
     ele.find('#resStartEndDateTime')[0].innerHTML = start + (end ? (' - ' + end) : '')
     ele.find('#resStatus')[0].innerHTML = resObj['Status']
-    // ele.find('#resLocation')[0].innerHTML = resObj['Location']
     ele.find('#resLocation')[0].innerHTML = locnHtml
     ele.find('#resDescription')[0].innerHTML = resObj['Description'] ? resObj['Description'].replace(/\n/g, "<br>") : ''
 
     ele.find('#btnResEdit')[0].setAttribute("onclick", "editReservation(" + j + ")");
 
     ele.find('#btnResFavorite')[0].setAttribute("onclick", "setFavorite(" + j + ")");
-
-    // ele.find('#btnResShowDetail')[0].setAttribute("onclick", "showReservation(" + j + ")");
 
    setSmsHref ({
       eventTitle: resObj['Reservation'],
