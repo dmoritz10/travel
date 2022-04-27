@@ -706,7 +706,7 @@ function btnShowCalendarHtml() {
   var calendar = new FullCalendar.Calendar(calendarEl, {
 
       // plugins to load
-      plugins: ['dayGrid', 'timeGrid'], // plugins to load
+      // plugins: ['dayGrid', 'timeGrid'], // plugins to load
 
       // header controls
       header: {
