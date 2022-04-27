@@ -710,6 +710,23 @@ function btnShowCalendarHtml() {
   
 console.log(calendar)
 
+calendar.events =  [
+  {
+    title: 'All Day Event',
+    start: '2022-04-27'
+  },
+  {
+    title: 'Long Event',
+    start: '2022-04-17',
+    end: '2022-04-27'
+  },
+  {
+    groupId: '999',
+    title: 'Repeating Event',
+    start: '2022-04-27T16:00:00'
+  }
+      ]  
+
   // render the calendar
   calendar.render();
 
