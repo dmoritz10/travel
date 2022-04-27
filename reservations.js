@@ -80,7 +80,7 @@ async function listReservations(title = "Reservations") {
     var uriLocn = encodeURIComponent( locn )
     var locnHtml = locn ? `<a href='https://maps.google.com/maps?q=${uriLocn}' target='_blank'>${locn}</a>` : ""
 
-    ele.find('#resArrIdx')[0].innerHTML = arrIdx
+    ele.find('#resArrIdx')[0].innerHTML = resIdxArr[arrIdx]
     ele.find('#resTrip')[0].innerHTML = resObj['Trip']
     ele.find('#resType')[0].innerHTML = resObj['Type']
     ele.find('#resStartEndDateTime')[0].innerHTML = start + (end ? (' - ' + end) : '')
