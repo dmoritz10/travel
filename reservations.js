@@ -703,43 +703,11 @@ function btnShowCalendarHtml() {
 
   console.log('calendar', calendarEl)
 
-  var calendar = new Calendar(calendarEl, {
-
-      // plugins to load
-      plugins: ['dayGrid', 'timeGrid'], // plugins to load
-
-      // header controls
-      header: {
-        left: 'dayGridMonth,timeGridWeek,timeGridDay',
-        center: 'title',
-        right: 'prevYear,prev,next,nextYear' 
-      },
-
-      // footer controls
-      // footer: {
-      //   center: '',
-      //   right: 'prev,next' 
-      // },
-    
-    // custom toolbar buttons
-    
-    events: [
-      {
-        title: 'All Day Event',
-        start: '2022-04-27'
-      },
-      {
-        title: 'Long Event',
-        start: '2022-03-27',
-        end: '2022-04-27'
-      },
-      {
-        groupId: '999',
-        title: 'Repeating Event',
-        start: '2022-04-27T16:00:00'
-      }
-    ]
-});
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth'
+  });
+  
+console.log(calendar)
 
   // render the calendar
   calendar.render();
