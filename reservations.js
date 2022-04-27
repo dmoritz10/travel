@@ -719,11 +719,12 @@ function btnShowCalendarHtml() {
       
       console.log('Event: ' + info.event.title);
 
-      bootbox.alert(info.event.title + '<br>' + 
-      info.event._instance.range.startStr + '<br>' + 
-      info.event._instance.range.endStr );
+      var msg = ""
 
-
+      bootbox.alert(
+        info.event.title + '<br>' + 
+                    info.event._instance.range.start + '<br>' + 
+                    info.event._instance.range.end );
 
     }
     
