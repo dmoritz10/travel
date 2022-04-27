@@ -720,7 +720,9 @@ function btnShowCalendarHtml() {
       
       alert('Event: ' + info.event.title);
 
-      bootbox.alert(info.event.title + '<br>' + info.event._instance.range.startStr + '<br>' +info.event._instance.range.endStr );
+      bootbox.alert(info.event.title + '<br>' + 
+      info.event._instance.range.startStr + '<br>' + 
+      info.event._instance.range.endStr );
 
 
 
