@@ -707,6 +707,7 @@ function btnShowCalendarHtml() {
     initialView: 'dayGridMonth',
     themeSystem: 'bootstrap5',
     editable: false,
+    eventBackgroundColor: green,
 
     eventClick: function(info) {
       console.log('info', info)
