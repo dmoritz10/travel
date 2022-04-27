@@ -779,11 +779,11 @@ function btnShowCalendarHtml() {
 
     calendar.addEvent (  
       {
-        title: eleC[0].innerText.slice(0,-13),
-        start: strDt,
-        end: endDt,
-        allDay: true,
-        eventBackgroundColor: green
+        title:                eleC[0].innerText,
+        start:                strDt,
+        end:                  endDt,
+        allDay:               true,
+        eventBackgroundColor: 'red'
       }
     )
 
