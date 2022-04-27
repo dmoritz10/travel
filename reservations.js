@@ -708,7 +708,6 @@ function btnShowCalendarHtml() {
     themeSystem: 'bootstrap5'
   });
   
-console.log(calendar)
 
 calendar.events =  [
   {
@@ -718,18 +717,20 @@ calendar.events =  [
   {
     title: 'Long Event',
     start: '2022-04-17',
-    end: '2022-04-27'
-  },
-  {
-    groupId: '999',
-    title: 'Repeating Event',
-    start: '2022-04-27T16:00:00'
+    end: '2022-04-29'
   }
       ]  
 
   // render the calendar
   calendar.render();
   
-
+  calendar.addEvent (  
+    {
+      title: 'Hi dan',
+      start: '2022-04-28'
+    }
+  )
+  
+  console.log(calendar)
 
 }
