@@ -717,6 +717,40 @@ function btnShowCalendarHtml() {
 
   // render the calendar
   calendar.render();
+
+  
+  var eleArr = [...$('#resContainer > div')].slice(1)      // remove the templace
+
+
+  for (let i=0; i<eleArr.length;i++) {
+
+    var $ele = $(eleArr[i])
+
+    if ($ele.hasClass('d-none') || $ele.css('display') == 'none') continue
+ 
+    var eleC = $ele.children()
+
+    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + eleC[2].innerText
+
+    var dtl = eleC[1].innerText + '<br>' + eleC[3].innerText + '<br>' + eleC[4].innerText + '<br>' + eleC[5].innerText
+      
+    var d = eleC[2].innerText.split(' - ')
+
+    console.log('s', d)
+    console.log(new Date(d[1]))
+
+
+  var endDt = DateTime.fromJSDate(new Date(d[1])).toISO().slice(0,-13)
+
+
+    calendar.addEvent (  
+      {
+        title: eleC[0].innerText.slice(0,-13),
+        start: endDt
+      }
+    )
+
+  }
   
   calendar.addEvent (  
     {
