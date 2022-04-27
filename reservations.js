@@ -712,11 +712,9 @@ function btnShowCalendarHtml() {
     to: new Date(),
     title: "A New Event",
     description: "A description of the event"
-};
+  };
 
 
-calendarInstance.addEvent( event );
-
-
+  calendarInstance.addEvent( event );
 
 }
