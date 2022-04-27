@@ -713,7 +713,7 @@ function btnShowCalendarHtml() {
       
       try{
       // console.log('startStr', startStr)
-      console.log(info.event._context.getCurrentData())
+      console.log(info.event._instance.range)
       
       } catch(e) {console.log(e)}
       alert('Event: ' + info.event.title);
