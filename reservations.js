@@ -777,7 +777,7 @@ function btnShowCalendarHtml() {
         start:                strDt,
         end:                  endDt,
         allDay:               true,
-        eventBackgroundColor: 'red'
+        backgroundColor: 'red'
         // borderColor:          'blue',
         // textColor:            'green'
       }
