@@ -736,8 +736,8 @@ function btnShowCalendarHtml() {
       
     var d = eleC[2].innerText.split(' - ')
 
-    var dStr = d[0].slice(0,d[0].indexOf(','))
-    var dEnd = d[1].slice(0,d[1].indexOf(','))
+    var dStr = d[0].indexOf(',') == -1 ? d[0] : d[0].slice(0,d[0].indexOf(','))
+    var dEnd = d[1].indexOf(',') == -1 ? d[1] : d[1].slice(0,d[1].indexOf(','))
 
     var yr = dEnd.slice(-4)
 
