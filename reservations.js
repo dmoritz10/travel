@@ -213,7 +213,7 @@ async function editReservation(arrIdx) {
 
   $('#resmReservation').val(resObj['Reservation'])
   $('#resmTrip').val(resObj['Trip'])
-  $('#resType')[0].val = resObj['Type']
+  $('#resmType')[0].val = resObj['Type']
   $('#resmStatus').val(resObj['Status'])
   $('#resmSource').val(resObj['Source'])
   $('#resmLocation').val(resObj['Location'])
@@ -256,7 +256,7 @@ async function btnResmSubmitSheetHtml() {
 
     vals[resHdrs.indexOf("Reservation")] = $('#resmReservation').val()
     vals[resHdrs.indexOf("Trip")] = $('#resmTrip').val()
-    vals[resHdrs.indexOf("Type")] = $('#resType').val()
+    vals[resHdrs.indexOf("Type")] = $('#resmType').val()
     vals[resHdrs.indexOf("Status")] = $('#resmStatus').val()
     vals[resHdrs.indexOf("Source")] = $('#resmSource').val()
     vals[resHdrs.indexOf("Location")] = $('#resmLocation').val()
@@ -276,7 +276,7 @@ async function btnResmSubmitSheetHtml() {
 
     vals[resHdrs.indexOf("Reservation")] = $('#resmReservation').val()
     vals[resHdrs.indexOf("Trip")] = $('#resmTrip').val()
-    vals[resHdrs.indexOf("Type")] = $('#resType').val()
+    vals[resHdrs.indexOf("Type")] = $('#resmType').val()
     vals[resHdrs.indexOf("Status")] = $('#resmStatus').val()
     vals[resHdrs.indexOf("Source")] = $('#resmSource').val()
     vals[resHdrs.indexOf("Location")] = $('#resmLocation').val()
