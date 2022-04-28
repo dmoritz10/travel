@@ -709,15 +709,29 @@ function btnShowCalendarHtml() {
 
       console.log('info: ', info);
 
-      var msg = resObj['Reservation'] + '<br>' + 
-                resObj['Start Date'] + '<br>' + 
-                resObj['End Date'] 
+      var rpt = []
 
+      rpt.push(['Start', resObj['Reservation']])
+      rpt.push(['End', resObj['Reservation']])
+    
+    var tbl = new Table();
+    
+    tbl
+      .setHeader()
+      .setTableHeaderClass()
+      .setData(rpt)
+      .setTableClass('table table-borderless')
+      .setTrClass('d-flex')
+      .setTcClass(['text-end col-4 h5 text-success align-items-center', 'text-start col h4'])
+      .setTdClass('py-1 pb-0 mb-0 border-0 align-bottom border-bottom')
+      .build();
+
+console.log('tbl', tbl)
 
       bootbox.alert({
 
         title: resObj['Reservation'],
-        message: msg
+        message: tbl.html
     
       });
     }
