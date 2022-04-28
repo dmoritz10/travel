@@ -694,7 +694,7 @@ function btnShowCalendarHtml() {
     themeSystem:          'bootstrap5',
     editable:             false,
     headerToolbar: {
-      left:               'dayGridMonth,timeGridWeek,timeGridDay',
+      left:               'dayGridMonth',
       center:             'title',
       right:              'prev,next' 
     },
@@ -714,7 +714,7 @@ function btnShowCalendarHtml() {
       rpt.push(['Type', resObj['Type'] + ' - ' + resObj['Status']])
       rpt.push(['Start', formatISODate(resObj['Start Date'])])
       rpt.push(['End', formatISODate(resObj['End Date'])])
-      rpt.push(['Description', resObj['Description']])
+      rpt.push(['', resObj['Description']])
     
     var tbl = new Table();
     
