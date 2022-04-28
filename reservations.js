@@ -710,9 +710,11 @@ function btnShowCalendarHtml() {
       console.log('info: ', info);
 
       var rpt = []
-
-      rpt.push(['Start', resObj['Reservation']])
-      rpt.push(['End', resObj['Reservation']])
+      rpt.push(['Trip', resObj['Trip'] ]),
+      rpt.push(['Type', resObj['Type'] + ' - ' + resObj['Status']]),
+      rpt.push(['Start', formatISODate(resObj['Start Date'])]),
+      rpt.push(['End', formatISODate(resObj['End Date'])]),
+      rpt.push(['End', formatISODate(resObj['End Date'])]),
     
     var tbl = new Table();
     
@@ -790,4 +792,15 @@ console.log('tbl', tbl)
       }
     )
   }
+}
+
+function formatISODate(date) {
+
+  var st = DateTime.fromISO(date).toLocaleString(DateTime.DATETIME_SHORT)
+  var stArr = st.split(', ')
+  stmd = stArr[0].substring(0, st.lastIndexOf('/'))
+  var start = stArr[1] == '12:00 AM' ? stmd : stmd + ', ' + stArr[1]
+
+  return start
+
 }
