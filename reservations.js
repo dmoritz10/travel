@@ -723,7 +723,7 @@ function btnShowCalendarHtml() {
       .setData(rpt)
       .setTableClass('table table-borderless')
       .setTrClass('d-flex')
-      .setTcClass(['text-end col-4 h5 text-success align-items-center', 'text-start col h4'])
+      .setTcClass(['text-end col-3 h5 text-success align-items-center', 'text-start col h5'])
       .setTdClass('py-1 pb-0 mb-0 border-0 align-bottom border-bottom')
       .build();
 
