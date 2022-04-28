@@ -254,7 +254,7 @@ async function btnResmSubmitSheetHtml() {
 
     var vals = resVals[arrIdx]
 
-\  } else {
+  } else {
 
     var vals = []
 
