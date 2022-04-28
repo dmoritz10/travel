@@ -747,13 +747,13 @@ function btnShowCalendarHtml() {
         var bc = 'blue';
         break;
       case 'Car':
-        var bc = 'lightgreen';
+        var bc = 'green';
         break;
       case 'Restaurant':
         var bc = 'red';
         break;
       case 'Tour':
-        var bc = 'lightyellow';
+        var bc = 'yellow';
         break;
               
       default:
