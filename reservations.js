@@ -718,7 +718,7 @@ function btnShowCalendarHtml() {
         block: "start" // or "end"
     })
 
-      eleArr[id].scrollTop -= 20;
+      $(eleArr[id]).scrollTop(300);
 
       return
       
