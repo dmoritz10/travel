@@ -729,6 +729,8 @@ function btnShowCalendarHtml() {
         block: "end" // or "end"
     })
 
+    alert('hi dan')
+
       $(eleArr[id]).scrollTop(300);
 
       return
@@ -772,26 +774,21 @@ function btnShowCalendarHtml() {
   });
   
 
-  // render the calendar
   calendar.render();
 
   $(".bi-chevron-right").removeClass("bi bi-chevron-right").addClass("material-icons").html("chevron_right");
   $(".bi-chevron-left").removeClass("bi bi-chevron-left").addClass("material-icons").html("chevron_left");
 
-  var eleArr = [...$('#resContainer > div')].slice(1)      // remove the templace
 
+  var eleArr = [...$('#resContainer > div')].slice(1)      // remove the templace
 
   for (let i=0; i<eleArr.length;i++) {
 
     var $ele = $(eleArr[i])
 
-    console.log($ele.find('#resArrIdx'))
-
     var idx = $ele.find('#resArrIdx')[0].innerText
-    console.log(idx)
     
     var resObj = makeObj(resVals[idx], resHdrs)
-
 
     if ($ele.hasClass('d-none') || $ele.css('display') == 'none') continue
  
