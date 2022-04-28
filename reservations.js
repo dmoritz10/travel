@@ -700,6 +700,7 @@ function btnShowCalendarHtml() {
 
     eventClick: function(info) {
       console.log('info: ', info);
+      console.log('resIdxArr'. resIdxArr)
       
       var idx = info.event.id
       console.log(idx)
