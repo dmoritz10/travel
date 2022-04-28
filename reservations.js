@@ -747,9 +747,12 @@ console.log('tbl', tbl)
 
   $(".bi-chevron-right").removeClass("bi bi-chevron-right")
                         .addClass("material-icons")
-                        .html("chevron-right");
+                        .html("chevron_right");
 
-  
+  $(".bi-chevron-left").removeClass("bi bi-chevron-left")
+  .addClass("material-icons")
+  .html("chevron_left");
+
   var eleArr = [...$('#resContainer > div')].slice(1)      // remove the templace
 
 
