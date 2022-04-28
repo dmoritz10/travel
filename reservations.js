@@ -689,8 +689,6 @@ function btnShowCalendarHtml() {
 
   var calendarEl = document.getElementById('resCalendar');
 
-  console.log('calendar', calendarEl)
-
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView:          'dayGridMonth',
     themeSystem:          'bootstrap5',
@@ -705,7 +703,7 @@ function btnShowCalendarHtml() {
       
       console.log(info.event._instance.range)
       
-      console.log('Event: ' + info.event.title);
+      console.log('info: ' + info);
 
       var msg = info.event.title + '<br>' + 
                 info.event._instance.range.start + '<br>' + 
@@ -759,6 +757,7 @@ function btnShowCalendarHtml() {
     
     calendar.addEvent (  
       {
+        id:                   idx,
         title:                resObj['Reservation'],
         start:                resObj['Start Date'],
         end:                  resObj['End Date'],
@@ -769,10 +768,5 @@ function btnShowCalendarHtml() {
   }
 
     
-
-}
-  
-
-  console.log(calendar)
 
 }
