@@ -727,13 +727,18 @@ function btnShowCalendarHtml() {
   
   var eleArr = [...$('#resContainer > div')].slice(1)      // remove the templace
 
-  var idx = $('#resArrIdx').val()
-
-  var resObj = makeObj(resVals[idx], resHdrs)
 
   for (let i=0; i<eleArr.length;i++) {
 
     var $ele = $(eleArr[i])
+
+    console.log($ele.find('#resArrIdx'))
+
+    var idx = $ele.find('#resArrIdx')[0].innerText
+    console.log(idx)
+    
+    var resObj = makeObj(resVals[idx], resHdrs)
+
 
     if ($ele.hasClass('d-none') || $ele.css('display') == 'none') continue
  
@@ -766,7 +771,4 @@ function btnShowCalendarHtml() {
       }
     )
   }
-
-    
-
 }
