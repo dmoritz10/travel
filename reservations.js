@@ -715,10 +715,10 @@ function btnShowCalendarHtml() {
 
       eleArr[id].scrollIntoView({
         behavior: "smooth", // or "auto" or "instant"
-        block: "end" // or "end"
+        block: "start" // or "end"
     })
 
-      eleArr[id].scrollTop = 20;
+      eleArr[id].scrollTop -= 20;
 
       return
       
