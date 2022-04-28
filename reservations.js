@@ -739,29 +739,6 @@ function btnShowCalendarHtml() {
 
     if ($ele.hasClass('d-none') || $ele.css('display') == 'none') continue
  
-    var eleC = $ele.children()
-
-    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + eleC[2].innerText
-
-    var dtl = eleC[1].innerText + '<br>' + eleC[3].innerText + '<br>' + eleC[4].innerText + '<br>' + eleC[5].innerText
-      
-    var d = eleC[2].innerText.split(' - ')
-
-    var dStr = d[0].indexOf(',') == -1 ? d[0] : d[0].slice(0,d[0].indexOf(','))
-    var dEnd = d[1].indexOf(',') == -1 ? d[1] : d[1].slice(0,d[1].indexOf(','))
-
-    var yr = dEnd.slice(-4)
-
-    var strDte = dStr + '/' + yr
-    var endDte = dEnd
-
-    console.log('endDt', dEnd)
-
-    var strDt = DateTime.fromJSDate(new Date(strDte)).toISO().slice(0,-13)
-    var endDt = DateTime.fromJSDate(new Date(endDte)).toISO().slice(0,-13)
-
-    console.log('dt', strDt, endDt, DateTime.fromJSDate(new Date(d[0])).toISO())
-
     switch (resObj['Type']) {
       case 'Hotel':
         var bc = 'blue';
@@ -777,12 +754,9 @@ function btnShowCalendarHtml() {
         break;
               
       default:
-        var bc = '';;
+        var bc = '';
     }
-
-
-    }
-
+    
     calendar.addEvent (  
       {
         title:                resObj['Reservation'],
@@ -792,8 +766,11 @@ function btnShowCalendarHtml() {
         backgroundColor:      bc
       }
     )
-
   }
+
+    
+
+}
   
 
   console.log(calendar)
