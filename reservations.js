@@ -111,9 +111,8 @@ async function listReservations(title = "Reservations") {
 
   gotoTab('Reservations')
 
+  $('#resCalendar').empty()
   if (resShowCal) btnShowCalendarHtml()
-  else            $('#resCalendar').empty()
-
 
   var srchVal = $("#resSearch").val().toLowerCase()
 
@@ -703,7 +702,7 @@ function btnShowCalendarHtml() {
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView:          'dayGridMonth',
     themeSystem:          'bootstrap5',
-    editable:             false,
+    editable:              false,
     headerToolbar: {
       left:               'title',
       right:              'prev,next' 
