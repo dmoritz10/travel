@@ -111,7 +111,7 @@ async function listReservations(title = "Reservations") {
 
   gotoTab('Reservations')
 
-  btnShowCalendarHtml()
+  if (resShowCal) btnShowCalendarHtml()
 
 
   var srchVal = $("#resSearch").val().toLowerCase()
