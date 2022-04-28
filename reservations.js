@@ -5,6 +5,7 @@ async function listReservations(title = "Reservations") {
 
   var resOptions = readOption('resFilter')
   var resHidePast = resOptions.resHidePast
+  var resShowCal = resOptions.resShowCal
 
   var objSht = await openShts(
     [
@@ -107,6 +108,8 @@ async function listReservations(title = "Reservations") {
 
   }
 
+  btnShowCalendarHtml()
+
   gotoTab('Reservations')
 
   var srchVal = $("#resSearch").val().toLowerCase()
@@ -145,17 +148,22 @@ async function btnResMoreVertHtml() {
 
   var resOptions = readOption('resFilter')
   var resHidePast = resOptions.resHidePast
+  var resShowCal = resOptions.resShowCal
 
   $('#resHidePast').prop("checked", resHidePast);
+  $('#resShowCal').prop("checked", resShowCal);
 
 }
 
 async function btnResSelectHtml(e) {
 
   var resHidePastVal = $('#resHidePast').prop('checked')
+  var resShowCalVal = $('#resShowCal').prop('checked')
 
   await updateOption('resFilter', {
-    'resHidePast': resHidePastVal
+    'resHidePast': resHidePastVal,
+    'resShowCal': resShowCalVal
+
   })
 
   listReservations(resTitle)
