@@ -700,8 +700,23 @@ function btnShowCalendarHtml() {
 
     eventClick: function(info) {
       console.log('info: ', info);
-      console.log('resIdxArr'. resIdxArr)
-      console.log('vals', vals)
+
+      var eleArr = [...$('#resContainer > div')].slice(1)
+
+      console.log('eleArr', eleArr)
+
+      var id = info.event._deg.publicId
+
+      console.log('id', ed)
+
+      var $ele = $(eleArr[id])
+
+      eleArr[id].scrollIntoView({
+        behavior: "smooth", // or "auto" or "instant"
+        block: "start" // or "end"
+    });
+
+      return
       
       var idx = info.event.id
       console.log(idx)
@@ -745,13 +760,8 @@ function btnShowCalendarHtml() {
   // render the calendar
   calendar.render();
 
-  $(".bi-chevron-right").removeClass("bi bi-chevron-right")
-                        .addClass("material-icons")
-                        .html("chevron_right");
-
-  $(".bi-chevron-left").removeClass("bi bi-chevron-left")
-  .addClass("material-icons")
-  .html("chevron_left");
+  $(".bi-chevron-right").removeClass("bi bi-chevron-right").addClass("material-icons").html("chevron_right");
+  $(".bi-chevron-left").removeClass("bi bi-chevron-left").addClass("material-icons").html("chevron_left");
 
   var eleArr = [...$('#resContainer > div')].slice(1)      // remove the templace
 
