@@ -700,18 +700,23 @@ function btnShowCalendarHtml() {
     },
 
     eventClick: function(info) {
+      console.log('info: ', info);
       
-      console.log(info.event._instance.range)
+      var idx = info.event.id
+      console.log(idx)
       
+      var resObj = makeObj(resVals[idx], resHdrs)
+
       console.log('info: ', info);
 
-      var msg = info.event.title + '<br>' + 
-                info.event._instance.range.start + '<br>' + 
-                info.event._instance.range.end;
+      var msg = resObj['Reservation'] + '<br>' + 
+                resObj['Start Date'] + '<br>' + 
+                resObj['End Date'] 
+
 
       bootbox.alert({
 
-        title: "Event Detail",
+        title: resObj['Reservation'],
         message: msg
     
       });
