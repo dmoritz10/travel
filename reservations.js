@@ -726,7 +726,7 @@ function btnShowCalendarHtml() {
 
       eleArr[id].scrollIntoView({
         behavior: "smooth", // or "auto" or "instant"
-        block: "start" // or "end"
+        block: "end" // or "end"
     })
 
       $(eleArr[id]).scrollTop(300);
