@@ -722,9 +722,6 @@ function btnShowCalendarHtml() {
 
       return
       
-
-
-
       var idx = info.event.id
       console.log(idx)
       
@@ -758,8 +755,8 @@ function btnShowCalendarHtml() {
         closeButton: false
     
       });
+
     }
-    
     
   });
   
