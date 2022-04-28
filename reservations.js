@@ -714,6 +714,7 @@ function btnShowCalendarHtml() {
       rpt.push(['Type', resObj['Type'] + ' - ' + resObj['Status']])
       rpt.push(['Start', formatISODate(resObj['Start Date'])])
       rpt.push(['End', formatISODate(resObj['End Date'])])
+      rpt.push(['Description', resObj['Description']])
     
     var tbl = new Table();
     
@@ -726,8 +727,6 @@ function btnShowCalendarHtml() {
       .setTcClass(['text-end col-3 h5 text-success align-items-center', 'text-start col h5'])
       .setTdClass('py-1 pb-0 mb-0 border-0 align-bottom border-bottom')
       .build();
-
-console.log('tbl', tbl)
 
       bootbox.alert({
 
