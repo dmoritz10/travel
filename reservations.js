@@ -696,7 +696,7 @@ function btnShowCalendarHtml() {
     headerToolbar: {
       left:               'dayGridMonth,timeGridWeek,timeGridDay',
       center:             'title',
-      right:              'prevYear,prev,next,nextYear' 
+      right:              'prev,next' 
     },
 
     eventClick: function(info) {
@@ -713,7 +713,6 @@ function btnShowCalendarHtml() {
       rpt.push(['Trip', resObj['Trip'] ])
       rpt.push(['Type', resObj['Type'] + ' - ' + resObj['Status']])
       rpt.push(['Start', formatISODate(resObj['Start Date'])])
-      rpt.push(['End', formatISODate(resObj['End Date'])])
       rpt.push(['End', formatISODate(resObj['End Date'])])
     
     var tbl = new Table();
@@ -733,7 +732,8 @@ console.log('tbl', tbl)
       bootbox.alert({
 
         title: resObj['Reservation'],
-        message: tbl.html
+        message: tbl.html,
+        closeButton: false
     
       });
     }
@@ -744,6 +744,10 @@ console.log('tbl', tbl)
 
   // render the calendar
   calendar.render();
+
+  $(".bi-chevron-right").removeClass("bi bi-chevron-right")
+                        .addClass("material-icons")
+                        .html("chevron-right");
 
   
   var eleArr = [...$('#resContainer > div')].slice(1)      // remove the templace
