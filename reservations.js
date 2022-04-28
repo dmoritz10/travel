@@ -703,7 +703,7 @@ function btnShowCalendarHtml() {
       
       console.log(info.event._instance.range)
       
-      console.log('info: ' + info);
+      console.log('info: ', info);
 
       var msg = info.event.title + '<br>' + 
                 info.event._instance.range.start + '<br>' + 
