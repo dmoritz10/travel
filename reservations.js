@@ -254,38 +254,22 @@ async function btnResmSubmitSheetHtml() {
 
     var vals = resVals[arrIdx]
 
-    vals[resHdrs.indexOf("Reservation")] = $('#resmReservation').val()
-    vals[resHdrs.indexOf("Trip")] = $('#resmTrip').val()
-    vals[resHdrs.indexOf("Type")] = $('#resmType').val()
-    vals[resHdrs.indexOf("Status")] = $('#resmStatus').val()
-    vals[resHdrs.indexOf("Source")] = $('#resmSource').val()
-    vals[resHdrs.indexOf("Location")] = $('#resmLocation').val()
-    vals[resHdrs.indexOf("Start Date")] = $('#resmStartDateTime').val()
-    vals[resHdrs.indexOf("End Date")] = $('#resmEndDateTime').val()
-    vals[resHdrs.indexOf("Description")] = $('#resmDescription').val()
-    vals[resHdrs.indexOf("Composite Key")] = $('#resmReservation').val() + ' - ' + $('#resmTrip').val() + ' - ' + $('#resmType').val() + ' - ' + $('#resmLocation').val() + ' - ' + $('#resmStatus').val()
-
-  } else {
-
-    // if (dupDocument($('#resmDocument').val())) {
-    //   toast("Document already exists")
-    //   return
-    // }
+\  } else {
 
     var vals = []
 
-    vals[resHdrs.indexOf("Reservation")] = $('#resmReservation').val()
-    vals[resHdrs.indexOf("Trip")] = $('#resmTrip').val()
-    vals[resHdrs.indexOf("Type")] = $('#resmType').val()
-    vals[resHdrs.indexOf("Status")] = $('#resmStatus').val()
-    vals[resHdrs.indexOf("Source")] = $('#resmSource').val()
-    vals[resHdrs.indexOf("Location")] = $('#resmLocation').val()
-    vals[resHdrs.indexOf("Start Date")] = $('#resmStartDateTime').val()
-    vals[resHdrs.indexOf("End Date")] = $('#resmEndDateTime').val()
-    vals[resHdrs.indexOf("Description")] = $('#resmDescription').val()
-    vals[resHdrs.indexOf("Composite Key")] = $('#resmReservation').val() + ' - ' + $('#resmTrip').val() + ' - ' + $('#resmType').val() + ' - ' + $('#resmLocation').val() + ' - ' + $('#resmStatus').val()
-
   }
+
+  vals[resHdrs.indexOf("Reservation")]    = $('#resmReservation').val()
+  vals[resHdrs.indexOf("Trip")]           = $('#resmTrip').val()
+  vals[resHdrs.indexOf("Type")]           = $('#resmType').val()
+  vals[resHdrs.indexOf("Status")]         = $('#resmStatus').val()
+  vals[resHdrs.indexOf("Source")]         = $('#resmSource').val()
+  vals[resHdrs.indexOf("Location")]       = $('#resmLocation').val()
+  vals[resHdrs.indexOf("Start Date")]     = $('#resmStartDateTime').val()
+  vals[resHdrs.indexOf("End Date")]       = $('#resmEndDateTime').val()
+  vals[resHdrs.indexOf("Description")]    = $('#resmDescription').val()
+  vals[resHdrs.indexOf("Composite Key")]  = $('#resmReservation').val() + ' - ' + $('#resmTrip').val() + ' - ' + $('#resmType').val() + ' - ' + $('#resmLocation').val() + ' - ' + $('#resmStatus').val()
 
   modal(true)
 
@@ -745,6 +729,9 @@ function btnShowCalendarHtml() {
   
   var eleArr = [...$('#resContainer > div')].slice(1)      // remove the templace
 
+  var idx = $('#resArrIdx').val()
+
+  var resObj = makeObj(resVals[idx], resHdrs)
 
   for (let i=0; i<eleArr.length;i++) {
 
@@ -775,15 +762,34 @@ function btnShowCalendarHtml() {
 
     console.log('dt', strDt, endDt, DateTime.fromJSDate(new Date(d[0])).toISO())
 
+    switch (resObj['Type']) {
+      case 'Hotel':
+        var bc = 'blue';
+        break;
+      case 'Car':
+        var bc = 'lightgreen';
+        break;
+      case 'Restaurant':
+        var bc = 'red';
+        break;
+      case 'Tour':
+        var bc = 'lightyellow';
+        break;
+              
+      default:
+        var bc = '';;
+    }
+
+
+    }
+
     calendar.addEvent (  
       {
-        title:                eleC[0].innerText,
-        start:                strDt,
-        end:                  endDt,
+        title:                resObj['Reservation'],
+        start:                resObj['Start Date'],
+        end:                  resObj['End Date'],
         allDay:               true,
-        backgroundColor: 'red'
-        // borderColor:          'blue',
-        // textColor:            'green'
+        backgroundColor:      bc
       }
     )
 
