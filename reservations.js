@@ -707,7 +707,7 @@ function btnShowCalendarHtml() {
 
       var id = info.event._def.publicId
 
-      console.log('id', ed)
+      console.log('id', id)
 
       var $ele = $(eleArr[id])
 
