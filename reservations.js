@@ -758,7 +758,7 @@ function btnShowCalendarHtml() {
         var bc = 'red';
         break;
       case 'Tour':
-        var bc = 'yellow';
+        var bc = '#FFC033';
         break;
               
       default:
