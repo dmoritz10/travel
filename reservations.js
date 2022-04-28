@@ -710,11 +710,11 @@ function btnShowCalendarHtml() {
       console.log('info: ', info);
 
       var rpt = []
-      rpt.push(['Trip', resObj['Trip'] ]),
-      rpt.push(['Type', resObj['Type'] + ' - ' + resObj['Status']]),
-      rpt.push(['Start', formatISODate(resObj['Start Date'])]),
-      rpt.push(['End', formatISODate(resObj['End Date'])]),
-      rpt.push(['End', formatISODate(resObj['End Date'])]),
+      rpt.push(['Trip', resObj['Trip'] ])
+      rpt.push(['Type', resObj['Type'] + ' - ' + resObj['Status']])
+      rpt.push(['Start', formatISODate(resObj['Start Date'])])
+      rpt.push(['End', formatISODate(resObj['End Date'])])
+      rpt.push(['End', formatISODate(resObj['End Date'])])
     
     var tbl = new Table();
     
