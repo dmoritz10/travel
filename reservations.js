@@ -713,14 +713,14 @@ function btnShowCalendarHtml() {
 
       eleArr[id].scrollIntoView({
         behavior: "smooth", // or "auto" or "instant"
-        block: "start" // or "end"
+        block: "end" // or "end"
     });
 
       return
       
 
 
-      
+
       var idx = info.event.id
       console.log(idx)
       
