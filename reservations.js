@@ -694,8 +694,7 @@ function btnShowCalendarHtml() {
     themeSystem:          'bootstrap5',
     editable:             false,
     headerToolbar: {
-      left:               'dayGridMonth',
-      center:             'title',
+      left:               'title',
       right:              'prev,next' 
     },
 
