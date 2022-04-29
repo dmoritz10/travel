@@ -782,7 +782,7 @@ function btnShowCalendarHtml() {
 
     console.log('ele', $ele)
     console.log('ele', $ele.hasClass('d-none'))
-    console.log('ele', $ele.css('display') == 'none')
+    console.log('ele', $ele.css('display'))
 
 
     if ($ele.hasClass('d-none') || $ele.css('display') == 'none') continue
