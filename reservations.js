@@ -709,15 +709,10 @@ function btnShowCalendarHtml() {
     },
 
     eventClick: function(info) {
-      console.log('info: ', info);
 
       var eleArr = [...$('#resContainer > div')].slice(1)
 
-      console.log('eleArr', eleArr)
-
       var id = info.event._def.publicId
-
-      console.log('id', id)
 
       var $ele = $(eleArr[id])
 
@@ -785,11 +780,16 @@ function btnShowCalendarHtml() {
 
     var $ele = $(eleArr[i])
 
+    console.log('ele', $ele)
+    console.log('ele', $ele.hasClass('d-none'))
+    console.log('ele', $ele.css('display') == 'none')
+
+
+    if ($ele.hasClass('d-none') || $ele.css('display') == 'none') continue
+
     var idx = $ele.find('#resArrIdx')[0].innerText
     
     var resObj = makeObj(resVals[idx], resHdrs)
-
-    if ($ele.hasClass('d-none') || $ele.css('display') == 'none') continue
  
     switch (resObj['Type']) {
       case 'Hotel':
