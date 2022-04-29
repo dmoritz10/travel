@@ -227,7 +227,7 @@ async function editReservation(arrIdx) {
   $('#resmTrip').val(resObj['Trip'])
   $('#resmType').val(resObj['Type'])
   $('#resmStatus').val(resObj['Status'])
-  $('#resmSource').val(resObj['Source'])
+  $('#resmSource').val(user['firstName'])
   $('#resmLocation').val(resObj['Location'])
   $('#resmStartDateTime').val(resObj['Start Date'])
   $('#resmEndDateTime').val(resObj['End Date'])
@@ -336,7 +336,7 @@ async function btnAddReservationHtml() {
   $("#reservation-form")[0].reset();
   $("#reservation-modal").modal('show');
 
-  $('#resmSource').val('Manual')
+  $('#resmSource').val(user['firstName'])
 
   buildTripList('resmTripsList')
 

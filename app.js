@@ -37,7 +37,7 @@ jQuery(function ($) {
 
     var signin =  {
 
-        currUser : {},
+        // currUser : {},
 
         API_KEY : 'AIzaSyBG5YxMTiBdvxD5-xxVp0LA1M8IXz8Xtbo',  // TODO: Update placeholder with desired API key.
 
