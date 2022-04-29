@@ -266,6 +266,8 @@ jQuery(function ($) {
             $('#btnResmSubmit')       .click(btnResmSubmitSheetHtml);
             $('#btnResmDelete')       .click(btnResmDeleteSheetHtml);
 
+
+            // refresh the calendar to match search results.
             $("#resSearch")[0].addEventListener('keyup', debounce( () => {
                 btnShowCalendarHtml()
             }, 1000))
