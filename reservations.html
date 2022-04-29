@@ -237,12 +237,18 @@
                 </div>
                 <div class="col">
                   <label for="resmStatus" class="col-form-label">Status</label>
-                  <input type="text" class="form-control text-success"  style="font-size:1.25rem" id="resmStatus" name="resmStatus">
+                  <input list="resmStatusList" class="form-control text-success"  style="font-size:1.25rem" id="resmStatus" name="resmStatus">
                 </div>
                 <div class="col-1 ps-1">
                   <label class="col-form-label">&nbsp;</label>
                 </div>
               </div>
+
+              <datalist id="resmStatusList">
+                <option value="confirmed">
+                <option value="tentative">
+                <option value="planning">
+              </datalist>
 
               <datalist id="resmTypeList">
                 <option value="Hotel">
