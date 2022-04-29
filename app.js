@@ -267,8 +267,7 @@ jQuery(function ($) {
             $('#btnResmDelete')       .click(btnResmDeleteSheetHtml);
 
             $("#resSearch")[0].addEventListener('keyup', debounce( () => {
-                // code you would like to run 1000ms after the keyup event has stopped firing
-                // further keyup events reset the timer, as expected
+                alert('hi dan')
             }, 1000))
 
             $("#resSearch").on("input", function() {
