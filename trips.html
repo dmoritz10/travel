@@ -20,6 +20,13 @@
 
           <div class="dropdown-menu more-vert-menu">
             <form class="px-4 py-3">
+              
+              
+              <button type="button" class="btn btn-primary" onclick="document.getElementById('ipImportFiles').click()">Choose Location History Files</button>
+              <input id="ipImportFiles" class="form-control d-none" onchange="updateTripsFromLocationHistory(this)" type="file" multiple="multiple" name="ipImportFiles">
+    
+              
+              
               <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="trpSelectFav">
                 <label class="form-check-label" for="trpSelectFav">
