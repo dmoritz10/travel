@@ -266,6 +266,11 @@ jQuery(function ($) {
             $('#btnResmSubmit')       .click(btnResmSubmitSheetHtml);
             $('#btnResmDelete')       .click(btnResmDeleteSheetHtml);
 
+            $("#resSearch")[0].addEventListener('keyup', debounce( () => {
+                // code you would like to run 1000ms after the keyup event has stopped firing
+                // further keyup events reset the timer, as expected
+            }, 1000))
+
             $("#resSearch").on("input", function() {
                 var value = $(this).val().toLowerCase();
                 var exc = value.substr(0,1) == '-'
