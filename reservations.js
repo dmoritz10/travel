@@ -111,8 +111,6 @@ async function listReservations(title = "Reservations") {
 
   gotoTab('Reservations')
 
-  $('#resCalendar').empty()
-  if (resShowCal) btnShowCalendarHtml()
 
   var srchVal = $("#resSearch").val().toLowerCase()
 
@@ -141,6 +139,10 @@ async function listReservations(title = "Reservations") {
     $(e.currentTarget).addClass('ele-selected')
     
   });
+
+  $('#resCalendar').empty()
+  if (resShowCal) btnShowCalendarHtml()
+
 
   modal(false)
 
