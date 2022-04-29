@@ -94,20 +94,22 @@ Reservations
 
   x - need some sort of copy/paste from email to reservation
   Move reservations import to drop-down
-  add-update current reservations - how to detect an update ?
-  prompt for add-update
+    add-update current reservations - how to detect an update ?
+    prompt for add-update
+    prompt for Trip
+    prompt for Type
 
   x - filter on complete vs future reservations
 
 x - Make Schnucky version
   d-none all edit buttons except on Reservations
 
-Add calendar view
+x - Add calendar view
 
 
 From Google create calendar events from Gmail:
-Reservation at 
-Stay at 
-Flight to 
-Tee Time Reservation Confirmation
-From 
+  Reservation at 
+  Stay at 
+  Flight to 
+  Tee Time Reservation Confirmation
+  From 
