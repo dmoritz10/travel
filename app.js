@@ -267,7 +267,7 @@ jQuery(function ($) {
             $('#btnResmDelete')       .click(btnResmDeleteSheetHtml);
 
             $("#resSearch")[0].addEventListener('keyup', debounce( () => {
-                alert('hi dan')
+                btnShowCalendarHtml()
             }, 1000))
 
             $("#resSearch").on("input", function() {
