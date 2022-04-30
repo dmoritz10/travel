@@ -268,7 +268,7 @@ jQuery(function ($) {
 
 
             // refresh the calendar to match search results.
-            $("#resSearch")[0].addEventListener('keyup', debounce( () => {
+            $("#resSearch")[0].addEventListener('input', debounce( () => {
                 btnShowCalendarHtml()
             }, 1000))
 
