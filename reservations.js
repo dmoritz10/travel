@@ -494,6 +494,24 @@ async function makeReservationsFromCalendarEvents() {
   console.log('nbrAccepted', nbrAccepted)
   console.log('nbrRejected', nbrRejected)
 
+  if (nbrAccepted + nbrRejected == 0) {
+
+    var msg = 'No Calendar events found.'
+
+  } else {
+
+    var msg = 'Nbr Accepted - ' + nbrAccepted + '<br>Nbr Rejected - ' + nbrRejected
+
+  }
+
+  bootbox.alert({
+
+    title: 'Import Reservations from Calendars',
+    message: msg,
+    closeButton: false
+
+  });
+
 }
 
 function promptTrip(msg, defaultVal) {
@@ -721,14 +739,11 @@ function btnShowCalendarHtml() {
       eleArr[id].click()
 
       eleArr[id].scrollIntoView({
-        behavior: "smooth", // or "auto" or "instant"
-        block: "center" // or "end"
+        behavior: "smooth", 
+        block: "center" 
     })
 
-    // alert('hi dan')
-
-      // $(eleArr[id]).scrollTop(300);
-
+    
       return
       
       var idx = info.event.id

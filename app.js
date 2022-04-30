@@ -276,10 +276,6 @@ jQuery(function ($) {
                 var value = $(this).val().toLowerCase();
                 var exc = value.substr(0,1) == '-'
 
-                if('' == this.value) {
-                    alert('Please enter a search criteria!');
-                  }
-
                 $("#resContainer #resCompositeKey").filter(function() {
 
                     var txt = $(this).text().toLowerCase()
