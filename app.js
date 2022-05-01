@@ -212,7 +212,7 @@ jQuery(function ($) {
 
             $('#btnSignout')           .button().click(btnSignoutHtml);
             $('#btnImportPlaces')      .button().click(btnImportPlacesHtml);
-            $('#btnPlaces')            .button().click(btnPlacesHtml);
+            $('#btnCountries')            .button().click(btnCountriesHtml);
             $('#btnTrips')             .button().click(listTrips);
             $('#btnReservations')      .click(listReservations);
 

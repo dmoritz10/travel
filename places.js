@@ -1,4 +1,4 @@
-async function btnPlacesHtml() {
+async function btnCountriesHtml() {
 
     modal(true)
   
