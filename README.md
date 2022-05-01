@@ -66,8 +66,8 @@ Classes
 
 Trip maintenance
 
-  make Type required with select
-  make Trip Name, Destinations, countries required
+  x - make Type required with select
+  x - make Trip Name, Destinations, countries required
 
 Destination Maintenance
   make all required
@@ -92,8 +92,12 @@ Design, develop Places similar to Google Timeline
 
 Reservations
 
+  delete past from Calendar Events
+    then can remove 'Hide Past Reservations'
+  move past to Past Reservations ???
+
   x - need some sort of copy/paste from email to reservation
-  Move reservations import to drop-down
+  x - Move reservations import to drop-down
     add-update current reservations - how to detect an update ?
     prompt for add-update
     prompt for Trip
