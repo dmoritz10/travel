@@ -70,21 +70,20 @@ Trip maintenance
   x - make Trip Name, Destinations, countries required
 
 Destination Maintenance
-  make all required
+ x -  make all required
 
 x - Disable rebuikd bottom is no dests
 x - Search on places
 
 Trips
-  Move Trips import to drop-down
+  x - Move Trips import to drop-down
   On import, prompt to add new Trip
   x - Make Type select multiple
   x - Add types to Composite Key
 
 Change main menu
-  Remove Import after movingb to dropdowns
-  Change Places to Countries
-  Add Places
+  x - Remove Import after movingb to dropdowns
+  x - Change Places to Countries
 
 Design, develop a timeline
 
@@ -92,7 +91,7 @@ Design, develop Places similar to Google Timeline
 
 Reservations
 
-  delete past from Calendar Events
+  x - delete past from Calendar Events
     then can remove 'Hide Past Reservations'
   move past to Past Reservations ???
 
