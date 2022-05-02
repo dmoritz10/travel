@@ -71,12 +71,14 @@ async function btnTripByYrHtml() {
         var sDate = vals[trpHdrs.indexOf("Start Date")]
         var eDate = vals[trpHdrs.indexOf("End Date")]
 
-        var sDt = new Date(sDate)
+        var sDt = calcUTCDate(sDate)
+
+        console.log(sDt)
         var sYr = sDt.getFullYear()
         var sMo = sDt.getMonth()+1
         var sDa = sDt.getDate();
          
-        var eDt = new Date(eDate)
+        var eDt = calcUTCDate(eDate)
         var eYr = eDt.getFullYear()
         var eMo = eDt.getMonth()+1
         var eDa = eDt.getDate();
@@ -137,7 +139,7 @@ function placeDot(sDt, eDt, trp, selectedYr) {
     while (dt <= lastOfYr && dt <= eDt) {
 
         var eMo = dt.getMonth()+1
-        var eDa = dt.getDate();
+        var eDa = dt.getDate()-1;
 
         // var lastDayOfMo = new Date(new Date(selectedYr).getFullYear(), 11, 0).getMonth()+1
 
@@ -159,3 +161,11 @@ function placeDot(sDt, eDt, trp, selectedYr) {
 }
 
 
+function calcUTCDate(dateStr) {
+
+    var yr = dateStr.substr(0,4)
+    var mo = dateStr.substr(5,2)
+    var da = dateStr.substr(8,2)
+
+    return Date.parse(yr + '-' + mo + '-' + da) 
+}
