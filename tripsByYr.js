@@ -14,14 +14,14 @@ async function btnTripByYrHtml() {
   
     trpTitle = "Trips"
     
-    trpHdrs = objSht[trpTitle].colHdrs.push('sDate')
+    trpHdrs = objSht[trpTitle].colHdrs
     trpVals = objSht[trpTitle].vals
     
     var vals = trpVals
   
     for (var i=0;i<vals.length;i++) {
   
-      vals[i].push(i)                    // idx xref
+      vals[i].push(i)                    
       
       vals[i].push(new Date(vals[i][trpHdrs.indexOf('Start Date')]))
     
