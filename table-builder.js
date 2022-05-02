@@ -94,10 +94,8 @@ Table.prototype.build = function(container) {
  
     //fills out the table body
 
-    console.log('data', this.data)
     this.data.forEach(function(d) {
 
-      console.log('d', d)
         var row = tr.clone() //creates a row
         d.forEach(function(e,j) {
         
