@@ -38,7 +38,7 @@ async function btnTripByYrHtml() {
     
   
     var trp = [["", "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]]
-    var circle = '<span class="material-icons" style="color:#cccc00;">circle</span>'
+    var circle = '<span class="material-icons" style="fontSize: 5;color:#cccc00;">circle</span>'
 
     for (var j = 0; j < trpVals.length; j++) {
 
