@@ -37,7 +37,7 @@ async function btnTripByYrHtml() {
     // trpVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
     
   
-    var trp = [["d", "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]]
+    var trp = [["", "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]]
     var circle = '<span class="material-icons">circle</span></div>'
 
     for (var j = 0; j < trpVals.length; j++) {
@@ -61,7 +61,7 @@ async function btnTripByYrHtml() {
         .setData(trp)
         .setTableClass('table table-borderless')
         .setTrClass('d-flex')
-        .setTcClass()
+        // .setTcClass([])
         .setTdClass('py-1 pb-0 mb-0 border-0 align-bottom border-bottom')
         .build('#tblTripsByYr');
 
