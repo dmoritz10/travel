@@ -47,12 +47,14 @@ async function btnTripByYrHtml() {
 
         var val = trpVals[i]
 
-        var row = [j+1, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle]
+        var row = [j+1, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle]
         
         
         trp.push(row)
 
     }
+
+    console.log('trp', trp)
     
     var tbl = new Table();
     
@@ -62,7 +64,7 @@ async function btnTripByYrHtml() {
         .setData(trp)
         .setTableClass('table table-borderless')
         .setTrClass('d-flex')
-        .setTcClass(['text-end col-4 h5 text-success align-items-center', 'text-start col h4'])
+        .setTcClass([''])
         .setTdClass('py-1 pb-0 mb-0 border-0 align-bottom border-bottom')
         .build('#tblTrips');
 
