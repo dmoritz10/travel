@@ -68,8 +68,8 @@ async function btnTripByYrHtml() {
 
         var val = trpVals[i]
 
-        var sDate = vals[hdrs.indexOf("Start Date")]
-        var eDate = vals[hdrs.indexOf("End Date")]
+        var sDate = vals[trpHdrs.indexOf("Start Date")]
+        var eDate = vals[trpHdrs.indexOf("End Date")]
 
         var sDt = new Date(sDt)
         var sYr = d.getFullYear()
