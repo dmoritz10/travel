@@ -2,7 +2,7 @@ async function btnTripByYrHtml() {
 
     modal(true)
 
-    var selectedYr = "2022" * 1
+    var selectedYr = "2022"
   
     var trpOptions = readOption('trpFilter')
     var trpSelectFav = trpOptions.trpSelectFav
@@ -71,12 +71,12 @@ async function btnTripByYrHtml() {
         var sDate = vals[trpHdrs.indexOf("Start Date")]
         var eDate = vals[trpHdrs.indexOf("End Date")]
 
-        var sDt = new Date(sDt)
+        var sDt = new Date(sDate)
         var sYr = sDt.getFullYear()
         var sMo = sDt.getMonth()+1
         var sDa = sDt.getDate();
          
-        var eDt = new Date(eDt)
+        var eDt = new Date(eDate)
         var eYr = eDt.getFullYear()
         var eMo = eDt.getMonth()+1
         var eDa = eDt.getDate();
