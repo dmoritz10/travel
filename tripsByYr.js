@@ -170,7 +170,7 @@ function calcUTCDate(dateStr) {
     var da = ('0' + dt[0]).slice(-2)
 
     console.log('utc', dateStr, yr, mo, da, Date.parse(yr + '-' + mo + '-' + da) )
-    console.log('utc', dateStr, yr, mo, da, new Date(yr + '-' + mo + '-' + da) )
+    console.log('utc', dateStr, yr, mo, da, new Date(yr + '-' + mo + '-' + da + 'T00:00:00') )
 
     return Date.parse(yr + '-' + mo + '-' + da) 
 }
