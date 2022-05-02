@@ -26,6 +26,8 @@ async function btnTripByYrHtml() {
       vals[i].push(new Date(vals[i][trpHdrs.indexOf('Start Date')]))
     
     }
+
+    trpHdrs.push('dStart')
   
     var sortCol = vals[0] ? vals[0].length - 1 : 0    // in case of empty sheet.  ie. hdrs only
   
@@ -48,7 +50,7 @@ async function btnTripByYrHtml() {
         var row = [j+1, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle]
         
         
-        trp.push([row])
+        trp.push(row)
 
     }
     
