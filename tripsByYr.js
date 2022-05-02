@@ -60,7 +60,7 @@ async function btnTripByYrHtml() {
         .setData(trp)
         .setTableClass('table table-borderless')
         .setTrClass('d-flex')
-        // .setTcClass([])
+        .setTcClass(['col','col','col','col','col','col','col','col','col','col','col','col','col'])
         .setTdClass('py-1 pb-0 mb-0 border-0 align-bottom border-bottom')
         .build('#tblTripsByYr');
 
