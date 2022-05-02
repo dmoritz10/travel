@@ -1,6 +1,8 @@
 async function btnTripByYrHtml() {
 
     modal(true)
+
+    var selectedYr = "2022" * 1
   
     var trpOptions = readOption('trpFilter')
     var trpSelectFav = trpOptions.trpSelectFav
@@ -35,20 +37,56 @@ async function btnTripByYrHtml() {
     
     // trpVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
     
+    console.log('hdrs', trpHdrs)
+    console.log('vals', trpVals)
   
     var trp = [["", "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]]
     var circle = '<span class="dot"></span>'
-    // var circle = '<span class="rounded-circle border border-1">&nbsp;</span>'
 
-    // for (var i = 0; i < trpVals.length; i++) {
-        for (var i=0;i<31;i++) {
-
-
-        var val = trpVals[i]
+    for (var i = 0;i < 12;i++) {
 
         var row = [i+1, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle]
         
         trp.push(row)
+
+    }
+
+
+    // var circle = '<span class="rounded-circle border border-1">&nbsp;</span>'
+
+    for (var i = 0; i < trpVals.length; i++) {
+        // for (var i=0;i<31;i++) {
+
+        // read dates until 1st sDate is in the selected year
+        // fill in corresopnding dot
+        // so the same until either eDate or end of year
+        //          of end of year break
+    //              else read next trip
+
+
+        
+
+        var val = trpVals[i]
+
+        var sDate = vals[hdrs.indexOf("Start Date")]
+        var eDate = vals[hdrs.indexOf("End Date")]
+
+        var sDt = new Date(sDt)
+        var sYr = d.getFullYear()
+        var sMo = d.getMonth()+1
+        var sDa = d.getDate();
+         
+        var eDt = new Date(eDt)
+        var eYr = d.getFullYear()
+        var eMo = d.getMonth()+1
+        var eDa = d.getDate();
+
+        var firstOfYr = new Date(new Date(selectedYr).getFullYear(), 0, 1);
+        var lastOfYr = new Date(new Date(selectedYr).getFullYear(), 11, 31);
+
+        if (sDt < firstOfYr && eDt < firstOfYr || sDt > lastOfYr && eDt > lastOfYr) continue;
+
+        placeDot(sDt, eDt, trp, selectedYr)
 
     }
 
@@ -72,3 +110,38 @@ async function btnTripByYrHtml() {
     gotoTab('TripsByYear')
 
 }
+
+function placeDot(sDt, eDt, trp, selectedYr) {
+
+    var sYr = sDt.getFullYear()
+    var sMo = sDt.getMonth()+1
+    var sDa = sDt.getDate();
+
+    var eYr = eDt.getFullYear()
+    var eMo = eDt.getMonth()+1
+    var eDa = eDt.getDate();
+
+    var firstOfYr = new Date(new Date(selectedYr).getFullYear(), 0, 1);
+    var lastOfYr = new Date(new Date(selectedYr).getFullYear(), 11, 31);
+
+    var dt = sDt < firstOfYr ? eDt : sDt
+
+    while (dt <= lastOfYr) {
+
+        var eMo = dt.getMonth()+1
+        var eDa = dt.getDate();
+
+        var col = eMo
+        var row = eDa + 1
+
+        trp[row][col].addClass('bg-primary')
+
+        dt.setDate(dt.getDate() + 1);
+
+
+    }
+
+
+}
+
+
