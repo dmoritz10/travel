@@ -87,7 +87,7 @@ Change main menu
 
 Design, develop a timeline
 
-Design, develop Places similar to Google Timeline
+x - Design, develop Places similar to Google Timeline.  Uses Googles !!!
 
 Reservations
 
