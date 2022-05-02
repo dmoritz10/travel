@@ -148,7 +148,6 @@ function placeDot(sDt, eDt, trp, selectedYr) {
 
         dt.setDate(dt.getDate() + 1);
 
-
     }
 
 
