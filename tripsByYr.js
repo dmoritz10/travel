@@ -72,14 +72,14 @@ async function btnTripByYrHtml() {
         var eDate = vals[trpHdrs.indexOf("End Date")]
 
         var sDt = new Date(sDt)
-        var sYr = d.getFullYear()
-        var sMo = d.getMonth()+1
-        var sDa = d.getDate();
+        var sYr = sDt.getFullYear()
+        var sMo = sDt.getMonth()+1
+        var sDa = sDt.getDate();
          
         var eDt = new Date(eDt)
-        var eYr = d.getFullYear()
-        var eMo = d.getMonth()+1
-        var eDa = d.getDate();
+        var eYr = eDt.getFullYear()
+        var eMo = eDt.getMonth()+1
+        var eDa = eDt.getDate();
 
         var firstOfYr = new Date(new Date(selectedYr).getFullYear(), 0, 1);
         var lastOfYr = new Date(new Date(selectedYr).getFullYear(), 11, 31);
