@@ -131,6 +131,7 @@ function placeDot(sDt, eDt, trp, selectedYr) {
 
     var firstOfYr = new Date(new Date(selectedYr).getFullYear(), 0, 1);
     var lastOfYr = new Date(new Date(selectedYr).getFullYear(), 11, 31);
+    
 
     var dt = sDt < firstOfYr ? eDt : sDt
 
@@ -138,6 +139,9 @@ function placeDot(sDt, eDt, trp, selectedYr) {
 
         var eMo = dt.getMonth()+1
         var eDa = dt.getDate();
+
+        // var lastDayOfMo = new Date(new Date(selectedYr).getFullYear(), 11, 0).getMonth()+1
+
 
         var col = eMo
         var row = eDa + 1
@@ -147,6 +151,8 @@ function placeDot(sDt, eDt, trp, selectedYr) {
         trp[row][col].replace("color", "bg-primary")
 
         dt.setDate(dt.getDate() + 1);
+
+        console.log('dt', dt)
 
     }
 
