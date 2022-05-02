@@ -37,7 +37,7 @@ async function btnTripByYrHtml() {
     // trpVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
     
   
-    var trp = ['', 'J', "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
+    var trp = ["d", "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
     var circle = '<span class="material-icons">circle</span></div>'
 
     for (var j = 0; j < trpVals.length; j++) {
