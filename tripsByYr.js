@@ -134,7 +134,7 @@ function placeDot(sDt, eDt, trp, selectedYr) {
 
     var dt = sDt < firstOfYr ? eDt : sDt
 
-    while (dt <= lastOfYr && dt < eDt) {
+    while (dt <= lastOfYr && dt <= eDt) {
 
         var eMo = dt.getMonth()+1
         var eDa = dt.getDate();
@@ -147,7 +147,7 @@ function placeDot(sDt, eDt, trp, selectedYr) {
 
         console.log('rowcol', row, col)
 
-        trp[row][col].replace("color", "bg-primary")
+        trp[row][col].replace(/color/g, "bg-primary")
 
         dt.setDate(dt.getDate() + 1);
 
