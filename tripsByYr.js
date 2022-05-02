@@ -86,8 +86,8 @@ async function btnTripByYrHtml() {
         var firstOfYr = new Date(new Date(selectedYr).getFullYear(), 0, 1);
         var lastOfYr = new Date(new Date(selectedYr).getFullYear(), 11, 31);
 
-        console.log(new Date(selectedYr))
-        console.log(new Date(selectedYr).getFullYear())
+        console.log(calcUTCDate(selectedYr))
+        console.log(calcUTCDate(selectedYr).getFullYear())
 
         console.log(sDt)
         console.log(firstOfYr)
@@ -163,9 +163,11 @@ function placeDot(sDt, eDt, trp, selectedYr) {
 
 function calcUTCDate(dateStr) {
 
-    var yr = dateStr.substr(0,4)
-    var mo = dateStr.substr(5,2)
-    var da = dateStr.substr(8,2)
+    var dt = dateStr.split('/')
+
+    var yr = dt[2]
+    var mo = ('0' + dt[1]).slice(-2)
+    var da = ('0' + dt[0]).slice(-2)
 
     return Date.parse(yr + '-' + mo + '-' + da) 
 }
