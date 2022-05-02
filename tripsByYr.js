@@ -43,7 +43,7 @@ async function btnTripByYrHtml() {
     var trp = [["", "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]]
     var circle = '<span class="dot"></span>'
 
-    for (var i = 0;i < 12;i++) {
+    for (var i = 0;i < 31;i++) {
 
         var row = [i+1, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle]
         
@@ -83,6 +83,11 @@ async function btnTripByYrHtml() {
 
         var firstOfYr = new Date(new Date(selectedYr).getFullYear(), 0, 1);
         var lastOfYr = new Date(new Date(selectedYr).getFullYear(), 11, 31);
+
+        console.log(sDt)
+        console.log(firstOfYr)
+        console.log(eDt)
+        console.log(firstOfYr)
 
         if (sDt < firstOfYr && eDt < firstOfYr || sDt > lastOfYr && eDt > lastOfYr) continue;
 
@@ -133,6 +138,8 @@ function placeDot(sDt, eDt, trp, selectedYr) {
 
         var col = eMo
         var row = eDa + 1
+
+        console.log('rowcol', row, col)
 
         trp[row][col].addClass('bg-primary')
 
