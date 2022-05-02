@@ -64,7 +64,6 @@ async function btnTripByYrHtml() {
         .setTdClass('py-0 pb-0 mb-0 border-0 align-bottom border-bottom')
         .build('#tblTripsByYr');
 
-
     modal(false)
 
     gotoTab('TripsByYear')
