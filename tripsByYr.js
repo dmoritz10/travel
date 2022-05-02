@@ -134,7 +134,7 @@ function placeDot(sDt, eDt, trp, selectedYr) {
 
     var dt = sDt < firstOfYr ? eDt : sDt
 
-    while (dt <= lastOfYr && dt > eMon) {
+    while (dt <= lastOfYr && dt < eDt) {
 
         var eMo = dt.getMonth()+1
         var eDa = dt.getDate();
