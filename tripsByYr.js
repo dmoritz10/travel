@@ -126,8 +126,7 @@ function placeDot(sDt, eDt, trp, selectedYr) {
     var sDa = sDt.getDate();
 
     var eYr = eDt.getFullYear()
-    var eMo = eDt.getMonth()+1
-    var eDa = eDt.getDate();
+    var eMon = eDt.getMonth()+1
 
     var firstOfYr = new Date(new Date(selectedYr).getFullYear(), 0, 1);
     var lastOfYr = new Date(new Date(selectedYr).getFullYear(), 11, 31);
@@ -135,7 +134,7 @@ function placeDot(sDt, eDt, trp, selectedYr) {
 
     var dt = sDt < firstOfYr ? eDt : sDt
 
-    while (dt <= lastOfYr) {
+    while (dt <= lastOfYr && dt > dMon) {
 
         var eMo = dt.getMonth()+1
         var eDa = dt.getDate();
