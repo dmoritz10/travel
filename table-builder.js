@@ -108,6 +108,10 @@ Table.prototype.build = function(container) {
     
     $(container).empty()
     $(container).append(table.append(tbody)) //puts entire table in the container
+
+console.log('tbody', tbody)
+console.log('container', container)
+
     this.html = $(container)[0].innerHTML.replace(/&lt;/g,'<').replace(/&gt;/g,'>')
     // if no 'container' is provided, calling routines use this.html
     
