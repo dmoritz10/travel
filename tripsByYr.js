@@ -19,8 +19,7 @@ async function btnTripByYrHtml() {
     
     var vals = trpVals
   
-    // for (var i=0;i<vals.length;i++) {
-        for (var i=0;i<31;i++) {
+    for (var i=0;i<vals.length;i++) {
   
       vals[i].push(i)                    
       
@@ -38,13 +37,15 @@ async function btnTripByYrHtml() {
     
   
     var trp = [["", "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]]
-    var circle = '<span class="material-icons" style="font-size: 18px;color:#cccc00;">circle</span>'
+    var circle = '<span class="material-icons" style="font-size: 16px;color:#cccc00;">circle</span>'
 
-    for (var j = 0; j < trpVals.length; j++) {
+    // for (var i = 0; i < trpVals.length; i++) {
+        for (var i=0;i<31;i++) {
 
-        var val = trpVals[j]
 
-        var row = [j+1, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle]
+        var val = trpVals[i]
+
+        var row = [i+1, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle]
         
         trp.push(row)
 
@@ -60,7 +61,7 @@ async function btnTripByYrHtml() {
         .setData(trp)
         .setTableClass('table table-borderless')
         .setTrClass('d-flex')
-        .setTcClass(['col','col','col','col','col','col','col','col','col','col','col','col','col'])
+        .setTcClass(['col-1','col','col','col','col','col','col','col','col','col','col','col','col'])
         .setTdClass('py-0 pb-0 mb-0 border-0 align-bottom border-bottom')
         .build('#tblTripsByYr');
 
