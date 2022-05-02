@@ -66,7 +66,7 @@ async function btnTripByYrHtml() {
 
         
 
-        var val = trpVals[i]
+        var vals = trpVals[i]
 
         var sDate = vals[trpHdrs.indexOf("Start Date")]
         var eDate = vals[trpHdrs.indexOf("End Date")]
@@ -84,10 +84,13 @@ async function btnTripByYrHtml() {
         var firstOfYr = new Date(new Date(selectedYr).getFullYear(), 0, 1);
         var lastOfYr = new Date(new Date(selectedYr).getFullYear(), 11, 31);
 
+        console.log(new Date(selectedYr))
+        console.log(new Date(selectedYr).getFullYear())
+
         console.log(sDt)
         console.log(firstOfYr)
         console.log(eDt)
-        console.log(firstOfYr)
+        console.log(lastOfYr)
 
         if (sDt < firstOfYr && eDt < firstOfYr || sDt > lastOfYr && eDt > lastOfYr) continue;
 
