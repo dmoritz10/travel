@@ -41,7 +41,7 @@ async function btnTripByYrHtml() {
     console.log('vals', trpVals)
   
     var trp = [["", "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]]
-    var circle = '<span class="dot"></span>'
+    var circle = '<span class="dot color"></span>'
 
     for (var i = 0;i < 31;i++) {
 
@@ -144,7 +144,7 @@ function placeDot(sDt, eDt, trp, selectedYr) {
 
         console.log('rowcol', row, col)
 
-        trp[row][col].addClass('bg-primary')
+        trp[row][col].replace("color", "bg-primary")
 
         dt.setDate(dt.getDate() + 1);
 
