@@ -37,7 +37,8 @@ async function btnTripByYrHtml() {
     
   
     var trp = [["", "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]]
-    var circle = '<span class="material-icons" style="font-size: 16px;color:#cccc00;">circle</span>'
+    // var circle = '<span class="material-icons" style="font-size: 16px;color:#cccc00;">circle</span>'
+    var circle = '<span class="rounded-circle border border-1">&nbsp;</span>'
 
     // for (var i = 0; i < trpVals.length; i++) {
         for (var i=0;i<31;i++) {
@@ -62,7 +63,7 @@ async function btnTripByYrHtml() {
         .setTableClass('table table-borderless')
         .setTrClass('d-flex')
         .setTcClass(['col-1','col','col','col','col','col','col','col','col','col','col','col','col'])
-        .setTdClass('m-0 p-0 border-1 align-bottom border-bottom border-right')
+        .setTdClass('m-0 p-0 border-0')
         .build('#tblTripsByYr');
 
 
