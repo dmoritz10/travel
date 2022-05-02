@@ -73,7 +73,7 @@ async function btnTripByYrHtml() {
 
         var sDt = calcUTCDate(sDate)
 
-        console.log(sDt)
+        console.log('sDt', sDt)
         var sYr = sDt.getFullYear()
         var sMo = sDt.getMonth()+1
         var sDa = sDt.getDate();
@@ -168,6 +168,8 @@ function calcUTCDate(dateStr) {
     var yr = dt[2]
     var mo = ('0' + dt[1]).slice(-2)
     var da = ('0' + dt[0]).slice(-2)
+
+    console.log('utc', dateStr, yr, mo, da, Date.parse(yr + '-' + mo + '-' + da) )
 
     return Date.parse(yr + '-' + mo + '-' + da) 
 }
