@@ -147,11 +147,11 @@ function placeDot(sDt, eDt, trp, selectedYr) {
 
         console.log('rowcol', row, col)
 
-        trp[row][col].replace(/color/g, "bg-primary")
+        trp[row][col] = trp[row][col].replace(/color/g, "bg-primary")
 
         dt.setDate(dt.getDate() + 1);
 
-        console.log('dt', dt)
+        console.log('new dt', dt)
 
     }
 
