@@ -71,15 +71,7 @@ async function btnTripByYrHtml() {
         var trip = vals[trpHdrs.indexOf("Trip")]
 
         var sDt = calcUTCDate(sDate)
-
-        var sYr = sDt.getFullYear()
-        var sMo = sDt.getMonth()+1
-        var sDa = sDt.getDate();
-         
         var eDt = calcUTCDate(eDate)
-        var eYr = eDt.getFullYear()
-        var eMo = eDt.getMonth()+1
-        var eDa = eDt.getDate();
 
         var firstOfYr = calcUTCDate('1/1/' + selectedYr);
         var lastOfYr = calcUTCDate('12/31/' + selectedYr);
@@ -122,7 +114,7 @@ function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips, trip) {
 
     var nbrDays = 0
 
-    var dt = sDt < firstOfYr ? eDt : sDt
+    var dt = sDt < firstOfYr ? firstOfYr : sDt
 
     while (dt <= lastOfYr && dt <= eDt) {
 
@@ -133,8 +125,6 @@ function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips, trip) {
         var row = eDa + 1
 
         var color = ['Tomato', 'purple', 'DodgerBlue', 'green', 'MediumSeaGreen', 'blue', 'red', 'purple', 'SlateBlue', 'green', 'lightpurple', 'blue'][nbrTrips % 12]
-
-console.log('color', color, eMo, nbrTrips, nbrTrips % 12)
 
         trp[row][col] = trp[row][col].replace(/COLOR/g, color)
         trp[row][col] = trp[row][col].replace(/title=""/g, `title="${trip}"`)
