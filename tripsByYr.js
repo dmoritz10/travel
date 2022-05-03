@@ -1,6 +1,6 @@
 async function btnTripByYrHtml() {
 
-    modal(true)
+    // modal(true)
 
     if ($('#tbyYr').html() != '')  {
         var selectedYr = $('#tbyYr').html()
@@ -104,12 +104,12 @@ async function btnTripByYrHtml() {
         .setData(trp)
         .setTableClass('table table-borderless')
         .setTrClass('d-flex')
-        .setTcClass(['col-1  text-right','col','col','col','col','col','col','col','col','col','col','col','col'])
+        .setTcClass(['col-1  text-center','col','col','col','col','col','col','col','col','col','col','col','col'])
         .setTdClass('m-0 p-0 border-0')
         .build('#tblTripsByYr');
 
 
-    modal(false)
+    // modal(false)
 
     gotoTab('TripsByYear')
 
