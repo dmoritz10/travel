@@ -60,7 +60,6 @@ async function listTrips(title = "Trips") {
 
 
     var ele = $tblSheets.clone();
-    // ele.find('#trpDocument')[0].innerHTML = trpObj['Trip'].split(' - ')[0]
 
     ele.find('#trpDocument')[0].innerHTML = trpObj['Trip']
     ele.find('#trpCompositeKey')[0].innerHTML = trpObj['Composite Key']
@@ -221,7 +220,7 @@ async function editTrip(arrIdx) {
 
 async function btnTrpmSubmitSheetHtml() {
 
-  // if (!$('#trip-form').valid()) return
+  if (!$('#trip-form').valid()) return
 
   var arrIdx = $('#trpmArrIdx').val() ? $('#trpmArrIdx').val()*1 : -1
 

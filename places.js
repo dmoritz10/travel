@@ -33,23 +33,18 @@ async function btnCountriesHtml() {
         var dateRng = vals[i][strDtCol].slice(0,-5) + ' - ' + vals[i][endDtCol].slice(0,-5)
         var dest = JSON.parse(vals[i][destCol])
         var countries = JSON.parse(cntries)
-    
         
             countries.forEach(ele => {
 
                 var sortkey = parseMonth(month)
-        
                 arr.push([ele, trip, month, sortkey, dateRng, dest, countries])
         
             })
       
     }
   
-    // arr.sort(function(a,b){return a[3] < b[3]  || a[0] > b[0] });
     arr.sort(countrySorter(0, 3));
 
-    console.log('arr', arr)
-    
     var treeData = []
     var brkcntry
 
@@ -106,10 +101,7 @@ async function btnCountriesHtml() {
     }
 
     if (cntryObj) treeData.push(cntryObj)
-
     
-    console.log(treeData)
-
     nbrDom = 0
     nbrIntl = 0
 
@@ -133,7 +125,6 @@ async function btnCountriesHtml() {
     $('#plContainer').bstreeview({ data: treeData });
 
     var srchVal = $("#plSearch").val().toLowerCase()
-    // var exc = srchVal.substr(0,1) == '-'
     var exc = false
   
     if (srchVal) {

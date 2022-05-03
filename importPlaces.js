@@ -1,9 +1,3 @@
-function btnImportPlacesHtml() {
-
-  gotoTab('ImportPlaces')
-
-
-}
 
 async function updateTripsFromLocationHistory(input) {
 

@@ -1,6 +1,5 @@
 async function showTrip(idx) {
 
-
   if (idx === null) return                  // null is from browseDocument
 
   var trp = []
@@ -33,7 +32,6 @@ async function showTrip(idx) {
       brkDate = date
 
     }
-
   
     var icon = '<div class="label ps-5 cursor-pointer" onClick="editTripDtl(' + idx + ", " + i + ')"><span class="material-icons">expand_more</span></div>'
 
@@ -106,7 +104,6 @@ function browseDocument(dir) {
 function clearAndGotoTab(sht) {
 
   $("#tblTrips").html('')
-  // $("#ssSheet").html('')
   
   gotoTab(sht)
 

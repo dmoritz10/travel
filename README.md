@@ -85,7 +85,7 @@ Change main menu
   x - Remove Import after movingb to dropdowns
   x - Change Places to Countries
 
-Design, develop a timeline
+x - Design, develop a timeline
 
 x - Design, develop Places similar to Google Timeline.  Uses Googles !!!
 

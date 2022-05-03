@@ -19,8 +19,6 @@ async function btnTripByYrHtml() {
     trpHdrs = objSht[trpTitle].colHdrs
     trpVals = objSht[trpTitle].vals
 
-    console.log('trpVals',trpVals )
-    
     var vals = trpVals
   
     for (var i=0;i<vals.length;i++) {
@@ -45,7 +43,6 @@ async function btnTripByYrHtml() {
     for (var i = 0; i < 31; i++) {
 
         var row = [i+1, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle]
-        
         trp.push(row)
 
     }
@@ -59,13 +56,13 @@ async function btnTripByYrHtml() {
 
         var sDate = vals[trpHdrs.indexOf("Start Date")]
         var eDate = vals[trpHdrs.indexOf("End Date")]
-        var trip = vals[trpHdrs.indexOf("Trip")]
+        var trip  = vals[trpHdrs.indexOf("Trip")]
 
         var sDt = calcUTCDate(sDate)
         var eDt = calcUTCDate(eDate)
 
         var firstOfYr = calcUTCDate('1/1/' + selectedYr);
-        var lastOfYr = calcUTCDate('12/31/' + selectedYr);
+        var lastOfYr  = calcUTCDate('12/31/' + selectedYr);
 
         if (sDt < firstOfYr && eDt < firstOfYr || sDt > lastOfYr && eDt > lastOfYr) continue;
 
