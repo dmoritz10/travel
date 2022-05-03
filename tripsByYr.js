@@ -166,7 +166,7 @@ function calcUTCDate(dateStr) {
 
 function changeYr(dir) {
 
-    var selectedYr = $('#tbyYr').val()*1
+    var selectedYr = $('#tbyYr').html()*1
 
     if (dir == 'prev') {
         selectedYr--
@@ -174,7 +174,7 @@ function changeYr(dir) {
         selectedYr++
     }
 
-    $('#tbyYr').val(selectedYr)
+    $('#tbyYr').html(selectedYr)
 
     btnTripByYrHtml()   
     
