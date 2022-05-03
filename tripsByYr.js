@@ -131,6 +131,8 @@ function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr) {
 
         var color = ['red', 'purple', 'lightblue', 'green', 'lightpurple', 'blue', 'red', 'purple', 'lightblue', 'green', 'lightpurple', 'blue'].indexOf(eMo)
 
+console.log('color', color, eMo)
+
         trp[row][col] = trp[row][col].replace(/color/g, color)
 
         dt.setDate(dt.getDate() + 1);
