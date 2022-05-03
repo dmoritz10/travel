@@ -4,7 +4,7 @@ async function btnTripByYrHtml() {
 
     console.log('tbyYr', $('#tbyYr').val(), $('#tbyYr').val()  == '')
 
-    if ($('#tbyYr').val() == '')  {
+    if ($('#tbyYr').val() != '')  {
         var selectedYr = $('#tbyYr').val()
     } else {
         var selectedYr = new Date().getFullYear()
