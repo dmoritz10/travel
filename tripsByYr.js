@@ -2,15 +2,15 @@ async function btnTripByYrHtml() {
 
     modal(true)
 
-    console.log('tbyYr', $('#tbyYr').val(), $('#tbyYr').val() === true)
+    console.log('tbyYr', $('#tbyYr').val(), $('#tbyYr').val()  == '')
 
-    if ($('#tbyYr').val())  {
+    if ($('#tbyYr').val() == '')  {
         var selectedYr = $('#tbyYr').val()
     } else {
         var selectedYr = new Date().getFullYear()
         $('#tbyYr').val(selectedYr)
     }
-    console.log('tbyYr', $('#tbyYr').val(), $('#tbyYr').val() === true)
+    console.log('tbyYr', $('#tbyYr').val(), $('#tbyYr').val() == '')
 
     var objSht = await openShts(
       [
@@ -123,8 +123,6 @@ function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr) {
         trp[row][col] = trp[row][col].replace(/color/g, "bg-primary")
 
         dt.setDate(dt.getDate() + 1);
-
-        console.log('new dt', dt)
 
     }
 
