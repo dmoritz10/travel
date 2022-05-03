@@ -2,6 +2,8 @@ async function btnTripByYrHtml() {
 
     modal(true)
 
+    console.log('tbyYr', $('#tbyYr').val(), $('#tbyYr').val() == true)
+
     if ($('#tbyYr').val())  {
         var selectedYr = $('#tbyYr').val()
     } else {
@@ -175,10 +177,10 @@ function changeYr(dir) {
     var selectedYr = $('#tbyYr').val()*1
 
     if (dir == 'prev') {
-        selected--
+        selectedYr--
     
     } else {
-        selected++
+        selectedYr++
         $('#tbyYr').val(selectedYr)
     }
 
