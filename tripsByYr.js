@@ -145,7 +145,7 @@ function clearSpuriousDots(trp, firstOfYr) {
         for (var j = lastDyOfMo + 1; j<32;j++) {
 
             var col = mo
-            var row = j + 1
+            var row = j
 
             console.log('innerloop', col, row)
 
