@@ -2,7 +2,7 @@ async function btnTripByYrHtml() {
 
     modal(true)
 
-    console.log('tbyYr', $('#tbyYr').val(), $('#tbyYr').val() == true)
+    console.log('tbyYr', $('#tbyYr').val(), $('#tbyYr').val() === true)
 
     if ($('#tbyYr').val())  {
         var selectedYr = $('#tbyYr').val()
@@ -10,7 +10,7 @@ async function btnTripByYrHtml() {
         var selectedYr = new Date().getFullYear()
         $('#tbyYr').val(selectedYr)
     }
-    console.log('tbyYr', $('#tbyYr').val(), $('#tbyYr').val() == true)
+    console.log('tbyYr', $('#tbyYr').val(), $('#tbyYr').val() === true)
 
     var objSht = await openShts(
       [
