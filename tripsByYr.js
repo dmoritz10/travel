@@ -129,7 +129,9 @@ function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr) {
         var col = eMo
         var row = eDa + 1
 
-        trp[row][col] = trp[row][col].replace(/color/g, "bg-primary")
+        var color = ['red', 'purple', 'lightblue', 'green', 'lightpurple', 'blue', 'red', 'purple', 'lightblue', 'green', 'lightpurple', 'blue'][eMo]
+
+        trp[row][col] = trp[row][col].replace(/color/g, color)
 
         dt.setDate(dt.getDate() + 1);
 
