@@ -40,7 +40,7 @@ async function btnTripByYrHtml() {
     // trpVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
     
     var trp = [["", "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]]
-    var circle = '<span class="dot color"></span>'
+    var circle = '<span class="dot" style="background-color:COLOR"></span>'
 
     for (var i = 0; i < 31; i++) {
 
@@ -133,7 +133,7 @@ function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr) {
 
 console.log('color', color, eMo)
 
-        trp[row][col] = trp[row][col].replace(/color/g, color)
+        trp[row][col] = trp[row][col].replace(/COLOR/g, color)
 
         dt.setDate(dt.getDate() + 1);
 
