@@ -83,9 +83,12 @@ async function btnTripByYrHtml() {
         var eMo = eDt.getMonth()+1
         var eDa = eDt.getDate();
 
-        var firstOfYr = new Date(new Date(selectedYr).getFullYear(), 0, 1);
-        var lastOfYr = new Date(new Date(selectedYr).getFullYear(), 11, 31);
+        var firstOfYr = calcUTCDate('1/1/' + selectedYr);
+        var lastOfYr = calcUTCDate('12/31/' + selectedYr);
 
+        console.log('of year', firstOfYr, lastOfYr)
+
+        console.log('selectedUR', selectedYr)
         console.log(calcUTCDate(selectedYr))
         console.log(calcUTCDate(selectedYr).getFullYear())
 
@@ -110,7 +113,7 @@ async function btnTripByYrHtml() {
         .setData(trp)
         .setTableClass('table table-borderless')
         .setTrClass('d-flex')
-        .setTcClass(['col-1','col','col','col','col','col','col','col','col','col','col','col','col'])
+        .setTcClass(['col-1  text-right','col','col','col','col','col','col','col','col','col','col','col','col'])
         .setTdClass('m-0 p-0 border-0')
         .build('#tblTripsByYr');
 
