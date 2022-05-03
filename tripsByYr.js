@@ -10,6 +10,7 @@ async function btnTripByYrHtml() {
         var selectedYr = new Date().getFullYear()
         $('#tbyYr').val(selectedYr)
     }
+    console.log('tbyYr', $('#tbyYr').val(), $('#tbyYr').val() == true)
 
     var objSht = await openShts(
       [
@@ -134,22 +135,16 @@ function clearSpuriousDots(trp, firstOfYr) {
     var ja = firstOfYr.getMonth()+1
     var yr = firstOfYr.getFullYear()
 
-    console.log('clear', ja, yr)
-
     for (var i=0; i<13;i++) {
 
         var mo = ja + i
 
         var lastDyOfMo = new Date(yr, mo, 0).getDate()
 
-        console.log('last', mo, lastDyOfMo)
-
         for (var j = lastDyOfMo + 1; j<32;j++) {
 
             var col = mo
             var row = j
-
-            console.log('innerloop', col, row)
 
             trp[row][col] = trp[row][col].replace(/dot/g, "")
 
