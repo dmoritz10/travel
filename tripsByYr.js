@@ -131,7 +131,7 @@ function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips) {
 
         var color = ['red', 'purple', 'lightblue', 'green', 'lightpurple', 'blue', 'red', 'purple', 'lightblue', 'green', 'lightpurple', 'blue'][nbrTrips % 12]
 
-console.log('color', color, eMo)
+console.log('color', color, eMo, nbrTrips, nbrTrips % 12)
 
         trp[row][col] = trp[row][col].replace(/COLOR/g, color)
 
