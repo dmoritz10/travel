@@ -147,6 +147,8 @@ function clearSpuriousDots(trp, firstOfYr) {
             var col = mo
             var row = j + 1
 
+            console.log('innerloop', col, row)
+
             trp[row][col] = trp[row][col].replace(/dot/g, "")
 
         }
