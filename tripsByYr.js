@@ -2,15 +2,14 @@ async function btnTripByYrHtml() {
 
     modal(true)
 
-    console.log('tbyYr', $('#tbyYr').val(), $('#tbyYr').val()  == '')
-
-    if ($('#tbyYr').val() != '')  {
-        var selectedYr = $('#tbyYr').val()
+    if ($('#tbyYr').html() != '')  {
+        var selectedYr = $('#tbyYr').html()
     } else {
         var selectedYr = new Date().getFullYear()
-        $('#tbyYr').val(selectedYr)
+        $('#tbyYr').html(selectedYr)
     }
-    console.log('tbyYr', $('#tbyYr').val(), $('#tbyYr').val() == '')
+
+    console.log('t', tbyYr)
 
     var objSht = await openShts(
       [
@@ -171,11 +170,11 @@ function changeYr(dir) {
 
     if (dir == 'prev') {
         selectedYr--
-    
     } else {
         selectedYr++
-        $('#tbyYr').val(selectedYr)
     }
+
+    $('#tbyYr').val(selectedYr)
 
     btnTripByYrHtml()   
     
