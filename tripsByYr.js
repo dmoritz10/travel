@@ -127,7 +127,7 @@ function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr) {
 
 }
 
-function clearSuriousDots(firstOfYr) {
+function clearSpuriousDots(firstOfYr) {
 
     var ja = firstOfYr.getMonth()+1
     var yr = firstOfYr.getFullYear()
