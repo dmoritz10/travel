@@ -85,9 +85,9 @@ async function btnTripByYrHtml() {
 
         if (sDt < firstOfYr && eDt < firstOfYr || sDt > lastOfYr && eDt > lastOfYr) continue;
 
-        nbrTrips++
+        nbrDays += placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips)
 
-        nbrDays += placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrDays)
+        nbrTrips++
 
         clearSpuriousDots(trp, firstOfYr)
 
@@ -115,7 +115,7 @@ async function btnTripByYrHtml() {
 
 }
 
-function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr) {
+function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips) {
 
     var nbrDays = 0
 
@@ -129,7 +129,7 @@ function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr) {
         var col = eMo
         var row = eDa + 1
 
-        var color = ['red', 'purple', 'lightblue', 'green', 'lightpurple', 'blue', 'red', 'purple', 'lightblue', 'green', 'lightpurple', 'blue'][eMo]
+        var color = ['red', 'purple', 'lightblue', 'green', 'lightpurple', 'blue', 'red', 'purple', 'lightblue', 'green', 'lightpurple', 'blue'][nbrTrips % 12]
 
 console.log('color', color, eMo)
 
