@@ -316,11 +316,6 @@ jQuery(function ($) {
 
             // All tabs
 
-            
-            // $('.divfullscreen').click(function(){
-            //   document.documentElement.requestFullscreen();
-            // });
-            
             var whiteList = $.fn.tooltip.Constructor.Default.allowList
           
                 whiteList.table = []
