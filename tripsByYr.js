@@ -2,17 +2,17 @@ async function btnTripByYrHtml() {
 
     modal(true)
 
-    var selectedYr = "2022"
-  
-    var trpOptions = readOption('trpFilter')
-    var trpSelectFav = trpOptions.trpSelectFav
-  
+    if ($('#tbyYr').val())  {
+        var selectedYr = $('#tbyYr').val()
+    } else {
+        var selectedYr = new Date().getFullYear()
+        $('#tbyYr').val(selectedYr)
+    }
+
     var objSht = await openShts(
       [
         { title: "Trips", type: "all" }
       ])
-  
-    console.log('objSht', objSht)
   
     trpTitle = "Trips"
     
@@ -37,13 +37,10 @@ async function btnTripByYrHtml() {
     
     // trpVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
     
-    console.log('hdrs', trpHdrs)
-    console.log('vals', trpVals)
-  
     var trp = [["", "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]]
     var circle = '<span class="dot color"></span>'
 
-    for (var i = 0;i < 31;i++) {
+    for (var i = 0; i < 31; i++) {
 
         var row = [i+1, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle, circle]
         
@@ -51,17 +48,13 @@ async function btnTripByYrHtml() {
 
     }
 
-
-    // var circle = '<span class="rounded-circle border border-1">&nbsp;</span>'
-
     for (var i = 0; i < trpVals.length; i++) {
-        // for (var i=0;i<31;i++) {
 
         // read dates until 1st sDate is in the selected year
         // fill in corresopnding dot
         // so the same until either eDate or end of year
         //          of end of year break
-    //              else read next trip
+        //          else read next trip
 
 
         
@@ -73,7 +66,6 @@ async function btnTripByYrHtml() {
 
         var sDt = calcUTCDate(sDate)
 
-        console.log('sDt', sDt)
         var sYr = sDt.getFullYear()
         var sMo = sDt.getMonth()+1
         var sDa = sDt.getDate();
@@ -86,21 +78,14 @@ async function btnTripByYrHtml() {
         var firstOfYr = calcUTCDate('1/1/' + selectedYr);
         var lastOfYr = calcUTCDate('12/31/' + selectedYr);
 
-        console.log('of year', firstOfYr, lastOfYr)
-
-        console.log(sDt)
-        console.log(firstOfYr)
-        console.log(eDt)
-        console.log(lastOfYr)
-
         if (sDt < firstOfYr && eDt < firstOfYr || sDt > lastOfYr && eDt > lastOfYr) continue;
 
-        placeDot(sDt, eDt, trp, selectedYr, firstOfYr, lastOfYr)
+        placeDot(sDt, eDt, trp, firstOfYr, lastOfYr)
+
+        clearSpuriousDots(firstOfYr)
 
     }
 
-    console.log('trp', trp)
-    
     var tbl = new Table();
     
     tbl
@@ -120,14 +105,7 @@ async function btnTripByYrHtml() {
 
 }
 
-function placeDot(sDt, eDt, trp, selectedYr, firstOfYr, lastOfYr) {
-
-    var sYr = sDt.getFullYear()
-    var sMo = sDt.getMonth()+1
-    var sDa = sDt.getDate();
-
-    var eYr = eDt.getFullYear()
-    var eMon = eDt.getMonth()+1
+function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr) {
 
     var dt = sDt < firstOfYr ? eDt : sDt
 
@@ -135,9 +113,6 @@ function placeDot(sDt, eDt, trp, selectedYr, firstOfYr, lastOfYr) {
 
         var eMo = dt.getMonth()+1
         var eDa = dt.getDate()-1;
-
-        // var lastDayOfMo = new Date(new Date(selectedYr).getFullYear(), 11, 0).getMonth()+1
-
 
         var col = eMo
         var row = eDa + 1
@@ -150,6 +125,30 @@ function placeDot(sDt, eDt, trp, selectedYr, firstOfYr, lastOfYr) {
 
     }
 
+}
+
+function clearSuriousDots(firstOfYr) {
+
+    var ja = firstOfYr.getMonth()+1
+    var yr = firstOfYr.getFullYear()
+
+    console.log('clear', ja, yr)
+
+    for (var i=0; i<13;i++) {
+
+        var mo = ja + i
+
+        var lastDyOfMo = new Date(yr, mo, 0).getDate()
+
+        console.log('last', mo, lastDyOfMo)
+
+        for (var j = lastDyOfMo + 1; j<32;j++) {
+
+            trp[row][col] = trp[row][col].replace(/dot/g, "")
+
+        }
+
+    }
 
 }
 
@@ -163,5 +162,21 @@ function calcUTCDate(dateStr) {
     var da = ('0' + dt[1]).slice(-2)
 
     return new Date(yr + '-' + mo + '-' + da + 'T00:00:00') 
+
+}
+
+function changeYr(dir) {
+
+    var selectedYr = $('#tbyYr').val()*1
+
+    if (dir == 'prev') {
+        selected--
+    
+    } else {
+        selected++
+        $('#tbyYr').val(selectedYr)
+    }
+
+    btnTripByYrHtml()   
     
 }
