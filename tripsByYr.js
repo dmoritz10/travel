@@ -40,7 +40,7 @@ async function btnTripByYrHtml() {
     // trpVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
     
     var trp = [["", "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]]
-    var circle = '<span class="dot" style="background-color:COLOR"></span>'
+    var circle = '<span class="dot" style="background-color:COLOR" data-bs-toggle="tooltip" title=""></span>'
 
     for (var i = 0; i < 31; i++) {
 
@@ -67,7 +67,9 @@ async function btnTripByYrHtml() {
         var vals = trpVals[i]
 
         var sDate = vals[trpHdrs.indexOf("Start Date")]
-        var eDate = vals[trpHdrs.indexOf("End Date")]
+        var eDate = vals[trpHdrs.indexOf("End Date")
+        var trip = vals[trpHdrs.indexOf("Trip")]
+    ]
 
         var sDt = calcUTCDate(sDate)
 
@@ -85,7 +87,7 @@ async function btnTripByYrHtml() {
 
         if (sDt < firstOfYr && eDt < firstOfYr || sDt > lastOfYr && eDt > lastOfYr) continue;
 
-        nbrDays += placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips)
+        nbrDays += placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips, trip)
 
         nbrTrips++
 
@@ -111,11 +113,13 @@ async function btnTripByYrHtml() {
 
     // modal(false)
 
+    $('[data-bs-toggle="tooltip"]').tooltip()
+
     gotoTab('TripsByYear')
 
 }
 
-function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips) {
+function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips, trip) {
 
     var nbrDays = 0
 
@@ -134,6 +138,7 @@ function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips) {
 console.log('color', color, eMo, nbrTrips, nbrTrips % 12)
 
         trp[row][col] = trp[row][col].replace(/COLOR/g, color)
+        trp[row][col] = trp[row][col].replace(/title=""/g, `title="${trip}"`)
 
         dt.setDate(dt.getDate() + 1);
 
