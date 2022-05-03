@@ -9,8 +9,6 @@ async function btnTripByYrHtml() {
         $('#tbyYr').html(selectedYr)
     }
 
-    console.log('t', tbyYr)
-
     var objSht = await openShts(
       [
         { title: "Trips", type: "all" }
@@ -20,6 +18,8 @@ async function btnTripByYrHtml() {
     
     trpHdrs = objSht[trpTitle].colHdrs
     trpVals = objSht[trpTitle].vals
+
+    console.log('trpVals',trpVals )
     
     var vals = trpVals
   
@@ -37,7 +37,7 @@ async function btnTripByYrHtml() {
   
     trpVals = vals.sort(function(a,b){return a[sortCol] < b[sortCol] ? 1 : -1; });
     
-    // trpVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
+    trpVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
     
     var trp = [["", "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]]
     var circle = '<span class="dot" style="background-color:COLOR" data-bs-toggle="tooltip" title=""></span>'
@@ -54,15 +54,6 @@ async function btnTripByYrHtml() {
     var nbrDays = 0
 
     for (var i = 0; i < trpVals.length; i++) {
-
-        // read dates until 1st sDate is in the selected year
-        // fill in corresopnding dot
-        // so the same until either eDate or end of year
-        //          of end of year break
-        //          else read next trip
-
-
-        
 
         var vals = trpVals[i]
 
