@@ -211,7 +211,6 @@ jQuery(function ($) {
             // Home tab
 
             $('#btnSignout')            .button().click(btnSignoutHtml);
-            $('#btnImportPlaces')       .button().click(btnImportPlacesHtml);
             $('#btnCountries')          .button().click(btnCountriesHtml);
             $('#btnTrips')              .button().click(listTrips);
             $('#btnReservations')       .click(listReservations);

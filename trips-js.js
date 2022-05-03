@@ -228,48 +228,31 @@ async function btnTrpmSubmitSheetHtml() {
 
     var vals = trpVals[arrIdx]
 
-    vals[trpHdrs.indexOf("Trip")] = $('#trpmTrip').val()
-    vals[trpHdrs.indexOf("Month")] = formatMonth($('#trpmMonth').val())
-    vals[trpHdrs.indexOf("Type")] = JSON.stringify(getMSelVals(document.getElementById('trpmType')))
-    vals[trpHdrs.indexOf("Start Date")] = formatDateTime($('#trpmStartDate').val())
-    vals[trpHdrs.indexOf("End Date")] = formatDateTime($('#trpmEndDate').val())
-    vals[trpHdrs.indexOf("Destinations")] = JSON.stringify($('#trpmDestinations').val().split(' - '))
-    vals[trpHdrs.indexOf("Countries")] = JSON.stringify($('#trpmCountries').val().split(' - '))
-    vals[trpHdrs.indexOf("Source")] = 'Manual'
-    vals[trpHdrs.indexOf("Nbr Days")] = calcNbrDays(vals[trpHdrs.indexOf("Start Date")], vals[trpHdrs.indexOf("End Date")])
-    vals[trpHdrs.indexOf("Composite Key")] = $('#trpmTrip').val() + ' - ' + formatMonth($('#trpmMonth').val()) + ' - ' + $('#trpmDestinations').val() + ' - ' + $('#trpmCountries').val() + ' - ' + getMSelVals(document.getElementById('trpmType')).join(' - ')
-
   } else {
-
-    // if (dupDocument($('#trpmDocument').val())) {
-    //   toast("Document already exists")
-    //   return
-    // }
 
     var vals = []
 
-    vals[trpHdrs.indexOf("Trip")] = $('#trpmTrip').val()
-    vals[trpHdrs.indexOf("Month")] = formatMonth($('#trpmMonth').val())
-    vals[trpHdrs.indexOf("Type")] = JSON.stringify(getMSelVals(document.getElementById('trpmType')))
-    vals[trpHdrs.indexOf("Start Date")] = formatDateTime($('#trpmStartDate').val())
-    vals[trpHdrs.indexOf("End Date")] = formatDateTime($('#trpmEndDate').val())
-    vals[trpHdrs.indexOf("Destinations")] = JSON.stringify($('#trpmDestinations').val().split(' - '))
-    vals[trpHdrs.indexOf("Countries")] = JSON.stringify($('#trpmCountries').val().split(' - '))
-    vals[trpHdrs.indexOf("Source")] = 'Manual'
     vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify([])
-    vals[trpHdrs.indexOf("Composite Key")] = $('#trpmTrip').val() + ' - ' + formatMonth($('#trpmMonth').val()) + ' - ' + $('#trpmDestinations').val() + ' - ' + $('#trpmCountries').val() + ' - ' + getMSelVals(document.getElementById('trpmType')).join(' - ')
-    vals[trpHdrs.indexOf("Nbr Days")] = calcNbrDays(vals[trpHdrs.indexOf("Start Date")], vals[trpHdrs.indexOf("End Date")])
-
 
   }
+
+  vals[trpHdrs.indexOf("Trip")] = $('#trpmTrip').val()
+  vals[trpHdrs.indexOf("Month")] = formatMonth($('#trpmMonth').val())
+  vals[trpHdrs.indexOf("Type")] = JSON.stringify(getMSelVals(document.getElementById('trpmType')))
+  vals[trpHdrs.indexOf("Start Date")] = formatDateTime($('#trpmStartDate').val())
+  vals[trpHdrs.indexOf("End Date")] = formatDateTime($('#trpmEndDate').val())
+  vals[trpHdrs.indexOf("Destinations")] = JSON.stringify($('#trpmDestinations').val().split(' - '))
+  vals[trpHdrs.indexOf("Countries")] = JSON.stringify($('#trpmCountries').val().split(' - '))
+  vals[trpHdrs.indexOf("Source")] = 'Manual'
+  vals[trpHdrs.indexOf("Nbr Days")] = calcNbrDays(vals[trpHdrs.indexOf("Start Date")], vals[trpHdrs.indexOf("End Date")])
+  vals[trpHdrs.indexOf("Composite Key")] = $('#trpmTrip').val() + ' - ' + formatMonth($('#trpmMonth').val()) + ' - ' + $('#trpmDestinations').val() + ' - ' + $('#trpmCountries').val() + ' - ' + getMSelVals(document.getElementById('trpmType')).join(' - ')
+
 
   modal(true)
 
   var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
 
-
   await updateSheetRow(vals, trpIdx, "Trips")
-
 
   $("#trip-modal").modal('hide');
 
@@ -292,11 +275,8 @@ function setMSelVals(element, arr) {
 
   for (var i = 0; i < ele.options.length; i++) {
 
-    console.log(ele.options[i].value)
-    console.log(arr.indexOf(ele.options[i].value))
-
     ele.options[i].selected = arr.indexOf(ele.options[i].value) >= 0;
-    console.log(ele.options[i].selected)
+
   }
 
 }
@@ -363,8 +343,6 @@ function btnTrpmBuildDestHtml() {
     if (uniqueDests.indexOf(city) == -1) uniqueDests.push(city)
     if (uniqueCntrys.indexOf(state) == -1) uniqueCntrys.push(state)
 
-    console.log(uniqueCntrys)
-
   })
 
   var txt = ''
@@ -387,8 +365,6 @@ async function btnTrpmDeleteSheetHtml() {
 
 
   var idx = trpIdxArr[$('#trpmArrIdx').val() * 1]
-
-  console.log('btnTrpmDelete',idx,$('#trpmArrIdx').val(), trpIdxArr)
 
   var shtId = await getSheetId('Trips')
 
