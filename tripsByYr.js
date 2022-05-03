@@ -82,7 +82,7 @@ async function btnTripByYrHtml() {
 
         placeDot(sDt, eDt, trp, firstOfYr, lastOfYr)
 
-        clearSpuriousDots(firstOfYr)
+        clearSpuriousDots(trp, firstOfYr)
 
     }
 
@@ -127,7 +127,7 @@ function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr) {
 
 }
 
-function clearSpuriousDots(firstOfYr) {
+function clearSpuriousDots(trp, firstOfYr) {
 
     var ja = firstOfYr.getMonth()+1
     var yr = firstOfYr.getFullYear()
