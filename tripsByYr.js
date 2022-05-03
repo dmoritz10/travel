@@ -69,7 +69,6 @@ async function btnTripByYrHtml() {
         var sDate = vals[trpHdrs.indexOf("Start Date")]
         var eDate = vals[trpHdrs.indexOf("End Date")]
         var trip = vals[trpHdrs.indexOf("Trip")]
-    ]
 
         var sDt = calcUTCDate(sDate)
 
