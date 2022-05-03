@@ -88,10 +88,6 @@ async function btnTripByYrHtml() {
 
         console.log('of year', firstOfYr, lastOfYr)
 
-        console.log('selectedUR', selectedYr)
-        console.log(calcUTCDate(selectedYr))
-        console.log(calcUTCDate(selectedYr).getFullYear())
-
         console.log(sDt)
         console.log(firstOfYr)
         console.log(eDt)
@@ -99,7 +95,7 @@ async function btnTripByYrHtml() {
 
         if (sDt < firstOfYr && eDt < firstOfYr || sDt > lastOfYr && eDt > lastOfYr) continue;
 
-        placeDot(sDt, eDt, trp, selectedYr)
+        placeDot(sDt, eDt, trp, selectedYr, firstOfYr, lastOfYr)
 
     }
 
@@ -124,7 +120,7 @@ async function btnTripByYrHtml() {
 
 }
 
-function placeDot(sDt, eDt, trp, selectedYr) {
+function placeDot(sDt, eDt, trp, selectedYr, firstOfYr, lastOfYr) {
 
     var sYr = sDt.getFullYear()
     var sMo = sDt.getMonth()+1
@@ -132,10 +128,6 @@ function placeDot(sDt, eDt, trp, selectedYr) {
 
     var eYr = eDt.getFullYear()
     var eMon = eDt.getMonth()+1
-
-    var firstOfYr = new Date(new Date(selectedYr).getFullYear(), 0, 1);
-    var lastOfYr = new Date(new Date(selectedYr).getFullYear(), 11, 31);
-    
 
     var dt = sDt < firstOfYr ? eDt : sDt
 
@@ -149,8 +141,6 @@ function placeDot(sDt, eDt, trp, selectedYr) {
 
         var col = eMo
         var row = eDa + 1
-
-        console.log('rowcol', row, col)
 
         trp[row][col] = trp[row][col].replace(/color/g, "bg-primary")
 
@@ -172,9 +162,6 @@ function calcUTCDate(dateStr) {
     var mo = ('0' + dt[0]).slice(-2)
     var da = ('0' + dt[1]).slice(-2)
 
-    console.log('utc', dateStr, yr, mo, da, Date.parse(yr + '-' + mo + '-' + da + 'T00:00:00') )
-    console.log(Date.parse(yr + '-' + mo + '-' + da + 'T00:00:00') )
-    console.log(yr + '-' + mo + '-' + da + 'T00:00:00')
-console.log(new Date(yr + '-' + mo + '-' + da + 'T00:00:00'))
     return new Date(yr + '-' + mo + '-' + da + 'T00:00:00') 
+    
 }
