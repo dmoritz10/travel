@@ -67,7 +67,7 @@ async function btnTripByYrHtml() {
         var vals = trpVals[i]
 
         var sDate = vals[trpHdrs.indexOf("Start Date")]
-        var eDate = vals[trpHdrs.indexOf("End Date")
+        var eDate = vals[trpHdrs.indexOf("End Date")]
         var trip = vals[trpHdrs.indexOf("Trip")]
     ]
 
