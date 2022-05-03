@@ -50,6 +50,9 @@ async function btnTripByYrHtml() {
 
     }
 
+    var nbrTrips = 0
+    var nbrDays = 0
+
     for (var i = 0; i < trpVals.length; i++) {
 
         // read dates until 1st sDate is in the selected year
@@ -82,9 +85,14 @@ async function btnTripByYrHtml() {
 
         if (sDt < firstOfYr && eDt < firstOfYr || sDt > lastOfYr && eDt > lastOfYr) continue;
 
-        placeDot(sDt, eDt, trp, firstOfYr, lastOfYr)
+        nbrTrips++
+
+        nbrDays += placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrDays)
 
         clearSpuriousDots(trp, firstOfYr)
+
+        $('#tbyNbrDays').html(nbrDays)
+        $('#tbyNbrTrips').html(nbrTrips)
 
     }
 
@@ -109,6 +117,8 @@ async function btnTripByYrHtml() {
 
 function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr) {
 
+    var nbrDays = 0
+
     var dt = sDt < firstOfYr ? eDt : sDt
 
     while (dt <= lastOfYr && dt <= eDt) {
@@ -123,7 +133,11 @@ function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr) {
 
         dt.setDate(dt.getDate() + 1);
 
+        nbrDays++
+
     }
+
+    return nbrDays
 
 }
 
