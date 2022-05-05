@@ -214,7 +214,7 @@ jQuery(function ($) {
             $('#btnCountries')          .button().click(btnCountriesHtml);
             $('#btnTrips')              .button().click(listTrips);
             $('#btnReservations')       .click(listReservations);
-            $('#btnReservations')       .click(listReservations);
+            $('#btnPlaces')              .click(btnPlacesHtml);
             $('#btnTripByYr')           .click(btnTripByYrHtml);
             
             // Trips
@@ -298,7 +298,28 @@ jQuery(function ($) {
                 // var exc = value.substr(0,1) == '-'
                 var exc = false
 
-                $(".treeItem").filter(function() {
+                $(".plTreeItem").filter(function() {
+
+                    var txt = $(this).text().toLowerCase()
+
+                    if (exc)    var toggle = txt.indexOf(value.substring(1)) == -1
+                    else        var toggle = txt.indexOf(value) > -1
+
+                    $(this).toggle(toggle)
+
+                });
+
+                // $("#resNbr").html(countDisplayed("resContainer"))
+
+            });
+
+             // Countries
+             $("#cntSearch").on("input", function() {
+                var value = $(this).val().toLowerCase();
+                // var exc = value.substr(0,1) == '-'
+                var exc = false
+
+                $(".cntTreeItem").filter(function() {
 
                     var txt = $(this).text().toLowerCase()
 

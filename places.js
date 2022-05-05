@@ -1,28 +1,26 @@
-async function btnCountriesHtml() {
+async function btnPlacesHtml() {
 
     modal(true)
   
     var objSht = await openShts(
       [
-        { title: "Trips", type: "all" }
+        { title: "Location History Detail", type: "all" }
       ])
   
     console.log('objSht', objSht)
   
-    resTitle = "Trips"
+    var title  = "Location History Detail"
     
-    resHdrs = objSht[resTitle].colHdrs
-    resVals = objSht[resTitle].vals
+    var hdrs = objSht[resTitle].colHdrs
+    var vals = objSht[resTitle].vals
     
-    var monthCol = resHdrs.indexOf('Month')
-    var tripCol  = resHdrs.indexOf('Trip')
-    var cntryCol = resHdrs.indexOf('Countries')
-    var strDtCol = resHdrs.indexOf('Start Date')
-    var endDtCol = resHdrs.indexOf('End Date')
-    var destCol  = resHdrs.indexOf('Destinations')
+    var monthCol = hdrs.indexOf('Month')
+    var tripCol  = hdrs.indexOf('Trip')
+    var cntryCol = hdrs.indexOf('Countries')
+    var strDtCol = hdrs.indexOf('Start Date')
+    var endDtCol = hdrs.indexOf('End Date')
+    var destCol  = hdrs.indexOf('Destinations')
     
-    var vals = resVals
-
     var arr = []
   
     for (var i=0;i<vals.length;i++) {
