@@ -68,7 +68,7 @@ async function btnCountriesHtml() {
             var cntryObj = {
 
                 text:   cntry,
-                class:  (convertStateToAbbr(cntry) ? "plTreeitem text-success h4" : "plTreeitem text-primary h4"),
+                class:  (convertStateToAbbr(cntry) ? "cntTreeitem text-success h4" : "cntTreeitem text-primary h4"),
                 nodes:  []
 
             }
@@ -118,18 +118,18 @@ async function btnCountriesHtml() {
 
     }
 
-    $("#plNbrDom").html(nbrDom)
-    $("#plNbrIntl").html(nbrIntl)
+    $("#cntNbrDom").html(nbrDom)
+    $("#cntNbrIntl").html(nbrIntl)
     
 
-    $('#plContainer').bstreeview({ data: treeData });
+    $('#cntContainer').bstreeview({ data: treeData });
 
-    var srchVal = $("#plSearch").val().toLowerCase()
+    var srchVal = $("#cntSearch").val().toLowerCase()
     var exc = false
   
     if (srchVal) {
 
-        $(".plTreeitem").filter(function() {
+        $(".cntTreeitem").filter(function() {
 
             var txt = $(this).text().toLowerCase()
 
@@ -145,7 +145,7 @@ async function btnCountriesHtml() {
     };
 
       modal(false)
-      gotoTab("Places")
+      gotoTab("Countries")
 }
 
 function countrySorter(firstKey, secondKey) {
