@@ -96,6 +96,7 @@ async function updateAppendSht(arr, objLHD) {
 
   console.log('Update complete')
 
+  
 }
 
 async function buildTrips(arr, hdrs) {
@@ -632,68 +633,81 @@ async function updateTrips() {
 
   console.log('Update complete')
 
+  var msg =   "Trips updated: " + updateCntr + '<br>' +
+              "Trips added  : " + appendCntr + '<br>' +
+              "Trips skipped: " + skipCntr + '<br>' +
+              "Total        : " + appendCntr + updateCntr + skipCntr
+
+  bootbox.alert({
+
+    title: 'Import Trips Complete',
+    message: msg,
+    closeButton: false
+
+  });
+
 }
 
 function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
-var trp = []
-var ele = valsLHD[strIdx]
+  var trp = []
+  var ele = valsLHD[strIdx]
 
-console.log('ele', ele)
+  console.log('ele', ele)
 
-var states = JSON.parse(ele[hdrsLHD.indexOf('States')])
-var cntries = JSON.parse(ele[hdrsLHD.indexOf('Countries')])
+  var states = JSON.parse(ele[hdrsLHD.indexOf('States')])
+  var cntries = JSON.parse(ele[hdrsLHD.indexOf('Countries')])
 
-var cntry = cntries.length == 1 && cntries[0] == "USA" ? states : cntries
+  var cntry = cntries.length == 1 && cntries[0] == "USA" ? states : cntries
 
-console.log('countiresz', states, cntries)
-console.log(cntries.length == 1)
-console.log(cntries[0] == "USA")
-console.log(cntries.length == 1 && cntries[0] == "USA")
+  console.log('countiresz', states, cntries)
+  console.log(cntries.length == 1)
+  console.log(cntries[0] == "USA")
+  console.log(cntries.length == 1 && cntries[0] == "USA")
 
 
-trp[hdrsTRP.indexOf('Composite Key')]  = ele[hdrsLHD.indexOf('Trip')] + ' - ' + ele[hdrsLHD.indexOf('Month')] + ' - ' + JSON.parse(ele[hdrsLHD.indexOf('Destinations')]).join(' - ')
-trp[hdrsTRP.indexOf('Trip')]           = ele[hdrsLHD.indexOf('Trip')]
-trp[hdrsTRP.indexOf('Month')]          = ele[hdrsLHD.indexOf('Month')]
-trp[hdrsTRP.indexOf('Destinations')]   = ele[hdrsLHD.indexOf('Destinations')]
-trp[hdrsTRP.indexOf('Countries')]      = JSON.stringify(cntry)
-trp[hdrsTRP.indexOf('Type')]           = cntries.length == 1 && cntries[0] == "USA" ? "Domestic" : "International"
-trp[hdrsTRP.indexOf('Start Date')]     = ele[hdrsLHD.indexOf('Date')].split(',')[0]
-trp[hdrsTRP.indexOf('Source')]         = 'LHD'
+  trp[hdrsTRP.indexOf('Composite Key')]  = ele[hdrsLHD.indexOf('Trip')] + ' - ' + ele[hdrsLHD.indexOf('Month')] + ' - ' + JSON.parse(ele[hdrsLHD.indexOf('Destinations')]).join(' - ')
+  trp[hdrsTRP.indexOf('Trip')]           = ele[hdrsLHD.indexOf('Trip')]
+  trp[hdrsTRP.indexOf('Month')]          = ele[hdrsLHD.indexOf('Month')]
+  trp[hdrsTRP.indexOf('Destinations')]   = ele[hdrsLHD.indexOf('Destinations')]
+  trp[hdrsTRP.indexOf('Countries')]      = JSON.stringify(cntry)
+  trp[hdrsTRP.indexOf('Type')]           = cntries.length == 1 && cntries[0] == "USA" ? "Domestic" : "International"
+  trp[hdrsTRP.indexOf('Start Date')]     = ele[hdrsLHD.indexOf('Date')].split(',')[0]
+  trp[hdrsTRP.indexOf('Source')]         = 'LHD'
 
-var destArr = []
+  var destArr = []
 
-for (var i=strIdx;i<valsLHD.length;i++) {
+  for (var i=strIdx;i<valsLHD.length;i++) {
 
-  var dest = valsLHD[i]
+    var dest = valsLHD[i]
 
-  if (dest[hdrsLHD.indexOf('Trip')]) {
+    if (dest[hdrsLHD.indexOf('Trip')]) {
 
-    destArr.push({
+      destArr.push({
 
-      name:   dest[hdrsLHD.indexOf('Name')],
-      date:   dest[hdrsLHD.indexOf('Date')],
-      city:   dest[hdrsLHD.indexOf('City')],
-      state:  dest[hdrsLHD.indexOf('Country')] == "USA" ? dest[hdrsLHD.indexOf('State')] : dest[hdrsLHD.indexOf('Country')]
+        name:   dest[hdrsLHD.indexOf('Name')],
+        date:   dest[hdrsLHD.indexOf('Date')],
+        city:   dest[hdrsLHD.indexOf('City')],
+        state:  dest[hdrsLHD.indexOf('Country')] == "USA" ? dest[hdrsLHD.indexOf('State')] : dest[hdrsLHD.indexOf('Country')]
 
-    })
+      })
 
-  } else {
+    } else {
 
-    trp[hdrsTRP.indexOf('End Date')]              = dest[hdrsLHD.indexOf('Date')].split(',')[0]
-    trp[hdrsTRP.indexOf('Destination Detail')]    = JSON.stringify(destArr)
-    trp[hdrsTRP.indexOf('Nbr Days')]              = calcNbrDays(trp[hdrsTRP.indexOf('Start Date')], trp[hdrsTRP.indexOf('End Date')])
-    return {val: trp, endIdx: i-1}
+      trp[hdrsTRP.indexOf('End Date')]              = dest[hdrsLHD.indexOf('Date')].split(',')[0]
+      trp[hdrsTRP.indexOf('Destination Detail')]    = JSON.stringify(destArr)
+      trp[hdrsTRP.indexOf('Nbr Days')]              = calcNbrDays(trp[hdrsTRP.indexOf('Start Date')], trp[hdrsTRP.indexOf('End Date')])
+      return {val: trp, endIdx: i-1}
+
+    }
 
   }
 
-}
-
-trp[hdrsTRP.indexOf('End Date')]              = dest[hdrsLHD.indexOf('Date')].split(',')[0]
-trp[hdrsTRP.indexOf('Destination Detail')]    = JSON.stringify(destArr)
-trp[hdrsTRP.indexOf('Nbr Days')]              = calcNbrDays(trp[hdrsTRP.indexOf('Start Date')], trp[hdrsTRP.indexOf('End Date')])
-    
-return {val: trp, endIdx: i-1}
+  trp[hdrsTRP.indexOf('End Date')]              = dest[hdrsLHD.indexOf('Date')].split(',')[0]
+  trp[hdrsTRP.indexOf('Destination Detail')]    = JSON.stringify(destArr)
+  trp[hdrsTRP.indexOf('Nbr Days')]              = calcNbrDays(trp[hdrsTRP.indexOf('Start Date')], trp[hdrsTRP.indexOf('End Date')])
+      
+  return {val: trp, endIdx: i-1}
 
 }
 
