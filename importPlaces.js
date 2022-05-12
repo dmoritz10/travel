@@ -583,11 +583,12 @@ async function updateTrips() {
     if (row == -1)   {
 
       var msg = "Add this trip ?<br><br>" +
-      trip + '<br>' + DateTime.fromISO(trip.val[hdrsTRP.indexOf('Start Date')]).toLocaleString(DateTime.DATETIME_SHORT);
+                trip.val[hdrsTRP.indexOf('Trip')] + '<br>' +  
+                trip.val[hdrsTRP.indexOf('Start Date')];
 
       var addTrip = await confirm(msg)
 
-      if (addTrip == null) {
+      if (!addTrip) {
 
         skipCntr++
 
