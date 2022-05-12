@@ -582,8 +582,21 @@ async function updateTrips() {
 
     if (row == -1)   {
 
-      valsTRP.push(trip.val);
-      appendCntr++
+      var msg = "Add this trip ?<br><br>" +
+      trip + '<br>' + DateTime.fromISO(trip.val[hdrsTRP.indexOf('Start Date')]).toLocaleString(DateTime.DATETIME_SHORT);
+
+      var addTrip = await confirm(msg)
+
+      if (addTrip == null) {
+
+        skipCntr++
+
+      } else {
+
+        valsTRP.push(trip.val);
+        appendCntr++
+
+      }
 
     } else {
 

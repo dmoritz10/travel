@@ -11,37 +11,74 @@ async function btnPlacesHtml() {
   
     var title  = "Location History Detail"
     
-    var hdrs = objSht[resTitle].colHdrs
-    var vals = objSht[resTitle].vals
+    var hdrs = objSht[title].colHdrs
+    var vals = objSht[title].vals
     
-    var monthCol = hdrs.indexOf('Month')
-    var tripCol  = hdrs.indexOf('Trip')
-    var cntryCol = hdrs.indexOf('Countries')
-    var strDtCol = hdrs.indexOf('Start Date')
-    var endDtCol = hdrs.indexOf('End Date')
-    var destCol  = hdrs.indexOf('Destinations')
-    
+    var nameCol     = hdrs.indexOf('Name')
+    var monthCol     = hdrs.indexOf('Month')
+    var dateCol     = hdrs.indexOf('Date')
+    var dateUTCCol  = hdrs.indexOf('UTC Date')
+
+    vals.placeSorter(nameCol, dateUTCCol);
+
     var arr = []
   
-    for (var i=0;i<vals.length;i++) {
-  
-        var month = vals[i][monthCol]
-        var cntries = vals[i][cntryCol]
-        var trip = vals[i][tripCol]
-        var dateRng = vals[i][strDtCol].slice(0,-5) + ' - ' + vals[i][endDtCol].slice(0,-5)
-        var dest = JSON.parse(vals[i][destCol])
-        var countries = JSON.parse(cntries)
-        
-            countries.forEach(ele => {
+    var nbr = 0
+    var brkName
 
-                var sortkey = parseMonth(month)
-                arr.push([ele, trip, month, sortkey, dateRng, dest, countries])
+    for (var i=0;i<vals.length;i++) {
+
+        var val = vals[i]
+
+        var name = val[nameCol]
         
-            })
-      
+        if (brkName != name) {
+
+            if (brkName) arr.push([name, val[monthCol], val[dateCol], nbr])
+
+            brkName = name
+
+            nbr = 0
+
+            var placeObj = {
+
+                place:   name,
+                class:  (convertStateToAbbr(cntry) ? "plTreeitem text-success h4" : "plTreeitem text-primary h4"),
+                nodes:  []
+
+            }
+
+            
+            }
+
+        }
+
+        cntryObj.nodes.push({
+
+            text:   month + ' - ' + trip,
+            class:  "h6",
+            nodes: [
+
+                {
+                    text: dates,
+                    class:  "h6"
+                },
+                {
+                    text: dests,
+                    class:  "h6"
+                },
+                {
+                    text: cntys,
+                    class:  "h6"
+                }
+
+            ]
+
+        })
+
     }
-  
-    arr.sort(countrySorter(0, 3));
+
+    if (cntryObj) treeData.push(cntryObj)
 
     var treeData = []
     var brkcntry
@@ -146,7 +183,7 @@ async function btnPlacesHtml() {
       gotoTab("Places")
 }
 
-function countrySorter(firstKey, secondKey) {
+function placeSorter(firstKey, secondKey) {
     return function(a, b) {  
         if (a[firstKey] < b[firstKey]) {  
             return -1;  
