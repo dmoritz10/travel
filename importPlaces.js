@@ -646,6 +646,8 @@ async function updateTrips() {
 
   });
 
+  listTrips("Trips")
+
 }
 
 function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
