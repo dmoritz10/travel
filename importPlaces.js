@@ -636,7 +636,7 @@ async function updateTrips() {
   var msg =   "Trips updated: " + updateCntr  + '<br>' +
               "Trips added  : " + appendCntr  + '<br>' +
               "Trips skipped: " + skipCntr    + '<br>' +
-              "Total        : " + appendCntr*1 + updateCntr*1 + skipCntr*1
+              "Total        : " + (appendCntr*1 + updateCntr*1 + skipCntr*1)
 
   bootbox.alert({
 
