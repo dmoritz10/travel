@@ -47,7 +47,7 @@ async function btnPlacesHtml() {
             
         }
 
-        plDtl.push([val[dateCol], val[cityCol], val[month]])
+        plDtl.push([val[dateCol], val[cityCol], val[monthCol]])
 
     }
 
