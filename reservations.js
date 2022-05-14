@@ -39,7 +39,8 @@ async function listReservations(title = "Reservations") {
   
 
   $("#resTitle").html(resTitle)
-  $("#resNbr").html(vals.length)
+  // $("#resNbr").html(vals.length)
+  $("#resNbr").html(countDisplayed("resContainer"))
 
   var $tblSheets = $("#resContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
 
