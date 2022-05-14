@@ -18,12 +18,15 @@ async function btnPlacesHtml() {
     var monthCol     = hdrs.indexOf('Month')
     var dateCol     = hdrs.indexOf('Date')
     var dateUTCCol  = hdrs.indexOf('UTC Date')
+    var cityCol  = hdrs.indexOf('City')
 
     vals.sort(placeSorter(nameCol, dateUTCCol));
 
     var arr = []
   
     var nbr = 0
+    var plDtl = []
+
     var brkName
 
     for (var i=0;i<vals.length;i++) {
@@ -34,108 +37,82 @@ async function btnPlacesHtml() {
         
         if (brkName != name) {
 
-            if (brkName) arr.push([name, val[monthCol], val[dateCol], nbr])
+            if (brkName) arr.push([name, nbr, plDtl])
 
             brkName = name
 
             nbr = 0
 
-            var placeObj = {
-
-                place:   name,
-                class:  (convertStateToAbbr(cntry) ? "plTreeitem text-success h4" : "plTreeitem text-primary h4"),
-                nodes:  []
-
-            }
-
+            plDtl = []
             
         }
 
-        
-
-        cntryObj.nodes.push({
-
-            text:   month + ' - ' + trip,
-            class:  "h6",
-            nodes: [
-
-                {
-                    text: dates,
-                    class:  "h6"
-                },
-                {
-                    text: dests,
-                    class:  "h6"
-                },
-                {
-                    text: cntys,
-                    class:  "h6"
-                }
-
-            ]
-
-        })
+        plDtl.push([val[dateCol], val[cityCol], val[month]])
 
     }
 
-    if (cntryObj) treeData.push(cntryObj)
+    if (plDtl.length>0) arr.push([name, nbr, plDtl])
+
+    arr.sort(placeSorter(1, 0));
+
 
     var treeData = []
-    var brkcntry
+    var brkName
 
     for (var i=0;i<arr.length;i++) {
 
         var ele = arr[i]
 
-        var cntry = ele[0]
-        var trip = ele[1]
-        var month = ele[2]
-        var dates = ele[4]
-        var dests = ele[5].join(' - ')
-        var cntys = ele[6].join(' - ')
+        var name = ele[0]
+        var nbr  = ele[1]
+        var plDtl = ele[2]
 
-        if (brkcntry != cntry) {
+        var placeObj = {
 
-            if (brkcntry) treeData.push(cntryObj)
-
-            brkcntry = cntry
-
-            var cntryObj = {
-
-                text:   cntry,
-                class:  (convertStateToAbbr(cntry) ? "plTreeitem text-success h4" : "plTreeitem text-primary h4"),
-                nodes:  []
-
-            }
+            text:   name,
+            class:  "plTreeitem text-primary h4",
+            nodes:  []
 
         }
 
-        cntryObj.nodes.push({
 
-            text:   month + ' - ' + trip,
-            class:  "h6",
-            nodes: [
+        var brkMonth
 
-                {
-                    text: dates,
-                    class:  "h6"
-                },
-                {
-                    text: dests,
-                    class:  "h6"
-                },
-                {
-                    text: cntys,
-                    class:  "h6"
-                }
+        for (var j=0;j<plDtl.length;j++) {
 
-            ]
+            var dtl = plDtl[j]
 
-        })
+            var date = dtl[0]
+            var city = dtl[1]
+            var month = dtl[2]
+
+            if (month != brkMonth) {
+
+       
+                placeObj.nodes.push({
+
+                    text:   month,
+                    class:  "h6",
+                    nodes: []
+
+                })
+                
+                brkMonth = month
+
+            }
+
+            placeObj.nodes.nodes.push({           
+                            text: date + ' - ' + city,
+                            class:  "h6"
+                        })
+
+        }
+
+        if (placeObj) treeData.push(placeObj)
 
     }
 
-    if (cntryObj) treeData.push(cntryObj)
+    if (placeObj) treeData.push(placeObj)
     
     nbrDom = 0
     nbrIntl = 0
@@ -144,17 +121,16 @@ async function btnPlacesHtml() {
 
         var ele = treeData[i]
 
-        var cntry = ele.text
+        // var cntry = ele.text
 
-        if (convertStateToAbbr(ele.text))       nbrDom++
-        else                                    nbrIntl++
+        // if (convertStateToAbbr(ele.text))       nbrDom++
+        // else                                    nbrIntl++
 
         ele.text = ele.text + '<span class="text-warning float-end">' + ele.nodes.length + '</span>'
 
     }
 
-    $("#plNbrDom").html(nbrDom)
-    $("#plNbrIntl").html(nbrIntl)
+    $("#plNbr").html(arr.length)
     
 
     $('#plContainer').bstreeview({ data: treeData });
