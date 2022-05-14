@@ -91,7 +91,7 @@ async function btnPlacesHtml() {
             var city = dtl[1]
             var month = dtl[2]
 
-            if (month != brkMonth) {
+            if (month + name != brkMonth) {
 
        
                 placeObj.nodes.push({
@@ -102,7 +102,7 @@ async function btnPlacesHtml() {
 
                 })
                 
-                brkMonth = month
+                brkMonth = month + name
 
 console.log('here', name, month, placeObj)
 
