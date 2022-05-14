@@ -109,8 +109,10 @@ console.log('here', name, month)
 
             console.log('placeobj', placeObj)
 
+            var x = placeObj.nodes.nodes
 
-            placeObj.nodes.nodes.push({           
+            console.log('x', x)
+            x.push({           
                             text: date + ' - ' + city,
                             class:  "h6"
                         })
