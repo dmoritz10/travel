@@ -66,7 +66,7 @@ async function btnPlacesHtml() {
 
         var ele = arr[i]
 
-        console.log('ele', ele)
+        // console.log('ele', ele)
 
         var name = ele[0]
         var nbr  = ele[1]
@@ -114,7 +114,7 @@ console.log('here', name, month, placeObj)
 
             var x = placeObj.nodes[currNode].nodes
 
-            console.log('x', x)
+            // console.log('x', x)
             x.push({           
                             text: date + ' - ' + city,
                             class:  "h6"
@@ -128,21 +128,18 @@ console.log('here', name, month, placeObj)
 
     if (placeObj) treeData.push(placeObj)
     
-    nbrDom = 0
-    nbrIntl = 0
+    console.log('treeData1', treeData)
 
     for (var i = 0; i < treeData.length;i++) {
 
         var ele = treeData[i]
 
-        // var cntry = ele.text
-
-        // if (convertStateToAbbr(ele.text))       nbrDom++
-        // else                                    nbrIntl++
-
         ele.text = ele.text + '<span class="text-warning float-end">' + ele.nodes.length + '</span>'
 
     }
+
+    console.log('treeData1', treeData)
+
 
     $("#plNbr").html(arr.length)
     
