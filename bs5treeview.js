@@ -72,23 +72,23 @@
             this.build($(this.element), this.tree, 0);
             // Update angle icon on collapse
             $(this.element).on('click', '.list-group-item', function (e) {
-                $('.state-icon', this)
-                    .toggleClass(_this.settings.expandIcon)
-                    .toggleClass(_this.settings.collapseIcon);
-                // navigate to href if present
-                if (e.target.hasAttribute('href')) {
-                    if (_this.settings.openNodeLinkOnNewTab) {
-                        window.open(e.target.getAttribute('href'), '_blank');
-                    }
-                    else {
-                        window.location = e.target.getAttribute('href');
-                    }
-                }
-                else
-                {
+                // $('.state-icon', this)
+                //     .toggleClass(_this.settings.expandIcon)
+                //     .toggleClass(_this.settings.collapseIcon);
+                // // navigate to href if present
+                // if (e.target.hasAttribute('href')) {
+                //     if (_this.settings.openNodeLinkOnNewTab) {
+                //         window.open(e.target.getAttribute('href'), '_blank');
+                //     }
+                //     else {
+                //         window.location = e.target.getAttribute('href');
+                //     }
+                // }
+                // else
+                // {
                     // Toggle the data-bs-target. Issue with Bootstrap toggle and dynamic code
                     $($(this).attr("data-bs-target")).collapse('toggle');
-                }
+                // }
             });
         },
         /**
