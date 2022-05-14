@@ -19,7 +19,7 @@ async function btnPlacesHtml() {
     var dateCol     = hdrs.indexOf('Date')
     var dateUTCCol  = hdrs.indexOf('UTC Date')
 
-    vals.placeSorter(nameCol, dateUTCCol);
+    vals.sort(placeSorter(nameCol, dateUTCCol));
 
     var arr = []
   
