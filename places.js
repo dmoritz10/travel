@@ -98,8 +98,13 @@ async function btnPlacesHtml() {
                 })
                 
                 brkMonth = month
+                
+console.log('here', name, month)
 
             }
+
+            console.log('placeobj', placeObj)
+
 
             placeObj.nodes.nodes.push({           
                             text: date + ' - ' + city,
