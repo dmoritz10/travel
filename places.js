@@ -55,6 +55,8 @@ async function btnPlacesHtml() {
 
     arr.sort(placeSorter(1, 0));
 
+    console.log('arr', arr)
+
 
     var treeData = []
     var brkName
@@ -62,6 +64,8 @@ async function btnPlacesHtml() {
     for (var i=0;i<arr.length;i++) {
 
         var ele = arr[i]
+
+        console.log('ele', ele)
 
         var name = ele[0]
         var nbr  = ele[1]
@@ -98,7 +102,7 @@ async function btnPlacesHtml() {
                 })
                 
                 brkMonth = month
-                
+
 console.log('here', name, month)
 
             }
