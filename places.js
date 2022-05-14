@@ -109,7 +109,9 @@ console.log('here', name, month)
 
             console.log('placeobj', placeObj)
 
-            var x = placeObj.nodes[0].nodes
+            var currNode = placeObj.nodes.length - 1
+
+            var x = placeObj.nodes[currNode].nodes
 
             console.log('x', x)
             x.push({           
