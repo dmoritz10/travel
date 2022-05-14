@@ -37,7 +37,7 @@ async function btnPlacesHtml() {
         
         if (brkName != name) {
 
-            if (brkName) arr.push([name, nbr, plDtl])
+            if (brkName) arr.push([brkName, nbr, plDtl])
 
             brkName = name
 
@@ -104,7 +104,7 @@ async function btnPlacesHtml() {
                 
                 brkMonth = month
 
-console.log('here', name, month)
+console.log('here', name, month, placeObj)
 
             }
 
@@ -176,9 +176,9 @@ console.log('here', name, month)
 function placeSorter(firstKey, secondKey) {
     return function(a, b) {  
         if (a[firstKey] < b[firstKey]) {  
-            return -1;  
-        } else if (a[firstKey] > b[firstKey]) {  
             return 1;  
+        } else if (a[firstKey] > b[firstKey]) {  
+            return -1;  
         }  
         else {
             if (a[secondKey] > b[secondKey]) {  
