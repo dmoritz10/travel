@@ -147,6 +147,14 @@ console.log('here', name, month, placeObj)
 
     $('#plContainer').bstreeview({ data: treeData });
 
+    $('#plContainer > .list-group-item').click(function(e){         // highlight clicked row
+    
+        $(this).parent().toggle() 
+        
+      });
+
+
+
     var srchVal = $("#plSearch").val().toLowerCase()
     var exc = false
   
