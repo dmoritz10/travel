@@ -147,11 +147,11 @@ console.log('here', name, month, placeObj)
 
     $('#plContainer').bstreeview({ data: treeData });
 
-    $('#plContainer > .list-group-item').click(function(e){         // highlight clicked row
+    $('#plContainer > .list-group').click(function(e){         // highlight clicked row
     
         // $(this).toggle() 
-        console.log($('#plContainer  .list-group'))
         console.time()
+        console.log($('#plContainer  .list-group'))
 
         $(e.currentTarget).toggle()
         console.timeEnd()
