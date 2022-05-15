@@ -62,7 +62,8 @@ async function btnPlacesHtml() {
     var treeData = []
     var brkName
 
-    for (var i=0;i<arr.length;i++) {
+    // for (var i=0;i<arr.length;i++) {
+        for (var i=0;i<20;i++) {
 
         var ele = arr[i]
 
