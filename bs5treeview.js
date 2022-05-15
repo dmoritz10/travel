@@ -89,6 +89,7 @@
                     // Toggle the data-bs-target. Issue with Bootstrap toggle and dynamic code
                     console.log("start collapse")
                     console.log($(this).attr("data-bs-target"))
+                    console.log($(this.element))
                     console.time()
                     $($(this).attr("data-bs-target")).collapse('toggle');
                     console.timeEnd()
