@@ -150,8 +150,11 @@ console.log('here', name, month, placeObj)
     $('#plContainer > .list-group-item').click(function(e){         // highlight clicked row
     
         // $(this).toggle() 
+        console.log($('#plContainer  .list-group'))
+        console.time()
 
         $(e.currentTarget).toggle()
+        console.timeEnd()
         
       });
 
