@@ -147,16 +147,16 @@ console.log('here', name, month, placeObj)
 
     $('#plContainer').bstreeview({ data: treeData });
 
-    $('#plContainer > .list-group').click(function(e){         // highlight clicked row
+    // $('#plContainer > .list-group').click(function(e){         // highlight clicked row
     
-        // $(this).toggle() 
-        console.time()
-        console.log($('#plContainer  .list-group'))
+    //     // $(this).toggle() 
+    //     console.time()
+    //     console.log($('#plContainer  .list-group'))
 
-        $(e.currentTarget).toggle()
-        console.timeEnd()
+    //     $(e.currentTarget).toggle()
+    //     console.timeEnd()
         
-      });
+    //   });
 
 
 
