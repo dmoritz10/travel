@@ -698,7 +698,11 @@ function btnPrintResHtml () {
 
     var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + eleC[2].innerText
 
-    var dtl = eleC[1].innerText + '<br>' + eleC[3].innerText + '<br>' + eleC[4].innerText + '<br>' + eleC[5].innerText + '<br>' + eleC[6].innerText
+    var dtl = eleC[1].innerText + 
+              eleC[3].innerText ? '<br>' + eleC[3].innerText : '' + 
+              eleC[4].innerText ? '<br>' + eleC[4].innerText : '' + 
+              eleC[5].innerText ? '<br>' + eleC[5].innerText : '' + 
+              eleC[6].innerText ? '<br>' + eleC[6].innerText : '' 
       
     resRpt.push({
         
