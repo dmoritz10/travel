@@ -728,6 +728,50 @@ function btnPrintResHtml () {
 
 }
 
+function btnBaggageTagsHtml() {
+
+  var eleArr = [...$('#resContainer > div')].slice(1)      // remove the templace
+
+  var resRpt = []
+
+  for (let i=0; i<eleArr.length;i++) {
+
+    var $ele = $(eleArr[i])
+
+    if ($ele.hasClass('d-none') || $ele.css('display') == 'none' || eleC[2].innerText.substr(0,5) != "Hotel") continue
+ 
+    var eleC = $ele.children()
+
+    console.log('eleC', eleC)
+
+    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + 
+              '</h4><br>' + eleC[2].innerText + 
+              (eleC[5].innerText ? '<br>' + eleC[5].innerText : '') 
+
+    
+    resRpt.push({
+        
+      'Hotel':  res
+
+    })
+
+  }
+
+  printJS({
+    
+    printable:        resRpt,
+    properties:       [ 'Reservation', 'Detail' ],
+    type:             'json',
+    targetStyles:     ["*"], //accepts all the styles
+    targetStyle:      ["*"], 
+    style:            'body { font-family:arial; }',
+    gridHeaderStyle:  'font-family:arial;font-size: 18px; border-bottom: 2px solid darkgrey;',
+    gridStyle:        'border-bottom: 4px solid lightgrey;'
+      
+  })
+
+}
+
 function btnShowCalendarHtml() {
 
   var calendarEl = document.getElementById('resCalendar');
