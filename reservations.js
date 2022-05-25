@@ -740,7 +740,7 @@ function btnBaggageTagsHtml() {
 
     var eleC = $ele.children()
    
-    if ($ele.hasClass('d-none') || $ele.css('display') == 'none' || eleC[2].innerText.substr(0,5) != "Hotel") continue
+    if ($ele.hasClass('d-none') || $ele.css('display') == 'none' || eleC[3].innerText.substring(0,5) != "Hotel") continue
  
     var res = '<h4>' + eleC[0].innerText.slice(0,-13) + 
               '</h4><br>' + eleC[2].innerText + 
@@ -758,7 +758,7 @@ function btnBaggageTagsHtml() {
   printJS({
     
     printable:        resRpt,
-    properties:       [ 'Reservation', 'Detail' ],
+    properties:       [ 'Hotel' ],
     type:             'json',
     targetStyles:     ["*"], //accepts all the styles
     targetStyle:      ["*"], 
