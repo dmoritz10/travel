@@ -738,12 +738,10 @@ function btnBaggageTagsHtml() {
 
     var $ele = $(eleArr[i])
 
+    var eleC = $ele.children()
+   
     if ($ele.hasClass('d-none') || $ele.css('display') == 'none' || eleC[2].innerText.substr(0,5) != "Hotel") continue
  
-    var eleC = $ele.children()
-
-    console.log('eleC', eleC)
-
     var res = '<h4>' + eleC[0].innerText.slice(0,-13) + 
               '</h4><br>' + eleC[2].innerText + 
               (eleC[5].innerText ? '<br>' + eleC[5].innerText : '') 
