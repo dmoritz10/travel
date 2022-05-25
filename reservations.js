@@ -87,7 +87,7 @@ async function listReservations(title = "Reservations") {
     ele.find('#resStatus')[0].innerHTML = resObj['Status']
     ele.find('#resLocation')[0].innerHTML = locnHtml
     ele.find('#resConfirmation')[0].innerHTML = resObj['Confirmation'] ? 'Confirmation: ' + resObj['Confirmation'] : ''
-    ele.find('#resPhone')[0].innerHTML = resObj['Phone'] ? 'Phone: ' + resObj['Phone'] : ele.find('#resPhone')[0].addClass('d-none')
+    ele.find('#resPhone')[0].innerHTML = resObj['Phone'] ? 'Phone: ' + resObj['Phone'] : ''
     ele.find('#resDescription')[0].innerHTML = resObj['Description'] ? resObj['Description'].replace(/\n/g, "<br>") : ''
 
     ele.find('#btnResEdit')[0].setAttribute("onclick", "editReservation(" + j + ")");
