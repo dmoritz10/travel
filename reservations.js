@@ -763,7 +763,7 @@ function btnBaggageTagsHtml() {
     targetStyles:     ["*"], //accepts all the styles
     targetStyle:      ["*"], 
     style:            'body { font-family:arial; }',
-    gridHeaderStyle:  'font-family:arial;font-size: 18px; border-bottom: 2px solid darkgrey;',
+    gridHeaderStyle:  'text-align: left;font-size: 18px; border-bottom: 2px solid darkgrey;',
     gridStyle:        'border-bottom: 4px solid lightgrey;'
       
   })
