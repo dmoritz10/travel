@@ -87,7 +87,7 @@ async function listReservations(title = "Reservations") {
     ele.find('#resStatus')[0].innerHTML = resObj['Status']
     ele.find('#resLocation')[0].innerHTML = locnHtml
     ele.find('#resConfirmation')[0].innerHTML = resObj['Confirmation'] ? 'Confirmation: ' + resObj['Confirmation'] : ''
-    ele.find('#resPhone')[0].innerHTML = resObj['Phone'] ? 'Phone: ' + resObj['Phone'] : ''
+    ele.find('#resPhone')[0].innerHTML = resObj['Phone'] ? 'Phone: ' + resObj['Phone'] : ele.find('#resPhone')[0].addClass('d-none')
     ele.find('#resDescription')[0].innerHTML = resObj['Description'] ? resObj['Description'].replace(/\n/g, "<br>") : ''
 
     ele.find('#btnResEdit')[0].setAttribute("onclick", "editReservation(" + j + ")");
@@ -283,7 +283,7 @@ async function btnResmSubmitSheetHtml() {
   vals[resHdrs.indexOf("Status")]         = $('#resmStatus').val()
   vals[resHdrs.indexOf("Source")]         = $('#resmSource').val()
   vals[resHdrs.indexOf("Location")]       = $('#resmLocation').val()
-  vals[resHdrs.indexOf("Confirmation")]   = $('#resmonfirmation').val()
+  vals[resHdrs.indexOf("Confirmation")]   = $('#resmConfirmation').val()
   vals[resHdrs.indexOf("Phone")]          = $('#resmPhone').val()
   vals[resHdrs.indexOf("Start Date")]     = $('#resmStartDateTime').val()
   vals[resHdrs.indexOf("End Date")]       = $('#resmEndDateTime').val()
