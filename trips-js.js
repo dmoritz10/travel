@@ -55,8 +55,8 @@ async function listTrips(title = "Trips") {
     trpIdxArr.push(x)                           // create parallel xref of idxs to sheet
 
    
-    var fav = trpObj['Favorite']
-    var Document = trpObj['Trip']
+    // var fav = trpObj['Favorite']
+    // var Document = trpObj['Trip']
 
 
     var ele = $tblSheets.clone();

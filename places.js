@@ -145,20 +145,31 @@ console.log('here', name, month, placeObj)
     $("#plNbr").html(arr.length)
     
 
-    $('#plContainer').bstreeview({ data: treeData });
-
-    // $('#plContainer > .list-group').click(function(e){         // highlight clicked row
+    // $('#plContainer').bstreeview({ data: treeData });
     
-    //     // $(this).toggle() 
-    //     console.time()
-    //     console.log($('#plContainer  .list-group'))
+    var $tblSheets = $("#plContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
 
-    //     $(e.currentTarget).toggle()
-    //     console.timeEnd()
+    var x = $tblSheets.clone();
+    $("#plContainer").empty();
+    x.appendTo("#plContainer");
+  
+ 
+    for (var j = 0; j < treeData.length; j++) {
+
+        var place = treeData[j]
+
+        var ele = $tblSheets.clone();
+    
+        ele.find('#plPlace')[0].innerHTML = place.text
+        ele.find('#plPlace').setAttribute("onclick", "showPlace(" + j + ")");
         
-    //   });
-
-
+        ele.removeClass('d-none');
+    
+        ele.appendTo("#plContainer");
+    
+        arrIdx++
+    
+      }
 
     var srchVal = $("#plSearch").val().toLowerCase()
     var exc = false
