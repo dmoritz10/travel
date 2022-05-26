@@ -213,3 +213,10 @@ function placeSorter(firstKey, secondKey) {
         } 
     }  
 }
+
+function showPlace(idx) {
+
+alert(idx)
+
+
+}
