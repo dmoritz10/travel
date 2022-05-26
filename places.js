@@ -167,8 +167,6 @@ console.log('here', name, month, placeObj)
     
         ele.appendTo("#plContainer");
     
-        arrIdx++
-    
       }
 
     var srchVal = $("#plSearch").val().toLowerCase()
