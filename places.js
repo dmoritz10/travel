@@ -161,7 +161,7 @@ console.log('here', name, month, placeObj)
         var ele = $tblSheets.clone();
     
         ele.find('#plPlace')[0].innerHTML = place.text
-        ele.find('#plPlace').setAttribute("onclick", "showPlace(" + j + ")");
+        ele.find('#plPlace')[0].setAttribute("onclick", "showPlace(" + j + ")");
         
         ele.removeClass('d-none');
     
