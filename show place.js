@@ -1,10 +1,14 @@
 async function showPlace(idx) {
 
-    if (idx === null) return                  // null is from browseDocument
+    if (idx === null) return     
+    
+    
   
     var pl = []
   
     var vals = placeTree[idx]
+
+    $("#pldPlace").html(vals.text)
     
     var plmonths = vals.nodes
   
