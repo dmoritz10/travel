@@ -24,9 +24,13 @@ async function showPlace(idx) {
   
       }
 
-      for (var j=0;j<val.length;j++) {
+      var cities = val.nodes
 
-        var dtl = val[i].text.split(' - ')
+      for (var j=0;j<cities.length;j++) {
+
+        var city = cities[j]
+
+        var dtl = city.text.split(' - ')
     
         // var dtl = val.name + "<br><h6>" +
         //             val.city + (val.state ? ", " : "") +
