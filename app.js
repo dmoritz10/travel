@@ -310,7 +310,7 @@ jQuery(function ($) {
 
                 });
 
-                // $("#resNbr").html(countDisplayed("resContainer"))
+                $("#plNbr").html(countDisplayed("plContainer"))
 
             });
 
