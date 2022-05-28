@@ -163,8 +163,8 @@ async function btnPlacesHtml() {
 
             var txt = $(this).text().toLowerCase()
 
-            if (exc)    var toggle = txt.indexOf(value.substring(1)) == -1
-            else        var toggle = txt.indexOf(value) > -1
+            if (exc)    var toggle = txt.indexOf(srchVal.substring(1)) == -1
+            else        var toggle = txt.indexOf(srchVal) > -1
 
             $(this).parent().parent().parent().toggle(toggle)
 
