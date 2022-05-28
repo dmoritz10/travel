@@ -57,8 +57,8 @@ async function btnPlacesHtml() {
     placeTree = []
     var brkName
 
-    // for (var i=0;i<arr.length;i++) {
-        for (var i=0;i<5;i++) {
+    for (var i=0;i<arr.length;i++) {
+        // for (var i=0;i<5;i++) {
 
         var ele = arr[i]
 
@@ -70,7 +70,7 @@ async function btnPlacesHtml() {
 
             text:   name,
             nbr:    nbr,
-            class:  "text-primary h4",
+            class:  "plTreeItem text-primary h4",
             nodes:  []
 
         }
@@ -161,7 +161,7 @@ async function btnPlacesHtml() {
   
     if (srchVal) {
 
-        $(".plTreeitem").filter(function() {
+        $(".plTreeItem").filter(function() {
 
             var txt = $(this).text().toLowerCase()
 
