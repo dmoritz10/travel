@@ -131,9 +131,6 @@ async function btnPlacesHtml() {
 
     $("#plNbr").html(arr.length)
     
-
-    // $('#plContainer').bstreeview({ data: placeTree });
-    
     var $tblSheets = $("#plContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
 
     var x = $tblSheets.clone();
@@ -148,7 +145,7 @@ async function btnPlacesHtml() {
         var ele = $tblSheets.clone();
     
         ele.find('#plPlace')[0].innerHTML = place.text
-        ele.find('#plCompositeKey')[0].innerHTML = place.text
+        ele.find('#plCompositeKey')[0].innerHTML = place.text + ' - ' + uniqueCities(place).join(' - ')
         ele.find('#plPlace')[0].setAttribute("onclick", "showPlace(" + j + ")");
         
         ele.removeClass('d-none');
@@ -198,4 +195,31 @@ function placeSorter(firstKey, secondKey) {
             }
         } 
     }  
+}
+
+function uniqueCities(place) {
+
+    var uniqCities = []
+
+    var plmonths = place.nodes
+  
+    for (var i=0; i<plmonths.length;i++) {
+  
+      var val = plmonths[i]
+
+      var cities = val.nodes
+
+      for (var j=0;j<cities.length;j++) {
+
+        var x = cities[j]
+
+        var dtl = x.text.split(' - ')
+
+        if (uniqCities.indexOf(dtl[1]) == -1) uniqCities.push(dtl[1])
+
+      }
+    }
+
+    return uniqCities
+
 }
