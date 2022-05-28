@@ -50,13 +50,13 @@ async function showPlace(idx) {
       .setTrClass('d-flex')
       .setTcClass(['text-end col-4 h5 text-success align-items-center', 'text-start col h4'])
       .setTdClass('py-1 pb-0 mb-0 border-0 align-bottom border-bottom')
-      .build('#tblTrips');
+      .build('#tblPlaces');
   
-    gotoTab('ShowTrip')
+    gotoTab('ShowPlace')
   
-    $('#tblTrips tr').click(function(e){         // highlight clicked row
+    $('#tblPlaces tr').click(function(e){         // highlight clicked row
   
-      $('#tblTrips tr').removeClass('ele-selected');
+      $('#tblPlaces tr').removeClass('ele-selected');
       $(e.currentTarget).addClass('ele-selected')
       
     });
@@ -99,127 +99,12 @@ async function showPlace(idx) {
   
   function clearAndGotoTab(sht) {
   
-    $("#tblTrips").html('')
+    $("#tblPlaces").html('')
     
     gotoTab(sht)
   
   }
   
-  async function addNewDest() {
-  
-    $("#pldtl-form")[0].reset();
-    $("#pldtl-modal").modal('show');
-    $('#trpmdtlArrIdx').val($("#pldArrIdx").val())
-  
-    $('#btntrpmdtlDelete').addClass('d-none')
-  
-  }
-  
-  
-  async function editTripDtl(arrIdx, destIdx) {
-  
-    if (user['email'] != 'dmoritz10@gmail.com') return   // only one user allowed to update Trip Detail
-  
-  
-    $("#pldtl-form")[0].reset();
-  
-    $("#pldtl-modal").modal('show');
-  
-    $('#trpmdtlArrIdx').val(arrIdx)
-    $('#trpmdtlDestIdx').val(destIdx)
-                    
-    
-    var vals = trpVals[arrIdx]
-  
-    var trpObj = makeObj(vals, trpHdrs)
-  
-    var pldtl = JSON.parse(trpObj['Destination Detail'])[destIdx]
-  
-    var dt = pldtl.date ? parseDateTime(pldtl.date) : {date: '', time: ''}
-  
-    $('#trpmdtlTrip').val(pldtl.name)
-    $('#trpmdtlDate').val(dt.date)
-    $('#trpmdtlTime').val(dt.time)
-    $('#trpmdtlCity').val(pldtl.city)
-    $('#trpmdtlState').val(pldtl.state)
-  
-    $('#btntrpmdtlDelete').removeClass('d-none')
-  
-  }
-  
-  
-  async function btntrpmdtlSubmitHtml() {
-  
-    if (!$('#pldtl-form').valid()) return
-  
-    var arrIdx = $('#trpmdtlArrIdx').val()
-    var destIdx = $('#trpmdtlDestIdx').val() ? $('#trpmdtlDestIdx').val()*1 : -1
-  
-    var vals = trpVals[arrIdx]
-  
-    var destDtl = JSON.parse(vals[trpHdrs.indexOf("Destination Detail")])
-  
-    if (destIdx == -1) {
-      
-      destDtl.push({})
-      destIdx = destDtl.length - 1
-  
-    }
-  
-    var destObj = destDtl[destIdx]
-  
-    destObj.name = $('#trpmdtlTrip').val()
-    destObj.date = formatDateTime($('#trpmdtlDate').val(), $('#trpmdtlTime').val())
-    destObj.city = $('#trpmdtlCity').val()
-    destObj.state = $('#trpmdtlState').val()
-  
-    sortDest(destDtl)
-  
-    vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify(destDtl)
-    vals[trpHdrs.indexOf("Source")] = 'Manual'
-  
-    modal(true)
-  
-    var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
-  
-    await updateSheetRow(vals, trpIdx, "Trips")
-  
-    $("#pldtl-modal").modal('hide');
-  
-    showTrip(arrIdx)
-  
-    modal(false)
-  
-  }
-  
-  async function btntrpmdtlDeleteHtml() {
-  
-    var destIdx = $('#trpmdtlDestIdx').val()
-  
-    if (!destIdx) return
-  
-    var arrIdx = $('#trpmdtlArrIdx').val()
-  
-    var vals = trpVals[arrIdx]
-  
-    var destDtl = JSON.parse(vals[trpHdrs.indexOf("Destination Detail")])
-  
-    destDtl.splice(destIdx, 1)
-  
-    vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify(destDtl)
-    vals[trpHdrs.indexOf("Source")] = 'Manual'
-  
-    var trpIdx = trpIdxArr[arrIdx]                  // get the row nbr on the sheet from trpIdxArr
-  
-    await updateSheetRow(vals, trpIdx, "Trips")
-  
-    $("#pldtl-modal").modal('hide');
-  
-    showTrip(arrIdx)
-  
-    modal(false)
-  
-  }
   
   
   function sortDest(vals) {
