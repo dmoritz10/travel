@@ -148,6 +148,7 @@ async function btnPlacesHtml() {
         var ele = $tblSheets.clone();
     
         ele.find('#plPlace')[0].innerHTML = place.text
+        ele.find('#plCompositeKey')[0].innerHTML = place.text
         ele.find('#plPlace')[0].setAttribute("onclick", "showPlace(" + j + ")");
         
         ele.removeClass('d-none');
@@ -161,7 +162,7 @@ async function btnPlacesHtml() {
   
     if (srchVal) {
 
-        $(".plTreeItem").filter(function() {
+        $("#plContainer #plCompositeKey").filter(function() {
 
             var txt = $(this).text().toLowerCase()
 
