@@ -14,7 +14,7 @@ async function showPlace(idx) {
   
       var val = plmonths[i]
 
-      var month = vals.text
+      var month = val.text
   
       if (month != brkMonth) {
   
@@ -26,7 +26,7 @@ async function showPlace(idx) {
 
       for (var j=0;j<val.length;j++) {
 
-        var dtl = val.text.split(' - ')
+        var dtl = val[i].text.split(' - ')
     
         // var dtl = val.name + "<br><h6>" +
         //             val.city + (val.state ? ", " : "") +
