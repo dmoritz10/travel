@@ -6,8 +6,6 @@ async function showPlace(idx) {
   
     var vals = placeTree[idx]
     
-    $("#pldPlace")[0].innerHTML = vals[trpHdrs.indexOf('Trip')]
-  
     var plmonths = vals.nodes
   
     var brkMonth
