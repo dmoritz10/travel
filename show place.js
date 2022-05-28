@@ -33,7 +33,7 @@ async function showPlace(idx) {
         //             val.state + "<br>" +
         //             icon
         
-        trp.push([dtl[0], dtl[1]])
+        pl.push([dtl[0], dtl[1]])
     
       }
     }
@@ -43,7 +43,7 @@ async function showPlace(idx) {
     tbl
       .setHeader()
       .setTableHeaderClass()
-      .setData(trp)
+      .setData(pl)
       .setTableClass('table table-borderless')
       .setTrClass('d-flex')
       .setTcClass(['text-end col-4 h5 text-success align-items-center', 'text-start col h4'])
