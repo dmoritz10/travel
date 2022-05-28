@@ -170,7 +170,7 @@ async function btnPlacesHtml() {
 
         });
 
-        // $("#resNbr").html(countDisplayed("resContainer"))
+        $("#plNbr").html(countDisplayed("plContainer"))
 
     };
 
