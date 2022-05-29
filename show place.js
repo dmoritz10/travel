@@ -41,7 +41,7 @@ async function showPlace(idx) {
         //             val.state + "<br>" +
         //             icon
         
-        pl.push([dtl[0], dtl[1]])
+        pl.push([dtl[0].replace(',', ''), dtl[1]])
     
       }
     }
