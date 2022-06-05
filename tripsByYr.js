@@ -166,6 +166,8 @@ function calcUTCDate(dateStr) {
 
 function changeYr(dir) {
 
+    var currYr = new Date().getFullYear()
+
     var selectedYr = $('#tbyYr').html()*1
 
     if (dir == 'prev') {
@@ -173,6 +175,12 @@ function changeYr(dir) {
     } else {
         selectedYr++
     }
+
+    console.log('changeYr', currYr, new Date(trpVals[trpVals.length-1][trpHdrs.indexOf('Start Date')]))
+
+    if (selectedYr > currYr) return
+
+    if (selectedYr < new Date(trpVals[trpVals.length-1][trpHdrs.indexOf('Start Date')])) return
 
     $('#tbyYr').html(selectedYr)
 

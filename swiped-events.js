@@ -4,6 +4,18 @@
  * https://github.com/john-doherty/swiped-events
  * @inspiration https://stackoverflow.com/questions/16348031/disable-scrolling-when-touch-moving-certain-element
  * @author John Doherty <www.johndoherty.info>
+ * 
+ * Customize the pure-swipe via HTML5 data attributes as follows:
+
+    data-swipe-threshold: set how far the user must swipe before it is considered a swipe
+    swipe-timeout: timeout in milliseconds
+    ignore: disable the event detection on this element?
+    <div data-swipe-threshold="20"
+        data-swipe-timeout="500"
+        data-swipe-ignore="false">
+        Swipe me
+    </div>
+ 
  * @license MIT
  */
 (function (window, document) {
