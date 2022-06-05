@@ -29,6 +29,8 @@ async function showTrip(idx) {
 
       var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + date
 
+      console.log('googleTimelineHref', googleTimelineHref)
+
       trp.push(["<div class='text-start text-primary h4'>" + dispDate, '<a class="" href=' + googleTimelineHref + '>&nbsp;</a>'])
 
       brkDate = date
