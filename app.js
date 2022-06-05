@@ -313,6 +313,23 @@ jQuery(function ($) {
                 $("#plNbr").html(countDisplayed("plContainer"))
 
             });
+            
+            // tripsByYr
+
+            
+
+            var tblTrips = document.getElementById('tblTripsByYr');
+
+
+            // swiped-left
+            tblTrips.addEventListener('swiped-left', function(e) {
+                changeYr('prev')
+            });
+            // swiped-right
+            tblTrips.addEventListener('swiped-right', function(e) {
+                changeYr('next')
+            });
+
 
              // Countries
              $("#cntSearch").on("input", function() {
