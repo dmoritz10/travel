@@ -176,11 +176,11 @@ function changeYr(dir) {
         selectedYr++
     }
 
-    console.log('changeYr', currYr, new Date(trpVals[trpVals.length-1][trpHdrs.indexOf('Start Date')]))
+    console.log('changeYr', currYr, new Date(trpVals[trpVals.length-1][trpHdrs.indexOf('Start Date')]).getFullYear())
 
     if (selectedYr > currYr) return
 
-    if (selectedYr < new Date(trpVals[trpVals.length-1][trpHdrs.indexOf('Start Date')])) return
+    if (selectedYr < new Date(trpVals[trpVals.length-1][trpHdrs.indexOf('Start Date')]).getFullYear()) return
 
     $('#tbyYr').html(selectedYr)
 
