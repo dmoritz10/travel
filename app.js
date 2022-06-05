@@ -315,17 +315,12 @@ jQuery(function ($) {
             });
             
             // tripsByYr
-
-            
-
             var tblTrips = document.getElementById('tblTripsByYr');
 
-
-            // swiped-left
             tblTrips.addEventListener('swiped-left', function(e) {
                 changeYr('prev')
             });
-            // swiped-right
+
             tblTrips.addEventListener('swiped-right', function(e) {
                 changeYr('next')
             });

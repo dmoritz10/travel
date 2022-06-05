@@ -27,7 +27,9 @@ async function showTrip(idx) {
 
       var dispDate = DateTime.fromJSDate(new Date(date)).toFormat('ccc L/d');
 
-      trp.push(["<div class='text-start text-primary h4'>" + dispDate, '<div class="">&nbsp;</div>'])
+      var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + date
+
+      trp.push(["<div class='text-start text-primary h4'>" + dispDate, '<a class="" href=' + googleTimelineHref + '>&nbsp;</a>'])
 
       brkDate = date
 
@@ -242,4 +244,13 @@ function sortDest(vals) {
 
   vals.forEach((val, idx, arr)=> delete val['sort']) // remove sort element from end of array
   
+}
+
+function dispTimeline(dispDate) {
+
+
+
+
+
+
 }
