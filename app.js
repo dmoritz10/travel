@@ -317,11 +317,11 @@ jQuery(function ($) {
             // tripsByYr
             var tblTrips = document.getElementById('tblTripsByYr');
 
-            tblTrips.addEventListener('swiped-left', function(e) {
+            tblTrips.addEventListener('swiped-right', function(e) {
                 changeYr('prev')
             });
 
-            tblTrips.addEventListener('swiped-right', function(e) {
+            tblTrips.addEventListener('swiped-left', function(e) {
                 changeYr('next')
             });
 
