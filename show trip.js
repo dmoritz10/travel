@@ -30,11 +30,6 @@ async function showTrip(idx) {
 
       var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate
 
-      console.log('googleTimelineHref', googleTimelineHref)
-
-      <div class="h2 "><img class="img-thumbnail border-0 bg-transparent" width="40" height="40" src=  "images/icons/travel 144x144.png" />
-                Travel Journal</div>
-
       trp.push(["<div class='text-start text-primary h4'>" + dispDate, 
                 '<a class="" href=' + googleTimelineHref + '><img class="img-thumbnail border-0 bg-transparent" width="40" height="40" src=  "images/icons/travel 144x144.png" /></a>'
               ])
