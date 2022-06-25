@@ -829,7 +829,10 @@ function btnShowCalendarHtml() {
       case 'Hotel':
         var bc = 'blue';
         break;
-      case 'Car':
+      case 'Flight':
+        var bc = '#0099cc';
+        break;
+        case 'Car':
         var bc = 'green';
         break;
       case 'Restaurant':
