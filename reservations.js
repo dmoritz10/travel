@@ -85,8 +85,10 @@ async function listReservations(title = "Reservations") {
     ele.find('#resType')[0].innerHTML = resObj['Type']
     ele.find('#resStartEndDateTime')[0].innerHTML = start + (end ? (' - ' + end) : '')
     ele.find('#resStatus')[0].innerHTML = resObj['Status']
-    ele.find('#resLocation')[0].innerHTML = locnHtml
-    ele.find('#resDescription')[0].innerHTML = resObj['Description'] ? resObj['Description'].replace(/\n/g, "<br>") : ''
+    ele.find('#resLocation')[0].innerHTML = locnHtml ? locnHtml : ele.find('#resLocation').addClass('d-none')
+    ele.find('#resConfirmation')[0].innerHTML = resObj['Confirmation'] ? 'Confirmation: ' + resObj['Confirmation'] : ele.find('#resConfirmation').addClass('d-none')
+    ele.find('#resPhone')[0].innerHTML = resObj['Phone'] ? 'Phone: ' + resObj['Phone'] : ele.find('#resPhone').addClass('d-none')
+    ele.find('#resDescription')[0].innerHTML = resObj['Description'] ? resObj['Description'].replace(/\n/g, "<br>") : ele.find('#resDescription').addClass('d-none')
 
     ele.find('#btnResEdit')[0].setAttribute("onclick", "editReservation(" + j + ")");
 
@@ -229,6 +231,8 @@ async function editReservation(arrIdx) {
   $('#resmType').val(resObj['Type'])
   $('#resmStatus').val(resObj['Status'])
   $('#resmSource').val(user['firstName'])
+  $('#resmConfirmation').val(resObj['Confirmation'])
+  $('#resmPhone').val(resObj['Phone'])
   $('#resmLocation').val(resObj['Location'])
   $('#resmStartDateTime').val(resObj['Start Date'])
   $('#resmEndDateTime').val(resObj['End Date'])
@@ -279,6 +283,8 @@ async function btnResmSubmitSheetHtml() {
   vals[resHdrs.indexOf("Status")]         = $('#resmStatus').val()
   vals[resHdrs.indexOf("Source")]         = $('#resmSource').val()
   vals[resHdrs.indexOf("Location")]       = $('#resmLocation').val()
+  vals[resHdrs.indexOf("Confirmation")]   = $('#resmConfirmation').val()
+  vals[resHdrs.indexOf("Phone")]          = $('#resmPhone').val()
   vals[resHdrs.indexOf("Start Date")]     = $('#resmStartDateTime').val()
   vals[resHdrs.indexOf("End Date")]       = $('#resmEndDateTime').val()
   vals[resHdrs.indexOf("Description")]    = $('#resmDescription').val()
@@ -688,9 +694,15 @@ function btnPrintResHtml () {
  
     var eleC = $ele.children()
 
+    console.log('eleC', eleC)
+
     var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + eleC[2].innerText
 
-    var dtl = eleC[1].innerText + '<br>' + eleC[3].innerText + '<br>' + eleC[4].innerText + '<br>' + eleC[5].innerText
+    var dtl = eleC[1].innerText + 
+              (eleC[3].innerText ? '<br>' + eleC[3].innerText : '') + 
+              (eleC[4].innerText ? '<br>' + eleC[4].innerText : '') + 
+              (eleC[5].innerText ? '<br>' + eleC[5].innerText : '') + 
+              (eleC[6].innerText ? '<br>' + eleC[6].innerText : '') 
       
     resRpt.push({
         
@@ -710,6 +722,48 @@ function btnPrintResHtml () {
     targetStyle:      ["*"], 
     style:            'body { font-family:arial; }',
     gridHeaderStyle:  'font-family:arial;font-size: 18px; border-bottom: 2px solid darkgrey;',
+    gridStyle:        'border-bottom: 4px solid lightgrey;'
+      
+  })
+
+}
+
+function btnBaggageTagsHtml() {
+
+  var eleArr = [...$('#resContainer > div')].slice(1)      // remove the templace
+
+  var resRpt = []
+
+  for (let i=0; i<eleArr.length;i++) {
+
+    var $ele = $(eleArr[i])
+
+    var eleC = $ele.children()
+   
+    if ($ele.hasClass('d-none') || $ele.css('display') == 'none' || eleC[3].innerText.substring(0,5) != "Hotel") continue
+ 
+    var res = '<strong>' + eleC[0].innerText.slice(0,-13) + '</strong><br>' + 
+              eleC[2].innerText + '<br>' +
+              eleC[5].innerText
+
+    
+    resRpt.push({
+        
+      'Hotel':  res
+
+    })
+
+  }
+
+  printJS({
+    
+    printable:        resRpt,
+    properties:       [ 'Hotel' ],
+    type:             'json',
+    targetStyles:     ["*"], //accepts all the styles
+    targetStyle:      ["*"], 
+    style:            'body { font-family:arial; }',
+    gridHeaderStyle:  'text-align: left;font-size: 18px; border-bottom: 2px solid darkgrey;',
     gridStyle:        'border-bottom: 4px solid lightgrey;'
       
   })

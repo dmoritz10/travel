@@ -7,8 +7,6 @@ async function btnPlacesHtml() {
         { title: "Location History Detail", type: "all" }
       ])
   
-    console.log('objSht', objSht)
-  
     var title  = "Location History Detail"
     
     var hdrs = objSht[title].colHdrs
@@ -56,18 +54,13 @@ async function btnPlacesHtml() {
 
     arr.sort(placeSorter(1, 0));
 
-    console.log('arr', arr)
-
-
-    var treeData = []
+    placeTree = []
     var brkName
 
-    // for (var i=0;i<arr.length;i++) {
-        for (var i=0;i<5;i++) {
+    for (var i=0;i<arr.length;i++) {
+        // for (var i=0;i<5;i++) {
 
         var ele = arr[i]
-
-        // console.log('ele', ele)
 
         var name = ele[0]
         var nbr  = ele[1]
@@ -76,7 +69,8 @@ async function btnPlacesHtml() {
         var placeObj = {
 
             text:   name,
-            class:  "plTreeitem text-primary h4",
+            nbr:    nbr,
+            class:  "plTreeItem text-primary h4",
             nodes:  []
 
         }
@@ -105,17 +99,12 @@ async function btnPlacesHtml() {
                 
                 brkMonth = month + name
 
-console.log('here', name, month, placeObj)
-
             }
-
-            console.log('placeobj', placeObj)
 
             var currNode = placeObj.nodes.length - 1
 
             var x = placeObj.nodes[currNode].nodes
 
-            // console.log('x', x)
             x.push({           
                             text: date + ' - ' + city,
                             class:  "h6"
@@ -123,60 +112,65 @@ console.log('here', name, month, placeObj)
 
         }
 
-        if (placeObj) treeData.push(placeObj)
+        if (placeObj) placeTree.push(placeObj)
 
     }
 
-    if (placeObj) treeData.push(placeObj)
+    if (placeObj) placeTree.push(placeObj)
     
-    console.log('treeData1', treeData)
+    for (var i = 0; i < placeTree.length;i++) {
 
-    for (var i = 0; i < treeData.length;i++) {
+        var ele = placeTree[i]
 
-        var ele = treeData[i]
-
-        ele.text = ele.text + '<span class="text-warning float-end">' + ele.nodes.length + '</span>'
+        ele.text = ele.text + '<span class="text-warning float-end">' + ele.nbr + '</span>'
 
     }
 
-    console.log('treeData1', treeData)
+    console.log('placeTree1', placeTree)
 
 
     $("#plNbr").html(arr.length)
     
+    var $tblSheets = $("#plContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
 
-    $('#plContainer').bstreeview({ data: treeData });
+    var x = $tblSheets.clone();
+    $("#plContainer").empty();
+    x.appendTo("#plContainer");
+  
+ 
+    for (var j = 0; j < placeTree.length; j++) {
 
-    // $('#plContainer > .list-group').click(function(e){         // highlight clicked row
+        var place = placeTree[j]
+
+        var ele = $tblSheets.clone();
     
-    //     // $(this).toggle() 
-    //     console.time()
-    //     console.log($('#plContainer  .list-group'))
-
-    //     $(e.currentTarget).toggle()
-    //     console.timeEnd()
+        ele.find('#plPlace')[0].innerHTML = place.text
+        ele.find('#plCompositeKey')[0].innerHTML = place.text + ' - ' + uniqueCities(place).join(' - ')
+        ele.find('#plPlace')[0].setAttribute("onclick", "showPlace(" + j + ")");
         
-    //   });
-
-
+        ele.removeClass('d-none');
+    
+        ele.appendTo("#plContainer");
+    
+      }
 
     var srchVal = $("#plSearch").val().toLowerCase()
     var exc = false
   
     if (srchVal) {
 
-        $(".plTreeitem").filter(function() {
+        $("#plContainer #plCompositeKey").filter(function() {
 
             var txt = $(this).text().toLowerCase()
 
             if (exc)    var toggle = txt.indexOf(srchVal.substring(1)) == -1
             else        var toggle = txt.indexOf(srchVal) > -1
 
-            $(this).toggle(toggle)
+            $(this).parent().parent().parent().toggle(toggle)
 
         });
 
-        // $("#resNbr").html(countDisplayed("resContainer"))
+        $("#plNbr").html(countDisplayed("plContainer"))
 
     };
 
@@ -201,4 +195,31 @@ function placeSorter(firstKey, secondKey) {
             }
         } 
     }  
+}
+
+function uniqueCities(place) {
+
+    var uniqCities = []
+
+    var plmonths = place.nodes
+  
+    for (var i=0; i<plmonths.length;i++) {
+  
+      var val = plmonths[i]
+
+      var cities = val.nodes
+
+      for (var j=0;j<cities.length;j++) {
+
+        var x = cities[j]
+
+        var dtl = x.text.split(' - ')
+
+        if (uniqCities.indexOf(dtl[1]) == -1) uniqCities.push(dtl[1])
+
+      }
+    }
+
+    return uniqCities
+
 }

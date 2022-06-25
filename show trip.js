@@ -26,8 +26,13 @@ async function showTrip(idx) {
     if (date != brkDate) {
 
       var dispDate = DateTime.fromJSDate(new Date(date)).toFormat('ccc L/d');
+      var hrefDate = DateTime.fromJSDate(new Date(date)).toFormat('yyyy-LL-dd');
 
-      trp.push(["<div class='text-start text-primary h4'>" + dispDate, '<div class="">&nbsp;</div>'])
+      var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate
+
+      trp.push(["<div class='text-start text-primary pt-1 h4'>" + dispDate, 
+                '<div class="text-end me-2"><a  target="_blank" href=' + googleTimelineHref + '><img class="img-thumbnail border-0 bg-transparent" width="40" height="40" src=  "images/icons/google-my-locn-hist.jpg" /></a>'
+              ])
 
       brkDate = date
 
@@ -242,4 +247,13 @@ function sortDest(vals) {
 
   vals.forEach((val, idx, arr)=> delete val['sort']) // remove sort element from end of array
   
+}
+
+function dispTimeline(dispDate) {
+
+
+
+
+
+
 }
