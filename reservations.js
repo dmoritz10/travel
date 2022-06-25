@@ -703,12 +703,12 @@ function btnPrintResHtml () {
 
     switch (type) {
       case 'Hotel':
-        var sLbl = 'Checkin: <pre>\t\t<strong>' +  sDate;
-        var eLbl = '</strong></pre>Checkout: <pre>\t\t<strong>' + eDate;;
+        var sLbl = 'Checkin: <strong><pre>\t\t' +  sDate;
+        var eLbl = '</pre></strong>Checkout: <pre>\t\t<strong>' + eDate;;
         break;
       case 'Flight':
-        var sLbl = 'Depart: <strong>' +  sDate;
-        var eLbl = '</strong>Arrive: <strong>' + eDate;;
+        var sLbl = 'Depart: <span><strong><pre>\t\t' +  sDate;
+        var eLbl = '</pre></strong></span>Arrive: <strong>' + eDate;;
         break;
       case 'Car':
         var sLbl = 'Out: <strong>' +  sDate;
@@ -733,7 +733,7 @@ function btnPrintResHtml () {
 
     console.log(type, sLbl, eLbl)
 
-    var res = '<strong>' + eleC[0].innerText.slice(0,-13) + '</strong><br>' + sLbl + '<br>' + eLbl
+    var res = '<strong>' + eleC[0].innerText.slice(0,-13) + '</strong><br><br>' + sLbl + '' + eLbl
 
     var dtl = eleC[1].innerText + 
               (eleC[3].innerText ? '<br>' + eleC[3].innerText : '') + 
