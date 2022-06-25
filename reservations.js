@@ -715,7 +715,7 @@ function btnPrintResHtml () {
         var eLbl = '</strong>In: <strong>&emsp;&emsp;' + eDate;;
         break;
       case 'Restaurant':
-        var sLbl = '<strong>&emsp;&emsp;' + sDate;
+        var sLbl = 'Arrive: <strong>&emsp;&emsp;' + sDate;
         var eLbl = '</strong>';
         break;
       case 'Tour':
