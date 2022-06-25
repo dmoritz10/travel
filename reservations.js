@@ -696,7 +696,42 @@ function btnPrintResHtml () {
 
     console.log('eleC', eleC)
 
-    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + eleC[2].innerText
+    var d = eleC[2].innerText.split(' - ')
+    var sDate = d[0]
+    var eDate = d.length > 1 ? d[1] : ''
+    var type = eleC[3].innerText
+
+    switch (type) {
+      case 'Hotel':
+        var sLbl = 'Checkin: ' +  sDate;
+        var eLbl = 'Checkout: ' + eDate;;
+        break;
+      case 'Flight':
+        var sLbl = 'Depart: ' +  sDate;
+        var eLbl = 'Arrive: ' + eDate;;
+        break;
+      case 'Car':
+        var sLbl = 'Out: ' +  sDate;
+        var eLbl = 'In: ' + eDate;;
+        break;
+      case 'Restaurant':
+        var sLbl = sDate;
+        break;
+      case 'Tour':
+        var sLbl = 'Start: ' +  sDate;
+        var eLbl = 'End: ' + eDate;;
+        break;
+      case 'Golf':
+        var sLbl = 'Teetime: ' +  sDate;
+        break;
+      default:
+        var sLbl = sDate;
+        var eLbl = eDate;;
+    }
+    
+
+
+    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4><br>' + sDate + '</h4><br>' + eDate
 
     var dtl = eleC[1].innerText + 
               (eleC[3].innerText ? '<br>' + eleC[3].innerText : '') + 
