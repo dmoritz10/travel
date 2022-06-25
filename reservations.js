@@ -707,12 +707,12 @@ function btnPrintResHtml () {
         var eLbl = '</strong>Checkout: \t\t<strong>' + eDate;;
         break;
       case 'Flight':
-        var sLbl = 'Depart: <pre>\t\t<strong>' +  sDate;
-        var eLbl = '</strong></pre>Arrive: <pre>\t\t<strong>' + eDate;;
+        var sLbl = 'Depart: \t<strong>' +  sDate;
+        var eLbl = '</strong>Arrive: \t<strong>' + eDate;;
         break;
       case 'Car':
-        var sLbl = 'Out: <pre>\t\t<strong>' +  sDate;
-        var eLbl = '</strong></pre>In: <pre>\t\t<strong>' + eDate;;
+        var sLbl = 'Out: <strong>' +  sDate;
+        var eLbl = '</strong>In: <strong>' + eDate;;
         break;
       case 'Restaurant':
         var sLbl = '<pre>\t\t<strong>' + sDate;
