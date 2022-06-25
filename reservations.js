@@ -776,6 +776,7 @@ function btnShowCalendarHtml() {
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView:          'dayGridMonth',
+    initialDate:          '2022-09-11',
     themeSystem:          'bootstrap5',
     editable:              false,
     headerToolbar: {
