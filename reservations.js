@@ -728,8 +728,6 @@ function btnPrintResHtml () {
         var sLbl = sDate;
         var eLbl = eDate;;
     }
-    
-
 
     var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4><br>' + sLbl + '</h4><br>' + eLbl
 
