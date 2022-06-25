@@ -703,8 +703,8 @@ function btnPrintResHtml () {
 
     switch (type) {
       case 'Hotel':
-        var sLbl = 'Checkin: \t\t<strong>' +  sDate;
-        var eLbl = '</strong>Checkout: \t\t<strong>' + eDate;;
+        var sLbl = 'Checkin: <pre><strong>' +  sDate;
+        var eLbl = '</strong></pre>Checkout: <pre><strong>\t\t' + eDate;;
         break;
       case 'Flight':
         var sLbl = 'Depart: \t<strong>' +  sDate;
@@ -733,7 +733,7 @@ function btnPrintResHtml () {
 
     console.log(type, sLbl, eLbl)
 
-    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4>' + sLbl + '' + eLbl
+    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4>' + sLbl + '<br>' + eLbl
 
     var dtl = eleC[1].innerText + 
               (eleC[3].innerText ? '<br>' + eleC[3].innerText : '') + 
