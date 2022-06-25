@@ -219,14 +219,15 @@ function countDisplayed(container) {
   var $eleArr = $('#' + container + ' > div').slice(1)       // remove template
 
   var tot = $eleArr.length
-  var dnone    = $eleArr.filter( function() {return $(this).hasClass('d-none')}).length
-  var dispNone = $eleArr.filter( function() {return $(this).css('display') == 'none'}).length;
+  var dnone    = $eleArr.filter( function() {return $(this).hasClass('d-none') || $(this).css('display') == 'none'}).length
+  // var dispNone = $eleArr.filter( function() {return $(this).css('display') == 'none'}).length;
 
-  console.log('counts', tot, dnone, dispNone)
-  console.log($eleArr.filter( function() {return $(this).hasClass('d-none')}))
-console.log($eleArr.filter( function() {return $(this).css('display') == 'none'}))
+  console.log('counts', tot, dnone)
+  console.log($eleArr.filter( function() {return $(this).hasClass('d-none') || $(this).css('display') == 'none'}))
+// console.log($eleArr.filter( function() {return $(this).css('display') == 'none'}))
 
   var totDisp = tot - dnone - dispNone
+  var totDisp = tot - dnone
 
   return totDisp == tot ? tot : totDisp + ' of ' + tot 
 
