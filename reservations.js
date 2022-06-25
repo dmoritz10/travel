@@ -842,7 +842,7 @@ function btnShowCalendarHtml() {
 
   calendar.render();
 
-  calendar.scrollToTime( {months: 1} )
+
 
   $(".bi-chevron-right").removeClass("bi bi-chevron-right").addClass("material-icons").html("chevron_right");
   $(".bi-chevron-left").removeClass("bi bi-chevron-left").addClass("material-icons").html("chevron_left");
@@ -894,6 +894,9 @@ function btnShowCalendarHtml() {
       }
     )
   }
+
+  calendar.scrollToTime( {months: 1} )
+
 }
 
 function formatISODate(date) {
