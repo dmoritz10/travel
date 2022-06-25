@@ -776,7 +776,7 @@ function btnShowCalendarHtml() {
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView:          'dayGridMonth',
-    initialDate:          '2022-09-11',
+    
     themeSystem:          'bootstrap5',
     editable:              false,
     headerToolbar: {
@@ -797,51 +797,13 @@ function btnShowCalendarHtml() {
       eleArr[id].scrollIntoView({
         behavior: "smooth", 
         block: "center" 
-    })
-
-    
-      return
-      
-      var idx = info.event.id
-      console.log(idx)
-      
-      var resObj = makeObj(resVals[idx], resHdrs)
-
-      console.log('info: ', info);
-
-      var rpt = []
-      rpt.push(['Trip', resObj['Trip'] ])
-      rpt.push(['Type', resObj['Type'] + ' - ' + resObj['Status']])
-      rpt.push(['Start', formatISODate(resObj['Start Date'])])
-      rpt.push(['End', formatISODate(resObj['End Date'])])
-      rpt.push(['', resObj['Description']])
-    
-    var tbl = new Table();
-    
-    tbl
-      .setHeader()
-      .setTableHeaderClass()
-      .setData(rpt)
-      .setTableClass('table table-borderless')
-      .setTrClass('d-flex')
-      .setTcClass(['text-end col-3 h5 text-success align-items-center', 'text-start col h5'])
-      .setTdClass('py-1 pb-0 mb-0 border-0 align-bottom border-bottom')
-      .build();
-
-      bootbox.alert({
-
-        title: resObj['Reservation'],
-        message: tbl.html,
-        closeButton: false
-    
-      });
+      })
 
     }
     
   });
   
 
-  calendar.render();
 
 
 
@@ -896,7 +858,9 @@ function btnShowCalendarHtml() {
     )
   }
 
-  calendar.scrollToTime( {months: 1} )
+  calendar.initialDate =        '2022-09-11'
+  calendar.render();
+
 
 }
 
