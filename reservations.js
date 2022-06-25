@@ -804,7 +804,7 @@ function btnShowCalendarHtml() {
   });
   
 
-
+  calendar.render();
 
 
   $(".bi-chevron-right").removeClass("bi bi-chevron-right").addClass("material-icons").html("chevron_right");
@@ -860,9 +860,10 @@ function btnShowCalendarHtml() {
     )
   }
 
-  calendar.incrementDate.months = 2
-  calendar.render();
 
+
+
+  calendar.incrementDate.months = 2
 
 }
 
