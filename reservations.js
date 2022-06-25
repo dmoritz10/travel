@@ -703,26 +703,26 @@ function btnPrintResHtml () {
 
     switch (type) {
       case 'Hotel':
-        var sLbl = 'Checkin: ' +  sDate;
-        var eLbl = 'Checkout: ' + eDate;;
+        var sLbl = 'Checkin: <h4>' +  sDate;
+        var eLbl = 'Checkout: <h4>' + eDate;;
         break;
       case 'Flight':
-        var sLbl = 'Depart: ' +  sDate;
-        var eLbl = 'Arrive: ' + eDate;;
+        var sLbl = 'Depart: <h4>' +  sDate;
+        var eLbl = 'Arrive: <h4>' + eDate;;
         break;
       case 'Car':
-        var sLbl = 'Out: ' +  sDate;
-        var eLbl = 'In: ' + eDate;;
+        var sLbl = 'Out: <h4>' +  sDate;
+        var eLbl = 'In: <h4>' + eDate;;
         break;
       case 'Restaurant':
         var sLbl = sDate;
         break;
       case 'Tour':
-        var sLbl = 'Start: ' +  sDate;
-        var eLbl = 'End: ' + eDate;;
+        var sLbl = 'Start: <h4>' +  sDate;
+        var eLbl = 'End: <h4>' + eDate;;
         break;
       case 'Golf':
-        var sLbl = 'Teetime: ' +  sDate;
+        var sLbl = 'Teetime: <h4>' +  sDate;
         break;
       default:
         var sLbl = sDate;
@@ -731,7 +731,7 @@ function btnPrintResHtml () {
     
 
 
-    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4><br>' + sDate + '</h4><br>' + eDate
+    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4><br>' + sLbl + '</h4><br>' + eLbl
 
     var dtl = eleC[1].innerText + 
               (eleC[3].innerText ? '<br>' + eleC[3].innerText : '') + 
