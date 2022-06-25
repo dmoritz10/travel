@@ -703,8 +703,8 @@ function btnPrintResHtml () {
 
     switch (type) {
       case 'Hotel':
-        var sLbl = 'Checkin: <pre>\t\t<strong>' +  sDate;
-        var eLbl = '</strong></pre>Checkout: <pre>\t\t<strong>' + eDate;;
+        var sLbl = 'Checkin: \t\t<strong>' +  sDate;
+        var eLbl = '</strong>Checkout: \t\t<strong>' + eDate;;
         break;
       case 'Flight':
         var sLbl = 'Depart: <pre>\t\t<strong>' +  sDate;
