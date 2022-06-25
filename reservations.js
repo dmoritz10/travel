@@ -860,7 +860,7 @@ function btnShowCalendarHtml() {
     )
   }
 
-  calendar.initialDate =        '2022-09-11'
+  calendar.incrementDate.months = 2
   calendar.render();
 
 
