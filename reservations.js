@@ -144,7 +144,7 @@ async function listReservations(title = "Reservations") {
   });
 
   $('#resCalendar').empty()
-  if (resShowCal) btnShowCalendarHtml(initDate)
+  if (resShowCal) btnShowCalendarHtml()
 
 
   modal(false)
@@ -770,13 +770,13 @@ function btnBaggageTagsHtml() {
 
 }
 
-function btnShowCalendarHtml(initDate) {
+function btnShowCalendarHtml() {
 
   var calendarEl = document.getElementById('resCalendar');
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView:          'dayGridMonth',
-    initialDate:           initDate,
+    // initialDate:           initDate,
     themeSystem:          'bootstrap5',
     editable:              false,
     headerToolbar: {
@@ -812,6 +812,8 @@ function btnShowCalendarHtml(initDate) {
 
 
   var eleArr = [...$('#resContainer > div')].slice(1)      // remove the templace
+
+  var initDate
 
   for (let i=0; i<eleArr.length;i++) {
 
@@ -858,10 +860,12 @@ function btnShowCalendarHtml(initDate) {
         backgroundColor:      bc
       }
     )
+
+    if (!initDate) initDate = resObj['Start Date']
   }
 
- 
   calendar.render();
+
   calendar.gotoDate( '2022-09-01' )
 
 }
