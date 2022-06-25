@@ -699,7 +699,7 @@ function btnPrintResHtml () {
     var d = eleC[2].innerText.split(' - ')
     var sDate = d[0]
     var eDate = d.length > 1 ? d[1] : ''
-    var type = eleC[3].innerText
+    var type = eleC[3].innerText.split('\n')[0]
 
     switch (type) {
       case 'Hotel':
