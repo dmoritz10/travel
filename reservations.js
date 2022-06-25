@@ -842,7 +842,7 @@ function btnShowCalendarHtml() {
         var bc = '#FFC033';
         break;
       case 'Golf':
-        var bc = 'darkgreen';
+        var bc = 'purple';
         break;
       default:
         var bc = '';
