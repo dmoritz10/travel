@@ -703,28 +703,28 @@ function btnPrintResHtml () {
 
     switch (type) {
       case 'Hotel':
-        var sLbl = 'Checkin: <strong><pre>\t\t' +  sDate;
-        var eLbl = '</pre></strong>Checkout: <pre>\t\t<strong>' + eDate;;
+        var sLbl = 'Checkin: <pre>\t\t<strong>' +  sDate;
+        var eLbl = '</strong></pre>Checkout: <pre>\t\t<strong>' + eDate;;
         break;
       case 'Flight':
-        var sLbl = 'Depart: <span><strong><pre>\t\t' +  sDate;
-        var eLbl = '</pre></strong></span>Arrive: <strong>' + eDate;;
+        var sLbl = 'Depart: <pre>\t\t<strong>' +  sDate;
+        var eLbl = '</strong></pre>Arrive: <pre>\t\t<strong>' + eDate;;
         break;
       case 'Car':
-        var sLbl = 'Out: <strong>' +  sDate;
-        var eLbl = '</strong>In: <strong>' + eDate;;
+        var sLbl = 'Out: <pre>\t\t<strong>' +  sDate;
+        var eLbl = '</strong></pre>In: <pre>\t\t<strong>' + eDate;;
         break;
       case 'Restaurant':
-        var sLbl = '<strong>' + sDate;
-        var eLbl = '</strong>';
+        var sLbl = '<pre>\t\t<strong>' + sDate;
+        var eLbl = '</strong></pre>';
         break;
       case 'Tour':
-        var sLbl = 'Start: <strong>' +  sDate;
-        var eLbl = '</strong>End: <strong>' + eDate;;
+        var sLbl = 'Start: <pre>\t\t<strong>' +  sDate;
+        var eLbl = '</strong></pre>End: <pre>\t\t<strong>' + eDate;;
         break;
       case 'Golf':
-        var sLbl = 'Teetime: <strong>' +  sDate;
-        var eLbl = '</strong>';
+        var sLbl = 'Teetime: <pre>\t\t<strong>' +  sDate;
+        var eLbl = '</strong></pre>';
         break;
       default:
         var sLbl = sDate;
@@ -733,7 +733,7 @@ function btnPrintResHtml () {
 
     console.log(type, sLbl, eLbl)
 
-    var res = '<strong>' + eleC[0].innerText.slice(0,-13) + '</strong><br><br>' + sLbl + '' + eLbl
+    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4>' + sLbl + '' + eLbl
 
     var dtl = eleC[1].innerText + 
               (eleC[3].innerText ? '<br>' + eleC[3].innerText : '') + 
