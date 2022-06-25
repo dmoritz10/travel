@@ -858,7 +858,7 @@ function btnShowCalendarHtml() {
 
     if (!initDate) initDate = resObj['Start Date']
 
-    $ele.css("border-left", bs)
+    $ele.css("border-left", bc)
 
   }
 
