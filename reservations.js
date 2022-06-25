@@ -804,7 +804,7 @@ function btnShowCalendarHtml() {
   });
   
 
-
+  calendar.render();
 
 
   $(".bi-chevron-right").removeClass("bi bi-chevron-right").addClass("material-icons").html("chevron_right");
@@ -863,8 +863,6 @@ function btnShowCalendarHtml() {
 
     if (!initDate) initDate = resObj['Start Date']
   }
-
-  calendar.render();
 
   calendar.gotoDate( initDate )
 
