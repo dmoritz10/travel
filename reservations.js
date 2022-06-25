@@ -866,7 +866,7 @@ function btnShowCalendarHtml() {
 
   calendar.render();
 
-  calendar.gotoDate( '2022-09-01' )
+  calendar.gotoDate( initDate )
 
 }
 
