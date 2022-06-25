@@ -703,16 +703,16 @@ function btnPrintResHtml () {
 
     switch (type) {
       case 'Hotel':
-        var sLbl = 'Checkin: <strong>&emsp;&emsp;' +  sDate;
+        var sLbl = 'Checkin: &nbsp;&nbsp;<strong>&emsp;&emsp;' +  sDate;
         var eLbl = '</strong>Checkout: <strong>&emsp;&emsp;' + eDate;;
         break;
       case 'Flight':
         var sLbl = 'Depart: <strong>&emsp;&emsp;' +  sDate;
-        var eLbl = '</strong>Arrive: <strong>&emsp;&emsp;' + eDate;;
+        var eLbl = '</strong>Arrive: &nbsp;<strong>&emsp;&emsp;' + eDate;;
         break;
       case 'Car':
         var sLbl = 'Out: <strong>&emsp;&emsp;' +  sDate;
-        var eLbl = '</strong>In: <strong>&emsp;&emsp;' + eDate;;
+        var eLbl = '</strong>In: &nbsp;&nbsp;<strong>&emsp;&emsp;' + eDate;;
         break;
       case 'Restaurant':
         var sLbl = 'Arrive: <strong>&emsp;&emsp;' + sDate;
@@ -720,7 +720,7 @@ function btnPrintResHtml () {
         break;
       case 'Tour':
         var sLbl = 'Start: <strong>&emsp;&emsp;' +  sDate;
-        var eLbl = '</strong>End: <strong>&emsp;&emsp;' + eDate;;
+        var eLbl = '</strong>End: &nbsp;&nbsp;<strong>&emsp;&emsp;' + eDate;;
         break;
       case 'Golf':
         var sLbl = 'Teetime: <strong>&emsp;&emsp;' +  sDate;
