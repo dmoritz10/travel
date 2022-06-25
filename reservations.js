@@ -841,7 +841,9 @@ function btnShowCalendarHtml() {
       case 'Tour':
         var bc = '#FFC033';
         break;
-              
+      case 'Golf':
+        var bc = 'darkgreen';
+        break;
       default:
         var bc = '';
     }
