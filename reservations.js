@@ -819,11 +819,6 @@ function btnShowCalendarHtml() {
 
     var $ele = $(eleArr[i])
 
-    console.log('ele', $ele)
-    console.log('ele', $ele.hasClass('d-none'))
-    console.log('ele', $ele.css('display'))
-
-
     if ($ele.hasClass('d-none') || $ele.css('display') == 'none') continue
 
     var idx = $ele.find('#resArrIdx')[0].innerText
@@ -862,6 +857,9 @@ function btnShowCalendarHtml() {
     )
 
     if (!initDate) initDate = resObj['Start Date']
+
+    $ele.css("border-left", bs)
+
   }
 
   calendar.gotoDate( initDate )
