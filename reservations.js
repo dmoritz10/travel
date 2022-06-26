@@ -701,6 +701,10 @@ function btnPrintResHtml () {
     var eDate = d.length > 1 ? d[1] : ''
     var type = eleC[3].innerText.split('\n')[0]
 
+        var sTmplt = '<div style="width: 25%; float: left;">Checkin: </div><div style="margin-left: 25%;"><strong>sDate</strong></div>';
+        var eTmplt = '<div style="width: 25%; float: left;">Checkin: </div><div style="margin-left: 25%;"><strong>eDate</strong></div>';
+        
+
     switch (type) {
       // case 'Hotel':
       //   var sLbl = 'Checkin: &nbsp;&nbsp;<strong>&emsp;&emsp;' +  sDate;
