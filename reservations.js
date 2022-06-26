@@ -701,8 +701,7 @@ function btnPrintResHtml () {
     var eDate = d.length > 1 ? d[1] : ''
     var type = eleC[3].innerText.split('\n')[0]
 
-        var sTmplt = '<div style="width: 25%; float: left;">Checkin: </div><div style="margin-left: 25%;"><strong>sDate</strong></div>';
-        var eTmplt = '<div style="width: 25%; float: left;">Checkin: </div><div style="margin-left: 25%;"><strong>eDate</strong></div>';
+    var tmplt = '<div style="width: 25%; float: left;">Checkin: </div><div style="margin-left: 25%;"><strong>Date</strong></div>';
         
 
     switch (type) {
@@ -711,8 +710,8 @@ function btnPrintResHtml () {
       //   var eLbl = '</strong>Checkout: <strong>&emsp;&emsp;' + eDate;;
       //   break;
       case 'Hotel':
-        var sLbl = '<div style="width: 25%; float: left;">Checkin: </div><div style="margin-left: 25%;"><strong>' +  sDate + '</strong></div>';
-        var eLbl = '<div style="width: 25%; float: left;">Checkin: </div><div style="margin-left: 25%;"><strong>' +  eDate + '</strong></div>';
+        var sLbl = tmplt.replace('Date', sDate)
+        var eLbl = tmplt.replace('Date', eDate)
         break;
       case 'Flight':
         var sLbl = 'Depart: <strong>&emsp;&emsp;' +  sDate;
