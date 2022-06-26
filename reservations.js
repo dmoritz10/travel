@@ -702,14 +702,14 @@ function btnPrintResHtml () {
     var type = eleC[3].innerText.split('\n')[0]
 
     switch (type) {
-      // case 'Hotel':
-      //   var sLbl = 'Checkin: &nbsp;&nbsp;<strong>&emsp;&emsp;' +  sDate;
-      //   var eLbl = '</strong>Checkout: <strong>&emsp;&emsp;' + eDate;;
-      //   break;
       case 'Hotel':
-        var sLbl = '<pre style="tab-size:4">Checkin: &#9;<strong>' +  sDate + '</strong></pre>';
-        var eLbl = '<pre style="tab-size:4">Checkout: &#9;<strong>' + eDate; + '</strong></pre>'
+        var sLbl = 'Checkin: &nbsp;&nbsp;<strong>&emsp;&emsp;' +  sDate;
+        var eLbl = '</strong>Checkout: <strong>&emsp;&emsp;' + eDate;;
         break;
+      // case 'Hotel':
+      //   var sLbl = '<pre style="tab-size:4">Checkin: &#9;<strong>' +  sDate + '</strong></pre>';
+      //   var eLbl = '<pre style="tab-size:4">Checkout: &#9;<strong>' + eDate; + '</strong></pre>'
+      //   break;
       case 'Flight':
         var sLbl = 'Depart: <strong>&emsp;&emsp;' +  sDate;
         var eLbl = '</strong>Arrive: &nbsp;<strong>&emsp;&emsp;' + eDate;;
@@ -737,7 +737,7 @@ function btnPrintResHtml () {
 
     console.log(type, sLbl, eLbl)
 
-    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4>' + sLbl + '<br>' + eLbl
+    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4>' + sLbl + eLbl
 
     var dtl = eleC[1].innerText + 
               (eleC[3].innerText ? '<br>' + eleC[3].innerText : '') + 
