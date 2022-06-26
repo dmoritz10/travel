@@ -737,7 +737,7 @@ function btnPrintResHtml () {
 
     console.log(type, sLbl, eLbl)
 
-    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4>' + sLbl + eLbl
+    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4>' + sLbl  + '<br>' +  eLbl
 
     var dtl = eleC[1].innerText + 
               (eleC[3].innerText ? '<br>' + eleC[3].innerText : '') + 
