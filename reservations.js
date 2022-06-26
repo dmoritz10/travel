@@ -715,24 +715,24 @@ function btnPrintResHtml () {
         var eLbl = tmplt.replace('date', eDate).replace('descr', "Arrive")
         break;
       case 'Car':
-        var sLbl = 'Out: <strong>&emsp;&emsp;' +  sDate;
-        var eLbl = '</strong>In: &nbsp;&nbsp;<strong>&emsp;&emsp;' + eDate;;
+        var sLbl = tmplt.replace('date', sDate).replace('descr', "Pickup")
+        var eLbl = tmplt.replace('date', eDate).replace('descr', "Dropoff")
         break;
       case 'Restaurant':
-        var sLbl = 'Arrive: <strong>&emsp;&emsp;' + sDate;
-        var eLbl = '</strong>';
+        var sLbl = tmplt.replace('date', sDate).replace('descr', "Arrive")
+        var eLbl = ''
         break;
       case 'Tour':
-        var sLbl = 'Start: <strong>&emsp;&emsp;' +  sDate;
-        var eLbl = '</strong>End: &nbsp;&nbsp;<strong>&emsp;&emsp;' + eDate;;
-        break;
+        var sLbl = tmplt.replace('date', sDate).replace('descr', "Begin")
+        var eLbl = tmplt.replace('date', eDate).replace('descr', "End")
+         break;
       case 'Golf':
-        var sLbl = 'Teetime: <strong>&emsp;&emsp;' +  sDate;
-        var eLbl = '</strong>';
-        break;
+        var sLbl = tmplt.replace('date', sDate).replace('descr', "Teetime")
+        var eLbl = ''
+         break;
       default:
-        var sLbl = sDate;
-        var eLbl = eDate;;
+        var sLbl = tmplt.replace('date', sDate).replace('descr', "Begin")
+        var eLbl = tmplt.replace('date', eDate).replace('descr', "End")
     }
 
     console.log(type, sLbl, eLbl)
