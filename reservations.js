@@ -701,21 +701,18 @@ function btnPrintResHtml () {
     var eDate = d.length > 1 ? d[1] : ''
     var type = eleC[3].innerText.split('\n')[0]
 
-    var tmplt = '<div style="width: 25%; float: left;">Checkin: </div><div style="margin-left: 25%;"><strong>Date</strong></div>';
+    var tmplt = '<div style="width: 25%; float: left;">descr: </div><div style="margin-left: 25%;"><strong>date</strong></div>';
         
 
     switch (type) {
-      // case 'Hotel':
-      //   var sLbl = 'Checkin: &nbsp;&nbsp;<strong>&emsp;&emsp;' +  sDate;
-      //   var eLbl = '</strong>Checkout: <strong>&emsp;&emsp;' + eDate;;
-      //   break;
+      
       case 'Hotel':
-        var sLbl = tmplt.replace('Date', sDate)
-        var eLbl = tmplt.replace('Date', eDate)
+        var sLbl = tmplt.replace('date', sDate).replace('descr', "Checkin")
+        var eLbl = tmplt.replace('date', eDate).replace('descr', "Checkout")
         break;
       case 'Flight':
-        var sLbl = 'Depart: <strong>&emsp;&emsp;' +  sDate;
-        var eLbl = '</strong>Arrive: &nbsp;<strong>&emsp;&emsp;' + eDate;;
+        var sLbl = tmplt.replace('date', sDate).replace('descr', "Depart")
+        var eLbl = tmplt.replace('date', eDate).replace('descr', "Arrive")
         break;
       case 'Car':
         var sLbl = 'Out: <strong>&emsp;&emsp;' +  sDate;
