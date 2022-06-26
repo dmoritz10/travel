@@ -707,7 +707,7 @@ function btnPrintResHtml () {
       //   var eLbl = '</strong>Checkout: <strong>&emsp;&emsp;' + eDate;;
       //   break;
       case 'Hotel':
-        var sLbl = '<pre>Checkin: <strong>' +  sDate;
+        var sLbl = '<pre style="tab-size:10">Checkin: <strong>' +  sDate;
         var eLbl = '</strong>Checkout: <strong>' + eDate; + '</pre>'
         break;
       case 'Flight':
