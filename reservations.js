@@ -702,9 +702,13 @@ function btnPrintResHtml () {
     var type = eleC[3].innerText.split('\n')[0]
 
     switch (type) {
+      // case 'Hotel':
+      //   var sLbl = 'Checkin: &nbsp;&nbsp;<strong>&emsp;&emsp;' +  sDate;
+      //   var eLbl = '</strong>Checkout: <strong>&emsp;&emsp;' + eDate;;
+      //   break;
       case 'Hotel':
-        var sLbl = 'Checkin: &nbsp;&nbsp;<strong>&emsp;&emsp;' +  sDate;
-        var eLbl = '</strong>Checkout: <strong>&emsp;&emsp;' + eDate;;
+        var sLbl = '<pre>Checkin: <strong>' +  sDate;
+        var eLbl = '</strong>Checkout: <strong>' + eDate; + '</pre>'
         break;
       case 'Flight':
         var sLbl = 'Depart: <strong>&emsp;&emsp;' +  sDate;
