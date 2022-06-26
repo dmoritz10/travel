@@ -65,13 +65,16 @@ async function listReservations(title = "Reservations") {
 
     var st = DateTime.fromISO(resObj['Start Date']).toLocaleString(DateTime.DATETIME_SHORT)
     var stArr = st.split(', ')
-    stmd = stArr[0].substring(0, st.lastIndexOf('/'))
+    var stmd = stArr[0].substring(0, st.lastIndexOf('/'))
     var start = stArr[1] == '12:00 AM' ? stmd : stmd + ', ' + stArr[1]
 
     if (resObj['End Date']) {
       var et = DateTime.fromISO(resObj['End Date']).toLocaleString(DateTime.DATETIME_SHORT)
       var etArr = et.split(', ')
-      var end = etArr[1] == '12:00 AM' ? etArr[0] : et
+      // var end = etArr[1] == '12:00 AM' ? etArr[0] : et
+      var stmd = etArr[0].substring(0, et.lastIndexOf('/'))
+      var start = etArr[1] == '12:00 AM' ? stmd : stmd + ', ' + etArr[1]
+  
     } else {
       var end = ''
     }
@@ -734,8 +737,6 @@ function btnPrintResHtml () {
         var sLbl = tmplt.replace('date', sDate).replace('descr', "Begin")
         var eLbl = tmplt.replace('date', eDate).replace('descr', "End")
     }
-
-    console.log(type, sLbl, eLbl)
 
     var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4>' + sLbl  +   eLbl
 
