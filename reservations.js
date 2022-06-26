@@ -707,8 +707,8 @@ function btnPrintResHtml () {
       //   var eLbl = '</strong>Checkout: <strong>&emsp;&emsp;' + eDate;;
       //   break;
       case 'Hotel':
-        var sLbl = '<div style="width: 50%; float: left; background: green;">Checkin: </div><div style="margin-left: 50%; background: blue;">' +  sDate + '</div>';
-        var eLbl = '<div style="width: 50%; float: left; background: green;">Checkin: </div><div style="margin-left: 50%; background: blue;">' +  eDate + '</div>';
+        var sLbl = '<div style="width: 25%; float: left;">Checkin: </div><div style="margin-left: 75%;"><strong>' +  sDate + '</strong></div>';
+        var eLbl = '<div style="width: 25%; float: left;">Checkin: </div><div style="margin-left: 75%;"><strong>' +  eDate + '</strong></div>';
         break;
       case 'Flight':
         var sLbl = 'Depart: <strong>&emsp;&emsp;' +  sDate;
