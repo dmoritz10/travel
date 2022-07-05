@@ -485,7 +485,7 @@ async function makeReservationsFromCalendarEvents() {
 
     console.log('trip', trip)
 
-    if (trip == 'cancel') listReservations(); return
+    if (trip == 'cancel') {listReservations(); return}
 
     if (trip == 'no') {
 
@@ -495,7 +495,7 @@ async function makeReservationsFromCalendarEvents() {
     } else {
 
       nbrAccepted++
-      await addToReservations(vals[i], trip, ceHdrs, resHdrs)
+      await addToReservations(vals[i], '', ceHdrs, resHdrs)
       await markEvent('accepted', i, vals[i], ceHdrs)
       defaultTrip = trip
 
