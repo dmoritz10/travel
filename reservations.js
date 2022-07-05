@@ -485,9 +485,9 @@ async function makeReservationsFromCalendarEvents() {
 
     console.log('trip', trip)
 
-    return
+    if (trip == 'cancel') return
 
-    if (trip == null) {
+    if (trip == 'no') {
 
       nbrRejected++
       await markEvent('rejected', i, vals[i], ceHdrs)
@@ -537,19 +537,19 @@ function promptTrip(msg, defaultVal) {
       onEscape: false,
       closeButton: false,
       buttons: {
-        cancel: {
+        yes: {
             label: "yes",
             className: 'btn-primary',
             callback: function(result){ resolve('yes')}
         },
 
-        yes: {
+        no: {
           label: "no",
           className: 'btn-primary',
           callback: function(result){ resolve('no')}
           },
         
-        no: {
+        cancel: {
           label: "cancel",
           className: 'btn-primary',
           callback: function(result){ resolve('cancel')}
