@@ -71,8 +71,8 @@ async function listReservations(title = "Reservations") {
     if (resObj['End Date']) {
       var et = DateTime.fromISO(resObj['End Date']).toLocaleString(DateTime.DATETIME_SHORT)
       var etArr = et.split(', ')
-      // var end = etArr[1] == '12:00 AM' ? etArr[0] : et
-      var stmd = etArr[0].substring(0, et.lastIndexOf('/'))
+      // var end = etArr[1] == '12:00 AM' ? etArr[0] : et   // keep the year
+      var stmd = etArr[0].substring(0, et.lastIndexOf('/')) // discard the year
       var end = etArr[1] == '12:00 AM' ? stmd : stmd + ', ' + etArr[1]
   
     } else {
@@ -485,6 +485,8 @@ async function makeReservationsFromCalendarEvents() {
 
     console.log('trip', trip)
 
+    return
+
     if (trip == null) {
 
       nbrRejected++
@@ -528,12 +530,12 @@ function promptTrip(msg, defaultVal) {
 
   return new Promise(resolve => {
  
-    bootbox.prompt({
+    bootbox.dialog({
     
       title: msg,
       onEscape: false,
       closeButton: false,
-      value: defaultVal ? defaultVal : '',
+      // value: defaultVal ? defaultVal : '',
       callback: function(result){ resolve(result)},
       buttons: {
         cancel: {
