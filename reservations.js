@@ -532,7 +532,8 @@ function promptTrip(msg, defaultVal) {
  
     bootbox.dialog({
     
-      title: msg,
+      title: 'Import Reservations from Calendars',
+      message: msg,
       onEscape: false,
       closeButton: false,
       // value: defaultVal ? defaultVal : '',
