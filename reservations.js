@@ -495,7 +495,7 @@ async function makeReservationsFromCalendarEvents() {
     } else {
 
       nbrAccepted++
-      await addToReservations(vals[i], '', ceHdrs, resHdrs)
+      await addToReservations(vals[i], 'Missing Tour', ceHdrs, resHdrs)
       await markEvent('accepted', i, vals[i], ceHdrs)
       defaultTrip = trip
 
