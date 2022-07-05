@@ -541,14 +541,25 @@ function promptTrip(msg, defaultVal) {
       buttons: {
         cancel: {
             label: "no",
-            className: 'btn-primary'
+            className: 'btn-primary',
+            callback: function(result){ resolve(result)}
         },
 
-        confirm: {
+        yes: {
           label: "yes",
-          className: 'btn-primary'
+          className: 'btn-primary',
+          callback: function(result){ resolve(result)}
+          },
+        
+
+        no: {
+          label: "no",
+          className: 'btn-primary',
+          callback: function(result){ resolve(result)}
           }
-        }
+        
+        },
+        
       });
 
   })
