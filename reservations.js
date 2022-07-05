@@ -536,26 +536,23 @@ function promptTrip(msg, defaultVal) {
       message: msg,
       onEscape: false,
       closeButton: false,
-      // value: defaultVal ? defaultVal : '',
-      callback: function(result){ resolve(result)},
       buttons: {
         cancel: {
-            label: "no",
+            label: "yes",
             className: 'btn-primary',
-            callback: function(result){ resolve(result)}
+            callback: function(result){ resolve('yes')}
         },
 
         yes: {
-          label: "yes",
-          className: 'btn-primary',
-          callback: function(result){ resolve(result)}
-          },
-        
-
-        no: {
           label: "no",
           className: 'btn-primary',
-          callback: function(result){ resolve(result)}
+          callback: function(result){ resolve('no')}
+          },
+        
+        no: {
+          label: "cancel",
+          className: 'btn-primary',
+          callback: function(result){ resolve('cancel')}
           }
         
         },
