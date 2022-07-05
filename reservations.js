@@ -485,7 +485,7 @@ async function makeReservationsFromCalendarEvents() {
 
     console.log('trip', trip)
 
-    if (trip == 'cancel') return
+    if (trip == 'cancel') listReservations(); return
 
     if (trip == 'no') {
 
@@ -515,6 +515,8 @@ async function makeReservationsFromCalendarEvents() {
     var msg = 'Nbr Accepted - ' + nbrAccepted + '<br>Nbr Rejected - ' + nbrRejected
 
   }
+
+  listReservations()
 
   bootbox.alert({
 
