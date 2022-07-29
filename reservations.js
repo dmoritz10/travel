@@ -819,6 +819,7 @@ function btnBaggageTagsHtml() {
     printable:        resRpt,
     properties:       [ 'Hotel' ],
     type:             'json',
+    header:           '<h3 class="custom-h3"></h3>',
     targetStyles:     ["*"], //accepts all the styles
     targetStyle:      ["*"], 
     style:            'body { font-family:arial; }',
