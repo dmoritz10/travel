@@ -819,11 +819,10 @@ function btnBaggageTagsHtml() {
     printable:        resRpt,
     properties:       [ 'Hotel' ],
     type:             'json',
-    header:           '<h3 class="custom-h3">hi dan</h3>',
     targetStyles:     ["*"], //accepts all the styles
     targetStyle:      ["*"], 
     style:            'body { font-family:arial; }',
-    gridHeaderStyle:  'text-align: left;font-size: 18px; border-bottom: 2px solid darkgrey;',
+    gridHeaderStyle:  'display:none;',
     gridStyle:        'border-bottom: 4px solid lightgrey;'
       
   })
