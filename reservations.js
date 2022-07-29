@@ -802,7 +802,7 @@ function btnBaggageTagsHtml() {
     var dtEnd = dt[1].split(',')[0]
 
     var res = '<strong>' + eleC[0].innerText.slice(0,-13) + '</strong><br>' + 
-              dtStr + ' - ' + dtend + '<br>' +
+              dtStr + ' - ' + dtEnd + '<br>' +
               eleC[5].innerText
 
     
