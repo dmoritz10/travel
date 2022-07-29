@@ -797,8 +797,12 @@ function btnBaggageTagsHtml() {
    
     if ($ele.hasClass('d-none') || $ele.css('display') == 'none' || eleC[3].innerText.substring(0,5) != "Hotel") continue
  
+    var dt = eleC[2].innerText.split(' - ')
+    var dtStr = dt[0].split(',')[0]
+    var dtEnd = dt[1].split(',')[0]
+
     var res = '<strong>' + eleC[0].innerText.slice(0,-13) + '</strong><br>' + 
-              eleC[2].innerText + '<br>' +
+              dtStr + ' - ' + dtend + '<br>' +
               eleC[5].innerText
 
     
