@@ -911,9 +911,9 @@ function btnShowCalendarHtml() {
       {
         id:                   idx,
         title:                resObj['Reservation'],
-        startStr:                resObj['Start Date'],
-        endStr:                  resObj['End Date'],
-        allDay:               true,
+        start:                resObj['Start Date'],
+        end:                  resObj['End Date'],
+        allDay:               false,
         backgroundColor:      bc
       }
     )
