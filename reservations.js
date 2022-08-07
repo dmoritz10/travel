@@ -924,6 +924,8 @@ function btnShowCalendarHtml() {
 
   }
 
+  console.log(calendar)
+
   calendar.gotoDate( initDate )
 
 }
