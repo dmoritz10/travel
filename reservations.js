@@ -913,7 +913,7 @@ function btnShowCalendarHtml() {
         title:                resObj['Reservation'],
         start:                resObj['Start Date'],
         end:                  resObj['End Date'],
-        allDay:               false,
+        allDay:               true,
         backgroundColor:      bc
       }
     )
