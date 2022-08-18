@@ -757,7 +757,8 @@ function btnPrintResHtml () {
               (eleC[3].innerText ? '<br>' + eleC[3].innerText : '') + 
               (eleC[4].innerText ? '<br>' + eleC[4].innerText : '') + 
               (eleC[5].innerText ? '<br>' + eleC[5].innerText : '') + 
-              (eleC[6].innerText ? '<br>' + eleC[6].innerText : '') 
+              (eleC[6].innerText ? '<br>' + eleC[6].innerText : '') + 
+              (eleC[7].innerText ? '<br>' + eleC[7].innerText : '') 
       
     resRpt.push({
         
