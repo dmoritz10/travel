@@ -132,12 +132,12 @@ async function listReservations(title = "Reservations") {
         else        var toggle = txt.indexOf(srchVal) > -1
 
         $(this).parent().parent().parent().toggle(toggle)     
-      
-        $("#resNbr").html(countDisplayed("resContainer"))
    
       })
 
     }
+
+  $("#resNbr").html(countDisplayed("resContainer"))
 
   $('#resContainer > div').click(function(e){         // highlight clicked row
     
