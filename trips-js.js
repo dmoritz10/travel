@@ -6,7 +6,7 @@ async function listTrips(title = "Trips") {
   var trpOptions = readOption('trpFilter')
   var trpSelectFav = trpOptions.trpSelectFav
 
-  openTripsSheet()
+  await openTripsSheet()
 
   trpTitle = "Trips"
   
@@ -437,7 +437,7 @@ function dupDocument(Document) {
 
 }
 
-function openTripsSheet() {
+async function openTripsSheet() {
 
   var objSht = await openShts(
     [

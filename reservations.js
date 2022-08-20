@@ -241,7 +241,7 @@ async function editReservation(arrIdx) {
   $('#resmEndDateTime').val(resObj['End Date'])
   $('#resmDescription').val(resObj['Description'])
 
-  buildTripList('resmTripsList')
+  await buildTripList('resmTripsList')
   
   $('#btnResmDelete').removeClass('d-none')
   // $('#resmReservation').focus()
@@ -250,9 +250,9 @@ async function editReservation(arrIdx) {
 
 }
 
-function buildTripList(listId) {
+async function buildTripList(listId) {
 
-  if (!trpVals) openTripsSheet()
+  if (!trpVals) await openTripsSheet()
 
   // Trip	Month	Start Date	End Date  
 
@@ -364,7 +364,7 @@ async function btnAddReservationHtml() {
 
   $('#resmSource').val(user['firstName'])
 
-  buildTripList('resmTripsList')
+  await buildTripList('resmTripsList')
 
   $('#btnResmDelete').addClass('d-none')
 
