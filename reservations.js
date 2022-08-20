@@ -261,11 +261,12 @@ async function buildTripList(listId) {
 
   var trips = trpVals.map(x => {
 
-    console.log(new Date(x[trpVals.indexOf('End Date')]))
+    console.log(x[trpHdrs.indexOf('End Date')])
+    console.log(new Date(x[trpVtrpHdrsals.indexOf('End Date')]))
 
-    if (new Date(x[trpVals.indexOf('End Date')]) >= new Date()) {
+    if (new Date(x[trpHdrs.indexOf('End Date')]) >= new Date()) {
     
-      return x[trpVals.indexOf('Trip')] + ' - ' + x[trpVals.indexOf('Month')]
+      return x[trpHdrs.indexOf('Trip')] + ' - ' + x[trpHdrs.indexOf('Month')]
     
     }
     
