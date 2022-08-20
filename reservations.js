@@ -252,29 +252,29 @@ async function editReservation(arrIdx) {
 
 async function buildTripList(listId) {
 
-  if (!trpVals) await openTripsSheet()
+  // if (!trpVals) await openTripsSheet()
 
-  // Trip	Month	Start Date	End Date  
+  // // Trip	Month	Start Date	End Date  
 
-  console.log('dan')
-  console.log(trpVals)
+  // console.log('dan')
+  // console.log(trpVals)
 
-  var trips = trpVals.map(x => {
+  // var trips = trpVals.map(x => {
 
-    console.log(x[trpHdrs.indexOf('End Date')])
-    console.log(new Date(x[trpHdrs.indexOf('End Date')]))
+  //   console.log(x[trpHdrs.indexOf('End Date')])
+  //   console.log(new Date(x[trpHdrs.indexOf('End Date')]))
 
-    if (new Date(x[trpHdrs.indexOf('End Date')]) >= new Date()) {
+  //   if (new Date(x[trpHdrs.indexOf('End Date')]) >= new Date()) {
     
-      return x[trpHdrs.indexOf('Trip')] + ' - ' + x[trpHdrs.indexOf('Month')]
+  //     return x[trpHdrs.indexOf('Trip')] + ' - ' + x[trpHdrs.indexOf('Month')]
     
-    }
+  //   }
     
-  })
+  // })
 
 
 
-  // var trips = resVals.map(x => x[resHdrs.indexOf('Trip')])
+  var trips = resVals.map(x => x[resHdrs.indexOf('Trip')])
 
   var uniqueTrips = [...new Set(trips)].sort()
 
