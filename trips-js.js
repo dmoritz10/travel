@@ -444,7 +444,7 @@ async function openTripsSheet() {
       { title: "Trips", type: "all" }
     ])
 
-  trpHdrs = objSht[trpTitle].colHdrs
-  trpVals = objSht[trpTitle].vals
+  trpHdrs = objSht["Trips"].colHdrs
+  trpVals = objSht["Trips"].vals
   
 }
