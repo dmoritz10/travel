@@ -6,17 +6,9 @@ async function listTrips(title = "Trips") {
   var trpOptions = readOption('trpFilter')
   var trpSelectFav = trpOptions.trpSelectFav
 
-  var objSht = await openShts(
-    [
-      { title: "Trips", type: "all" }
-    ])
-
-  console.log('objSht', objSht)
+  openTripsSheet()
 
   trpTitle = "Trips"
-  
-  trpHdrs = objSht[trpTitle].colHdrs
-  trpVals = objSht[trpTitle].vals
   
   var vals = trpVals
 
@@ -445,3 +437,14 @@ function dupDocument(Document) {
 
 }
 
+function openTripsSheet() {
+
+  var objSht = await openShts(
+    [
+      { title: "Trips", type: "all" }
+    ])
+
+  trpHdrs = objSht[trpTitle].colHdrs
+  trpVals = objSht[trpTitle].vals
+  
+}

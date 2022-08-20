@@ -252,7 +252,23 @@ async function editReservation(arrIdx) {
 
 function buildTripList(listId) {
 
-  var trips = resVals.map(x => x[resHdrs.indexOf('Trip')])
+  if (!trpVals) openTripsSheet()
+
+  // Trip	Month	Start Date	End Date  
+
+  var trips = trpVals.map(x => {
+
+    if (new Date(x[resHdrs.indexOf('End Date')]) >= new Date()) {
+    
+      return x[resHdrs.indexOf('Trip')] + ' - ' + x[resHdrs.indexOf('Month')]
+    
+    }
+    
+  })
+
+
+
+  // var trips = resVals.map(x => x[resHdrs.indexOf('Trip')])
 
   var uniqueTrips = [...new Set(trips)].sort()
 
