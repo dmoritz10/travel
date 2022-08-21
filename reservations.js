@@ -935,15 +935,15 @@ function btnShowCalendarHtml() {
       }
     )
 
-    if (!initDate && resObj['Start Date']) initDate = resObj['Start Date']
+    if (!initDate) initDate = resObj['Start Date']
 
     $ele.css("border-left", '4px solid ' + bc)
 
   }
+console.log('dan')
+  console.log(resObj['Start Date'])
 
-  console.log(calendar)
-
-  calendar.gotoDate( initDate )
+  if (resObj['Start Date']) calendar.gotoDate( initDate )
 
 }
 
