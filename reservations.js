@@ -941,9 +941,9 @@ function btnShowCalendarHtml() {
 
   }
 console.log('dan')
-  console.log(resObj['Start Date'])
+  console.log(initDate)
 
-  if (resObj['Start Date']) calendar.gotoDate( initDate )
+  if (initDate) calendar.gotoDate( initDate )
 
 }
 
