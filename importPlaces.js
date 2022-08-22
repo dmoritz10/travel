@@ -186,24 +186,32 @@ function calcTripName(arr, hdrs, strIdx) {
 
   // Rank cities
 
-  var counts = {}
-  tripArr.forEach(el => counts[el] = 1  + (counts[el] || 0))
+  // var counts = {}
+  // tripArr.forEach(el => counts[el] = 1  + (counts[el] || 0))
 
-  const  tripSorted = Object.keys(counts)
-  .sort((key1, key2) => counts[key2] - counts[key1])
-  .reduce((obj, key) => ({
-    ...obj,
-    [key]: counts[key]
-  }), {})
+  // const  tripSorted = Object.keys(counts)
+  // .sort((key1, key2) => counts[key2] - counts[key1])
+  // .reduce((obj, key) => ({
+  //   ...obj,
+  //   [key]: counts[key]
+  // }), {})
 
 
-  console.log('counts', counts)
+  // console.log('counts', counts)
 
-  var tripDest = []
-  for (let [key, value] of Object.entries(tripSorted)) {
-    tripDest.push(key) 
+  // var tripDest = []
+  // for (let [key, value] of Object.entries(tripSorted)) {
+  //   tripDest.push(key) 
+  // }
+  var uniqueDests = []
+
+  dests.forEach( ele => {
+
+    if (uniqueDests.indexOf(ele.city) == -1) uniqueDests.push(ele.city)
+
   }
 
+  console.log('uniqueDests', uniqueDests)
 
   // Rank states
 
@@ -253,7 +261,7 @@ function calcTripName(arr, hdrs, strIdx) {
 
     name:   tripName,
     moYr:   tripMoYr,
-    dest:   tripDest,
+    dest:   uniqueDests,
     cntrys: tripCntry,
     states: tripState
   }
@@ -284,20 +292,20 @@ function readFile(file) {
 
 async function formatPlace(json, objLHD) {
 
-var a = JSON.parse(json)
+  var a = JSON.parse(json)
 
-var b = a.timelineObjects
+  var b = a.timelineObjects
 
-var homeLat = readOption('Home Lat')
-var homeLng = readOption('Home Lng')
+  var homeLat = readOption('Home Lat')
+  var homeLng = readOption('Home Lng')
 
-var hdrs = objLHD['Location History Detail'].colHdrs
+  var hdrs = objLHD['Location History Detail'].colHdrs
 
-var arr = []
+  var arr = []
 
-var cntr = 0
+  var cntr = 0
 
-for (var i in b) {
+  for (var i in b) {
 
     var type = Object.keys(b[i])[0]
 
