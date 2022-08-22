@@ -205,10 +205,9 @@ function calcTripName(arr, hdrs, strIdx) {
   }
   
   var uniqueDests = []
-
   tripArr.forEach( ele => {
 
-    if (uniqueDests.indexOf(eleity) == -1) uniqueDests.push(ele)
+    if (uniqueDests.indexOf(ele) == -1) uniqueDests.push(ele)
 
   })
 
