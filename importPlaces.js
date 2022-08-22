@@ -211,6 +211,7 @@ function calcTripName(arr, hdrs, strIdx) {
 
   })
 
+  
   console.log('uniqueDests', uniqueDests)
 
   // Rank states
