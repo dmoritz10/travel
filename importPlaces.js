@@ -186,23 +186,24 @@ function calcTripName(arr, hdrs, strIdx) {
 
   // Rank cities
 
-  // var counts = {}
-  // tripArr.forEach(el => counts[el] = 1  + (counts[el] || 0))
+  var counts = {}
+  tripArr.forEach(el => counts[el] = 1  + (counts[el] || 0))
 
-  // const  tripSorted = Object.keys(counts)
-  // .sort((key1, key2) => counts[key2] - counts[key1])
-  // .reduce((obj, key) => ({
-  //   ...obj,
-  //   [key]: counts[key]
-  // }), {})
+  const  tripSorted = Object.keys(counts)
+  .sort((key1, key2) => counts[key2] - counts[key1])
+  .reduce((obj, key) => ({
+    ...obj,
+    [key]: counts[key]
+  }), {})
 
 
-  // console.log('counts', counts)
+  console.log('counts', counts)
 
-  // var tripDest = []
-  // for (let [key, value] of Object.entries(tripSorted)) {
-  //   tripDest.push(key) 
-  // }
+  var tripDest = []
+  for (let [key, value] of Object.entries(tripSorted)) {
+    tripDest.push(key) 
+  }
+  
   var uniqueDests = []
 
   tripArr.forEach( ele => {
@@ -211,7 +212,7 @@ function calcTripName(arr, hdrs, strIdx) {
 
   })
 
-  
+
   console.log('uniqueDests', uniqueDests)
 
   // Rank states
