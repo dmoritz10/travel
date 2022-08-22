@@ -209,7 +209,7 @@ function calcTripName(arr, hdrs, strIdx) {
 
     if (uniqueDests.indexOf(ele.city) == -1) uniqueDests.push(ele.city)
 
-  }
+  })
 
   console.log('uniqueDests', uniqueDests)
 
