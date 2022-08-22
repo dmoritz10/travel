@@ -164,7 +164,7 @@ function calcTripName(arr, hdrs, strIdx) {
 
     if (ele[distCol] <= 50) break
 
-    if (ele[dateCol] == newDate) continue
+    // if (ele[dateCol] == newDate) continue
 
     newDate = ele[dateCol]
 
