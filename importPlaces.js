@@ -203,15 +203,11 @@ function calcTripName(arr, hdrs, strIdx) {
   for (let [key, value] of Object.entries(tripSorted)) {
     tripDest.push(key) 
   }
-  
+
   var uniqueDests = []
-
-  tripArr.forEach( ele => {
-
-    if (uniqueDests.indexOf(ele.city) == -1) uniqueDests.push(ele.city)
-
-  })
-
+  for (let [key, value] of Object.entries(tripArr)) {
+    if (uniqueDests.indexOf(key) == -1) uniqueDests.push(key) 
+  }
 
   console.log('uniqueDests', uniqueDests)
 
