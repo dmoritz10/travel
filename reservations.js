@@ -774,11 +774,11 @@ function btnPrintResHtml () {
 
 
     var dtl = eleC[1].innerText + 
-              (eleC[3].innerText ? '<br>' + eleC[3].innerText : '') + 
-              (eleC[4].innerText ? '<br>' + eleC[4].innerText : '') + 
-              (eleC[5].innerText ? '<br>' + eleC[5].innerText : '') + 
-              (eleC[6].innerText ? '<br>' + eleC[6].innerText : '') + 
-              (eleC[7].innerText ? '<br>' + eleC[7].innerText : '') 
+              (typeof eleC[3].innerText === 'string' ? '<br>' + eleC[3].innerText : '') + 
+              (typeof eleC[4].innerText === 'string' ? '<br>' + eleC[4].innerText : '') + 
+              (typeof eleC[5].innerText === 'string' ? '<br>' + eleC[5].innerText : '') + 
+              (typeof eleC[6].innerText === 'string' ? '<br>' + eleC[6].innerText : '') + 
+              (typeof eleC[7].innerText === 'string' ? '<br>' + eleC[7].innerText : '') 
       
     resRpt.push({
         
