@@ -88,10 +88,10 @@ async function listReservations(title = "Reservations") {
     ele.find('#resType')[0].innerHTML = resObj['Type']
     ele.find('#resStartEndDateTime')[0].innerHTML = start + (end ? (' - ' + end) : '')
     ele.find('#resStatus')[0].innerHTML = resObj['Status']
-    ele.find('#resLocation')[0].innerHTML = locnHtml ? locnHtml : ele.find('#resLocation').parent().parent().addClass('d-none')
-    ele.find('#resConfirmation')[0].innerHTML = resObj['Confirmation'] ? 'Confirmation: ' + resObj['Confirmation'] : ele.find('#resConfirmation').parent().parent().addClass('d-none')
-    ele.find('#resPhone')[0].innerHTML = resObj['Phone'] ? 'Phone: ' + resObj['Phone'] : ele.find('#resPhone').parent().parent().addClass('d-none')
-    ele.find('#resDescription')[0].innerHTML = resObj['Description'] ? resObj['Description'].replace(/\n/g, "<br>") : ele.find('#resDescription').parent().parent().addClass('d-none')
+    ele.find('#resLocation')[0].innerHTML = locnHtml ? locnHtml : (' ', ele.find('#resLocation').parent().parent().addClass('d-none'))
+    ele.find('#resConfirmation')[0].innerHTML = resObj['Confirmation'] ? 'Confirmation: ' + resObj['Confirmation'] : (' ', ele.find('#resConfirmation').parent().parent().addClass('d-none'))
+    ele.find('#resPhone')[0].innerHTML = resObj['Phone'] ? 'Phone: ' + resObj['Phone'] : (' ', ele.find('#resPhone').parent().parent().addClass('d-none'))
+    ele.find('#resDescription')[0].innerHTML = resObj['Description'] ? resObj['Description'].replace(/\n/g, "<br>") : (' ', ele.find('#resDescription').parent().parent().addClass('d-none'))
 
     ele.find('#btnResEdit')[0].setAttribute("onclick", "editReservation(" + j + ")");
 
@@ -769,16 +769,12 @@ function btnPrintResHtml () {
 
     var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4>' + sLbl  +   eLbl
 
-    console.log(eleC[4].innerText)
-    console.log(eleC[5].innerText)
-
-
     var dtl = eleC[1].innerText + 
-              (typeof eleC[3].innerText === 'string' ? '<br>' + eleC[3].innerText : '') + 
-              (typeof eleC[4].innerText === 'string' ? '<br>' + eleC[4].innerText : '') + 
-              (typeof eleC[5].innerText === 'string' ? '<br>' + eleC[5].innerText : '') + 
-              (typeof eleC[6].innerText === 'string' ? '<br>' + eleC[6].innerText : '') + 
-              (typeof eleC[7].innerText === 'string' ? '<br>' + eleC[7].innerText : '') 
+              (eleC[3].innerText ? '<br>' + eleC[3].innerText : '') + 
+              (eleC[4].innerText ? '<br>' + eleC[4].innerText : '') + 
+              (eleC[5].innerText ? '<br>' + eleC[5].innerText : '') + 
+              (eleC[6].innerText ? '<br>' + eleC[6].innerText : '') + 
+              (eleC[7].innerText ? '<br>' + eleC[7].innerText : '') 
       
     resRpt.push({
         
