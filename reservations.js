@@ -54,11 +54,8 @@ async function listReservations(title = "Reservations") {
 
     var resObj = makeObj(resVals[j], resHdrs)
 
-    console.log('resObj', resObj)
-
     var arrIdx = resVals[j].pop()                    // remove idx resVals after sort
     resIdxArr.push(arrIdx)                           // create parallel xref of idxs to sheet
-
    
     var ele = $tblSheets.clone();
 
@@ -770,9 +767,6 @@ function btnPrintResHtml () {
     }
 
     var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4>' + sLbl  +   eLbl
-
-    console.log('4', eleC[4].innerText.replace(/\n/g, "").replace(/ /g,''))
-    console.log('4', eleC[4].innerText.replace(/\n/g, "").replace(/ /g,'').length)
 
     var dtl = eleC[1].innerText + 
               (eleC[3].innerText.replace(/\n/g, "").replace(/ /g,'') ? '<br>' + eleC[3].innerText : '') + 
