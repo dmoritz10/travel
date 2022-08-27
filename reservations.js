@@ -772,9 +772,11 @@ function btnPrintResHtml () {
     var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4>' + sLbl  +   eLbl
 
     console.log('3', eleC[3].innerText)
-    console.log('4', eleC[4].innerText)
-    console.log('5', eleC[5].innerText)
-    console.log('6', eleC[6].innerText)
+    console.log('4', eleC[4].innerText.replace(/[^\x00-\x7F]/g, "").replace(/ /g,''))
+    console.log('4', eleC[4].innerText.replace(/[^\x00-\x7F]/g, "").replace(/ /g,'').length)
+
+    console.log('5', eleC[5].innerText.replace(/[^\x00-\x7F]/g, "").replace(/ /g,''))
+    console.log('6', eleC[6].innerText.replace(/[^\x00-\x7F]/g, "").replace(/ /g,''))
 
     var dtl = eleC[1].innerText + 
               (eleC[3].innerText.replace(/[^\x00-\x7F]/g, "").replace(/ /g,'') ? '<br>' + eleC[3].innerText : '') + 
