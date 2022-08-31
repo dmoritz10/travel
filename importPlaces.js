@@ -333,7 +333,7 @@ async function formatPlace(json, objLHD) {
 
 console.log(x)
 console.log(cityState)
-console.log(cleanCntry)
+console.log(cntry)
 
 console.log(lat)
 console.log(lng)
