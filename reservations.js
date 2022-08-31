@@ -56,7 +56,6 @@ async function listReservations(title = "Reservations") {
 
     var arrIdx = resVals[j].pop()                    // remove idx resVals after sort
     resIdxArr.push(arrIdx)                           // create parallel xref of idxs to sheet
-
    
     var ele = $tblSheets.clone();
 
@@ -88,10 +87,10 @@ async function listReservations(title = "Reservations") {
     ele.find('#resType')[0].innerHTML = resObj['Type']
     ele.find('#resStartEndDateTime')[0].innerHTML = start + (end ? (' - ' + end) : '')
     ele.find('#resStatus')[0].innerHTML = resObj['Status']
-    ele.find('#resLocation')[0].innerHTML = locnHtml ? locnHtml : ele.find('#resLocation').parent().parent().addClass('d-none')
-    ele.find('#resConfirmation')[0].innerHTML = resObj['Confirmation'] ? 'Confirmation: ' + resObj['Confirmation'] : ele.find('#resConfirmation').parent().parent().addClass('d-none')
-    ele.find('#resPhone')[0].innerHTML = resObj['Phone'] ? 'Phone: ' + resObj['Phone'] : ele.find('#resPhone').parent().parent().addClass('d-none')
-    ele.find('#resDescription')[0].innerHTML = resObj['Description'] ? resObj['Description'].replace(/\n/g, "<br>") : ele.find('#resDescription').parent().parent().addClass('d-none')
+    ele.find('#resLocation')[0].innerHTML = locnHtml ? locnHtml : (ele.find('#resLocation').parent().parent().addClass('d-none'), '')
+    ele.find('#resConfirmation')[0].innerHTML = resObj['Confirmation'] ? 'Confirmation: ' + resObj['Confirmation'] : (ele.find('#resConfirmation').parent().parent().addClass('d-none'), '')
+    ele.find('#resPhone')[0].innerHTML = resObj['Phone'] ? 'Phone: ' + resObj['Phone'] : (ele.find('#resPhone').parent().parent().addClass('d-none'), '')
+    ele.find('#resDescription')[0].innerHTML = resObj['Description'] ? resObj['Description'].replace(/\n/g, "<br>") : (ele.find('#resDescription').parent().parent().addClass('d-none'), '')
 
     ele.find('#btnResEdit')[0].setAttribute("onclick", "editReservation(" + j + ")");
 
@@ -770,11 +769,11 @@ function btnPrintResHtml () {
     var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4>' + sLbl  +   eLbl
 
     var dtl = eleC[1].innerText + 
-              (eleC[3].innerText ? '<br>' + eleC[3].innerText : '') + 
-              (eleC[4].innerText ? '<br>' + eleC[4].innerText : '') + 
-              (eleC[5].innerText ? '<br>' + eleC[5].innerText : '') + 
-              (eleC[6].innerText ? '<br>' + eleC[6].innerText : '') + 
-              (eleC[7].innerText ? '<br>' + eleC[7].innerText : '') 
+              (eleC[3].innerText.replace(/\n/g, "").replace(/ /g,'') ? '<br>' + eleC[3].innerText : '') + 
+              (eleC[4].innerText.replace(/\n/g, "").replace(/ /g,'') ? '<br>' + eleC[4].innerText : '') + 
+              (eleC[5].innerText.replace(/\n/g, "").replace(/ /g,'') ? '<br>' + eleC[5].innerText : '') + 
+              (eleC[6].innerText.replace(/\n/g, "").replace(/ /g,'') ? '<br>' + eleC[6].innerText : '') + 
+              (eleC[7].innerText.replace(/\n/g, "").replace(/ /g,'') ? '<br>' + eleC[7].innerText : '') 
       
     resRpt.push({
         
