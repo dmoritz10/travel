@@ -453,18 +453,15 @@ function cleanCityState(addrArr, cntry) {
     var state = convertStateToFullName(s)
     var city  = addrArr.length > 1 ? addrArr[addrArr.length - 2] : addrArr[addrArr.length - 1]
 
-  } else if if (cntry == "Ireland") {
+  } else if (cntry == "Ireland") {
 
     var state = ''
     var city  = addrArr[addrArr.length - 2]
-
-  }
 
   } else {
 
     var state = ''
     var city  = addrArr[addrArr.length - 1]
-
 
   }
 
