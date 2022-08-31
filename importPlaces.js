@@ -447,11 +447,18 @@ function prepAddr(addr) {
 function cleanCityState(addrArr, cntry) {
 
 
-  if (cntry == "USA" || cntry == "Canada" || cntry == "Mexico" || cntry == "Ireland") {
+  if (cntry == "USA" || cntry == "Canada" || cntry == "Mexico") {
 
     var s = addrArr.length > 1 ? addrArr[addrArr.length - 1].replace(/-/g, '').trim() : ''
     var state = convertStateToFullName(s)
     var city  = addrArr.length > 1 ? addrArr[addrArr.length - 2] : addrArr[addrArr.length - 1]
+
+  } else if if (cntry == "Ireland") {
+
+    var state = ''
+    var city  = addrArr[addrArr.length - 2]
+
+  }
 
   } else {
 
