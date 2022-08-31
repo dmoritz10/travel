@@ -331,8 +331,17 @@ async function formatPlace(json, objLHD) {
         var lat = x.location.latitudeE7 ? x.location.latitudeE7/10**7 : x.otherCandidateLocations[0].latitudeE7/10**7
         var lng = x.location.longitudeE7 ? x.location.longitudeE7/10**7 : x.otherCandidateLocations[0].longitudeE7/10**7
 
+console.log(x)
+console.log(cityState)
+console.log(lat)
+console.log(lng)
+
+
+
         var localTime = await calcLocalTime(cityState.city, x.duration.startTimestamp, lat, lng, objLHD['City Timezone Xref'])
         var dateTimeFormatted = localTime.toLocaleString(DateTime.DATETIME_SHORT)
+
+console.log(localTime)
 
         var duration = DateTime.fromISO(x.duration.endTimestamp).diff(DateTime.fromISO(x.duration.startTimestamp))
         var DDHH = duration.toFormat("hh':'mm");
