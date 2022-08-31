@@ -403,6 +403,7 @@ async function buildCityXref(city, lat, lng, cityXref) {
     
   .then( response => {
     
+    console.log(response)
     console.log(response.xhr);  // full response
     console.log(response.data)
 
