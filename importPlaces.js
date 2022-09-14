@@ -328,7 +328,7 @@ async function formatPlace(json, objLHD) {
         var cntry   = cleanCntry(addrArr)
         var cityState = cleanCityState(addrArr, cntry)
 
-        if (cntry == 'UK') ukPlaces.push(addrArr)
+        if (cntry == 'UK' || cntry == 'Ireland') ukPlaces.push(addrArr)
 
         if (!cityState.city) continue
         
@@ -429,14 +429,14 @@ async function buildCityXref(city, lat, lng, cityXref) {
 
 function prepAddr(addr) {
 
-  var arr = addr.split(', ')
+  var arr = addr.split(', ')  
 
   var addrArr = []
 
   for (i=0;i<arr.length;i++) {
 
     let wrk = arr[i]
-    wrk = wrk.replace(/[0-9]/g, '')
+    wrk = wrk.replace(/[0-9]/g, '').replace(/( [A-Z][A-Z] [A-Z][A-Z])/, '') // Eg. Edinburgh EH EG
     // wrk = wrk.replace(/-/g, '')
     wrk = wrk.trim()
 
