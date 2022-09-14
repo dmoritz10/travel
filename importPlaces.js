@@ -335,8 +335,19 @@ async function formatPlace(json, objLHD) {
         var lat = x.location.latitudeE7 ? x.location.latitudeE7/10**7 : x.otherCandidateLocations[0].latitudeE7/10**7
         var lng = x.location.longitudeE7 ? x.location.longitudeE7/10**7 : x.otherCandidateLocations[0].longitudeE7/10**7
 
+console.log(x)
+console.log(cityState)
+console.log(cntry)
+
+console.log(lat)
+console.log(lng)
+
+
+
         var localTime = await calcLocalTime(cityState.city, x.duration.startTimestamp, lat, lng, objLHD['City Timezone Xref'])
         var dateTimeFormatted = localTime.toLocaleString(DateTime.DATETIME_SHORT)
+
+console.log(localTime)
 
         var duration = DateTime.fromISO(x.duration.endTimestamp).diff(DateTime.fromISO(x.duration.startTimestamp))
         var DDHH = duration.toFormat("hh':'mm");
@@ -396,6 +407,7 @@ async function buildCityXref(city, lat, lng, cityXref) {
     
   .then( response => {
     
+    console.log(response)
     console.log(response.xhr);  // full response
     console.log(response.data)
 
@@ -445,6 +457,11 @@ function cleanCityState(addrArr, cntry) {
     var s = addrArr.length > 1 ? addrArr[addrArr.length - 1].replace(/-/g, '').trim() : ''
     var state = convertStateToFullName(s)
     var city  = addrArr.length > 1 ? addrArr[addrArr.length - 2] : addrArr[addrArr.length - 1]
+
+  } else if (cntry == "Ireland") {
+
+    var state = ''
+    var city  = addrArr[addrArr.length - 2]
 
   } else {
 
