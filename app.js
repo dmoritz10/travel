@@ -31,6 +31,8 @@
 
     var DateTime = luxon.DateTime;
 
+    var ukPlaces = []
+
    
 /*global jQuery */
 jQuery(function ($) {

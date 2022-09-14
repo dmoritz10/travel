@@ -30,6 +30,8 @@ async function fetchPlaces(input) {
     }
   } 
 
+  console.log('ukPlaces',ukPlaces)
+
   var arrCTX = [objLHD['City Timezone Xref'].colHdrs].concat(objLHD['City Timezone Xref'].vals)
   await updateSheet('City Timezone Xref', arrCTX)
 
@@ -326,6 +328,8 @@ async function formatPlace(json, objLHD) {
         var cntry   = cleanCntry(addrArr)
         var cityState = cleanCityState(addrArr, cntry)
 
+        if (cntry == 'UK') ukPlace.push(addrArr)
+
         if (!cityState.city) continue
         
         var lat = x.location.latitudeE7 ? x.location.latitudeE7/10**7 : x.otherCandidateLocations[0].latitudeE7/10**7
@@ -446,7 +450,6 @@ function cleanCityState(addrArr, cntry) {
 
     var state = ''
     var city  = addrArr[addrArr.length - 1]
-
 
   }
 
