@@ -328,7 +328,7 @@ async function formatPlace(json, objLHD) {
         var cntry   = cleanCntry(addrArr)
         var cityState = cleanCityState(addrArr, cntry)
 
-        if (cntry == 'UK') ukPlace.push(addrArr)
+        if (cntry == 'UK') ukPlaces.push(addrArr)
 
         if (!cityState.city) continue
         
