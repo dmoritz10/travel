@@ -360,7 +360,7 @@ async function findConflict(arrIdx) {
 
   var conflictOk = await confirm(msg)
 
-  if (conflictOK)
+  if (conflictOk)
     return false
   else
     return true
