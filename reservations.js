@@ -68,8 +68,9 @@ async function listReservations(title = "Reservations") {
 
     console.log('st', st)
     var stArr = st.split(', ')
-    var stmd = stArr[0].substring(0, st.lastIndexOf('/'))
-    var start = stArr[1] == '12:00 AM' ? stmd : stmd + ', ' + stArr[1]
+    // var stmd = stArr[0].substring(0, st.lastIndexOf('/'))
+    // var start = stArr[1] == '12:00 AM' ? stmd : stmd + ', ' + stArr[1]
+    var start = stArr[1] == '12:00 AM' ? stArr[0] : st
     // start = dayOfWk + ' ' + start
 
     if (resObj['End Date']) {
