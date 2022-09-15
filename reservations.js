@@ -68,10 +68,10 @@ async function listReservations(title = "Reservations") {
     var stArr = st.split(', ')
     var stmd = stArr[0].substring(0, st.lastIndexOf('/'))
     var start = stArr[1] == '12:00 AM' ? stmd : stmd + ', ' + stArr[1]
-    // start = dayOfWk + ' ' + start
 
     if (resObj['End Date']) {
-      var et = DateTime.fromISO(resObj['End Date']).toLocaleString(DateTime.DATETIME_SHORT)
+      // var et = DateTime.fromISO(resObj['End Date']).toLocaleString(DateTime.DATETIME_SHORT)
+      var st = DateTime.fromISO(resObj['End Date']).toFormat('ccc L/d, t')
       var etArr = et.split(', ')
       // var end = etArr[1] == '12:00 AM' ? etArr[0] : et   // keep the year
       var stmd = etArr[0].substring(0, et.lastIndexOf('/')) // discard the year
