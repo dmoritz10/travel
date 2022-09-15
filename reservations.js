@@ -63,7 +63,7 @@ async function listReservations(title = "Reservations") {
     ele.find('#resCompositeKey')[0].innerHTML = resObj['Composite Key']
 
     var st = DateTime.fromISO(resObj['Start Date']).toLocaleString(DateTime.DATETIME_SHORT)
-    var dayOfWk = st.toFormat('ccc');
+    var dayOfWk = DateTime.fromISO(resObj['Start Date']).toFormat('ccc');
     var stArr = st.split(', ')
     var stmd = stArr[0].substring(0, st.lastIndexOf('/'))
     var start = stArr[1] == '12:00 AM' ? stmd : stmd + ', ' + stArr[1]
