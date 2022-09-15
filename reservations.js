@@ -357,7 +357,11 @@ async function findConflict(arrIdx) {
     var resStr = new Date(val[resHdrs.indexOf("Start Date")])
     var resEnd = new Date(val[resHdrs.indexOf("End Date")])
 
-    if ((str >= resStr && str <= resEnd) || (end >= resStr && end <= resEnd)) 
+    if (
+        (str >= resStr && str <= resEnd) || 
+        (end >= resStr && end <= resEnd) ||
+        (str <  resStr && end >  resEnd)   
+      ) 
       conflictsArr.push(idx)
   }
 
