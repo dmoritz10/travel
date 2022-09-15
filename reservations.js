@@ -62,23 +62,13 @@ async function listReservations(title = "Reservations") {
     ele.find('#resReservation')[0].innerHTML = resObj['Reservation']
     ele.find('#resCompositeKey')[0].innerHTML = resObj['Composite Key']
 
-    // var st = DateTime.fromISO(resObj['Start Date']).toLocaleString(DateTime.DATETIME_SHORT)
-    // var dayOfWk = DateTime.fromISO(resObj['Start Date']).toFormat('ccc');
     var st = DateTime.fromISO(resObj['Start Date']).toFormat('ccc L/d, t')
-
-    console.log('st', st)
     var stArr = st.split(', ')
-    // var stmd = stArr[0].substring(0, st.lastIndexOf('/'))
-    // var start = stArr[1] == '12:00 AM' ? stmd : stmd + ', ' + stArr[1]
     var start = stArr[1] == '12:00 AM' ? stArr[0] : st
-    // start = dayOfWk + ' ' + start
 
     if (resObj['End Date']) {
-      // var et = DateTime.fromISO(resObj['End Date']).toLocaleString(DateTime.DATETIME_SHORT)
       var et = DateTime.fromISO(resObj['End Date']).toFormat('ccc L/d, t')
       var etArr = et.split(', ')
-      // var end = etArr[1] == '12:00 AM' ? etArr[0] : et   // keep the year
-      // var stmd = etArr[0].substring(0, et.lastIndexOf('/')) // discard the year
       var end = etArr[1] == '12:00 AM' ? etArr[0] : et
   
     } else {
