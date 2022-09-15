@@ -330,22 +330,36 @@ async function findConflict(arrIdx) {
 
   var conflictsArr = []
 
+  var sameType = ['Hotel', 'Flight', 'Car']
+
   var str = new Date($('#resmStartDateTime').val())
   var end = new Date($('#resmEndDateTime').val())
 
-  resVals.forEach( (val, idx) => {
+  var type = $('#resmType').val()
+  var newResSameType = sameType.indexOf(type) == -1 ? false : true
 
-    if (idx != arrIdx) {
+  for (idx = 0; idx<resVals.length;idx++) {
 
-      var resStr = new Date(val[resHdrs.indexOf("Start Date")])
-      var resEnd = new Date(val[resHdrs.indexOf("End Date")])
+    if (idx == arrIdx) continue  // exclude the current Res if it is being updated (vs new)
+    
+    var performEdit = false
 
-      if ((str >= resStr && str <= resEnd) || (end >= resStr && end <= resEnd)) 
-        conflictsArr.push(idx)
+    var val = resVals[idx]
 
-    }
+    var resType = val[resHdrs.indexOf("Type")]
+    var existingResSameType = sameType.indexOf(resType) == -1 ? false : true
 
-  })
+    if (newResSameType && type == resType) performEdit = true  // only compare to like type
+    else if (!newResSameType && !existingResSameType) performEdit = true
+    
+    if (!performEdit) continue
+
+    var resStr = new Date(val[resHdrs.indexOf("Start Date")])
+    var resEnd = new Date(val[resHdrs.indexOf("End Date")])
+
+    if ((str >= resStr && str <= resEnd) || (end >= resStr && end <= resEnd)) 
+      conflictsArr.push(idx)
+  }
 
   if (conflictsArr.length == 0) 
     return false
