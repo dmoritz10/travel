@@ -50,8 +50,11 @@ Edit / warning for overlapping reservations
 
   if start date or end date lie within the start date or, if present, end date or any existing reservation
 
-  add 'Activity' to reservation type
-  
+  If new Res is 'Hotel', 'Flight', 'Car' compare to existing Res of same type
+  If new Res is not 'Hotel', 'Flight', 'Car' compare to existing Res that are also not 'Hotel', 'Flight', 'Car'
+
+add 'Activity' to reservation type
+
 
 
 From Google create calendar events from Gmail:
