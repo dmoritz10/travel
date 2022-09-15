@@ -349,9 +349,19 @@ async function findConflict(arrIdx) {
     var resType = val[resHdrs.indexOf("Type")]
     var existingResSameType = sameType.indexOf(resType) == -1 ? false : true
 
+    console.log('existingResSameType',existingResSameType)
+    console.log('resType',resType)
+    console.log('type',type)
+    console.log('existingResSameType',existingResSameType)
+    console.log('',)
+    console.log('',)
+
+
     if (newResSameType && type == resType) performEdit = true  // only compare to like type
     else if (!newResSameType && !existingResSameType) performEdit = true
     
+    console.log('performEdit',performEdit)
+
     if (!performEdit) continue
 
     var resStr = new Date(val[resHdrs.indexOf("Start Date")])
