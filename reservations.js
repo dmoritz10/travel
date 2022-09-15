@@ -349,20 +349,9 @@ async function findConflict(arrIdx) {
     var resType = val[resHdrs.indexOf("Type")]
     var existingResSameType = sameType.indexOf(resType) == -1 ? false : true
 
-    console.log('existingResSameType',existingResSameType)
-    console.log('resType',resType)
-    console.log('type',type)
-    console.log('existingResSameType',existingResSameType)
-    console.log('start date',val[resHdrs.indexOf("Start Date")])
-    console.log('',)
-
     if (newResSameType && type == resType) performEdit = true  // only compare to like type
     else if (!newResSameType && !existingResSameType) performEdit = true
     
-    console.log('performEdit',performEdit)
-    console.log('',)
-    console.log('',)
-
     if (!performEdit) continue
 
     var resStr = new Date(val[resHdrs.indexOf("Start Date")])
@@ -371,7 +360,6 @@ async function findConflict(arrIdx) {
     if ((str >= resStr && str <= resEnd) || (end >= resStr && end <= resEnd)) 
       conflictsArr.push(idx)
   }
-    console.log('conflictsArr',conflictsArr)
 
   if (conflictsArr.length == 0) 
     return false
@@ -380,7 +368,9 @@ async function findConflict(arrIdx) {
 
   conflictsArr.forEach( (val, idx) => {    
     
-    msg += resVals[val][resHdrs.indexOf("Reservation")] + '<br>'
+    msg += resVals[val][resHdrs.indexOf("Reservation")] + ' - ' +
+            DateTime.fromISO(resVals[val][resHdrs.indexOf("Start Date")]).toFormat('ccc L/d, t') +
+            '<br>'
 
   })
 
