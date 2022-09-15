@@ -71,7 +71,7 @@ async function listReservations(title = "Reservations") {
 
     if (resObj['End Date']) {
       // var et = DateTime.fromISO(resObj['End Date']).toLocaleString(DateTime.DATETIME_SHORT)
-      var st = DateTime.fromISO(resObj['End Date']).toFormat('ccc L/d, t')
+      var et = DateTime.fromISO(resObj['End Date']).toFormat('ccc L/d, t')
       var etArr = et.split(', ')
       // var end = etArr[1] == '12:00 AM' ? etArr[0] : et   // keep the year
       var stmd = etArr[0].substring(0, et.lastIndexOf('/')) // discard the year
