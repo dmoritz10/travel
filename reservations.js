@@ -282,6 +282,10 @@ async function btnResmSubmitSheetHtml() {
 
   var arrIdx = $('#resmArrIdx').val() ? $('#resmArrIdx').val()*1 : -1
 
+  var conflict = findConflict(arrIdx)
+
+  if (conflict) return
+
   if (arrIdx > -1) {                                                       // update existing course
 
     var vals = resVals[arrIdx]
@@ -320,6 +324,47 @@ async function btnResmSubmitSheetHtml() {
   // updateUI(vals, arrIdx)
 
   modal(false)
+}
+
+async function findConflict(arrIdx) {
+
+  var conflictsArr = []
+
+  var str = new Date($('#resmStartDateTime').val())
+  var end = new Date($('#resmEndDateTime').val())
+
+  resVals.forEach( (val, idx) => {
+
+    if (idx != arrIdx) {
+
+      var resStr = new Date(val[resHdrs.indexOf("Start Date")])
+      var resEnd = new Date(val[resHdrs.indexOf("End Date")])
+
+      if ((str >= resStr && str <= resEnd) || (end >= resStr && end <= resEnd)) 
+        conflictsArr.push(idx)
+
+    }
+
+  })
+
+  if (conflictArr.length == 0) 
+    return false
+
+  var msg = "This Reservation conflicts with following existing Reservations<br><br>"
+
+  conflictsArr.forEach( (val, idx) => {    
+    
+    msg += resVals[val][resHdrs.indexOf("Reservation")] + '<br>'
+
+  })
+
+  var conflictOk = await confirm(msg)
+
+  if (conflictOK)
+    return false
+  else
+    return true
+
 }
 
 
@@ -936,8 +981,6 @@ function btnShowCalendarHtml() {
     $ele.css("border-left", '4px solid ' + bc)
 
   }
-console.log('dan')
-  console.log(initDate)
 
   if (initDate) calendar.gotoDate( initDate )
 
