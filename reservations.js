@@ -330,7 +330,7 @@ async function findConflict(arrIdx) {
 
   var conflictsArr = []
 
-  var sameType = ['Hotel', 'Flight', 'Car']
+  var sameType = ['Hotel', 'Car']
 
   var str = new Date($('#resmStartDateTime').val())
   var end = new Date($('#resmEndDateTime').val())
