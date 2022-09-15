@@ -347,7 +347,7 @@ async function findConflict(arrIdx) {
 
   })
 
-  if (conflictArr.length == 0) 
+  if (conflictsArr.length == 0) 
     return false
 
   var msg = "This Reservation conflicts with following existing Reservations<br><br>"
