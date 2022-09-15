@@ -374,7 +374,7 @@ async function findConflict(arrIdx) {
     
     msg += resVals[val][resHdrs.indexOf("Reservation")] + ' - ' +
             DateTime.fromISO(resVals[val][resHdrs.indexOf("Start Date")]).toFormat('ccc L/d, t') +
-            '<br>'
+            '<br><br>'
 
   })
 
