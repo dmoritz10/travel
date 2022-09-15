@@ -354,13 +354,13 @@ async function findConflict(arrIdx) {
     console.log('type',type)
     console.log('existingResSameType',existingResSameType)
     console.log('',)
-    console.log('',)
-
 
     if (newResSameType && type == resType) performEdit = true  // only compare to like type
     else if (!newResSameType && !existingResSameType) performEdit = true
     
     console.log('performEdit',performEdit)
+    console.log('',)
+    console.log('',)
 
     if (!performEdit) continue
 
@@ -370,6 +370,7 @@ async function findConflict(arrIdx) {
     if ((str >= resStr && str <= resEnd) || (end >= resStr && end <= resEnd)) 
       conflictsArr.push(idx)
   }
+    console.log('conflictsArr',conflictsArr)
 
   if (conflictsArr.length == 0) 
     return false
