@@ -282,7 +282,7 @@ async function btnResmSubmitSheetHtml() {
 
   var arrIdx = $('#resmArrIdx').val() ? $('#resmArrIdx').val()*1 : -1
 
-  var conflict = findConflict(arrIdx)
+  var conflict = await findConflict(arrIdx)
 
   if (conflict) return
 
@@ -342,9 +342,9 @@ async function findConflict(arrIdx) {
 
     if (idx == arrIdx) continue  // exclude the current Res if it is being updated (vs new)
     
-    var performEdit = false
-
     var val = resVals[idx]
+   
+    var performEdit = false
 
     var resType = val[resHdrs.indexOf("Type")]
     var existingResSameType = sameType.indexOf(resType) == -1 ? false : true
