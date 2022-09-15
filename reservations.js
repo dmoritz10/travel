@@ -68,7 +68,7 @@ async function listReservations(title = "Reservations") {
     var stArr = st.split(', ')
     var stmd = stArr[0].substring(0, st.lastIndexOf('/'))
     var start = stArr[1] == '12:00 AM' ? stmd : stmd + ', ' + stArr[1]
-    start = dayOfWk + ' ' + start
+    // start = dayOfWk + ' ' + start
 
     if (resObj['End Date']) {
       var et = DateTime.fromISO(resObj['End Date']).toLocaleString(DateTime.DATETIME_SHORT)
