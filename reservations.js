@@ -84,6 +84,7 @@ async function listReservations(title = "Reservations") {
     ele.find('#resType')[0].innerHTML = resObj['Type']
     ele.find('#resStartEndDateTime')[0].innerHTML = start + (end ? (' - ' + end) : '')
     ele.find('#resStatus')[0].innerHTML = resObj['Status']
+    ele.find('#resPaid')[0].innerHTML = resObj['Amount Paid']
     ele.find('#resLocation')[0].innerHTML = locnHtml ? locnHtml : (ele.find('#resLocation').parent().parent().addClass('d-none'), '')
     ele.find('#resConfirmation')[0].innerHTML = resObj['Confirmation'] ? 'Confirmation: ' + resObj['Confirmation'] : (ele.find('#resConfirmation').parent().parent().addClass('d-none'), '')
     ele.find('#resPhone')[0].innerHTML = resObj['Phone'] ? 'Phone: ' + resObj['Phone'] : (ele.find('#resPhone').parent().parent().addClass('d-none'), '')
