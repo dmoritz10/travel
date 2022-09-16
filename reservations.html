@@ -189,6 +189,10 @@
                 <div class="col">
                   <input type="text" class="form-control" id="resmArrIdx" name="resmArrIdx">
                 </div>
+                <div class="col">
+                  <label for="resmSource" class="col-form-label">Source</label>
+                  <input type="text" class="form-control text-success"  style="font-size:1.25rem" id="resmSource" name="resmSource">
+                </div>
               </div>
 
               <div class="row my-0">
@@ -239,6 +243,24 @@
 
                <div class="row my-0">
                 <div class="col">
+                  <label for="resmType" class="col-form-label">Type</label>
+                  <input list="resmTypeList"  class="form-control text-success" style="font-size:1.25rem" id="resmType" name="resmType" required>
+                </div>
+                <div class="col">
+                  <label for="resmStatus" class="col-form-label">Status</label>
+                  <input list="resmStatusList" class="form-control text-success"  style="font-size:1.25rem" id="resmStatus" name="resmStatus">
+                </div>
+                <div class="col">
+                  <label for="resmPaid" class="col-form-label">Status</label>
+                  <input type="text" class="form-control text-success"  style="font-size:1.25rem" id="resmPaid" name="resmPaid">
+                </div>
+                <div class="col-1 ps-1">
+                  <label class="col-form-label">&nbsp;</label>
+                </div>
+              </div>
+
+               <div class="row my-0">
+                <div class="col">
                   <label for="resmConfirmation" class="col-form-label">Confirmation</label>
                   <input type="text" class="form-control text-success"  style="font-size:1.25rem" id="resmConfirmation" autofocus name="resmConfirmation">
                 </div>
@@ -267,24 +289,6 @@
                 <div class="col-1 ps-1">
                   <label class="col-form-label">&nbsp;</label>
                   <div class="cursor-pointer mt-2" onClick="readFromClpbrd('resmLocation')"><span class="material-icons">content_paste</span></div>
-                </div>
-              </div>
-
-              <div class="row my-0">
-                <div class="col d-none">
-                  <label for="resmSource" class="col-form-label">Source</label>
-                  <input type="text" class="form-control text-success"  style="font-size:1.25rem" id="resmSource" name="resmSource">
-                </div>
-                <div class="col">
-                  <label for="resmType" class="col-form-label">Type</label>
-                  <input list="resmTypeList"  class="form-control text-success" style="font-size:1.25rem" id="resmType" name="resmType" required>
-                </div>
-                <div class="col">
-                  <label for="resmStatus" class="col-form-label">Status</label>
-                  <input list="resmStatusList" class="form-control text-success"  style="font-size:1.25rem" id="resmStatus" name="resmStatus">
-                </div>
-                <div class="col-1 ps-1">
-                  <label class="col-form-label">&nbsp;</label>
                 </div>
               </div>
 
