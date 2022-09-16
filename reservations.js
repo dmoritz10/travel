@@ -913,7 +913,7 @@ function btnBaggageTagsHtml() {
 
 function btnShowCalendarHtml() {
 
-  if (!resShowCal) return
+  if (!$('#resShowCal').prop('checked')) return
 
   var calendarEl = document.getElementById('resCalendar');
 
