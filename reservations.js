@@ -376,8 +376,8 @@ async function findConflicts(arrIdx) {
 
   conflictsArr.forEach( (val, idx) => {    
     
-    msg +=  resVals[val][resHdrs.indexOf("Reservation")] + 'br' +
-            resVals[val][resHdrs.indexOf("Type")] + 'br' +
+    msg +=  resVals[val][resHdrs.indexOf("Reservation")] + '<br>' +
+            resVals[val][resHdrs.indexOf("Type")] + '<br>' +
             DateTime.fromISO(resVals[val][resHdrs.indexOf("Start Date")]).toFormat('ccc L/d/Y, t') +
                     '<br><br>'
 
