@@ -53,6 +53,11 @@ Edit / warning for overlapping reservations
   If new Res is 'Hotel', 'Flight', 'Car' compare to existing Res of same type
   If new Res is not 'Hotel', 'Flight', 'Car' compare to existing Res that are also not 'Hotel', 'Flight', 'Car'
 
+  test:
+    no end dates on edit of start / end date
+    put yy in warning
+    re-format warning / include type
+
 add 'Activity' to reservation type
 
 

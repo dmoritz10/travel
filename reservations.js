@@ -353,7 +353,7 @@ async function findConflicts(arrIdx) {
     var resType = val[resHdrs.indexOf("Type")]
     var existingResSameType = sameType.indexOf(resType) == -1 ? false : true
 
-    if (newResSameType && type == resType) performEdit = true  // only compare to like type
+    if      (newResSameType && type == resType)       performEdit = true  // only compare to like type
     else if (!newResSameType && !existingResSameType) performEdit = true
     
     if (!performEdit) continue
@@ -376,9 +376,10 @@ async function findConflicts(arrIdx) {
 
   conflictsArr.forEach( (val, idx) => {    
     
-    msg += resVals[val][resHdrs.indexOf("Reservation")] + ' - ' +
-            DateTime.fromISO(resVals[val][resHdrs.indexOf("Start Date")]).toFormat('ccc L/d, t') +
-            '<br><br>'
+    msg +=  resVals[val][resHdrs.indexOf("Reservation")] + 'br' +
+            resVals[val][resHdrs.indexOf("Type")] + 'br' +
+            DateTime.fromISO(resVals[val][resHdrs.indexOf("Start Date")]).toFormat('ccc L/d/Y, t') +
+                    '<br><br>'
 
   })
 
@@ -912,9 +913,6 @@ function btnBaggageTagsHtml() {
 }
 
 function btnShowCalendarHtml() {
-
-  console.log('resShowCal', $('#resShowCal').prop('checked'))
-  console.log('resShowCal', $('#resShowCal'))
 
   if (!$('#resShowCal').prop('checked')) return
 
