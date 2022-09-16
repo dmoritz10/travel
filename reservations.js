@@ -144,7 +144,8 @@ async function listReservations(title = "Reservations") {
   });
 
   $('#resCalendar').empty()
-  if (resShowCal) btnShowCalendarHtml()
+  
+  btnShowCalendarHtml()
 
 
   modal(false)
@@ -911,6 +912,8 @@ function btnBaggageTagsHtml() {
 }
 
 function btnShowCalendarHtml() {
+
+  if (!resShowCal) return
 
   var calendarEl = document.getElementById('resCalendar');
 
