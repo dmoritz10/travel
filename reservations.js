@@ -282,7 +282,7 @@ async function btnResmSubmitSheetHtml() {
 
   var arrIdx = $('#resmArrIdx').val() ? $('#resmArrIdx').val()*1 : -1
 
-  var conflict = await findConflict(arrIdx)
+  var conflict = await findConflicts(arrIdx)
 
   if (conflict) return
 
@@ -326,7 +326,7 @@ async function btnResmSubmitSheetHtml() {
   modal(false)
 }
 
-async function findConflict(arrIdx) {
+async function findConflicts(arrIdx) {
 
   var conflictsArr = []
 
