@@ -77,7 +77,7 @@ jQuery(function ($) {
             await gapi.client.init({
                 apiKey:                 signin.API_KEY,
                 clientId:               signin.CLIENT_ID,
-                // discoveryDocs:          signin.DISCOVERY_DOCS,
+                discoveryDocs:          signin.DISCOVERY_DOCS,
                 fetch_basic_profile:    true,
                 scope:                  signin.SCOPES
 
