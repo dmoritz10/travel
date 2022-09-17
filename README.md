@@ -60,6 +60,7 @@ Edit / warning for overlapping reservations
 
 add 'Activity' to reservation type
 
+test vsc
 
 
 From Google create calendar events from Gmail:
