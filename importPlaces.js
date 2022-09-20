@@ -305,7 +305,7 @@ async function formatPlace(json, objLHD) {
   var hdrs = objLHD['Location History Detail'].colHdrs
 
   var arr = []
-
+  var activities = {}
   var cntr = 0
 
   for (var i in b) {
@@ -335,19 +335,8 @@ async function formatPlace(json, objLHD) {
         var lat = x.location.latitudeE7 ? x.location.latitudeE7/10**7 : x.otherCandidateLocations[0].latitudeE7/10**7
         var lng = x.location.longitudeE7 ? x.location.longitudeE7/10**7 : x.otherCandidateLocations[0].longitudeE7/10**7
 
-console.log(x)
-console.log(cityState)
-console.log(cntry)
-
-console.log(lat)
-console.log(lng)
-
-
-
         var localTime = await calcLocalTime(cityState.city, x.duration.startTimestamp, lat, lng, objLHD['City Timezone Xref'])
         var dateTimeFormatted = localTime.toLocaleString(DateTime.DATETIME_SHORT)
-
-console.log(localTime)
 
         var duration = DateTime.fromISO(x.duration.endTimestamp).diff(DateTime.fromISO(x.duration.startTimestamp))
         var DDHH = duration.toFormat("hh':'mm");
@@ -368,17 +357,44 @@ console.log(localTime)
         ele[hdrs.indexOf('Distance')]           = Math.round(distance(homeLat, homeLng, lat, lng, 'M'))
         ele[hdrs.indexOf('Info')]               = JSON.stringify(x)
         ele[hdrs.indexOf('Month')]              = tripMonth(dateTimeFormatted)
+        ele[hdrs.indexOf('Activities')]         = JSON.parse(JSON.stringify(activities));
 
         arr.push(ele)   
 
+        activities = {}
+
         cntr++
+
+    } else if (type == "activitySegment") {
+
+      var x = b[i].activitySegment
+
+      if (!activities[x.activityType]) activities[x.activityType] = {duration: 0, distance: 0}
+    
+      activities[x.activityType]['duration'] += calcDuration (x.duration.startTimestamp, x.duration.endTimestamp)
+      activities[x.activityType]['distance'] += x.distance	
+
     }
 
 }
 
 console.log('cntr', cntr)
+console.log('arr', arr)
 
 return arr
+
+}
+
+function calcDuration (str, end) {
+
+  const str = luxon.DateTime.fromISO(str)
+  const end = luxon.DateTime.fromISO(end)
+  
+  const diff = end.diff(str, ['minutes'])
+  
+  console.log('diff', diff)
+
+  return diff
 
 }
 
