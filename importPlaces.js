@@ -387,10 +387,10 @@ return arr
 
 function calcDuration (str, end) {
 
-  const str = luxon.DateTime.fromISO(str)
-  const end = luxon.DateTime.fromISO(end)
+  const s = luxon.DateTime.fromISO(str)
+  const es = luxon.DateTime.fromISO(end)
   
-  const diff = end.diff(str, ['minutes'])
+  const diff = es.diff(s, ['minutes'])
   
   console.log('diff', diff)
 
