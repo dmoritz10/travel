@@ -762,10 +762,11 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
 
       destArr.push({
 
-        name:   dest[hdrsLHD.indexOf('Name')],
-        date:   dest[hdrsLHD.indexOf('Date')],
-        city:   dest[hdrsLHD.indexOf('City')],
-        state:  dest[hdrsLHD.indexOf('Country')] == "USA" ? dest[hdrsLHD.indexOf('State')] : dest[hdrsLHD.indexOf('Country')]
+        name:         dest[hdrsLHD.indexOf('Name')],
+        date:         dest[hdrsLHD.indexOf('Date')],
+        city:         dest[hdrsLHD.indexOf('City')],
+        state:        dest[hdrsLHD.indexOf('Country')] == "USA" ? dest[hdrsLHD.indexOf('State')] : dest[hdrsLHD.indexOf('Country')],
+        activities:   JSON.parse(dest[hdrsLHD.indexOf('Activities')])
 
       })
 
