@@ -390,7 +390,7 @@ function calcDuration (str, end) {
   const s = luxon.DateTime.fromISO(str)
   const es = luxon.DateTime.fromISO(end)
   
-  const diff = es.diff(s, ['minutes'])
+  const diff = es.diff(s, ['minutes']).values.minutes
   
   console.log('diff', diff)
 
