@@ -357,7 +357,7 @@ async function formatPlace(json, objLHD) {
         ele[hdrs.indexOf('Distance')]           = Math.round(distance(homeLat, homeLng, lat, lng, 'M'))
         ele[hdrs.indexOf('Info')]               = JSON.stringify(x)
         ele[hdrs.indexOf('Month')]              = tripMonth(dateTimeFormatted)
-        ele[hdrs.indexOf('Activities')]         = JSON.parse(JSON.stringify(activities));
+        ele[hdrs.indexOf('Activities')]         = JSON.stringify(activities);
 
         arr.push(ele)   
 
