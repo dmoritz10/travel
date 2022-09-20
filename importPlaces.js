@@ -3,7 +3,7 @@ async function updateTripsFromLocationHistory(input) {
 
   await fetchPlaces(input)  
 
-  await updateTrips()
+  // await updateTrips()
 
 }
 
