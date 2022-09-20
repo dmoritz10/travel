@@ -372,7 +372,7 @@ async function formatPlace(json, objLHD) {
       if (!activities[x.activityType]) activities[x.activityType] = {duration: 0, distance: 0}
     
       activities[x.activityType]['duration'] += calcDuration (x.duration.startTimestamp, x.duration.endTimestamp)
-      activities[x.activityType]['distance'] += x.distance	
+      activities[x.activityType]['distance'] += x.distance ? x.distance : calcDistance(x.startLocation, x.endLocation)
 
     }
 
@@ -383,6 +383,36 @@ console.log('arr', arr)
 
 return arr
 
+}
+
+function calcDistance(startLocn, endLocn) {
+
+  let unit = 'K'
+
+  let lat1 = startLocn.latitudeE7
+  let lon1 = startLocn.longitudeE7
+  let lat2 = endLocn.latitudeE7
+  let lon2 = endLocn.longitudeE7
+
+  if ((lat1 == lat2) && (lon1 == lon2)) {
+    return 0;
+  }
+  else {
+    var radlat1 = Math.PI * lat1/180;
+    var radlat2 = Math.PI * lat2/180;
+    var theta = lon1-lon2;
+    var radtheta = Math.PI * theta/180;
+    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    if (dist > 1) {
+      dist = 1;
+    }
+    dist = Math.acos(dist);
+    dist = dist * 180/Math.PI;
+    dist = dist * 60 * 1.1515;
+    if (unit=="K") { dist = dist * 1.609344 }
+    if (unit=="N") { dist = dist * 0.8684 }
+    return dist;
+  }
 }
 
 function calcDuration (str, end) {
