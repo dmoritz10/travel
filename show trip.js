@@ -25,6 +25,8 @@ async function showTrip(idx) {
     var date = parseDate[0]
     var time = parseDate[1] ? parseDate[1] : ''
 
+    var priorHdr = -1
+
     if (date != brkDate) {
 
       var dispDate = DateTime.fromJSDate(new Date(date)).toFormat('ccc L/d');
@@ -34,8 +36,12 @@ async function showTrip(idx) {
 
       console.log(dispDate, activities)
 
+      var actDisp = formatActivities(activities)
+      if (priorHdr > -1) trp[priorHdr].replace('replacementToken', actDisp)
+      priorHdr = trp.length
+
       trp.push(["<div class='text-start pt-1'><span class='text-primary h4'>" + dispDate + "</span>" +
-                  "<small>" + JSON.stringify(activities) + "</small>", 
+                  "<small>" + "replacementToken" + "</small>", 
                 '<div class="text-end me-2"><a  target="_blank" href=' + googleTimelineHref + '><img class="img-thumbnail border-0 bg-transparent" width="40" height="40" src=  "images/icons/google-my-locn-hist.jpg" /></a>'
               ])
 
@@ -94,6 +100,14 @@ function accumActivities( objAct, accumAct) {
     accumAct[key]['distance'] += val.distance
 
   });
+
+}
+
+function formatActivities(activities) {
+
+  // var dispAct = 
+
+
 
 }
 
