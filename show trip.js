@@ -110,7 +110,7 @@ function accumActivities( objAct, accumAct) {
 
 function formatActivities(activities) {
 
-  // var dispAct = 
+  return activities
 
 
 
