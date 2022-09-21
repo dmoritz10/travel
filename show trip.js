@@ -41,6 +41,7 @@ async function showTrip(idx) {
       if (priorHdr > -1) console.log(trp[priorHdr][0])
 
       var actDisp = formatActivities(activities)
+      console.log('actDisp', actDisp)
       if (priorHdr > -1) trp[priorHdr][0] = trp[priorHdr][0].replace(/replacementToken/g, actDisp)
       priorHdr = trp.length
 
