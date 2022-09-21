@@ -110,7 +110,7 @@ function accumActivities( objAct, accumAct) {
 
 function formatActivities(activities) {
 
-  return activities
+  return JSON.stringify(activities)
 
 
 
