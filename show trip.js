@@ -14,6 +14,7 @@ async function showTrip(idx) {
   var trpDtl = JSON.parse(vals[trpHdrs.indexOf('Destination Detail')])
 
   var brkDate
+  var priorHdr = -1
 
   var activities = {}
 
@@ -25,7 +26,7 @@ async function showTrip(idx) {
     var date = parseDate[0]
     var time = parseDate[1] ? parseDate[1] : ''
 
-    var priorHdr = -1
+    
 
     if (date != brkDate) {
 
