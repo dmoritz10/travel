@@ -84,6 +84,8 @@ async function showTrip(idx) {
 
 function accumActivities( objAct, accumAct) {
 
+  if (!objAct) return
+
   Object.entries(objAct).forEach(([key, val]) => {
     
     if (!accumAct[key]) accumAct[key] = {duration: 0, distance: 0}
