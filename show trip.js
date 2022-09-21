@@ -15,6 +15,8 @@ async function showTrip(idx) {
 
   var brkDate
 
+  var activities = {}
+
   for (var i=0; i<trpDtl.length;i++) {
 
     var val = trpDtl[i]
@@ -30,11 +32,15 @@ async function showTrip(idx) {
 
       var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate
 
+      console.log(activites)
+
       trp.push(["<div class='text-start text-primary pt-1 h4'>" + dispDate, 
                 '<div class="text-end me-2"><a  target="_blank" href=' + googleTimelineHref + '><img class="img-thumbnail border-0 bg-transparent" width="40" height="40" src=  "images/icons/google-my-locn-hist.jpg" /></a>'
               ])
 
       brkDate = date
+
+      activities = {}
 
     }
   
@@ -47,6 +53,8 @@ async function showTrip(idx) {
     
     trp.push([time, place])
 
+    accumActivities( val.activities, activities)
+    
   }
   
   var tbl = new Table();
@@ -72,6 +80,20 @@ async function showTrip(idx) {
 
 
 } 
+
+function accumActivities( objAct, accumAct) {
+
+  Object.entries(objAct).forEach(([key, val]) => {
+    
+    if (!accumAct[key]) accumAct[key] = {duration: 0, distance: 0}
+
+    accumAct[key]['duration'] += val.duration
+    accumAct[key]['distance'] += val.distance
+
+  });
+
+}
+
 
 function browseDocument(dir) {
 
