@@ -122,10 +122,10 @@ var sorted = {};
 
 Object
     .keys(activities).sort(function(a, b){
-        return data[b].duration - data[a].duration;
+        return activities[b].duration - activities[a].duration;
     })
     .forEach(function(key) {
-        sorted[key] = data[key];
+        sorted[key] = activities[key];
     });
 
     console.log('after', sorted)
