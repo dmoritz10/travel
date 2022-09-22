@@ -117,6 +117,10 @@ function formatActivities(activities) {
     </div>
     `
 
+console.log('before', activites)
+    Object.entries(activities).sort((a, b) => a[0].localeCompare(b[0]));
+    console.log('after', activites)
+
   var actFormatted = ''
   Object.entries(activities).forEach(([key, val]) => {
     
