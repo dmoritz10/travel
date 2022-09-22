@@ -118,11 +118,20 @@ function formatActivities(activities) {
     `
 
 console.log('before', activities)
-let result = Object.entries(activities).sort((a, b) => b[0].duration - a[0].duration);
-    console.log('after', result)
+var sorted = {};
+
+Object
+    .keys(activities).sort(function(a, b){
+        return data[b].duration - data[a].duration;
+    })
+    .forEach(function(key) {
+        sorted[key] = data[key];
+    });
+
+    console.log('after', sorted)
 
   var actFormatted = ''
-  Object.entries(result).forEach(([key, val]) => {
+  Object.entries(sorted).forEach(([key, val]) => {
     
     var x = actTemplate.replace(/durationToken/, formatDuration(val.duration))
     x = x.replace(/distanceToken/, formatDistance(val.distance))
