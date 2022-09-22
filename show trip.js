@@ -35,19 +35,12 @@ async function showTrip(idx) {
 
       var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate
 
-      console.log(dispDate, activities)
-
-      console.log(priorHdr, trp.length)
-      if (priorHdr > -1) console.log(trp[priorHdr][0])
-
       var actDisp = formatActivities(activities)
-      console.log('actDisp', actDisp)
       if (priorHdr > -1) trp[priorHdr][1] = trp[priorHdr][1].replace(/replacementToken/g, actDisp)
       priorHdr = trp.length
 
-      trp.push(["<div class='text-start pt-1'><span class='text-primary h4'>" + dispDate + "</span>" 
-                  , 
-                  "<span>" + "replacementToken" + "</span>" + '<div class="text-end me-2"><a  target="_blank" href=' + googleTimelineHref + '><img class="img-thumbnail border-0 bg-transparent" width="40" height="40" src=  "images/icons/google-my-locn-hist.jpg" /></a>'
+      trp.push(["<div class='text-start pt-1'><span class='text-primary h4'>" + dispDate + "</span>",
+                  "<div>" + "replacementToken" + "</div>" + '<div class="text-end me-2"><a  target="_blank" href=' + googleTimelineHref + '><img class="img-thumbnail border-0 bg-transparent" width="40" height="40" src=  "images/icons/google-my-locn-hist.jpg" /></a>'
               ])
 
       brkDate = date
@@ -148,7 +141,7 @@ function formatActivities(activities) {
 function formatDuration(duration) {
 
   var hr = parseInt(duration / 60)
-  var min = parseInt(duration % 60)
+  var min = Math.round(duration % 60)
 
   return (hr ? hr + 'h': '') +  ' ' + min + 'm'
 
