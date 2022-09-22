@@ -1,11 +1,8 @@
 
 async function updateTripsFromLocationHistory(input) {
-  console.log('fetchplaces',input.files)
 
-  return
-  
   await fetchPlaces(input)  
-
+  return
   await updateTrips()
 
 }
@@ -20,6 +17,8 @@ async function fetchPlaces(input) {
 
 
   var files = sortInputFiles(input.files)
+
+  return
 
   var placesArr = []
 
@@ -830,8 +829,30 @@ function findMatchInTrips(strdt, enddt, strArr, endArr) {
 
 function sortInputFiles(files) {
 
-console.log(files)
+  var sortedFiles = []
+
+  for (var i=0;i<files.length;i++) {
+
+    var file = files[i]
+
+    yr = file.substring(0,3)
+
+    var regex = /\_(.*?)\./;
+    var moName = regex.exec(file)[1];
 
 
+    var moNbr = ('0' + 'January___February__March_____April_____May_______June______July______August____September_October___November__December__'.indexOf(moName) / 10 + 1).slice(-2);
+
+    console.log(yr, moName, moNbr)
+
+    sortedFiles.push([yr + '-' + noNbr, i])
+
+  }
+
+  sortedFiles.sort((a, b) => a[1].localeCompare(b[1]));
+
+  console.log(sortedFiles)
+
+  return sortedFiles
 
 }
