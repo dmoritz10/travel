@@ -2,8 +2,6 @@
 async function updateTripsFromLocationHistory(input) {
 
   await fetchPlaces(input)  
-  
-return
 
   await updateTrips()
 
@@ -379,7 +377,7 @@ async function formatPlace(json, objLHD) {
 
       var activityType = x.activityType ? x.activityType : x.activities[0].activityType
       if (activityType == "UNKNOWN_ACTIVITY_TYPE") activityType = "MOVING"
-      
+
       if (!activities[activityType]) activities[activityType] = {duration: 0, distance: 0}
     
       activities[activityType]['duration'] += calcDuration (x.duration.startTimestamp, x.duration.endTimestamp)
