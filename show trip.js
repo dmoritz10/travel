@@ -124,17 +124,20 @@ function formatActivities(activities) {
     </div>
     `
 
+  var actFormatted = ''
   Object.entries(activities).forEach(([key, val]) => {
     
-    actTemplate = actTemplate.replace(/durationToken/, val.duration)
-    actTemplate = actTemplate.replace(/distanceToken/, val.distance)
-    actTemplate = actTemplate.replace(/activityToken/, key)
-    actTemplate = actTemplate.replace(/iconToken/, 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_walking_black_24dp.png')
+    var x = actTemplate.replace(/durationToken/, val.duration)
+    x = x.replace(/distanceToken/, val.distance)
+    x = x.replace(/activityToken/, key)
+    x = x.replace(/iconToken/, 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_walking_black_24dp.png')
     
+    actFormatted += x
+
   });
 
 
-  actHtml += actTemplate
+  actHtml += actFormatted
 
   actHtml += '<div>'
 
