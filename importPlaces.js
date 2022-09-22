@@ -850,6 +850,7 @@ function sortInputFiles(files) {
     sortedFiles.push([yr + '-' + moNbr, i])
 
   }
+  console.log(sortedFiles)
 
   sortedFiles.sort((a, b) => a[1].localeCompare(b[1]));
 
