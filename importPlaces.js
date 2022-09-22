@@ -837,17 +837,17 @@ function sortInputFiles(files) {
 
     console.log('file', file)
 
-    yr = file.substring(0,3)
+    yr = file.substring(0,4)
 
     var regex = /\_(.*?)\./;
-    var moName = regex.exec(file)[1];
+    var moName = regex.exec(file)[1].substring(0,3);
 
 
-    var moNbr = ('0' + 'January___February__March_____April_____May_______June______July______August____September_October___November__December__'.indexOf(moName) / 10 + 1).slice(-2);
+    var moNbr = ('0' + ( "JanFebMarAprMayJunJulAugSepOctNovDec".toUpperCase().indexOf(moName) / 3 + 1 )).slice(-2);
 
     console.log(yr, moName, moNbr)
 
-    sortedFiles.push([yr + '-' + noNbr, i])
+    sortedFiles.push([yr + '-' + moNbr, i])
 
   }
 
