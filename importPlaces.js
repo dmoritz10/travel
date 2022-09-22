@@ -18,7 +18,7 @@ async function fetchPlaces(input) {
     ])
 
 
-  var files = input.files
+  var files = sortInputFiles(input.files)
   var placesArr = []
 
   if (files.length) {
@@ -823,5 +823,13 @@ function findMatchInTrips(strdt, enddt, strArr, endArr) {
   }
 
   return row
+
+}
+
+function sortInputFiles(files) {
+
+console.log(files)
+
+
 
 }
