@@ -148,15 +148,15 @@ function formatActivities(activities) {
 function formatDuration(duration) {
 
   var hr = parseInt(duration / 60)
-  var min = duration % 60
+  var min = parseInt(duration % 60)
 
-  return (hr ? hr + 'h': '') + ' ' + min + 'm'
+  return (hr ? hr + 'h': '') +  ' ' + min + 'm'
 
 }
 
 function formatDistance(distance) {
 
-  return Math.round((10 * distance / 1609.34)/ 10) + ' mi'
+  return Math.round(10 * distance / 1609.34)/ 10 + ' mi'
 
 }
 
