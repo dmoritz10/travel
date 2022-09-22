@@ -1,6 +1,10 @@
 
 async function updateTripsFromLocationHistory(input) {
 
+  console.log('input', input)
+
+  return
+
   await fetchPlaces(input)  
 
   await updateTrips()
@@ -19,6 +23,7 @@ async function fetchPlaces(input) {
 
 
   var files = sortInputFiles(input.files)
+
   var placesArr = []
 
   if (files.length) {

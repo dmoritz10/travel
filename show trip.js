@@ -118,7 +118,7 @@ function formatActivities(activities) {
     `
 
 console.log('before', activities)
-let result = Object.entries(daactivitiesta).sort((a, b) => b[1].duration - a[1].duration);
+let result = Object.entries(activities).sort((a, b) => b[1].duration - a[1].duration);
     console.log('after', result)
 
   var actFormatted = ''
