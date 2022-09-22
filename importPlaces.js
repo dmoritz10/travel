@@ -32,7 +32,7 @@ async function fetchPlaces(input) {
   } 
 
   console.log('sortedFiles',sortedFiles)
-  console.log('arr',arr)
+  console.log('placesArr',placesArr)
 
   return
 
