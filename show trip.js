@@ -46,7 +46,7 @@ async function showTrip(idx) {
       priorHdr = trp.length
 
       trp.push(["<div class='text-start pt-1'><span class='text-primary h4'>" + dispDate + "</span>" +
-                  "<small>" + "replacementToken" + "</small>", 
+                  "<span>" + "replacementToken" + "</span>", 
                 '<div class="text-end me-2"><a  target="_blank" href=' + googleTimelineHref + '><img class="img-thumbnail border-0 bg-transparent" width="40" height="40" src=  "images/icons/google-my-locn-hist.jpg" /></a>'
               ])
 
@@ -110,9 +110,35 @@ function accumActivities( objAct, accumAct) {
 
 function formatActivities(activities) {
 
+  var actHtml = '<div class="timeline-item top-activities"\>'
+
+  var actTemplate = `
+    <div class="top-activity" tabindex="0">
+      <div class="top-activity-icon"
+        style="background-image:url(iconToken)"
+        title="activityToken"> </div>
+      <div class="top-activity-text">
+        <div>distanceToken</div>
+        <div>durationToken</div>
+      </div>  
+    </div>
+    `
+
+  Object.entries(activities).forEach(([key, val]) => {
+    
+    actTemplate = actTemplate.replace(/durationToken/, val.duration)
+    actTemplate = actTemplate.replace(/distanceToken/, val.distance)
+    actTemplate = actTemplate.replace(/activityToken/, key)
+    actTemplate = actTemplate.replace(/iconToken/, 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_walking_black_24dp.png')
+    
+  });
+
+
+  actHtml += actTemplate
+
+  actHtml += '<div>'
+
   return JSON.stringify(activities)
-
-
 
 }
 
