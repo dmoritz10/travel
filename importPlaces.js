@@ -29,6 +29,7 @@ async function fetchPlaces(input) {
       var arr = await formatPlace(fileContents, objLHD)
       arr.forEach( ele => placesArr.push(ele))
     }
+
   } 
 
   console.log('sortedFiles',sortedFiles)
@@ -323,11 +324,14 @@ async function formatPlace(json, objLHD) {
         var ele = []
 
         if (!x.location.address)  continue;
-        if (!x.location.name)     continue;
+        // if (!x.location.name)     continue;
 
         var addr = x.location.address ? x.location.address.replace(/\n/g, ", ") : ''
 
         var addrArr = prepAddr(addr)
+
+        if (addrArr.length == 0)  continue;
+
         
         var cntry   = cleanCntry(addrArr)
         var cityState = cleanCityState(addrArr, cntry)
@@ -346,7 +350,7 @@ async function formatPlace(json, objLHD) {
         var DDHH = duration.toFormat("hh':'mm");
 
  
-        ele[hdrs.indexOf('Name')]               = x.location.name ? x.location.name : x.location.placeId
+        ele[hdrs.indexOf('Name')]               = x.location.name ? x.location.name : addrArr[0]
         ele[hdrs.indexOf('Date')]               = dateTimeFormatted
         ele[hdrs.indexOf('UTC Date')]           = x.duration.startTimestamp
         ele[hdrs.indexOf('Duration')]           = DDHH
