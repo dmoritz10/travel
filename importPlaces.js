@@ -387,6 +387,8 @@ async function formatPlace(json, objLHD) {
 
 }
 
+arr[arr.length-1][hdrs.indexOf('Activities')] = JSON.stringify(activities);
+
 console.log('cntr', cntr)
 console.log('arr', arr)
 
@@ -491,7 +493,7 @@ function prepAddr(addr) {
   for (i=0;i<arr.length;i++) {
 
     let wrk = arr[i]
-    wrk = wrk.replace(/[0-9]/g, '').replace(/( [A-Z][A-Z] [A-Z][A-Z])/, '') // Eg. Edinburgh EH EG
+    wrk = wrk.replace(/[0-9]/g, '').replace(/( [A-Z][A-Z] [A-Z][A-Z])/, '').replace(/( [A-Z][A-Z][A-Z] [A-Z][A-Z])/, '') // Eg. Edinburgh EH EG
     // wrk = wrk.replace(/-/g, '')
     wrk = wrk.trim()
 
