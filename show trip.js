@@ -61,6 +61,10 @@ async function showTrip(idx) {
     accumActivities( val.activities, activities)
     
   }
+
+  var actDisp = formatActivities(activities)
+  if (priorHdr > -1) trp[priorHdr][1] = trp[priorHdr][1].replace(/replacementToken/g, actDisp)
+
   
   var tbl = new Table();
   
