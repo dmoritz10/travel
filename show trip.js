@@ -138,7 +138,7 @@ function formatActivities(activities) {
 
   actHtml += '<div>'
 
-  return JSON.stringify(activities)
+  return actHtml
 
 }
 
