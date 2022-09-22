@@ -24,7 +24,7 @@ async function fetchPlaces(input) {
   if (files.length) {
 
     for (var i=0;i<sortedFiles.length;i++) {  
-      var file = sortedFiles[i][1]
+      var file = files[sortedFiles[i][1]]
       console.log('file',file)
       var fileContents = await readFile(file)
       var arr = await formatPlace(fileContents, objLHD)
