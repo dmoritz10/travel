@@ -118,8 +118,8 @@ function formatActivities(activities) {
     `
 
 console.log('before', activities)
-    Object.entries(activities).sort((a, b) => a[0].localeCompare(b[0]));
-    console.log('after', activities)
+let result = Object.entries(daactivitiesta).sort((a, b) => b[1].duration - a[1].duration);
+    console.log('after', result)
 
   var actFormatted = ''
   Object.entries(activities).forEach(([key, val]) => {
