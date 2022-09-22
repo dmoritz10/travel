@@ -833,7 +833,7 @@ function sortInputFiles(files) {
 
   for (var i=0;i<files.length;i++) {
 
-    var file = files[i]
+    var file = files[i].name
 
     console.log('file', file)
 
