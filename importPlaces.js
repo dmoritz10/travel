@@ -15,17 +15,18 @@ async function fetchPlaces(input) {
       { title: 'City Timezone Xref', type: 'all'}
     ])
 
+  var files = inputFiles(input.files)
 
-  var files = sortInputFiles(input.files)
-
-  return
+  var sortedFiles = sortInputFiles(input.files)
 
   var placesArr = []
 
   if (files.length) {
 
-    for (var i=0;i<files.length;i++) {  
-      var fileContents = await readFile(files[i])
+    for (var i=0;i<sortedFiles.length;i++) {  
+      var file = sortedFiles[i][1]
+      console.log('file',file)
+      var fileContents = await readFile(file)
       var arr = await formatPlace(fileContents, objLHD)
       arr.forEach( ele => placesArr.push(ele))
     }
@@ -850,11 +851,8 @@ function sortInputFiles(files) {
     sortedFiles.push([yr + '-' + moNbr, i])
 
   }
-  console.log(sortedFiles)
 
   sortedFiles.sort((a, b) => a[0].localeCompare(b[0]));
-
-  console.log(sortedFiles)
 
   return sortedFiles
 
