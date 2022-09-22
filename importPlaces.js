@@ -350,7 +350,7 @@ async function formatPlace(json, objLHD) {
         var DDHH = duration.toFormat("hh':'mm");
 
  
-        ele[hdrs.indexOf('Name')]               = x.location.name ? x.location.name : addrArr[0]
+        ele[hdrs.indexOf('Name')]               = x.location.name ? x.location.name : prepAddr(addr)[0]
         ele[hdrs.indexOf('Date')]               = dateTimeFormatted
         ele[hdrs.indexOf('UTC Date')]           = x.duration.startTimestamp
         ele[hdrs.indexOf('Duration')]           = DDHH
