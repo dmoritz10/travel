@@ -122,7 +122,7 @@ let result = Object.entries(activities).sort((a, b) => b[0].duration - a[0].dura
     console.log('after', result)
 
   var actFormatted = ''
-  Object.entries(activities).forEach(([key, val]) => {
+  Object.entries(result).forEach(([key, val]) => {
     
     var x = actTemplate.replace(/durationToken/, formatDuration(val.duration))
     x = x.replace(/distanceToken/, formatDistance(val.distance))
