@@ -15,9 +15,9 @@ async function fetchPlaces(input) {
       { title: 'City Timezone Xref', type: 'all'}
     ])
 
-  var files = inputFiles(input.files)
+  var files = input.files
 
-  var sortedFiles = sortInputFiles(input.files)
+  var sortedFiles = sortInputFiles(files)
 
   var placesArr = []
 
