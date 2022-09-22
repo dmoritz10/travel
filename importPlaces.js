@@ -835,6 +835,8 @@ function sortInputFiles(files) {
 
     var file = files[i]
 
+    console.log('file', file)
+
     yr = file.substring(0,3)
 
     var regex = /\_(.*?)\./;
