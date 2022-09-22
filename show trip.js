@@ -42,7 +42,7 @@ async function showTrip(idx) {
 
       var actDisp = formatActivities(activities)
       console.log('actDisp', actDisp)
-      if (priorHdr > -1) trp[priorHdr][0] = trp[priorHdr][0].replace(/replacementToken/g, actDisp)
+      if (priorHdr > -1) trp[priorHdr][1] = trp[priorHdr][1].replace(/replacementToken/g, actDisp)
       priorHdr = trp.length
 
       trp.push(["<div class='text-start pt-1'><span class='text-primary h4'>" + dispDate + "</span>" +
