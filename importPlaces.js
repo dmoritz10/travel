@@ -1,6 +1,9 @@
 
 async function updateTripsFromLocationHistory(input) {
+  console.log('fetchplaces',input.files)
 
+  return
+  
   await fetchPlaces(input)  
 
   await updateTrips()
@@ -8,10 +11,6 @@ async function updateTripsFromLocationHistory(input) {
 }
 
 async function fetchPlaces(input) {
-
-  console.log('fetchplaces',input.files)
-
-  return
 
   var objLHD = await openShts(
     [
