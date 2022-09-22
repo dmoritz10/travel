@@ -17,22 +17,22 @@ async function fetchPlaces(input) {
 
   var files = input.files
 
-  var sortedFiles = sortInputFiles(files)
-
   var placesArr = []
 
   if (files.length) {
 
+    var sortedFiles = sortInputFiles(files)
+
     for (var i=0;i<sortedFiles.length;i++) {  
       var file = files[sortedFiles[i][1]]
-      console.log('file',file)
       var fileContents = await readFile(file)
       var arr = await formatPlace(fileContents, objLHD)
       arr.forEach( ele => placesArr.push(ele))
     }
   } 
 
-  console.log('ukPlaces',ukPlaces)
+  console.log('sortedFiles',sortedFiles)
+  console.log('arr',arr)
 
   var arrCTX = [objLHD['City Timezone Xref'].colHdrs].concat(objLHD['City Timezone Xref'].vals)
   await updateSheet('City Timezone Xref', arrCTX)
