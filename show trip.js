@@ -127,8 +127,8 @@ function formatActivities(activities) {
   var actFormatted = ''
   Object.entries(activities).forEach(([key, val]) => {
     
-    var x = actTemplate.replace(/durationToken/, val.duration)
-    x = x.replace(/distanceToken/, val.distance)
+    var x = actTemplate.replace(/durationToken/, formatDuration(val.duration))
+    x = x.replace(/distanceToken/, formatDistance(val.distance))
     x = x.replace(/activityToken/, key)
     x = x.replace(/iconToken/, 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_walking_black_24dp.png')
     
@@ -145,6 +145,20 @@ function formatActivities(activities) {
 
 }
 
+function formatDuration(duration) {
+
+  var hr = parseInt(duration / 60)
+  var min = duration % 60
+
+  return (hr ? hr + 'h': '') + ' ' + min + 'm'
+
+}
+
+function formatDistance(distance) {
+
+  return Math.round((10 * distance / 1609.34)/ 10) + ' mi'
+
+}
 
 function browseDocument(dir) {
 
