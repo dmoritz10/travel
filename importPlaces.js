@@ -377,10 +377,13 @@ async function formatPlace(json, objLHD) {
 
       var x = b[i].activitySegment
 
-      if (!activities[x.activityType]) activities[x.activityType] = {duration: 0, distance: 0}
+      var activityType = x.activityType ? x.activityType : x.activities[0].activityType
+      if (activityType == "UNKNOWN_ACTIVITY_TYPE") activityType = "MOVING"
+      
+      if (!activities[activityType]) activities[activityType] = {duration: 0, distance: 0}
     
-      activities[x.activityType]['duration'] += calcDuration (x.duration.startTimestamp, x.duration.endTimestamp)
-      activities[x.activityType]['distance'] += x.distance ? x.distance : calcDistance(x.startLocation, x.endLocation)
+      activities[activityType]['duration'] += calcDuration (x.duration.startTimestamp, x.duration.endTimestamp)
+      activities[activityType]['distance'] += x.distance ? x.distance : calcDistance(x.startLocation, x.endLocation)
 
     }
 
