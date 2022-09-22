@@ -852,7 +852,7 @@ function sortInputFiles(files) {
   }
   console.log(sortedFiles)
 
-  sortedFiles.sort((a, b) => a[1].localeCompare(b[1]));
+  sortedFiles.sort((a, b) => a[0].localeCompare(b[0]));
 
   console.log(sortedFiles)
 
