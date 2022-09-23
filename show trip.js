@@ -149,7 +149,7 @@ Object
 
   actHtml += actFormatted
 
-  actHtml += '<div>'
+  actHtml += '</div>'
 
   console.log('actHtml', actHtml)
 
