@@ -39,8 +39,8 @@ async function showTrip(idx) {
       if (priorHdr > -1) trp[priorHdr][1] = trp[priorHdr][1].replace(/replacementToken/g, actDisp)
       priorHdr = trp.length
 
-      trp.push(["<div class='text-start pt-1'><span class='text-primary h4'>" + dispDate + "</span>",
-                  "replacementToken"  + '<div class="text-end me-2"><a  target="_blank" href=' + googleTimelineHref + '><img class="img-thumbnail border-0 bg-transparent" width="40" height="40" src=  "images/icons/google-my-locn-hist.jpg" /></a>'
+      trp.push(["<div class='text-start pt-1'><span class='text-primary h4'>" + dispDate + "</span></div>",
+                  "replacementToken"  + '<div class="text-end me-2"><a  target="_blank" href=' + googleTimelineHref + '><img class="img-thumbnail border-0 bg-transparent" width="40" height="40" src=  "images/icons/google-my-locn-hist.jpg" /></a></div>'
               ])
 
       brkDate = date
