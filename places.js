@@ -21,6 +21,8 @@ async function btnPlacesHtml() {
     vals.sort(placeSorter(nameCol, dateUTCCol));
 
     var arr = []
+
+    var arrAct = []
   
     var nbr = 0
     var plDtl = []
@@ -45,10 +47,14 @@ async function btnPlacesHtml() {
             
         }
 
+        pushActivities(hdrs, val, arrAct)
+
         plDtl.push([val[dateCol], val[cityCol], val[monthCol]])
         nbr++
 
     }
+
+    console.log(arrAct)
 
     if (plDtl.length>0) arr.push([name, nbr, plDtl])
 
@@ -221,5 +227,25 @@ function uniqueCities(place) {
     }
 
     return uniqCities
+
+}
+
+function pushActivities(hdrs, valLHD, arrAct) {
+
+    var dateCol     = hdrs.indexOf('Date')
+    var dateUTCCol  = hdrs.indexOf('UTC Date')
+    var actCol     = hdrs.indexOf('Activities')
+
+    var act = JSON.parse(valLHD[actCol])
+
+    for (let [key, val] of Object.entries(act)) {
+
+        
+        arrAct.push(key, val.duration, val.distance) 
+
+    }
+
+
+
 
 }
