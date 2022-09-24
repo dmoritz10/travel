@@ -241,7 +241,7 @@ function pushActivities(hdrs, valLHD, arrAct) {
     for (let [key, val] of Object.entries(act)) {
 
         
-        arrAct.push(key, val.duration, val.distance) 
+        arrAct.push([valLHD[dateCol], valLHD[dateUTCCol], key, val.duration, val.distance]) 
 
     }
 
