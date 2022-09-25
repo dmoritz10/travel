@@ -311,6 +311,8 @@ async function formatPlace(json, objLHD) {
   var activities = {}
   var cntr = 0
 
+  var tempAct = []
+
   for (var i in b) {
 
     var type = Object.keys(b[i])[0]
@@ -383,6 +385,26 @@ async function formatPlace(json, objLHD) {
       activities[activityType]['duration'] += calcDuration (x.duration.startTimestamp, x.duration.endTimestamp)
       activities[activityType]['distance'] += x.distance ? x.distance : calcDistance(x.startLocation, x.endLocation)
 
+
+      tempAct.push([
+        x.duration.endTimestamp,
+        x.activityType,
+        x.duration/60,
+        calcDuration (x.duration.startTimestamp, x.duration.endTimestamp)/60,
+        x.distance/1609.34,
+        calcDistance(x.startLocation, x.endLocation)/1609.34,
+        x.activities.activityType,
+        x.waypointPath.waypoints.travelMode,
+        x.waypointPath.waypoints.source,
+        x.waypointPath.waypoints.distanceMeters/1609.34,
+        x.simplifiedRawPath.source,
+        x.simplifiedRawPath.distanceMeters/1609.34,
+
+      ])
+
+
+
+
     }
 
 }
@@ -391,6 +413,7 @@ arr[arr.length-1][hdrs.indexOf('Activities')] = JSON.stringify(activities);
 
 console.log('cntr', cntr)
 console.log('arr', arr)
+console.log('tempAct', tempAct)
 
 return arr
 
