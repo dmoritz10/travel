@@ -19,6 +19,23 @@ async function fetchPlaces(input) {
 
   var placesArr = []
 
+  var tempAct = [[
+    'endTimestamp',
+    'activityType',
+    'activities[0].activityType',
+    'duration/60',
+    'calcDuration/60',
+    'distance/1609.34',
+    'calcDistance/1609.34',
+    'activities?.activityType',
+    'waypointPath?.waypoints.travelMode',
+    'waypointPath?.waypoints.source',
+    'waypointPath?.waypoints.distanceMeters/1609.34',
+    'simplifiedRawPath?.source',
+    'simplifiedRawPath?.distanceMeters/1609.34'
+
+  ]]
+
   if (files.length) {
 
     var sortedFiles = sortInputFiles(files)
@@ -35,6 +52,7 @@ async function fetchPlaces(input) {
   console.log('sortedFiles',sortedFiles)
   console.log('placesArr',placesArr)
 
+  console.log('tempAct', tempAct)
 
   return
 
@@ -314,22 +332,7 @@ async function formatPlace(json, objLHD) {
   var activities = {}
   var cntr = 0
 
-  var tempAct = [[
-    'endTimestamp',
-    'activityType',
-    'activities[0].activityType',
-    'duration/60',
-    'calcDuration/60',
-    'distance/1609.34',
-    'calcDistance/1609.34',
-    'activities?.activityType',
-    'waypointPath?.waypoints.travelMode',
-    'waypointPath?.waypoints.source',
-    'waypointPath?.waypoints.distanceMeters/1609.34',
-    'simplifiedRawPath?.source',
-    'simplifiedRawPath?.distanceMeters/1609.34'
 
-  ]]
 
   for (var i in b) {
 
@@ -433,7 +436,6 @@ arr[arr.length-1][hdrs.indexOf('Activities')] = JSON.stringify(activities);
 console.log('cntr', cntr)
 console.log('arr', arr)
 
-console.log('tempAct', tempAct)
 
 return arr
 
