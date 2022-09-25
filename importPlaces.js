@@ -311,7 +311,22 @@ async function formatPlace(json, objLHD) {
   var activities = {}
   var cntr = 0
 
-  var tempAct = []
+  var tempAct = [
+    'endTimestamp',
+    'activityType',
+    'activities[0].activityType',
+    'duration/60',
+    'calcDuration/60',
+    'distance/1609.34',
+    'calcDistance/1609.34',
+    'activities?.activityType',
+    'waypointPath?.waypoints.travelMode',
+    'waypointPath?.waypoints.source',
+    'waypointPath?.waypoints.distanceMeters/1609.34',
+    'simplifiedRawPath?.source',
+    'simplifiedRawPath?.distanceMeters/1609.34'
+
+  ]
 
   for (var i in b) {
 
@@ -395,9 +410,9 @@ async function formatPlace(json, objLHD) {
         x.distance/1609.34,
         calcDistance(x.startLocation, x.endLocation)/1609.34,
         x.activities?.activityType,
-        x.waypointPath?.waypoints.travelMode,
-        x.waypointPath?.waypoints.source,
-        x.waypointPath?.waypoints.distanceMeters/1609.34,
+        x.waypointPath?.waypoints?.travelMode,
+        x.waypointPath?.waypoints?.source,
+        x.waypointPath?.waypoints?.distanceMeters/1609.34,
         x.simplifiedRawPath?.source,
         x.simplifiedRawPath?.distanceMeters/1609.34,
 
