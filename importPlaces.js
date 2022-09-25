@@ -35,6 +35,9 @@ async function fetchPlaces(input) {
   console.log('sortedFiles',sortedFiles)
   console.log('placesArr',placesArr)
 
+
+  return
+
   var arrCTX = [objLHD['City Timezone Xref'].colHdrs].concat(objLHD['City Timezone Xref'].vals)
   await updateSheet('City Timezone Xref', arrCTX)
 
@@ -429,9 +432,8 @@ arr[arr.length-1][hdrs.indexOf('Activities')] = JSON.stringify(activities);
 
 console.log('cntr', cntr)
 console.log('arr', arr)
-console.log('tempAct', tempAct)
 
-console.log(xyz.abc)
+console.log('tempAct', tempAct)
 
 return arr
 
