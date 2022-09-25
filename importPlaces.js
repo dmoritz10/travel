@@ -311,7 +311,7 @@ async function formatPlace(json, objLHD) {
   var activities = {}
   var cntr = 0
 
-  var tempAct = [
+  var tempAct = [[
     'endTimestamp',
     'activityType',
     'activities[0].activityType',
@@ -326,7 +326,7 @@ async function formatPlace(json, objLHD) {
     'simplifiedRawPath?.source',
     'simplifiedRawPath?.distanceMeters/1609.34'
 
-  ]
+  ]]
 
   for (var i in b) {
 
@@ -430,6 +430,8 @@ arr[arr.length-1][hdrs.indexOf('Activities')] = JSON.stringify(activities);
 console.log('cntr', cntr)
 console.log('arr', arr)
 console.log('tempAct', tempAct)
+
+console.log(xyz.abc)
 
 return arr
 
