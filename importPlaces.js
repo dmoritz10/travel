@@ -393,12 +393,12 @@ async function formatPlace(json, objLHD) {
         calcDuration (x.duration.startTimestamp, x.duration.endTimestamp)/60,
         x.distance/1609.34,
         calcDistance(x.startLocation, x.endLocation)/1609.34,
-        x.activities.activityType,
-        x.waypointPath.waypoints.travelMode,
-        x.waypointPath.waypoints.source,
-        x.waypointPath.waypoints.distanceMeters/1609.34,
-        x.simplifiedRawPath.source,
-        x.simplifiedRawPath.distanceMeters/1609.34,
+        x.activities?.activityType,
+        x.waypointPath?.waypoints.travelMode,
+        x.waypointPath?.waypoints.source,
+        x.waypointPath?.waypoints.distanceMeters/1609.34,
+        x.simplifiedRawPath?.source,
+        x.simplifiedRawPath?.distanceMeters/1609.34,
 
       ])
 
