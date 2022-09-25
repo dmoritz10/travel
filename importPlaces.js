@@ -389,6 +389,7 @@ async function formatPlace(json, objLHD) {
       tempAct.push([
         x.duration.endTimestamp,
         x.activityType,
+        x.activities[0].activityType,
         x.duration/60,
         calcDuration (x.duration.startTimestamp, x.duration.endTimestamp)/60,
         x.distance/1609.34,
