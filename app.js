@@ -33,6 +33,24 @@
 
     var ukPlaces = []
 
+    var tempAct = [[
+        'endTimestamp',
+        'activityType',
+        'activities[0].activityType',
+        'duration/60',
+        'calcDuration/60',
+        'distance/1609.34',
+        'calcDistance/1609.34',
+        'activities?.activityType',
+        'waypointPath?.waypoints.travelMode',
+        'waypointPath?.waypoints.source',
+        'waypointPath?.waypoints.distanceMeters/1609.34',
+        'simplifiedRawPath?.source',
+        'simplifiedRawPath?.distanceMeters/1609.34'
+    
+      ]]
+    
+
    
 /*global jQuery */
 jQuery(function ($) {
