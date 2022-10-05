@@ -38,8 +38,6 @@ async function fetchPlaces(input) {
 
   console.log('tempAct', tempAct)
 
-  return
-
   var arrCTX = [objLHD['City Timezone Xref'].colHdrs].concat(objLHD['City Timezone Xref'].vals)
   await updateSheet('City Timezone Xref', arrCTX)
 
