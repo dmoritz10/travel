@@ -395,7 +395,7 @@ async function formatPlace(json, objLHD) {
         continue
 
       }
-      
+
       if (!activities[activityType]) activities[activityType] = {duration: 0, distance: 0}
     
       activities[activityType]['duration'] += duration
@@ -535,7 +535,7 @@ function calcDist(activityType, duration, distance, startLocation, endLocation) 
 
   var spdMPH = spdInMPH(distance, duration)
 
-  if (spd <= activityType.maxSpeedMPH) {
+  if (spdMPH <= activityType.maxSpeedMPH) {
 
     return distance
 
@@ -545,8 +545,8 @@ function calcDist(activityType, duration, distance, startLocation, endLocation) 
 
     if (calcDst <= 0) return null
 
-    var calcSpd = spdInMPH(calcDst, duration)
-    if (calcSpd <= activityType.maxSpeedMPH) { 
+    var calcSpdMPH = spdInMPH(calcDst, duration)
+    if (calcSpdMPH <= activityType.maxSpeedMPH) { 
 
       return calcDst 
 
