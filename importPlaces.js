@@ -367,7 +367,7 @@ async function formatPlace(json, objLHD) {
         ele[hdrs.indexOf('Country')]            = cntry
         ele[hdrs.indexOf('Lat')]                = lat
         ele[hdrs.indexOf('Lng')]                = lng
-        ele[hdrs.indexOf('Distance')]           = Math.round(distance(homeLat, homeLng, lat, lng, 'M'))
+        ele[hdrs.indexOf('Distance')]           = Math.round(distanceFromHome(homeLat, homeLng, lat, lng, 'M'))
         ele[hdrs.indexOf('Info')]               = JSON.stringify(x)
         ele[hdrs.indexOf('Month')]              = tripMonth(dateTimeFormatted)
         ele[hdrs.indexOf('Activities')]         = JSON.stringify(activities);
@@ -618,30 +618,6 @@ async function calcLocalTime(city, startTimestamp, lat, lng, cityXref) {
 
 }
 
-
-function distance(lat1, lon1, lat2, lon2, unit) {
-	if ((lat1 == lat2) && (lon1 == lon2)) {
-		return 0;
-	}
-	else {
-		var radlat1 = Math.PI * lat1/180;
-		var radlat2 = Math.PI * lat2/180;
-		var theta = lon1-lon2;
-		var radtheta = Math.PI * theta/180;
-		var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-		if (dist > 1) {
-			dist = 1;
-		}
-		dist = Math.acos(dist);
-		dist = dist * 180/Math.PI;
-		dist = dist * 60 * 1.1515;
-		if (unit=="K") { dist = dist * 1.609344 }
-		if (unit=="N") { dist = dist * 0.8684 }
-		return dist;
-	}
-}
-
-
 async function buildCityXref(city, lat, lng, cityXref) {
 
   var geonames = `http://api.geonames.org/timezoneJSON?lat=${lat}&lng=${lng}&username=dmoritz10`
@@ -768,7 +744,7 @@ function cleanCntry(addrArr) {
 }
 
 
-function distance(lat1, lon1, lat2, lon2, unit) {
+function distanceFromHome(lat1, lon1, lat2, lon2, unit) {
 	if ((lat1 == lat2) && (lon1 == lon2)) {
 		return 0;
 	}
