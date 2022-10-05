@@ -46,7 +46,7 @@ x - Make Schnucky version
 
 x - Add calendar view
 
-Edit / warning for overlapping reservations
+x - Edit / warning for overlapping reservations
 
   if start date or end date lie within the start date or, if present, end date or any existing reservation
 
@@ -62,8 +62,14 @@ add 'Activity' to reservation type
 
 test vsc
 
+link to pictures from Trips / Trip Detail if at home
 
-From Google create calendar events from Gmail:
+new Activity related top-level screen
+  fix/filter bad data from google locations
+
+
+
+x - From Google create calendar events from Gmail:
   Reservation at 
   Stay at 
   Flight to 

@@ -37,7 +37,6 @@
         'endTimestamp',
         'activityType',
         'activities[0].activityType',
-        'duration/60',
         'calcDuration/60',
         'distance/1609.34',
         'calcDistance/1609.34',

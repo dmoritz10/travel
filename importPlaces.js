@@ -382,20 +382,31 @@ async function formatPlace(json, objLHD) {
 
       var x = b[i].activitySegment
 
-      var activityType = x.activityType ? x.activityType : x.activities[0].activityType
-      if (activityType == "UNKNOWN_ACTIVITY_TYPE") activityType = "MOVING"
+      var activityType = calcActivityType(x.activities[0].activityType).url
 
+      var duration = calcDuration (x.duration.startTimestamp, x.duration.endTimestamp)
+
+      var distance = calcDist(activityType, duration, x.distance, x.startLocation, x.endLocation)
+
+      if (!calcDist) {
+        
+        console.log('invalid distance', activityType, duration, x.distance, calcDistance(x.startLocation, x.endLocation))
+        
+        continue
+
+      }
+      
       if (!activities[activityType]) activities[activityType] = {duration: 0, distance: 0}
     
-      activities[activityType]['duration'] += calcDuration (x.duration.startTimestamp, x.duration.endTimestamp)
-      activities[activityType]['distance'] += x.distance ? x.distance : calcDistance(x.startLocation, x.endLocation)
+      activities[activityType]['duration'] += duration
+      // activities[activityType]['distance'] += x.distance ? x.distance : calcDistance(x.startLocation, x.endLocation)
+      activities[activityType]['distance'] += distance
 
 
       tempAct.push([
         x.duration.endTimestamp,
         x.activityType,
         x.activities[0].activityType,
-        x.duration/60,
         calcDuration (x.duration.startTimestamp, x.duration.endTimestamp)/60,
         x.distance/1609.34,
         calcDistance(x.startLocation, x.endLocation)/1609.34,
@@ -422,6 +433,128 @@ console.log('arr', arr)
 
 
 return arr
+
+}
+
+function calcActivityType(activityType) {
+
+  switch (activityType) {
+
+    case 'BOATING':
+      var type = 'Boating'
+      var maxSpeedMPH = 60
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_boat_black_24dp.png'
+    break;
+    case 'CYCLING':
+      var type = 'Cycling'
+      var maxSpeedMPH = 30
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_biking_black_24dp.png'
+    break;
+    case 'FLYING':
+      var type = 'Flying'
+      var maxSpeedMPH = 800
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/local_airport_black_24dp.png'
+    break;
+    case 'HIKING':
+      var type = 'Hiking'
+      var maxSpeedMPH = 15
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_hiking_black_24dp.png'
+    break;
+    case 'IN_BUS':
+      var type = 'On a bus'
+      var maxSpeedMPH = 80
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_bus_black_24dp.png'
+    break;
+    case 'IN_FERRY':
+      var type = 'On a ferry'
+      var maxSpeedMPH = 60
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_boat_black_24dp.png'
+    break;
+    case 'IN_GONDOLA_LIFT':
+      var type = 'In a gondola lift'
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_gondola_black_24dp.png'
+    break;
+    case 'IN_PASSENGER_VEHICLE':
+      var type = 'Driving'
+      var maxSpeedMPH = 90
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_car_black_24dp.png'
+    break;
+    case 'IN_SUBWAY':
+      var type = 'On the subway'
+      var maxSpeedMPH = 90
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_subway_black_24dp.png'
+    break;
+    case 'IN_TAXI':
+      var type = 'In a taxi'
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/local_taxi_black_24dp.png'
+    break;
+    case 'IN_TRAIN':
+      var type = 'On a train'
+      var maxSpeedMPH = 90
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_railway_black_24dp.png'
+    break;
+    case 'IN_TRAM':
+      var type = 'On a tram'
+      var maxSpeedMPH = 60
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_tram_black_24dp.png'
+    break;
+    case 'IN_VEHICLE':
+      var type = 'Driving'
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_car_black_24dp.png'
+    break;
+    case 'SKIING':
+      var type = 'Skiing'
+      var maxSpeedMPH = 90
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_downhill_skiing_black_24dp.png'
+    break;
+    case 'WALKING':
+      var type = 'Walking'
+      var maxSpeedMPH = 15
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_walking_black_24dp.png'
+    break;
+    default:
+      var type = 'Moving'
+      var maxSpeedMPH = 90
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_moving_black_24dp.png'
+    break;
+  }
+
+  return {
+    type: type,
+    url: url
+  }
+
+
+}
+
+function calcDist(activityType, duration, distance, startLocation, endLocation) {
+
+  const spdInMPH = (distance, duration) => (distance / 1609.34) / (duration / 60)
+
+  if (duration <= 0) return null
+
+  var spdMPH = spdInMPH(distance, duration)
+
+  if (spd <= activityType.maxSpeedMPH) {
+
+    return distance
+
+  } else {
+
+    var calcDst = calcDistance(startLocation, endLocation) 
+
+    if (calcDst <= 0) return null
+
+    var calcSpd = spdInMPH(calcDst, duration)
+    if (calcSpd <= activityType.maxSpeedMPH) { 
+
+      return calcDst 
+
+    }
+
+  }
+
+  return null
 
 }
 
