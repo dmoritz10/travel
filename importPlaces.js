@@ -386,7 +386,7 @@ async function formatPlace(json, objLHD) {
 
       var distance = calcDist(activityType, duration, x.distance, x.startLocation, x.endLocation)
 
-      if (!calcDist) {
+      if (!distance) {
         
         console.log('invalid distance', activityType, duration, x.distance, calcDistance(x.startLocation, x.endLocation))
         
@@ -394,11 +394,11 @@ async function formatPlace(json, objLHD) {
 
       }
 
-      if (!activities[activityType]) activities[activityType] = {duration: 0, distance: 0}
+      if (!activities[activityType.type]) activities[activityType.type] = {duration: 0, distance: 0}
     
-      activities[activityType]['duration'] += duration
+      activities[activityType,type]['duration'] += duration
       // activities[activityType]['distance'] += x.distance ? x.distance : calcDistance(x.startLocation, x.endLocation)
-      activities[activityType]['distance'] += distance
+      activities[activityType.type]['distance'] += distance
 
 
       tempAct.push([
@@ -519,6 +519,7 @@ function calcActivityType(activityType) {
 
   return {
     type: type,
+    maxSpeedMPH: maxSpeedMPH,
     url: url
   }
 
