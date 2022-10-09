@@ -396,7 +396,7 @@ async function formatPlace(json, objLHD) {
 
       if (!activities[activityType.type]) activities[activityType.type] = {duration: 0, distance: 0}
     
-      activities[activityType,type]['duration'] += duration
+      activities[activityType.type]['duration'] += duration
       // activities[activityType]['distance'] += x.distance ? x.distance : calcDistance(x.startLocation, x.endLocation)
       activities[activityType.type]['distance'] += distance
 
