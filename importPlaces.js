@@ -380,7 +380,7 @@ async function formatPlace(json, objLHD) {
 
       var x = b[i].activitySegment
 
-      var activityType = calcActivityType(x.activities[0].activityType).url
+      var activityType = calcActivityType(x.activities[0].activityType)
 
       var duration = calcDuration (x.duration.startTimestamp, x.duration.endTimestamp)
 
@@ -552,6 +552,8 @@ function calcDist(activityType, duration, distance, startLocation, endLocation) 
     }
 
   }
+
+  console.log('fall thru', calcDst, calcSpdMPH)
 
   return null
 
