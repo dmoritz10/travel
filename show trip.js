@@ -140,7 +140,7 @@ Object
     var x = actTemplate.replace(/durationToken/, formatDuration(val.duration))
     x = x.replace(/distanceToken/, formatDistance(val.distance))
     x = x.replace(/activityToken/, key)
-    x = x.replace(/iconToken/, 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_walking_black_24dp.png')
+    x = x.replace(/iconToken/, getActivityIcon(key))
     
     actFormatted += x
 
@@ -156,6 +156,66 @@ Object
   return actHtml
 
 }
+
+function getActivityIcon(activityType) {
+
+  switch (activityType) {
+
+    case 'Boating':
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_boat_black_24dp.png'
+    break;
+    case 'Cycling':
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_biking_black_24dp.png'
+    break;
+    case 'Flying':
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/local_airport_black_24dp.png'
+    break;
+    case 'Hiking':
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_hiking_black_24dp.png'
+    break;
+    case 'On a bus':
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_bus_black_24dp.png'
+    break;
+    case 'On a ferry':
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_boat_black_24dp.png'
+    break;
+    case 'In a gondola lift':
+      var type = 'In a gondola lift'
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_gondola_black_24dp.png'
+    break;
+    case 'Driving':
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_car_black_24dp.png'
+    break;
+    case 'On the subway':
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_subway_black_24dp.png'
+    break;
+    case 'In a taxi':
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/local_taxi_black_24dp.png'
+    break;
+    case 'On a train':
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_railway_black_24dp.png'
+    break;
+    case 'On a tram':
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_tram_black_24dp.png'
+    break;
+    case 'IN_VEHICLE':
+      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_car_black_24dp.png'
+    break;
+    case 'Skiing':
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_downhill_skiing_black_24dp.png'
+    break;
+    case 'Walking':
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_walking_black_24dp.png'
+    break;
+    default:
+      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_moving_black_24dp.png'
+    break;
+  }
+
+  return url
+
+}
+
 
 function formatDuration(duration) {
 
