@@ -388,7 +388,7 @@ async function formatPlace(json, objLHD) {
 
       if (!distance) {
         
-        console.log('invalid distance', activityType, duration, x.distance, calcDistance(x.startLocation, x.endLocation))
+        console.log('invalid distance', activityType, duration/60, x.distance/1609.34, calcDistance(x.startLocation, x.endLocation)/1609.34)
         
         continue
 
@@ -403,7 +403,6 @@ async function formatPlace(json, objLHD) {
 
       tempAct.push([
         x.duration.endTimestamp,
-        x.activityType,
         x.activities[0].activityType,
         calcDuration (x.duration.startTimestamp, x.duration.endTimestamp)/60,
         x.distance/1609.34,
@@ -484,6 +483,7 @@ function calcActivityType(activityType) {
     break;
     case 'IN_TAXI':
       var type = 'In a taxi'
+      var maxSpeedMPH = 90
       var url = 'https://www.gstatic.com/images/icons/material/system/2x/local_taxi_black_24dp.png'
     break;
     case 'IN_TRAIN':
@@ -531,6 +531,8 @@ function calcDist(activityType, duration, distance, startLocation, endLocation) 
   const spdInMPH = (distance, duration) => (distance / 1609.34) / (duration / 60)
 
   if (duration <= 0) return null
+
+  if (activityType.type == "Flying") return distance
 
   var spdMPH = spdInMPH(distance, duration)
 

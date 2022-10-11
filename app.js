@@ -35,7 +35,6 @@
 
     var tempAct = [[
         'endTimestamp',
-        'activityType',
         'activities[0].activityType',
         'calcDuration/60',
         'distance/1609.34',
