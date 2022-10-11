@@ -388,7 +388,7 @@ async function formatPlace(json, objLHD) {
 
       if (!distance) {
         
-        console.log('invalid distance', activityType, duration/60, x.distance/1609.34, calcDistance(x.startLocation, x.endLocation)/1609.34, (calcDistance(x.startLocation, x.endLocation)/1609.34)/(duration/60))
+        console.log('invalid distance', x.duration.startTimestamp, activityType, duration/60, x.distance/1609.34, calcDistance(x.startLocation, x.endLocation)/1609.34, (calcDistance(x.startLocation, x.endLocation)/1609.34)/(duration/60))
         
         continue
 
