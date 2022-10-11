@@ -498,6 +498,7 @@ function calcActivityType(activityType) {
     break;
     case 'IN_VEHICLE':
       var type = 'Driving'
+      var maxSpeedMPH = 90
       var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_car_black_24dp.png'
     break;
     case 'SKIING':
