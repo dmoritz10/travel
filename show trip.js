@@ -100,6 +100,9 @@ async function showTrip(idx) {
     
   });
 
+  $('#tblTrips tr div').addClass('day-hdr')
+
+   
 
 } 
 
