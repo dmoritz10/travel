@@ -52,9 +52,10 @@ async function showTrip(idx) {
 
       var actDisp = formatActivities(activities)
       if (priorHdr > -1) trp[priorHdr][1] = trp[priorHdr][1].replace(/replacementToken/g, actDisp).replace(/hrefDateToken/g, googleTimelineHref)
+      console.log('trp', trp[priorHdr][1])
+      
       priorHdr = trp.length
 
-      console.log('trp', trp[priorHdr][1])
 
       trp.push(["<div class='text-start pt-1'><span class='text-primary h4'>" + dispDate + "</span></div>",
                 '<div>' + "replacementToken" + '</div>'
