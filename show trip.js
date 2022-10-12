@@ -31,7 +31,7 @@ async function showTrip(idx) {
     if (date != brkDate) {
 
       var dispDate = DateTime.fromJSDate(new Date(date)).toFormat('ccc L/d');
-      var hrefDate = DateTime.fromJSDate(new Date(date)).toFormat('yyyy-LL-dd');
+      var hrefDate = DateTime.fromJSDate(new Date(date)).toFormat('yyyy-L-d');
 
       var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate
 
