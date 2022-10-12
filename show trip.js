@@ -31,7 +31,10 @@ async function showTrip(idx) {
     if (date != brkDate) {
 
       var dispDate = DateTime.fromJSDate(new Date(date)).toFormat('ccc L/d');
-      var hrefDate = DateTime.fromJSDate(new Date(date)).toFormat('LL-dd');
+      var hrefDate = DateTime.fromJSDate(new Date(date)).toFormat('yyyy-LL-dd');
+
+      console.log(hrefDate)
+      console.log(dispDate)
 
       console.log(DateTime.fromJSDate(new Date(date)).toFormat('LL-dd'))
       console.log(DateTime.fromJSDate(new Date(date)).toFormat('L/d'))
