@@ -36,11 +36,11 @@ async function showTrip(idx) {
       var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate
 
       var actDisp = formatActivities(activities)
-      if (priorHdr > -1) trp[priorHdr][1] = trp[priorHdr][1].replace(/replacementToken/g, actDisp)
+      if (priorHdr > -1) trp[priorHdr][1] = trp[priorHdr][1].replace(/replacementToken/g, actDisp).replace(/hrefDateToken/g, googleTimelineHref)
       priorHdr = trp.length
 
       trp.push(["<div class='text-start pt-1'><span class='text-primary h4'>" + dispDate + "</span></div>",
-                '<div>' + "replacementToken" + '<div class="text-end me-2"><a  target="_blank" href=' + googleTimelineHref + '><img class="img-thumbnail border-0 bg-transparent" width="40" height="40" src=  "images/icons/google-my-locn-hist.jpg" /></a></div>' + '</div>'
+                '<div>' + "replacementToken" + '</div>'
               ])
 
       brkDate = date
@@ -110,15 +110,17 @@ function formatActivities(activities) {
   var actHtml = '<div class="timeline-item top-activities"\>'
 
   var actTemplate = `
-    <div class="top-activity" tabindex="0"><a target="_blank" href="https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s2022-01-30">
-      <div class="top-activity-icon"
-        style="background-image:url(iconToken)"
-        title="activityToken"> </div>
-      <div class="top-activity-text">
-        <div>distanceToken</div>
-        <div>durationToken</div>
-      </div>  
-      </a></div>
+    <div class="top-activity" tabindex="0">
+      <a target="_blank" href="hrefDateToken">
+        <div class="top-activity-icon"
+          style="background-image:url(iconToken)"
+          title="activityToken"> </div>
+        <div class="top-activity-text">
+          <div>distanceToken</div>
+          <div>durationToken</div>
+        </div>  
+      </a>
+    </div>
     `
 
 console.log('before', activities)
