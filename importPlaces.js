@@ -440,81 +440,65 @@ function calcActivityType(activityType) {
     case 'BOATING':
       var type = 'Boating'
       var maxSpeedMPH = 60
-      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_boat_black_24dp.png'
     break;
     case 'CYCLING':
       var type = 'Cycling'
       var maxSpeedMPH = 30
-      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_biking_black_24dp.png'
     break;
     case 'FLYING':
       var type = 'Flying'
       var maxSpeedMPH = 800
-      var url = 'https://www.gstatic.com/images/icons/material/system/2x/local_airport_black_24dp.png'
     break;
     case 'HIKING':
       var type = 'Hiking'
       var maxSpeedMPH = 15
-      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_hiking_black_24dp.png'
     break;
     case 'IN_BUS':
       var type = 'On a bus'
       var maxSpeedMPH = 80
-      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_bus_black_24dp.png'
     break;
     case 'IN_FERRY':
       var type = 'On a ferry'
       var maxSpeedMPH = 60
-      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_boat_black_24dp.png'
     break;
     case 'IN_GONDOLA_LIFT':
       var type = 'In a gondola lift'
-      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_gondola_black_24dp.png'
     break;
     case 'IN_PASSENGER_VEHICLE':
       var type = 'Driving'
       var maxSpeedMPH = 90
-      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_car_black_24dp.png'
     break;
     case 'IN_SUBWAY':
       var type = 'On the subway'
       var maxSpeedMPH = 90
-      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_subway_black_24dp.png'
     break;
     case 'IN_TAXI':
       var type = 'In a taxi'
       var maxSpeedMPH = 90
-      var url = 'https://www.gstatic.com/images/icons/material/system/2x/local_taxi_black_24dp.png'
     break;
     case 'IN_TRAIN':
       var type = 'On a train'
       var maxSpeedMPH = 90
-      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_railway_black_24dp.png'
     break;
     case 'IN_TRAM':
       var type = 'On a tram'
       var maxSpeedMPH = 60
-      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_tram_black_24dp.png'
     break;
     case 'IN_VEHICLE':
       var type = 'Driving'
       var maxSpeedMPH = 90
-      var url = 'https://www.gstatic.com/images/icons/material/system/2x/directions_car_black_24dp.png'
     break;
     case 'SKIING':
       var type = 'Skiing'
       var maxSpeedMPH = 90
-      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_downhill_skiing_black_24dp.png'
     break;
     case 'WALKING':
       var type = 'Walking'
       var maxSpeedMPH = 15
-      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_walking_black_24dp.png'
     break;
     default:
       var type = 'Moving'
       var maxSpeedMPH = 90
-      var url = 'https://maps.gstatic.com/mapsactivities/icons/activity_icons/2x/ic_activity_moving_black_24dp.png'
     break;
   }
 
