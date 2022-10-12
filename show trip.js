@@ -110,8 +110,8 @@ function formatActivities(activities) {
   var actHtml = '<div class="timeline-item top-activities"\>'
 
   var actTemplate = `
-    <div class="top-activity" tabindex="0">
-      <a style="text-decoration: none" target="_blank" href="hrefDateToken">
+  <a style="text-decoration: none" target="_blank" href="hrefDateToken">
+  <div class="top-activity" tabindex="0">
         <div class="top-activity-icon"
           style="background-image:url(iconToken)"
           title="activityToken"> </div>
@@ -119,8 +119,8 @@ function formatActivities(activities) {
           <div>distanceToken</div>
           <div>durationToken</div>
         </div>  
-      </a>
     </div>
+    </a>
     `
 
 console.log('before', activities)
