@@ -30,9 +30,17 @@ async function showTrip(idx) {
 
     if (date != brkDate) {
 
-      var dt = DateTime.fromJSDate(new Date(date))
-      var dispDate = dt.toFormat('ccc L/d');
-      var hrefDate = dt.toFormat('yyyy/L/d');
+      var dispDate = DateTime.fromJSDate(new Date(date)).toFormat('ccc L/d');
+      var hrefDate = DateTime.fromJSDate(new Date(date)).toFormat('LL-dd');
+
+      console.log(DateTime.fromJSDate(new Date(date)).toFormat('LL-dd'))
+      console.log(DateTime.fromJSDate(new Date(date)).toFormat('L/d'))
+      console.log(DateTime.fromJSDate(new Date(date)).toFormat('ccc L/d'))
+      console.log(DateTime.fromJSDate(new Date(date)).toFormat('YYYY L/d'))
+      console.log(DateTime.fromJSDate(new Date(date)).toFormat('YYYY LL dd'))
+
+      console.log(DateTime.fromJSDate(new Date(date)).toFormat('YYYY'))
+
 
       var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate
 
