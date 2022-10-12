@@ -30,7 +30,7 @@ async function showTrip(idx) {
 
     if (date != brkDate) {
 
-      var dispDate = DateTime.fromJSDate(new Date(brkDate)).toFormat('ccc L/d');
+      var dispDate = DateTime.fromJSDate(new Date(date)).toFormat('ccc L/d');
       var hrefDate = DateTime.fromJSDate(new Date(brkDate)).toFormat('yyyy-LL-dd');
 
       console.log(hrefDate)
@@ -129,7 +129,6 @@ function formatActivities(activities) {
     </a>
     `
 
-console.log('before', activities)
 var sorted = {};
 
 Object
@@ -139,8 +138,6 @@ Object
     .forEach(function(key) {
         sorted[key] = activities[key];
     });
-
-    console.log('after', sorted)
 
   var actFormatted = ''
   Object.entries(sorted).forEach(([key, val]) => {
