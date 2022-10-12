@@ -32,7 +32,7 @@ async function showTrip(idx) {
 
       var dt = DateTime.fromJSDate(new Date(date))
       var dispDate = dt.toFormat('ccc L/d');
-      var hrefDate = dt.toFormat('yyyy-L-d');
+      var hrefDate = dt.toFormat('yyyy/L/d');
 
       var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate
 
