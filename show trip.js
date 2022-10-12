@@ -51,8 +51,8 @@ async function showTrip(idx) {
       var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate
 
       var actDisp = formatActivities(activities)
-      if (priorHdr > -1) trp[priorHdr][1] = trp[priorHdr][1].replace(/replacementToken/g, actDisp).replace(/hrefDateToken/g, googleTimelineHref)
-      console.log('trp', trp[priorHdr][1])
+      if (priorHdr > -1) {trp[priorHdr][1] = trp[priorHdr][1].replace(/replacementToken/g, actDisp).replace(/hrefDateToken/g, googleTimelineHref)
+      console.log('trp', trp[priorHdr][1])}
       
       priorHdr = trp.length
 
@@ -81,7 +81,7 @@ async function showTrip(idx) {
   }
 
   var actDisp = formatActivities(activities)
-  if (priorHdr > -1) trp[priorHdr][1] = trp[priorHdr][1].replace(/replacementToken/g, actDisp)
+  if (priorHdr > -1) trp[priorHdr][1] = trp[priorHdr][1].replace(/replacementToken/g, actDisp).replace(/hrefDateToken/g, googleTimelineHref)
 
   
   var tbl = new Table();
