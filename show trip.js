@@ -111,7 +111,7 @@ function formatActivities(activities) {
 
   var actTemplate = `
     <div class="top-activity" tabindex="0">
-      <a target="_blank" href="hrefDateToken">
+      <a style="text-decoration: none" target="_blank" href="hrefDateToken">
         <div class="top-activity-icon"
           style="background-image:url(iconToken)"
           title="activityToken"> </div>
