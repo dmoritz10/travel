@@ -100,8 +100,8 @@ async function showTrip(idx) {
     
   });
 
-  // $('#tblTrips tr td>div').each( () => {$(this).addClass('day-hdr')})
-  $('#tblTrips tr td>div').addClass('day-hdr')
+  $('#tblTrips tr td>div').each( (this) => {$(this).addClass('day-hdr')})
+  // $('#tblTrips tr td>div').addClass('day-hdr')
 
    
 
