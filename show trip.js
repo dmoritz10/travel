@@ -36,13 +36,13 @@ async function showTrip(idx) {
       console.log(DateTime.fromJSDate(new Date(date)).toFormat('LL-dd'))
       console.log(DateTime.fromJSDate(new Date(date)).toFormat('L/d'))
       console.log(DateTime.fromJSDate(new Date(date)).toFormat('ccc L/d'))
-      console.log(DateTime.fromJSDate(new Date(date)).toFormat('YYYY L/d'))
-      console.log(DateTime.fromJSDate(new Date(date)).toFormat('YYYY LL dd'))
-      console.log(DateTime.fromJSDate(new Date(date)).toFormat('YYYY-LL-dd'))
+      console.log(DateTime.fromJSDate(new Date(date)).toFormat('yyyy L/d'))
+      console.log(DateTime.fromJSDate(new Date(date)).toFormat('yyyy LL dd'))
+      console.log(DateTime.fromJSDate(new Date(date)).toFormat('yyyy-LL-dd'))
 
-      console.log(DateTime.fromJSDate(new Date(date)).toFormat('YYYY'))
-      console.log(DateTime.fromJSDate(new Date(date)).toFormat('Y'))
-      console.log(DateTime.fromJSDate(new Date(date)).toFormat('YY'))
+      console.log(DateTime.fromJSDate(new Date(date)).toFormat('yyyy'))
+      console.log(DateTime.fromJSDate(new Date(date)).toFormat('y'))
+      console.log(DateTime.fromJSDate(new Date(date)).toFormat('yy'))
 
 
       var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate
