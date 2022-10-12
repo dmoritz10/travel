@@ -31,16 +31,16 @@ async function showTrip(idx) {
     if (date != brkDate) {
 
       var dispDate = DateTime.fromJSDate(new Date(date)).toFormat('ccc L/d');
-      var hrefDate = DateTime.fromJSDate(new Date(brkDate)).toFormat('yyyy-LL-dd');
-
-      console.log(hrefDate)
-      console.log(dispDate)
-
-      var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate
 
       var actDisp = formatActivities(activities)
-      if (priorHdr > -1) {trp[priorHdr][1] = trp[priorHdr][1].replace(/replacementToken/g, actDisp).replace(/hrefDateToken/g, googleTimelineHref)
-      console.log('trp', trp[priorHdr][1])}
+      if (priorHdr > -1) {
+
+        var hrefDate = DateTime.fromJSDate(new Date(brkDate)).toFormat('yyyy-LL-dd');
+        var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate
+        trp[priorHdr][1] = trp[priorHdr][1].replace(/replacementToken/g, actDisp).replace(/hrefDateToken/g, googleTimelineHref)
+        console.log('trp', trp[priorHdr][1])
+    
+      }
       
       priorHdr = trp.length
 
