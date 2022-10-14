@@ -127,7 +127,7 @@ function accumActivities( objAct, accumAct) {
 
 function formatActivities(activities) {
 
-  var actHtml = '<div class="timeline-item top-activities mb-1">'
+  var actHtml = '<div class="timeline-item top-activities my-2">'
 
   var actTemplate = `
   <a style="text-decoration: none" target="_blank" href="hrefDateToken">
