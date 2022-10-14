@@ -102,7 +102,7 @@ async function showTrip(idx) {
 
   $('#tblTrips tr td>div').each( function () {
     console.log(this, $(this))
-    // $(this).addClass('day-hdr')
+    $(this).addClass('day-hdr')
     $(this).parent().parent().addClass('day-hdr')})
   // $('#tblTrips tr td>div').addClass('day-hdr')
 
