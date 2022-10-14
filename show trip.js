@@ -44,7 +44,7 @@ async function showTrip(idx) {
       priorHdr = trp.length
 
 
-      trp.push(["<div class='text-start my-2'><span class='text-primary h4'>" + dispDate + "</span></div>",
+      trp.push(["<div class='text-start my-2'><span class='text-primary h3'>" + dispDate + "</span></div>",
                 '<div>' + "replacementToken" + '</div>'
               ])
 
