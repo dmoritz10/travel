@@ -8,7 +8,34 @@ async function btnPhotoXrayHtml() {
 }
 
 
-async function showFile(e) {
+async function showFile(input) {
+
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+    
+        reader.onload = async function (e) {
+    
+        //   var rtn = await displayFile (e.target.result, frntback)
+        //   if (!rtn) return
+
+        var file = e.target.files[0]
+        if (file && file.name) {
+            EXIF.getData(file, function() {
+                var exifData = EXIF.pretty(this);
+                if (exifData) {
+                    alert(exifData);
+                } else {
+                    alert("No EXIF data found in image '" + file.name + "'.");
+                }
+            });
+        }
+    
+        }
+    
+        reader.readAsDataURL(input.files[0]);
+      }
+    
 
     var file = e.target.files[0]
     if (file && file.name) {
