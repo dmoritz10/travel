@@ -19,8 +19,6 @@ async function showFile(input) {
         reader.onload = async function (e) {
 
             console.log('e',e)
-    console.log('e.target.result', e.target.result)
-
     
         //   var rtn = await displayFile (e.target.result, frntback)
         //   if (!rtn) return
@@ -157,20 +155,20 @@ async function  xrayPhoto(imgSrc) {
   
 }
 
-// document.getElementById("pxChooseFile").onchange = function(e) {
-//     console.log('e', e)
-//     console.log('e.target.result', e.target.result)
+document.getElementById("pxChooseFile").onchange = function(e) {
+    console.log('ex', e)
+    console.log('ex.target.files[0]', e.target.files[0])
     
-//     var file = e.target.files[0]
-//     if (file && file.name) {
-//         EXIF.getData(file, function() {
-//             console.log('this', this)
-//             var exifData = EXIF.pretty(this);
-//             if (exifData) {
-//                 alert(exifData);
-//             } else {
-//                 alert("No EXIF data found in image '" + file.name + "'.");
-//             }
-//         });
-//     }
-// }
+    var file = e.target.files[0]
+    if (file && file.name) {
+        EXIF.getData(file, function() {
+            console.log('this', this)
+            var exifData = EXIF.pretty(this);
+            if (exifData) {
+                alert(exifData);
+            } else {
+                alert("No EXIF data found in image '" + file.name + "'.");
+            }
+        });
+    }
+}
