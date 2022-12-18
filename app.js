@@ -236,7 +236,7 @@ jQuery(function ($) {
             $('#btnReservations')       .click(listReservations);
             $('#btnPlaces')             .click(btnPlacesHtml);
             $('#btnTripByYr')           .click(btnTripByYrHtml);
-            $('#btnphotoXray')          .click(btnphotoXrayHtml);
+            $('#btnphotoXray')          .click(btnPhotoXrayHtml);
             
             // Trips
             $('#btnTrpSelect')            .click(btnTrpSelectHtml);
