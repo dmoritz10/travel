@@ -82,11 +82,11 @@ async function  xrayPhoto(imgSrc) {
 
     console.log('imgSrc', imgSrc)
 
-    EXIF.getData(imgSrc, async function() {
+    EXIF.getData(imgSrc, function() {
 
         console.log('getData')
 
-        var allMetaData = await EXIF.getAllTags(this);
+        var allMetaData = EXIF.getAllTags(this);
 
         console.log('all metadata', allMetaData)
 
