@@ -29,6 +29,8 @@ async function showFile(input) {
 async function displayFile (imgSrc) {
 
     var fileInfo = parseFile(imgSrc)
+
+    console.log('fileInfo', fileInfo)
   
     if (fileInfo.invalidFile) {
       toast(fileInfo.invalidFile, 5000)
@@ -78,8 +80,13 @@ async function  xrayPhoto(imgSrc) {
   
     var xray = []
 
+    console.log('imgSrc', imgSrc)
+
     EXIF.getData(imgSrc, function() {
-        var allMetaData = EXIF.getAllTags(this);
+
+        console.log('getData')
+
+        var allMetaData = await EXIF.getAllTags(this);
 
         console.log('all metadata', allMetaData)
 
