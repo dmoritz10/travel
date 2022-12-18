@@ -15,8 +15,18 @@ async function showFile(input) {
   
       reader.onload = async function (e) {
   
-        var rtn = await displayFile (e.target.result)
-        if (!rtn) return
+        // var rtn = await displayFile (e.target.result)
+        // if (!rtn) return
+
+        EXIF.getData(e.target.result, function() {
+
+            console.log('getData111')
+    
+            var allMetaData = EXIF.getAllTags(this);
+    
+            console.log('all metadata111', allMetaData)
+    
+        });
   
       }
   
@@ -80,7 +90,7 @@ async function  xrayPhoto(imgSrc) {
   
     var xray = []
 
-    console.log('imgSrc', imgSrc)
+    console.log('exif', exif)
 
     EXIF.getData(imgSrc, function() {
 
