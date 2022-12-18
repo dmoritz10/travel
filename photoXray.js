@@ -18,6 +18,10 @@ async function showFile(input) {
         // var rtn = await displayFile (e.target.result)
         // if (!rtn) return
 
+        console.log('e', e)
+    console.log('exif', EXIF)
+
+
         EXIF.getData(e.target.result, function() {
 
             console.log('getData111')
@@ -90,7 +94,7 @@ async function  xrayPhoto(imgSrc) {
   
     var xray = []
 
-    console.log('exif', exif)
+    console.log('exif', EXIF)
 
     EXIF.getData(imgSrc, function() {
 
