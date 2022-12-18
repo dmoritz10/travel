@@ -234,8 +234,9 @@ jQuery(function ($) {
             $('#btnCountries')          .button().click(btnCountriesHtml);
             $('#btnTrips')              .button().click(listTrips);
             $('#btnReservations')       .click(listReservations);
-            $('#btnPlaces')              .click(btnPlacesHtml);
+            $('#btnPlaces')             .click(btnPlacesHtml);
             $('#btnTripByYr')           .click(btnTripByYrHtml);
+            $('#btnphotoXray')          .click(btnphotoXrayHtml);
             
             // Trips
             $('#btnTrpSelect')            .click(btnTrpSelectHtml);
