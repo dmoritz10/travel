@@ -125,6 +125,8 @@ async function  xrayPhoto(imgSrc) {
 
 document.getElementById("pxChooseFile").onchange = function(e) {
     console.log('e', e)
+    console.log('e.target.result', e.target.result)
+    
     var file = e.target.files[0]
     if (file && file.name) {
         EXIF.getData(file, function() {
