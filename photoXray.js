@@ -127,6 +127,7 @@ document.getElementById("pxChooseFile").onchange = function(e) {
     var file = e.target.files[0]
     if (file && file.name) {
         EXIF.getData(file, function() {
+            console.log('this', this)
             var exifData = EXIF.pretty(this);
             if (exifData) {
                 alert(exifData);
