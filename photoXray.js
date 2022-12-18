@@ -82,7 +82,7 @@ async function  xrayPhoto(imgSrc) {
 
     console.log('imgSrc', imgSrc)
 
-    EXIF.getData(imgSrc, function() {
+    EXIF.getData(imgSrc, async function() {
 
         console.log('getData')
 
@@ -122,10 +122,4 @@ async function  xrayPhoto(imgSrc) {
   
     modal(false)
   
-  
-
-
-
-
-
 }
