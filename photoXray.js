@@ -8,36 +8,21 @@ async function btnPhotoXrayHtml() {
 }
 
 
-async function showFile(input) {
+async function showFile(e) {
 
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-  
-      reader.onload = async function (e) {
-  
-        // var rtn = await displayFile (e.target.result)
-        // if (!rtn) return
-
-        console.log('e', e)
-    console.log('exif', EXIF)
-
-
-        EXIF.getData(e.target.result, function() {
-
-            console.log('getData111')
-    
-            var allMetaData = EXIF.getAllTags(this);
-    
-            console.log('all metadata111', allMetaData)
-    
+    var file = e.target.files[0]
+    if (file && file.name) {
+        EXIF.getData(file, function() {
+            var exifData = EXIF.pretty(this);
+            if (exifData) {
+                alert(exifData);
+            } else {
+                alert("No EXIF data found in image '" + file.name + "'.");
+            }
         });
-  
-      }
-  
-      reader.readAsDataURL(input.files[0]);
     }
   
-  }
+}
 
   
 async function displayFile (imgSrc) {
@@ -94,7 +79,7 @@ async function  xrayPhoto(imgSrc) {
   
     var xray = []
 
-    console.log('exif', EXIF)
+    console.log('exif', exif)
 
     EXIF.getData(imgSrc, function() {
 
