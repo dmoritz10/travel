@@ -10,11 +10,15 @@ async function btnPhotoXrayHtml() {
 
 async function showFile(input) {
 
+    console.log('input', input)
+
 
     if (input.files && input.files[0]) {
         var reader = new FileReader();
     
         reader.onload = async function (e) {
+
+            console.log('e',e)
     
         //   var rtn = await displayFile (e.target.result, frntback)
         //   if (!rtn) return
