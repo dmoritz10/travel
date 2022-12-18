@@ -28,6 +28,7 @@ async function showFile(input) {
         var file = e.target.files[0]
         if (file && file.name) {
             EXIF.getData(file, function() {
+                console.log('this', this)
                 var exifData = EXIF.pretty(this);
                 if (exifData) {
                     alert(exifData);
@@ -43,17 +44,17 @@ async function showFile(input) {
       }
     
 
-    var file = e.target.files[0]
-    if (file && file.name) {
-        EXIF.getData(file, function() {
-            var exifData = EXIF.pretty(this);
-            if (exifData) {
-                alert(exifData);
-            } else {
-                alert("No EXIF data found in image '" + file.name + "'.");
-            }
-        });
-    }
+    // var file = e.target.files[0]
+    // if (file && file.name) {
+    //     EXIF.getData(file, function() {
+    //         var exifData = EXIF.pretty(this);
+    //         if (exifData) {
+    //             alert(exifData);
+    //         } else {
+    //             alert("No EXIF data found in image '" + file.name + "'.");
+    //         }
+    //     });
+    // }
   
 }
 
