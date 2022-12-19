@@ -1,80 +1,47 @@
 async function btnPhotoXrayHtml() {
 
-
     gotoTab('PhotoXray')
-
-
 
 }
 
 
 async function showFile(input) {
 
-    console.log('input', input)
-
-
     if (input.files && input.files[0]) {
         var reader = new FileReader();
     
         reader.onload = async function (e) {
-
-            console.log('e',e)
-            console.log('this',this)
     
-        //   var rtn = await displayFile (e.target.result, frntback)
-        //   if (!rtn) return
+          var rtn = await validateFile (e.target.result)
+          if (!rtn) return
 
-        var img = document.getElementById('pxImg')
-        img.src = e.target.result
-        await waitForImage(img)
+          var img = document.getElementById('pxImg')
+          img.src = e.target.result
+          await waitForImage(img)
 
-            EXIF.getData(img, function() {
-                console.log('this', this)
-                var exifData = EXIF.pretty(this);
-                console.log('exifData',exifData)
-                if (exifData) {
-                    alert(exifData);
-                } else {
-                    alert("No EXIF data found in image '" + file.name + "'.");
-                }
-            });
-    
+          EXIF.getData(img, function() {
+              console.log('this', this)
+              xrayPhoto(this)
+              
+          });
+  
         }
     
         reader.readAsDataURL(input.files[0]);
 
       }
-    
-
-    // var file = e.target.files[0]
-    // if (file && file.name) {
-    //     EXIF.getData(file, function() {
-    //         var exifData = EXIF.pretty(this);
-    //         if (exifData) {
-    //             alert(exifData);
-    //         } else {
-    //             alert("No EXIF data found in image '" + file.name + "'.");
-    //         }
-    //     });
-    // }
   
 }
 
   
-async function displayFile (imgSrc) {
+async function validateFile (imgSrc) {
 
     var fileInfo = parseFile(imgSrc)
 
-    console.log('fileInfo', fileInfo)
-  
     if (fileInfo.invalidFile) {
       toast(fileInfo.invalidFile, 5000)
       return null
     }
-  
-    // clearCanvas(frntback)
-  
-      await xrayPhoto(imgSrc)
                                       
     return true
     
@@ -89,7 +56,6 @@ async function displayFile (imgSrc) {
     var data = x[1]
   
     var validFileTypes = [
-      'data:application/pdf',
       'data:image/png',
       'data:image/jpeg'
     ]
@@ -109,51 +75,42 @@ async function displayFile (imgSrc) {
   
   }
   
-async function  xrayPhoto(imgSrc) {
+async function  xrayPhoto(exif) {
 
     modal(true)
   
     var xray = []
 
     console.log('exif', exif)
-
-    EXIF.getData(imgSrc, function() {
-
-        console.log('getData')
-
-        var allMetaData = EXIF.getAllTags(this);
-
-        console.log('all metadata', allMetaData)
-
-    });
   
-    console.log('timeing')
+    for (var i=0; i<exif.length;i++) {
+
+      var exifData = parseExif(exif)
   
-    // for (var i=1; i<shtHdrs.length;i++) {
+      xray.push(['Trip', ])
+
+      imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></embed></span>" : val=''
+      icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[1] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
   
-      
-    //     imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></embed></span>" : val=''
-    //     icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[1] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
+      sht.push(['Back', val, icon])
+
+    }
     
-    //     sht.push(['Back', val, icon])
-
-    // }
+    var tbl = new Table();
     
-    // var tbl = new Table();
-    
-    // tbl
-    //   .setHeader()
-    //   .setTableHeaderClass()
-    //   .setData(sht)
-    //   .setTableClass('table table-borderless')
-    //   .setTrClass('d-flex')
-    //   .setTcClass(['text-end col-4 h5 text-success', 'text-start col h4', 'col-1'])
-    //   .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
-    //   .build('#tblSheet');
+    tbl
+      .setHeader()
+      .setTableHeaderClass()
+      .setData(sht)
+      .setTableClass('table table-borderless')
+      .setTrClass('d-flex')
+      .setTcClass(['text-end col-4 h5 text-success', 'text-start col h4', 'col-1'])
+      .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
+      .build('#tblSheet');
   
-    // gotoTab('ShowSheet')
+    gotoTab('ShowSheet')
   
-    // $('#shtContainer > div').eq(idx+1).trigger( "click" )
+    $('#shtContainer > div').eq(idx+1).trigger( "click" )
   
     modal(false)
   
@@ -169,20 +126,13 @@ async function waitForImage(imgElem) {
     });
   }
 
-// document.getElementById("pxChooseFile").onchange = function(e) {
-//     console.log('ex', e)
-//     console.log('ex.target.files[0]', e.target.files[0])
-    
-//     var file = e.target.files[0]
-//     if (file && file.name) {
-//         EXIF.getData(file, function() {
-//             console.log('this', this)
-//             var exifData = EXIF.pretty(this);
-//             if (exifData) {
-//                 alert(exifData);
-//             } else {
-//                 alert("No EXIF data found in image '" + file.name + "'.");
-//             }
-//         });
-//     }
-// }
+function parseExif(exif) {
+
+  var allMetaData = EXIF.getAllTags(exif);
+
+  console.log('allMetaData', allMetaData)
+
+
+
+
+}
