@@ -24,10 +24,9 @@ async function showFile(input) {
         //   var rtn = await displayFile (e.target.result, frntback)
         //   if (!rtn) return
 
-        var img = new Image()
+        var img = document.getElementById('pximg')
         img.src = e.target.result
         await waitForImage(img)
-        console.log('img', img)
 
             EXIF.getData(img, function() {
                 console.log('this', this)
