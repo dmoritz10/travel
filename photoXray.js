@@ -26,6 +26,7 @@ async function showFile(input) {
 
         var img = new Image()
         img.src = e.target.result
+        console.log('img', img)
 
             EXIF.getData(img, function() {
                 console.log('this', this)
