@@ -24,7 +24,7 @@ async function showFile(input) {
         //   var rtn = await displayFile (e.target.result, frntback)
         //   if (!rtn) return
 
-        var img = document.getElementById('pximg')
+        var img = document.getElementById('pxImg')
         img.src = e.target.result
         await waitForImage(img)
 
