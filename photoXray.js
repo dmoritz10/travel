@@ -24,10 +24,9 @@ async function showFile(input) {
         //   var rtn = await displayFile (e.target.result, frntback)
         //   if (!rtn) return
 
-        var file = e.target.files[0]
-        if (file && file.name) {
-            EXIF.getData(file, function() {
+            EXIF.getData(e.target.result, function() {
                 console.log('this', this)
+                console.log('exifData',exifData)
                 var exifData = EXIF.pretty(this);
                 if (exifData) {
                     alert(exifData);
@@ -35,7 +34,6 @@ async function showFile(input) {
                     alert("No EXIF data found in image '" + file.name + "'.");
                 }
             });
-        }
     
         }
     
