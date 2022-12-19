@@ -24,7 +24,10 @@ async function showFile(input) {
         //   var rtn = await displayFile (e.target.result, frntback)
         //   if (!rtn) return
 
-            EXIF.getData(e.target.result, function() {
+        var img = new Image()
+        img.src = e.target.result
+
+            EXIF.getData(img, function() {
                 console.log('this', this)
                 console.log('exifData',exifData)
                 var exifData = EXIF.pretty(this);
