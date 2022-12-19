@@ -31,8 +31,8 @@ async function showFile(input) {
 
             EXIF.getData(img, function() {
                 console.log('this', this)
-                console.log('exifData',exifData)
                 var exifData = EXIF.pretty(this);
+                console.log('exifData',exifData)
                 if (exifData) {
                     alert(exifData);
                 } else {
