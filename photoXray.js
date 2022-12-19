@@ -19,6 +19,7 @@ async function showFile(input) {
         reader.onload = async function (e) {
 
             console.log('e',e)
+            console.log('this',this)
     
         //   var rtn = await displayFile (e.target.result, frntback)
         //   if (!rtn) return
@@ -39,6 +40,7 @@ async function showFile(input) {
         }
     
         reader.readAsDataURL(input.files[0]);
+
       }
     
 
