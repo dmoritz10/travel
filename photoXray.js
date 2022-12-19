@@ -26,6 +26,7 @@ async function showFile(input) {
 
         var img = new Image()
         img.src = e.target.result
+        await waitForImage(img)
         console.log('img', img)
 
             EXIF.getData(img, function() {
@@ -158,6 +159,16 @@ async function  xrayPhoto(imgSrc) {
     modal(false)
   
 }
+
+async function waitForImage(imgElem) {
+    return new Promise((res, rej) => {
+        if (imgElem.complete) {
+            return res();
+        }
+        imgElem.onload = () => res();
+        imgElem.onerror = () => rej(imgElem);
+    });
+  }
 
 // document.getElementById("pxChooseFile").onchange = function(e) {
 //     console.log('ex', e)
