@@ -20,8 +20,8 @@ async function showFile(input) {
           await waitForImage(img)
 
           EXIF.getData(img, function() {
-              console.log('this', this)
-              xrayPhoto(this)
+              var allMetaData = EXIF.getAllTags(this);
+              xrayPhoto(allMetaData)
               
           });
   
@@ -83,18 +83,16 @@ async function  xrayPhoto(exif) {
 
     console.log('exif', exif)
   
-    for (var i=0; i<exif.length;i++) {
+    // for (var i=0; i<exif.length;i++) {
 
-      var exifData = parseExif(exif)
+    //   xray.push(['Trip', ])
+
+    //   imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></embed></span>" : val=''
+    //   icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[1] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
   
-      xray.push(['Trip', ])
+    //   sht.push(['Back', val, icon])
 
-      imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></embed></span>" : val=''
-      icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[1] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
-  
-      sht.push(['Back', val, icon])
-
-    }
+    // }
     
     var tbl = new Table();
     
