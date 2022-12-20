@@ -44,6 +44,8 @@ async function showFile(input) {
       var reader = new FileReader();
   
       reader.onload = async function (e) {
+
+        console.log('onload', metaObj)
   
         var rtn = await validateFile (e.target.result)
         if (!rtn) return
@@ -76,8 +78,10 @@ function xrayMetaData(allMetaData, metaObj, fileName) {
     var k = key.toLowerCase()
 
     // if (k.indexOf('date') > -1 || k.indexOf('gps') > -1) {
-      if (metaObj[key]) ++metaObj.key
-      else metaObj[key] = 1
+
+    console.log('key', key, metaObj[key])
+      if (metaObj[key]) ++metaObj[key]
+      else              metaObj[key] = 1
     // }
   }
   
