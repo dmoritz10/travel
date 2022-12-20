@@ -5,35 +5,83 @@ async function btnPhotoXrayHtml() {
 }
 
 
+// async function showFile(input) {
+
+//     if (input.files && input.files[0]) {
+//         var reader = new FileReader();
+    
+//         reader.onload = async function (e) {
+    
+//           var rtn = await validateFile (e.target.result)
+//           if (!rtn) return
+
+//           var img = document.getElementById('pxImg')
+//           img.src = e.target.result
+//           await waitForImage(img)
+
+//           EXIF.getData(img, function() {
+//               var allMetaData = EXIF.getAllTags(this);
+//               xrayPhoto(allMetaData)
+              
+//           });
+  
+//         }
+    
+//         reader.readAsDataURL(input.files[0]);
+
+//       }
+  
+// }
+
 async function showFile(input) {
 
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-    
-        reader.onload = async function (e) {
-    
-          var rtn = await validateFile (e.target.result)
-          if (!rtn) return
+  metaObj = []
 
-          var img = document.getElementById('pxImg')
-          img.src = e.target.result
-          await waitForImage(img)
+  for (var i=0;i<input.files.length;i++) {
 
-          EXIF.getData(img, function() {
-              var allMetaData = EXIF.getAllTags(this);
-              xrayPhoto(allMetaData)
-              
-          });
+      var reader = new FileReader();
   
-        }
-    
-        reader.readAsDataURL(input.files[0]);
+      reader.onload = async function (e) {
+  
+        var rtn = await validateFile (e.target.result)
+        if (!rtn) return
+
+        var img = document.getElementById('pxImg')
+        img.src = e.target.result
+        await waitForImage(img)
+
+        EXIF.getData(img, function() {
+            var allMetaData = EXIF.getAllTags(this);
+            xrayMetaData(allMetaData, metaObj)
+            
+        });
+
+        console.log('metaObj',metaObj )
 
       }
   
+      reader.readAsDataURL(input.files[0]);
+
+  }
+
 }
 
+function xrayMetaData(allMetaData, metaObj, fileName) {
+
+  for (const [key, value] of Object.entries(allMetaData)) {
+
+    var k = key.toLowerCase()
+
+    if (k.indexOf('date') > -1 || k.indexOf('Gps')) {
+      if (metaObj[key]) ++metaObj.key
+      else metaObj[key] = 1
+
+    }
+  }
   
+}
+
+
 async function validateFile (imgSrc) {
 
     var fileInfo = parseFile(imgSrc)
