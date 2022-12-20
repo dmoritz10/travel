@@ -85,7 +85,6 @@ function xrayMetaData(allMetaData, metaObj, fileName) {
 
     // if (k.indexOf('date') > -1 || k.indexOf('gps') > -1) {
 
-    console.log('key', key, metaObj[key])
       if (metaObj[key]) ++metaObj[key]
       else              metaObj[key] = 1
     // }
