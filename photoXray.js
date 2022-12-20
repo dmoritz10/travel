@@ -72,7 +72,7 @@ function xrayMetaData(allMetaData, metaObj, fileName) {
 
     var k = key.toLowerCase()
 
-    if (k.indexOf('date') > -1 || k.indexOf('Gps')) {
+    if (k.indexOf('date') > -1 || k.indexOf('gps') > -1) {
       if (metaObj[key]) ++metaObj.key
       else metaObj[key] = 1
 
