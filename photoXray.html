@@ -21,7 +21,7 @@
         </div>
         <div class="col px-1">
           <div id="pxSheet" class="label text-success text-center h2 divfullscreen">Photo Xray</div>
-          <input type="text" class="form-control d-none" id="pxArrIdx" multiple>
+          <input type="text" class="form-control d-none" id="pxArrIdx">
         </div>
         <div class="col-1 px-1 mt-3">
           &nbsp;
@@ -52,7 +52,7 @@
         <div class="btn-group" role="group">
         
           <button type="button" class="btn btn-primary" onclick="document.getElementById('pxChooseFile').click()">Choose File</button>
-          <input id="pxChooseFile" class="form-control d-none" onchange="showFile(this)" type="file"  name="pxChooseFile">
+          <input multiple id="pxChooseFile" class="form-control d-none" onchange="showFile(this)" type="file"  name="pxChooseFile">
 
         </div>
       </div>
