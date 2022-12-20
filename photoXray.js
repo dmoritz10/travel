@@ -48,10 +48,10 @@ async function showFile(input) {
         console.log('e', e)
 
   
-        var rtn = validateFile (e.target.result)
+        let rtn = validateFile (e.target.result)
         if (!rtn) return
 
-        var img = document.getElementById('pxImg')
+        let img = document.getElementById('pxImg')
         img.src = e.target.result
 
         console.log('img1', img.src.length)
@@ -60,7 +60,7 @@ async function showFile(input) {
         console.log('img2', img.src.length)
 
         EXIF.getData(img, function() {
-            var allMetaData = EXIF.getAllTags(this);
+            let allMetaData = EXIF.getAllTags(this);
             console.log('allMetaData', allMetaData)
             xrayMetaData(allMetaData, metaObj)
             
