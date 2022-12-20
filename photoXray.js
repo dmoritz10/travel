@@ -35,7 +35,7 @@ async function btnPhotoXrayHtml() {
 
 async function showFile(input) {
 
-  metaObj = []
+  var metaObj = []
 
   for (var i=0;i<input.files.length;i++) {
 
@@ -52,6 +52,7 @@ async function showFile(input) {
 
         EXIF.getData(img, function() {
             var allMetaData = EXIF.getAllTags(this);
+            console.log('allMetaData', allMetaData)
             xrayMetaData(allMetaData, metaObj)
             
         });
