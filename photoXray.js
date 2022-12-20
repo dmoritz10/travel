@@ -37,6 +37,8 @@ async function showFile(input) {
 
   var metaObj = {}
 
+  console.log('input', input)
+
   for (var i=0;i<input.files.length;i++) {
 
       var reader = new FileReader();
