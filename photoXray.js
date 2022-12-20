@@ -94,21 +94,21 @@ async function  xrayPhoto(exif) {
 
     // }
     
-    var tbl = new Table();
+    // var tbl = new Table();
     
-    tbl
-      .setHeader()
-      .setTableHeaderClass()
-      .setData(sht)
-      .setTableClass('table table-borderless')
-      .setTrClass('d-flex')
-      .setTcClass(['text-end col-4 h5 text-success', 'text-start col h4', 'col-1'])
-      .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
-      .build('#tblSheet');
+    // tbl
+    //   .setHeader()
+    //   .setTableHeaderClass()
+    //   .setData(sht)
+    //   .setTableClass('table table-borderless')
+    //   .setTrClass('d-flex')
+    //   .setTcClass(['text-end col-4 h5 text-success', 'text-start col h4', 'col-1'])
+    //   .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
+    //   .build('#tblSheet');
   
-    gotoTab('ShowSheet')
+    // gotoTab('ShowSheet')
   
-    $('#shtContainer > div').eq(idx+1).trigger( "click" )
+    // $('#shtContainer > div').eq(idx+1).trigger( "click" )
   
     modal(false)
   
