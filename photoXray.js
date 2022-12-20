@@ -45,15 +45,17 @@ async function showFile(input) {
   
       reader.onload = async function (e) {
 
+        console.log('e', e)
+
   
         var rtn = validateFile (e.target.result)
-        if (!rtn) {console.log('return', input.files[i].name);return}
+        if (!rtn) return
 
         var img = document.getElementById('pxImg')
         img.src = e.target.result
         await waitForImage(img)
 
-        await EXIF.getData(img, function() {
+        EXIF.getData(img, function() {
             var allMetaData = EXIF.getAllTags(this);
             console.log('allMetaData', allMetaData)
             xrayMetaData(allMetaData, metaObj)
