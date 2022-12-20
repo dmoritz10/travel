@@ -60,7 +60,7 @@ async function showFile(input) {
 
       }
   
-      reader.readAsDataURL(input.files[0]);
+      reader.readAsDataURL(input.files[i]);
 
   }
 
