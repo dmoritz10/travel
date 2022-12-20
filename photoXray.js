@@ -45,7 +45,6 @@ async function showFile(input) {
   
       reader.onload = async function (e) {
 
-        console.log('onload', input.files[i].name, metaObj)
   
         var rtn = validateFile (e.target.result)
         if (!rtn) {console.log('return', input.files[i].name);return}
@@ -66,6 +65,7 @@ async function showFile(input) {
       }
   
       reader.readAsDataURL(input.files[i]);
+        console.log('onload', input.files[i].name, metaObj)
 
   }
 
