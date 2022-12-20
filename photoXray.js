@@ -54,10 +54,10 @@ async function showFile(input) {
         var img = document.getElementById('pxImg')
         img.src = e.target.result
 
-        console.log('src', src)
+        console.log('img1', img.length)
         await waitForImage(img)
 
-        console.log('img', img)
+        console.log('img2', img.length)
 
         EXIF.getData(img, function() {
             var allMetaData = EXIF.getAllTags(this);
