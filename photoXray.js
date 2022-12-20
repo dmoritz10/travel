@@ -81,7 +81,7 @@ async function btnPhotoXrayHtml() {
   const showFile = async (event) => {
   
     // Convert the FileList into an array and iterate
-    let files = Array.from(event.target.files).map(file => {
+    let files = Array.from(event.files).map(file => {
 
         // Define a new file reader
         let reader = new FileReader();
