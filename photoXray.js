@@ -54,7 +54,7 @@ async function showFile(input) {
         img.src = e.target.result
         await waitForImage(img)
 
-        EXIF.getData(img, function() {
+        await EXIF.getData(img, function() {
             var allMetaData = EXIF.getAllTags(this);
             console.log('allMetaData', allMetaData)
             xrayMetaData(allMetaData, metaObj)
