@@ -102,11 +102,34 @@ async function btnPhotoXrayHtml() {
     // At this point you'll have an array of results
     let res = await Promise.all(files);
 
+    var metaObj = {}
+
+
     console.log('res', res)
+
+    for (let i=0;i<res.length;i++) {
+
+              let img = document.getElementById('pxImg')
+              img.src = res[i]
+      
+              console.log('img1', img.src.length)
+              await waitForImage(img)
+      
+              console.log('img2', img.src.length)
+      
+              EXIF.getData(img, function() {
+                  let allMetaData = EXIF.getAllTags(this);
+                  console.log('allMetaData', allMetaData)
+                  xrayMetaData(allMetaData, metaObj)
+                  
+              });
   
-}
+    }
+
+    console.log('metaObj', metaObj)
 
 
+  }
 
 function xrayMetaData(allMetaData, metaObj, fileName) {
 
