@@ -35,7 +35,7 @@ async function btnPhotoXrayHtml() {
 
 async function showFile(input) {
 
-  var metaObj = []
+  var metaObj = {}
 
   for (var i=0;i<input.files.length;i++) {
 
