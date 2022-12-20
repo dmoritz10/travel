@@ -109,12 +109,11 @@ async function btnPhotoXrayHtml() {
 
     for (let i=0;i<res.length;i++) {
 
-              let img = document.getElementById('pxImg')
+              let img = new Image()
               img.src = res[i]
       
               console.log('img1', img.src.length)
               await waitForImage(img)
-      
               console.log('img2', img.src.length)
       
               EXIF.getData(img, function() {
