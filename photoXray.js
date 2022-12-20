@@ -48,7 +48,7 @@ async function showFile(input) {
         console.log('onload', input.files[i].name, metaObj)
   
         var rtn = validateFile (e.target.result)
-        if (!rtn) {console.log('return', input.files[i].name);return
+        if (!rtn) {console.log('return', input.files[i].name);return}
 
         var img = document.getElementById('pxImg')
         img.src = e.target.result
