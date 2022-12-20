@@ -45,10 +45,10 @@ async function showFile(input) {
   
       reader.onload = async function (e) {
 
-        console.log('onload', metaObj)
+        console.log('onload', input.files[i].name, metaObj)
   
-        var rtn = await validateFile (e.target.result)
-        if (!rtn) return
+        var rtn = validateFile (e.target.result)
+        if (!rtn) {console.log('return', input.files[i].name);return
 
         var img = document.getElementById('pxImg')
         img.src = e.target.result
