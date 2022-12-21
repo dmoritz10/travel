@@ -65,7 +65,6 @@ async function showFile(input) {
         // console.log('i', i, input.files.length, i>=input.files.length)
 
 
-          console.log('nbr input', metaObj.length)
           console.log('metaObj',metaObj )
         
 
@@ -77,7 +76,7 @@ async function showFile(input) {
 
   }
 
-  console.log('nbr input', metaObj.length)
+  console.log('nbr', Object.keys(obj).length)
   console.log('metaObj',metaObj )
 
 }
