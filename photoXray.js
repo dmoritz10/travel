@@ -38,6 +38,7 @@ async function showFile(input) {
   var metaObj = {}
 
   console.log('input', input.files)
+  console.log('nbr input', input.files.length)
 
   for (let i=0;i<input.files.length;i++) {
 
