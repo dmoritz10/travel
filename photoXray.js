@@ -61,18 +61,19 @@ async function showFile(input) {
 
         EXIF.getData(img, function() {
             let allMetaData = EXIF.getAllTags(this);
-            console.log('allMetaData', allMetaData)
             xrayMetaData(allMetaData, metaObj)
             
         });
 
-        console.log('metaObj',metaObj )
 
       }
   
       reader.readAsDataURL(input.files[i]);
 
   }
+
+  console.log('nbr input', input.files.length)
+  console.log('metaObj',metaObj )
 
 }
 
