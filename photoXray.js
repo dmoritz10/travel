@@ -33,102 +33,101 @@ async function btnPhotoXrayHtml() {
   
 // }
 
-// async function showFile(input) {
+async function showFile(input) {
 
-//   var metaObj = {}
+  var metaObj = {}
 
-//   console.log('input', input.files)
+  console.log('input', input.files)
 
-//   for (let i=0;i<input.files.length;i++) {
+  for (let i=0;i<input.files.length;i++) {
 
-//       let reader = new FileReader();
+      let reader = new FileReader();
   
-//       reader.onload = async function (e) {
+      reader.onload = async function (e) {
 
-//         console.log('e', e)
-
+        console.log('e', e)
   
-//         let rtn = validateFile (e.target.result)
-//         if (!rtn) return
+        let rtn = validateFile (e.target.result)
+        if (!rtn) return
 
-//         let img = document.getElementById('pxImg')
-//         img.src = e.target.result
+        let img = new Image()
+        img.src = e.target.result
 
-//         console.log('img1', img.src.length)
-//         await waitForImage(img)
+        console.log('img1', img.src.length)
+        await waitForImage(img)
 
-//         console.log('img2', img.src.length)
+        console.log('img2', img.src.length)
 
-//         EXIF.getData(img, function() {
-//             let allMetaData = EXIF.getAllTags(this);
-//             console.log('allMetaData', allMetaData)
-//             xrayMetaData(allMetaData, metaObj)
+        EXIF.getData(img, function() {
+            let allMetaData = EXIF.getAllTags(this);
+            console.log('allMetaData', allMetaData)
+            xrayMetaData(allMetaData, metaObj)
             
-//         });
-
-//         console.log('metaObj',metaObj )
-
-//       }
-  
-//       reader.readAsDataURL(input.files[i]);
-//         console.log('onload', input.files[i].name, metaObj)
-
-//   }
-
-// }
-
-
-  const showFile = async (event) => {
-  
-    // Convert the FileList into an array and iterate
-    let files = Array.from(event.files).map(file => {
-
-        // Define a new file reader
-        let reader = new FileReader();
-
-        // Create a new promise
-        return new Promise(resolve => {
-
-            // Resolve the promise after reading file
-            reader.onload = () => resolve(reader.result);
-
-            // Read the file as a text
-            reader.readAsDataURL(file);
-
         });
 
-    });
+        console.log('metaObj',metaObj )
 
-    // At this point you'll have an array of results
-    let res = await Promise.all(files);
-
-    var metaObj = {}
-
-
-    console.log('res', res)
-
-    for (let i=0;i<res.length;i++) {
-
-              let img = new Image()
-              img.src = res[i]
-      
-              console.log('img1', img.src.length)
-              await waitForImage(img)
-              console.log('img2', img.src.length)
-      
-              EXIF.getData(img, function() {
-                  let allMetaData = EXIF.getAllTags(this);
-                  console.log('allMetaData', allMetaData)
-                  xrayMetaData(allMetaData, metaObj)
-                  
-              });
+      }
   
-    }
-
-    console.log('metaObj', metaObj)
-
+      reader.readAsDataURL(input.files[i]);
+        console.log('onload', input.files[i].name, metaObj)
 
   }
+
+}
+
+
+  // const showFile = async (event) => {
+  
+  //   // Convert the FileList into an array and iterate
+  //   let files = Array.from(event.files).map(file => {
+
+  //       // Define a new file reader
+  //       let reader = new FileReader();
+
+  //       // Create a new promise
+  //       return new Promise(resolve => {
+
+  //           // Resolve the promise after reading file
+  //           reader.onload = () => resolve(reader.result);
+
+  //           // Read the file as a text
+  //           reader.readAsDataURL(file);
+
+  //       });
+
+  //   });
+
+  //   // At this point you'll have an array of results
+  //   let res = await Promise.all(files);
+
+  //   var metaObj = {}
+
+
+  //   console.log('res', res)
+
+  //   for (let i=0;i<res.length;i++) {
+
+  //             let img = new Image()
+  //             img.src = res[i]
+      
+  //             console.log('img1', img.src.length)
+  //             await waitForImage(img)
+  //             console.log('img2', img.src.length)
+      
+  //             EXIF.getData(img, function() {
+  //                 let allMetaData = EXIF.getAllTags(this);
+  //                 console.log('allMetaData', allMetaData)
+  //                 xrayMetaData(allMetaData, metaObj)
+                  
+  //             });
+  
+  //   }
+
+  //   console.log('metaObj', metaObj)
+
+
+  // }
 
 function xrayMetaData(allMetaData, metaObj, fileName) {
 
