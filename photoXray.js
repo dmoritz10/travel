@@ -51,10 +51,10 @@ async function showFile(input) {
         let img = new Image()
         img.src = e.target.result
 
-        console.log('img1', img.src.length)
+        console.log('img1', i, img.src.length)
         await waitForImage(img)
 
-        console.log('img2', img.src.length)
+        console.log('img2', i, img.src.length)
 
         EXIF.getData(img, function() {
             let allMetaData = EXIF.getAllTags(this);
@@ -64,13 +64,11 @@ async function showFile(input) {
 
         // console.log('i', i, input.files.length, i>=input.files.length)
 
-        if (i>=input.files.length-400) {
 
           console.log('nbr input', metaObj.length)
           console.log('metaObj',metaObj )
         
 
-        }
 
 
       }
@@ -79,7 +77,9 @@ async function showFile(input) {
 
   }
 
- 
+  console.log('nbr input', metaObj.length)
+  console.log('metaObj',metaObj )
+
 }
 
 
