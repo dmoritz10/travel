@@ -35,11 +35,15 @@ async function btnPhotoXrayHtml() {
 
 async function showFile(input) {
 
-  var metaObj = {}
+  var metaArr = []
+  var cntr = 0
 
   console.log('input', input.files)
 
-  for (let i=0;i<input.files.length;i=i+50) {
+  for (let i=0;i<input.files.length;i=i+200) {
+
+      cntr++
+      let lCntr = cntr
 
       let reader = new FileReader();
   
@@ -51,10 +55,10 @@ async function showFile(input) {
         let img = new Image()
         img.src = e.target.result
 
-        console.log('img1', i, img.src.length)
+        console.log('img1', lCntr, img.src.length)
         await waitForImage(img)
 
-        console.log('img2', i, img.src.length)
+        console.log('img2', lCntr, img.src.length)
 
         EXIF.getData(img, function() {
             let allMetaData = EXIF.getAllTags(this);
@@ -65,7 +69,8 @@ async function showFile(input) {
         // console.log('i', i, input.files.length, i>=input.files.length)
 
 
-          console.log('metaObj',metaObj )
+        metaArr.push(allMetaData)
+        console.log('metaArr',metaArr )
         
 
 
@@ -75,9 +80,6 @@ async function showFile(input) {
       reader.readAsDataURL(input.files[i]);
 
   }
-
-  console.log('nbr', Object.keys(obj).length)
-  console.log('metaObj',metaObj )
 
 }
 
