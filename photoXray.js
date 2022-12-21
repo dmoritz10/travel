@@ -62,9 +62,9 @@ async function showFile(input) {
             
         });
 
-        console.log('i', i)
+        // console.log('i', i, input.files.length, i>=input.files.length)
 
-        if (i>=input.files.length) {
+        if (i>=input.files.length-400) {
 
           console.log('nbr input', metaObj.length)
           console.log('metaObj',metaObj )
