@@ -39,7 +39,7 @@ async function showFile(input) {
 
   console.log('input', input.files)
 
-  for (let i=0;i<input.files.length;i=i+200) {
+  for (let i=0;i<input.files.length;i=i+100) {
 
       let reader = new FileReader();
   
