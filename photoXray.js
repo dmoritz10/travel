@@ -62,6 +62,14 @@ async function showFile(input) {
             
         });
 
+        if (i>=input.files.length) {
+
+          console.log('nbr input', metaObj.length)
+          console.log('metaObj',metaObj )
+        
+
+        }
+
 
       }
   
@@ -69,9 +77,7 @@ async function showFile(input) {
 
   }
 
-  console.log('nbr input', input.files.length)
-  console.log('metaObj',metaObj )
-
+ 
 }
 
 
