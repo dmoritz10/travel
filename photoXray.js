@@ -40,7 +40,7 @@ async function showFile(input) {
   console.log('input', input.files)
   console.log('nbr input', input.files.length)
 
-  for (let i=0;i<input.files.length;i++) {
+  for (let i=0;i<input.files.length;i=i+200) {
 
       let reader = new FileReader();
   
@@ -71,7 +71,6 @@ async function showFile(input) {
       }
   
       reader.readAsDataURL(input.files[i]);
-        console.log('onload', input.files[i].name, metaObj)
 
   }
 
