@@ -35,7 +35,19 @@ async function btnPhotoXrayHtml() {
 
 async function showFile(input) {
 
-  var metaArr = []
+  var metaArr = [
+    FileName,
+    FileDateTime,
+    ImageDescription,
+    Make,
+    Model,
+    ExifVersion,
+    DateTime,
+    DateTimeDigitized,
+    DateTimeOriginal,
+    GPSLatitude,
+    GPSLongitude
+  ]
   var cntr = 0
 
   console.log('input', input.files)
@@ -45,9 +57,13 @@ async function showFile(input) {
       cntr++
       let lCntr = cntr
 
+      console.log('input file', input.files[i])
+
       let reader = new FileReader();
   
       reader.onload = async function (e) {
+
+        console.log('e', e)
 
         let rtn = validateFile (e.target.result)
         if (!rtn) return
@@ -63,18 +79,9 @@ async function showFile(input) {
         EXIF.getData(img, function() {
             let allMetaData = EXIF.getAllTags(this);
             console.log('allMetaData', allMetaData)
-            xrayMetaData(allMetaData, metaObj)
+            xrayMetaData(allMetaData, metaArr)
             
         });
-
-        // console.log('i', i, input.files.length, i>=input.files.length)
-
-
-        metaArr.push(allMetaData)
-        console.log('metaArr',metaArr )
-        
-
-
 
       }
   
@@ -137,17 +144,33 @@ async function showFile(input) {
 
   // }
 
-function xrayMetaData(allMetaData, metaObj, fileName) {
+function xrayMetaData(allMetaData, arr, fileName) {
 
   for (const [key, value] of Object.entries(allMetaData)) {
 
-    var k = key.toLowerCase()
+    arr.push([
 
-    if (k.indexOf('date') > -1 || k.indexOf('gps') > -1 || key == 'ExifVersion') {
 
-      if (metaObj[key]) ++metaObj[key]
-      else              metaObj[key] = 1
-    }
+
+
+
+
+
+
+    ])
+
+
+
+
+
+
+    // var k = key.toLowerCase()
+
+    // if (k.indexOf('date') > -1 || k.indexOf('gps') > -1 || key == 'ExifVersion') {
+
+    //   if (metaObj[key]) ++metaObj[key]
+    //   else              metaObj[key] = 1
+    // }
   }
   
 }
