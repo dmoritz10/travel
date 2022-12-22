@@ -36,17 +36,17 @@ async function btnPhotoXrayHtml() {
 async function showFile(input) {
 
   var metaArr = [
-    FileName,
-    FileDateTime,
-    ImageDescription,
-    Make,
-    Model,
-    ExifVersion,
-    DateTime,
-    DateTimeDigitized,
-    DateTimeOriginal,
-    GPSLatitude,
-    GPSLongitude
+    'FileName',
+    'FileDateTime',
+    'ImageDescription',
+    'Make',
+    'Model',
+    'ExifVersion',
+    'DateTime',
+    'DateTimeDigitized',
+    'DateTimeOriginal',
+    'GPSLatitude',
+    'GPSLongitude'
   ]
   var cntr = 0
 
