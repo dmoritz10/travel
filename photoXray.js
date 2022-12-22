@@ -37,6 +37,10 @@ async function showFile(input) {
 
   var metaArr = [
     'FileName',
+    'FileSize',
+    'FileType',
+    'FileLastModified',
+    'FileLastModifiedDate',
     'FileDateTime',
     'ImageDescription',
     'Make',
@@ -48,6 +52,7 @@ async function showFile(input) {
     'GPSLatitude',
     'GPSLongitude'
   ]
+
   var cntr = 0
 
   console.log('input', input.files)
@@ -79,9 +84,11 @@ async function showFile(input) {
         EXIF.getData(img, function() {
             let allMetaData = EXIF.getAllTags(this);
             console.log('allMetaData', allMetaData)
-            xrayMetaData(allMetaData, metaArr)
+            xrayMetaData(allMetaData, metaArr, input.files[i])
             
         });
+
+        console.log('metaArr', metaArr)
 
       }
   
@@ -144,18 +151,24 @@ async function showFile(input) {
 
   // }
 
-function xrayMetaData(allMetaData, arr, fileName) {
-
-  for (const [key, value] of Object.entries(allMetaData)) {
+function xrayMetaData(allMetaData, arr, file) {
 
     arr.push([
 
-
-
-
-
-
-
+      file.name,
+      file.size,
+      file.type,
+      file.lastModified,
+      file.lastModifiedDate,
+      allMetaData.ImageDescription,
+      allMetaData.Make,
+      allMetaData.Model,
+      allMetaData.ExifVersion,
+      allMetaData.DateTime,
+      allMetaData.DateTimeDigitized,
+      allMetaData.DateTimeOriginal,
+      allMetaData.GPSLatitude,
+      allMetaData.GPSLongitude
 
     ])
 
@@ -171,7 +184,7 @@ function xrayMetaData(allMetaData, arr, fileName) {
     //   if (metaObj[key]) ++metaObj[key]
     //   else              metaObj[key] = 1
     // }
-  }
+  
   
 }
 
