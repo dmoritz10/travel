@@ -41,7 +41,6 @@ async function showFile(input) {
     'FileType',
     'FileLastModified',
     'FileLastModifiedDate',
-    'FileDateTime',
     'ImageDescription',
     'Make',
     'Model',
