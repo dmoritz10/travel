@@ -35,7 +35,7 @@ async function btnPhotoXrayHtml() {
 
 async function showFile(input) {
 
-  var metaArr = [
+  var metaArr = [[
     'FileName',
     'FileSize',
     'FileType',
@@ -51,7 +51,7 @@ async function showFile(input) {
     'DateTimeOriginal',
     'GPSLatitude',
     'GPSLongitude'
-  ]
+  ]]
 
   var cntr = 0
 
