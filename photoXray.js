@@ -62,6 +62,7 @@ async function showFile(input) {
 
         EXIF.getData(img, function() {
             let allMetaData = EXIF.getAllTags(this);
+            console.log('allMetaData', allMetaData)
             xrayMetaData(allMetaData, metaObj)
             
         });
@@ -142,11 +143,11 @@ function xrayMetaData(allMetaData, metaObj, fileName) {
 
     var k = key.toLowerCase()
 
-    // if (k.indexOf('date') > -1 || k.indexOf('gps') > -1) {
+    if (k.indexOf('date') > -1 || k.indexOf('gps') > -1 || key == 'ExifVersion') {
 
       if (metaObj[key]) ++metaObj[key]
       else              metaObj[key] = 1
-    // }
+    }
   }
   
 }
