@@ -83,7 +83,8 @@ async function showFile(input) {
         EXIF.getData(img, function() {
             let allMetaData = EXIF.getAllTags(this);
             console.log('allMetaData', allMetaData)
-            xrayMetaData(allMetaData, metaArr, input.files[i])
+            let xray = xrayMetaData(allMetaData, metaArr, input.files[i])
+            console.log('xray', xray)
             
         });
 
@@ -152,6 +153,20 @@ async function showFile(input) {
 
 function xrayMetaData(allMetaData, arr, file) {
 
+
+  var picDate = findBestDate(file.name, allMetaData.DateTimeOriginal)
+  var hrefDate = DateTime.fromJSDate(new Date(brkDate)).toFormat('yyyy-LL-dd');
+
+  var rtn = [
+
+    ['File Name', file.name],
+    ['Date', picDate]
+    ['Description', allMetaData.ImageDescription],
+    ['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLongitude)],
+    ['Timeline', 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate]
+
+  ]
+
     arr.push([
 
       file.name,
@@ -171,6 +186,8 @@ function xrayMetaData(allMetaData, arr, file) {
 
     ])
 
+    return rtn
+
     // var k = key.toLowerCase()
 
     // if (k.indexOf('date') > -1 || k.indexOf('gps') > -1 || key == 'ExifVersion') {
@@ -182,11 +199,23 @@ function xrayMetaData(allMetaData, arr, file) {
   
 }
 
-function calcGPS(gps) {
+function findBestDate(fileName, metaDateTimeOriginal) {
 
-  return gps ? gps?.[0] + (gps?.[1] / 60) + (gps?.[0] / 3600) : null
+  if (metaDateTimeOriginal) return new Date(metaDateTimeOriginal)
+ 
+  var dt = str.match(/(d{8})/);
+  if (dt) new Date(dt) 
 
+}
 
+function calcGPS(lat, lng) {
+
+  if (!lat || !lng) return null
+
+  let latdec = lat?.[0] + (lat?.[1] / 60) + (lat?.[0] / 3600) 
+  let lngdec = lng?.[0] + (lng?.[1] / 60) + (lng?.[0] / 3600) 
+
+  return `https://www.google.com/maps/@${latdec},${lngdec},14z`
 
 }
 async function validateFile (imgSrc) {
