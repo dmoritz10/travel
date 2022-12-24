@@ -99,58 +99,6 @@ async function showFile(input) {
 }
 
 
-  // const showFile = async (event) => {
-  
-  //   // Convert the FileList into an array and iterate
-  //   let files = Array.from(event.files).map(file => {
-
-  //       // Define a new file reader
-  //       let reader = new FileReader();
-
-  //       // Create a new promise
-  //       return new Promise(resolve => {
-
-  //           // Resolve the promise after reading file
-  //           reader.onload = () => resolve(reader.result);
-
-  //           // Read the file as a text
-  //           reader.readAsDataURL(file);
-
-  //       });
-
-  //   });
-
-  //   // At this point you'll have an array of results
-  //   let res = await Promise.all(files);
-
-  //   var metaObj = {}
-
-
-  //   console.log('res', res)
-
-  //   for (let i=0;i<res.length;i++) {
-
-  //             let img = new Image()
-  //             img.src = res[i]
-      
-  //             console.log('img1', img.src.length)
-  //             await waitForImage(img)
-  //             console.log('img2', img.src.length)
-      
-  //             EXIF.getData(img, function() {
-  //                 let allMetaData = EXIF.getAllTags(this);
-  //                 console.log('allMetaData', allMetaData)
-  //                 xrayMetaData(allMetaData, metaObj)
-                  
-  //             });
-  
-  //   }
-
-  //   console.log('metaObj', metaObj)
-
-
-  // }
-
 function xrayMetaData(allMetaData, arr, file) {
 
 
@@ -160,7 +108,7 @@ function xrayMetaData(allMetaData, arr, file) {
   var rtn = [
 
     ['File Name', file.name],
-    ['Date', picDate]
+    ['Date', picDate],
     ['Description', allMetaData.ImageDescription],
     ['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLongitude)],
     ['Timeline', 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate]
@@ -206,9 +154,8 @@ function findBestDate(fileName, metaDateTimeOriginal) {
   const regex = /\d{8}/;
   const x = fileName.match(regex)[0];
   console.log('x', x)
-  let dte = x.slice(0,4) + '-' + x.slice(4,2) + '-' + x.slice(6,2)
+  let dte = x.slice(0,4) + '-' + x.slice(4,5) + '-' + x.slice(6,7)
   console.log('finddate3', dte);
-  console.log('finddate4', new Date(dte))
 
 
   if (metaDateTimeOriginal) return metaDateTimeOriginal.slice(0, 10).replace(/:/g,"-")
