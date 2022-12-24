@@ -201,9 +201,12 @@ function xrayMetaData(allMetaData, arr, file) {
 
 function findBestDate(fileName, metaDateTimeOriginal) {
 
+  console.log('finddate', metaDateTimeOriginal)
+  console.log('finddate2', new Date(metaDateTimeOriginal))
+
   if (metaDateTimeOriginal) return new Date(metaDateTimeOriginal)
  
-  var dt = str.match(/(d{8})/);
+  var dt = fileName.match(/(d{8})/);
   if (dt) new Date(dt) 
 
 }
