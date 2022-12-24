@@ -155,7 +155,7 @@ function xrayMetaData(allMetaData, arr, file) {
 
 
   var picDate = findBestDate(file.name, allMetaData.DateTimeOriginal)
-  var hrefDate = DateTime.fromJSDate(new Date(brkDate)).toFormat('yyyy-LL-dd');
+  var hrefDate = DateTime.fromJSDate(new Date(picDate)).toFormat('yyyy-LL-dd');
 
   var rtn = [
 
