@@ -212,7 +212,7 @@ function findBestDate(fileName, metaDateTimeOriginal) {
 
   if (metaDateTimeOriginal) return metaDateTimeOriginal.slice(0, 10).replace(/:/g,"-")
  
-  var dt = fileName.match(/(d{8})/);
+  var dt = fileName.match(/\d{8}/);
   if (dt) new Date(dt) 
 
 }
