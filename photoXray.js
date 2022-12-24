@@ -72,7 +72,7 @@ async function showFile(input) {
         let rtn = validateFile (e.target.result)
         if (!rtn) return
 
-        let img = new Image()
+        let img = document.getElementById('pxImg')
         img.src = e.target.result
 
         console.log('img1', lCntr, img.src.length)
