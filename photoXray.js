@@ -103,17 +103,17 @@ function xrayMetaData(allMetaData, arr, file) {
 
 
   var picDate = findBestDate(file.name, allMetaData.DateTimeOriginal)
-  var hrefDate = DateTime.fromJSDate(new Date(picDate)).toFormat('yyyy-LL-dd');
 
   var rtn = [
 
-    ['File Name', file.name],
-    ['Date', picDate],
-    ['Description', allMetaData.ImageDescription],
-    ['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLongitude)],
-    ['Timeline', 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate]
-
+    ['File Name', file.name]
+    
   ]
+  
+    if (picDate) rtn.push(['Date', picDate])
+    if (allMetaData.ImageDescription) rtn.push(['Description', allMetaData.ImageDescription])
+    if (allMetaData.GPSLatitude) rtn.push(['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLongitude)])
+    if (picDate) rtn.push(['Timeline', 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + picDate])
 
     arr.push([
 
