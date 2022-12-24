@@ -157,7 +157,7 @@ function xrayMetaData(allMetaData, arr, file) {
       file.name,
       file.size,
       file.type,
-      file.lastModified,
+      file.lastModified.toLocaleString(DateTime.DATETIME_SHORT),
       file.lastModifiedDate,
       allMetaData.ImageDescription,
       allMetaData.Make,
@@ -166,15 +166,10 @@ function xrayMetaData(allMetaData, arr, file) {
       allMetaData.DateTime,
       allMetaData.DateTimeDigitized,
       allMetaData.DateTimeOriginal,
-      allMetaData.GPSLatitude,
-      allMetaData.GPSLongitude
+      calcGPS(allMetaData.GPSLatitude),
+      calcGPS(allMetaData.GPSLongitude)
 
     ])
-
-
-
-
-
 
     // var k = key.toLowerCase()
 
@@ -187,7 +182,13 @@ function xrayMetaData(allMetaData, arr, file) {
   
 }
 
+function calcGPS(gps) {
 
+  return gps?.[0] + gps?.[1] * 60 + gps?.[0] * 3600
+
+
+
+}
 async function validateFile (imgSrc) {
 
     var fileInfo = parseFile(imgSrc)
