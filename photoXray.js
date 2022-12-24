@@ -204,9 +204,9 @@ function findBestDate(fileName, metaDateTimeOriginal) {
   console.log('finddate', metaDateTimeOriginal.slice(0, 10).replace(/:/g,"-"))
   console.log('finddate2', new Date(metaDateTimeOriginal.slice(0, 10).replace(/:/g,"-")))
   const regex = /\d{8}/;
-  const x = fileName.match(regex);
+  const x = fileName.match(regex)[0];
   console.log('x', x)
-  let dte = x[0].slice(0,4) + '-' + x[0].slice(4,2) + '-' + x[0].slice(6,2)
+  let dte = x.substring(0,4) + '-' + x.substring(4,2) + '-' + x.substring(6,2)
   console.log('finddate3', dte);
   console.log('finddate4', new Date(dte))
 
