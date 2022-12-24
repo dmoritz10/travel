@@ -113,7 +113,7 @@ function xrayMetaData(allMetaData, arr, file) {
     if (picDate) rtn.push(['Date', picDate])
     if (allMetaData.ImageDescription) rtn.push(['Description', allMetaData.ImageDescription])
     if (allMetaData.GPSLatitude) rtn.push(['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLongitude)])
-    if (picDate) rtn.push(['Timeline', 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + picDate])
+    if (picDate && new Date(picDate) > new Date("2011-01-01")) rtn.push(['Timeline', 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + picDate])
 
     arr.push([
 
