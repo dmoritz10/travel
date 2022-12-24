@@ -184,7 +184,7 @@ function xrayMetaData(allMetaData, arr, file) {
 
 function calcGPS(gps) {
 
-  return gps?.[0] + gps?.[1] * 60 + gps?.[0] * 3600
+  return gps?.[0] + (gps?.[1] / 60) + (gps?.[0] / 3600)
 
 
 
