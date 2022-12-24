@@ -157,8 +157,8 @@ function xrayMetaData(allMetaData, arr, file) {
       file.name,
       file.size,
       file.type,
-      file.lastModified.toLocaleString(DateTime.DATETIME_SHORT),
-      file.lastModifiedDate,
+      new Date(file.lastModified).toLocaleString(DateTime.DATETIME_SHORT),
+      file.lastModifiedDate.toLocaleString(DateTime.DATETIME_SHORT),
       allMetaData.ImageDescription,
       allMetaData.Make,
       allMetaData.Model,
@@ -184,7 +184,7 @@ function xrayMetaData(allMetaData, arr, file) {
 
 function calcGPS(gps) {
 
-  return gps?.[0] + (gps?.[1] / 60) + (gps?.[0] / 3600)
+  return gps ? gps?.[0] + (gps?.[1] / 60) + (gps?.[0] / 3600) : null
 
 
 
