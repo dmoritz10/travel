@@ -154,7 +154,7 @@ function findBestDate(fileName, metaDateTimeOriginal) {
   const regex = /\d{8}/;
   const x = fileName.match(regex)[0];
   
-  if (x) return x.slice(0,4) + '-' + x.slice(4,5) + '-' + x.slice(6,7)
+  if (x) return x.slice(0,4) + '-' + x.slice(4,6) + '-' + x.slice(6)
 
   return dte
 
