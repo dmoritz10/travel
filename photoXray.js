@@ -56,7 +56,7 @@ async function showFile(input) {
 
   console.log('input', input.files)
 
-  for (let i=0;i<input.files.length;i=i+200) {
+  for (let i=0;i<input.files.length;i=i+50) {
 
       cntr++
       let lCntr = cntr
