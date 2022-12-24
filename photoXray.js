@@ -115,16 +115,16 @@ function xrayMetaData(allMetaData, arr, file) {
     if (allMetaData.GPSLatitude) rtn.push(['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLongitude)])
     if (picDate && new Date(picDate) > new Date("2011-01-01")) rtn.push(['Timeline', 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + picDate])
 
-   for (var i=0; i<rtn.length;i++) {
+  //  for (var i=0; i<rtn.length;i++) {
 
-      xray.push(['Trip', ])
+  //     xray.push(['Trip', ])
 
-      imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></embed></span>" : val=''
-      icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[1] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
+  //     imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></embed></span>" : val=''
+  //     icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[1] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
   
-      sht.push(['Back', val, icon])
+  //     sht.push(['Back', val, icon])
 
-    }
+  //   }
     
     var tbl = new Table();
     
