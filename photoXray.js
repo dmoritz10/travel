@@ -203,8 +203,10 @@ function findBestDate(fileName, metaDateTimeOriginal) {
 
   console.log('finddate', metaDateTimeOriginal.slice(0, 10).replace(/:/g,"-"))
   console.log('finddate2', new Date(metaDateTimeOriginal.slice(0, 10).replace(/:/g,"-")))
-  console.log('finddate3', fileName.match(/(d{8})/));
-  console.log('finddate4', new Date(fileName.match(/(d{8})/)))
+  let x = fileName.match(/(d{8})/)
+  let dte = x.slice(0,4) + '-' + x.slice(4,2) + '-' + x.slice(6,2)
+  console.log('finddate3', dte);
+  console.log('finddate4', new Date(dte))
 
 
   if (metaDateTimeOriginal) return new Date(metaDateTimeOriginal)
