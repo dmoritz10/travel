@@ -149,12 +149,11 @@ function xrayMetaData(allMetaData, arr, file) {
 
 function findBestDate(fileName, metaDateTimeOriginal) {
 
-  
-
   if (metaDateTimeOriginal) return metaDateTimeOriginal.slice(0, 10).replace(/:/g,"-")
   
   const regex = /\d{8}/;
   const x = fileName.match(regex)[0];
+  
   if (x) return x.slice(0,4) + '-' + x.slice(4,5) + '-' + x.slice(6,7)
 
   return dte
