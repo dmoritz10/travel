@@ -53,7 +53,7 @@ async function showFile(input) {
         EXIF.getData(img, function() {
             let allMetaData = EXIF.getAllTags(this);
             console.log('allMetaData', allMetaData)
-            let xray = xrayMetaData(allMetaData, metaArr, input.files[i])
+            let xray = xrayMetaData(allMetaData, metaArr, input.files[0])
             console.log('xray', xray)
             
         });
