@@ -112,7 +112,6 @@ function xrayMetaData(allMetaData, arr, file) {
   
     if (picDate) rtn.push(['Date', picDate])
     if (allMetaData.ImageDescription) rtn.push(['Description', allMetaData.ImageDescription])
-    if (allMetaData.GPSLatitude) rtn.push(['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLatitudeRef, allMetaData.GPSLongitude, allMetaData.GPSLongitudeRef)])
     if (picDate && new Date(picDate) > new Date("2011-01-01")) rtn.push(['Timeline', 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + picDate])
 
   //  for (var i=0; i<rtn.length;i++) {
@@ -138,7 +137,8 @@ function xrayMetaData(allMetaData, arr, file) {
       .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
       .build('#pxTbl');
 
-
+      if (allMetaData.GPSLatitude) 
+        document.getElementById('pxGPS').setAttribute("src",calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLatitudeRef, allMetaData.GPSLongitude, allMetaData.GPSLongitudeRef));
 
     arr.push([
 
