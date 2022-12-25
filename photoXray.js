@@ -151,6 +151,8 @@ function calcTrip(picDate) {
 
     let trp = trpVals[i]
 
+    console.log('dates', picDte, trp[strCol], new Date(trp[strCol]), trp[endCol], new Date(trp[endCol]))
+
     if (picDte >= new Date(trp[strCol]) && picDte <= new Date(trp[endCol])) {
 
       return {
