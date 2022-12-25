@@ -192,13 +192,9 @@ function calcGPS(lat, latRef, lng, lngRef) {
   let latdec = lat?.[0] + (lat?.[1] / 60) + (lat?.[0] / 3600) 
   let lngdec = lng?.[0] + (lng?.[1] / 60) + (lng?.[0] / 3600) 
 
-  if (latRef == "S" || latRef == "W") 
-    latdec = latdec * -1;
+  if (latRef == "S" || latRef == "W")  latdec = latdec * -1;
 
-  if (lngRef == "S" || lngRef == "W") 
-    lngdec = lngdec * -1;
-
-}
+  if (lngRef == "S" || lngRef == "W")  lngdec = lngdec * -1;
 
   return `https://www.google.com/maps/@${latdec},${lngdec},14z`
 
