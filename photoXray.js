@@ -71,13 +71,13 @@ function xrayMetaData(allMetaData, file) {
     if (tripInfo) rtn.push(['Trip', tripInfo.name])
     if (allMetaData.ImageDescription) rtn.push(['Description', allMetaData.ImageDescription])
     if (tripInfo) rtn.push(['Month', tripInfo.month])
-    if (tripInfo) rtn.push(['Start Date', tripInfo.sDate])
-    if (tripInfo) rtn.push(['End Date', tripInfo.eDate])
+    if (tripInfo) rtn.push(['Start', tripInfo.sDate])
+    if (tripInfo) rtn.push(['End', tripInfo.eDate])
 
     if (allMetaData.GPSLatitude) rtn.push(['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLatitudeRef, allMetaData.GPSLongitude, allMetaData.GPSLongitudeRef)])
     if (picDate && new Date(picDate) > new Date("2011-01-01")) rtn.push(['Timeline', calcTimeLine(picDate)])
 
-    if (tripInfo) rtn.push(['Destinations', tripInfo.dest])
+    if (tripInfo) rtn.push(['Cities', tripInfo.dest])
     if (tripInfo) rtn.push(['Countries', tripInfo.countries])
    
     var tbl = new Table();
