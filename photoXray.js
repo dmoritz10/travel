@@ -11,64 +11,39 @@ async function btnPhotoXrayHtml() {
 
 async function showFile(input) {
 
-  var metaArr = [[
-    'FileName',
-    'FileSize',
-    'FileType',
-    'FileLastModified',
-    'FileLastModifiedDate',
-    'ImageDescription',
-    'Make',
-    'Model',
-    'ExifVersion',
-    'DateTime',
-    'DateTimeDigitized',
-    'DateTimeOriginal',
-    'GPSLatitude',
-    'GPSLongitude'
-  ]]
+  console.log('input file', input.files[0])
 
+  let reader = new FileReader();
 
-  console.log('input', input.files)
+  reader.onload = async function (e) {
 
-  // for (let i=0;i<input.files.length;i=i+50) {
+    console.log('e', e)
 
+    let rtn = validateFile (e.target.result)
+    if (!rtn) return
 
-      console.log('input file', input.files[0])
+    let img = document.getElementById('pxImg')
+    img.src = e.target.result
 
-      let reader = new FileReader();
-  
-      reader.onload = async function (e) {
+    await waitForImage(img)
 
-        console.log('e', e)
+    console.log('img', img.src.length)
 
-        let rtn = validateFile (e.target.result)
-        if (!rtn) return
+    EXIF.getData(img, function() {
 
-        let img = document.getElementById('pxImg')
-        img.src = e.target.result
+      console.log('this', this.src.length)
+        let allMetaData = EXIF.getAllTags(this);
+        console.log('allMetaData', allMetaData)
+        let xray = xrayMetaData(allMetaData, metaArr, input.files[0])
+        console.log('xray', xray)
+        
+    });
 
-        await waitForImage(img)
+    console.log('metaArr', metaArr)
 
-        console.log('img', img.length)
+  }
 
-        EXIF.getData(img, function() {
-
-          console.log('this', this.length)
-            let allMetaData = EXIF.getAllTags(this);
-            console.log('allMetaData', allMetaData)
-            let xray = xrayMetaData(allMetaData, metaArr, input.files[0])
-            console.log('xray', xray)
-            
-        });
-
-        console.log('metaArr', metaArr)
-
-      }
-  
-      reader.readAsDataURL(input.files[0]);
-
-  // }
+  reader.readAsDataURL(input.files[0]);
 
 }
 
@@ -89,16 +64,6 @@ function xrayMetaData(allMetaData, arr, file) {
     if (allMetaData.GPSLatitude) rtn.push(['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLatitudeRef, allMetaData.GPSLongitude, allMetaData.GPSLongitudeRef)])
     if (picDate && new Date(picDate) > new Date("2011-01-01")) rtn.push(['Timeline', calcTimeLine(picDate)])
 
-  //  for (var i=0; i<rtn.length;i++) {
-
-  //     xray.push(['Trip', ])
-
-  //     imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></embed></span>" : val=''
-  //     icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[1] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
-  
-  //     sht.push(['Back', val, icon])
-
-  //   }
     
     var tbl = new Table();
     
@@ -112,38 +77,8 @@ function xrayMetaData(allMetaData, arr, file) {
       .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
       .build('#pxTbl');
 
-
-
-    arr.push([
-
-      file.name,
-      file.size,
-      file.type,
-      new Date(file.lastModified).toLocaleString(DateTime.DATETIME_SHORT),
-      file.lastModifiedDate.toLocaleString(DateTime.DATETIME_SHORT),
-      allMetaData.ImageDescription,
-      allMetaData.Make,
-      allMetaData.Model,
-      allMetaData.ExifVersion,
-      allMetaData.DateTime,
-      allMetaData.DateTimeDigitized,
-      allMetaData.DateTimeOriginal,
-      calcGPS(allMetaData.GPSLatitude),
-      calcGPS(allMetaData.GPSLongitude)
-
-    ])
-
     return rtn
 
-    // var k = key.toLowerCase()
-
-    // if (k.indexOf('date') > -1 || k.indexOf('gps') > -1 || key == 'ExifVersion') {
-
-    //   if (metaObj[key]) ++metaObj[key]
-    //   else              metaObj[key] = 1
-    // }
-  
-  
 }
 
 function findBestDate(fileName, metaDateTimeOriginal) {
@@ -227,45 +162,6 @@ async function validateFile (imgSrc) {
   
   }
   
-async function  xrayPhoto(exif) {
-
-    modal(true)
-  
-    var xray = []
-
-    console.log('exif', exif)
-  
-    // for (var i=0; i<exif.length;i++) {
-
-    //   xray.push(['Trip', ])
-
-    //   imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></embed></span>" : val=''
-    //   icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[1] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
-  
-    //   sht.push(['Back', val, icon])
-
-    // }
-    
-    // var tbl = new Table();
-    
-    // tbl
-    //   .setHeader()
-    //   .setTableHeaderClass()
-    //   .setData(sht)
-    //   .setTableClass('table table-borderless')
-    //   .setTrClass('d-flex')
-    //   .setTcClass(['text-end col-4 h5 text-success', 'text-start col h4', 'col-1'])
-    //   .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
-    //   .build('#tblSheet');
-  
-    // gotoTab('ShowSheet')
-  
-    // $('#shtContainer > div').eq(idx+1).trigger( "click" )
-  
-    modal(false)
-  
-}
-
 async function waitForImage(imgElem) {
     return new Promise((res, rej) => {
         if (imgElem.complete) {
@@ -275,14 +171,3 @@ async function waitForImage(imgElem) {
         imgElem.onerror = () => rej(imgElem);
     });
   }
-
-function parseExif(exif) {
-
-  var allMetaData = EXIF.getAllTags(exif);
-
-  console.log('allMetaData', allMetaData)
-
-
-
-
-}
