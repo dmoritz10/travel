@@ -157,7 +157,7 @@ function calcTrip(picDate) {
 
       return {
 
-        trip:       trp[tripCol],
+        name:       trp[tripCol],
         sDate:      trp[strCol],
         eDate:      trp[endCol],
         month:      trp[monthCol],
