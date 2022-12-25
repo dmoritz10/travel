@@ -69,17 +69,17 @@ function xrayMetaData(allMetaData, file) {
     let tripInfo = calcTrip(picDate)
 
     if (tripInfo) rtn.push(['Trip', tripInfo.name])
+    if (allMetaData.ImageDescription) rtn.push(['Description', allMetaData.ImageDescription])
     if (tripInfo) rtn.push(['Month', tripInfo.month])
-    if (tripInfo) rtn.push(['Destinations', tripInfo.dest])
-    if (tripInfo) rtn.push(['Countries', tripInfo.countries])
     if (tripInfo) rtn.push(['Start Date', tripInfo.sDate])
     if (tripInfo) rtn.push(['End Date', tripInfo.eDate])
 
-    if (allMetaData.ImageDescription) rtn.push(['Description', allMetaData.ImageDescription])
     if (allMetaData.GPSLatitude) rtn.push(['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLatitudeRef, allMetaData.GPSLongitude, allMetaData.GPSLongitudeRef)])
     if (picDate && new Date(picDate) > new Date("2011-01-01")) rtn.push(['Timeline', calcTimeLine(picDate)])
 
-    
+    if (tripInfo) rtn.push(['Destinations', tripInfo.dest])
+    if (tripInfo) rtn.push(['Countries', tripInfo.countries])
+   
     var tbl = new Table();
     
     tbl
@@ -164,8 +164,8 @@ function calcTrip(picDate) {
         sDate:      trp[strCol],
         eDate:      trp[endCol],
         month:      trp[monthCol],
-        dest:       trp[destCol].slice(1).slice(0, -1).replace(/"/g, ''),
-        countries:  trp[countriesCol].slice(1).slice(0, -1).replace(/"/g, '')
+        dest:       trp[destCol].slice(1).slice(0, -1).replace(/"/g, '').replace(/,/g, ', '),
+        countries:  trp[countriesCol].slice(1).slice(0, -1).replace(/"/g, '').replace(/,/g, ', ')
 
       }
 
