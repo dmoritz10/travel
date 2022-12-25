@@ -164,8 +164,8 @@ function calcTrip(picDate) {
         sDate:      trp[strCol],
         eDate:      trp[endCol],
         month:      trp[monthCol],
-        dest:       trp[destCol],
-        countries:  trp[countriesCol]
+        dest:       trp[destCol].replace(/\[/g, '').replace(/\]/g, '').replace(/,/g, ''),
+        countries:  trp[countriesCol].replace(/\[/g, '').replace(/\]/g, '').replace(/,/g, '')
 
       }
 
