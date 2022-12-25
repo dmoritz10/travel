@@ -185,13 +185,11 @@ function findBestDate(fileName, metaDateTimeOriginal) {
 
 }
 
-function calcTimeLine(dt) {
+function calcTimeLine(picDate) {
 
   var href = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + picDate
 
-  return '<div class="label cursor-pointer "><a target="_blank"  href=' + href + '><span class="material-icons">open_in_new</span></a></div>'
-     
-  
+  return '<div class="label cursor-pointer "><a target="_blank"  href=' + href + '><span class="material-icons">open_in_new</span></a></div>' 
 
 }
 
