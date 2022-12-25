@@ -55,6 +55,7 @@ async function showFile(input) {
 
 function xrayMetaData(allMetaData, file) {
 
+  if (!allMetaData) return
 
   var picDate = findBestDate(file.name, allMetaData.DateTimeOriginal)
 
