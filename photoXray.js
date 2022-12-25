@@ -109,8 +109,8 @@ function calcGPS(lat, latRef, lng, lngRef) {
 
   if (!lat || !lng) return null
 
-  let latdec = lat?.[0] + (lat?.[1] / 60) + (lat?.[0] / 3600) 
-  let lngdec = lng?.[0] + (lng?.[1] / 60) + (lng?.[0] / 3600) 
+  let latdec = lat[0] + (lat[1] / 60) + (lat[2] / 3600) 
+  let lngdec = lng[0] + (lng[1] / 60) + (lng[2] / 3600) 
 
   if (latRef == "S" || latRef == "W") 
     latdec = latdec * -1;
