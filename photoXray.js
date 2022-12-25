@@ -2,39 +2,12 @@ async function btnPhotoXrayHtml() {
 
   document.getElementById('pxImg').removeAttribute('src');
   $("#pxTbl").empty();
-  
+
   gotoTab('PhotoXray')
 
 }
 
 
-// async function showFile(input) {
-
-//     if (input.files && input.files[0]) {
-//         var reader = new FileReader();
-    
-//         reader.onload = async function (e) {
-    
-//           var rtn = await validateFile (e.target.result)
-//           if (!rtn) return
-
-//           var img = document.getElementById('pxImg')
-//           img.src = e.target.result
-//           await waitForImage(img)
-
-//           EXIF.getData(img, function() {
-//               var allMetaData = EXIF.getAllTags(this);
-//               xrayPhoto(allMetaData)
-              
-//           });
-  
-//         }
-    
-//         reader.readAsDataURL(input.files[0]);
-
-//       }
-  
-// }
 
 async function showFile(input) {
 
@@ -55,14 +28,11 @@ async function showFile(input) {
     'GPSLongitude'
   ]]
 
-  var cntr = 0
 
   console.log('input', input.files)
 
-  for (let i=0;i<input.files.length;i=i+50) {
+  // for (let i=0;i<input.files.length;i=i+50) {
 
-      cntr++
-      let lCntr = cntr
 
       console.log('input file', input.files[i])
 
@@ -78,10 +48,7 @@ async function showFile(input) {
         let img = document.getElementById('pxImg')
         img.src = e.target.result
 
-        console.log('img1', lCntr, img.src.length)
         await waitForImage(img)
-
-        console.log('img2', lCntr, img.src.length)
 
         EXIF.getData(img, function() {
             let allMetaData = EXIF.getAllTags(this);
@@ -97,7 +64,7 @@ async function showFile(input) {
   
       reader.readAsDataURL(input.files[i]);
 
-  }
+  // }
 
 }
 
