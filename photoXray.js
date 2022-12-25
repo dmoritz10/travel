@@ -1,12 +1,14 @@
+
 async function btnPhotoXrayHtml() {
 
   document.getElementById('pxImg').removeAttribute('src');
   $("#pxTbl").empty();
 
+  if (!trpVals) await openTripsSheet()
+
   gotoTab('PhotoXray')
 
 }
-
 
 
 async function showFile(input) {
@@ -63,6 +65,16 @@ function xrayMetaData(allMetaData, file) {
   ]
   
     if (picDate) rtn.push(['Date', picDate])
+
+    let tripInfo = calcTrip(picDate)
+
+    if (tripInfo) rtn.push(['Trip', tripInfo.name])
+    if (tripInfo) rtn.push(['Month', tripInfo.month])
+    if (tripInfo) rtn.push(['Destinations', tripInfo.dest])
+    if (tripInfo) rtn.push(['Countries', tripInfo.countries])
+    if (tripInfo) rtn.push(['Start Date', tripInfo.sDate])
+    if (tripInfo) rtn.push(['End Date', tripInfo.eDate])
+
     if (allMetaData.ImageDescription) rtn.push(['Description', allMetaData.ImageDescription])
     if (allMetaData.GPSLatitude) rtn.push(['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLatitudeRef, allMetaData.GPSLongitude, allMetaData.GPSLongitudeRef)])
     if (picDate && new Date(picDate) > new Date("2011-01-01")) rtn.push(['Timeline', calcTimeLine(picDate)])
@@ -124,6 +136,42 @@ function calcGPS(lat, latRef, lng, lngRef) {
      
 }
 
+function calcTrip(picDate) {
+
+  let picDte = new Date(picDate)
+
+  let strCol = trpHdrs.indexOf('Start Date')
+  let endCol = trpHdrs.indexOf('End Date')
+  let tripCol = trpHdrs.indexOf('Trip')
+  let monthCol = trpHdrs.indexOf('Month')
+  let destCol = trpHdrs.indexOf('Destinations')
+  let countriesCol = trpHdrs.indexOf('Countries')
+
+  for (let i=0;i<trpVals.length;i++) {
+
+    let trp = trpVals[i]
+
+    if (picDte >= trp[strCol] && picDte <= trp[endCol]) {
+
+      return {
+
+        trip:       trp[tripCol],
+        sDate:      trp[strCol],
+        eDate:      trp[endCol],
+        month:      trp[monthCol],
+        dest:       trp[destCol],
+        countries:  trp[countriesCol]
+
+      }
+
+    }
+
+  }
+
+  return null
+
+}
+
 async function validateFile (imgSrc) {
 
     var fileInfo = parseFile(imgSrc)
@@ -174,3 +222,6 @@ async function waitForImage(imgElem) {
         imgElem.onerror = () => rej(imgElem);
     });
   }
+
+
+
