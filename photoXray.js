@@ -156,7 +156,7 @@ function calcTrip(picDate) {
     let sdt = new Date(trp[strCol])
     let edt = new Date(trp[endCol])
 
-    if (picDte >= sdt.setDate(sdt.getDate() - 1) && picDte <= edt.setDate(edt.getDate() + 1)) {
+    if (picDte >= sdt.setDate(sdt.getDate() - 3) && picDte <= edt.setDate(edt.getDate() + 3)) {
 
       return {
 
