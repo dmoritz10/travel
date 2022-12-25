@@ -31,15 +31,13 @@ async function showFile(input) {
 
     EXIF.getData(img, function() {
 
-      console.log('this', this.src.length)
+        console.log('this', this.src.length)
         let allMetaData = EXIF.getAllTags(this);
         console.log('allMetaData', allMetaData)
-        let xray = xrayMetaData(allMetaData, metaArr, input.files[0])
+        let xray = xrayMetaData(allMetaData, input.files[0])
         console.log('xray', xray)
         
     });
-
-    console.log('metaArr', metaArr)
 
   }
 
@@ -48,7 +46,7 @@ async function showFile(input) {
 }
 
 
-function xrayMetaData(allMetaData, arr, file) {
+function xrayMetaData(allMetaData, file) {
 
 
   var picDate = findBestDate(file.name, allMetaData.DateTimeOriginal)
