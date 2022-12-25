@@ -1,6 +1,9 @@
 async function btnPhotoXrayHtml() {
 
-    gotoTab('PhotoXray')
+  document.getElementById('pxImg').removeAttribute('src');
+  $("#pxTbl").empty();
+  
+  gotoTab('PhotoXray')
 
 }
 
