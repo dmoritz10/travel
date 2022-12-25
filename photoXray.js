@@ -21,9 +21,11 @@ async function showFile(input) {
 
     let rtn = validateFile (e.target.result)
     if (!rtn) return
+    console.log('img', img.src.length)
 
     let img = document.getElementById('pxImg')
     img.src = e.target.result
+    console.log('img', img.src.length)
 
     await waitForImage(img)
 
