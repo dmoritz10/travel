@@ -23,7 +23,9 @@ async function showFile(input) {
     if (!rtn) return
     console.log('img', img.src.length)
 
-    let img = document.getElementById('pxImg')
+    document.getElementById('pxImg').src = e.target.result
+    
+    let img = new Image()
     img.src = e.target.result
     console.log('img', img.src.length)
 
