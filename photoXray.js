@@ -113,7 +113,7 @@ function xrayMetaData(allMetaData, arr, file) {
     if (picDate) rtn.push(['Date', picDate])
     if (allMetaData.ImageDescription) rtn.push(['Description', allMetaData.ImageDescription])
     if (allMetaData.GPSLatitude) rtn.push(['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLatitudeRef, allMetaData.GPSLongitude, allMetaData.GPSLongitudeRef)])
-    if (picDate && new Date(picDate) > new Date("2011-01-01")) rtn.push(['Timeline', 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + picDate])
+    if (picDate && new Date(picDate) > new Date("2011-01-01")) rtn.push(['Timeline', calcTimeLine(picDate)])
 
   //  for (var i=0; i<rtn.length;i++) {
 
@@ -185,6 +185,16 @@ function findBestDate(fileName, metaDateTimeOriginal) {
 
 }
 
+function calcTimeLine(dt) {
+
+  var href = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + picDate
+
+  return '<div class="label cursor-pointer "><a target="_blank"  href=' + href + '><span class="material-icons">open_in_new</span></a></div>'
+     
+  
+
+}
+
 function calcGPS(lat, latRef, lng, lngRef) {
 
   if (!lat || !lng) return null
@@ -202,8 +212,8 @@ function calcGPS(lat, latRef, lng, lngRef) {
 
   return '<div class="label cursor-pointer "><a target="_blank"  href=' + href + '><span class="material-icons">open_in_new</span></a></div>'
      
-
 }
+
 async function validateFile (imgSrc) {
 
     var fileInfo = parseFile(imgSrc)
