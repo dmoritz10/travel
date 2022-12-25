@@ -151,8 +151,6 @@ function calcTrip(picDate) {
 
     let trp = trpVals[i]
 
-    console.log('dates', picDte, trp[strCol], new Date(trp[strCol]), trp[endCol], new Date(trp[endCol]))
-
     let sdt = new Date(trp[strCol])
     let edt = new Date(trp[endCol])
 
