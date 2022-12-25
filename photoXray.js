@@ -13,6 +13,8 @@ async function showFile(input) {
 
   console.log('input file', input.files[0])
 
+  if (!input.files) return
+
   let reader = new FileReader();
 
   reader.onload = async function (e) {
