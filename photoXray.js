@@ -34,7 +34,7 @@ async function showFile(input) {
   // for (let i=0;i<input.files.length;i=i+50) {
 
 
-      console.log('input file', input.files[i])
+      console.log('input file', input.files[0])
 
       let reader = new FileReader();
   
@@ -62,7 +62,7 @@ async function showFile(input) {
 
       }
   
-      reader.readAsDataURL(input.files[i]);
+      reader.readAsDataURL(input.files[0]);
 
   // }
 
