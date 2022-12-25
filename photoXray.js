@@ -88,7 +88,7 @@ function xrayMetaData(allMetaData, file) {
       .setData(rtn)
       .setTableClass('table table-borderless')
       .setTrClass('d-flex')
-      .setTcClass(['text-end col-4 h5 text-success', 'text-start col h4', 'col-1'])
+      .setTcClass(['text-end col-4 h5 text-success', 'text-start col h4'])
       .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
       .build('#pxTbl');
 
@@ -154,7 +154,7 @@ function calcTrip(picDate) {
     let sdt = new Date(trp[strCol])
     let edt = new Date(trp[endCol])
 
-    if (picDte >= sdt.setDate(sdt.getDate() - 3) && picDte <= edt.setDate(edt.getDate() + 3)) {
+    if (picDte >= sdt.setDate(sdt.getDate() - 2) && picDte <= edt.setDate(edt.getDate() + 2)) {
 
       return {
 
