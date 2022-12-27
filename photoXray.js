@@ -74,6 +74,7 @@ function xrayMetaData(allMetaData, file) {
     if (tripInfo) rtn.push(['Month', tripInfo.month])
     if (tripInfo) rtn.push(['Start', tripInfo.sDate])
     if (tripInfo) rtn.push(['End', tripInfo.eDate])
+    if (tripInfo?.loc) rtn.push(['Guess', tripInfo.loc])
 
     if (allMetaData.GPSLatitude) rtn.push(['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLatitudeRef, allMetaData.GPSLongitude, allMetaData.GPSLongitudeRef)])
     if (picDate && new Date(picDate) > new Date("2011-01-01")) rtn.push(['Timeline', calcTimeLine(picDate)])
@@ -147,6 +148,7 @@ function calcTrip(picDate) {
   let monthCol = trpHdrs.indexOf('Month')
   let destCol = trpHdrs.indexOf('Destinations')
   let countriesCol = trpHdrs.indexOf('Countries')
+  let destDtlCol = trpHdrs.indexOf('Destination Detail')
 
   for (let i=0;i<trpVals.length;i++) {
 
@@ -157,17 +159,39 @@ function calcTrip(picDate) {
 
     if (picDte >= sdt.setDate(sdt.getDate() - 2) && picDte <= edt.setDate(edt.getDate() + 2)) {
 
+      let guessLoc = srchDestdtl(picDte, trp[destDtlCol])
+
       return {
 
         name:       trp[tripCol],
         sDate:      trp[strCol],
         eDate:      trp[endCol],
         month:      trp[monthCol],
+        loc:        guessLoc,
         dest:       trp[destCol].slice(1).slice(0, -1).replace(/"/g, '').replace(/,/g, ', '),
         countries:  trp[countriesCol].slice(1).slice(0, -1).replace(/"/g, '').replace(/,/g, ', ')
 
       }
 
+    }
+
+  }
+
+  return null
+
+}
+
+function srchDestdtl(picDte, dtl) {
+
+  let destDtl = JSON.parse(dtl)
+
+  for (let i=0;i<destDtl.length;i++) {
+
+    let d = destDtl[i]
+    
+    if (new Date(d.date) <= picDte) {
+
+      return d.city + ' ' + d.state
     }
 
   }
