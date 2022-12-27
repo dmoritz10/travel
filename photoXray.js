@@ -106,7 +106,7 @@ function findBestDate(fileName, metaDateTimeOriginal) {
   
   if (x) return x.slice(0,4) + '-' + x.slice(4,6) + '-' + x.slice(6)
 
-  return dte
+  return null
 
 }
 

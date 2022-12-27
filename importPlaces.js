@@ -504,8 +504,7 @@ function calcActivityType(activityType) {
 
   return {
     type: type,
-    maxSpeedMPH: maxSpeedMPH,
-    url: url
+    maxSpeedMPH: maxSpeedMPH
   }
 
 
