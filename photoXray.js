@@ -189,7 +189,7 @@ function srchDestdtl(picDte, dtl) {
 
   for (let i=0;i<destDtl.length;i++) {
 
-    let d = destDtl[i]
+    var d = destDtl[i]
 
     console.log('d.date', d.date)
     
@@ -201,7 +201,8 @@ function srchDestdtl(picDte, dtl) {
 
   }
 
-  return null
+  if (destDtl.length > 0 ) return d.city + ' ' + d.state
+  else return null
 
 }
 
