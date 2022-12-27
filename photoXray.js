@@ -193,7 +193,7 @@ function srchDestdtl(picDte, dtl) {
 
     console.log('d.date', d.date)
     
-    if (new Date(d.date) <= picDte) {
+    if (new Date(d.date) >= picDte) {
       console.log('d.datezzz', new Date(d.date))
 
       return d.city + ' ' + d.state
