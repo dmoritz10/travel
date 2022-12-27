@@ -185,11 +185,16 @@ function srchDestdtl(picDte, dtl) {
 
   let destDtl = JSON.parse(dtl)
 
+  console.log('picDate', picDate)
+
   for (let i=0;i<destDtl.length;i++) {
 
     let d = destDtl[i]
+
+    console.log('d.date', d.date)
     
     if (new Date(d.date) <= picDte) {
+      console.log('d.datezzz', d.date)
 
       return d.city + ' ' + d.state
     }
