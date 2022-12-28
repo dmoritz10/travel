@@ -24,23 +24,19 @@ async function showFile(input) {
     console.log('e', e)
 
     let rtn = await validateFile (e.target.result)
-
-    console.log('rtn', rtn)
     if (!rtn) return
 
     document.getElementById('pxImg').src = e.target.result
 
     let img = new Image()
     img.src = e.target.result
-    console.log('img', img.src.length)
-
+    
     await waitForImage(img)
 
     console.log('img', img.src.length)
 
     EXIF.getData(img, function() {
 
-        console.log('this', this.src.length)
         let allMetaData = EXIF.getAllTags(this);
         console.log('allMetaData', allMetaData)
         let xray = xrayMetaData(allMetaData, input.files[0])
