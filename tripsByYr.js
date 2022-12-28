@@ -57,6 +57,7 @@ async function btnTripByYrHtml() {
         var sDate = vals[trpHdrs.indexOf("Start Date")]
         var eDate = vals[trpHdrs.indexOf("End Date")]
         var trip  = vals[trpHdrs.indexOf("Trip")]
+        var nbrDays = vals[trpHdrs.indexOf("Nbr Days")]
 
         var sDt = calcUTCDate(sDate)
         var eDt = calcUTCDate(eDate)
@@ -66,7 +67,7 @@ async function btnTripByYrHtml() {
 
         if (sDt < firstOfYr && eDt < firstOfYr || sDt > lastOfYr && eDt > lastOfYr) continue;
 
-        nbrDays += placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips, trip)
+        nbrDays += placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips, trip, nbrDays)
 
         nbrTrips++
 
@@ -98,7 +99,7 @@ async function btnTripByYrHtml() {
 
 }
 
-function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips, trip) {
+function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips, trip, nbrDays) {
 
     var nbrDays = 0
 
@@ -115,7 +116,7 @@ function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips, trip) {
         var color = ['Tomato', 'purple', 'DodgerBlue', 'green', 'MediumSeaGreen', 'blue', 'red', 'purple', 'SlateBlue', 'green', 'lightpurple', 'blue'][nbrTrips % 12]
 
         trp[row][col] = trp[row][col].replace(/COLOR/g, color)
-        trp[row][col] = trp[row][col].replace(/title=""/g, `title="${trip}"`)
+        trp[row][col] = trp[row][col].replace(/title=""/g, `title="${trip} - ${nbrDays} days"`)
 
         dt.setDate(dt.getDate() + 1);
 

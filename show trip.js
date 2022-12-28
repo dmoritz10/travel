@@ -33,6 +33,7 @@ async function showTrip(idx) {
       var dispDate = DateTime.fromJSDate(new Date(date)).toFormat('ccc L/d');
 
       var actDisp = formatActivities(activities)
+      
       if (priorHdr > -1) {
 
         var hrefDate = DateTime.fromJSDate(new Date(brkDate)).toFormat('yyyy-LL-dd');
