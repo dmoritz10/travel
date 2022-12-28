@@ -99,7 +99,7 @@ async function btnTripByYrHtml() {
 
 }
 
-function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips, trip, nbrDays) {
+function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips, trip, trpDays) {
 
     var nbrDays = 0
 
@@ -116,7 +116,7 @@ function placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips, trip, nbrDays) {
         var color = ['Tomato', 'purple', 'DodgerBlue', 'green', 'MediumSeaGreen', 'blue', 'red', 'purple', 'SlateBlue', 'green', 'lightpurple', 'blue'][nbrTrips % 12]
 
         trp[row][col] = trp[row][col].replace(/COLOR/g, color)
-        trp[row][col] = trp[row][col].replace(/title=""/g, `title="${trip} - ${nbrDays} days"`)
+        trp[row][col] = trp[row][col].replace(/title=""/g, `title="${trip} - ${trpDays} days"`)
 
         dt.setDate(dt.getDate() + 1);
 
