@@ -268,7 +268,6 @@ if (vals[trpHdrs.indexOf("End Date")] != formatDateTime($('#trpmEndDate').val())
 if (vals[trpHdrs.indexOf("Destinations")] != JSON.stringify($('#trpmDestinations').val().split(' - '))) return "Manual"
 if (vals[trpHdrs.indexOf("Countries")] != JSON.stringify($('#trpmCountries').val().split(' - '))) return "Manual"
 if (vals[trpHdrs.indexOf("Nbr Days")] != calcNbrDays(vals[trpHdrs.indexOf("Start Date")], vals[trpHdrs.indexOf("End Date")])) return "Manual"
-if (vals[trpHdrs.indexOf("Composite Key")] != $('#trpmTrip').val() + ' - ' + formatMonth($('#trpmMonth').val()) + ' - ' + $('#trpmDestinations').val() + ' - ' + $('#trpmCountries').val() + ' - ' + getMSelVals(document.getElementById('trpmType')).join(' - ')) return "Manual"
 
 return vals[trpHdrs.indexOf("Source")]
 
