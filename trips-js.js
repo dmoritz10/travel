@@ -262,7 +262,7 @@ if (vals[trpHdrs.indexOf("Source")] == "Manual") return "Manual"
 // If any input field except Trip changes, change Source to Manual.  Other leave as LHD
 
 if (vals[trpHdrs.indexOf("Month")] != formatMonth($('#trpmMonth').val()) ) return "Manual"
-if (vals[trpHdrs.indexOf("Type")] != JSON.stringify(getMSelVals(document.getElementById('trpmType')))) return "Manual"
+// if (vals[trpHdrs.indexOf("Type")] != JSON.stringify(getMSelVals(document.getElementById('trpmType')))) return "Manual"
 if (vals[trpHdrs.indexOf("Start Date")] != formatDateTime($('#trpmStartDate').val())) return "Manual"
 if (vals[trpHdrs.indexOf("End Date")] != formatDateTime($('#trpmEndDate').val())) return "Manual"
 if (vals[trpHdrs.indexOf("Destinations")] != JSON.stringify($('#trpmDestinations').val().split(' - '))) return "Manual"
