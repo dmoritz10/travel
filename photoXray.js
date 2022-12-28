@@ -24,6 +24,8 @@ async function showFile(input) {
     console.log('e', e)
 
     let rtn = validateFile (e.target.result)
+
+    console.log('rtn', rtn)
     if (!rtn) return
 
     document.getElementById('pxImg').src = e.target.result
