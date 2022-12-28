@@ -838,8 +838,15 @@ async function updateTrips() {
     } else {
 
        if (valsTRP[row][hdrsTRP.indexOf('Source')] == 'LHD') {
+
+        // Don't overwrite the Trip name on updates.  Keep the LHD Source.
         
+        let saveTrp = valsTRP[row][hdrsTRP.indexOf('Trip')]
         valsTRP[row] = trip.val;
+        valsTRP[row][hdrsTRP.indexOf('Trip')] = saveTrp
+        valsTRP[row][hdrsTRP.indexOf('Composite Key')] = saveTrp + ' - ' + trip.val[hdrsTRP.indexOf('Month')] + ' - ' + JSON.parse(trip.val[hdrsTRP.indexOf('Destinations')]).join(' - ')
+
+        
         updateCntr++
 
       } else {
