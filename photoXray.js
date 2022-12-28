@@ -212,7 +212,7 @@ async function validateFile (imgSrc) {
 
     if (fileInfo.invalidFile) {
       toast(fileInfo.invalidFile, 5000)
-      return null
+      return false
     }
                                       
     return true
