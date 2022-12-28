@@ -216,15 +216,17 @@ async function btnTrpmSubmitSheetHtml() {
 
   var arrIdx = $('#trpmArrIdx').val() ? $('#trpmArrIdx').val()*1 : -1
 
-  if (arrIdx > -1) {                                                       // update existing course
+  if (arrIdx > -1) {                                        // update existing trip
 
     var vals = trpVals[arrIdx]
+    vals[trpHdrs.indexOf("Source")] = calcSource(vals)
 
-  } else {
+  } else {                                                  // add new trip course
 
     var vals = []
 
     vals[trpHdrs.indexOf("Destination Detail")] = JSON.stringify([])
+    vals[trpHdrs.indexOf("Source")] = 'Manual'
 
   }
 
@@ -235,7 +237,6 @@ async function btnTrpmSubmitSheetHtml() {
   vals[trpHdrs.indexOf("End Date")] = formatDateTime($('#trpmEndDate').val())
   vals[trpHdrs.indexOf("Destinations")] = JSON.stringify($('#trpmDestinations').val().split(' - '))
   vals[trpHdrs.indexOf("Countries")] = JSON.stringify($('#trpmCountries').val().split(' - '))
-  vals[trpHdrs.indexOf("Source")] = 'Manual'
   vals[trpHdrs.indexOf("Nbr Days")] = calcNbrDays(vals[trpHdrs.indexOf("Start Date")], vals[trpHdrs.indexOf("End Date")])
   vals[trpHdrs.indexOf("Composite Key")] = $('#trpmTrip').val() + ' - ' + formatMonth($('#trpmMonth').val()) + ' - ' + $('#trpmDestinations').val() + ' - ' + $('#trpmCountries').val() + ' - ' + getMSelVals(document.getElementById('trpmType')).join(' - ')
 
@@ -251,6 +252,26 @@ async function btnTrpmSubmitSheetHtml() {
   updateUI(vals, arrIdx)
 
   modal(false)
+}
+
+function calcSource(vals) {
+
+// If Source was already Manual, it stays
+if (vals[trpHdrs.indexOf("Source")] == "Manual") return "Manual"
+
+// If any input field except Trip changes, change Source to Manual.  Other leave as LHD
+
+if (vals[trpHdrs.indexOf("Month")] != formatMonth($('#trpmMonth').val()) ) return "Manual"
+if (vals[trpHdrs.indexOf("Type")] != JSON.stringify(getMSelVals(document.getElementById('trpmType')))) return "Manual"
+if (vals[trpHdrs.indexOf("Start Date")] != formatDateTime($('#trpmStartDate').val())) return "Manual"
+if (vals[trpHdrs.indexOf("End Date")] != formatDateTime($('#trpmEndDate').val())) return "Manual"
+if (vals[trpHdrs.indexOf("Destinations")] != JSON.stringify($('#trpmDestinations').val().split(' - '))) return "Manual"
+if (vals[trpHdrs.indexOf("Countries")] != JSON.stringify($('#trpmCountries').val().split(' - '))) return "Manual"
+if (vals[trpHdrs.indexOf("Nbr Days")] != calcNbrDays(vals[trpHdrs.indexOf("Start Date")], vals[trpHdrs.indexOf("End Date")])) return "Manual"
+if (vals[trpHdrs.indexOf("Composite Key")] != $('#trpmTrip').val() + ' - ' + formatMonth($('#trpmMonth').val()) + ' - ' + $('#trpmDestinations').val() + ' - ' + $('#trpmCountries').val() + ' - ' + getMSelVals(document.getElementById('trpmType')).join(' - ')) return "Manual"
+
+return vals[trpHdrs.indexOf("Source")]
+
 }
 
 function getMSelVals(ele) {
