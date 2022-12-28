@@ -23,7 +23,7 @@ async function showFile(input) {
 
     console.log('e', e)
 
-    let rtn = validateFile (e.target.result)
+    let rtn = await validateFile (e.target.result)
 
     console.log('rtn', rtn)
     if (!rtn) return
@@ -210,7 +210,7 @@ function srchDestdtl(picDte, dtl) {
 
 async function validateFile (imgSrc) {
 
-    var fileInfo = parseFile(imgSrc)
+    var fileInfo = await parseFile(imgSrc)
 
     if (fileInfo.invalidFile) {
       toast(fileInfo.invalidFile, 5000)
@@ -221,7 +221,7 @@ async function validateFile (imgSrc) {
     
   }
 
-  function parseFile(f) {
+  async function parseFile(f) {
 
     var parseFileType = f.split(';');
     var fileType = parseFileType[0]
