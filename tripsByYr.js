@@ -57,7 +57,7 @@ async function btnTripByYrHtml() {
         var sDate = vals[trpHdrs.indexOf("Start Date")]
         var eDate = vals[trpHdrs.indexOf("End Date")]
         var trip  = vals[trpHdrs.indexOf("Trip")]
-        var nbrDays = vals[trpHdrs.indexOf("Nbr Days")]
+        var trpDays = vals[trpHdrs.indexOf("Nbr Days")]
 
         var sDt = calcUTCDate(sDate)
         var eDt = calcUTCDate(eDate)
@@ -67,7 +67,7 @@ async function btnTripByYrHtml() {
 
         if (sDt < firstOfYr && eDt < firstOfYr || sDt > lastOfYr && eDt > lastOfYr) continue;
 
-        nbrDays += placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips, trip, nbrDays)
+        nbrDays += placeDot(sDt, eDt, trp, firstOfYr, lastOfYr, nbrTrips, trip, trpDays)
 
         nbrTrips++
 
