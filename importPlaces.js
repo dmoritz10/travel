@@ -845,7 +845,7 @@ async function updateTrips() {
 
         valsTRP[row] = trip.val;
         valsTRP[row][hdrsTRP.indexOf('Trip')] = saveTrp
-        valsTRP[row][hdrsTRP.indexOf('Composite Key')] = saveTrp + ' - ' + trip.val[hdrsTRP.indexOf('Month')] + ' - ' + JSON.parse(trip.val[hdrsTRP.indexOf('Destinations')]).join(' - ')
+        valsTRP[row][hdrsTRP.indexOf('Composite Key')] = saveTrp + ' - ' + trip.val[hdrsTRP.indexOf('Month')] + ' - ' + JSON.parse(trip.val[hdrsTRP.indexOf('Destinations')]).join(' - ') + ' - ' + JSON.parse(trip.val[hdrsTRP.indexOf('Type')]).join(' - ')
 
         updateCntr++
 
