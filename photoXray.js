@@ -30,6 +30,7 @@ function getFiles(input) {
 
 }
 
+
 async function showFile(dir) {
 
   if (dir == 'prev') if (photos.currFile > 0)  photos.currFile--
@@ -266,15 +267,4 @@ async function waitForImage(imgElem) {
         imgElem.onerror = () => rej(imgElem);
     });
   }
-
-
-async function browsePhotos(dir) {
-
-
-
-
-
-}
-
-
 
