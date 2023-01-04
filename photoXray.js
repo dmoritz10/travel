@@ -34,10 +34,22 @@ function getFiles(input) {
 async function showFile(dir) {
 
   if (dir == 'prev') {
-    if (photos.currFile > 0)  photos.currFile--
+    if (photos.currFile > 0)  {
+      photos.currFile--
+      $('#btnPXPrev').removeClass('d-none')
+    } else {
+      $('#btnPXPrev').addClass('d-none')
+
+    }
   } 
   else if (dir == 'next') {
-    if (photos.currFile < photos.files.length - 1)  photos.currFile++
+    if (photos.currFile < photos.files.length - 1) {
+      photos.currFile++
+      $('#btnPXNext').removeClass('d-none')
+    } else {
+      $('#btnPXNext').addClass('d-none')
+
+    }
   }
 
   console.log('input files', photos)
