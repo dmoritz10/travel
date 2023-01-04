@@ -87,19 +87,16 @@ async function showFile(dir) {
 
 function xrayMetaData(allMetaData, file) {
 
-  if (Object.keys(allMetaData).length === 0) {
-    $('#pxTbl').empty()
-    return
-  }
-  
-  var picDate = findBestDate(file.name, allMetaData.DateTimeOriginal)
-
   var rtn = [
 
     ['File Name', file.name]
     
   ]
+
+  if (Object.keys(allMetaData).length > 0) {
   
+    var picDate = findBestDate(file.name, allMetaData.DateTimeOriginal)
+
     if (picDate) rtn.push(['Date', picDate])
 
     let tripInfo = calcTrip(picDate)
@@ -116,11 +113,15 @@ function xrayMetaData(allMetaData, file) {
 
     if (tripInfo) rtn.push(['Cities', tripInfo.dest])
     if (tripInfo) rtn.push(['Countries', tripInfo.countries])
+
+  }
    
-    var tbl = new Table();
+  $('#pxTbl').empty()
+
+  var tbl = new Table();
     
     
-    tbl
+  tbl
       .setHeader()
       .setTableHeaderClass()
       .setData(rtn)
@@ -130,7 +131,7 @@ function xrayMetaData(allMetaData, file) {
       .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
       .build('#pxTbl');
 
-    return rtn
+  return rtn
 
 }
 
