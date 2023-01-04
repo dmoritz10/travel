@@ -87,8 +87,11 @@ async function showFile(dir) {
 
 function xrayMetaData(allMetaData, file) {
 
-  if (Object.keys(allMetaData).length === 0) return
-
+  if (Object.keys(allMetaData).length === 0) {
+    $('#pxTbl').empty()
+    return
+  }
+  
   var picDate = findBestDate(file.name, allMetaData.DateTimeOriginal)
 
   var rtn = [
@@ -115,7 +118,7 @@ function xrayMetaData(allMetaData, file) {
     if (tripInfo) rtn.push(['Countries', tripInfo.countries])
    
     var tbl = new Table();
-    $('#pxTbl').empty()
+    
     
     tbl
       .setHeader()
