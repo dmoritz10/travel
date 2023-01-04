@@ -36,21 +36,20 @@ async function showFile(dir) {
   if (dir == 'prev') {
     if (photos.currFile > 0)  {
       photos.currFile--
-      $('#btnPXPrev').removeClass('d-none')
     } else {
-      $('#btnPXPrev').addClass('d-none')
-
+      return
     }
   } 
   else if (dir == 'next') {
     if (photos.currFile < photos.files.length - 1) {
       photos.currFile++
-      $('#btnPXNext').removeClass('d-none')
     } else {
-      $('#btnPXNext').addClass('d-none')
-
+      return
     }
   }
+
+  photos.currFile <= 0 ? $('#btnPXPrev').prop('disabled', true) : $('#btnPXPrev').prop('disabled', false)
+  photos.currFile >= photos.files.length - 1 ? $('#btnPXNext').prop('disabled', true) : $('#btnPXNext').prop('disabled', false)
 
   console.log('input files', photos)
 
