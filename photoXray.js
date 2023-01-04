@@ -115,6 +115,7 @@ function xrayMetaData(allMetaData, file) {
     if (tripInfo) rtn.push(['Countries', tripInfo.countries])
    
     var tbl = new Table();
+    $('#pxTbl').empty()
     
     tbl
       .setHeader()
