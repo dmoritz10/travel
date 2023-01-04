@@ -33,10 +33,12 @@ function getFiles(input) {
 
 async function showFile(dir) {
 
-
-
-  if (dir == 'prev') if (photos.currFile > 0)  photos.currFile--
-  else if (dir == 'next') if (photos.currFile < photos.files.length - 1)  photos.currFile++
+  if (dir == 'prev') {
+    if (photos.currFile > 0)  photos.currFile--
+  } 
+  else if (dir == 'next') {
+    if (photos.currFile < photos.files.length - 1)  photos.currFile++
+  }
 
   console.log('input files', photos)
 
