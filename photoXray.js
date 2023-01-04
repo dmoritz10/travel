@@ -40,7 +40,7 @@ async function showFile(dir) {
 
   console.log('input files', photos)
 
-  reader.onload = async function (e) {
+  photos.reader.onload = async function (e) {
 
     console.log('e', e)
 
@@ -67,7 +67,7 @@ async function showFile(dir) {
 
   }
 
-  reader.readAsDataURL(photos.files[photos.currFile]);
+  photos.reader.readAsDataURL(photos.files[photos.currFile]);
 
 }
 
