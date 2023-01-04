@@ -10,14 +10,32 @@ async function btnPhotoXrayHtml() {
 
 }
 
+var photos = {
 
-async function showFile(input) {
+  reader: null,
+  files: null,
+  currFile: null
 
-  console.log('input file', input.files[0])
+}
+
+function getFiles(input) {
 
   if (!input.files) return
 
-  let reader = new FileReader();
+  photos.reader =  new FileReader();
+  photos.files = input.files
+  photos.currFile = 0
+
+  showFile('curr')
+
+}
+
+async function showFile(dir) {
+
+  if (dir == 'prev') if (photos.currFile > 0)  photos.currFile--
+  else if (dir == 'next') if (photos.currFile < photos.files.length - 1)  photos.currFile++
+
+  console.log('input file', input.files[photos.currFile])
 
   reader.onload = async function (e) {
 
@@ -46,7 +64,7 @@ async function showFile(input) {
 
   }
 
-  reader.readAsDataURL(input.files[0]);
+  reader.readAsDataURL(input.files[photos.currFile]);
 
 }
 
@@ -248,6 +266,15 @@ async function waitForImage(imgElem) {
         imgElem.onerror = () => rej(imgElem);
     });
   }
+
+
+async function browsePhotos(dir) {
+
+
+
+
+
+}
 
 
 
