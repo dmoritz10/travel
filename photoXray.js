@@ -35,7 +35,7 @@ async function showFile(dir) {
   if (dir == 'prev') if (photos.currFile > 0)  photos.currFile--
   else if (dir == 'next') if (photos.currFile < photos.files.length - 1)  photos.currFile++
 
-  console.log('input file', input.files[photos.currFile])
+  console.log('input file', photos.files[photos.currFile])
 
   reader.onload = async function (e) {
 
@@ -57,14 +57,14 @@ async function showFile(dir) {
 
         let allMetaData = EXIF.getAllTags(this);
         console.log('allMetaData', allMetaData)
-        let xray = xrayMetaData(allMetaData, input.files[0])
+        let xray = xrayMetaData(allMetaData, photos.files[photos.currFile])
         console.log('xray', xray)
         
     });
 
   }
 
-  reader.readAsDataURL(input.files[photos.currFile]);
+  reader.readAsDataURL(photos.files[photos.currFile]);
 
 }
 
