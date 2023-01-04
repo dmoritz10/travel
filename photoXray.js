@@ -48,8 +48,14 @@ async function showFile(dir) {
     }
   }
 
-  photos.currFile <= 0 ? $('#btnPXPrev').prop('disabled', true) : $('#btnPXPrev').prop('disabled', false)
-  photos.currFile >= photos.files.length - 1 ? $('#btnPXNext').prop('disabled', true) : $('#btnPXNext').prop('disabled', false)
+  var disable = photos.currFile <= 0 ? true : false
+  $('#btnPXPrev').prop('disabled', disable)
+
+  console.log('disable', disable, photos.currFile)
+  
+  var disable = photos.currFile >= photos.files.length - 1 ? true : false
+  $('#btnPXNext').prop('disabled', disable)
+  console.log('disable', disable, photos.currFile)
 
   console.log('input files', photos)
 
