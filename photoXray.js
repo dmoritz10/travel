@@ -26,6 +26,18 @@ function getFiles(input) {
   photos.files = input.files
   photos.currFile = 0
 
+  if (photos.files.length == 0) {
+
+    $('#btnPXPrev').addClass('d-none')
+    $('#btnPXNext').addClass('d-none')
+
+  } else {
+
+    $('#btnPXPrev').removeClass('d-none')
+    $('#btnPXNext').removeClass('d-none')
+
+  }
+
   showFile('curr')
 
 }
