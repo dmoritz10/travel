@@ -106,7 +106,6 @@ async function listTrips(title = "Trips") {
 
         $(this).parent().parent().parent().toggle(toggle)     
 
-        console.log('this', this)
 
       });
       
