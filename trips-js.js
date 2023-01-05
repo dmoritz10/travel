@@ -38,6 +38,7 @@ async function listTrips(title = "Trips") {
 
   trpIdxArr = []
   var arrIdx = 0
+  var nbrDays = 0
 
   for (var j = 0; j < trpVals.length; j++) {
 
@@ -104,6 +105,8 @@ async function listTrips(title = "Trips") {
         else        var toggle = txt.indexOf(srchVal) > -1
 
         $(this).parent().parent().parent().toggle(toggle)     
+
+        console.log('this', this)
 
       });
       

@@ -30,15 +30,15 @@ function getFiles(input) {
 
     $('#btnPXPrev').addClass('d-none')
     $('#btnPXNext').addClass('d-none')
-    $('#pxCnt').addClass('d-none')
+    // $('#pxCnt').addClass('d-none')
     
 
   } else {
 
     $('#btnPXPrev').removeClass('d-none')
     $('#btnPXNext').removeClass('d-none')
-    $('#pxCnt').removeClass('d-none')
-    $('#pxCnt').html('1 of ' + photos.files.length)
+    // $('#pxCnt').removeClass('d-none')
+    // $('#pxCnt').html('1 of ' + photos.files.length)
 
   }
 
