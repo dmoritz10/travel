@@ -270,8 +270,11 @@ jQuery(function ($) {
 
                     $(this).parent().parent().parent().toggle(toggle)
                     console.log('this', $(this), toggle)
-                    nbrDays += this.dataset.nbrdays*1
+                    if (toggle) nbrDays += this.dataset.nbrdays*1
+
                 });
+
+                console.log('nbrDays', nbrDays)
 
                 $("#trpNbr").html(countDisplayed("trpContainer"))
                 $("#trpNbrDays").html(nbrDays)

@@ -113,12 +113,14 @@ async function listTrips(title = "Trips") {
 
         $(this).parent().parent().parent().toggle(toggle)     
 
-        nbrDays += this.dataset.nbrdays*1
+        if (toggle) nbrDays += this.dataset.nbrdays*1
 
       });
       
       $("#trpNbr").html(countDisplayed("trpContainer"))
       $("#trpNbrDays").html(nbrDays)
+
+      console.log('nbrDays init', nbrDays)
   }
 
   $('#trpContainer > div').click(function(e){         // highlight clicked row
