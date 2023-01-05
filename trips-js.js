@@ -98,6 +98,8 @@ async function listTrips(title = "Trips") {
   var exc = srchVal.substr(0,1) == '-'
   
   $("#trpNbrDays").html(nbrDays + ' days')
+  console.log('trpNbrDays',  nbrDays)
+
 
 
   if (srchVal) {
@@ -114,6 +116,8 @@ async function listTrips(title = "Trips") {
         $(this).parent().parent().parent().toggle(toggle)     
 
         if (toggle) nbrDays += this.dataset.nbrdays*1
+        console.log('this trips', $(this), toggle, this.dataset.nbrdays*1, nbrDays)
+
 
       });
       
