@@ -57,7 +57,7 @@ async function listTrips(title = "Trips") {
     ele.find('#trpDocument')[0].innerHTML = trpObj['Trip']
     ele.find('#trpCompositeKey')[0].innerHTML = trpObj['Composite Key']
     ele.find('#trpCompositeKey')[0].dataset.nbrdays = trpObj['Nbr Days']
-    nbrDays += trpObj['Nbr Days']
+    nbrDays += trpObj['Nbr Days']*1
 
     ele.find('#trpMoYr')[0].innerHTML = trpObj['Month']
     ele.find('#trpStartEndDate')[0].innerHTML = trpObj['Start Date'].slice(0,-5) + ' - ' + trpObj['End Date'].slice(0,-5)
@@ -97,7 +97,7 @@ async function listTrips(title = "Trips") {
   var srchVal = $("#trpSearch").val().toLowerCase()
   var exc = srchVal.substr(0,1) == '-'
   
-  $("#trpNbrDays").html(nbrDays)
+  $("#trpNbrDays").html(nbrDays + ' days')
 
 
   if (srchVal) {
@@ -118,7 +118,7 @@ async function listTrips(title = "Trips") {
       });
       
       $("#trpNbr").html(countDisplayed("trpContainer"))
-      $("#trpNbrDays").html(nbrDays)
+      $("#trpNbrDays").html(nbrDays + ' days')
 
       console.log('nbrDays init', nbrDays)
   }

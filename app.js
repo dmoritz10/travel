@@ -274,10 +274,10 @@ jQuery(function ($) {
 
                 });
 
-                console.log('nbrDays', nbrDays)
+                console.log('nbrDays', nbrDays + ' days')
 
                 $("#trpNbr").html(countDisplayed("trpContainer"))
-                $("#trpNbrDays").html(nbrDays)
+                $("#trpNbrDays").html(nbrDays + ' days')
 
             });
 
