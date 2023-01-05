@@ -97,7 +97,7 @@ async function listTrips(title = "Trips") {
   var srchVal = $("#trpSearch").val().toLowerCase()
   var exc = srchVal.substr(0,1) == '-'
   
-  $("#trpNbrDays").html(nbrDays + ' days')
+  $("#trpNbrDays").html(formatNumber(nbrDays) + ' days')
   console.log('trpNbrDays',  nbrDays)
 
 
@@ -115,14 +115,14 @@ async function listTrips(title = "Trips") {
 
         $(this).parent().parent().parent().toggle(toggle)     
 
-        if (toggle && this.dataset) nbrDays += this.dataset.nbrdays*1
+        if (toggle && this.dataset.nbrdays) nbrDays += this.dataset.nbrdays*1
         console.log('this trips', $(this), toggle, this.dataset.nbrdays*1, nbrDays)
 
 
       });
       
       $("#trpNbr").html(countDisplayed("trpContainer"))
-      $("#trpNbrDays").html(nbrDays + ' days')
+      $("#trpNbrDays").html(formatNumber(nbrDays) + ' days')
 
       console.log('nbrDays init', nbrDays)
   }

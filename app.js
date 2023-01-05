@@ -269,7 +269,7 @@ jQuery(function ($) {
                     else        var toggle = txt.indexOf(value) > -1
 
                     $(this).parent().parent().parent().toggle(toggle)
-                    if (toggle && this.dataset) nbrDays += this.dataset.nbrdays*1
+                    if (toggle && this.dataset.nbrdays) nbrDays += this.dataset.nbrdays*1
                     console.log('this app', $(this), toggle, this.dataset.nbrdays*1, nbrDays)
 
                 });
@@ -277,7 +277,7 @@ jQuery(function ($) {
                 console.log('nbrDays', nbrDays + ' days')
 
                 $("#trpNbr").html(countDisplayed("trpContainer"))
-                $("#trpNbrDays").html(nbrDays + ' days')
+                $("#trpNbrDays").html(formatNumber(nbrDays) + ' days')
 
             });
 
