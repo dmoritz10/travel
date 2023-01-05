@@ -270,7 +270,7 @@ jQuery(function ($) {
 
                     $(this).parent().parent().parent().toggle(toggle)
                     console.log('this', $(this), toggle)
-                    nbrDays += this.dataset.nbrdays
+                    nbrDays += this.dataset.nbrdays*1
                 });
 
                 $("#trpNbr").html(countDisplayed("trpContainer"))
