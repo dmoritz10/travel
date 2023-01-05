@@ -115,7 +115,7 @@ async function listTrips(title = "Trips") {
 
         $(this).parent().parent().parent().toggle(toggle)     
 
-        if (toggle) nbrDays += this.dataset.nbrdays*1
+        if (toggle && this.dataset) nbrDays += this.dataset.nbrdays*1
         console.log('this trips', $(this), toggle, this.dataset.nbrdays*1, nbrDays)
 
 

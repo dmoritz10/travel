@@ -269,7 +269,7 @@ jQuery(function ($) {
                     else        var toggle = txt.indexOf(value) > -1
 
                     $(this).parent().parent().parent().toggle(toggle)
-                    if (toggle) nbrDays += this.dataset.nbrdays*1
+                    if (toggle && this.dataset) nbrDays += this.dataset.nbrdays*1
                     console.log('this app', $(this), toggle, this.dataset.nbrdays*1, nbrDays)
 
                 });
