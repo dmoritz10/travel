@@ -66,12 +66,15 @@ async function showFile(dir) {
 
   var disable = photos.currFile <= 0 ? true : false
   $('#btnPXPrev').prop('disabled', disable)
-
-  console.log('disable', disable, photos.currFile)
-  
   var disable = photos.currFile >= photos.files.length - 1 ? true : false
   $('#btnPXNext').prop('disabled', disable)
-  console.log('disable', disable, photos.currFile)
+
+  if (photos.files.length <= 1) {
+    $('#pxCnt').addClass('d-none')
+  } else {
+    $('#pxCnt').removeClass('d-none')
+    $('#pxCnt').html((photos.currfile + 1) + ' of ' + photos.files.length)
+  }
 
   console.log('input files', photos)
 
