@@ -26,15 +26,19 @@ function getFiles(input) {
   photos.files = input.files
   photos.currFile = 0
 
-  if (photos.files.length == 1) {
+  if (photos.files.length <= 1) {
 
     $('#btnPXPrev').addClass('d-none')
     $('#btnPXNext').addClass('d-none')
+    $('#pxCnt').addClass('d-none')
+    
 
   } else {
 
     $('#btnPXPrev').removeClass('d-none')
     $('#btnPXNext').removeClass('d-none')
+    $('#pxCnt').removeClass('d-none')
+    $('#pxCnt').val('1 of ' + photos.files.length)
 
   }
 
