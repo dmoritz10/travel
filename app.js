@@ -259,6 +259,7 @@ jQuery(function ($) {
             $("#trpSearch").on("input", function() {
                 var value = $(this).val().toLowerCase();
                 var exc = value.substr(0,1) == '-'
+                var nbrDays = 0
 
                 $("#trpContainer #trpCompositeKey").filter(function() {
 
@@ -269,11 +270,11 @@ jQuery(function ($) {
 
                     $(this).parent().parent().parent().toggle(toggle)
                     console.log('this', $(this), toggle)
-
+                    nbrDays += this.dataset.nbrdays
                 });
 
                 $("#trpNbr").html(countDisplayed("trpContainer"))
-
+                $("#trpNbrDays").html(nbrDays)
 
             });
 
