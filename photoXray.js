@@ -73,7 +73,7 @@ async function showFile(dir) {
     $('#pxCnt').addClass('d-none')
   } else {
     $('#pxCnt').removeClass('d-none')
-    $('#pxCnt').html((photos.currfile + 1) + ' of ' + photos.files.length)
+    $('#pxCnt').html((photos.currFile + 1) + ' of ' + photos.files.length)
   }
 
   console.log('input files', photos)
