@@ -38,7 +38,7 @@ function getFiles(input) {
     $('#btnPXPrev').removeClass('d-none')
     $('#btnPXNext').removeClass('d-none')
     $('#pxCnt').removeClass('d-none')
-    $('#pxCnt').val('1 of ' + photos.files.length)
+    $('#pxCnt').html('1 of ' + photos.files.length)
 
   }
 
