@@ -848,6 +848,9 @@ async function updateTrips() {
         // valsTRP[row][hdrsTRP.indexOf('Composite Key')] = saveTrp + ' - ' + trip.val[hdrsTRP.indexOf('Month')] + ' - ' + JSON.parse(trip.val[hdrsTRP.indexOf('Destinations')]).join(' - ') + ' - ' + JSON.parse(trip.val[hdrsTRP.indexOf('Type')]).join(' - ')
         valsTRP[row][hdrsTRP.indexOf('Composite Key')] = saveTrp + ' - ' + trip.val[hdrsTRP.indexOf('Month')] + ' - ' +JSON.parse(trip.val[hdrsTRP.indexOf('Destinations')]).join(' - ') + ' - ' + JSON.parse(trip.val[hdrsTRP.indexOf('Countries')]).join(' - ') + ' - '  + JSON.parse(trip.val[hdrsTRP.indexOf('Type')]).join(' - ')
 
+        console.log(saveTrp,trip.val[hdrsTRP.indexOf('Month')],JSON.parse(trip.val[hdrsTRP.indexOf('Destinations')]),JSON.parse(trip.val[hdrsTRP.indexOf('Countries')]),JSON.parse(trip.val[hdrsTRP.indexOf('Type')]))
+
+
         updateCntr++
 
       } else {
