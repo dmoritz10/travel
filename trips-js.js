@@ -26,10 +26,6 @@ async function listTrips(title = "Trips") {
   
   trpVals.forEach((val, idx, arr)=> arr[idx].pop()) // remove sort element from end of array
   
-
-  $("#trpTitle").html(trpTitle)
-  $("#trpNbr").html(vals.length)
-
   var $tblSheets = $("#trpContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
 
   var x = $tblSheets.clone();
@@ -97,10 +93,9 @@ async function listTrips(title = "Trips") {
   var srchVal = $("#trpSearch").val().toLowerCase()
   var exc = srchVal.substr(0,1) == '-'
   
-  $("#trpNbrDays").html(formatNumber(nbrDays) + ' days')
-  console.log('trpNbrDays',  nbrDays)
+  $("#trpTitle").html(trpTitle)
 
-
+  dispTrpNbrDays(vals.length, nbrDays)
 
   if (srchVal) {
 
@@ -121,9 +116,9 @@ async function listTrips(title = "Trips") {
 
       });
       
-      $("#trpNbr").html(countDisplayed("trpContainer"))
-      $("#trpNbrDays").html(formatNumber(nbrDays) + ' days')
-
+      // $("#trpNbr").html(countDisplayed("trpContainer"))
+      // $("#trpNbrDays").html(formatNumber(nbrDays) + ' days')
+      dispTrpNbrDays(countDisplayed("trpContainer"), nbrDays)
       console.log('nbrDays init', nbrDays)
   }
 
@@ -138,7 +133,12 @@ async function listTrips(title = "Trips") {
 
 }
 
+function dispTrpNbrDays(nbrTrips, nbrDays) {
 
+  $("#trpNbr").html(formatNumber(nbrTrips) + ' trips - ' formatNumber(nbrDays) + ' days')
+
+
+}
 async function btnTrpMoreVertHtml() {
 
   var trpOptions = readOption('trpFilter')
