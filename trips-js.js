@@ -135,7 +135,7 @@ async function listTrips(title = "Trips") {
 
 function dispTrpNbrDays(nbrTrips, nbrDays) {
 
-  $("#trpNbr").html(formatNumber(nbrTrips) + ' trips - ' formatNumber(nbrDays) + ' days')
+  $("#trpNbr").html(formatNumber(nbrTrips) + ' trips - ' + formatNumber(nbrDays) + ' days')
 
 
 }
