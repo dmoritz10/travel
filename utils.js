@@ -223,7 +223,8 @@ function countDisplayed(container) {
                   return $(this).hasClass('d-none') || $(this).css('display') == 'none'}).length
   var totDisp = tot - dnone
 
-  return totDisp == tot ? tot : totDisp + ' of ' + tot 
+  // return totDisp == tot ? tot : totDisp + ' of ' + tot 
+  return totDisp
 
 }
 
