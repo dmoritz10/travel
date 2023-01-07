@@ -137,8 +137,8 @@ function dispTrpNbrDays(nbrTrips, nbrDays) {
 
   $("#trpNbr").html(formatNumber(nbrTrips) + ' trips - ' + formatNumber(nbrDays) + ' days')
 
-
 }
+
 async function btnTrpMoreVertHtml() {
 
   var trpOptions = readOption('trpFilter')
