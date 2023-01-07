@@ -921,7 +921,7 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
   trp[hdrsTRP.indexOf('Type')]           = cntries.length == 1 && cntries[0] == "USA" ? JSON.stringify(["Domestic"]) : JSON.stringify(["International"])
   trp[hdrsTRP.indexOf('Start Date')]     = ele[hdrsLHD.indexOf('Date')].split(',')[0]
   trp[hdrsTRP.indexOf('Source')]         = 'LHD'
-  trp[hdrsTRP.indexOf('Composite Key')]  = ele[hdrsLHD.indexOf('Trip')] + ' - ' + ele[hdrsLHD.indexOf('Month')] + ' - ' + JSON.parse(ele[hdrsLHD.indexOf('Destinations')]).join(' - ')  + ' - ' + cntry .join(' - ') + ' - ' + trp[hdrsTRP.indexOf('Type')]
+  trp[hdrsTRP.indexOf('Composite Key')]  = ele[hdrsLHD.indexOf('Trip')] + ' - ' + ele[hdrsLHD.indexOf('Month')] + ' - ' + JSON.parse(ele[hdrsLHD.indexOf('Destinations')]).join(' - ')  + ' - ' + cntry .join(' - ') + ' - ' + JSON.parse(trp[hdrsTRP.indexOf('Type')]).join(' - ') 
 
   var destArr = []
 
