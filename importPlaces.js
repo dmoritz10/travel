@@ -845,7 +845,8 @@ async function updateTrips() {
 
         valsTRP[row] = trip.val;
         valsTRP[row][hdrsTRP.indexOf('Trip')] = saveTrp
-        valsTRP[row][hdrsTRP.indexOf('Composite Key')] = saveTrp + ' - ' + trip.val[hdrsTRP.indexOf('Month')] + ' - ' + JSON.parse(trip.val[hdrsTRP.indexOf('Destinations')]).join(' - ') + ' - ' + JSON.parse(trip.val[hdrsTRP.indexOf('Type')]).join(' - ')
+        // valsTRP[row][hdrsTRP.indexOf('Composite Key')] = saveTrp + ' - ' + trip.val[hdrsTRP.indexOf('Month')] + ' - ' + JSON.parse(trip.val[hdrsTRP.indexOf('Destinations')]).join(' - ') + ' - ' + JSON.parse(trip.val[hdrsTRP.indexOf('Type')]).join(' - ')
+        valsTRP[row][hdrsTRP.indexOf('Composite Key')] = saveTrp + ' - ' + trip.val[hdrsTRP.indexOf('Month')] + ' - ' +JSON.parse(trip.val[hdrsTRP.indexOf('Destinations')]).join(' - ') + ' - ' + JSON.parse(trip.val[hdrsTRP.indexOf('Countries')]).join(' - ') + ' - '  + JSON.parse(trip.val[hdrsTRP.indexOf('Type')]).join(' - ')
 
         updateCntr++
 
@@ -910,7 +911,6 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
   console.log(cntries.length == 1 && cntries[0] == "USA")
 
 
-  trp[hdrsTRP.indexOf('Composite Key')]  = ele[hdrsLHD.indexOf('Trip')] + ' - ' + ele[hdrsLHD.indexOf('Month')] + ' - ' + JSON.parse(ele[hdrsLHD.indexOf('Destinations')]).join(' - ')
   trp[hdrsTRP.indexOf('Trip')]           = ele[hdrsLHD.indexOf('Trip')]
   trp[hdrsTRP.indexOf('Month')]          = ele[hdrsLHD.indexOf('Month')]
   trp[hdrsTRP.indexOf('Destinations')]   = ele[hdrsLHD.indexOf('Destinations')]
@@ -918,6 +918,7 @@ function buildTrip(strIdx, valsLHD, hdrsLHD, valsTRP, hdrsTRP) {
   trp[hdrsTRP.indexOf('Type')]           = cntries.length == 1 && cntries[0] == "USA" ? JSON.stringify(["Domestic"]) : JSON.stringify(["International"])
   trp[hdrsTRP.indexOf('Start Date')]     = ele[hdrsLHD.indexOf('Date')].split(',')[0]
   trp[hdrsTRP.indexOf('Source')]         = 'LHD'
+  trp[hdrsTRP.indexOf('Composite Key')]  = ele[hdrsLHD.indexOf('Trip')] + ' - ' + ele[hdrsLHD.indexOf('Month')] + ' - ' + JSON.parse(ele[hdrsLHD.indexOf('Destinations')]).join(' - ')  + ' - ' + cntry .join(' - ') + ' - ' + trp[hdrsTRP.indexOf('Type')]
 
   var destArr = []
 
