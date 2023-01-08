@@ -173,7 +173,7 @@ function findBestDate(fileName, metaDateTimeOriginal) {
 
   }
   
-  const regex = /\d{8}_\d{6}/;
+  const regex = /\d{8} \d{6}/;
 
 console.log("regex", fileName.match(regex) )
 
