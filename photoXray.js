@@ -162,7 +162,9 @@ function xrayMetaData(allMetaData, file) {
 
 function findBestDate(fileName, metaDateTimeOriginal) {
 
-  var dt = metaDateTimeOriginal.replace(/:/g,"-")
+  var dt = metaDateTimeOriginal.replace(/:/,"-")
+  var dt = dt.replace(/:/,"-")
+  var dt = dt.replace(/:/,"-")
   console.log('dt', dt)
 
   var dat = new Date(dt)
