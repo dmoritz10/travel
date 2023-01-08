@@ -162,6 +162,12 @@ function xrayMetaData(allMetaData, file) {
 
 function findBestDate(fileName, metaDateTimeOriginal) {
 
+  var dt = metaDateTimeOriginal.replace(/:/g,"-")
+  console.log('dt', dt)
+
+  var dat = new Date(dt)
+  console.log('dat', dat)
+
   if (metaDateTimeOriginal) return metaDateTimeOriginal.slice(0, 10).replace(/:/g,"-")
   
   const regex = /\d{8}/;
