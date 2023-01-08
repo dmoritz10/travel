@@ -120,7 +120,10 @@ function xrayMetaData(allMetaData, file) {
 
   if (Object.keys(allMetaData).length > 0) {
   
-    var picDate = findBestDate(file.name, allMetaData.DateTimeOriginal)
+    var bestDate = findBestDate(file.name, allMetaData.DateTimeOriginal)
+    var picDate = bestDate.slice(0,10)
+
+    console.log('dates', bestDate, picDate)
 
     if (picDate) rtn.push(['Date', picDate])
 
@@ -162,18 +165,18 @@ function xrayMetaData(allMetaData, file) {
 
 function findBestDate(fileName, metaDateTimeOriginal) {
 
-  console.log('orig', new Date(metaDateTimeOriginal))
+  if (metaDateTimeOriginal) {
+    
+    var dt = metaDateTimeOriginal.replace(/:/,"-")
+    var dt = dt.replace(/:/,"-")
+    return dt
 
-  var dt = metaDateTimeOriginal.replace(/:/,"-")
-  var dt = dt.replace(/:/,"-")
-  console.log('dt', dt)
-
-  var dat = new Date(dt)
-  console.log('dat', dat)
-
-  if (metaDateTimeOriginal) return metaDateTimeOriginal.slice(0, 10).replace(/:/g,"-")
+  }
   
-  const regex = /\d{8}/;
+  const regex = /\d{8}_\d{6}/;
+
+console.log("regex", fileName.match(regex) )
+
   const x = fileName.match(regex)?.[0];
   
   if (x) return x.slice(0,4) + '-' + x.slice(4,6) + '-' + x.slice(6)
