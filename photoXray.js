@@ -123,7 +123,7 @@ function xrayMetaData(allMetaData, file) {
     var picDateTime = findBestDate(file.name, allMetaData.DateTimeOriginal)
     var picDate = picDateTime.slice(0,10)
 
-    console.log('dates', bestDate, picDate)
+    console.log('dates', picDateTime, picDate)
 
     if (picDate) rtn.push(['Date', picDate])
 
