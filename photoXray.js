@@ -175,8 +175,8 @@ function findBestDate(fileName, metaDateTimeOriginal) {
   var x = fileName.match(regex)?.[0];
   if (x) return x.slice(0,4) + '-' + x.slice(4,6) + '-' + x.slice(6,8) + ' ' + x.slice(9,11) + ':' + x.slice(11,13) + ':' + x.slice(13)
 
-  let regex = /\d{8} \d{6}/;
-  let x = fileName.match(regex)?.[0];
+  var regex = /\d{8} \d{6}/;
+  var x = fileName.match(regex)?.[0];
   if (x) return x.slice(0,4) + '-' + x.slice(4,6) + '-' + x.slice(6,8) + ' ' + x.slice(9,11) + ':' + x.slice(11,13) + ':' + x.slice(13)
 
   var regex = /\d{8}/;
