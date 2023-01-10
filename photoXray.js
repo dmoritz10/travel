@@ -266,11 +266,14 @@ function srchDestdtl(picDte, dtl) {
     var d = destDtl[i]
 
     if (new Date(d.date) >= picDte) {
+      console.log('i',i)
+      if (i>0) var d  = destDtl[i-1]
       return d.city + ' ' + d.state
     }
 
   }
 
+    console.log('no hit')
   if (destDtl.length > 0 ) return d.city + ' ' + d.state
   else return null
 
