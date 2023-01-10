@@ -137,7 +137,7 @@ function xrayMetaData(allMetaData, file) {
     if (tripInfo?.loc) rtn.push(['Guess', tripInfo.loc])
 
     if (allMetaData.GPSLatitude) rtn.push(['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLatitudeRef, allMetaData.GPSLongitude, allMetaData.GPSLongitudeRef)])
-    if (picDate && new Date(picDate) > new Date("2011-01-01")) rtn.push(['Timeline', calcTimeLine(picDate)])
+    if (picDate && new Date(picDate) >= new Date("2012-01-01")) rtn.push(['Timeline', calcTimeLine(picDate)])
 
     if (tripInfo) rtn.push(['Cities', tripInfo.dest])
     if (tripInfo) rtn.push(['Countries', tripInfo.countries])
