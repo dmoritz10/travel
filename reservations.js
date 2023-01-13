@@ -18,6 +18,8 @@ async function listReservations(title = "Reservations") {
   
   resHdrs = objSht[resTitle].colHdrs
   resVals = objSht[resTitle].vals
+
+  if (resShowCal) btnShowCalendarHtml()
   
   var vals = resVals
 
