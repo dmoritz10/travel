@@ -146,7 +146,7 @@ async function listReservations(title = "Reservations") {
 
   $('#resCalendar').empty()
   
-  if (resShowCal) btnShowCalendarHtml()
+  btnShowCalendarHtml(resShowCal)
 
   modal(false)
 
@@ -912,9 +912,10 @@ function btnBaggageTagsHtml() {
 
 }
 
-function btnShowCalendarHtml() {
+function btnShowCalendarHtml(showCal) {
 
-  if (!$('#resShowCal').prop('checked')) return
+  if (!showCal && !$('#resShowCal').prop('checked')) return
+  // if (!$('#resShowCal').prop('checked')) return
 
   var calendarEl = document.getElementById('resCalendar');
 
