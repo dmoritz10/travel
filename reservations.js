@@ -146,8 +146,7 @@ async function listReservations(title = "Reservations") {
 
   $('#resCalendar').empty()
   
-  btnShowCalendarHtml()
-
+  if (resShowCal) btnShowCalendarHtml()
 
   modal(false)
 
