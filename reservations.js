@@ -144,7 +144,7 @@ async function listReservations(title = "Reservations") {
     
   });
 
-  $('#resCalendar').empty()
+  
   
   btnShowCalendarHtml(resShowCal)
 
@@ -914,9 +914,12 @@ function btnBaggageTagsHtml() {
 
 function btnShowCalendarHtml(showCal) {
 
-  if (!showCal && !$('#resShowCal').prop('checked')) return
+  if (!showCal && !$('#resShowCal').prop('checked')) {
+    $('#resCalendar').empty()
+    return
+  }
+  
   // if (!$('#resShowCal').prop('checked')) return
-
   var calendarEl = document.getElementById('resCalendar');
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
