@@ -24,6 +24,7 @@ async function btnCountriesHtml() {
     var vals = resVals
 
     var arr = []
+    var cntryCnt = {}
   
     for (var i=0;i<vals.length;i++) {
   
@@ -41,7 +42,6 @@ async function btnCountriesHtml() {
 
             })
 
-            var cntryCnt = {}
             countries.forEach(el => cntryCnt[el] = 1  + (cntryCnt[el] || 0))
       
     }
