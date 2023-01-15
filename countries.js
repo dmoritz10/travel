@@ -20,6 +20,7 @@ async function btnCountriesHtml() {
     var strDtCol = resHdrs.indexOf('Start Date')
     var endDtCol = resHdrs.indexOf('End Date')
     var destCol  = resHdrs.indexOf('Destinations')
+    var typeCol  = resHdrs.indexOf('Type')
     
     var vals = resVals
 
@@ -34,6 +35,7 @@ async function btnCountriesHtml() {
         var dateRng = vals[i][strDtCol].slice(0,-5) + ' - ' + vals[i][endDtCol].slice(0,-5)
         var dest = JSON.parse(vals[i][destCol])
         var countries = JSON.parse(cntries)
+        var domestic = JSON.parse(vals[i][typeCol]).indexOf('Domestic') > -1
         
             countries.forEach(ele => {
 
@@ -42,8 +44,11 @@ async function btnCountriesHtml() {
 
             })
 
-            countries.forEach(el => cntryCnt[el] = 1  + (cntryCnt[el] || 0))
-      
+            countries.forEach((el, domestic) => {
+                if (domestic) cntryCnt['United States of America'] = 1  + (cntryCnt["United States of America"] || 0)
+                else          cntryCnt[el] = 1  + (cntryCnt[el] || 0)
+            })
+            
     }
 
     console.log('cntryCnt', cntryCnt)
