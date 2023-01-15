@@ -154,7 +154,7 @@ async function btnCountriesHtml() {
 
     };
 
-    await loadMap()
+    await loadMap(cntryCnt)
 
       modal(false)
       gotoTab("Countries")
@@ -179,23 +179,31 @@ function countrySorter(firstKey, secondKey) {
     }  
 }
 
-async function loadMap() {
+async function loadMap(cntryCnt) {
 
     const cNames = ['Faroe Islands','United States Minor Outlying Islands','United States of America','Japan','Seychelles','India','France','Federated States of Micronesia','China','Serranilla Bank','Scarborough Reef','Brazil','Ecuador','Australia','Kiribati','Philippines','Mexico','Spain','Bajo Nuevo Bank (Petrel Is.)','Maldives','Spratly Islands','United Kingdom','Greece','American Samoa','Denmark','Greenland','Guam','Northern Mariana Islands','Puerto Rico','United States Virgin Islands']
     const cCodes = ['fo','um','us','jp','sc','in','fr','fm','cn','sw','sh','br','ec','au','ki','ph','mx','es','bu','mv','sp','gb','gr','as','dk','gl','gu','mp','pr','vi']
 
+    var cntryData = []
+    for (var key in cntryCnt) {
+
+        var idx = cNames.indexOf(key)
+
+        if (idx > -1) cntryData.push(["'" + cCodes[idx] + '"', cntryCnt[key]])
+        else console.log('bad cntry', key)
+            
+      }
     const topology = await fetch(
         'https://code.highcharts.com/mapdata/custom/world.topo.json'
     ).then(response => response.json());
 
-    Highcharts.getJSON('https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/world-population-density.json', function (data) {
 
-        console.log('data', data)
+        console.log('data', cntryData)
 
         // Prevent logarithmic errors in color calulcation
-        data.forEach(function (p) {
-            p.value = (p.value < 1 ? 1 : p.value);
-        });
+        // data.forEach(function (p) {
+        //     p.value = (p.value < 1 ? 1 : p.value);
+        // });
 
         // Initialize the chart
         Highcharts.mapChart('container', {
@@ -251,6 +259,6 @@ async function loadMap() {
                 }
             }]
         });
-    });
+  
 
 }
