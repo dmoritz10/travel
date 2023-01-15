@@ -246,8 +246,8 @@ async function loadMap(cntryCnt) {
             },
 
             series: [{
-                data: data,
-                joinBy: ['iso-a3', 'code3'],
+                data: cntryData,
+                // joinBy: ['iso-a3', 'code3'],
                 name: 'Population density',
                 states: {
                     hover: {
