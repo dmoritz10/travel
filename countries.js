@@ -44,7 +44,7 @@ async function btnCountriesHtml() {
 
             })
 
-            countries.forEach((el, domestic) => {
+            countries.forEach((el) => {
                 if (domestic) cntryCnt['United States of America'] = 1  + (cntryCnt["United States of America"] || 0)
                 else          cntryCnt[el] = 1  + (cntryCnt[el] || 0)
             })
