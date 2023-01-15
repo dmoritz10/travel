@@ -24,7 +24,6 @@ async function btnCountriesHtml() {
     var vals = resVals
 
     var arr = []
-    var cntryCnt = {}
   
     for (var i=0;i<vals.length;i++) {
   
@@ -40,10 +39,10 @@ async function btnCountriesHtml() {
                 var sortkey = parseMonth(month)
                 arr.push([ele, trip, month, sortkey, dateRng, dest, countries])
 
-                if (cntryCnt[ele]) cntryCnt[ele]['cnt']++
-                else cntryCnt[ele]['cnt'] == 1
-        
             })
+
+            var cntryCnt = {}
+            countries.forEach(el => cntryCnt[el] = 1  + (cntryCnt[el] || 0))
       
     }
 
