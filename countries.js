@@ -189,7 +189,7 @@ async function loadMap(cntryCnt) {
 
         var idx = cNames.indexOf(key)
 
-        if (idx > -1) cntryData.push(["'" + cCodes[idx] + '"', cntryCnt[key]])
+        if (idx > -1) cntryData.push(["'" + cCodes[idx] + "'", cntryCnt[key]])
         else console.log('bad cntry', key)
             
       }
