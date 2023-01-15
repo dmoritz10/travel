@@ -24,6 +24,7 @@ async function btnCountriesHtml() {
     var vals = resVals
 
     var arr = []
+    var cntryCnt = {}
   
     for (var i=0;i<vals.length;i++) {
   
@@ -38,10 +39,15 @@ async function btnCountriesHtml() {
 
                 var sortkey = parseMonth(month)
                 arr.push([ele, trip, month, sortkey, dateRng, dest, countries])
+
+                if (cntryCnt[ele]) cntryCnt[ele]['cnt']++
+                else cntryCnt[ele]['cnt'] == 1
         
             })
       
     }
+
+    console.log('cntryCnt', cntryCnt)
   
     arr.sort(countrySorter(0, 3));
 
@@ -170,6 +176,9 @@ function countrySorter(firstKey, secondKey) {
 }
 
 async function loadMap() {
+
+    const cNames = ['Faroe Islands','United States Minor Outlying Islands','United States of America','Japan','Seychelles','India','France','Federated States of Micronesia','China','Serranilla Bank','Scarborough Reef','Brazil','Ecuador','Australia','Kiribati','Philippines','Mexico','Spain','Bajo Nuevo Bank (Petrel Is.)','Maldives','Spratly Islands','United Kingdom','Greece','American Samoa','Denmark','Greenland','Guam','Northern Mariana Islands','Puerto Rico','United States Virgin Islands']
+    const cCodes = ['fo','um','us','jp','sc','in','fr','fm','cn','sw','sh','br','ec','au','ki','ph','mx','es','bu','mv','sp','gb','gr','as','dk','gl','gu','mp','pr','vi']
 
     const topology = await fetch(
         'https://code.highcharts.com/mapdata/custom/world.topo.json'
