@@ -194,7 +194,7 @@ async function loadMap(cntryCnt) {
             
       }
     const topology = await fetch(
-        'https://code.highcharts.com/mapdata/custom/world.topo.json'
+        'https://code.highcharts.com/mapdata/custom/world-highres.topo.json'
     ).then(response => response.json());
 
 
@@ -210,55 +210,41 @@ async function loadMap(cntryCnt) {
             chart: {
                 map: topology
             },
-
+    
             title: {
-                text: 'Zoom in on country by double click'
+                text: 'Highcharts Maps basic demo'
             },
-
+    
+            subtitle: {
+                text: 'Source map: <a href="http://code.highcharts.com/mapdata/custom/world-highres.topo.json">World, high resolution</a>'
+            },
+    
             mapNavigation: {
                 enabled: true,
-                enableDoubleClickZoomTo: true,
                 buttonOptions: {
                     verticalAlign: 'bottom'
                 }
             },
-
-            mapView: {
-                fitToGeometry: {
-                    type: 'MultiPoint',
-                    coordinates: [
-                        // Alaska west
-                        [-164, 54],
-                        // Greenland north
-                        [-35, 84],
-                        // New Zealand east
-                        [179, -38],
-                        // Chile south
-                        [-68, -55]
-                    ]
-                }
-            },
-
+    
             colorAxis: {
-                min: 1,
-                max: 1000,
-                type: 'logarithmic'
+                min: 0
             },
-
+    
             series: [{
                 data: cntryData,
-                // joinBy: ['iso-a3', 'code3'],
-                name: 'Population density',
+                name: 'Random data',
                 states: {
                     hover: {
-                        color: '#a4edba'
+                        color: '#BADA55'
                     }
                 },
-                tooltip: {
-                    valueSuffix: '/km²'
+                dataLabels: {
+                    enabled: false,
+                    format: '{point.name}'
                 }
             }]
         });
+    
   
 
 }
