@@ -195,7 +195,9 @@ async function loadMap(cntryCnt) {
       }
 
     const topology = await fetch(
-        'https://code.highcharts.com/mapdata/custom/world.topo.json'
+        'https://code.highcharts.com/mapdata/custom//world-eckert3-highres'
+
+        
     ).then(response => response.json());
 
 
