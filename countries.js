@@ -221,7 +221,7 @@ async function loadMap(cntryCnt) {
             mapView: {
               maxZoom: 30,
               projection: {
-                name: 'Orthographic',
+                name: 'Miller',
                 rotation: [60, -30]
               }
             },
