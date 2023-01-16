@@ -249,10 +249,6 @@ async function loadMap(cntryCnt) {
                     hover: {
                         color: '#BADA55'
                     }
-                },
-                dataLabels: {
-                    enabled: false,
-                    format: '{point.name}'
                 }
             }]
         });
