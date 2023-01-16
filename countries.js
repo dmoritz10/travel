@@ -193,17 +193,13 @@ async function loadMap(cntryCnt) {
         else console.log('bad cntry', key, cntryCnt[key])
             
       }
+
     const topology = await fetch(
         'https://code.highcharts.com/mapdata/custom/world-highres.topo.json'
     ).then(response => response.json());
 
 
         console.log('data', cntryData)
-
-        // Prevent logarithmic errors in color calulcation
-        // data.forEach(function (p) {
-        //     p.value = (p.value < 1 ? 1 : p.value);
-        // });
 
         // Initialize the chart
         Highcharts.mapChart('container', {
@@ -214,10 +210,6 @@ async function loadMap(cntryCnt) {
             title: {
                 text: 'countries Visited'
             },
-    
-            // subtitle: {
-            //     text: 'Source map: <a href="http://code.highcharts.com/mapdata/custom/world-highres.topo.json">World, high resolution</a>'
-            // },
     
             mapNavigation: {
                 enabled: true,
@@ -252,7 +244,7 @@ async function loadMap(cntryCnt) {
     
             series: [{
                 data: cntryData,
-                // name: 'Random data',
+                name: '',
                 states: {
                     hover: {
                         color: '#BADA55'
