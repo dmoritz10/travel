@@ -195,7 +195,7 @@ async function loadMap(cntryCnt) {
       }
 
     const topology = await fetch(
-        'https://code.highcharts.com/mapdata/custom//world-highres2.topo.json'
+        'https://code.highcharts.com/mapdata/custom/world-highres2.topo.json'
     ).then(response => response.json());
 
 
@@ -204,7 +204,7 @@ async function loadMap(cntryCnt) {
         // Initialize the chart
         Highcharts.mapChart('mapContainer', {
             chart: {
-                map: topology
+                map: 'custom/world-robinson-highres'
             },
     
             title: {
