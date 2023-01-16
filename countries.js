@@ -212,7 +212,7 @@ async function loadMap(cntryCnt) {
             },
     
             title: {
-                text: 'Highcharts Maps basic demo'
+                // text: 'Highcharts Maps basic demo'
             },
     
             // subtitle: {
