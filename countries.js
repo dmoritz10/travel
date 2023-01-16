@@ -218,6 +218,14 @@ async function loadMap(cntryCnt) {
                 }
             },
 
+            mapView: {
+              maxZoom: 30,
+              projection: {
+                name: 'Orthographic',
+                rotation: [60, -30]
+              }
+            },
+
             colorAxis: {
                 min: 1,
                 max: 10,
