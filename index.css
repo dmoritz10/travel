@@ -227,3 +227,7 @@ body::-webkit-scrollbar { /* WebKit */
 .bstreeview .item-icon {
   margin-right: 5px;
 }
+body
+{
+  overscroll-behavior-y: contain;
+}
