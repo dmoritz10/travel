@@ -219,8 +219,16 @@ async function loadMap(cntryCnt) {
             },
 
             colorAxis: {
-                min: 0
+                min: 1,
+                max: 10,
+                type: 'logarithmic',
+                gridLineWidth: 2,
+                gridLineColor: 'white',
+                minorTickInterval: 0.1,
+                minorGridLineColor: 'white',
+                tickLength: 0
             },
+
 
             tooltip: {
                 valueSuffix: ' trips'
