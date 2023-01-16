@@ -190,7 +190,7 @@ async function loadMap(cntryCnt) {
         var idx = cNames.indexOf(key)
 
         if (idx > -1) cntryData.push([cCodes[idx], cntryCnt[key]])
-        else console.log('bad cntry', key)
+        else console.log('bad cntry', key, cntryCnt[key])
             
       }
     const topology = await fetch(
