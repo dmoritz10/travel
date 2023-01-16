@@ -211,13 +211,13 @@ async function loadMap(cntryCnt) {
                 map: topology
             },
     
-            title: {
-                text: 'Highcharts Maps basic demo'
-            },
+            // title: {
+            //     text: 'Highcharts Maps basic demo'
+            // },
     
-            subtitle: {
-                text: 'Source map: <a href="http://code.highcharts.com/mapdata/custom/world-highres.topo.json">World, high resolution</a>'
-            },
+            // subtitle: {
+            //     text: 'Source map: <a href="http://code.highcharts.com/mapdata/custom/world-highres.topo.json">World, high resolution</a>'
+            // },
     
             mapNavigation: {
                 enabled: true,
@@ -229,6 +229,10 @@ async function loadMap(cntryCnt) {
             colorAxis: {
                 min: 0
             },
+
+            tooltip: {
+                valueSuffix: ' trips'
+            }
     
             series: [{
                 data: cntryData,
