@@ -232,7 +232,7 @@ async function loadMap(cntryCnt) {
 
             tooltip: {
                 valueSuffix: ' trips'
-            }
+            },
     
             series: [{
                 data: cntryData,
