@@ -218,14 +218,6 @@ async function loadMap(cntryCnt) {
                 }
             },
 
-            // mapView: {
-            //   maxZoom: 30,
-            //   projection: {
-            //     name: 'Miller',
-            //     rotation: [60, -30]
-            //   }
-            // },
-
             colorAxis: {
                 min: 1,
                 max: 10,
@@ -239,16 +231,12 @@ async function loadMap(cntryCnt) {
                 maxColor: '#31784B'
             },
 
-
             tooltip: {
                 valueSuffix: ' trips'
             },
-
-           
     
             series: [{
                 data: cntryData,
-                name: '',
                 states: {
                     hover: {
                         color: '#BADA55'
