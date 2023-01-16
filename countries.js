@@ -235,6 +235,12 @@ async function loadMap(cntryCnt) {
             tooltip: {
                 valueSuffix: ' trips'
             },
+
+            mapView: {
+                projection: {
+                  name: 'Miller'
+                }
+              },
     
             series: [{
                 data: cntryData,
