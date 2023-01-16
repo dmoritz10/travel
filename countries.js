@@ -236,11 +236,7 @@ async function loadMap(cntryCnt) {
                 valueSuffix: ' trips'
             },
 
-            mapView: {
-                projection: {
-                  name: 'Miller'
-                }
-              },
+           
     
             series: [{
                 data: cntryData,
