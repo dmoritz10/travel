@@ -128,8 +128,8 @@ async function btnCountriesHtml() {
 
     }
 
-    $("#cntNbrDom").html(nbrDom)
-    $("#cntNbrIntl").html(nbrIntl)
+    $("#cntNbrTrips").html(nbrDom + ' domestic - ' + nbrIntl + ' international')
+    // $("#cntNbrIntl").html(nbrIntl)
     
 
     $('#cntContainer').bstreeview({ data: treeData });
