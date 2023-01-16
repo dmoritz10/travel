@@ -152,6 +152,8 @@ async function btnCountriesHtml() {
     
         $('.cntDests').removeClass('ele-selected');
         $(e.currentTarget).addClass('ele-selected')
+
+        console.log('e', e)
         
       });
 
