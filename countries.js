@@ -128,7 +128,7 @@ async function btnCountriesHtml() {
 
     }
 
-    $("#cntNbrTrips").html(nbrDom + ' domestic - ' + nbrIntl + ' international')
+    $("#cntNbrTrips").html('<span class="text-primary">' + nbrDom + ' domestic</span>' + ' - ' + nbrIntl + ' international')
     // $("#cntNbrIntl").html(nbrIntl)
     
 
