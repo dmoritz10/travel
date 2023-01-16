@@ -149,9 +149,9 @@ async function btnCountriesHtml() {
 
     };
 
-    $('.cntDests*').click(function(e){         // highlight clicked row
+    $("[class^='cntDests-']").click(function(e){         // highlight clicked row
     
-        $('.cntDests').removeClass('ele-selected');
+        $("[class^='cntDests-']").removeClass('ele-selected');
         $(e.currentTarget).addClass('ele-selected')
 
         console.log('e', e)
