@@ -51,8 +51,6 @@ async function btnCountriesHtml() {
             
     }
 
-    console.log('cntryCnt', cntryCnt)
-  
     arr.sort(countrySorter(0, 3));
 
     var treeData = []
@@ -97,7 +95,7 @@ async function btnCountriesHtml() {
                 },
                 {
                     text: dests,
-                    class:  "h6"
+                    class:  "h6 cntDests"
                 },
                 {
                     text: cntys,
@@ -129,8 +127,6 @@ async function btnCountriesHtml() {
     }
 
     $("#cntNbrTrips").html('<span class="text-success">' + nbrDom + ' domestic</span>' + '&nbsp&nbsp&nbsp' + nbrIntl + ' international')
-    // $("#cntNbrIntl").html(nbrIntl)
-    
 
     $('#cntContainer').bstreeview({ data: treeData });
 
@@ -150,14 +146,20 @@ async function btnCountriesHtml() {
 
         });
 
-        // $("#resNbr").html(countDisplayed("resContainer"))
-
     };
+
+    $('.cntDests').click(function(e){         // highlight clicked row
+    
+        $('.cntDests').removeClass('ele-selected');
+        $(e.currentTarget).addClass('ele-selected')
+        
+      });
 
     await loadMap(cntryCnt)
 
-      modal(false)
-      gotoTab("Countries")
+    modal(false)
+    gotoTab("Countries")
+
 }
 
 function countrySorter(firstKey, secondKey) {
