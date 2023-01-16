@@ -226,7 +226,9 @@ async function loadMap(cntryCnt) {
                 gridLineColor: 'white',
                 minorTickInterval: 0.1,
                 minorGridLineColor: 'white',
-                tickLength: 0
+                tickLength: 0,
+                minColor: '#F1EEF6',
+                maxColor: '#900037'
             },
 
 
