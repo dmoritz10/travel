@@ -208,7 +208,7 @@ async function loadMap(cntryCnt) {
             },
     
             title: {
-                text: 'countries Visited'
+                text: 'Double-click to zoom in'
             },
     
             mapNavigation: {
@@ -218,21 +218,21 @@ async function loadMap(cntryCnt) {
                 }
             },
 
-            mapView: {
-                fitToGeometry: {
-                    type: 'MultiPoint',
-                    coordinates: [
-                        // Alaska west
-                        [-164, 54],
-                        // Greenland north
-                        [-35, 84],
-                        // New Zealand east
-                        [179, -38],
-                        // Chile south
-                        [-68, -55]
-                    ]
-                }
-            },
+            // mapView: {
+            //     fitToGeometry: {
+            //         type: 'MultiPoint',
+            //         coordinates: [
+            //             // Alaska west
+            //             [-164, 54],
+            //             // Greenland north
+            //             [-35, 84],
+            //             // New Zealand east
+            //             [179, -38],
+            //             // Chile south
+            //             [-68, -55]
+            //         ]
+            //     }
+            // },
     
             colorAxis: {
                 min: 0
