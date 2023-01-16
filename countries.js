@@ -40,7 +40,7 @@ async function btnCountriesHtml() {
             countries.forEach(ele => {
 
                 var sortkey = parseMonth(month)
-                arr.push([ele, trip, month, sortkey, dateRng, dest, countries])
+                arr.push([ele, trip, month, sortkey, dateRng, dest, countries, i])
 
             })
 
@@ -66,6 +66,7 @@ async function btnCountriesHtml() {
         var dates = ele[4]
         var dests = ele[5].join(' - ')
         var cntys = ele[6].join(' - ')
+        var trpIdx = ele[7]
 
         if (brkcntry != cntry) {
 
@@ -95,7 +96,7 @@ async function btnCountriesHtml() {
                 },
                 {
                     text: dests,
-                    class:  "h6 cntDests"
+                    class:  "h6 cntDests-" + trpIdx
                 },
                 {
                     text: cntys,
@@ -148,7 +149,7 @@ async function btnCountriesHtml() {
 
     };
 
-    $('.cntDests').click(function(e){         // highlight clicked row
+    $('.cntDests*').click(function(e){         // highlight clicked row
     
         $('.cntDests').removeClass('ele-selected');
         $(e.currentTarget).addClass('ele-selected')
