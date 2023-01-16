@@ -211,9 +211,9 @@ async function loadMap(cntryCnt) {
                 map: topology
             },
     
-            // title: {
-            //     text: 'Highcharts Maps basic demo'
-            // },
+            title: {
+                text: 'Highcharts Maps basic demo'
+            },
     
             // subtitle: {
             //     text: 'Source map: <a href="http://code.highcharts.com/mapdata/custom/world-highres.topo.json">World, high resolution</a>'
@@ -223,6 +223,22 @@ async function loadMap(cntryCnt) {
                 enabled: true,
                 buttonOptions: {
                     verticalAlign: 'bottom'
+                }
+            },
+
+            mapView: {
+                fitToGeometry: {
+                    type: 'MultiPoint',
+                    coordinates: [
+                        // Alaska west
+                        [-164, 54],
+                        // Greenland north
+                        [-35, 84],
+                        // New Zealand east
+                        [179, -38],
+                        // Chile south
+                        [-68, -55]
+                    ]
                 }
             },
     
@@ -236,7 +252,7 @@ async function loadMap(cntryCnt) {
     
             series: [{
                 data: cntryData,
-                name: 'Random data',
+                // name: 'Random data',
                 states: {
                     hover: {
                         color: '#BADA55'
