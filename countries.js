@@ -123,7 +123,7 @@ async function btnCountriesHtml() {
         if (convertStateToAbbr(ele.text))       nbrDom++
         else                                    nbrIntl++
 
-        ele.text = ele.text + '<span class="text-warning float-end">' + ele.nodes.length + '</span>'
+        ele.text = ele.text + '<span class="text-warning float-end me-3">' + ele.nodes.length + '</span>'
 
     }
 
@@ -231,7 +231,7 @@ async function loadMap(cntryCnt) {
                 max: 10,
                 type: 'logarithmic',
                 gridLineWidth: 2,
-                gridLineColor: 'white',
+                gridLineColor: 'black',
                 minorTickInterval: 0.1,
                 minorGridLineColor: 'white',
                 tickLength: 0,
