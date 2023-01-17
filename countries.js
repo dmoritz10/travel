@@ -95,7 +95,7 @@ async function btnCountriesHtml() {
                     class:  "h6"
                 },
                 {
-                    text: dests + '<span class="text-dark float-end me-3">' + '<button type="button" class="btn btn-outline-primary btn-sm">More</button>' + '</span>',
+                    text: dests + '<span class="text-dark float-end mt-1">' + '<button type="button" class="btn btn-outline-primary btn-sm py-0">More</button>' + '</span>',
                     class:  "h6 cntDests trpIdx-" + trpIdx
                 },
                 {
@@ -126,8 +126,6 @@ async function btnCountriesHtml() {
         ele.text = ele.text + '<span class="text-dark float-end me-3">' + ele.nodes.length + '</span>'
 
     }
-
-    
 
     $("#cntNbrTrips").html('<span class="text-success">' + nbrDom + ' domestic</span>' + '&nbsp&nbsp&nbsp' + nbrIntl + ' international')
 
