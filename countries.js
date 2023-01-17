@@ -156,7 +156,7 @@ async function btnCountriesHtml() {
 
         console.log('e', e, e.currentTarget.classList)
 
-        var cl = e.currentTarget.classList
+        var cl = e.currentTarget.classList.split(' ')
 
         console.log('cl', cl)
         const trp = cl.find(x => x.includes('trpIdx-'))
