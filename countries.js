@@ -95,8 +95,8 @@ async function btnCountriesHtml() {
                     class:  "h6"
                 },
                 {
-                    text: dests + '<span class="text-dark float-end mt-1">' + '<button type="button" class="btn btn-outline-primary btn-sm py-0">More</button>' + '</span>',
-                    class:  "h6 cntDests trpIdx-" + trpIdx
+                    text: dests + '<span class="text-dark float-end mt-1">' + `<button type="button" class="btn btn-outline-primary btn-sm py-0" onclick="showTrip(${trpIdx}, 'Countries')">More</button>` + '</span>',
+                    class:  "h6 cntDests"
                 },
                 {
                     text: cntys,
@@ -149,17 +149,17 @@ async function btnCountriesHtml() {
 
     };
 
-    $('.cntDests').click(function(e){         // highlight clicked row
+    // $('.cntDests').click(function(e){         // highlight clicked row
     
-        $('.cntDests').removeClass('ele-selected');
-        $(e.currentTarget).addClass('ele-selected')
+    //     $('.cntDests').removeClass('ele-selected');
+    //     $(e.currentTarget).addClass('ele-selected')
 
-        const cl = e.currentTarget.classList.value.split(' ')
-        const trp = cl.find(x => x.includes('trpIdx-'))
-        const trpIdx = trp.split('-')[1]
-        showTrip(trpIdx, 'Countries')
+    //     const cl = e.currentTarget.classList.value.split(' ')
+    //     const trp = cl.find(x => x.includes('trpIdx-'))
+    //     const trpIdx = trp.split('-')[1]
+    //     showTrip(trpIdx, 'Countries')
         
-      });
+    //   });
 
     await loadMap(cntryCnt)
 
