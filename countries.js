@@ -96,7 +96,7 @@ async function btnCountriesHtml() {
                 },
                 {
                     text: dests,
-                    class:  "h6 cntDests-" + trpIdx
+                    class:  "h6 cntDests trpIdx-" + trpIdx
                 },
                 {
                     text: cntys,
@@ -149,12 +149,13 @@ async function btnCountriesHtml() {
 
     };
 
-    $("[class^='cntDests-']").click(function(e){         // highlight clicked row
+    $('.cntDests').click(function(e){         // highlight clicked row
     
-        $("[class^='cntDests-']").removeClass('ele-selected');
+        $('.cntDests').removeClass('ele-selected');
         $(e.currentTarget).addClass('ele-selected')
 
-        console.log('e', e)
+        console.log('e', e, e.classList)
+        console.log('idx', e.classList.indexOf('trpIdx-'))
         
       });
 
