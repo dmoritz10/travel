@@ -5,6 +5,7 @@ async function showTrip(idx, rtnToPage='Trips') {
   var trp = []
 
   var vals = trpVals[idx]
+
   
   $("#trpdTrip")[0].innerHTML = vals[trpHdrs.indexOf('Trip')]
   $("#trpdMoYr")[0].innerHTML = vals[trpHdrs.indexOf('Month')]
@@ -12,6 +13,8 @@ async function showTrip(idx, rtnToPage='Trips') {
   $("#trpdArrIdx").val(idx)
 
   $("#trpdRtnToPage")[0].setAttribute("onclick", "clearAndGotoTab('" + rtnToPage + "')");
+  if (rtnToPage == 'Trips') $("#btnTrpAddNew").removeClass('d-none')
+  else                      $("#btnTrpAddNew").addClass('d-none')
 
 
   var trpDtl = JSON.parse(vals[trpHdrs.indexOf('Destination Detail')])
