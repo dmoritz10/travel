@@ -154,17 +154,9 @@ async function btnCountriesHtml() {
         $('.cntDests').removeClass('ele-selected');
         $(e.currentTarget).addClass('ele-selected')
 
-        console.log('e', e, e.currentTarget.classList)
-
-        var cl = e.currentTarget.classList.value.split(' ')
-
-        console.log('cl', cl)
+        const cl = e.currentTarget.classList.value.split(' ')
         const trp = cl.find(x => x.includes('trpIdx-'))
-        var trpIdx = trp.split('-')[1]
-        console.log('trpIdx', trpIdx)
-
-        console.log('trp', trpVals, trpVals[trpIdx])
-
+        const trpIdx = trp.split('-')[1]
         showTrip(trpIdx, 'Countries')
         
       });
