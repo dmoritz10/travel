@@ -149,17 +149,12 @@ async function btnCountriesHtml() {
 
     };
 
-    // $('.cntDests').click(function(e){         // highlight clicked row
+    $('.cntDests').click(function(e){         // highlight clicked row
     
-    //     $('.cntDests').removeClass('ele-selected');
-    //     $(e.currentTarget).addClass('ele-selected')
-
-    //     const cl = e.currentTarget.classList.value.split(' ')
-    //     const trp = cl.find(x => x.includes('trpIdx-'))
-    //     const trpIdx = trp.split('-')[1]
-    //     showTrip(trpIdx, 'Countries')
+        $('.cntDests').removeClass('ele-selected');
+        $(e.currentTarget).addClass('ele-selected')
         
-    //   });
+      });
 
     await loadMap(cntryCnt)
 
