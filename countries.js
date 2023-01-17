@@ -123,7 +123,7 @@ async function btnCountriesHtml() {
         if (convertStateToAbbr(ele.text))       nbrDom++
         else                                    nbrIntl++
 
-        ele.text = ele.text + '<span class="text-warning float-end me-3">' + ele.nodes.length + '</span>'
+        ele.text = ele.text + '<span class="text-dark float-end me-3">' + ele.nodes.length + '</span>'
 
     }
 
