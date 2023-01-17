@@ -212,7 +212,9 @@ async function loadMap(cntryCnt) {
         // Initialize the chart
         Highcharts.mapChart('mapContainer', {
             chart: {
-                map: topology
+                map: topology,
+                plotBorderColor: 'white',
+                plotBorderWidth: 0
             },
     
             title: {
