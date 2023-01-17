@@ -155,10 +155,13 @@ async function btnCountriesHtml() {
         $(e.currentTarget).addClass('ele-selected')
 
         console.log('e', e, e.currentTarget.classList)
-        console.log('idx', e.currentTarget.classList.indexOf('trpIdx-'))
 
         var cl = e.currentTarget.classList
-        var trpIdx = cl[cl.indexOf('trpIdx-')]
+
+        console.log('cl', cl)
+        const trp = cl.find(x => x.includes('trpIdx-'))
+        var trpIdx = trp.split('-')[1]
+        console.log('trpIdx', trpIdx)
         
       });
 
