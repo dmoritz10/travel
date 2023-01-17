@@ -227,7 +227,7 @@ async function loadMap(cntryCnt) {
             },
 
             colorAxis: {
-                min: 0,
+                min: 0.1,
                 max: 10,
                 type: 'logarithmic',
                 gridLineWidth: 2,
