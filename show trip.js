@@ -11,7 +11,7 @@ async function showTrip(idx, rtnToPage='Trips') {
   $("#trpdStartEndDate")[0].innerHTML = vals[trpHdrs.indexOf('Start Date')].slice(0,-5) + ' - ' + vals[trpHdrs.indexOf('End Date')].slice(0,-5)
   $("#trpdArrIdx").val(idx)
 
-  $("#trpdRtnToPage")[0].setAttribute("onclick", "clearAndGotoTab(" + rtnToPage + ")");
+  $("#trpdRtnToPage")[0].setAttribute("onclick", "clearAndGotoTab('" + rtnToPage + "')");
 
 
   var trpDtl = JSON.parse(vals[trpHdrs.indexOf('Destination Detail')])
