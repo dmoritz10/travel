@@ -9,20 +9,20 @@ async function btnCountriesHtml() {
   
     console.log('objSht', objSht)
   
-    resTitle = "Trips"
+    trpTitle = "Trips"
     
-    resHdrs = objSht[resTitle].colHdrs
-    resVals = objSht[resTitle].vals
+    trpHdrs = objSht[resTitle].colHdrs
+    trpVals = objSht[resTitle].vals
     
-    var monthCol = resHdrs.indexOf('Month')
-    var tripCol  = resHdrs.indexOf('Trip')
-    var cntryCol = resHdrs.indexOf('Countries')
-    var strDtCol = resHdrs.indexOf('Start Date')
-    var endDtCol = resHdrs.indexOf('End Date')
-    var destCol  = resHdrs.indexOf('Destinations')
-    var typeCol  = resHdrs.indexOf('Type')
+    var monthCol = trpHdrs.indexOf('Month')
+    var tripCol  = trpHdrs.indexOf('Trip')
+    var cntryCol = trpHdrs.indexOf('Countries')
+    var strDtCol = trpHdrs.indexOf('Start Date')
+    var endDtCol = trpHdrs.indexOf('End Date')
+    var destCol  = trpHdrs.indexOf('Destinations')
+    var typeCol  = trpHdrs.indexOf('Type')
     
-    var vals = resVals
+    var vals = trpVals
 
     var arr = []
     var cntryCnt = {}
@@ -162,6 +162,9 @@ async function btnCountriesHtml() {
         const trp = cl.find(x => x.includes('trpIdx-'))
         var trpIdx = trp.split('-')[1]
         console.log('trpIdx', trpIdx)
+
+        console.log('trp', trpVals, trpVals[trpIdx])
+
         showTrip(trpIdx)
         
       });
