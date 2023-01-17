@@ -154,8 +154,11 @@ async function btnCountriesHtml() {
         $('.cntDests').removeClass('ele-selected');
         $(e.currentTarget).addClass('ele-selected')
 
-        console.log('e', e, e.classList)
-        console.log('idx', e.classList.indexOf('trpIdx-'))
+        console.log('e', e, e.currentTarget.classList)
+        console.log('idx', e.currentTarget.classList.indexOf('trpIdx-'))
+
+        var cl = e.currentTarget.classList
+        var trpIdx = cl[cl.indexOf('trpIdx-')]
         
       });
 
