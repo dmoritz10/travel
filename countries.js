@@ -95,7 +95,7 @@ async function btnCountriesHtml() {
                     class:  "h6"
                 },
                 {
-                    text: dests + '<span class="text-dark float-end me-3">' + 'hi dan' + '</span>',
+                    text: dests + '<span class="text-dark float-end me-3">' + '<button type="button" class="btn btn-outline-primary btn-sm">More</button>' + '</span>',
                     class:  "h6 cntDests trpIdx-" + trpIdx
                 },
                 {
