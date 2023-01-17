@@ -11,8 +11,8 @@ async function btnCountriesHtml() {
   
     trpTitle = "Trips"
     
-    trpHdrs = objSht[resTitle].colHdrs
-    trpVals = objSht[resTitle].vals
+    trpHdrs = objSht[trpTitle].colHdrs
+    trpVals = objSht[trpTitle].vals
     
     var monthCol = trpHdrs.indexOf('Month')
     var tripCol  = trpHdrs.indexOf('Trip')
