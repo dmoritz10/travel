@@ -227,11 +227,11 @@ async function loadMap(cntryCnt) {
             },
 
             colorAxis: {
-                min: 1,
+                min: 0,
                 max: 10,
                 type: 'logarithmic',
                 gridLineWidth: 2,
-                gridLineColor: 'black',
+                gridLineColor: 'white',
                 minorTickInterval: 0.1,
                 minorGridLineColor: 'white',
                 tickLength: 0,
