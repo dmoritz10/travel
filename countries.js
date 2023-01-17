@@ -165,7 +165,7 @@ async function btnCountriesHtml() {
 
         console.log('trp', trpVals, trpVals[trpIdx])
 
-        showTrip(trpIdx)
+        showTrip(trpIdx, 'Countries')
         
       });
 
