@@ -16,7 +16,6 @@ async function showTrip(idx, rtnToPage='Trips') {
   if (rtnToPage == 'Trips') $("#btnTrpAddNew").removeClass('d-none')
   else                      $("#btnTrpAddNew").addClass('d-none')
 
-
   var trpDtl = JSON.parse(vals[trpHdrs.indexOf('Destination Detail')])
 
   var brkDate
@@ -61,7 +60,8 @@ async function showTrip(idx, rtnToPage='Trips') {
 
     }
   
-    var icon = '<div class="label ps-5 cursor-pointer" onClick="editTripDtl(' + idx + ", " + i + ')"><span class="material-icons">expand_more</span></div>'
+    if (rtnToPage == 'Trips') var icon = '<div class="label ps-5 cursor-pointer" onClick="editTripDtl(' + idx + ", " + i + ')"><span class="material-icons">expand_more</span></div>'
+    else                      var icon = ''
 
     var place = val.name + "<br><h6>" +
                 val.city + (val.state ? ", " : "") +
