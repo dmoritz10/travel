@@ -162,6 +162,7 @@ async function btnCountriesHtml() {
         const trp = cl.find(x => x.includes('trpIdx-'))
         var trpIdx = trp.split('-')[1]
         console.log('trpIdx', trpIdx)
+        showTrip(trpIdx)
         
       });
 
