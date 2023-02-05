@@ -127,7 +127,7 @@ async function btnCountriesHtml() {
 
     }
 
-    $("#cntNbrTrips").html('<span class="text-success">' + nbrDom + ' states</span>' + '&nbsp&nbsp&nbsp' + nbrIntl + ' countries')
+    $("#cntNbrTrips").html('<span class="text-success">' + nbrDom + ' States</span>' + '&nbsp&nbsp&nbsp' + nbrIntl + ' Countries')
 
     $('#cntContainer').bstreeview({ data: treeData });
 
