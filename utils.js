@@ -317,7 +317,7 @@ function gotoTab(tabName) {
 
   console.log('gotoTab', tabName, $tab)
 
-  $( '.pages-content > div.active' ).removeClass( 'active show' );
+  $( '.tab-content > div.active' ).removeClass( 'active show' );
   
   $tab.addClass( 'active show' );
 
