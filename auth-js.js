@@ -35,15 +35,24 @@ function forceSignin() {
 
 function signoutEvent() {
   // document.getElementById('content').innerHTML = '';
-  document.getElementById('signout').style.display = 'none';
+  // document.getElementById('signout').style.display = 'none';
   document.getElementById('signin').style.display = 'block';
+  gotoTab('Auth')
+  forceSignin();
+}
+
+function revokeEvent() {
+  // document.getElementById('content').innerHTML = '';
+  // document.getElementById('signout').style.display = 'none';
+  document.getElementById('signin').style.display = 'block';
+  Goth.revoke()
   gotoTab('Auth')
   forceSignin();
 }
 
 function proceedAsSignedIn() {
   document.getElementById('signin').style.display = 'none';
-  document.getElementById('signout').style.display = 'block';
+  // document.getElementById('signout').style.display = 'block';
   runApp();
 }
 /**
@@ -152,16 +161,10 @@ async function runApp() {
 
   user = Goth.user()
 
-  if (user.firstName) {
-      $('#authSigninStatus').html('Hi ' + user.firstName + '.<br>You are signed in.')
-  } else {
-      $('#authSigninStatus').html('Hi ' + user.emailName + '.<br>You are signed in.')
-  }
-
   var rtn = await getSSId('Travel Companion');
 
   if (rtn.fileId) {spreadsheetId = rtn.fileId}
-  else {$('#authSigninStatus').html(rtn.msg);return}
+  else return
   
   await initialUI();
 
