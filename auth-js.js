@@ -43,7 +43,7 @@ function signoutEvent() {
 function proceedAsSignedIn() {
   document.getElementById('signin').style.display = 'none';
   document.getElementById('signout').style.display = 'block';
-  list_files();
+  runApp();
 }
 /**
  * Just to demonstrate that the APIs *can* successfully be called.
