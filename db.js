@@ -25,7 +25,7 @@ var openShts = async function (shts) {
   
       }
 
-      let response = gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: spreadsheetId, ranges: shtRngs})
+      let response = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: spreadsheetId, ranges: shtRngs})
         .then(async response => {               console.log('gapi first try', response)
             
             return response})
