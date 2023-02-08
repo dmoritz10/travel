@@ -1,14 +1,8 @@
 
 
-const API_KEY = 'AIzaSyCObS1ZM8aAyPfqXZDtq2-rRrMqpJZxBc0'  // TODO: Update placeholder with desired API key.
-const CLI_ID = '8803561872-jd3c7f4e1ugeld0l6ssfmse40n5nfr6l.apps.googleusercontent.com'  // TODO: Update placeholder with desired client ID.
-
-// const CLI_ID = '764306262696-esbdj8daoee741d44fdhrh5fehjtjjm5.apps.googleusercontent.com';
-// const API_KEY = 'AIzaSyBG5YxMTiBdvxD5-xxVp0LA1M8IXz8Xtbo';
-// const SCOPES = 'https://www.googleapis.com/auth/drive.metadata'; // Space delimited if more than one
-// const DISCOVERY = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest';
-
-const SCOPES = 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly'; // Space delimited if more than one
+const API_KEY   = 'AIzaSyCObS1ZM8aAyPfqXZDtq2-rRrMqpJZxBc0'  
+const CLI_ID    = '8803561872-jd3c7f4e1ugeld0l6ssfmse40n5nfr6l.apps.googleusercontent.com'  
+const SCOPES    = 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly'; // Space delimited if more than one
 const DISCOVERY =   [
                     "https://sheets.googleapis.com/$discovery/rest?version=v4", 
                     "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"
@@ -34,16 +28,12 @@ function forceSignin() {
 }
 
 function signoutEvent() {
-  // document.getElementById('content').innerHTML = '';
-  // document.getElementById('signout').style.display = 'none';
   document.getElementById('signin').style.display = 'block';
   gotoTab('Auth')
   forceSignin();
 }
 
 function revokeEvent() {
-  // document.getElementById('content').innerHTML = '';
-  // document.getElementById('signout').style.display = 'none';
   document.getElementById('signin').style.display = 'block';
   Goth.revoke()
   gotoTab('Auth')
@@ -52,7 +42,6 @@ function revokeEvent() {
 
 function proceedAsSignedIn() {
   document.getElementById('signin').style.display = 'none';
-  // document.getElementById('signout').style.display = 'block';
   runApp();
 }
 /**
@@ -145,14 +134,6 @@ function gothWatch(event) {
 function authorize() {
   Goth.observe(gothWatch);
   Goth.load(CLI_ID, API_KEY, SCOPES, DISCOVERY);
-  // const signout = document.getElementById('signout');
-  // signout.style.display = 'none';
-  // const signout_btn = document.getElementById('btnSignout');
-  // const revoke_btn = document.getElementById('btnRevoke');
-  // const runapp_btn = document.getElementById('btnRunApp');
-  // signout_btn.onclick = Goth.signout;
-  // revoke_btn.onclick = Goth.revoke;
-  // runapp_btn.onclick = runApp;
 }
 
 // authorize()
