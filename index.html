@@ -52,6 +52,11 @@
 
     console.log('start code load')
 
+    var g = await import('./gothic.js');
+    Goth = g.default
+
+    console.log('Gothhhh', Goth)
+    
     // load html files
     
     var loadList = $(".load-html")
@@ -99,12 +104,7 @@
       console.log('all scripts loaded')
     });
 
-    var g = await import('./gothic.js');
-    Goth = g.default
-
-    console.log('Gothhhh', Goth)
-    
-
+  
   console.log('end code load')
 
   });
