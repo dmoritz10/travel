@@ -254,7 +254,7 @@ export default {
     if (r && r.credential) {
       try {
         let rawdata = jwt_decode(r.credential);
-        state.user = (({ email, firstName, lastName, picture, fullName }) => ({ email, family_name, given_name, picture, name}))(rawdata);
+        state.user = (({ email, family_name:lastName, given_name:firstName, picture, name:fullName }) => ({ email, family_name, given_name, picture, name}))(rawdata);
         state.emailName = state.user.email.split('@')[0]
         await _authorize();
         window.localStorage.setItem('gothic-id', 'loaded');
