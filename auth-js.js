@@ -142,7 +142,7 @@ window.authorize = function () {
   const runapp_btn = document.getElementById('btnRunApp');
   signout_btn.onclick = Goth.signout;
   revoke_btn.onclick = Goth.revoke;
-  runapp_btn.onclick = runApp();
+  runapp_btn.onclick = runApp;
 }
 
 // authorize()
