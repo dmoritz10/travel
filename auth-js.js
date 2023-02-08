@@ -132,7 +132,7 @@ function gothWatch(event) {
 /**
  * Wire up the main ux machinery.
  */
-function authorize() {
+window.authorize = function () {
   Goth.observe(gothWatch);
   Goth.load(CLI_ID, API_KEY, SCOPES, DISCOVERY);
   const signout = document.getElementById('signout');
