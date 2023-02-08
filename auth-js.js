@@ -33,7 +33,7 @@ function forceSignin() {
 }
 
 function signoutEvent() {
-  document.getElementById('content').innerHTML = '';
+  // document.getElementById('content').innerHTML = '';
   document.getElementById('signout').style.display = 'none';
   document.getElementById('signin').style.display = 'block';
   forceSignin();
