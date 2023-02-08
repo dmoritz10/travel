@@ -39,7 +39,7 @@
 
 <script src="https://code.highcharts.com/maps/highmaps.js"></script>
 
-<script src="gothic.js" type="module"></script>
+<!-- <script src="gothic.js" type="module"></script> -->
 
 </head>
 
@@ -99,13 +99,15 @@
       console.log('all scripts loaded')
     });
 
+    var g = await import('./gothic.js');
+    var Goth = g.default
+    
+
   console.log('end code load')
 
   });
 
-  var g = await import('./gothic.js');
-  var Goth = g.default
-    
+  
 </script> 
     
     
