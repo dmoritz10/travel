@@ -1,5 +1,6 @@
 
-var Goth = await import('./gothic.js');
+var g = await import('./gothic.js');
+var Goth = g.default
 console.log('goth', Goth)
 
 const API_KEY = 'AIzaSyCObS1ZM8aAyPfqXZDtq2-rRrMqpJZxBc0'  // TODO: Update placeholder with desired API key.
