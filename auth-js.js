@@ -1,5 +1,6 @@
 
-let Goth = await import('./gothic.js');
+var Goth = await import('./gothic.js');
+console.log('goth', Goth)
 
 const API_KEY = 'AIzaSyCObS1ZM8aAyPfqXZDtq2-rRrMqpJZxBc0'  // TODO: Update placeholder with desired API key.
 const CLI_ID = '8803561872-jd3c7f4e1ugeld0l6ssfmse40n5nfr6l.apps.googleusercontent.com'  // TODO: Update placeholder with desired client ID.
