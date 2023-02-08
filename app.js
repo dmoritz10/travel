@@ -123,47 +123,7 @@ jQuery(function ($) {
          *  Called when the signed in status changes, to update the UI
          *  appropriately. After a sign-in, the API is called.
          */
-        updateSigninStatus: async function  (isSignedIn) {
-
-            if (isSignedIn) { 
-
-                console.log('signed in')
-
-                var currUserObj = await gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
-
-                user['email']     = currUserObj.getEmail()
-                user['firstName'] = currUserObj.getGivenName()
-                user['lastName']  = currUserObj.getFamilyName()
-                user['fullName']  = currUserObj.getName()
-                user['emailName'] = user['email'].split('@')[0]
-
-                if (user.firstName) {
-                    $('#authSigninStatus').html('Hi ' + user.firstName + '.<br>You are signed in.')
-                } else {
-                    $('#authSigninStatus').html('Hi ' + user.emailName + '.<br>You are signed in.')
-                }
-
-                var rtn = await getSSId('Travel Companion');
-
-                if (rtn.fileId) {spreadsheetId = rtn.fileId}
-                else {$('#authSigninStatus').html(rtn.msg);return}
-                
-                await initialUI();
-
-                goHome()
-
-            } else {
-
-                console.log('NOT signed in')
-
-                $('#authSigninStatus').html('You are signed out.  Authorization is required.')
-
-                user = {}
-
-                gotoTab('Auth')
-            }
-        },
-
+        
         /**
          *  Sign in the user upon button click.
          */
@@ -191,8 +151,8 @@ jQuery(function ($) {
 			this.serviceWorker()
                 console.log('serviceworker')
 
-			signin.handleClientLoad()
-                console.log('signin')
+            authorize()
+                console.log('authorize')
 
 			this.bindEvents();
                 console.log('bindEvents')
@@ -432,7 +392,5 @@ jQuery(function ($) {
 	};
 
     App.init();
-
-    console.log('version 2')
 
 });
