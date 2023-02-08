@@ -189,11 +189,11 @@ jQuery(function ($) {
 
             // Auth tab
           
-            $('#btnAuth')                   .button().click(btnAuthHtml);
+            // $('#btnAuth')                   .button().click(btnAuthHtml);
          
             // Home tab
 
-            $('#btnSignout')            .button().click(btnSignoutHtml);
+            // $('#btnSignout')            .button().click(btnSignoutHtml);
             $('#btnCountries')          .button().click(btnCountriesHtml);
             $('#btnTrips')              .button().click(listTrips);
             $('#btnReservations')       .click(listReservations);
