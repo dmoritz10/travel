@@ -145,6 +145,8 @@ function authorize() {
   runapp_btn.onclick = runApp();
 }
 
+authorize()
+
 async function runApp() {
 
   user = Goth.user()
