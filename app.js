@@ -21,6 +21,7 @@
 
     var placeTree
 
+    var Goth
   
     var arrOptions
     var optionsIdx
