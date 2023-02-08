@@ -136,7 +136,7 @@ function authorize() {
   Goth.observe(gothWatch);
   Goth.load(CLI_ID, API_KEY, SCOPES, DISCOVERY);
   const signout = document.getElementById('signout');
-  // signout.style.display = 'none';
+  signout.style.display = 'none';
   const signout_btn = document.getElementById('btnSignout');
   const revoke_btn = document.getElementById('btnRevoke');
   const runapp_btn = document.getElementById('btnRunApp');
