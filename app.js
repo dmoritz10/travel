@@ -55,95 +55,6 @@ jQuery(function ($) {
 	// 'use strict';
 
 
-    var signin =  {
-
-        // currUser : {},
-
-        // API_KEY : 'AIzaSyCObS1ZM8aAyPfqXZDtq2-rRrMqpJZxBc0',  // TODO: Update placeholder with desired API key.
-
-        // CLIENT_ID : '8803561872-jd3c7f4e1ugeld0l6ssfmse40n5nfr6l.apps.googleusercontent.com',  // TODO: Update placeholder with desired client ID.
-
-        API_KEY : 'AIzaSyBG5YxMTiBdvxD5-xxVp0LA1M8IXz8Xtbo',  // TODO: Update placeholder with desired API key.
-
-        CLIENT_ID : '764306262696-esbdj8daoee741d44fdhrh5fehjtjjm5.apps.googleusercontent.com',  // TODO: Update placeholder with desired client ID.
-
-        SCOPES : "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly",
-
-        DISCOVERY_DOCS : ["https://sheets.googleapis.com/$discovery/rest?version=v4", 
-                           "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"],
-
-        /**
-         *  On load, called to load the auth2 library and API client library.
-         */
-        handleClientLoad: function() {
-            gapi.load('client:auth2', this.initClient);
-            console.log('initClient')
-        },
-
-
-        /**
-         *  Initializes the API client library and sets up sign-in state
-         *  listeners.
-         */
-        initClient: async function () {
-
-            console.log('initClient start')
-
-            // goHome()
-
-            // return
-        
-            await gapi.client.init({
-                apiKey:                 signin.API_KEY,
-                clientId:               signin.CLIENT_ID,
-                discoveryDocs:          signin.DISCOVERY_DOCS,
-                fetch_basic_profile:    true,
-                scope:                  signin.SCOPES
-
-            }).then(function () {
-                // Listen for sign-in state changes.
-
-                console.log('initClient then')
-                console.log(this)
-
-                gapi.auth2.getAuthInstance().isSignedIn.listen(signin.updateSigninStatus);
-
-                // Handle the initial sign-in state.
-                signin.updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-
-            }, function(error) {
-                console.log(JSON.stringify(error, null, 2));
-            });
-
-            console.log("initClient end")
-        
-        },
-
-        /**
-         *  Called when the signed in status changes, to update the UI
-         *  appropriately. After a sign-in, the API is called.
-         */
-        
-        /**
-         *  Sign in the user upon button click.
-         */
-        handleAuthClick: function (event) {
-        
-            gapi.auth2.getAuthInstance().signIn();
-        },
-
-        /**
-         *  Sign out the user upon button click.
-         */
-        handleSignoutClick: function (event) {
-        
-            gapi.auth2.getAuthInstance().signOut();
-        }
-
-    }
-
-
-
 	var App = {
 
 		init: function () {
@@ -156,9 +67,6 @@ jQuery(function ($) {
 
 			this.bindEvents();
                 console.log('bindEvents')
-
-            this.permissions();
-                console.log('permissions')
 
 		},
 
@@ -383,12 +291,6 @@ jQuery(function ($) {
             };                 
 		},
 
-        permissions: function () {
-
-            
-
-
-        }
 	};
 
     App.init();
