@@ -145,7 +145,7 @@ window.authorize = function () {
   runapp_btn.onclick = runApp();
 }
 
-authorize()
+// authorize()
 
 async function runApp() {
 
