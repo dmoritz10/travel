@@ -21,6 +21,7 @@ function proceedAsLoaded() {
   if (Goth.recognize()) {
     Goth.onetap();
   } else {
+    gotoTab('Auth')
     forceSignin();
   }
 }
@@ -36,6 +37,7 @@ function signoutEvent() {
   // document.getElementById('content').innerHTML = '';
   document.getElementById('signout').style.display = 'none';
   document.getElementById('signin').style.display = 'block';
+  gotoTab('Auth')
   forceSignin();
 }
 
