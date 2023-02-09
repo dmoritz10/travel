@@ -135,8 +135,6 @@ function authorize() {
   Goth.load(CLI_ID, API_KEY, SCOPES, DISCOVERY);
 }
 
-// authorize()
-
 async function runApp() {
 
   user = Goth.user()
@@ -149,6 +147,5 @@ async function runApp() {
   await initialUI();
 
   goHome()
-
     
 }
