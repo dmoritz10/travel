@@ -391,41 +391,11 @@ async function btnTrpmDeleteSheetHtml() {
 
   modal(true)
 
-
   var idx = trpIdxArr[$('#trpmArrIdx').val() * 1]
 
-  var shtId = await getSheetId('Trips')
-
-  var request = {
-    "requests":
-      [
-        {
-          "deleteDimension": {
-            "range": {
-              "sheetId": shtId,
-              "dimension": "ROWS",
-              "startIndex": idx + 1,
-              "endIndex": idx + 2
-            }
-          }
-        }
-      ]
-  }
-
-
-  await gapi.client.sheets.spreadsheets.batchUpdate({
-    spreadsheetId: spreadsheetId,
-    resource: request
-
-  }).then(response => {
-
-    console.log('delete complete - ', idx)
-    console.log(response)
-
-  })
+  var response = await deleteSheetRow(idx, 'Trips')
 
   $("#trip-modal").modal('hide');
-  // $("#trip-modal").modal('dispose');
 
   modal(false)
 

@@ -444,40 +444,11 @@ async function btnResmDeleteSheetHtml() {
 
   modal(true)
 
-
   var idx = resIdxArr[$('#resmArrIdx').val() * 1]
 
   console.log('btnResmDelete',idx,$('#resmArrIdx').val(), resIdxArr)
 
-  var shtId = await getSheetId('Reservations')
-
-  var request = {
-    "requests":
-      [
-        {
-          "deleteDimension": {
-            "range": {
-              "sheetId": shtId,
-              "dimension": "ROWS",
-              "startIndex": idx + 1,
-              "endIndex": idx + 2
-            }
-          }
-        }
-      ]
-  }
-
-
-  await gapi.client.sheets.spreadsheets.batchUpdate({
-    spreadsheetId: spreadsheetId,
-    resource: request
-
-  }).then(response => {
-
-    console.log('delete complete - ', idx)
-    console.log(response)
-
-  })
+  var response = await deleteSheetRow(idx, 'Reservations')
 
   $("#reservation-modal").modal('hide');
   // $("#trip-modal").modal('dispose');
