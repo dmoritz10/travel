@@ -128,26 +128,40 @@
       valueInputOption: 'RAW'
     };
   
-    await checkAuth()
-  
-    var gapiResult = await gapi.client.sheets.spreadsheets.values.update(params, resource)
-  
-      .then(
-        async response => {
-          return response
-        },
-  
-        async reason => {
-  
-          console.log('updateOption')
-          console.log(reason)
-  
-          bootbox.alert('error updating option "' + key + '": ' + reason.result.error.message);
-  
-          return null
-  
-        }
-      );
+    let response = await gapi.client.sheets.spreadsheets.values.update(params, resource)
+      .then(async response => {               console.log('gapi first try', response)
+          
+          return response})
+
+      .catch(async err  => {                  console.log('gapi token1', err)
+          
+          if (err.result.error.code == 401 || err.result.error.code == 403) {
+              await Goth.token()              // for authorization errors obtain an access token
+              let retryResponse = await gapi.client.sheets.spreadsheets.values.update(params, resource)
+                  .then(async retry => {      console.log('gapi retry', retry) 
+                      
+                      return retry})
+
+                  .catch(err  => {            console.log('gapi error2', err)
+                      
+                      bootbox.alert('gapi error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                      return null });         // cancelled by user, timeout, etc.
+
+              return retryResponse
+
+          } else {
+              
+              console.log('error updating option "' + key + '": ' + reason.result.error.message);
+              bootbox.alert('error updating option "' + key + '": ' + reason.result.error.message);
+
+              return null
+
+          }
+              
+      })
+      
+                                              console.log('after gapi')      
   
   }
   
@@ -189,14 +203,38 @@
   
   
       promiseArr.push(
-         gapi.client.sheets.spreadsheets.values.update(params, resource)
-          .then(function (response) {
-              console.log('Sheet update successful')
-              console.log(response)
-          }, function (reason) {
-              console.error('error updating sheet "' + title + '": ' + reason.result.error.message);
-              alert('error updating sheet "' + title + '": ' + reason.result.error.message);
-        })
+         
+        await gapi.client.sheets.spreadsheets.values.update(params, resource)
+          .then(async response => {               console.log('gapi first try', response)
+              
+              return response})
+
+          .catch(async err  => {                  console.log('gapi token1', err)
+              
+              if (err.result.error.code == 401 || err.result.error.code == 403) {
+                  await Goth.token()              // for authorization errors obtain an access token
+                  let retryResponse = await gapi.client.sheets.spreadsheets.values.update(params, resource)
+                      .then(async retry => {      console.log('gapi retry', retry) 
+                          
+                          return retry})
+
+                      .catch(err  => {            console.log('gapi error2', err)
+                          
+                          bootbox.alert('gapi error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                          return null });         // cancelled by user, timeout, etc.
+
+                  return retryResponse
+
+              } else {
+                  
+                  bootbox.alert('gapi error: ' + shtTitle + ' - ' + response.result.error.message);
+                  return null
+
+              }
+                  
+          })
+          
       )
     }
   
@@ -224,15 +262,40 @@
         valueInputOption: 'RAW'
       };
   
-  
-      await gapi.client.sheets.spreadsheets.values.update(params, resource)
-        .then(function (response) {
-          console.log('Sheet update successful')
-          console.log(response)
-        }, function (reason) {
-          console.error('error updating sheet "' + row + '": ' + reason.result.error.message);
-          alert('error updating sheet "' + row + '": ' + reason.result.error.message);
-        });
+      let response = await gapi.client.sheets.spreadsheets.values.update(params, resource)
+        .then(async response => {               console.log('gapi first try', response)
+            
+            return response})
+
+        .catch(async err  => {                  console.log('gapi token1', err)
+            
+            if (err.result.error.code == 401 || err.result.error.code == 403) {
+                await Goth.token()              // for authorization errors obtain an access token
+                let retryResponse = await gapi.client.sheets.spreadsheets.values.update(params, resource)
+                    .then(async retry => {      console.log('gapi retry', retry) 
+                        
+                        return retry})
+
+                    .catch(err  => {            console.log('gapi error2', err)
+                        
+                        bootbox.alert('gapi error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                        return null });         // cancelled by user, timeout, etc.
+
+                return retryResponse
+
+            } else {
+                
+              console.error('error updating row "' + trpTitle + '": ' + reason.result.error.message);
+              bootbox.alert('error updating row "' + trpTitle + '": ' + reason.result.error.message);
+
+                return null
+
+            }
+                
+        })
+        
+                                                console.log('after gapi')
   
     } else {
   
@@ -246,17 +309,39 @@
         insertDataOption: 'INSERT_ROWS'
       };
   
-      await gapi.client.sheets.spreadsheets.values.append(params, resource)
-        .then(async function (response) {
-  
-        },
-  
-          function (reason) {
-  
-            console.error('error appending sheet "' + trpTitle + '": ' + reason.result.error.message);
-            bootbox.alert('error appending sheet "' + trpTitle + '": ' + reason.result.error.message);
-  
-          });
+      let response = await gapi.client.sheets.spreadsheets.values.append(params, resource)
+        .then(async response => {               console.log('gapi first try', response)
+            
+            return response})
+
+        .catch(async err  => {                  console.log('gapi token1', err)
+            
+            if (err.result.error.code == 401 || err.result.error.code == 403) {
+                await Goth.token()              // for authorization errors obtain an access token
+                let retryResponse = await gapi.client.sheets.spreadsheets.values.append(params, resource)
+                    .then(async retry => {      console.log('gapi retry', retry) 
+                        
+                        return retry})
+
+                    .catch(err  => {            console.log('gapi error2', err)
+                        
+                        console.error('error appending row "' + trpTitle + '": ' + reason.result.error.message);
+                        bootbox.alert('error appending row "' + trpTitle + '": ' + reason.result.error.message);
+                        
+                        return null });         // cancelled by user, timeout, etc.
+
+                return retryResponse
+
+            } else {
+                
+                bootbox.alert('gapi error: ' + shtTitle + ' - ' + response.result.error.message);
+                return null
+
+            }
+                
+        })
+          
+                                                  console.log('after gapi')
   
     }
   
@@ -318,6 +403,7 @@
           return response
   
   }
+  
   async function getSheetId(shtTitle) {
 
     var sheets = await gapi.client.sheets.spreadsheets.get({
