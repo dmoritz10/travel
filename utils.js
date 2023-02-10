@@ -1,32 +1,20 @@
 
 
-async function getSSId(currUser) {
+async function getSSId(sheetName) {
 
-  // var q = "name = 'secsht - " + currUser +
-  var q = "name = '" + currUser +
-      "' AND " + "mimeType='application/vnd.google-apps.spreadsheet'" +
-      " AND " + "trashed = false"
+  var response = listDriveFiles(sheetName)
 
-  var ssId = await gapi.client.drive.files.list({
-      q: q,
-      fields: 'nextPageToken, files(id, name, ownedByMe)',
-      spaces: 'drive'
-  }).then(function (response) {
+  if (!response) return
 
-      var files = response.result.files
+  var files = response.result.files
 
-      // files = files.filter(item => item.ownedByMe);    // remove files that are shared with me
-      if (!files || files.length == 0)
-          return { fileId: null, msg: "'Travel Journal' not found" }
+  if (!files || files.length == 0)
+      return { fileId: null, msg: "'Travel Journal' not found" }
 
-      if (files.length > 1)
-          return { fileId: null, msg: "'Travel Journal' not unique" }
+  if (files.length > 1)
+      return { fileId: null, msg: "'Travel Journal' not unique" }
 
-      return { fileId: files[0].id, msg: 'ok' }
-
-  })
-
-  return ssId
+  return { fileId: files[0].id, msg: 'ok' }
 
 }
 

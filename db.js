@@ -30,7 +30,7 @@
               
               return response})
 
-          .catch(async err  => {                  console.log('gapi openShts token1', err)
+          .catch(async err  => {                  console.log('gapi openShts catch', err)
               
               if (err.result.error.code == 401 || err.result.error.code == 403) {
                   await Goth.token()              // for authorization errors obtain an access token
@@ -133,7 +133,7 @@
           
           return response})
 
-      .catch(async err  => {                  console.log('gapi updateOption token1', err)
+      .catch(async err  => {                  console.log('gapi updateOption catch', err)
           
           if (err.result.error.code == 401 || err.result.error.code == 403) {
               await Goth.token()              // for authorization errors obtain an access token
@@ -209,7 +209,7 @@
               
               return response})
 
-          .catch(async err  => {                  console.log('gapi updateSheet token1', err)
+          .catch(async err  => {                  console.log('gapi updateSheet catch', err)
               
               if (err.result.error.code == 401 || err.result.error.code == 403) {
                   await Goth.token()              // for authorization errors obtain an access token
@@ -269,7 +269,7 @@
             
             return response})
 
-        .catch(async err  => {                  console.log('gapi updateSheetRow token1', err)
+        .catch(async err  => {                  console.log('gapi updateSheetRow catch', err)
             
             if (err.result.error.code == 401 || err.result.error.code == 403) {
                 await Goth.token()              // for authorization errors obtain an access token
@@ -316,7 +316,7 @@
             
             return response})
 
-        .catch(async err  => {                  console.log('gapi updateSheetRow token1', err)
+        .catch(async err  => {                  console.log('gapi updateSheetRow catch', err)
             
             if (err.result.error.code == 401 || err.result.error.code == 403) {
                 await Goth.token()              // for authorization errors obtain an access token
@@ -374,7 +374,7 @@
               
               return response})
 
-          .catch(async err  => {                  console.log('gapi deleteSheetRow token1', err)
+          .catch(async err  => {                  console.log('gapi deleteSheetRow catch', err)
               
               if (err.result.error.code == 401 || err.result.error.code == 403) {
                   await Goth.token()              // for authorization errors obtain an access token
@@ -403,6 +403,54 @@
                                                   console.log('after gapi')
     
           return response
+  
+  }
+
+  async function listDriveFiles(sheetName) {
+
+    let q = "name = '" + sheetName +
+                        "' AND " + "mimeType='application/vnd.google-apps.spreadsheet'" +
+                        " AND " + "trashed = false"
+
+
+    let response = await gapi.client.drive.files.list({
+                                q: q,
+                                fields: 'nextPageToken, files(id, name, ownedByMe)',
+                                spaces: 'drive'})
+
+      .then(async response => {               console.log('gapi listDriveFiles first try', response)
+          
+          return response})
+
+      .catch(async err  => {                  console.log('gapi listDriveFiles catch', err)
+          
+          if (err.result.error.code == 401 || err.result.error.code == 403) {
+              await Goth.token()              // for authorization errors obtain an access token
+              let retryResponse = await gapi.client.sheets.spreadsheets.batchUpdate({spreadsheetId: spreadsheetId, resource: request})
+                  .then(async retry => {      console.log('gapi listDriveFiles retry', retry) 
+                      
+                      return retry})
+
+                  .catch(err  => {            console.log('gapi listDriveFiles error2', err)
+                      
+                      bootbox.alert('gapi listDriveFiles error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                      return null });         // cancelled by user, timeout, etc.
+
+              return retryResponse
+
+          } else {
+              
+              bootbox.alert('gapi listDriveFiles error: ' + shtTitle + ' - ' + response.result.error.message);
+              return null
+
+          }
+              
+      })
+          
+                                                  console.log('after gapi')
+    
+    return response
   
   }
 
