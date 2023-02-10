@@ -2,7 +2,7 @@
 
 async function getSSId(sheetName) {
 
-  var response = listDriveFiles(sheetName)
+  var response = await listDriveFiles(sheetName)
 
   if (!response) return
 
