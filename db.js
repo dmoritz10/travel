@@ -237,6 +237,8 @@
           
       )
     }
+
+    console.log('promiseArr', promiseAll)
   
     await Promise.all(promiseArr)
   
