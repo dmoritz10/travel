@@ -18,32 +18,6 @@ async function getSSId(sheetName) {
 
 }
 
-async function initialUI() {
-  timerStart = new Date()
-
-    arrShts = await openShts(
-      [
-        { title: 'Settings', type: "all" }
-      ])
-    
-
-  console.log('initialUI', arrShts)
-
-  arrOptions    = toObject(arrShts.Settings.vals)
-  optionsIdx    = toObjectIdx(arrShts.Settings.vals)
-
-  // disable add/change/delete for Trips and Trip Detail
-
-  if (user['email'] != 'dmoritz10@gmail.com') {
-
-    $('#btnTrpEdit').addClass('d-none')
-    $('#btnTrpAddTrip').addClass('d-none')
-    $('#btnTrpAddNew').addClass('d-none')
-    $('#btnImportPlaces').addClass('d-none')
-    
-  }
-
-};
 
 var confirm = function (msg) {
 
