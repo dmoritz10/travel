@@ -83,8 +83,10 @@ async function runApp() {
   var rtn = await getSSId('Travel Companion');
 
   if (rtn.fileId) {spreadsheetId = rtn.fileId}
-  else return
-  
+  else {
+    bootbox.alert('getSSId error: ' + rtn.msg);
+    return
+  }
   await initialUI();
 
   goHome()
