@@ -9,10 +9,10 @@ async function getSSId(sheetName) {
   var files = response.result.files
 
   if (!files || files.length == 0)
-      return { fileId: null, msg: "'Travel Journal' not found" }
+      return { fileId: null, msg: "'" + sheetName + "' not found" }
 
   if (files.length > 1)
-      return { fileId: null, msg: "'Travel Journal' not unique" }
+      return { fileId: null, msg: "'" + sheetName + "' not unique" }
 
   return { fileId: files[0].id, msg: 'ok' }
 
