@@ -84,7 +84,7 @@ async function runApp() {
 
   if (rtn.fileId) {spreadsheetId = rtn.fileId}
   else {
-    await bootbox.alert('getSSId error: ' + rtn.msg);
+    await confirm('getSSId error: ' + rtn.msg);
     window.close()
   }
   await initialUI();
