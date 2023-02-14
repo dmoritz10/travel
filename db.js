@@ -238,7 +238,7 @@
       )
     }
 
-    console.log('promiseArr', promiseAll)
+    console.log('promiseArr', promiseArr)
   
     await Promise.all(promiseArr)
   
