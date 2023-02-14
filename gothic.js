@@ -85,7 +85,7 @@ export default {
       type:  'standard',
       theme: 'outline',
       size:  'large',
-      shape: 'pill',
+      shape: 'square',
       ...params,
     };
   
