@@ -454,6 +454,24 @@
   
   }
 
+async function getSSId(sheetName) {
+
+  var response = await listDriveFiles(sheetName)
+
+  if (!response) return
+
+  var files = response.result.files
+
+  if (!files || files.length == 0)
+      return { fileId: null, msg: "'" + sheetName + "' not found" }
+
+  if (files.length > 1)
+      return { fileId: null, msg: "'" + sheetName + "' not unique" }
+
+  return { fileId: files[0].id, msg: 'ok' }
+
+}
+
   async function getSheetId(shtTitle) {
 
     var sheets = await gapi.client.sheets.spreadsheets.get({

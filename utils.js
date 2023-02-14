@@ -1,50 +1,5 @@
 
 
-async function getSSId(sheetName) {
-
-  var response = await listDriveFiles(sheetName)
-
-  if (!response) return
-
-  var files = response.result.files
-
-  if (!files || files.length == 0)
-      return { fileId: null, msg: "'" + sheetName + "' not found" }
-
-  if (files.length > 1)
-      return { fileId: null, msg: "'" + sheetName + "' not unique" }
-
-  return { fileId: files[0].id, msg: 'ok' }
-
-}
-
-async function initialUI() {
-  timerStart = new Date()
-
-    arrShts = await openShts(
-      [
-        { title: 'Settings', type: "all" }
-      ])
-    
-
-  console.log('initialUI', arrShts)
-
-  arrOptions    = toObject(arrShts.Settings.vals)
-  optionsIdx    = toObjectIdx(arrShts.Settings.vals)
-
-  // disable add/change/delete for Trips and Trip Detail
-
-  if (user['email'] != 'dmoritz10@gmail.com') {
-
-    $('#btnTrpEdit').addClass('d-none')
-    $('#btnTrpAddTrip').addClass('d-none')
-    $('#btnTrpAddNew').addClass('d-none')
-    $('#btnImportPlaces').addClass('d-none')
-    
-  }
-
-};
-
 var confirm = function (msg) {
 
   return new Promise(resolve => {
