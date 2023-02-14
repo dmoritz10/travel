@@ -204,7 +204,7 @@
   
       promiseArr.push(
          
-        await gapi.client.sheets.spreadsheets.values.update(params, resource)
+        gapi.client.sheets.spreadsheets.values.update(params, resource)
           .then(async response => {               console.log('gapi updateSheet first try', response)
               
               return response})
