@@ -84,7 +84,7 @@ export default {
     const options = {
       type:  'standard',
       theme: 'outline',
-      size:  'medium',
+      size:  'large',
       shape: 'pill',
       ...params,
     };
