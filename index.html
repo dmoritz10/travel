@@ -69,7 +69,7 @@
     
     }
 
-    // get array of script files to be loaded.  Exclude index-js.js because it must run after all other scripts are fully loaded
+    // get array of script files to be loaded.  Exclude app.js because it must run after all other scripts are fully loaded
 
     var loadList = $(".load-script")
     var script_arr = []
@@ -131,7 +131,6 @@
       <div class="m-0 p-0 tab-pane fade show active disable-scrollbars" id="Auth" >
 
         <div class="load-html" data-source="auth"></div>
-        <!-- <div class="load-script d-none" data-source="auth-js.js"></div> -->
                
       </div> 
 
@@ -212,9 +211,6 @@
   <div class="load-script d-none" data-source="swiped-events.js"></div>
   <div class="load-script d-none" data-source="db.js"></div>
   <div class="load-script d-none" data-source="auth.js"></div>
-  <!-- <script src="auth-js.js" type="module"></script> -->
-  <!-- <script src="auth-js.js" type="module" async defer></script> -->
-
 
   <div class="load-script d-none" data-source="app.js"></div>
 
