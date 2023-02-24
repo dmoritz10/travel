@@ -23,7 +23,7 @@ function proceedAsLoaded() {
  * They have to correctly get through the button click / sign up flow to proceed.
  */
 function forceSignin() {
-  Goth.button('signin', {type: 'square', size: 'large', text: 'signup_with'});
+  Goth.button('signin', {type: 'standard', size: 'large', text: 'signup_with'});
 }
 
 function signoutEvent() {
