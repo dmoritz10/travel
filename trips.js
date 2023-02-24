@@ -261,7 +261,8 @@ async function btnTrpmSubmitSheetHtml() {
 
   var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
 
-  await updateSheetRow(vals, trpIdx * 1 + 2, "Trips")
+  if (arrIdx > -1)  await updateSheetRow(vals, shtIdx * 1 + 2, "Trips")
+  else              await appendSheetRow(vals, "Trips")
 
   $("#trip-modal").modal('hide');
 
@@ -393,7 +394,7 @@ async function btnTrpmDeleteSheetHtml() {
 
   var idx = trpIdxArr[$('#trpmArrIdx').val() * 1]
 
-  var response = await deleteSheetRow(idx + 1, 'Trips')
+  var response = await deleteSheetRow(idx, 'Trips')
 
   $("#trip-modal").modal('hide');
 

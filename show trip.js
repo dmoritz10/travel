@@ -376,7 +376,8 @@ async function btntrpmdtlSubmitHtml() {
 
   var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
 
-  await updateSheetRow(vals, trpIdx * 1 + 2, "Trips")
+  if (arrIdx > -1)  await updateSheetRow(vals, trpIdx * 1 + 2, "Trips")
+  else              await appendSheetRow(vals, "Trips")
 
   $("#trpdtl-modal").modal('hide');
 
