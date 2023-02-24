@@ -447,7 +447,7 @@ async function btnResmDeleteSheetHtml() {
 
   console.log('btnResmDelete',idx,$('#resmArrIdx').val(), resIdxArr)
 
-  var response = await deleteSheetRow(idx, 'Reservations')
+  var response = await deleteSheetRow(idx + 1, 'Reservations')
 
   $("#reservation-modal").modal('hide');
   // $("#trip-modal").modal('dispose');
