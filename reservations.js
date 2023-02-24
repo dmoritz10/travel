@@ -317,7 +317,7 @@ async function btnResmSubmitSheetHtml() {
 
   var resIdx = arrIdx == -1 ? -1 : resIdxArr[arrIdx]  // get the row nbr on the sheet from resIdxArr
 
-  if (arrIdx > -1)  await updateSheetRow(vals, shtIdx * 1 + 2, "Reservations")
+  if (arrIdx > -1)  await updateSheetRow(vals, resIdx * 1 + 2, "Reservations")
   else              await appendSheetRow(vals, "Reservations")
 
   $("#reservation-modal").modal('hide');
