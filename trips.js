@@ -187,7 +187,7 @@ async function setFavorite(arrIdx) {
 
   var trpIdx = trpIdxArr[arrIdx]
 
-  await updateSheetRow(trpVals[arrIdx], trpIdx, "Trips")
+  await updateSheetRow(trpVals[arrIdx] * 1 + 2, trpIdx, "Trips")
 
   updateUI(trpVals[arrIdx], arrIdx)
 
@@ -261,7 +261,7 @@ async function btnTrpmSubmitSheetHtml() {
 
   var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
 
-  await updateSheetRow(vals, trpIdx, "Trips")
+  await updateSheetRow(vals, trpIdx * 1 + 2, "Trips")
 
   $("#trip-modal").modal('hide');
 
@@ -393,7 +393,7 @@ async function btnTrpmDeleteSheetHtml() {
 
   var idx = trpIdxArr[$('#trpmArrIdx').val() * 1]
 
-  var response = await deleteSheetRow(idx, 'Trips')
+  var response = await deleteSheetRow(idx + 1, 'Trips')
 
   $("#trip-modal").modal('hide');
 

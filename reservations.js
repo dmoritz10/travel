@@ -204,7 +204,7 @@ async function setFavorite(arrIdx) {
 
   var resIdx = resIdxArr[arrIdx]
 
-  await updateSheetRow(resVals[arrIdx], resIdx, "Reservations")
+  await updateSheetRow(resVals[arrIdx] * 1 + 2, resIdx, "Reservations")
 
   // updateUI(resVals[arrIdx], arrIdx)
 
@@ -318,7 +318,7 @@ async function btnResmSubmitSheetHtml() {
   var resIdx = arrIdx == -1 ? -1 : resIdxArr[arrIdx]  // get the row nbr on the sheet from resIdxArr
 
 
-  await updateSheetRow(vals, resIdx, "Reservations")
+  await updateSheetRow(vals, resIdx * 1 + 2, "Reservations")
 
 
   $("#reservation-modal").modal('hide');
@@ -448,7 +448,7 @@ async function btnResmDeleteSheetHtml() {
 
   console.log('btnResmDelete',idx,$('#resmArrIdx').val(), resIdxArr)
 
-  var response = await deleteSheetRow(idx, 'Reservations')
+  var response = await deleteSheetRow(idx + 1, 'Reservations')
 
   $("#reservation-modal").modal('hide');
   // $("#trip-modal").modal('dispose');
@@ -598,7 +598,7 @@ async function markEvent(status, i, vals, ceHdrs) {
 
 console.log('vals', vals, ceHdrs.indexOf('reviewed'))
 
-  await updateSheetRow(vals, i, "Calendar Events")
+  await updateSheetRow(vals, i * 1 + 2, "Calendar Events")
 
 }
 
@@ -621,7 +621,7 @@ async function addToReservations(vals, trip, ceHdrs, resHdrs) {
 
   //Reservation	Trip	Start Date	End Date	Source	Status	Location	Description	Composite Key
 
-  await updateSheetRow(resVals, -1, "Reservations")
+  await appendSheetRow(resVals, "Reservations")
 
 }
 
