@@ -261,7 +261,7 @@ async function btnTrpmSubmitSheetHtml() {
 
   var trpIdx = arrIdx == -1 ? -1 : trpIdxArr[arrIdx]  // get the row nbr on the sheet from trpIdxArr
 
-  if (arrIdx > -1)  await updateSheetRow(vals, shtIdx * 1 + 2, "Trips")
+  if (arrIdx > -1)  await updateSheetRow(vals, trpIdx * 1 + 2, "Trips")
   else              await appendSheetRow(vals, "Trips")
 
   $("#trip-modal").modal('hide');
