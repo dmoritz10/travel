@@ -121,27 +121,29 @@ function xrayMetaData(allMetaData, file) {
   if (Object.keys(allMetaData).length > 0) {
   
     var picDateTime = findBestDate(file.name, allMetaData.DateTimeOriginal)
-    var picDate = picDateTime.slice(0,10)
 
-    console.log('dates', picDateTime, picDate)
+    if (picDateTime) {
+      var picDate = picDateTime.slice(0,10)
 
-    if (picDate) rtn.push(['Date', picDate])
+      console.log('dates', picDateTime, picDate)
 
-    let tripInfo = calcTrip(picDateTime)
+      if (picDate) rtn.push(['Date', picDate])
 
-    if (tripInfo) rtn.push(['Trip', tripInfo.name])
-    if (allMetaData.ImageDescription) rtn.push(['Description', allMetaData.ImageDescription])
-    if (tripInfo) rtn.push(['Month', tripInfo.month])
-    if (tripInfo) rtn.push(['Start', tripInfo.sDate])
-    if (tripInfo) rtn.push(['End', tripInfo.eDate])
-    if (tripInfo?.loc) rtn.push(['Guess', tripInfo.loc])
+      let tripInfo = calcTrip(picDateTime)
 
-    if (allMetaData.GPSLatitude) rtn.push(['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLatitudeRef, allMetaData.GPSLongitude, allMetaData.GPSLongitudeRef)])
-    if (picDate && new Date(picDate) >= new Date("2012-01-01")) rtn.push(['Timeline', calcTimeLine(picDate)])
+      if (tripInfo) rtn.push(['Trip', tripInfo.name])
+      if (allMetaData.ImageDescription) rtn.push(['Description', allMetaData.ImageDescription])
+      if (tripInfo) rtn.push(['Month', tripInfo.month])
+      if (tripInfo) rtn.push(['Start', tripInfo.sDate])
+      if (tripInfo) rtn.push(['End', tripInfo.eDate])
+      if (tripInfo?.loc) rtn.push(['Guess', tripInfo.loc])
 
-    if (tripInfo) rtn.push(['Cities', tripInfo.dest])
-    if (tripInfo) rtn.push(['Countries', tripInfo.countries])
+      if (allMetaData.GPSLatitude) rtn.push(['GPS', calcGPS(allMetaData.GPSLatitude, allMetaData.GPSLatitudeRef, allMetaData.GPSLongitude, allMetaData.GPSLongitudeRef)])
+      if (picDate && new Date(picDate) >= new Date("2012-01-01")) rtn.push(['Timeline', calcTimeLine(picDate)])
 
+      if (tripInfo) rtn.push(['Cities', tripInfo.dest])
+      if (tripInfo) rtn.push(['Countries', tripInfo.countries])
+    }
   }
    
   $('#pxTbl').empty()
