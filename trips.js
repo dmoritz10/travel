@@ -394,6 +394,8 @@ async function btnTrpmDeleteSheetHtml() {
 
   var idx = trpIdxArr[$('#trpmArrIdx').val() * 1]
 
+  console.log('delte', idx, trpIdxArr, $('#trpmArrIdx').val(), trpIdxArr[$('#trpmArrIdx').val() * 1])
+
   var response = await deleteSheetRow(idx + 1, 'Trips')
 
   $("#trip-modal").modal('hide');
