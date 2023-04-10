@@ -814,8 +814,6 @@ async function updateTrips() {
 
     }
 
-    // console.log(cl)
-
     if (row == -1)   {
 
       var msg = "Add this trip ?<br><br>" +
