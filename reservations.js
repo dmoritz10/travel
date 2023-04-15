@@ -619,8 +619,8 @@ async function addToReservations(vals, trip, ceHdrs, resHdrs) {
   resVals[resHdrs.indexOf('Composite Key')] = vals[ceHdrs.indexOf('summary')] + ' - ' + trip
 
   //Reservation	Trip	Start Date	End Date	Source	Status	Location	Description	Composite Key
-console.log('resVals', resVals, [resVals])
-  await appendSheetRow([resVals], "Reservations")
+
+  await appendSheetRow(resVals, "Reservations")
 
 }
 
