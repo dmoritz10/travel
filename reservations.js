@@ -620,7 +620,7 @@ async function addToReservations(vals, trip, ceHdrs, resHdrs) {
 
   //Reservation	Trip	Start Date	End Date	Source	Status	Location	Description	Composite Key
 
-  await appendSheetRow(resVals, "Reservations")
+  await appendSheetRow([resVals], "Reservations")
 
 }
 
