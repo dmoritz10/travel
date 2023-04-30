@@ -173,7 +173,7 @@ async function showPics(idx, rtnToPage='Trips') {
     console.log('response', response)
 
 
-    var mediaItems = response.results.mediaItems
+    var mediaItems = response.result.mediaItems
 
     let element= await embed_google_media(mediaItems, 'L74MSFRNuyNSmrKm9', 'grid');
 
