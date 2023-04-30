@@ -180,66 +180,32 @@ async function showPics(idx, rtnToPage='Trips') {
 }
 
 async function embed_google_media(mediaItems, id, type='grid', height = 240, ){
-    let container = document.getElementById(id)
- 
-    var urls = mediaItems.map(item => item.baseUrl) //find all links in the html that matter get the group we found
-    var media = await Promise.all(urls.map(url => _url_to_media_item(url))) // make array by mapping urls using the url to media item function
     
-    if (type=='grid'){
-        return _elements_to_grid(media, container, height)
-    // } else if (type=='carousel') {
-    //     return _element_to_carousel(media, container)
-    }
+    let container = document.getElementById(id)
+
+    var mediaArr = []
+
+    for (let i=0;i<mediaItems.length;i++) {
+ 
+    let media_item = {}
+    media_item.base_url = mediaItems[i].baseUrl
+    media_item.type = mediaItems[i].mimeType.split('/')[0]
+    media_item.aspect_ratio = mediaItems[i].mediaMetadata.width / mediaItems[i].mediaMetadata.height
+
+
+    mediaArr.push(media_item)
+
+    }   
+
+    container.classList.add('photo-grid') 
+    MediaGrid(container,media,240)
+
 }   
 
-async function  _url_to_media_item(url,proxy_function){
-    let media_item = {}
-    media_item.base_url = url
-    
-    // try seeing if this media item is a video 
-    let json = await proxy_function(`${url}=dv`) 
-    
-    if (json.body.redirected){ // if this is a success then the object is a video / moving picture if it fails then it is not
-        media_item.type = 'video'
-    } else { //media is a image
-        media_item.type = 'image'
-    }
-    media_item.aspect_ratio = await _get_aspect_ratio(`${url}=w20-h20`)
-    return media_item
-}
 
-function _get_aspect_ratio(url) {
-    return new Promise((resolve, reject) => {
-        let img = new Image();
-        img.onload = () => resolve(img.naturalWidth/img.naturalHeight);
-        img.onerror = () => reject();
-        img.src = url;
-
-    });
-}
-
-function _elements_to_grid(media, container, max_row_height){
-    container.classList.add('photo-grid') 
-    MediaGrid(container,media,max_row_height)
-}
-
-// function _element_to_carousel(media,container) {
-//     container.classList.add('photo-carousel')
-//     MediaCarousel(container,media)
-// }
-
-
-async function _make_request(url){
-
-    var proxy_url = 'https://cors.bridged.cc/'
-    var response = await fetch(`${proxy_url}${encodeURIComponent(url)}`) // get request the album page
-        
-    var json = await response.json() // get html  
-
-    return json 
-}
   
-function MediaGrid(container, media, max_height) {
+function MediaGrid(container, mediaArr, max_height) {
+
     var space_between_media = 4;
 
     let media_objects = media.map(item => new MediaObject(item));
