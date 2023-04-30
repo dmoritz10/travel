@@ -133,6 +133,7 @@ async function showPics(idx, rtnToPage='Trips') {
     let request = {
   
         "filters": {
+            "pageSize": 50,
             "dateFilter": {
             "ranges": [
             {
