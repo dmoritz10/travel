@@ -162,6 +162,16 @@ async function showPics(idx, rtnToPage='Trips') {
 
     console.log('response', response)
 
+
+    var json = {
+        "body": {
+          "data": "the request data, <- the request data format (in this case its an html string)",
+          "redirected": "Bool <- a boolean value based on whether the request was redirected (important for telling between pictures and videos)"
+        }
+      }
+
+
+
     let element= await embed_google_media('L74MSFRNuyNSmrKm9', 'L74MSFRNuyNSmrKm9', 'carousel');
 
 }
@@ -226,6 +236,8 @@ function _elements_to_grid(media, container, max_row_height){
 
 
 async function _make_request(url){
+
+    var proxy_url = 'https://cors.bridged.cc/'
     var response = await fetch(`${proxy_url}${encodeURIComponent(url)}`) // get request the album page
         
     var json = await response.json() // get html  
