@@ -131,7 +131,7 @@ async function showPics(idx, rtnToPage='Trips') {
     console.log('listPhotos')
 
     let request = {
-        "albumId": 'AF1QipMNdgx8nBZvMbeKw3KAWAqk_ncilmFxyTsHKQE_v1IvHeMl_AqB02Blk2Jhwa0LHg'
+        "albumId": 'NTM3WjlseFYtOTE4SDBNb0FKdUdjbzRVbDdTc0pn'
   
             // "filters": {
         //     "pageSize": 50,
