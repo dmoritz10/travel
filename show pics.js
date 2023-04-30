@@ -175,15 +175,12 @@ async function showPics(idx, rtnToPage='Trips') {
 
     var mediaItems = response.results.mediaItems
 
-
-    let element= await embed_google_media(mediaItems, 'grid');
+    let element= await embed_google_media(mediaItems, 'L74MSFRNuyNSmrKm9', 'grid');
 
 }
 
-async function embed_google_media(mediaItems,  type='grid', height = 240, ){
- 
-    const album_url = `https://photos.app.goo.gl/${sharable_id.trim()}`
-
+async function embed_google_media(mediaItems, id, type='grid', height = 240, ){
+    let container = document.getElementById(id)
  
     var urls = mediaItems.map(item => item.baseUrl) //find all links in the html that matter get the group we found
     var media = await Promise.all(urls.map(url => _url_to_media_item(url))) // make array by mapping urls using the url to media item function
