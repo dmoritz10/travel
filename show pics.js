@@ -1,5 +1,7 @@
 async function showPics(idx, rtnToPage='Trips') {
 
+    alert('hi dan')
+
     if (idx === null) return                  // null is from browseDocument
   
     var trp = []
@@ -15,7 +17,16 @@ async function showPics(idx, rtnToPage='Trips') {
     $("#trppRtnToPage")[0].setAttribute("onclick", "clearAndGotoTab('" + rtnToPage + "')");
     // if (rtnToPage == 'Trips') $("#btnTrpAddNew").removeClass('d-none')
     // else                      $("#btnTrpAddNew").addClass('d-none')
-  
+
+
+    var strDate = vals[trpHdrs.indexOf('Start Date')]
+    var endDate = vals[trpHdrs.indexOf('End Date')]
+
+    console.log('Trip', vals[trpHdrs.indexOf('Trip')], strDate, endDate)
+
+    listPhotos()
+    gotoTab('ShowPics')
+
     // var trpDtl = JSON.parse(vals[trpHdrs.indexOf('Destination Detail')])
   
     // var brkDate
@@ -114,4 +125,43 @@ async function showPics(idx, rtnToPage='Trips') {
     // // $('#tblTrips tr td>div').addClass('day-hdr')
   
   } 
+
+  async function listPhotos() {
+
+    console.log('listPhotos')
+
+    let request = {
+  
+        "filters": {
+            'pageSize': 50,
+            "dateFilter": {
+            "ranges": [
+            {
+                "startDate": {
+                    "year": 2022,
+                    "month": 05,
+                    "day": 20
+                },
+                "endDate": {
+                    "year": 2022,
+                    "month": 06,
+                    "day": 17
+                }
+            }
+            ]
+            }
+        }
+    }
+
+    let response;
+    try {
+        response = await gapi.client.photoslibrary.mediaItems.search(request);
+    } catch (err) {
+        console.log('search', err)
+        return;
+    }
+
+    console.log('response', response)
+
+}
   
