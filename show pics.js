@@ -133,24 +133,25 @@ async function showPics(idx, rtnToPage='Trips') {
     let request = {
   
         "filters": {
-            "pageSize": 50,
-            "dateFilter": {
-            "ranges": [
-            {
-                "startDate": {
-                    "year": 2022,
-                    "month": 06,
-                    "day": 30
-                },
-                "endDate": {
-                    "year": 2022,
-                    "month": 06,
-                    "day": 01
-                }
-            }
-            ]
-            }
-        }
+            "albumId": 'AF1QipMNdgx8nBZvMbeKw3KAWAqk_ncilmFxyTsHKQE_v1IvHeMl_AqB02Blk2Jhwa0LHg'
+        //     "pageSize": 50,
+        //     "dateFilter": {
+        //     "ranges": [
+        //     {
+        //         "startDate": {
+        //             "year": 2022,
+        //             "month": 06,
+        //             "day": 30
+        //         },
+        //         "endDate": {
+        //             "year": 2022,
+        //             "month": 06,
+        //             "day": 01
+        //         }
+        //     }
+        //     ]
+        //     }
+        // }
     }
 
     let response;
