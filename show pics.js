@@ -131,9 +131,9 @@ async function showPics(idx, rtnToPage='Trips') {
     console.log('listPhotos')
 
     let request = {
+        "albumId": 'AF1QipMNdgx8nBZvMbeKw3KAWAqk_ncilmFxyTsHKQE_v1IvHeMl_AqB02Blk2Jhwa0LHg'
   
-        "filters": {
-            "albumId": 'AF1QipMNdgx8nBZvMbeKw3KAWAqk_ncilmFxyTsHKQE_v1IvHeMl_AqB02Blk2Jhwa0LHg'
+            // "filters": {
         //     "pageSize": 50,
         //     "dateFilter": {
         //     "ranges": [
