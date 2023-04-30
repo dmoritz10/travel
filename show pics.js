@@ -137,14 +137,14 @@ async function showPics(idx, rtnToPage='Trips') {
             "ranges": [
             {
                 "startDate": {
-                    "year": 2015,
-                    "month": 09,
-                    "day": 04
+                    "year": 2022,
+                    "month": 06,
+                    "day": 10
                 },
                 "endDate": {
-                    "year": 2015,
-                    "month": 09,
-                    "day": 28
+                    "year": 2022,
+                    "month": 06,
+                    "day": 11
                 }
             }
             ]
@@ -163,33 +163,20 @@ async function showPics(idx, rtnToPage='Trips') {
     console.log('response', response)
 
 
-    var json = {
-        "body": {
-          "data": "the request data, <- the request data format (in this case its an html string)",
-          "redirected": "Bool <- a boolean value based on whether the request was redirected (important for telling between pictures and videos)"
-        }
-      }
+    var mediaItems = response.results.mediaItems
 
 
-
-    let element= await embed_google_media('L74MSFRNuyNSmrKm9', 'L74MSFRNuyNSmrKm9', 'carousel');
+    let element= await embed_google_media(mediaItems, 'grid');
 
 }
 
-async function embed_google_media(sharable_id, id ,  type='grid' , proxy_function = _make_request , height = 240, ){
+async function embed_google_media(mediaItems,  type='grid', height = 240, ){
  
     const album_url = `https://photos.app.goo.gl/${sharable_id.trim()}`
 
-    
-    let json =await proxy_function(album_url)
-
-    var html = json.body.data
-
-    let container = document.getElementById(id)
-    var re = /src="(.{0,1000})=w/g;
-    
-    var urls = Array.from(html.matchAll(re)).map(match => match[1]) //find all links in the html that matter get the group we found
-    var media = await Promise.all(urls.map(url => _url_to_media_item(url,proxy_function))) // make array by mapping urls using the url to media item function
+ 
+    var urls = mediaItems.map(item => item.baseUrl) //find all links in the html that matter get the group we found
+    var media = await Promise.all(urls.map(url => _url_to_media_item(url))) // make array by mapping urls using the url to media item function
     
     if (type=='grid'){
         return _elements_to_grid(media, container, height)
