@@ -207,7 +207,7 @@ function MediaGrid(container, mediaArr, max_height) {
 
     var space_between_media = 4;
 
-    let media_objects = media.map(item => new MediaObject(item));
+    let media_objects = mediaArr.map(item => new MediaObject(item));
     media_objects.forEach(element => _add_object_to_container(element));
 
     window.onresize= () => _calc_rows();
