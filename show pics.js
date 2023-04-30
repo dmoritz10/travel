@@ -130,16 +130,19 @@ async function showPics(idx, rtnToPage='Trips') {
 
     console.log('listPhotos')
 
+    let npt = null
+
     let request = {
         // "albumId": 'NTM3WjlseFYtOTE4SDBNb0FKdUdjbzRVbDdTc0pn'
             "pageSize": 50,
-            "filters": {
+            "pageToken": npt,
             
+            "filters": {
                 "mediaTypeFilter": {
                     "mediaTypes": [
                       'ALL_MEDIA'
                     ]
-                  },
+                },
                 "dateFilter": {
                     "ranges": [
                         {
@@ -156,8 +159,8 @@ async function showPics(idx, rtnToPage='Trips') {
                         }
                     ]
                 }
+            }
         }
-    }
 
     let response;
     try {
