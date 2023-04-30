@@ -135,9 +135,11 @@ async function showPics(idx, rtnToPage='Trips') {
             "pageSize": 50,
             "filters": {
             
-                "mediaTypeFilter": [
-                    'VIDEO'
-                  ],
+                "mediaTypeFilter": {
+                    "mediaTypes": [
+                      'VIDEO'
+                    ]
+                  },
                 "dateFilter": {
                     "ranges": [
                         {
