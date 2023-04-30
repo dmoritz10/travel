@@ -147,12 +147,12 @@ async function showPics(idx, rtnToPage='Trips') {
                             "year": 2022,
                             "month": 06,
                             "day": 01
-                        },
+                            },
                         "endDate": {
                             "year": 2022,
                             "month": 06,
                             "day": 30
-                        }
+                            }
                         }
                     ]
                 }
