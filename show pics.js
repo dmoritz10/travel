@@ -135,22 +135,25 @@ async function showPics(idx, rtnToPage='Trips') {
             "pageSize": 50,
             "filters": {
             
-            "dateFilter": {
-            "ranges": [
-            {
-                "startDate": {
-                    "year": 2022,
-                    "month": 06,
-                    "day": 01
-                },
-                "endDate": {
-                    "year": 2022,
-                    "month": 06,
-                    "day": 30
+                "mediaTypes": [
+                    'VIDEO'
+                  ],
+                "dateFilter": {
+                    "ranges": [
+                        {
+                        "startDate": {
+                            "year": 2022,
+                            "month": 06,
+                            "day": 01
+                        },
+                        "endDate": {
+                            "year": 2022,
+                            "month": 06,
+                            "day": 30
+                        }
+                        }
+                    ]
                 }
-            }
-            ]
-            }
         }
     }
 
