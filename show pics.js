@@ -172,7 +172,6 @@ async function showPics(idx, rtnToPage='Trips') {
 
     console.log('response', response)
 
-
     var mediaItems = response.result.mediaItems
 
     let element= await embed_google_media(mediaItems, 'L74MSFRNuyNSmrKm9', 'grid');
@@ -198,7 +197,7 @@ async function embed_google_media(mediaItems, id, type='grid', height = 240, ){
     }   
 
     container.classList.add('photo-grid') 
-    MediaGrid(container,media,240)
+    MediaGrid(container,mediaArr,240)
 
 }   
 
