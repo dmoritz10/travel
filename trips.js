@@ -62,6 +62,8 @@ async function listTrips(title = "Trips") {
 
     ele.find('#btnTrpEdit')[0].setAttribute("onclick", "editTrip(" + j + ")");
 
+    ele.find('#btnTrpPics')[0].setAttribute("onclick", "showPics(" + j + ")");
+    
     ele.find('#btnTrpFavorite')[0].setAttribute("onclick", "setFavorite(" + j + ")");
 
     ele.find('#btnTrpShowDetail')[0].setAttribute("onclick", "showTrip(" + j + ")");
