@@ -139,12 +139,12 @@ async function showPics(idx, rtnToPage='Trips') {
                 "startDate": {
                     "year": 2022,
                     "month": 06,
-                    "day": 09
+                    "day": 30
                 },
                 "endDate": {
                     "year": 2022,
                     "month": 06,
-                    "day": 12
+                    "day": 01
                 }
             }
             ]
