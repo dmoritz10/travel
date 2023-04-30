@@ -151,7 +151,7 @@ async function showPics(idx, rtnToPage='Trips') {
         //     }
         //     ]
         //     }
-        // }
+        }
     }
 
     let response;
