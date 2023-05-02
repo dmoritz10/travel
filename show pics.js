@@ -95,7 +95,7 @@ async function showPics(idx, rtnToPage='Trips') {
             ele.find('#trppDate')[0].addClass('d-none')
         }
 
-        let element= await embed_google_media(mediaItems, ele.find('#trppPhotos')[0], 'grid');
+        let element= await embed_google_media(media, ele.find('#trppPhotos')[0], 'grid');
 
         ele.removeClass('d-none');
         ele.appendTo("#trppContainer");
