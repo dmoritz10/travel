@@ -92,7 +92,7 @@ async function showPics(idx, rtnToPage='Trips') {
             dte = media.mediaMetadata.creationTime.slice(0, 10)
             ele.find('#trppDate')[0].innerHTML = dte
         } else {
-            ele.find('#trppDate')[0].addClass('d-none')
+            ele.find('#trppDate').addClass('d-none')
         }
 
         let element= await embed_google_media(media, ele.find('#trppPhotos')[0], 'grid');
