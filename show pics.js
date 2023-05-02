@@ -29,11 +29,9 @@ async function showPics(idx, rtnToPage='Trips') {
     var strDt = strDate.split('/')
     var endDt = endDate.split('/')
 
-    var npt
-
     var params = {
             "pageSize": 50,
-            "pageToken": npt,
+            "pageToken": null,
             
             "filters": {
                 "mediaTypeFilter": {
@@ -72,7 +70,7 @@ async function showPics(idx, rtnToPage='Trips') {
         let mediaItems = response.result.mediaItems
         mediaArr.concat(mediaItems)
 
-    } while (npt)
+    } while (params.pageToken)
 
     var $tblPics = $("#trppContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
 
@@ -98,7 +96,7 @@ async function showPics(idx, rtnToPage='Trips') {
 
         ele.removeClass('d-none');
         ele.appendTo("#trpContainer");
-        
+
     }
 
 }
