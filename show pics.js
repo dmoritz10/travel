@@ -82,6 +82,7 @@ async function showPics(idx, rtnToPage='Trips') {
     x.appendTo("#trppContainer");
 
     let dte = '1234567890'
+    let medArr = []
 
     for (var j = 0; j < mediaArr.length; j++) {
 
@@ -90,12 +91,17 @@ async function showPics(idx, rtnToPage='Trips') {
 
         if (media.mediaMetadata.creationTime.slice(0, 10) != dte) {
             dte = media.mediaMetadata.creationTime.slice(0, 10)
-            ele.find('#trppDate')[0].innerHTML = dte
+            if (medArr.length>0) {
+                ele.find('#trppDate')[0].innerHTML = dte
+                await embed_google_media(media, ele.find('#trppPhotos')[0], 'grid');
+                medArr = []
+            }
+
         } else {
+            medArr.push(media)
             ele.find('#trppDate').addClass('d-none')
         }
 
-        let element= await embed_google_media(media, ele.find('#trppPhotos')[0], 'grid');
 
         ele.removeClass('d-none');
         ele.appendTo("#trppContainer");
