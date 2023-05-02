@@ -93,13 +93,12 @@ async function showPics(idx, rtnToPage='Trips') {
             dte = media.mediaMetadata.creationTime.slice(0, 10)
             if (medArr.length>0) {
                 ele.find('#trppDate')[0].innerHTML = dte
-                await embed_google_media(media, ele.find('#trppPhotos')[0], 'grid');
+                await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
                 medArr = []
             }
 
         } else {
             medArr.push(media)
-            ele.find('#trppDate').addClass('d-none')
         }
 
 
