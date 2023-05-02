@@ -93,7 +93,6 @@ async function showPics(idx, rtnToPage='Trips') {
 
         if (mediaDate != dte) {
             console.log('break', mediaDate, dte)
-            dte = mediaDate
             if (medArr.length>0) {
                 ele.find('#trppDate')[0].innerHTML = dte
                 await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
@@ -101,6 +100,7 @@ async function showPics(idx, rtnToPage='Trips') {
                 ele.removeClass('d-none');
                 ele.appendTo("#trppContainer");
             }
+            dte = mediaDate
 
         }
         
