@@ -36,7 +36,9 @@ async function showPics(idx, rtnToPage='Trips') {
     var strDt = strDate.split('/')
     var endDt = endDate.split('/')
 
-    let params = {
+    var npt
+
+    var params = {
             "pageSize": 50,
             "pageToken": npt,
             
@@ -65,7 +67,6 @@ async function showPics(idx, rtnToPage='Trips') {
             }
         }
 
-    let npt
 
     let mediaArr = []
 
