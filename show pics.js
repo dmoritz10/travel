@@ -68,9 +68,6 @@ async function showPics(idx, rtnToPage='Trips') {
         params.pageToken = response.result.pageToken
         console.log('response', response)
         let mediaItems = response.result.mediaItems
-        console.log('mediaItems', mediaItems)
-
-
         mediaArr = mediaArr.concat(mediaItems)
 
     } while (params.pageToken)
@@ -92,7 +89,7 @@ async function showPics(idx, rtnToPage='Trips') {
         var ele = $tblPics.clone();
 
         if (media.mediaMetadata.createDate.slice(0, 10) != dte) {
-            dte = media.mediaMetadata.createDate.slice(0, 10)
+            dte = media.mediaMetadata.creationTime.slice(0, 10)
             ele.find('#trppDate')[0].innerHTML = dte
         } else {
             ele.find('#trppDate')[0].addClass('d-none')
