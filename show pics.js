@@ -72,6 +72,9 @@ async function showPics(idx, rtnToPage='Trips') {
 
     } while (params.pageToken)
 
+    console.log('mediaArr', mediaArr)
+
+
     var $tblPics = $("#trppContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
 
     var x = $tblPics.clone();
@@ -95,7 +98,7 @@ async function showPics(idx, rtnToPage='Trips') {
         let element= await embed_google_media(mediaItems, ele.find('#trppPhotos')[0], 'grid');
 
         ele.removeClass('d-none');
-        ele.appendTo("#trpContainer");
+        ele.appendTo("#trppContainer");
 
     }
 
