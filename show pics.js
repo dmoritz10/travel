@@ -88,9 +88,12 @@ async function showPics(idx, rtnToPage='Trips') {
 
         let media = mediaArr[j]
         var ele = $tblPics.clone();
+        let mediaDate = media.mediaMetadata.creationTime.slice(0, 10)
+        console.log('mediaDate', mediaDate, medArr.length)
 
-        if (media.mediaMetadata.creationTime.slice(0, 10) != dte) {
-            dte = media.mediaMetadata.creationTime.slice(0, 10)
+        if (mediaDate != dte) {
+            console.log('break', mediaDate, dte)
+            dte = mediaDate
             if (medArr.length>0) {
                 ele.find('#trppDate')[0].innerHTML = dte
                 let yoink = await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
@@ -102,11 +105,8 @@ async function showPics(idx, rtnToPage='Trips') {
             medArr.push(media)
         }
 
-
-        ele.removeClass('d-none');
-        ele.appendTo("#trppContainer");
-
     }
+
     if (medArr.length>0) {
         ele.find('#trppDate')[0].innerHTML = dte
         let yoink = await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
