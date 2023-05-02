@@ -87,7 +87,7 @@ async function showPics(idx, rtnToPage='Trips') {
     for (var j = 0; j < mediaArr.length; j++) {
 
         let media = mediaArr[j]
-        let ele = $tblPics.clone();
+        var ele = $tblPics.clone();
         let mediaDate = media.mediaMetadata.creationTime.slice(0, 10)
         console.log('mediaDate', mediaDate, medArr.length)
 
@@ -110,7 +110,7 @@ async function showPics(idx, rtnToPage='Trips') {
 
     if (medArr.length>0) {
         ele.find('#trppDate')[0].innerHTML = dte
-        let yoink = await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
+        await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
         medArr = []
         ele.removeClass('d-none');
         ele.appendTo("#trppContainer");
