@@ -59,7 +59,7 @@ async function showPics(idx, rtnToPage='Trips') {
         }
 
 
-    let mediaArr = []
+    var mediaArr = []
 
 
     do {
