@@ -87,7 +87,7 @@ async function showPics(idx, rtnToPage='Trips') {
     for (var j = 0; j < mediaArr.length; j++) {
 
         let media = mediaArr[j]
-        var ele = $tblPics.clone();
+        let ele = $tblPics.clone();
         let mediaDate = media.mediaMetadata.creationTime.slice(0, 10)
         console.log('mediaDate', mediaDate, medArr.length)
 
@@ -101,9 +101,10 @@ async function showPics(idx, rtnToPage='Trips') {
                 ele.removeClass('d-none');
                 ele.appendTo("#trppContainer");
             }
-        } else {
-            medArr.push(media)
+
         }
+        
+        medArr.push(media)
 
     }
 
