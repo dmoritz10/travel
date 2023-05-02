@@ -36,10 +36,7 @@ async function showPics(idx, rtnToPage='Trips') {
     var strDt = strDate.split('/')
     var endDt = endDate.split('/')
 
-    let npt = null
-
-    let request = {
-        // "albumId": 'NTM3WjlseFYtOTE4SDBNb0FKdUdjbzRVbDdTc0pn'
+    let params = {
             "pageSize": 50,
             "pageToken": npt,
             
@@ -68,25 +65,51 @@ async function showPics(idx, rtnToPage='Trips') {
             }
         }
 
-    let response;
-    try {
-        response = await gapi.client.photoslibrary.mediaItems.search(request);
-    } catch (err) {
-        console.log('search', err)
-        return;
+    let npt
+
+    let mediaArr = []
+
+
+    do {
+
+        let response = await searchPhotos(params)
+        params.pageToken = response.result.pageToken
+        console.log('response', response)
+        let mediaItems = response.result.mediaItems
+        mediaArr.concat(mediaItems)
+
+    } while (npt)
+
+    var $tblPics = $("#trppContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
+
+    var x = $tblPics.clone();
+    $("#trppContainer").empty();
+    x.appendTo("#trppContainer");
+
+    let dte = '1234567890'
+
+    for (var j = 0; j < mediaArr.length; j++) {
+
+        let media = mediaArr[j]
+        var ele = $tblPics.clone();
+
+        if (media.mediaMetadata.createDate.slice(0, 10) != dte) {
+            dte = media.mediaMetadata.createDate.slice(0, 10)
+            ele.find('#trppDate')[0].innerHTML = dte
+        } else {
+            ele.find('#trppDate')[0].addClass('d-none')
+        }
+
+        let element= await embed_google_media(mediaItems, ele.find('#trppPhotos')[0], 'grid');
+
     }
-
-    console.log('response', response)
-
-    var mediaItems = response.result.mediaItems
-
-    let element= await embed_google_media(mediaItems, 'L74MSFRNuyNSmrKm9', 'grid');
 
 }
 
 async function embed_google_media(mediaItems, id, type='grid', height = 240, ){
     
-    let container = document.getElementById(id)
+    // let container = document.getElementById(id)
+    let container = id
 
     var mediaArr = []
 
