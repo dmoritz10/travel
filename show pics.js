@@ -96,7 +96,6 @@ async function showPics(idx, rtnToPage='Trips') {
                 await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
                 medArr = []
             }
-
         } else {
             medArr.push(media)
         }
