@@ -96,7 +96,7 @@ async function showPics(idx, rtnToPage='Trips') {
             dte = mediaDate
             if (medArr.length>0) {
                 ele.find('#trppDate')[0].innerHTML = dte
-                let yoink = await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
+                await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
                 medArr = []
                 ele.removeClass('d-none');
                 ele.appendTo("#trppContainer");
@@ -130,7 +130,6 @@ async function embed_google_media(mediaItems, id, type='grid', height = 240, ){
     media_item.base_url = mediaItems[i].baseUrl
     media_item.type = mediaItems[i].mimeType.split('/')[0]
     media_item.aspect_ratio = mediaItems[i].mediaMetadata.width / mediaItems[i].mediaMetadata.height
-
 
     mediaArr.push(media_item)
 
