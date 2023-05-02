@@ -88,7 +88,7 @@ async function showPics(idx, rtnToPage='Trips') {
         let media = mediaArr[j]
         var ele = $tblPics.clone();
 
-        if (media.mediaMetadata.createDate.slice(0, 10) != dte) {
+        if (media.mediaMetadata.creationTime.slice(0, 10) != dte) {
             dte = media.mediaMetadata.creationTime.slice(0, 10)
             ele.find('#trppDate')[0].innerHTML = dte
         } else {
