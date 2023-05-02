@@ -68,6 +68,9 @@ async function showPics(idx, rtnToPage='Trips') {
         params.pageToken = response.result.pageToken
         console.log('response', response)
         let mediaItems = response.result.mediaItems
+        console.log('mediaItems', mediaItems)
+
+
         mediaArr.concat(mediaItems)
 
     } while (params.pageToken)
