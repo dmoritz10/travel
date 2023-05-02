@@ -93,8 +93,10 @@ async function showPics(idx, rtnToPage='Trips') {
             dte = media.mediaMetadata.creationTime.slice(0, 10)
             if (medArr.length>0) {
                 ele.find('#trppDate')[0].innerHTML = dte
-                await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
+                let yoink = await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
                 medArr = []
+                ele.removeClass('d-none');
+                ele.appendTo("#trppContainer");
             }
         } else {
             medArr.push(media)
@@ -104,6 +106,13 @@ async function showPics(idx, rtnToPage='Trips') {
         ele.removeClass('d-none');
         ele.appendTo("#trppContainer");
 
+    }
+    if (medArr.length>0) {
+        ele.find('#trppDate')[0].innerHTML = dte
+        let yoink = await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
+        medArr = []
+        ele.removeClass('d-none');
+        ele.appendTo("#trppContainer");
     }
 
 }
