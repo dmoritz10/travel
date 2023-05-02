@@ -71,7 +71,7 @@ async function showPics(idx, rtnToPage='Trips') {
         console.log('mediaItems', mediaItems)
 
 
-        mediaArr.concat(mediaItems)
+        mediaArr = mediaArr.concat(mediaItems)
 
     } while (params.pageToken)
 
