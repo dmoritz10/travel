@@ -1,14 +1,7 @@
 async function showPics(idx, rtnToPage='Trips') {
 
-    alert('hi dan')
-
-    if (idx === null) return                  // null is from browseDocument
-  
-    var trp = []
-  
     var vals = trpVals[idx]
   
-    
     $("#trppTrip")[0].innerHTML = vals[trpHdrs.indexOf('Trip')]
     $("#trppMoYr")[0].innerHTML = vals[trpHdrs.indexOf('Month')]
     $("#trppStartEndDate")[0].innerHTML = vals[trpHdrs.indexOf('Start Date')].slice(0,-5) + ' - ' + vals[trpHdrs.indexOf('End Date')].slice(0,-5)
@@ -103,6 +96,9 @@ async function showPics(idx, rtnToPage='Trips') {
 
         let element= await embed_google_media(mediaItems, ele.find('#trppPhotos')[0], 'grid');
 
+        ele.removeClass('d-none');
+        ele.appendTo("#trpContainer");
+        
     }
 
 }
