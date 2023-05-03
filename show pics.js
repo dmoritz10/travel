@@ -265,7 +265,9 @@ class MediaObject{
             full_content.poster = this._get_src_url(null, true);
             this.content = full_content
             full_content.onloadeddata = this._replace_content;
-            full_content.onerror = (e) => e.target.load()
+            // full_content.onerror = (e) => e.target.load()
+            full_content.onerror = (e) => console.log('video load error', e)
+
         }
 
         this.content.classList.add('blur')
