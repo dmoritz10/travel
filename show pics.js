@@ -94,20 +94,10 @@ async function showPics(idx, rtnToPage='Trips') {
         let mediaDate = media.mediaMetadata.creationTime.slice(0, 10)
         console.log('mediaDate', mediaDate, medArr.length)
 
-        var x = DateTime.fromJSDate(new Date(media.mediaMetadata.creationTime)).toISO()
-        var y = DateTime.fromJSDate(new Date(media.mediaMetadata.creationTime)).toISO().slice(0,-13)
-        var st = DateTime.fromISO(media.mediaMetadata.creationTime).toLocaleString(DateTime.DATETIME_SHORT)
-        var z = new Date(media.mediaMetadata.creationTime).toLocaleISOString()
-        var zz = new Date(media.mediaMetadata.creationTime)
-    var zzz = DateTime.fromISO(media.mediaMetadata.creationTime).toFormat('ccc L/d, t')
-
-
-console.log('dates', media.mediaMetadata.creationTime, x, y, st, z, zz, zzz)
-
         if (mediaDate != dte) {
             console.log('break', mediaDate, dte)
             if (medArr.length>0) {
-                ele.find('#trppDate')[0].innerHTML = dte
+                ele.find('#trppDate')[0].innerHTML = DateTime.fromISO(media.mediaMetadata.creationTime).toFormat('ccc L/d')
                 await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
                 medArr = []
                 ele.removeClass('d-none');
