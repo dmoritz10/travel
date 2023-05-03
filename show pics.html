@@ -1,75 +1,4 @@
 
-<style>
-
-.photo-grid {
-    width: 100%;
-}
-
-.photo-carousel {
-    width: 70%;
-}
-
-.blur {
-    filter: blur(5px)
-}
-
-.media-object {
-    position: absolute;
-}
-
-.media-object > *{
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-}
-
-.swiper-slide {
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-}
-
-.swiper-slide > * {
-    display: block;
-    width: auto;
-    height: 100%;
-}
-
-/* stealing some aspect ration code so mobile browsers suck less */
-/* [style*="--aspect-ratio"] > :first-child {
-    width: 100%;
-  }
-  [style*="--aspect-ratio"] > img {  
-    height: auto;
-  } 
-  @supports (--custom:property) {
-    [style*="--aspect-ratio"] {
-      position: relative;
-    }
-    [style*="--aspect-ratio"]::before {
-      content: "";
-      display: block;
-      padding-bottom: calc(100% / (var(--aspect-ratio)));
-    }  
-    [style*="--aspect-ratio"] > :first-child {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-    } 
-  }  */
-
-</style>
 
 <div class="">
     <div class="  sticky-top border-bottom px-1" style="background-color: #f9f9f9;">
@@ -96,7 +25,7 @@
 
     <div id="trppContainer" class="position-absolute w-100 m-1 pt-3 pb-4 px-2" style="background-color:#eeefef">
         <div class="m-0 p-0 pb-0 mb-3 align-items-center border rounded d-none" style="background:white;">
-            div class="row" >
+            <div class="row" >
                 <div class="col" >
                     <div id="trppDate" class="text-success label text-start h3 p-2 "></div>
                     <div id="trppPhotos" ></div>
@@ -112,3 +41,75 @@
 <!-- /* 
 
  */ -->
+
+ <style>
+
+    .photo-grid {
+        width: 100%;
+    }
+    
+    .photo-carousel {
+        width: 70%;
+    }
+    
+    .blur {
+        filter: blur(5px)
+    }
+    
+    .media-object {
+        position: absolute;
+    }
+    
+    .media-object > *{
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    }
+    
+    .swiper-slide {
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    
+    .swiper-slide > * {
+        display: block;
+        width: auto;
+        height: 100%;
+    }
+    
+    stealing some aspect ration code so mobile browsers suck less */
+    [style*="--aspect-ratio"] > :first-child {
+        width: 100%;
+      }
+      [style*="--aspect-ratio"] > img {  
+        height: auto;
+      } 
+      @supports (--custom:property) {
+        [style*="--aspect-ratio"] {
+          position: relative;
+        }
+        [style*="--aspect-ratio"]::before {
+          content: "";
+          display: block;
+          padding-bottom: calc(100% / (var(--aspect-ratio)));
+        }  
+        [style*="--aspect-ratio"] > :first-child {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+        } 
+      } 
+    
+    </style>
