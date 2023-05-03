@@ -72,7 +72,7 @@ async function showPics(idx, rtnToPage='Trips') {
 
     } while (params.pageToken)
 
-    if (!mediaArr || mediaArr.length == 0) {
+    if (!mediaArr[0] || mediaArr.length == 0) {
         toast('There are no photos for this Trip', 5000)
         return }
 
@@ -90,7 +90,7 @@ async function showPics(idx, rtnToPage='Trips') {
 
     for (var j = mediaArr.length - 1; j >=0 ; j--) {
 
-        let media = mediaArr[j]
+        var media = mediaArr[j]
         var ele = $tblPics.clone();
         let mediaDate = media.mediaMetadata.creationTime.slice(0, 10)
         console.log('mediaDate', mediaDate, medArr.length)
