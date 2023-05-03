@@ -100,10 +100,10 @@ async function showPics(idx, rtnToPage='Trips') {
                 ele.removeClass('d-none');
                 ele.appendTo("#trppContainer");
             }
-            dte = mediaDate
 
         }
-        
+
+        dte = mediaDate
         medArr.push(media)
 
     }
