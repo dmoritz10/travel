@@ -98,7 +98,9 @@ async function showPics(idx, rtnToPage='Trips') {
         var y = DateTime.fromJSDate(new Date(media.mediaMetadata.creationTime)).toISO().slice(0,-13)
         var st = DateTime.fromISO(media.mediaMetadata.creationTime).toLocaleString(DateTime.DATETIME_SHORT)
         var z = new Date(media.mediaMetadata.creationTime).toLocaleISOString()
-console.log('dates', media.mediaMetadata.creationTime, x, y, st, z)
+        var zz = new Date(media.mediaMetadata.creationTime)
+
+console.log('dates', media.mediaMetadata.creationTime, x, y, st, z, zz)
 
         if (mediaDate != dte) {
             console.log('break', mediaDate, dte)
