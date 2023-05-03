@@ -85,7 +85,7 @@ async function showPics(idx, rtnToPage='Trips') {
     let dte = '1234567890'
     let medArr = []
 
-    for (var j = 0; j < mediaArr.length; j++) {
+    for (var j = mediaArr.length - 1; j >=0 ; j--) {
 
 
 
@@ -93,6 +93,12 @@ async function showPics(idx, rtnToPage='Trips') {
         var ele = $tblPics.clone();
         let mediaDate = media.mediaMetadata.creationTime.slice(0, 10)
         console.log('mediaDate', mediaDate, medArr.length)
+
+        var x = DateTime.fromJSDate(new Date(media.mediaMetadata.creationTime)).toISO()
+        var y = DateTime.fromJSDate(new Date(media.mediaMetadata.creationTime)).toISO().slice(0,-13)
+        var st = DateTime.fromISO(media.mediaMetadata.creationTime).toLocaleString(DateTime.DATETIME_SHORT)
+
+console.log('dates', x, y, st)
 
         if (mediaDate != dte) {
             console.log('break', mediaDate, dte)
