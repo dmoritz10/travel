@@ -87,6 +87,8 @@ async function showPics(idx, rtnToPage='Trips') {
 
     for (var j = 0; j < mediaArr.length; j++) {
 
+
+
         let media = mediaArr[j]
         var ele = $tblPics.clone();
         let mediaDate = media.mediaMetadata.creationTime.slice(0, 10)
@@ -106,6 +108,8 @@ async function showPics(idx, rtnToPage='Trips') {
 
         dte = mediaDate
         medArr.push(media)
+
+        if (j>1) break
 
     }
 
