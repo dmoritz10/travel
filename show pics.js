@@ -18,7 +18,6 @@ async function showPics(idx, rtnToPage='Trips') {
     console.log('Trip', vals[trpHdrs.indexOf('Trip')], strDate, endDate)
 
     listPhotos(strDate, endDate)
-    gotoTab('ShowPics')
 
   } 
 
@@ -73,6 +72,10 @@ async function showPics(idx, rtnToPage='Trips') {
 
     } while (params.pageToken)
 
+    if (mediaArr.length == 0) {
+        toast('There are no photos for this Trip', 5000)
+        return }
+
     console.log('mediaArr', mediaArr)
 
 
@@ -86,8 +89,6 @@ async function showPics(idx, rtnToPage='Trips') {
     let medArr = []
 
     for (var j = mediaArr.length - 1; j >=0 ; j--) {
-
-
 
         let media = mediaArr[j]
         var ele = $tblPics.clone();
@@ -107,11 +108,7 @@ async function showPics(idx, rtnToPage='Trips') {
         }
 
         dte = mediaDate
-
-        // if (medArr.length > 1) continue
-
         medArr.push(media)
-
 
     }
 
@@ -122,6 +119,8 @@ async function showPics(idx, rtnToPage='Trips') {
         ele.removeClass('d-none');
         ele.appendTo("#trppContainer");
     }
+
+    gotoTab('ShowPics')
 
 }
 
