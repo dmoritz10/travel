@@ -107,9 +107,11 @@ async function showPics(idx, rtnToPage='Trips') {
         }
 
         dte = mediaDate
+
+        if (medArr.length > 1) continue
+
         medArr.push(media)
 
-        if (j>1) break
 
     }
 
