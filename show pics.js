@@ -72,7 +72,7 @@ async function showPics(idx, rtnToPage='Trips') {
 
     } while (params.pageToken)
 
-    if (mediaArr.length == 0) {
+    if (!mediaArr || mediaArr.length == 0) {
         toast('There are no photos for this Trip', 5000)
         return }
 
