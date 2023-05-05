@@ -41,7 +41,12 @@ async function showPics(idx, rtnToPage='Trips') {
                 "dateFilter": {
                     "ranges": [
                         {
-                        
+                        "startDate": {
+                            
+                            },
+                        "endDate": {
+                            
+                            }
                         }
                     ]
                 }
