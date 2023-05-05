@@ -42,9 +42,9 @@ async function showPics(idx, rtnToPage='Trips') {
                     "ranges": [
                         {
                         "startDate": {
-                            "year": 2000,
-                            "month": 1,
-                            "day": 1
+                            "year": strDt[2],
+                            "month": strDt[0],
+                            "day": strDt[1]
                             },
                         "endDate": {
                             "year": endDt[2],
