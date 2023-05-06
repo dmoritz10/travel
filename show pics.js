@@ -66,7 +66,7 @@ async function showPics(idx) {
                 },
                 "contentFilter": {
                     "includedContentCategories": [
-                      [category]
+                        category
                     ]
                   }
             }
