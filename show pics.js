@@ -1,13 +1,17 @@
-async function showPics(idx, rtnToPage='Trips') {
+async function showPics(idx) {
 
-    var vals = trpVals[idx]
+    if (idx) {
+        var vals = trpVals[idx]
+    } else {
+        var idx = $("#trppArrIdx").val()
+    }
   
     $("#trppTrip")[0].innerHTML = vals[trpHdrs.indexOf('Trip')]
     $("#trppMoYr")[0].innerHTML = vals[trpHdrs.indexOf('Month')]
     $("#trppStartEndDate")[0].innerHTML = vals[trpHdrs.indexOf('Start Date')].slice(0,-5) + ' - ' + vals[trpHdrs.indexOf('End Date')].slice(0,-5)
     $("#trppArrIdx").val(idx)
   
-    $("#trppRtnToPage")[0].setAttribute("onclick", "clearAndGotoTab('" + rtnToPage + "')");
+    $("#trppRtnToPage")[0].setAttribute("onclick", "clearAndGotoTab('" + 'Trips' + "')");
     // if (rtnToPage == 'Trips') $("#btnTrpAddNew").removeClass('d-none')
     // else                      $("#btnTrpAddNew").addClass('d-none')
 
@@ -53,7 +57,12 @@ async function showPics(idx, rtnToPage='Trips') {
                             }
                         }
                     ]
-                }
+                },
+                "contentFilter": {
+                    "includedContentCategories": [
+                      [$("#trppSearch").val()]
+                    ]
+                  }
             }
         }
 
