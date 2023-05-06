@@ -87,8 +87,15 @@ async function showPics(idx, rtnToPage='Trips') {
 
     let dte = '1234567890'
     let medArr = []
+    let dupFnameDate
 
     for (var j = mediaArr.length - 1; j >=0 ; j--) {
+
+        var fnameDate = media.filename + media.mediaMetadata.creationTime
+        if (fnameDate == dupFnameDate) {
+            dupFnameDate = fnameDate
+            continue
+        }
 
         var media = mediaArr[j]
         var ele = $tblPics.clone();
