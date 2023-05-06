@@ -6,6 +6,8 @@ async function showPics(idx) {
         var idx = $("#trppArrIdx").val()
     }
 
+    if (idx != $("#trppArrIdx").val()) $("#trppSearch").val('')
+
     var vals = trpVals[idx]
 
     console.log('vals', idx, vals)
