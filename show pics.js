@@ -128,12 +128,10 @@ async function showPics(idx) {
                 ele.removeClass('d-none');
                 ele.appendTo("#trppContainer");
             }
-
         }
 
         dte = mediaDate
         medArr.push(media)
-
     }
 
     if (medArr.length>0) {
