@@ -1,10 +1,10 @@
 async function showPics(idx) {
 
-    if (idx) {
-        var vals = trpVals[idx]
-    } else {
+    if (!idx) {
         var idx = $("#trppArrIdx").val()
     }
+    
+    var vals = trpVals[idx]
   
     $("#trppTrip")[0].innerHTML = vals[trpHdrs.indexOf('Trip')]
     $("#trppMoYr")[0].innerHTML = vals[trpHdrs.indexOf('Month')]
