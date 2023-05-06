@@ -91,13 +91,14 @@ async function showPics(idx, rtnToPage='Trips') {
 
     for (var j = mediaArr.length - 1; j >=0 ; j--) {
 
+        var media = mediaArr[j]
+       
         var fnameDate = media.filename + media.mediaMetadata.creationTime
         if (fnameDate == dupFnameDate) {
             dupFnameDate = fnameDate
             continue
         }
 
-        var media = mediaArr[j]
         var ele = $tblPics.clone();
         let mediaDate = media.mediaMetadata.creationTime.slice(0, 10)
         console.log('mediaDate', mediaDate, medArr.length)
