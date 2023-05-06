@@ -87,7 +87,7 @@ async function showPics(idx, rtnToPage='Trips') {
 
     let dte = '1234567890'
     let medArr = []
-    let dupFnameDate
+    var dupFnameDate
 
     for (var j = mediaArr.length - 1; j >=0 ; j--) {
 
@@ -97,11 +97,10 @@ async function showPics(idx, rtnToPage='Trips') {
 
         console.log('dups', fnameDate, dupFnameDate, fnameDate == dupFnameDate)
         if (fnameDate == dupFnameDate) {
-            dupFnameDate = fnameDate
-
-            console.log('continue')
             continue
         }
+        
+        dupFnameDate = fnameDate
 
         var ele = $tblPics.clone();
         let mediaDate = media.mediaMetadata.creationTime.slice(0, 10)
