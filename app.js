@@ -120,7 +120,7 @@ jQuery(function ($) {
             $('#btnTrpAddTrip')   .click(btnAddTripHtml);
             $('#btntrpmdtlDelete')   .click(btntrpmdtlDeleteHtml);
 
-            $("#trppSearch").on("change", showPics(null));
+            $("#trppSearch").on("change", showPics);
               
 
             // $('#btnShtAddPDocument
