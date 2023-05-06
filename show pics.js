@@ -93,9 +93,11 @@ async function showPics(idx, rtnToPage='Trips') {
 
         var media = mediaArr[j]
        
-        var fnameDate = media.filename + media.mediaMetadata.creationTime
+        var fnameDate = media.filename.toLowerCase() + media.mediaMetadata.creationTime
         if (fnameDate == dupFnameDate) {
             dupFnameDate = fnameDate
+
+            console.log('continue')
             continue
         }
 
@@ -104,7 +106,6 @@ async function showPics(idx, rtnToPage='Trips') {
         console.log('mediaDate', mediaDate, medArr.length)
 
         if (mediaDate != dte) {
-            console.log('break', mediaDate, dte)
             if (medArr.length>0) {
                 ele.find('#trppDate')[0].innerHTML = DateTime.fromISO(media.mediaMetadata.creationTime).toFormat('ccc L/d')
                 await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
