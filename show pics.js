@@ -36,6 +36,8 @@ async function showPics(idx) {
     var strDt = strDate.split('/')
     var endDt = endDate.split('/')
 
+    var category = $("#trppSearch").val() ? [$("#trppSearch").val()] : []
+
     var params = {
             "pageSize": 50,
             "pageToken": null,
@@ -64,7 +66,7 @@ async function showPics(idx) {
                 },
                 "contentFilter": {
                     "includedContentCategories": [
-                      [$("#trppSearch").val()]
+                      [category]
                     ]
                   }
             }
