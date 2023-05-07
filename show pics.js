@@ -101,8 +101,8 @@ async function showPics(idx) {
     var x = $tblPics.clone();
     $("#trppContainer").empty();
     x.appendTo("#trppContainer");
-
-    let dte = mediaArr[mediaArr.length - 1].mediaMetadata.creationTime
+    
+    let dte = DateTime.fromISO(mediaArr[mediaArr.length - 1].mediaMetadata.creationTime).toFormat('yyyyLLLdd')
     let medArr = []
     var dupFnameDate
 
@@ -118,7 +118,7 @@ async function showPics(idx) {
         dupFnameDate = fnameDate
 
         var ele = $tblPics.clone();
-        let mediaDate = media.mediaMetadata.creationTime
+        let mediaDate = DateTime.fromISO(media.mediaMetadata.creationTime).toFormat('yyyyLLLdd')
 
         if (mediaDate != dte) {
             if (medArr.length>0) {
