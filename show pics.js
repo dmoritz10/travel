@@ -106,6 +106,7 @@ async function showPics(idx) {
     let dte = DateTime.fromISO(mediaArr[0].mediaMetadata.creationTime).toFormat('yyyyLLLdd')
     let medArr = []
     var dupFnameDate
+    var prevDte
 
     // for (var j = mediaArr.length - 1; j >=0 ; j--) {
     for (var j = 0; j < mediaArr.length ; j++) {
@@ -131,9 +132,10 @@ async function showPics(idx) {
                 ele.appendTo("#trppContainer");
             }
         }
-        var prevDte = media.mediaMetadata.creationTime
+        
+        prevDte = media.mediaMetadata.creationTime
 
-        console.log('break', dte, mediaDate, media.mediaMetadata.creationTime, prevDte)
+        console.log('break', dte, mediaDate, media.mediaMetadata.creationTime, prevDte, DateTime.fromISO(prevDte).toFormat('ccc L/d'))
 
         dte = mediaDate
         medArr.push(media)
