@@ -133,10 +133,10 @@ async function showPics(idx) {
             }
         }
         
-        prevDte = media.mediaMetadata.creationTime
 
         console.log('break', dte, mediaDate, media.mediaMetadata.creationTime, prevDte, DateTime.fromISO(prevDte).toFormat('ccc L/d'))
-
+        
+        prevDte = media.mediaMetadata.creationTime
         dte = mediaDate
         medArr.push(media)
     }
