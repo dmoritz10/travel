@@ -141,7 +141,7 @@ async function showPics(idx) {
         dte = mediaDate
         medArr.push(media)
     }
-    console.log('last break', dte, mediaDate != dte, medArr.length, mediaDate, media.mediaMetadata.creationTime, prevDte, DateTime.fromISO(prevDte).toFormat('ccc L/d'))
+    console.log('last break', dte, dte != dte, medArr.length, dte, media.mediaMetadata.creationTime, prevDte, DateTime.fromISO(prevDte).toFormat('ccc L/d'))
 
 
     if (medArr.length>0) {
