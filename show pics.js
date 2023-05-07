@@ -132,7 +132,7 @@ async function showPics(idx) {
             }
         }
 
-        console.log('break', dte, mediaDate, media.mediaMetadata.creationTime)
+        console.log('break', dte, mediaDate, media.mediaMetadata.creationTime, prevDte)
 
         let prevDte = media.mediaMetadata.creationTime
         dte = mediaDate
