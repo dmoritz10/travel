@@ -124,7 +124,7 @@ async function showPics(idx) {
 
         if (mediaDate != dte) {
             if (medArr.length>0) {
-                ele.find('#trppDate')[0].innerHTML = DateTime.fromISO(media.mediaMetadata.creationTime).toFormat('ccc L/d')
+                ele.find('#trppDate')[0].innerHTML = DateTime.fromISO(prevDte).toFormat('ccc L/d')
                 await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
                 medArr = []
                 ele.removeClass('d-none');
@@ -132,6 +132,9 @@ async function showPics(idx) {
             }
         }
 
+        console.log('break', dte, mediaDate, media.mediaMetadata.creationTime)
+
+        let prevDte = media.mediaMetadata.creationTime
         dte = mediaDate
         medArr.push(media)
     }
