@@ -128,6 +128,7 @@ async function showPics(idx) {
             if (medArr.length>0) {
                 ele.find('#trppDate')[0].innerHTML = DateTime.fromISO(prevDte).toFormat('ccc L/d')
                 await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
+                console.log(medArr)
                 medArr = []
                 ele.removeClass('d-none');
                 ele.appendTo("#trppContainer");
