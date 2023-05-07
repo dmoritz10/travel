@@ -131,7 +131,7 @@ async function showPics(idx) {
                 ele.appendTo("#trppContainer");
             }
         }
-        let prevDte = media.mediaMetadata.creationTime
+        var prevDte = media.mediaMetadata.creationTime
 
         console.log('break', dte, mediaDate, media.mediaMetadata.creationTime, prevDte)
 
