@@ -115,6 +115,7 @@ async function showPics(idx) {
        
         var fnameDate = media.filename.toLowerCase() + media.mediaMetadata.creationTime
         if (fnameDate == dupFnameDate) {
+            console.log('dup', dupFnameDate)
             continue
         }
 
@@ -134,7 +135,7 @@ async function showPics(idx) {
         }
         
 
-        console.log('break', dte, mediaDate, media.mediaMetadata.creationTime, prevDte, DateTime.fromISO(prevDte).toFormat('ccc L/d'))
+        console.log('break', dte, mediaDate != dte, medArr.length, mediaDate, media.mediaMetadata.creationTime, prevDte, DateTime.fromISO(prevDte).toFormat('ccc L/d'))
         
         prevDte = media.mediaMetadata.creationTime
         dte = mediaDate
