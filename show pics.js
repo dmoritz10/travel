@@ -136,22 +136,20 @@ async function showPics(idx) {
             }
         }
         
-
-        
         prevDte = media.mediaMetadata.creationTime.slice(0,10)
         dte = mediaDate
         medArr.push(media)
     }
     console.log('last break', dte, dte != dte, medArr.length, dte, media.mediaMetadata.creationTime, prevDte, DateTime.fromISO(prevDte).toFormat('ccc L/d'))
 
-    if (medArr.length>0) {
-        ele.find('#trppDate')[0].innerHTML = DateTime.fromISO(prevDte).toFormat('ccc L/d')
-        console.log(DateTime.fromISO(prevDte).toFormat('ccc L/d'), medArr)
-        await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
-        medArr = []
-        ele.removeClass('d-none');
-        ele.appendTo("#trppContainer");
-    }
+    // if (medArr.length>0) {
+    //     ele.find('#trppDate')[0].innerHTML = DateTime.fromISO(prevDte).toFormat('ccc L/d')
+    //     console.log(DateTime.fromISO(prevDte).toFormat('ccc L/d'), medArr)
+    //     await embed_google_media(medArr, ele.find('#trppPhotos')[0], 'grid');
+    //     medArr = []
+    //     ele.removeClass('d-none');
+    //     ele.appendTo("#trppContainer");
+    // }
 
     gotoTab('ShowPics')
 
