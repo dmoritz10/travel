@@ -102,11 +102,13 @@ async function showPics(idx) {
     $("#trppContainer").empty();
     x.appendTo("#trppContainer");
     
-    let dte = DateTime.fromISO(mediaArr[mediaArr.length - 1].mediaMetadata.creationTime).toFormat('yyyyLLLdd')
+    // let dte = DateTime.fromISO(mediaArr[mediaArr.length - 1].mediaMetadata.creationTime).toFormat('yyyyLLLdd')
+    let dte = DateTime.fromISO(mediaArr[0].mediaMetadata.creationTime).toFormat('yyyyLLLdd')
     let medArr = []
     var dupFnameDate
 
-    for (var j = mediaArr.length - 1; j >=0 ; j--) {
+    // for (var j = mediaArr.length - 1; j >=0 ; j--) {
+    for (var j = 0; j < mediaArr.length ; j++) {
 
         var media = mediaArr[j]
        
