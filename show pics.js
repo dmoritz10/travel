@@ -141,6 +141,8 @@ async function showPics(idx) {
         dte = mediaDate
         medArr.push(media)
     }
+    console.log('last break', dte, mediaDate != dte, medArr.length, mediaDate, media.mediaMetadata.creationTime, prevDte, DateTime.fromISO(prevDte).toFormat('ccc L/d'))
+
 
     if (medArr.length>0) {
         ele.find('#trppDate')[0].innerHTML = DateTime.fromISO(prevDte).toFormat('ccc L/d')
