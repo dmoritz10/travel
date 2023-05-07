@@ -123,6 +123,7 @@ async function showPics(idx) {
 
         var ele = $tblPics.clone();
         let mediaDate = DateTime.fromISO(media.mediaMetadata.creationTime).toFormat('yyyyLLLdd')
+        console.log('break', dte, mediaDate != dte, medArr.length, mediaDate, media.mediaMetadata.creationTime, prevDte, DateTime.fromISO(prevDte).toFormat('ccc L/d'))
 
         if (mediaDate != dte) {
             if (medArr.length>0) {
@@ -136,7 +137,6 @@ async function showPics(idx) {
         }
         
 
-        console.log('break', dte, mediaDate != dte, medArr.length, mediaDate, media.mediaMetadata.creationTime, prevDte, DateTime.fromISO(prevDte).toFormat('ccc L/d'))
         
         prevDte = media.mediaMetadata.creationTime
         dte = mediaDate
