@@ -321,6 +321,8 @@ class MediaObject{
 
             console.log('full_content', full_content)
             full_content.onload = this._replace_content();
+            this.dom_object.appendChild(this.content)
+
 
         }else if (this.type == 'video') {
             let full_content = document.createElement('video')
@@ -337,11 +339,11 @@ class MediaObject{
             full_content.onloadeddata = this._replace_content();
             full_content.onerror = (e) => {console.log('video load error', e)}
             // full_content.onerror = (e) => e.target.load()
+            this.dom_object.appendChild(this.content)
 
         }
 
         // this.content.classList.add('blur')
-        this.dom_object.appendChild(this.content)
     }
 
 
