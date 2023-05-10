@@ -315,7 +315,7 @@ class MediaObject{
 
         if (this.type == 'image') {
             let full_content = new Image();
-            // full_content.src = this._get_src_url();
+            full_content.src = this._get_src_url();
             full_content.usemap="#" + this.createTime
             this.content = full_content
 
