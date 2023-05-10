@@ -341,7 +341,7 @@ class MediaObject{
             // full_content.onerror = (e) => e.target.load()
             this.dom_object.appendChild(this.content)
 
-            let useMap = document.createElement('video')
+            let useMap = new Image();
             useMap.useMap = "#" + this.createTime
             useMap.classList.add('opacity-0')
             this.useMap = useMap
