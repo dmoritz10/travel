@@ -312,14 +312,10 @@ class MediaObject{
         // this.content = new Image();
         // this.content.src = this._get_src_url(20)
 
-
-
-
-
         if (this.type == 'image') {
             let full_content = new Image();
             full_content.src = this._get_src_url();
-            
+
             this.content = full_content
 
             console.log('full_content', full_content)
