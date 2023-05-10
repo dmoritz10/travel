@@ -196,7 +196,7 @@ function MediaGrid(container, mediaArr, max_height) {
 
 
 
-    
+
 
     console.log('mediaobj', media_objects)
     console.log('container', container)
@@ -288,8 +288,8 @@ class MediaObject{
         this.dom_object = document.createElement('div')
         this.dom_object.classList.add('media-object')
         this.dom_object.style = `width:${this.aspect_ratio*20}px;height:${20}px`
-        this._fill_object()
         this._fill_MapArea_object()
+        this._fill_object()
 
     }
 
@@ -315,7 +315,7 @@ class MediaObject{
 
         if (this.type == 'image') {
             let full_content = new Image();
-            full_content.src = this._get_src_url();
+            // full_content.src = this._get_src_url();
             full_content.usemap="#" + this.createTime
             this.content = full_content
 
