@@ -165,12 +165,15 @@ async function embed_google_media(mediaItems, id, type='grid', height = 240, ){
 
     for (let i=0;i<mediaItems.length;i++) {
  
-    let media_item = {}
-    media_item.base_url = mediaItems[i].baseUrl
-    media_item.type = mediaItems[i].mimeType.split('/')[0]
-    media_item.aspect_ratio = mediaItems[i].mediaMetadata.width / mediaItems[i].mediaMetadata.height
+        let media_item = {}
+        media_item.base_url = mediaItems[i].baseUrl
+        media_item.type = mediaItems[i].mimeType.split('/')[0]
+        media_item.aspect_ratio = mediaItems[i].mediaMetadata.width / mediaItems[i].mediaMetadata.height
 
-    mediaArr.push(media_item)
+        media_item.product_url = mediaItems[i].productUrl
+        media_item.createTime = mediaItems[i].CreationTime.replace(/:/g,'')
+
+        mediaArr.push(media_item)
 
     }   
 
@@ -187,6 +190,9 @@ function MediaGrid(container, mediaArr, max_height) {
 
     let media_objects = mediaArr.map(item => new MediaObject(item));
     media_objects.forEach(element => _add_object_to_container(element));
+
+    let mapArea_objects = mediaArr.map(item => new MapAreaObject(item));
+    mapArea_objects.forEach(element => _add_object_to_container(element));
 
     console.log('mediaobj', media_objects)
 
@@ -271,11 +277,28 @@ class MediaObject{
         this.base_url = item.base_url
         this.type = item.type
         this.aspect_ratio = item.aspect_ratio
+        this.createTime = item.createTime
+        this.product_url = item.product_url
 
         this.dom_object = document.createElement('div')
         this.dom_object.classList.add('media-object')
         this.dom_object.style = `width:${this.aspect_ratio*20}px;height:${20}px`
         this._fill_object()
+        this._fill_MapArea_object()
+
+    }
+
+    _fill_MapArea_object() {
+
+        let full_content = document.createElement('map')
+        full_content.name=this.createTime;
+        full_content.area=document.createElement('area')
+        full_content.area.shape="default"
+        full_content.area.href=this.product_url
+        
+        this.content = full_content
+
+        this.dom_object.appendChild(this.content)
     }
 
     _fill_object() {
@@ -286,12 +309,14 @@ class MediaObject{
         if (this.type == 'image') {
             let full_content = new Image();
             full_content.src = this._get_src_url();
+            full_content.usemap="#" + this.createTime
             this.content = full_content
             full_content.onload = this._replace_content;
 
         }else if (this.type == 'video') {
             let full_content = document.createElement('video')
             full_content.src = this._get_src_url();
+            full_content.usemap="#" + this.createTime
             full_content.autoplay = true
             full_content.loop = true
             full_content.playsinline = true
