@@ -332,6 +332,8 @@ class MediaObject{
             full_content.muted = true
             full_content.poster = this._get_src_url(null, true);
             this.content = full_content
+            console.log('full_content video', full_content)
+
             full_content.onloadeddata = this._replace_content();
             full_content.onerror = (e) => {console.log('video load error', e)}
             // full_content.onerror = (e) => e.target.load()
@@ -349,7 +351,7 @@ class MediaObject{
 
     _replace_content() {
 
-        // this.classList.remove('blur')
+        this.classList.remove('blur')
     }
 
     _update_position(x,y,height) {
