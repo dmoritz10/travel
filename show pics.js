@@ -318,12 +318,12 @@ class MediaObject{
 
         if (this.type == 'image') {
             let full_content = new Image();
-            // full_content.src = this._get_src_url();
-            full_content.usemap="#" + this.createTime
+            full_content.src = this._get_src_url();
+            
             this.content = full_content
 
             console.log('full_content', full_content)
-            full_content.onload = this._replace_content;
+            full_content.onload = this._replace_content(full_content);
 
         }else if (this.type == 'video') {
             let full_content = document.createElement('video')
@@ -335,7 +335,7 @@ class MediaObject{
             full_content.muted = true
             full_content.poster = this._get_src_url(null, true);
             this.content = full_content
-            full_content.onloadeddata = this._replace_content;
+            full_content.onloadeddata = this._replace_content(full_content);
             full_content.onerror = (e) => {console.log('video load error', e)}
             // full_content.onerror = (e) => e.target.load()
 
@@ -347,7 +347,9 @@ class MediaObject{
 
 
 
-    _replace_content() {
+    _replace_content(full_content) {
+        full_content.usemap="#" + this.createTime
+
         this.classList.remove('blur')
     }
 
