@@ -87,7 +87,7 @@ async function showPics(idx) {
         mediaArr = mediaArr.concat(mediaItems)
         console.log('pageToken', params.pageToken , response.result.pageToken)
 
-    } while (params.pageToken)mediaItems
+    } while (params.pageToken)
 
     if (!mediaArr[0] || mediaArr.length == 0) {
         toast('There are no photos for this Trip', 5000)
