@@ -299,9 +299,10 @@ class MediaObject{
 
         let full_content = document.createElement('map')
         full_content.name=this.createTime;
-        full_content.area=document.createElement('area')
-        full_content.area.shape="default"
-        full_content.area.href=this.product_url
+        let area=document.createElement('area')
+        area.shape="default"
+        area.href=this.product_url
+        full_content.appendChild(area)
         
         this.content = full_content
 
@@ -344,7 +345,7 @@ class MediaObject{
 
 
 
-    
+
 
     _replace_content() {
 
