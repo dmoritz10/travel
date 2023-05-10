@@ -87,7 +87,7 @@ async function showPics(idx) {
         mediaArr = mediaArr.concat(mediaItems)
         console.log('pageToken', params.pageToken , response.result.pageToken)
 
-    } while (params.pageToken)
+    } while (params.pageToken)mediaItems
 
     if (!mediaArr[0] || mediaArr.length == 0) {
         toast('There are no photos for this Trip', 5000)
@@ -171,7 +171,7 @@ async function embed_google_media(mediaItems, id, type='grid', height = 240, ){
         media_item.aspect_ratio = mediaItems[i].mediaMetadata.width / mediaItems[i].mediaMetadata.height
 
         media_item.product_url = mediaItems[i].productUrl
-        media_item.createTime = mediaItems[i].CreationTime.replace(/:/g,'')
+        media_item.createTime = mediaItems[i].creationTime.replace(/:/g,'')
 
         mediaArr.push(media_item)
 
