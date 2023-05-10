@@ -289,7 +289,7 @@ class MediaObject{
     }
 
 
-    
+
     _fill_MapArea_object() {
 
         let full_content = document.createElement('map')
@@ -311,7 +311,6 @@ class MediaObject{
         if (this.type == 'image') {
             let full_content = new Image();
             full_content.src = this._get_src_url();
-            full_content.usemap="#" + this.createTime
             this.content = full_content
             full_content.onload = this._replace_content;
 
@@ -338,6 +337,10 @@ class MediaObject{
 
 
     _replace_content() {
+
+        console.log('replace', this)
+        full_content.usemap="#" + this.createTime
+
         this.classList.remove('blur')
     }
 
