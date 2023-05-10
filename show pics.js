@@ -195,6 +195,7 @@ function MediaGrid(container, mediaArr, max_height) {
     // mapArea_objects.forEach(element => _add_object_to_container(element));
 
     console.log('mediaobj', media_objects)
+    console.log('container', container)
 
     window.onresize= () => _calc_rows();
 
