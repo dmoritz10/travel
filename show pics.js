@@ -288,6 +288,8 @@ class MediaObject{
 
     }
 
+
+    
     _fill_MapArea_object() {
 
         let full_content = document.createElement('map')
