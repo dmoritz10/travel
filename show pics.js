@@ -327,12 +327,12 @@ class MediaObject{
         }else if (this.type == 'video') {
             let full_content = document.createElement('video')
             full_content.src = this._get_src_url();
-            full_content.useMap = "#" + this.createTime
             full_content.autoplay = true
             full_content.loop = true
             full_content.playsinline = true
             full_content.muted = true
             full_content.poster = this._get_src_url(null, true);
+            full_content.classList.add('position-absolute')
             this.content = full_content
             console.log('full_content video', full_content)
 
@@ -340,6 +340,13 @@ class MediaObject{
             full_content.onerror = (e) => {console.log('video load error', e)}
             // full_content.onerror = (e) => e.target.load()
             this.dom_object.appendChild(this.content)
+
+            let useMap = document.createElement('video')
+            useMap.useMap = "#" + this.createTime
+            useMap.classList.add('opacity-0')
+            this.useMap = useMap
+
+            this.dom_object.appendChild(this.useMap)
 
         }
 
