@@ -340,7 +340,7 @@ class MediaObject{
 
         }
 
-        this.content.classList.add('blur')
+        // this.content.classList.add('blur')
         this.dom_object.appendChild(this.content)
     }
 
@@ -351,7 +351,9 @@ class MediaObject{
 
     _replace_content() {
 
-        this.classList.remove('blur')
+        console.log('_replace_content', this)
+
+        // this.classList.remove('blur')
     }
 
     _update_position(x,y,height) {
