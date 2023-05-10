@@ -171,7 +171,7 @@ async function embed_google_media(mediaItems, id, type='grid', height = 240, ){
         media_item.aspect_ratio = mediaItems[i].mediaMetadata.width / mediaItems[i].mediaMetadata.height
 
         media_item.product_url = mediaItems[i].productUrl
-        media_item.createTime = mediaItems[i].creationTime.replace(/:/g,'')
+        media_item.createTime = mediaItems[i].mediaMetadata.creationTime.replace(/:/g,'')
 
         mediaArr.push(media_item)
 
