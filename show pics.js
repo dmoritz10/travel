@@ -345,9 +345,8 @@ class MediaObject{
 
     _replace_content() {
 
-        this.classList.remove('blur')
+        // this.classList.remove('blur')
     }
-
 
     _update_position(x,y,height) {
         
