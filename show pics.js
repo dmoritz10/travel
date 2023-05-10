@@ -191,8 +191,8 @@ function MediaGrid(container, mediaArr, max_height) {
     let media_objects = mediaArr.map(item => new MediaObject(item));
     media_objects.forEach(element => _add_object_to_container(element));
 
-    let mapArea_objects = mediaArr.map(item => new MapAreaObject(item));
-    mapArea_objects.forEach(element => _add_object_to_container(element));
+    // let mapArea_objects = mediaArr.map(item => new MapAreaObject(item));
+    // mapArea_objects.forEach(element => _add_object_to_container(element));
 
     console.log('mediaobj', media_objects)
 
