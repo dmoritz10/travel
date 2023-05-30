@@ -95,13 +95,18 @@ async function listReservations(title = "Reservations") {
 
     ele.find('#btnResFavorite')[0].setAttribute("onclick", "setFavorite(" + j + ")");
 
-   setSmsHref ({
-      eventTitle: resObj['Reservation'],
-      startDate:  start,
-      endDate:    end,
-      element:    ele.find('#btnResSms')
-    })
+  //  setSmsHref ({
+  //     eventTitle: resObj['Reservation'],
+  //     startDate:  start,
+  //     endDate:    end,
+  //     element:    ele.find('#btnResSms')
+  //   })
 
+    setPhoneHref({      
+      phone:resObj['Phone'],
+      element: ele.find('#btnResPhone')
+    })
+    
 
     var dt = resObj['End Date'] ? new Date(resObj['End Date']) : new Date(resObj['Start Date'])
 
@@ -718,6 +723,21 @@ async function setSmsHref(d) {
     d.element.prop('href', 'sms:' + '' + "?body=" + txtBody  )
           
 }
+
+function setPhoneHref(d) {
+
+  if (d.phone) {
+
+    d.element.prop('disabled', false).prop('href', 'tel:' + d.phone)
+
+  } else {
+
+  d.element.removeAttr('href');
+  
+  }
+
+}
+
 
 
 function btnPrintResHtml () {
