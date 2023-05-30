@@ -728,11 +728,13 @@ function setPhoneHref(d) {
 
   if (d.phone) {
 
-    d.element.prop('disabled', false).prop('href', 'tel:' + d.phone)
+    // d.element.prop('disabled', false).prop('href', 'tel:' + d.phone)
+    d.element.removeClass('d-none').prop('href', 'tel:' + d.phone)
 
   } else {
 
-  d.element.removeAttr('href');
+  // d.element.removeAttr('href');
+  d.element.addClass('d-none');
   
   }
 
