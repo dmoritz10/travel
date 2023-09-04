@@ -797,7 +797,7 @@ function btnPrintResHtml () {
         var eLbl = tmplt.replace('date', eDate).replace('descr', "End")
     }
 
-    var res = '<h4>' + eleC[0].innerText.slice(0,-13) + '</h4>' + sLbl  +   eLbl
+    var res = '<h4>' + eleC[0].innerText.slice(0,-11) + '</h4>' + sLbl  +   eLbl
 
     var dtl = eleC[1].innerText + 
               (eleC[3].innerText.replace(/\n/g, "").replace(/ /g,'') ? '<br>' + eleC[3].innerText : '') + 
@@ -848,7 +848,7 @@ function btnBaggageTagsHtml() {
     var dtStr = dt[0].split(',')[0]
     var dtEnd = dt[1].split(',')[0]
 
-    var res = '<strong>' + eleC[0].innerText.slice(0,-13) + '</strong><br>' + 
+    var res = '<strong>' + eleC[0].innerText.slice(0,-11) + '</strong><br>' + 
               dtStr + ' - ' + dtEnd + '<br>' +
               eleC[5].innerText
 
