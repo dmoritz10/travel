@@ -24,12 +24,68 @@ async function showPics(idx) {
 
     var strDate = vals[trpHdrs.indexOf('Start Date')]
     var endDate = vals[trpHdrs.indexOf('End Date')]
+    var trpDtl = buildLocArr(JSON.parse(vals[trpHdrs.indexOf('Destination Detail')]))
 
     console.log('Trip', vals[trpHdrs.indexOf('Trip')], strDate, endDate)
 
-    listPhotos(strDate, endDate)
+    listPhotos(strDate, endDate, trpDtl)
 
-  } 
+  }
+  
+  function buildLocArr(trpDtl) {
+
+    var brkDate
+    var trpLocByDate = []
+  
+    for (var i=0; i<trpDtl.length;i++) {
+  
+      var val = trpDtl[i]
+  
+      var parseDate = val.date.split(", ")
+      var date = parseDate[0]
+      var time = parseDate[1] ? parseDate[1] : ''
+  
+      if (date != brkDate) {
+  
+        var dispDate = DateTime.fromJSDate(new Date(date)).toFormat('ccc L/d');
+  
+        var actDisp = formatActivities(activities)
+        
+        if (priorHdr > -1) {
+  
+          var hrefDate = DateTime.fromJSDate(new Date(brkDate)).toFormat('yyyy-LL-dd');
+          var googleTimelineHref = 'https://timeline.google.com/maps/timeline?pb=!1m2!1m1!1s' + hrefDate
+          trp[priorHdr][1] = trp[priorHdr][1].replace(/replacementToken/g, actDisp).replace(/hrefDateToken/g, googleTimelineHref)
+      
+        }
+        
+        priorHdr = trp.length
+  
+  
+        trp.push(["<div class='text-start my-2'><span class='text-primary h3'>" + dispDate + "</span></div>",
+                  '<div>' + "replacementToken" + '</div>'
+                ])
+  
+        brkDate = date
+  
+      }
+    
+      if (rtnToPage == 'Trips') var icon = '<div class="label ps-5 cursor-pointer" onClick="editTripDtl(' + idx + ", " + i + ')"><span class="material-icons">expand_more</span></div>'
+      else                      var icon = ''
+  
+      var place = val.name + "<br><h6>" +
+                  val.city + (val.state ? ", " : "") +
+                  val.state + "<br>" +
+                  icon
+      
+      trp.push([time, place])
+  
+      accumActivities( val.activities, activities)
+      
+    }
+
+
+  }
 
   async function listPhotos(strDate, endDate) {
 
@@ -82,10 +138,8 @@ async function showPics(idx) {
 
         let response = await searchPhotos(params)
         params.pageToken = response.result.nextPageToken
-        console.log('response', response)
         let mediaItems = response.result.mediaItems
         mediaArr = mediaArr.concat(mediaItems)
-        console.log('pageToken', params.pageToken , response.result.pageToken)
 
     } while (params.pageToken)
 
