@@ -70,9 +70,11 @@ async function showPics(idx) {
   
       }
     
-      if (rtnToPage == 'Trips') var icon = '<div class="label ps-5 cursor-pointer" onClick="editTripDtl(' + idx + ", " + i + ')"><span class="material-icons">expand_more</span></div>'
-      else                      var icon = ''
-  
+    //   if (rtnToPage == 'Trips') var icon = '<div class="label ps-5 cursor-pointer" onClick="editTripDtl(' + idx + ", " + i + ')"><span class="material-icons">expand_more</span></div>'
+    //   else                      var icon = ''
+
+        var icon = ''
+
       var place = val.name + "<br><h6>" +
                   val.city + (val.state ? ", " : "") +
                   val.state + "<br>" +
