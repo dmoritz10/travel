@@ -35,7 +35,7 @@ async function showPics(idx) {
   function buildLocArr(trpDtl) {
 
     var brkDate
-    var trpLocByDate = []
+    var trp = []
   
     for (var i=0; i<trpDtl.length;i++) {
   
@@ -80,7 +80,7 @@ async function showPics(idx) {
       
       trp.push([time, place])
   
-      accumActivities( val.activities, activities)
+    //   accumActivities( val.activities, activities)
       
     }
 
