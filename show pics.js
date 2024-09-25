@@ -10,7 +10,7 @@ async function showPics(idx) {
 
     var vals = trpVals[idx]
 
-    console.log('vals', idx, vals)
+    console.log('vals', idx, trpHdrs, vals)
   
     $("#trppTrip")[0].innerHTML = vals[trpHdrs.indexOf('Trip')]
     $("#trppMoYr")[0].innerHTML = vals[trpHdrs.indexOf('Month')]
