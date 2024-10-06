@@ -2,7 +2,7 @@ async function showPics(idx) {
 
     console.log('idx', idx)
 
-    if (!idx) {
+    if (idx < 0) {
         var idx = $("#trppArrIdx").val()
     }
 
