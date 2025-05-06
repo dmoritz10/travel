@@ -106,31 +106,31 @@ async function listPhotos(strDate, endDate) {
     pageSize: 50,
     pageToken: null,
 
-    // filters: {
-    //   mediaTypeFilter: {
-    //     mediaTypes: ["ALL_MEDIA"],
-    //   },
-    //   dateFilter: {
-    //     ranges: [
-    //       {
-    //         startDate: {
-    //           year: strDt[2] * 1,
-    //           month: strDt[0] * 1,
-    //           day: strDt[1] * 1,
-    //         },
-    //         endDate: {
-    //           year: endDt[2] * 1,
-    //           month: endDt[0] * 1,
-    //           day: endDt[1] * 1,
-    //         },
-    //       },
-    //     ],
-    //   },
-    //   //   contentFilter: {
-    //   //     //   includedContentCategories: [category],
-    //   //     includedContentCategories: ["NONE"],
-    //   //   },
-    // },
+    filters: {
+      mediaTypeFilter: {
+        mediaTypes: ["ALL_MEDIA"],
+      },
+      dateFilter: {
+        ranges: [
+          {
+            startDate: {
+              year: strDt[2] * 1,
+              month: strDt[0] * 1,
+              day: strDt[1] * 1,
+            },
+            endDate: {
+              year: endDt[2] * 1,
+              month: endDt[0] * 1,
+              day: endDt[1] * 1,
+            },
+          },
+        ],
+      },
+      //   contentFilter: {
+      //     //   includedContentCategories: [category],
+      //     includedContentCategories: ["NONE"],
+      //   },
+    },
   };
 
   console.log("paramssssss", params);
