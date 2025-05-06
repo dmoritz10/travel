@@ -100,6 +100,8 @@ async function listPhotos(strDate, endDate) {
 
   var category = $("#trppSearch").val() ? [$("#trppSearch").val()] : [];
 
+  console.log("category", category, category.length);
+
   var params = {
     pageSize: 50,
     pageToken: null,
@@ -125,7 +127,7 @@ async function listPhotos(strDate, endDate) {
         ],
       },
       contentFilter: {
-        includedContentCategories: [category],
+        // includedContentCategories: [category],
       },
     },
   };
