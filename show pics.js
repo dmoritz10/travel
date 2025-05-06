@@ -133,7 +133,7 @@ async function listPhotos(strDate, endDate) {
     },
   };
 
-  console.log("params", params);
+  console.log("paramssssss", params);
 
   var mediaArr = [];
 
