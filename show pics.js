@@ -114,22 +114,22 @@ async function listPhotos(strDate, endDate) {
         ranges: [
           {
             startDate: {
-              year: strDt[2],
-              month: strDt[0],
-              day: strDt[1],
+              year: strDt[2] * 1,
+              month: strDt[0] * 1,
+              day: strDt[1] * 1,
             },
             endDate: {
-              year: endDt[2],
-              month: endDt[0],
-              day: endDt[1],
+              year: endDt[2] * 1,
+              month: endDt[0] * 1,
+              day: endDt[1] * 1,
             },
           },
         ],
       },
-      contentFilter: {
-        //   includedContentCategories: [category],
-        includedContentCategories: ["NONE"],
-      },
+      //   contentFilter: {
+      //     //   includedContentCategories: [category],
+      //     includedContentCategories: ["NONE"],
+      //   },
     },
   };
 
