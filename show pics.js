@@ -126,11 +126,14 @@ async function listPhotos(strDate, endDate) {
           },
         ],
       },
-      //   contentFilter: {
-      //     includedContentCategories: [category],
-      //   },
+      contentFilter: {
+        //   includedContentCategories: [category],
+        includedContentCategories: ["NONE"],
+      },
     },
   };
+
+  console.log("params", params);
 
   var mediaArr = [];
 
