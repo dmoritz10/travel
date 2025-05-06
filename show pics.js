@@ -136,6 +136,7 @@ async function listPhotos(strDate, endDate) {
     let response = await searchPhotos(params);
     params.pageToken = response.result.nextPageToken;
     let mediaItems = response.result.mediaItems;
+    console.log("respoinse", response);
     mediaArr = mediaArr.concat(mediaItems);
   } while (params.pageToken);
 
