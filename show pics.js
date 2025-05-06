@@ -126,9 +126,9 @@ async function listPhotos(strDate, endDate) {
           },
         ],
       },
-      contentFilter: {
-        // includedContentCategories: [category],
-      },
+      //   contentFilter: {
+      //     includedContentCategories: [category],
+      //   },
     },
   };
 
