@@ -100,7 +100,7 @@ async function listPhotos(strDate, endDate) {
 
   var category = $("#trppSearch").val() ? [$("#trppSearch").val()] : [];
 
-  console.log("category", category, category.length);
+  console.log("category xxx", category, category.length);
 
   var params = {
     pageSize: 50,
