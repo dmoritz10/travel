@@ -701,7 +701,7 @@ function btnPrintResHtml() {
     var type = eleC[3].innerText.split("\n")[0];
 
     var tmplt =
-      '<div style="width: 25%; float: left;">descr: </div><div style="margin-left: 25%;"><strong>date</strong></div>';
+      '<div style="width: 30%; float: left;">descr: </div><div style="margin-left: 30%;"><strong>date</strong></div>';
 
     switch (type) {
       case "Hotel":
@@ -765,7 +765,8 @@ function btnPrintResHtml() {
     type: "json",
     targetStyles: ["*"], //accepts all the styles
     targetStyle: ["*"],
-    style: "body { font-family:arial; }",
+    style:
+      ".printTable th:nth-child(1), .printTable td:nth-child(1) { width: 25%; } .printTable th:nth-child(2), .printTable td:nth-child(2) { width: 50%; }",
     gridHeaderStyle:
       "font-family:arial;font-size: 18px; border-bottom: 2px solid darkgrey;",
     gridStyle: "border-bottom: 4px solid lightgrey;",
