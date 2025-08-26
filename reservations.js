@@ -765,8 +765,7 @@ function btnPrintResHtml() {
     type: "json",
     targetStyles: ["*"], //accepts all the styles
     targetStyle: ["*"],
-    style:
-      ".printTable th:nth-child(1), .printTable td:nth-child(1) { width: 50%; } .printTable th:nth-child(2), .printTable td:nth-child(2) { width: 50%; }",
+    style: "body { font-family:arial; }",
     gridHeaderStyle:
       "font-family:arial;font-size: 18px; border-bottom: 2px solid darkgrey;",
     gridStyle: "border-bottom: 4px solid lightgrey;",
