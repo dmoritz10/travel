@@ -758,6 +758,7 @@ function btnPrintResHtml() {
       Detail: dtl,
     });
   }
+  // format report
 
   printJS({
     printable: resRpt,
