@@ -701,7 +701,7 @@ function btnPrintResHtml() {
     var type = eleC[3].innerText.split("\n")[0];
 
     var tmplt =
-      '<div style="width: 50%; float: left;">descr: </div><div style="margin-left: 50%;"><strong>date</strong></div>';
+      '<div style="width: 10%; float: left;">descr: </div><div style="margin-left: 10%;"><strong>date</strong></div>';
 
     switch (type) {
       case "Hotel":
